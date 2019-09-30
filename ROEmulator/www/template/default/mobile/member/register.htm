@@ -1,0 +1,45 @@
+<!--{template common/header}-->
+<div class="box"><a href="{if $forcefid}forum.php?mod=forumdisplay{$forcefid}{else}forum.php{/if}" title="{lang return_forum}">{lang return_forum}</a><span class="pipe">|</span><a href="javascript:history.back();" onclick="javascript:history.back();" title="{lang goback}" >{lang goback}</a></div>
+<form method="post" autocomplete="off" name="register" id="registerform" enctype="multipart/form-data" action="member.php?mod={$_G[setting][regname]}&mobile=yes">
+<input type="hidden" name="regsubmit" value="yes" />
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<!--{eval $dreferer = str_replace('&amp;', '&', dreferer());}-->
+<input type="hidden" name="referer" value="$dreferer" />
+<input type="hidden" name="activationauth" value="{if $_GET[action] == 'activation'}$activationauth{/if}" />
+<input type="hidden" name="agreebbrule" value="$bbrulehash" id="agreebbrule" checked="checked" />
+<div class="bm mtn">
+	<div class="bm_h">{$_G['setting']['reglinkname']}</div>
+	<div class="bm_c">
+	<label><strong>{lang username}*</strong><input type="text" id="username" name="{$_G['setting']['reginput']['username']}" autocomplete="off" size="25" maxlength="15" value="" class="txt" /></label>
+	<span class="xg1">{lang reg_username}</span><br />
+	<label><strong>{lang password}*</strong><input type="password" name="{$_G['setting']['reginput']['password']}" size="25" id="password" class="txt" /></label>
+	<label><strong>{lang password_confirm}*</strong><input type="password" name="{$_G['setting']['reginput']['password2']}" size="25" id="password2" value="" class="txt" /></label>
+	<label><strong>{lang email}*</strong><input type="text" name="{$_G['setting']['reginput']['email']}" autocomplete="off" size="25" id="email" class="txt" /> </label>
+<!--{if empty($invite) && ($_G['setting']['regstatus'] == 2 || $_G['setting']['regstatus'] == 3)}-->
+	<label><strong>{lang invite_code}<!--{if $_G['setting']['regstatus'] == 2 && !$invitestatus}-->*<!--{/if}--></strong><input type="text" name="invitecode" autocomplete="off" size="25" id="invitecode" class="txt" /></label>
+<!--{/if}-->
+<!--{if $_G['setting']['regverify'] == 2}-->
+	<label><strong>{lang register_message}*:</strong><input type="text" id="regmessage" name="regmessage" autocomplete="off" size="25" tabindex="1" class="txt" /> </label>
+	<p class="xg1">{lang register_message1}</p>
+<!--{/if}-->
+<!--
+<!--{loop $_G['cache']['fields_register'] $field}-->
+<!--{if $htmls[$field['fieldid']]}-->
+	<p><strong>$field[title]*</strong>
+	<br />
+	$htmls[$field['fieldid']]<!--{if $field['required']}--><!--{/if}--></p>
+<!--{/if}-->
+<!--{/loop}-->
+-->
+
+<!--{if $secqaacheck || $seccodecheck}-->
+	<!--{subtemplate common/seccheck}-->
+<!--{/if}-->
+	<p class="mtn">
+		<input type="submit" name="regsubmit" id="registerformsubmit" value="{lang submit}" />
+	</p>
+	</div>
+</div>
+</form>
+<!--{eval updatesession();}-->
+<!--{template common/footer}-->

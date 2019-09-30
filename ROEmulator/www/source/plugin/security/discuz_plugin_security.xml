@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[·ÀË®Ç½]]></item>
+			<item id="identifier"><![CDATA[security]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[security/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[1.11.1]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[security]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[28]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[security]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[2]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3.2]]></item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
+		<item id="enablefile"><![CDATA[switch.php]]></item>
+		<item id="disablefile"><![CDATA[switch.php]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="banuser_tips_qq"><![CDATA[±§Ç¸£¬ÄúµÄÕÊºÅ±»ÏµÍ³½ûÑÔ£¬Äú¿ÉÒÔ°ó¶¨QQ½â³ý½ûÑÔ×´Ì¬¡£<a href="connect.php?mod=login&op=init">°ó¶¨QQ</a>]]></item>
+				<item id="banuser_tips_seccode"><![CDATA[±§Ç¸£¬ÄúµÄÕÊºÅ±»ÏµÍ³½ûÑÔ£¬Äú¿ÉÒÔµã»÷<a href="#" onclick="showWindow('security','plugin.php?id=security:unlock')">ÕâÀï</a>½â³ý½ûÑÔ²Ù×÷¡£]]></item>
+				<item id="unlock_success"><![CDATA[½â½û³É¹¦£¡]]></item>
+				<item id="wrongcode"><![CDATA[ÑéÖ¤ÂëÑéÖ¤Ê§°Ü£¬ÎÞ·¨½â½û¡£]]></item>
+				<item id="title"><![CDATA[·ÀË®Ç½±£ÎÀÍøÕ¾Ô¶ÀëÇÖº¦]]></item>
+				<item id="safelogintips"><![CDATA[Îª±ÜÃâÄúµÄÕÊºÅ±»µÁÓÃ£¬ÇëÄú°ó¶¨QQÕÊºÅºó·¢Ìû£¬°ó¶¨ºóÇëÊ¹ÓÃQQÕÊºÅµÇÂ¼]]></item>
+				<item id="qqloginaloneopened"><![CDATA[ÒÑ¿ªÆôQQ¶ÀÁ¢µÇÂ¼ÉèÖÃ]]></item>
+				<item id="quicklogin"><![CDATA[¿ì½ÝµÇÂ¼]]></item>
+				<item id="notice_title"><![CDATA[·ÀË®Ç½ÌáÐÑÄú]]></item>
+				<item id="notice_memo"><![CDATA[×òÈÕ·ÀË®Ç½Ê¶±ð {count} ¸öÎ¥¹æÓÃ»§£¬ÇëÂíÉÏ´¦Àí</p>]]></item>
+				<item id="notice_close"><![CDATA[¹Ø±Õ]]></item>
+				<item id="notice_link"><![CDATA[µã»÷½øÈë·ÀË®Ç½]]></item>
+			</item>
+			<item id="templatelang">
+				<item id="unlock_title"><![CDATA[ÇëÊäÈëÑéÖ¤Âë£¬½â³ý½ûÑÔ×´Ì¬]]></item>
+				<item id="unlock"><![CDATA[½â½û]]></item>
+			</item>
+			<item id="installlang">
+				<item id="cron"><![CDATA[·ÀË®Ç½Ã¿ÈÕ¼Æ»®ÈÎÎñ]]></item>
+			</item>
+		</item>
+	</item>
+</root>

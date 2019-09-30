@@ -1,0 +1,23 @@
+<!--{template common/header}-->
+<!--{if $_GET['op'] == 'delete'}-->
+<h1>{lang hide_app}</h1>
+<a href="javascript:hideMenu();" class="float_del" title="{lang close}">{lang close}</a>
+<div class="popupmenu_inner" id="__userappform_{$_GET[appid]}">
+	<form method="post" autocomplete="off" id="userappform_{$_GET[appid]}" name="userappform_{$_GET[appid]}" action="home.php?mod=spacecp&ac=space&op=">
+		<p>{lang hide_app_message}</p>
+		<p class="btn_line">
+			<input type="hidden" name="referer" value="{echo dreferer()}">
+			<input type="hidden" name="appid" value="$_GET[appid]" />
+			<input type="hidden" name="type" value="$_GET[type]" />
+			<!--{if $_G[inajax]}-->
+			<input type="hidden" name="delappsubmit" value="true" />
+			<button name="delappsubmit_btn" type="button" class="submit" value="true" onclick="ajaxpost('userappform_{$_GET[appid]}', 'userapp_delete', 2000)">{lang determine}</button>
+			<!--{else}-->
+			<button name="delappsubmit" type="submit" class="submit" value="true">{lang determine}</button>
+			<!--{/if}-->
+		</p>
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+	</form>
+</div>
+<!--{/if}-->
+<!--{template common/footer}-->

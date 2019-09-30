@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> Powered by Discuz!</title>
+<link href="source/plugin/dzapp_haodai/images/wap/public.css" rel="stylesheet" type="text/css"/>
+<link href="source/plugin/dzapp_haodai/images/wap/page.css" rel="stylesheet" type="text/css"/>
+<script src="source/plugin/dzapp_haodai/images/wap/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="source/plugin/dzapp_haodai/images/wap/wapciyty.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="mat_top">
+  <div class="header">
+    <a class="head_left backbtn" href="{echo rewrite_index();}">{lang dzapp_haodai:mobile_11}</a>
+    <a class="head_right shouy" href="./"><span>{lang homepage}</span></a>
+  </div>
+  <div class="head_cen">
+    <div class="cen_mat">
+      <div class="tit">{lang dzapp_haodai:view_htm_2}</div>
+    </div>
+  </div>
+</div>
+<div class="prod_box">
+  <div class="prod_tit">
+    <div class="miab"><a href="./" title="{lang homepage}">$_G[setting][bbname]</a> > <a href="{echo rewrite_index();}">{lang dzapp_haodai:apply_htm_1}</a> > <span>{lang dzapp_haodai:view_htm_2}</span></div>
+  </div>
+  <div class="prod_com">
+    <div class="deta_tit"> <span>{$xd[bank_name]} | {$xd[name]}<div class="clear"> </div> </span></div>
+    <div class="clear">  </div>
+    <div class="deta_com">
+      <ul class="Proview_ul">
+        <li>
+          <div class="Proview_ul_up"> <span class="fl">{lang dzapp_haodai:view_htm_4}</span> <span class="fr">{lang dzapp_haodai:view_htm_8}</span>
+            <div class="clear"></div>
+          </div>
+          <div class="Proview_ul_down"> <span class="fl">{$money}{lang dzapp_haodai:apply_htm_7}</span> <span class="fr">{$month}{lang dzapp_haodai:apply_htm_199}</span>
+            <div class="clear"></div>
+          </div>
+        </li>
+        <li>
+          <div class="Proview_ul_up"> <span class="fl">{lang dzapp_haodai:view_htm_12}</span> <span class="fr">{lang dzapp_haodai:view_htm_15}</span>
+            <div class="clear"></div>
+          </div>
+          <div class="Proview_ul_down"> <span class="fl">{$xd[data][month_repay]}{lang dzapp_haodai:apply_htm_39}</span> <span class="fr">{$xd[data][total_interest]}{lang dzapp_haodai:apply_htm_7}</span>
+            <div class="clear"></div>
+          </div>
+        </li>
+        <li>
+          <div class="Proview_ul_up"> <span class="fl">{lang dzapp_haodai:view_htm_6}</span> <span class="fr">{lang dzapp_haodai:view_htm_10}</span>
+            <div class="clear"></div>
+          </div>
+          <div class="Proview_ul_down"> <span class="fl">{$xd[limit_min]}-{$xd[limit_max]} {lang dzapp_haodai:apply_htm_7}</span> <span class="fr">{$xd[date_min]}-{$xd[date_max]}{lang dzapp_haodai:apply_htm_9}</span>
+            <div class="clear"></div>
+          </div>
+        </li>
+        <li>
+          <div class="Proview_ul_zs">{lang dzapp_haodai:view_htm_14}<span class="qanh">{$xd[refund_type_name]}</span> </div>
+        </li>
+        <li>
+          <div class="Proview_ul_zs">{lang dzapp_haodai:view_htm_17}<span class="qanh">{$xd[give_time]}{lang dzapp_haodai:view_htm_18}{$xd[audit_time]}{lang dzapp_haodai:view_htm_19}</span></div>
+        </li>
+        <li>
+          <div class="Proview_ul_zs"><span class="feiy fl">{lang dzapp_haodai:view_htm_20}</span><span class="nianl fl"><!--{if $xd['year_rate'] != '0.00'}-->{lang dzapp_haodai:view_htm_21} {$xd[year_rate]}%  <!--{/if}--><!--{if $xd['month_manage'] != '0.00'}-->{lang dzapp_haodai:view_htm_22} {$xd[month_manage]}%  <!--{/if}--><!--{if $xd['once_charge'] != '0.00'}-->{lang dzapp_haodai:view_htm_23} {$xd[once_charge]}%<!--{/if}--></span>
+            <div class="clear"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="sqPeopleNum">{lang dzapp_haodai:mobile_22}<span> {$xd[rel_succ_count]} </span>{lang dzapp_haodai:mobile_23}</div>
+    <div>
+      <div class="prostart auto">
+        <div class="prostart_word fl">{lang dzapp_haodai:mobile_24}</div>
+        <div class="prostart_start fr"><span class="Bval_{$xd[star]}"></span></div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <table id="Proview_tab_tit" class="Proview_tab_tit w100" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="show_td" onClick="ProviewTab(this)">{lang dzapp_haodai:view_htm_31}</td>
+        <td onClick="ProviewTab(this)">{lang dzapp_haodai:view_htm_32}</td>
+        <td onClick="ProviewTab(this)">{lang dzapp_haodai:view_htm_30}</td>
+      </tr>
+    </table>
+    <div class="pd15 Proview_tab_con" id="Proview_tab_con">
+      <div class="Proview_tab_c1">
+        <div>{$xd[apply]}</div>
+      </div>
+      <div class="Proview_tab_c1" style="display:none;">
+        <div>{$xd[stuff]}</div>
+      </div>
+      <div class="Proview_tab_c1" style="display:none;">
+        <div>{$xd[content]}</div>
+      </div>
+    </div>
+    <div class="pro_show">
+      <div class="show_tit"> <span>{$money}{lang dzapp_haodai:related_recommend}</span> </div>
+      <div class="show_con">
+		<!--{loop $get_related $value}-->
+         <a class="prolistLink01 relative"  href="#">  
+        <div class="prolist">
+          <div class="prolist_left relative"> <img class="prolist_img" src="{$value[bank_img]}" alt="{$value[bank_name]}" />
+            <h3 class="prolist_name">{$value[bank_name]}¡ª{$value[name]}</h3>
+            <p class="prolist_infop1">{lang dzapp_haodai:view_htm_15} <strong>{$value[data][total_interest]}</strong>{lang dzapp_haodai:apply_htm_7}   {lang dzapp_haodai:fenqi}<strong>{$value[data][month_repay]}</strong>{lang dzapp_haodai:apply_htm_39}/{lang dzapp_haodai:apply_htm_199} </p>
+            <p class="prolist_infop2"><!--{echo cutstr(strip_tags(htmlspecialchars_decode($value[apply])),50);}--></p>
+          </div>
+          <div class="prolist_right"><img src="source/plugin/dzapp_haodai/images/wap/tubg.png" width="17" height="27"></div>
+          <div class="clear"></div>
+        </div>
+        </a>
+		<!--{/loop}-->
+      </div>
+      <div class="pro_button">
+        <div class="toum"> </div>
+        <div class="sqBbtnzo">
+        <div class="pd15">
+        <div class="w100">
+        <a href="{echo rewrite_view_apply('apply',$xd_id,$_GET[xd_type],$month,$money);}" class="sqBbtn auto">{lang dzapp_haodai:mobile_25}</a></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bottom mata">
+  <div class="about"><a href="$_G[siteurl]">{$_G['setting']['bbname']}</a></div>
+  <div class="copy"><a href="http://yun.haodai.com/" class="copy" style="text-decoration:none;">{lang dzapp_haodai:notice}</a></div>
+</div>
+</body>
+</html>
+<!--{eval updatesession();}-->
+<!--{if defined('IN_MOBILE')}-->
+	<!--{eval output();}-->
+<!--{else}-->
+	<!--{eval output_preview();}-->
+<!--{/if}-->

@@ -1,0 +1,72 @@
+{eval
+function tpl_cloudsearch_forumdisplay_relatedlist($relatethreadlist, $urlkw) {
+global $_G;
+}
+<!--{block return}-->
+	<!--{if $relatethreadlist}-->
+	<div class="th">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="2">
+					<div class="tf">
+						{lang thread}
+					</div>
+				</th>
+				<td class="by">{lang cloudsearch:forum}</td>
+				<td class="by">{lang author}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="bm_c">
+		<table cellspacing="0" cellpadding="0">
+		<!--{loop $relatethreadlist $thread}-->
+		<tbody id="$thread[id]">
+			<tr>
+				<td class="icn">
+					<!--{if $thread[icon]}-->
+						<img src="{$thread[icon]}" />
+					<!--{else}-->
+						<img src="{IMGDIR}/folder_common.gif" />
+					<!--{/if}-->
+				</td>
+				<th>
+					<!--{if !isset($thread[icon])}-->
+						<a href="forum.php?mod=viewthread&tid=$thread[tThreadId]" target="_blank" class="xst">$thread['pSubject']</a>
+					<!--{else}-->
+						<a href="$thread['mTargetUrl']" target="_blank" class="xst">$thread['mTitle']</a>
+					<!--{/if}-->
+				</th>
+				<td class="by">
+					<!--{if !isset($thread[icon])}-->
+						<a href="forum.php?mod=forumdisplay&fid=$thread[pForumId]">$thread[pForumName]</a>
+					<!--{else}-->
+						$thread[mShowUrl]
+					<!--{/if}-->
+				</td>
+				<td class="by">
+					<cite>
+						<!--{if !isset($thread[icon]) && $thread['pAuthorId'] && $thread['pAuthorName']}-->
+							<a href="home.php?mod=space&uid=$thread[pAuthorId]">$thread[pAuthorName]</a>
+						<!--{else}-->
+							{lang anonymous}
+						<!--{/if}-->
+					</cite>
+					<!--{if !isset($thread[icon])}-->
+						<em class="xi1">$thread[dateline]</em>
+					<!--{/if}-->
+				</td>
+			</tr>
+		</tbody>
+		<!--{/loop}-->
+		</table>
+	</div>
+	<!--{else}-->
+	<div style="line-height:50px;text-align:center;">
+		{lang cloudsearch:no_content}
+	</div>
+	<!--{/if}-->
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+}

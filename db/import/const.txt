@@ -1,0 +1,115 @@
+// Script Constant Database
+//
+// Structure of Database:
+// Identifier	Value[	Type]
+//
+// Alternatively:
+// Identifier,Value[,Type]
+//
+// 01. Identifier   Unique name for the constant, must not have same name as script commands, functions or variables.
+// 02. Value        Value assigned to the constant. This value cannot be changed during the runtime of the server.
+// 03. Type         Specifies whether the identifier is a constant (0) or a parameter (1) (optional, defaults to 0).
+//
+// NOTE:            Parameters are special in that they retrieve certain runtime values depending on the specified ID
+//                  in field Value. Depending on the implementation values assigned by scripts to parameters will affect
+//                  runtime values, such as Zeny, as well (see pc_readparam/pc_setparam).
+
+//=============================================================
+// 自定义随机鉴定 1 - 3 项函数编号
+//=============================================================
+RDMOPTG_WEP 1 
+RDMOPTG_EQARM 2 
+RDMOPTG_EQSH 3 
+RDMOPTG_EQGAR 4 
+RDMOPTG_EQFOOT 5 
+RDMOPTG_EQACC 6
+
+//=============================================================
+// 自定义转蛋函数编号
+//=============================================================
+IG_Scroll_Commence	500
+IG_Scroll_Animals	501
+IG_Scroll_Mystic	502
+IG_Scroll_Halloween	503
+IG_Scroll_MVP	504
+IG_Scroll_Online	505
+IG_Scroll_Hangup	506
+
+//=============================================================
+// 官方转蛋函数编号（自编）
+//=============================================================
+IG_Scroll_JRO201701	600
+IG_Angel_Gift_Box	601
+IG_Demon_Gift_Box	602
+
+//=============================================================
+// 自定义NPC ID
+//=============================================================
+BARRICADE	1905
+MM_SARAH	3190
+MM_M_GIGAN1	3191
+MM_L_GIGAN1	3194
+
+// [农场种植园]副本
+30001_Grape	12001
+30002_Grape	12002
+30003_Grape	12003
+30004_Grape	12004
+30005_Grape	12005
+30006_Grape	12006
+30007_Strawberry	12007
+30008_Strawberry	12008
+30009_Strawberry	12009
+30010_Strawberry	12010
+30011_Strawberry	12011
+30012_Strawberry	12012
+30013_Bluegrass	12013
+30014_Bluegrass	12014
+30015_Bluegrass	12015
+30016_Bluegrass	12016
+30017_Bluegrass	12017
+30018_Redgrass	12018
+30019_Redgrass	12019
+30020_Redgrass	12020
+30021_Redgrass	12021
+30022_Redgrass	12022
+30023_Whitegrass	12023
+30024_Whitegrass	12024
+30025_Whitegrass	12025
+30026_Whitegrass	12026
+30027_Whitegrass	12027
+30028_Yellowgrass	12028
+30029_Yellowgrass	12029
+30030_Yellowgrass	12030
+30031_Yellowgrass	12031
+30032_Yellowgrass	12032
+30033_Carrot	12033
+30034_Carrot	12034
+30035_Carrot	12035
+30036_Carrot	12036
+30037_Carrot	12037
+30038_Carrot	12038
+30039_Potato	12039
+30040_Potato	12040
+30041_Potato	12041
+30042_Potato	12042
+30043_Potato	12043
+30044_Potato	12044
+30045_KiwiFruit	12045
+30046_KiwiFruit	12046
+30047_KiwiFruit	12047
+30048_KiwiFruit	12048
+30049_KiwiFruit	12049
+30050_KiwiFruit	12050
+30051_Cherry	12051
+30052_Cherry	12052
+30053_Cherry	12053
+30054_Cherry	12054
+30055_Cherry	12055
+30056_Cherry	12056
+30057_Apple	12057
+30058_Apple	12058
+30059_Apple	12059
+30060_Apple	12060
+30061_Apple	12061
+30062_Apple	12062

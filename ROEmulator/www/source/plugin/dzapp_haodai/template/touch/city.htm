@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{lang dzapp_haodai:switch_city}</title>
+<link href="source/plugin/dzapp_haodai/images/wap/public.css" rel="stylesheet" type="text/css"/>
+<link href="source/plugin/dzapp_haodai/images/wap/page.css" rel="stylesheet" type="text/css"/>
+<script src="source/plugin/dzapp_haodai/images/wap/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="source/plugin/dzapp_haodai/images/wap/wapciyty.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="mat_top">
+  <div class="header">
+    <a class="head_left backbtn" href="{echo rewrite_index();}">{lang dzapp_haodai:mobile_11}</a>
+    <a class="head_right shouy" href="./"><span>{lang homepage}</span></a>
+  </div>
+  <div class="head_cen">
+    <div class="cen_mat">
+      <div class="tit">{lang dzapp_haodai:switch_city}</div>
+    </div>
+  </div>
+</div>
+<div class="city_box">
+  <div class="locat">
+    <div class="lacat_left">{lang dzapp_haodai:mobile_19}<span id="swit_ticy"><a href="javascript:void(0)"> {$zones[$city]}</a></span></div>
+    <div class="lacat_right"><a href="javascript:void(0)"></a></div>
+  </div>
+  <div class="rank_city">
+    <div class="rank_tit" style="border-bottom:1px solid #e9e9e9;"> <span>{lang dzapp_haodai:city_sort_1}</span> </div>
+    <div class="rank_list">
+      <ul>
+        <li><a href="#Atop">A</a></li>
+        <li><a href="#Btop">B</a></li>
+        <li><a href="#Ctop">C</a></li>
+        <li><a href="#Dtop">D</a></li>
+        <li><a href="#Etop">E</a></li>
+        <li><a href="#Ftop" class="bord">F</a></li>
+        <li><a href="#Gtop">G</a></li>
+        <li><a href="#Htop">H</a></li>
+        <li><a href="#Itop">I</a></li>
+        <li><a href="#Jtop">J</a></li>
+        <li><a href="#Ktop">K</a></li>
+        <li><a href="#Ltop" class="bord">L</a></li>
+        <li><a href="#Ntop">N </a></li>
+        <li><a href="#Mtop"> M</a></li>
+        <li><a href="#Otop">O </a></li>
+        <li><a href="#Ptop"> P</a></li>
+        <li><a href="#Qtop">Q</a></li>
+        <li><a href="#Rtop" class="bord">R</a></li>
+        <li><a href="#Stop">S</a></li>
+        <li><a href="#Ttop">T</a></li>
+        <li><a href="#Utop" class="bord01">U </a></li>
+        <li><a href="#Vtop" class="bord01"> V</a></li>
+        <li><a href="#Wtop" class="bord01">W</a></li>
+        <li><a href="#Xtop" class="bord bord01"> X</a></li>
+        <li><a href="#Ytop">Y</a></li>
+        <li><a href="#Ztop"> Z</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--{loop $zonesort[letter] $key $value}-->
+  <div class="letters_city">
+    <a name="{$key}top"></a><div class="letters_tit"> <span>{$key}({lang dzapp_haodai:mobile_20}{$key}{lang dzapp_haodai:mobile_21})</span> </div>
+    <div class="letters_list">
+      <ul>
+		<!--{loop $value $key1 $value1}-->
+		<li><a href="plugin.php?id=dzapp_haodai:city&city={$key1}&formhash={FORMHASH}">{$value1}</a></li>
+		<!--{/loop}-->
+      </ul>
+    </div>
+  </div>
+  <!--{/loop}-->
+</div>
+</body>
+</html>
+<!--{eval updatesession();}-->
+<!--{if defined('IN_MOBILE')}-->
+	<!--{eval output();}-->
+<!--{else}-->
+	<!--{eval output_preview();}-->
+<!--{/if}-->

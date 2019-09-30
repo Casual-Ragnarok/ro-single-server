@@ -1,0 +1,28 @@
+//=============================================================
+// 技能 - 随机发动魔法数据库（公共库）
+//=============================================================
+// 不确定要素的语言 (宫廷乐师/浪姬舞者 技能) 随机的发动一个魔法师或巫师的攻击魔法.
+//
+// 数据库结构:
+// SkillID,Rate
+//
+// - To remove entry by importing, put 0 on 'Rate'
+//
+//====================== 以下内容为正文 =======================
+
+11,60000	// Napalm Beat
+12,40000	// Safety Wall
+13,60000	// Soul Strike
+14,60000	// Cold Bolt
+15,60000	// Frost Diver
+17,60000	// Fire Ball
+18,40000	// Fire Wall
+19,60000	// Fire Bolt
+20,60000	// Lightning Bolt
+21,40000	// Thunderstorm
+80,40000	// Fire Pillar
+83,40000	// Meteor Storm
+84,60000	// Jupitel Thunder
+85,40000	// Lord of Vermilion
+86,60000	// Water Ball
+89,40000	// Storm Gust

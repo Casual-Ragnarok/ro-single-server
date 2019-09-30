@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CSS Document */
+.qtbLogo img ,.qtbSearch {margin:0 auto;}
+/*****logo*****/
+.w100 {width:100%;}
+.qtbLogo {padding:30px 0;}
+.qtbLogo img {display:block;}
+
+/**********nonononono*******/
+/*****search*****/
+.qtbSearch {width:90%;}
+.ipt_ts {height:25px; line-height:25px; font-size:14px; color:#F63;}
+.qtbSearch_li ,.qtbSearch_btn {
+/***边框半径**/
+border-radius:3px;
+-ms-border-radius:3px;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+-o-border-radius:3px;}
+.qtbSearch_li {border:1px solid #ddd; padding:2px 7px;}
+/******/
+.Inpt_iptCon {width:100%;position:absolute; top:0px; left:0px;}
+.Inpt_iptConPad {padding:0 25px 0 75px;}
+.Inpt_iptConNei {width:100%;}
+.Inpt_name ,.Inpt_dw ,.Inpt_text {height:42px; line-height:42px; text-align:center; font-size:16px; font-weight:500; color:#666;}
+.Inpt_name {width:65px;}
+.Inpt_text {width:98%;background:#fff; color:#333; text-align:left;display:block; border:none;}
+.Inpt_dw {width:20px;}
+/**********nonononono*******/
+/********************************搜索选择*********************************/
+.HSearch {height:42px; margin-top:15px;}
+.SearchIptCon {position:absolute; top:0px; left:0px; width:100%;}
+.SearchIptCon_nei {padding:0px 82px 0px 15px;}
+.Search_MoneyNO {width:4%; height:42px;}
+.SearchIptCon_nei_nei {padding:2px 55px 2px 6px;}
+.Search_Money ,.Search_type{width:45.5%; height:40px;border:1px solid #ccc;
+/***内阴影**/
+box-shadow:0px 1px 3px rgba(0, 0, 0, 0.1) inset;
+-ms-box-shadow:0px 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow:0px 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow:0px 1px 3px rgba(0, 0, 0, 0.1) inset;
+-o-box-shadow:0px 1px 3px rgba(0, 0, 0, 0.1) inset;}
+.Search_ipt {height:36px; line-height:36px; font-size:14px; color:#777888; border:none; background:none;}
+.Search_Money_dw {width:29px; padding-right:25px; height:40px; line-height:38px; position:absolute; top:0px; right:0px; color:#999; background:url(xl.png) 33px 17px no-repeat; font-size:14px;
+-moz-background-size:10px 5px; /* 老版本的 Firefox */
+background-size:10px 5px;
+background-repeat:no-repeat;
+}
+.Search_Money_dw:active {background:url(xl.png) 33px 17px no-repeat #d7eeff;
+-moz-background-size:16px 8px; /* 老版本的 Firefox */
+background-size:16px 8px;
+background-repeat:no-repeat;
+}
+.SearchBtn {border:1px solid #008dbf;height:40px; line-height:40px; text-align:center;font-size:16px; color:#fff; cursor:pointer; display:block; width:65px;background:#4fa9ee; z-index:9000; position:absolute; right:15px; top:0px;
+/***边框半径**/
+border-radius:3px;
+-ms-border-radius:3px;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+-o-border-radius:3px;
+/***内阴影**/
+box-shadow:0px 1px 0px rgba(255, 255, 255, 0.3) inset;
+-ms-box-shadow:0px 1px 0px rgba(255, 255, 255, 0.3) inset;
+-moz-box-shadow:0px 1px 0px rgba(255, 255, 255, 0.3) inset;
+-webkit-box-shadow:0px 1px 0px rgba(255, 255, 255, 0.3) inset;
+-o-box-shadow:0px 1px 0px rgba(255, 255, 255, 0.3) inset;
+/***文字投影**/
+text-shadow:0px -1px 0px #0092c6;}
+.SearchBtn:hover {color:#fff;}
+.SearchBtn:active {background:#007ddc; color:#fff;}
+/*****精确搜索*****/
+.moreSearch {border:1px solid #d2d2d2; height:65px; background:#f8f8f8; display:block;}
+.moreSearch h3 ,.moreSearch p {position:absolute; left:8px; width:90%;}
+.moreSearch h3 {font-size:16px; color:#333; line-height:30px; top:8px;}
+.moreSearch p {font-size:14px; color:#999; line-height:25px; top:33px;}
+.moreSearch img {display:block; position:absolute; top:22px; right:5px; width: 15px; height: 22px;}
+/*****应用模块*****/
+.ApplicationCon {}
+.ApplicationCon_ul03 li {width:25%; height:105px; float:left;}
+/*.ApplicationCon_ul03 li.oushu {width:6.66%;}*/
+.ApplicationCon_ul03 li div.yyWai {margin:  0 auto;}
+.ApplicationCon_ul03 li div.yyWai ,.ApplicationCon_ul03 li span {width:67px;}
+.ApplicationCon_ul03 li div.yyWai div {background:#f8f8f8;border:1px solid #d2d2d2;width:60px;
+/***边框半径**/
+border-radius:3px;
+-ms-border-radius:3px;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+-o-border-radius:3px;}
+/*.ApplicationCon_ul03 li:nth-child(4n) div.yyWai {float:right;}
+.ApplicationCon_ul03 li:nth-child(2) div.yyWai ,.ApplicationCon_ul03 li:nth-child(3) div.yyWai ,.ApplicationCon_ul03 li:nth-child(6) div.yyWai ,.ApplicationCon_ul03 li:nth-child(7) div.yyWai {margin: 0 auto;}*/
+.ApplicationCon_ul03 li a {width:60px; height:48px; padding-top:12px; display:block;}
+.ApplicationCon_ul03 li a img {margin:0 auto; width:38px; height:38px; display:block;}
+.ApplicationCon_ul03 li a:active {background:#ddd;}
+.ApplicationCon_ul03 li span {display:block; text-align:center;line-height:30px;font-size:14px; color:#333;}
+/**热门产品**/
+.HotPro {line-height:20px; font-size:16px; color:#333; background:#f8f8f8; border-top:1px solid #ccc;border-bottom:1px solid #ddd; font-weight:normal;}
+.HotPro a {color:#333;}
+/**********************产品列表******************/
+.prolist {border-bottom:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;}
+.prolistLink {display:block; text-decoration:none; padding:10px 18px 10px 80px;}
+.prolistLink:link ,.prolistLink:visited {background:#fff;}
+.prolistLink:active {background:#f1f1f1;}
+.prolist_img {width:42px; height:42px; border:1px solid #e3e3e3; position:absolute; left:18px; top:14px;}
+.prolist_name {font-size:16px;}
+.prolist_name {color:#15a0f0; font-weight:normal;}
+.prolist_infop2 {color:#999;font-size:14px;}
+.prolist_jiantou {width:10px; height:17px; background:url(jiantou.png) no-repeat; position:absolute; right:10px; top:31px;
+-moz-background-size:10px 17px; /* 老版本的 Firefox */
+background-size:10px 17px;
+background-repeat:no-repeat;
+}
+.wid01 {}

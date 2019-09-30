@@ -1,0 +1,31 @@
+//=============================================================
+// 物品 - 外观替换数据库（公共库）
+//=============================================================
+//
+// 数据结构:
+// 物品ID,外观ID
+//
+// 01. ItemID       Item ID to change.
+// 02. SpriteID     Item ID which will be sent to the client instead of ItemID.
+//                  If 0, the item becomes unavailable for use. If item_check is enabled and a player owns such an item, it will be removed upon next login/teleport.
+//
+// NOTE: 客户端将会使用"外观ID"显示添加道具的外观.
+// 设定为0的时候该物品不可用.
+// Don't sell the item in same shop with the source. Example, don't put 2240 & 2241 in same place!
+//
+//====================== 以下内容为正文 =======================
+
+2240,2241 //胡须 - 白胡须
+
+// 任务道具外观
+// 当你的客户端不能正常显示物品的时候，你可以用这个设定来显示外观
+//7950,7021
+//7951,7042
+//1998,1250
+//1999,1472
+
+//圣派翠克任务 (2008) 物品
+//若开启此任务，请先取消以下//.
+//12715,7721
+//7915,673
+//7916,675

@@ -1,0 +1,33 @@
+// Item Group Database
+//
+// Structure of Database:
+// GroupID,ItemID,Rate{,Amount,Random,isAnnounced,Duration,GUID,isBound,isNamed}
+
+//Scroll_Commence,开服纪念转蛋(ID:39026) - 314
+IG_Scroll_Commence,2573,3		// 永恒之翼 [1]
+IG_Scroll_Commence,50216,3		// [时装]快乐岛头饰
+IG_Scroll_Commence,2374,6		// 魔王的外袍 [1]
+IG_Scroll_Commence,1422,6		// 狩猎长矛 [1]
+IG_Scroll_Commence,2701,6		// 欧罗莱昂的手套 [1]
+IG_Scroll_Commence,39006,30		// 1点Cash兑换箱子
+IG_Scroll_Commence,39008,10		// 10点Cash兑换箱子
+IG_Scroll_Commence,7619,10		// 浓缩铝
+IG_Scroll_Commence,7620,10		// 浓缩神之金属
+IG_Scroll_Commence,12214,20		// Boss雷达
+IG_Scroll_Commence,12210,30		// 掉宝率倍增糖
+IG_Scroll_Commence,12208,30		// 经验值倍增书
+IG_Scroll_Commence,12211,50		// 随地仓库使用券
+IG_Scroll_Commence,12215,50		// 天使之赐福Lv10卷轴
+IG_Scroll_Commence,12216,50		// 加速术Lv10卷轴
+
+//Scroll_JRO201701,羊头转蛋(ID:17762) - 100
+IG_Scroll_JRO201701,20273,10	// [时装]柔软的绵羊帽
+IG_Scroll_JRO201701,31160,10	// [时装]符文头盔
+IG_Scroll_JRO201701,31161,10	// [时装]虎头假面
+IG_Scroll_JRO201701,31162,10	// [时装]冰泡沫
+IG_Scroll_JRO201701,31163,10	// [时装]羊毛帽子
+IG_Scroll_JRO201701,31164,10	// [时装]布朗披肩
+IG_Scroll_JRO201701,31165,10	// [时装]金发福娃(男)
+IG_Scroll_JRO201701,31166,10	// [时装]泰迪熊帽子
+IG_Scroll_JRO201701,31167,10	// [时装]幸福耳朵(黒色)
+IG_Scroll_JRO201701,31168,10	// [时装]羊毛护耳(蓝色)

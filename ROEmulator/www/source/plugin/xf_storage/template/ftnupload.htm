@@ -1,0 +1,129 @@
+<!--{block return}-->
+<div class="p_opt" unselectable="on" id="{$editorid}_ftnupload" style="display: none;">
+	<div id="iframeurl" style="height:0px;"></div>
+
+	<div class="hm bbda" id="{$editorid}_ftnattach">
+		<iframe id="ftniframe" name="ftniframe" frameborder="0" scrolling="no" src="about:blank" width="510px" height="310px"></iframe>
+		<div class="ftn_buttondiv">
+			<button id="ftn_over" class="pn" value="true" name="editsubmit" onclick="loadiframe(null,'ftniframe',0,1);updateAttachList();this.disabled=true;this.className='pn'" disabled>
+				<span>{lang xf_storage:sava_attachlist}</span>
+			</button>
+		</div>
+	</div>
+
+	<div class="notice uploadinfo">{lang xf_storage:filesize_limit}
+	</div>
+</div>
+
+<script lang="text/javascript" reload="1">
+
+	_attachEvent($('e_ftn'),'click',function(e){loadiframe(null,'ftniframe');});
+	_attachEvent($('e_attach'),'click',function(e){
+		if (ATTACHNUM['attachunused'] == 0 && ATTACHNUM['attachused'] == 0) {
+			loadiframe(null,'ftniframe');switchAttachbutton('ftnupload');
+		}
+	});
+	_attachEvent($('e_btn_ftnupload').getElementsByTagName('a')[0], 'click',
+					function(e){hideConfirm();});
+	_attachEvent($('e_btn_attachlist').getElementsByTagName('a')[0], 'click',
+					function(e){showConfirm();});
+	_attachEvent($('e_btn_upload').getElementsByTagName('a')[0], 'click',
+					function(e){showConfirm();});
+
+	if(BROWSER.firefox && window.HTMLElement) {   //为 firefox 增加 innerText 方法
+		HTMLElement.prototype.__defineGetter__("innerText", function(){
+			var anyString = "";
+			var childS = this.childNodes;
+			for(var i=0; i<childS.length; i++) {
+				if(childS[i].nodeType==1)
+				anyString += childS[i].innerText;
+				else if(childS[i].nodeType==3)
+				anyString += childS[i].nodeValue;
+			}
+			return anyString;
+		});
+		HTMLElement.prototype.__defineSetter__("innerText", function(sText){
+			this.textContent=sText;
+		});
+	}
+
+	function showConfirm() {
+		$('attach_confirms').style.display='';
+	}
+
+	function hideConfirm() {
+		$('attach_confirms').style.display='none';
+	}
+
+	function loadiframe(url,iframeid,time,force){
+		var swfupload = 1;
+		var formhash = '{FORMHASH}';
+		if(BROWSER.ie){
+			var loading = "<div style='color:#777;font-size:12px;margin:-15px 0 0 -10px;padding:0px;'>{lang xf_storage:wait_for_url}</div>";
+			} else {
+			var loading = "<div style='color:#777;font-size:12px;margin:-8px 0 0 -7px;padding:0px;'>{lang xf_storage:wait_for_url}</div>";
+		}
+
+
+		var iframe = $(iframeid);
+
+		if(url == null){
+			ajaxget('plugin.php?id=xf_storage:ftn_upload&formhash='+formhash,'iframeurl','',null,null,function(){
+				url = $('iframeurl_ajax').innerText;
+				time = time ? time : 200;
+				force = force ? force : 0;
+				if(iframe.src == "about:blank") {
+					iframe.contentWindow.document.write(loading);
+					//return false;
+					setTimeout(function()
+					{
+						iframe.src = "about:blank";
+
+						iframe.src = url;
+					},time);
+					} else if(force == 1) {
+					setTimeout(function()
+					{
+						iframe.src = "about:blank";
+
+						iframe.src = url;
+					},time);
+				}
+			});
+		} else {
+			time = time ? time : 200;
+			force = force ? force : 0;
+			if(iframe.src == "about:blank") {
+
+				setTimeout(function()
+				{
+					iframe.src = "about:blank";
+
+					iframe.src = url;
+				},time);
+			} else if(force == 1) {
+				setTimeout(function()
+				{
+					iframe.src = "about:blank";
+
+					iframe.src = url;
+				},time);
+			}
+		}
+		// 页面超时监控,仅IE有效
+		// if (BROWSER.ie) {
+		//	var linster = setTimeout(function() {
+		//		if(iframe.readyState != 'complete' && swfupload == 1){
+		//			if(confirm('{lang xf_storage:timeout_tips}')){
+		//				switchAttachbutton('swfupload');
+		//			}
+		//			} else if(iframe.readyState != 'complete' && swfupload == 0) {
+		//			if(confirm('{lang xf_storage:timeout_tips}')){
+		//				switchAttachbutton('upload');
+		//			}
+		//		}
+		//	},60000);
+		// }
+	}
+</script>
+<!--{/block}-->

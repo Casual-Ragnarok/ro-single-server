@@ -1,0 +1,4 @@
+180810  0:57:14 [Note] \usr\local\mysql\bin\mysqld-opt.exe: ready for connections.
+Version: '5.0.67-community-nt'  socket: ''  port: 3306  MySQL Community Edition (GPL)
+180810  0:57:27 [Note] \usr\local\mysql\bin\mysqld-opt.exe: Normal shutdown
+

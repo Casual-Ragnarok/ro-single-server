@@ -1,0 +1,56 @@
+//======================================================================================
+// 地图索引列表（自定义）
+//======================================================================================
+//Contains the list of maps with their respective IDs for inter-server use.
+//IDs must never change, therefore any new maps need to be added at the end,
+//and old ones must not be removed, but may be replaced.
+//Format:
+//mapname<tab>index <- specifies index for this map
+//mapname <- map will use index of previous map +1
+//Note that map index 0 is special and reserved for "error" status. 
+
+//======================================================================================
+//Place your custom maps with a starting ID here.
+//======================================================================================
+//Example:
+//
+//mymap	1250
+//mymap-2
+
+// 道场任务地图（16张）
+1@g_vs1
+1@g_vs2
+1@g_vs3
+1@g_vs4
+1@g_vs5
+
+2@g_vs1
+2@g_vs2
+2@g_vs3
+2@g_vs4
+2@g_vs5
+
+3@g_vs1
+3@g_vs2
+3@g_vs3
+3@g_vs4
+3@g_vs5
+
+job_sage_1
+
+// [活动管理器]脚本地图（2张）
+1@zombie
+maze
+
+// [农场种植园]副本地图（4张）
+xmas_farm
+rachel_farm
+prt_farm
+pay_farm
+
+// EP16.1 副本及任务地图（5张）
+prt_cas_q_1
+prt_cas_q_2
+prt_cas_q_3
+prt_lib_1
+prt_lib_2

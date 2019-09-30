@@ -1,0 +1,35 @@
+//=============================================================
+// 魔物 - 召唤数据库（公共库）
+//=============================================================
+// List of monsters generated through Abracadabra's SA_CLASSCHANGE ability.
+//
+// 数据库结构:
+// MobRandomGroupID,MobID,DummyName,Rate
+//
+//====================== 以下内容为正文 =======================
+
+MOBG_ClassChange,0,Baphomet,1039
+MOBG_ClassChange,1038,俄塞里斯,1000000
+MOBG_ClassChange,1039,巴风特,1000000
+MOBG_ClassChange,1046,死灵,1000000
+MOBG_ClassChange,1059,蜂后,1000000
+MOBG_ClassChange,1086,黄金虫,1000000
+MOBG_ClassChange,1087,兽人英雄,1000000
+MOBG_ClassChange,1112,海盗之王,1000000
+MOBG_ClassChange,1115,虎王,1000000
+MOBG_ClassChange,1147,蚁后,1000000
+MOBG_ClassChange,1150,月夜猫,1000000
+MOBG_ClassChange,1157,法老王,1000000
+MOBG_ClassChange,1159,皮里恩,1000000
+MOBG_ClassChange,1190,兽人酋长,1000000
+MOBG_ClassChange,1251,冰暴骑士,1000000
+MOBG_ClassChange,1252,卡仑,1000000
+MOBG_ClassChange,1272,黑暗之王,1000000
+MOBG_ClassChange,1312,乌龟将军,1000000
+MOBG_ClassChange,1373,死灵骑士,1000000
+MOBG_ClassChange,1388,圣天使波利,1000000
+MOBG_ClassChange,1389,德古拉男爵,1000000
+MOBG_ClassChange,1418,墨蛇君,1000000
+MOBG_ClassChange,1492,元灵武士,1000000
+MOBG_ClassChange,1511,古埃及王,1000000
+MOBG_ClassChange,1583,塔奥群卡,1000000

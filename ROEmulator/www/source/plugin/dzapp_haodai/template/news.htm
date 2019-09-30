@@ -1,0 +1,56 @@
+<!--{template common/header}-->
+<link rel="stylesheet" type="text/css" href="source/plugin/dzapp_haodai/images/base.css"/>
+<!-[if IE 6]>
+<script src="source/plugin/dzapp_haodai/images/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('img,div,a,span');
+</script>
+<![endif]->
+<style>
+#wp .wp {
+width: 960px !important;
+}
+.wp {
+width: 960px !important;
+}
+</style>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> <a href="{echo rewrite_index();}">{lang dzapp_haodai:apply_htm_1}</a> <em>&rsaquo;</em> {lang dzapp_haodai:news_htm_2}
+	</div>
+	<div class="y">
+		{$zones[$city]}<a href="plugin.php?id=dzapp_haodai:city" title="{lang dzapp_haodai:switch_city}">[{lang dzapp_haodai:switch_city}]</a>
+	</div>
+</div>
+<div id="ct" class="wp cl">
+	<div class="box wrapper">
+		<div class="left part1">
+			<div class="head">
+				<ul class="clearfix">
+					<li><a href="{echo rewrite_index();}">{lang dzapp_haodai:main_htm_2}</a></li>
+					<li class="one"> ></li>
+					<li><a>{lang dzapp_haodai:news_htm_4}</a></li>
+				</ul>
+				<h1 class="bigtitle">$result[title]</h1>
+				<p class="lai">$result[c_time]   {lang dzapp_haodai:news_htm_5}<a href="$result[web_url]" target="_blank">$result[source]</a></p>
+			</div>
+			<div class="wen clearfix ">
+				$result[content]
+			</div>
+		</div>
+
+
+		<div class="right part2">
+			<ul class="head1">
+				<li class="xun left">{lang dzapp_haodai:main_htm_46}</li>
+			</ul>
+
+			<ul class="main">
+				<!--{loop reset(array_chunk($dkzx_article[items],10)) $value}-->
+				<li><a href="{echo rewrite_news($value[id]);}">{$value[title]}</a></li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+	</div>
+</div>
+<!--{template common/footer}-->

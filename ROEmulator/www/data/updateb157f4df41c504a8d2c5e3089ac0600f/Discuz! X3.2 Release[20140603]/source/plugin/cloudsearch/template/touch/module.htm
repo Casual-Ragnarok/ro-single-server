@@ -1,0 +1,57 @@
+{eval
+
+function tpl_global_header_mobile($searchparams, $srchotquery) {
+global $_G;
+}
+<!--{block return}-->
+	<!--{if !empty($searchparams[url])}-->
+	<style>
+		.keyword {padding:0 10px;margin-bottom: 100px;}
+		.keyword a{ background:#FFF;border: 1px solid #DDDDDD; color: #336699; display: inline-block; margin-bottom: 10px; margin-right: 10px; padding: 3px 10px; white-space: nowrap;}
+		.keyword a:hover {background-color: none;}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var obj = $('#searchform');
+			if(obj.length > 0) {
+				var getstr = {mod:'search', srchtype:'title', srhfid:0, srhlocality:'$_G[basescript]::{CURMODULE}', source:'txt.form_{if $_G[setting][mobile][mobilesimpletype]}sim{else}nor{/if}.a', wap:'yes', fId:0};
+				<!--{loop $searchparams[params] $key $value}-->
+				getstr.$key = '$value';
+				<!--{/loop}-->
+				var str = '';
+				for(var i in getstr) {
+					str += '<input type="hidden" name="'+ i +'" value="'+ getstr[i] +'">';
+				}
+				obj.append(str);
+				obj.attr('action', '$searchparams[url]').attr('method', 'get');
+
+				obj.on('submit', function() {
+					obj.append('<input type="hidden" name="q" value="' + $('#scform_srchtxt').val() + '">');
+				});
+
+				<!--{if $_G['setting']['srchhotkeywords']}-->
+					var str = '';
+					str += '<div class="keyword cl">';
+					<!--{loop $_G['setting']['srchhotkeywords'] $val}-->
+						<!--{if $val=trim($val)}--><!--{/if}-->
+						<!--{if $encodeval=rawurlencode(trim($val))}-->
+							<!--{if !empty($searchparams[url])}-->
+								str += '<a href="$searchparams[url]?q=$encodeval&source=txt.hotsearch_{if $_G[setting][mobile][mobilesimpletype]}sim{else}nor{/if}.a{$srchotquery}&wap=yes" target="_blank" sc="1">$val</a>';
+							<!--{else}-->
+								str += '<a href="search.php?mod=forum&srchtxt=$encodeval&formhash={FORMHASH}&searchsubmit=true&source=txt.hotsearch_{if $_G[setting][mobile][mobilesimpletype]}sim{else}nor{/if}.a&wap=yes" target="_blank" class="xi2" sc="1">$val</a>';
+							<!--{/if}-->
+						<!--{/if}-->
+					<!--{/loop}-->
+					str += '</div>';
+					obj.after(str);
+				<!--{/if}-->
+			}
+		});
+	</script>
+	<!--{/if}-->
+
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+}

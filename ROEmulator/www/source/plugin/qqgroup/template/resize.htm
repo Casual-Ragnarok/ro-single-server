@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    cloudQTE = {
+        e : top.document,
+        get : function(id) {
+            return top.document.getElementById(id);
+        },
+        resize : function(w, h) {
+            this.get('qqgroup_iframe_div').style.width = w + 'px';
+            this.get('qqgroup_iframe_div').style.height = h + 'px';
+            this.get('qqgroup_iframe').style.width = w + 'px';
+            this.get('qqgroup_iframe').style.height = h + 'px';
+            qqgroup_left = (this.e.documentElement.clientWidth - this.get('fwin_qqgroup').clientWidth) / 2;
+            qqgroup_top = (this.e.documentElement.clientHeight - this.get('fwin_qqgroup').clientHeight) / 2;
+            this.get('fwin_qqgroup').style.left = qqgroup_left + 'px';
+            this.get('fwin_qqgroup').style.top = qqgroup_top + 'px';
+        },
+        die : function() {
+            this.get('fwin_qqgroup').parentNode.removeChild(this.get('fwin_qqgroup'));
+        },
+        show : function(w, h, callback) {
+            this.get('qqgroup_iframe_wait').style.display = 'none';
+            callback();
+            this.resize(w, h);
+        }
+    };
+
+    {if $type == 1}
+        cloudQTE.die();
+    {else}
+        cloudQTE.show({$w}, {$h}, function() {
+            cloudQTE.get('qqgroup_iframe_div').style.display = '';
+        });
+	{/if}
+</script>

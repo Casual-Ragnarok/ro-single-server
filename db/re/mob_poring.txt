@@ -1,0 +1,21 @@
+//=============================================================
+// Poring Box Summonable 魔物数据库（复兴后）
+//=============================================================
+//
+// 数据库结构:
+// MobRandomGroupID,MobID,DummyName,Rate
+
+MOBG_Poring_Box,0,Poring,1002
+MOBG_Poring_Box,1002,波利,1000000
+MOBG_Poring_Box,1031,波波利,1000000
+MOBG_Poring_Box,1062,圣诞波利,200000
+MOBG_Poring_Box,1090,波利之王,400000
+MOBG_Poring_Box,1096,天使波利,200000
+MOBG_Poring_Box,1113,土波利,1000000
+MOBG_Poring_Box,1120,幽灵波利,200000
+MOBG_Poring_Box,1242,冰波利,1000000
+MOBG_Poring_Box,1388,圣天使波利,200000
+MOBG_Poring_Box,1582,恶魔波利,200000
+MOBG_Poring_Box,1613,金属波利,1000000
+MOBG_Poring_Box,1784,石头波利,1000000
+MOBG_Poring_Box,2093,布达林,400000

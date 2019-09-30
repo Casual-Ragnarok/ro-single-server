@@ -1,0 +1,29 @@
+//=============================================================
+// 获得寻找的矿石数据库（公共库）
+//=============================================================
+//
+// 数据库结构:
+// GroupID,ItemID,Rate
+//
+//====================== 以下内容为正文 =======================
+
+IG_FindingOre,714,3		//华丽金属
+IG_FindingOre,756,20	//神之金属原石
+IG_FindingOre,757,20	//铝原石
+IG_FindingOre,969,2		//黄金
+IG_FindingOre,984,10	//神之金属
+IG_FindingOre,985,10	//铝
+IG_FindingOre,990,30	//火灵矿石
+IG_FindingOre,991,30	//水灵矿石
+IG_FindingOre,992,30	//风灵矿石
+IG_FindingOre,993,30	//地灵矿石
+IG_FindingOre,994,15	//火灵原石
+IG_FindingOre,995,15	//水灵原石
+IG_FindingOre,996,15	//风灵原石
+IG_FindingOre,997,15	//土灵原石
+IG_FindingOre,998,80	//铁
+IG_FindingOre,999,50	//钢铁
+IG_FindingOre,1002,100	//铁矿石
+IG_FindingOre,1003,60	//煤矿
+IG_FindingOre,1010,95	//强化武器金属-级数一
+IG_FindingOre,1011,55	//强化武器金属-级数二

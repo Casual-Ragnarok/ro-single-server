@@ -1,0 +1,63 @@
+/**/
+*{margin: 0; padding: 0;}
+a{text-decoration: none;}
+ul{list-style: none;}
+img{ border: none;}
+.left{ float: left;}
+.right{float: right;}
+body,html{width: 100%;}
+.clearfix:after{content: "."; display: block; height: 0; clear: both; overflow: hidden; }
+.clearfix{zoom:1;}
+
+.wrapper{width: 960px; margin: 0 auto;}
+body{ font-family: "Microsoft Yahei"; color: #666666;}
+#ct{ margin:8px 0;}
+
+
+/*part1*/
+.part1{width: 660px;  border: 1px solid #dddddd; background: #fff;}
+.head{ width: 615px; border-bottom:1px solid #dddddd;  margin-bottom: 20px; overflow: hidden; background-color: #f9f9f9; padding: 15px 25px 20px 20px;}
+.part1 ul li{float: left; line-height: 23px;}
+.part1 ul li.one{padding: 0 5px; color: #cccccc;}
+.part1 ul li a{color: #0079c1;}
+
+h1{text-align: center; color: #000000; line-height: 60px; }
+.bigtitle{ font-size:24px; text-align:center;}
+.part1 .lai{text-align: center; color: #999999; }
+/*fen*/
+.fen{  width:250px; margin: 0 auto; }
+.fen ul li{ float: left; margin-right: 5px;  }
+.fen .little{ line-height: 23px;}
+
+/**/
+.wen{ margin-top: 30px; padding-left: 25px; padding-right: 30px; color: #666666; font-size:14px;  line-height:22px; text-indent:2em; }
+.wen p{ margin-bottom:25px; line-height:22px;}
+.yuan{color: #000000; text-align:left; margin-bottom:10px; margin-left:20px;}
+span{ color: #666666; }
+span.min{color: #000000; font-weight: normal; line-height:23px;}
+
+.part2{width: 282px;  border: 1px solid #dddddd; background: #fff;}
+.head1{height: 42px; line-height:42px; border-bottom:  1px solid #dddddd; margin-bottom: 15px; background-color: #f9f9f9; font-weight: bold;}
+.head1 li{ padding-left: 14px; padding-right: 14px; }
+.head1 li.xun{font-size: 14px; color: #333333;}
+.head1 li.more{font-size: 12px;}
+.head1 li.more a{ color:#e2d3db;}
+
+
+.main{ font-size: 12px; text-indent: 17px; padding-left:15px; padding-right:5px; padding-bottom:15px;}
+.main li{ background:url(icon.png) no-repeat 5px 9px; width:250px; height:24px;  overflow:hidden; }
+.main li a{color: #999999; font-size:12px; line-height:24px; }
+.main li a:hover{text-decoration:underline;}
+
+
+
+
+
+
+
+
+
+
+
+
+

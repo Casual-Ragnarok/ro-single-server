@@ -1,0 +1,19 @@
+//============================================================
+//= 99MaxEa 自定义触发事件 [演示脚本]
+//============================================================
+//- OnPCChatEvent 聊天框输入内容时触发
+//============================================================
+-	script	ItemLink_System	-,{
+
+OnPCChatEvent:
+
+	if (getbattleflag("enable.itemlink_system"))
+		end;
+
+	if (compare((.@message$ = @pc_chat_msg$),"<ITEM>"))
+	{	
+		processhalt;
+		dispbottom "[讯息]道具连接系统已被禁用!",0xff0000;
+	}
+	end;
+}

@@ -1,0 +1,40 @@
+//=============================================================
+// 技能 - 伤害调整数据库（公共库）
+//=============================================================
+//
+// 数据库格式说明:
+// SkillName,Caster,Map,Damage against Players{,Damage against Mobs{,Damage against Bosses{,Damage against Other}}}
+//
+// Caster: 用于生效类型. (bitmask)
+//		BL_PC = 玩家
+//		BL_MOB = 魔物
+//		BL_PET = 宠物
+//		BL_HOM = 人工生命体
+//		BL_MER = 佣兵
+//		BL_ELEM = 元素精灵
+//
+// Map:
+// 		1    - 普通地图 (这地图不同于以下地图)
+// 		2    - PVP地图
+// 		4    - GVG地图
+// 		8    - 战场地图
+// 		16   - 'skill_damage' mapflag
+// Restricted zones - they're configured by 'restricted <number>' mapflag
+// 		32   - Zone 1
+// 		64   - Zone 2
+// 		128  - Zone 3
+// 		256  - Zone 4
+// 		512  - Zone 5
+// 		1024 - Zone 6
+// 		2048 - Zone 7
+//
+// Notes:
+//  	Damage is a percentage between -100 and 100000.
+//  	Negative values decrease damage and positive values increase it (0 = no change).
+//
+// Examples:
+// MC_MAMMONITE,BL_PC,1,50 // In normal maps, players deal +50% damage to other players with Mammonite.
+// MO_EXTREMITYFIST,BL_PC,6,-50 // In PVP and GVG, players deal -50% (half) damage to other players with Asura Strike.
+// AB_ADORAMUS,BL_PC,6,50,0,10,15 // In PVP and GVG, players deal +50% damage to other players, +0% to mobs, +10% to bosses, and +15% to other with Adoramus.
+//
+//====================== 以下内容为正文 =======================

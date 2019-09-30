@@ -1,0 +1,17 @@
+{template plugin_header}
+<!--{if $modifiedfiles > 0}-->
+	<a href="###" onclick="showresult('modify')"><em class="edited">{lang plugin_filecheck_modifed}: $modifiedfiles</em></a>&nbsp;&nbsp;
+<!--{/if}-->
+<!--{if $deletedfiles > 0}-->
+	<a href="###" onclick="showresult('del')"><em class="edited">{lang plugin_filecheck_deleted}: $deletedfiles</em></a>&nbsp;&nbsp;
+<!--{/if}-->
+<!--{if $unknownfiles > 0}-->
+	<a href="###" onclick="showresult('add')"><em class="edited">{lang plugin_filecheck_unknow}: $unknownfiles</em></a>&nbsp;&nbsp;
+<!--{/if}-->
+<!--{if $doubt > 0}-->
+	<a href="###" onclick="showresult('doubt')"><em class="edited">{lang plugin_filecheck_modifed_in_aweek}: $doubt</em></a>&nbsp;&nbsp;
+<!--{/if}-->
+
+$result
+
+{template plugin_footer}

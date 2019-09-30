@@ -1,0 +1,66 @@
+//=============================================================
+// 公会 - 城堡数据库（公共库）
+//=============================================================
+//
+// 资料结构:
+// CastleID,MapName,CastleName,OnGuildBreakEventName,Flag
+//
+// 01. 城堡ID		Unique ID of the castle. Must remain unique across all map-servers.
+// 02. 地图名称		Map name to be considered as the castle map.
+// 03. 城堡名称		Name of the castle (used by scripts and guardian name tags).
+// 04. 事件名称		NPC unique name to invoke ::OnGuildBreak on, when a occupied
+//					castle is abandoned during guild break.
+//
+//====================== 以下内容为正文 =======================
+
+// WOE FE castle
+0,aldeg_cas01,新天鹅堡,Agit#aldeg_cas01		// 娜易修番斯塔引
+1,aldeg_cas02,旧天鹅堡,Agit#aldeg_cas02		// 乎汗修番佳乌
+2,aldeg_cas03,纽伦堡,Agit#aldeg_cas03			// 纽蓝贝勒克
+3,aldeg_cas04,维尔茨堡,Agit#aldeg_cas04		// 布勒刺布勒克
+4,aldeg_cas05,罗滕堡,Agit#aldeg_cas05		// 罗探布勒克
+5,gefg_cas01,瑞普利恩,Agit#gefg_cas01			// 雷普立温
+6,gefg_cas02,约普利格,Agit#gefg_cas02			// 耀布力格
+7,gefg_cas03,伊斯尼普,Agit#gefg_cas03			// 易司那普
+8,gefg_cas04,培勒格尔,Agit#gefg_cas04			// 培勒格
+9,gefg_cas05,梅瑟特兹,Agit#gefg_cas05			// 眉撒丝达刺
+10,payg_cas01,明亭,Agit#payg_cas01		// 明亭
+11,payg_cas02,天坛,Agit#payg_cas02		// 天坛
+12,payg_cas03,佛影,Agit#payg_cas03		// 佛影
+13,payg_cas04,红楼,Agit#payg_cas04		// 红楼
+14,payg_cas05,竹林岘,Agit#payg_cas05		// 竹林岘
+15,prtg_cas01,克林希特,Agit#prtg_cas01			// 克林希特
+16,prtg_cas02,斯般希特,Agit#prtg_cas02			// 斯般希特
+17,prtg_cas03,拉兹立克斯,Agit#prtg_cas03			// 拉兹立克斯
+18,prtg_cas04,司葵古,Agit#prtg_cas04			// 司葵古
+19,prtg_cas05,关德,Agit#prtg_cas05			// 关德
+
+// WOE NGuild castle
+20,nguild_alde,初心者.地,Agit_N01
+21,nguild_gef,初心者.风,Agit_N02
+22,nguild_pay,初心者.水,Agit_N03
+23,nguild_prt,初心者.火,Agit_N04
+
+// WOE SE castle
+24,schg_cas01,喜民,Manager#schg_cas01			// kRO : Himinn
+25,schg_cas02,安德郎克,Manager#schg_cas02			// kRO : Andlangr
+26,schg_cas03,维布莱尼,Manager#schg_cas03			// kRO : Viblainn
+27,schg_cas04,赫里奥德,Manager#schg_cas04			// kRO : Hljod
+28,schg_cas05,思卡迪布拉德尼尔,Manager#schg_cas05			// kRO : Skidbladnir
+29,arug_cas01,马杜,Manager#arug_cas01			// kRO : Mardol
+30,arug_cas02,希乐,Manager#arug_cas02			// kRO : Cyr
+31,arug_cas03,霍伦,Manager#arug_cas03			// kRO : Horn
+32,arug_cas04,吉本,Manager#arug_cas04			// kRO : Gefn
+33,arug_cas05,巴拿迪斯,Manager#arug_cas05			// kRO : Bandis
+
+// WOE TE castle
+34,te_aldecas1,Kafragarten 1,Manager_TE#Glaris
+35,te_aldecas2,Kafragarten 2,Manager_TE#Defolty
+36,te_aldecas3,Kafragarten 3,Manager_TE#Sorin
+37,te_aldecas4,Kafragarten 4,Manager_TE#Bennit
+38,te_aldecas5,Kafragarten 5,Manager_TE#W
+39,te_prtcas01,Gloria 1,Manager_TE#Gaebolg
+40,te_prtcas02,Gloria 2,Manager_TE#Richard
+41,te_prtcas03,Gloria 3,Manager_TE#Wigner
+42,te_prtcas04,Gloria 4,Manager_TE#Heine
+43,te_prtcas05,Gloria 5,Manager_TE#Nerious

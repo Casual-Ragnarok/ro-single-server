@@ -1,0 +1,288 @@
+<!--{template common/header}-->
+<link href="source/plugin/dzapp_haodai/images/public.css" rel="stylesheet" type="text/css" />
+<link href="source/plugin/dzapp_haodai/images/chanpin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="source/plugin/dzapp_haodai/images/jquery-1.8.0.min.js" ></script> 
+<script language="javascript" src="source/plugin/dzapp_haodai/images/xindai.js"></script>
+<!-[if IE 6]>
+<script src="source/plugin/dzapp_haodai/images/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('img,div,a,span');
+</script>
+<![endif]->
+<style>
+#wp .wp {
+width: 960px !important;
+}
+.wp {
+width: 960px !important;
+}
+</style>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> <a href="{echo rewrite_index();}">{lang dzapp_haodai:apply_htm_1}</a> <em>&rsaquo;</em> {lang dzapp_haodai:view_htm_2}
+	</div>
+	<div class="y">
+		{$zones[$city]}<a href="plugin.php?id=dzapp_haodai:city" title="{lang dzapp_haodai:switch_city}">[{lang dzapp_haodai:switch_city}]</a>
+	</div>
+</div>
+<div id="ct" class="wp cl">
+	<div class="main">
+		<div class="cp">
+			<!--{if $xd[assure_type_name]}-->
+			<dl class="jiaobiao png_img">
+				<dt>{lang dzapp_haodai:view_htm_3}</dt>
+				<dd>{$xd[assure_type_name]}</dd>
+			</dl>
+			<!--{/if}-->
+				<div class="cpl">
+						<div class="cpb">
+							<a>
+								<span class="cptu"><img src="{$xd[bank_img]}"></span>
+								<span class="cpsp1">{$xd[bank_name]}</span>
+								<span class="cpsp2">|</span>
+								<span class="cpsp3">{$xd[name]}</span>
+							</a>
+					   </div>
+				  	<table width="629" class="cptab" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="cptd1 cpti">{lang dzapp_haodai:view_htm_4}</td>
+							<td class="cptd2">{$money}{lang dzapp_haodai:apply_htm_7}</td>
+							<td class="cptd3 cpti">{lang dzapp_haodai:view_htm_6}</td>
+							<td class="cptd4">{$xd[limit_min]}-{$xd[limit_max]} {lang dzapp_haodai:apply_htm_7}</td>
+						</tr>
+						<tr>
+							<td class="cptd1 cpti">{lang dzapp_haodai:view_htm_8}</td>
+							<td class="cptd2">{$month}{lang dzapp_haodai:apply_htm_199}</td>
+							<td class="cptd3 cpti">{lang dzapp_haodai:view_htm_10}</td>
+							<td class="cptd4">{$xd[date_min]}-{$xd[date_max]}{lang dzapp_haodai:apply_htm_9}</td>
+						</tr>
+						<tr>
+							<td class="cptd1 cpti">{lang dzapp_haodai:view_htm_12}</td>
+							<td class="cptd2">{$xd[data][month_repay]}{lang dzapp_haodai:apply_htm_39}</td>
+							<td class="cptd3 cpti">{lang dzapp_haodai:view_htm_14}</td>
+							<td class="cptd4">{$xd[refund_type_name]}</td>
+						</tr>
+						<tr>
+							<td class="cptd1 cpti">{lang dzapp_haodai:view_htm_15}</td>
+							<td class="cptd2">{$xd[data][total_interest]}{lang dzapp_haodai:apply_htm_7}</td>
+							<td class="cptd3 cpti">{lang dzapp_haodai:view_htm_17}</td>
+							<td class="cptd4">{$xd[give_time]}{lang dzapp_haodai:view_htm_18}{$xd[audit_time]}{lang dzapp_haodai:view_htm_19}</td>
+						</tr>
+                        <tr>
+							<td class="cptd1 cpti">{lang dzapp_haodai:view_htm_20}</td>
+							<td colspan="3" class="cptd2"><!--{if $xd['year_rate'] != '0.00'}-->{lang dzapp_haodai:view_htm_21} {$xd[year_rate]}%  <!--{/if}--><!--{if $xd['month_manage'] != '0.00'}-->{lang dzapp_haodai:view_htm_22} {$xd[month_manage]}%  <!--{/if}--><!--{if $xd['once_charge'] != '0.00'}-->{lang dzapp_haodai:view_htm_23} {$xd[once_charge]}%<!--{/if}--></td>
+						</tr>
+					</table>
+				   <a href="{echo rewrite_view_apply('apply',$xd_id,$_GET[xd_type],$month,$money);}" class="mf">{lang dzapp_haodai:view_htm_24}</a>
+				  	<div class="buzhou">
+						<span class="bsp1">{lang dzapp_haodai:view_htm_25}</span>
+						<span class="bsp2">{lang dzapp_haodai:view_htm_26}</span>
+						<span class="bsp3">{lang dzapp_haodai:view_htm_27}</span>
+						<span class="bsp4">{lang dzapp_haodai:view_htm_28}</span>
+					</div>
+				  	<p class="cpp3">{lang dzapp_haodai:view_htm_29}</p>
+					<div class="kuai">
+						<h6>{lang dzapp_haodai:view_htm_30}</h6>
+						{$xd[content]}
+                	</div>
+					<div class="kuai">
+						<h6>{lang dzapp_haodai:view_htm_31}</h6>
+						{$xd[apply]}
+                	</div>
+				  	<div class="kuai">
+						<h6>{lang dzapp_haodai:view_htm_32}</h6>
+						{$xd[stuff]}
+                	</div>
+				  	<p class="cpp6">*{lang dzapp_haodai:view_htm_33}</p>
+				    <div class="bo">
+                        <a href="{echo rewrite_view_apply('apply',$xd_id,$_GET[xd_type],$month,$money);}" class="mf3">{lang dzapp_haodai:view_htm_24}</a>
+                    </div>
+				</div>
+				<div class="cpr">
+						<div class="mra mb21" style="border-top:1px solid #e9e9e9;">
+								<h5>{lang dzapp_haodai:view_htm_35}</h5>
+								<div class="mrb pb11">
+									<form>
+										<p>{lang dzapp_haodai:view_htm_36}</p>
+                   <div class="se se1" k="type_id">
+                    <div id="type_sel" class="sele" k="type_id" s="0">
+                    <input id="type_id" class="sinp" type="text" name="type_id" value="{lang dzapp_haodai:main_htm_12}" reval="1" readonly="">
+                    <input class="selbtn" type="button">
+                    </div>
+                    <ul id="type_id_u" class="xiala" s="0" style="display:none;">
+                    <li>
+                    <a reval="1" k="type_id" href="javascript:void(0);">{lang dzapp_haodai:main_htm_12}</a>
+                    </li>
+                    <li>
+                    <a reval="2" k="type_id" href="javascript:void(0);">{lang dzapp_haodai:main_htm_14}</a>
+                    </li>
+                    <li>
+                    <a reval="3" k="type_id" href="javascript:void(0);">{lang dzapp_haodai:main_htm_15}</a>
+                    </li>
+                    <li>
+                    <a reval="4" k="type_id" href="javascript:void(0);">{lang dzapp_haodai:main_htm_16}</a>
+                    </li>
+                   
+                    </ul>
+                    </div>
+										<p>{lang dzapp_haodai:search_htm_5}</p>
+                    <div class="se se2">
+                    <div id="moeny_sel" class="sele" k="money" s="0">
+                    <div onfocus="moneyFocus(this)" onkeyup="moneyKeyup(this);" onblur="moneyBlur(this)">
+                    <input id="money" class="sinp" type="text" name="limit_val" value="10 {lang dzapp_haodai:apply_htm_7}" reval="10" onfocus="moneyFocus(this)" onkeyup="moneyKeyup(this);" onblur="moneyBlur(this)" onclick="hideMoneyu()">
+                    <input class="selbtn" type="button">
+                    </div>
+                    <div style="display:none;position:absolute;left:220px;top:13px;z-index:1;color:#888;">{lang dzapp_haodai:apply_htm_7}</div>
+                    </div>
+                    <ul id="money_u" class="xiala" s="0" style="display:none;">
+                    <li>
+                    <a reval="5" onclick="moenySelect(this)" href="javascript:void(0);">5 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="10" onclick="moenySelect(this)" href="javascript:void(0);">10 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="20" onclick="moenySelect(this)" href="javascript:void(0);">20 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="30" onclick="moenySelect(this)" href="javascript:void(0);">30 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="50" onclick="moenySelect(this)" href="javascript:void(0);">50 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="100" onclick="moenySelect(this)" href="javascript:void(0);">100 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="{lang dzapp_haodai:main_htm_26}" onclick="moenySelect(this)" href="javascript:void(0);">{lang dzapp_haodai:main_htm_26}</a>
+                    </li>
+                    </ul>
+                    </div>
+										<p>{lang dzapp_haodai:search_htm_29}</p>
+                    <div class="se se3">
+                    <div id="month_sele" class="sele" k="month" s="0">
+                    <input id="month" class="sinp" type="text" name="month" value="1{lang dzapp_haodai:apply_htm_197}" reval="12" readonly="">
+                    <input class="selbtn" type="button">
+                    </div>
+                    <ul id="month_u" class="xiala" s="0" style="display:none;">
+                    <li>
+                    <a k="month" reval="3" href="javascript:void(0);">3{lang dzapp_haodai:apply_htm_9}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="6" href="javascript:void(0);">6{lang dzapp_haodai:apply_htm_9}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="12" href="javascript:void(0);">1{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="18" href="javascript:void(0);">18{lang dzapp_haodai:apply_htm_9}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="24" href="javascript:void(0);">2{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="36" href="javascript:void(0);">3{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="60" href="javascript:void(0);">5{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="120" href="javascript:void(0);">10{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    </ul>
+                    </div>
+										
+										<input name="{lang dzapp_haodai:view_htm_63}" type="button" class="ssinp" onclick="money_month_index('{$_G[siteurl]}plugin.php?id=dzapp_haodai&action=search')" value="{lang dzapp_haodai:view_htm_64}">
+									</form>
+								</div>
+							</div>
+				<!--{if !empty($get_related)}-->
+				<div class="box ymk2">
+                    <h3><a class="fr more" href="plugin.php?id=dzapp_haodai&action=search&money={$money}&month={$month}&xd_type={$_GET[xd_type]}" target="_self" title="{$money}{lang dzapp_haodai:related_recommend}">{lang dzapp_haodai:more}</a>{$money}{lang dzapp_haodai:related_recommend}</h3>
+                    <table width="257" border="0" class="ymkta">
+							<!--{loop $get_related $value}-->
+                            <tr>
+                                <td valign="top" class="ymkt">
+                                    <a href="{echo rewrite_view_apply('view',$value[id],$_GET[xd_type],$month,$money);}" target="_self" title="{$value[bank_name]}_{$value[name]}"><img 
+                                            src="{$value[bank_img]}" alt="{$value[bank_name]}" /></a></td>
+                                <td class="ymkn">
+                                    <a href="{echo rewrite_view_apply('view',$value[id],$_GET[xd_type],$month,$money);}" target="_self" title="{$value[bank_name]}_{$value[name]}">
+                                        <span>{$value[bank_name]}</span>
+                                        <span class="ymkp1">{$value[name]} {$value[assure_type_name]}</span>
+                                    </a>
+                                    <p class="ymkp2">{lang dzapp_haodai:view_htm_15}<span>{$value[data][total_interest]}{lang dzapp_haodai:apply_htm_7}</span> {lang dzapp_haodai:fenqi} {$value[data][month_repay]}{lang dzapp_haodai:apply_htm_39}/{lang dzapp_haodai:apply_htm_199}</p>
+                                </td>
+                            </tr>
+							<!--{/loop}-->
+						</table>
+					</div>
+					<!--{/if}-->
+				</div>
+				<div class="box bthree mt19">
+					<h3>{lang dzapp_haodai:view_htm_65}</h3>
+					<ul class="b3ul">
+						<li><a href="{echo rewrite_calc('zhdk');}" target="_blank">{lang dzapp_haodai:calc_chedai_htm_8}</a></li>
+						<li><a href="{echo rewrite_calc('debj');}" target="_blank">{lang dzapp_haodai:view_htm_67}</a></li>
+						<li><a href="{echo rewrite_calc('debx');}" target="_blank">{lang dzapp_haodai:view_htm_68}</a></li>
+						<li><a href="{echo rewrite_calc('secondhand');}" target="_blank">{lang dzapp_haodai:calc_chedai_htm_9}</a></li>
+						<li><a href="{echo rewrite_calc('esjys');}" target="_blank">{lang dzapp_haodai:calc_chedai_htm_10}</a></li>
+						<li><a href="{echo rewrite_calc('chedai');}" target="_blank">{lang dzapp_haodai:calc_chedai_htm_4}</a></li>
+						<li><a href="{echo rewrite_calc('hkbj');}" target="_blank">{lang dzapp_haodai:view_htm_72}</a></li>
+					</ul>
+				</div>
+				<div class="box bthree mt19">
+					<h3>{lang dzapp_haodai:view_htm_73}</h3>
+					<ul class="b4ul">
+						<!--{loop $hot_recommend[items] $value}-->
+						<li><a href="{$value[url]}" target="_blank">{$value[title]}</a></li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jq(function(){
+	jq('#type_sel').click(function(event) {
+		k = jq(this).attr('k');
+		setList('#' + k + '_u');
+		event.stopPropagation(); 
+	});
+	jq('#moeny_sel').click(function(event) {
+		k = jq(this).attr('k');
+		setList('#' + k + '_u');
+		event.stopPropagation(); 
+		});
+	jq('#month_sele').click(function(event) {
+		k = jq(this).attr('k');
+		setList('#' + k + '_u');
+		event.stopPropagation(); 
+		});
+	jq(document).click(function(event) { 
+		var eo = jq(event.target); 
+		if (jq("#type_sel").is(":visible") && eo.attr("class") != "xiala" && 
+		!eo.parent(".xiala").length) 
+{closeList();}
+		if (jq("#moeny_sel").is(":visible") && eo.attr("class") != "xiala" && 
+		!eo.parent(".xiala").length) 
+{closeList();}
+		if (jq("#month_sele").is(":visible") && eo.attr("class") != "xiala" && 
+		!eo.parent(".xiala").length) 
+{closeList();}
+	}); 
+	jq('.xiala a').click(function() {
+		k = jq(this).attr('k');
+		val = jq(this).text();
+		reval = jq(this).attr('reval');
+		jq('#' + k).val(val);
+		jq('#' + k).attr('reval', reval);
+		closeList();
+	});
+	jq('#tab_title a').click(function(){
+	jq(this).addClass("cur").siblings().removeClass();
+	jq("#tab_ul li").hide().eq(jq('#tab_title a').index(this)).show();
+	});	
+
+})
+</script>
+<!--{template common/footer}-->

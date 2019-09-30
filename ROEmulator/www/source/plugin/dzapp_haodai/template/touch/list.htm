@@ -1,0 +1,312 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> Powered by Discuz!</title>
+<link href="source/plugin/dzapp_haodai/images/wap/public.css" rel="stylesheet" type="text/css"/>
+<link href="source/plugin/dzapp_haodai/images/wap/page.css" rel="stylesheet" type="text/css"/>
+<script src="source/plugin/dzapp_haodai/images/wap/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="source/plugin/dzapp_haodai/images/wap/wapciyty.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="moreSearchTC" id="moreSearchTC">
+  <div class="Ptop relative">
+    <a class="head_left backbtn" onClick="MoreSearchBack()" href="javascript:void(0)">{lang dzapp_haodai:mobile_11}</a>
+    <div class="head_cen">
+      <div class="cen_mat">
+        <div class="tit">{lang dzapp_haodai:mobile_10}</div>
+      </div>
+    </div>
+  </div>
+  <div class="moreSearchTC_Info relative">
+    <ul class="moreSearchTC_Nav">
+      <li class="show" onClick="SearchTypeLiCK(this)" reval='4'>{lang dzapp_haodai:main_htm_12}</li>
+      <li onClick="SearchTypeLiCK(this)" reval='1'>{lang dzapp_haodai:main_htm_14}</li>
+      <li onClick="SearchTypeLiCK(this)" reval='2'>{lang dzapp_haodai:main_htm_15}</li>
+      <li onClick="SearchTypeLiCK(this)" reval='3'>{lang dzapp_haodai:main_htm_16}</li>
+    </ul>
+    <div class="moreSearchTC_pdlNav">
+      <div>
+        <div class="moreSearchTC_ConPD">
+		<form action="plugin.php" method="GET">
+		<input type="hidden" name="id" value="dzapp_haodai" />
+		<input type="hidden" name="action" value="search" />
+		<input type="hidden" name="xd_type" value="xiaofei" />
+          <div class="moreSearchTC_Con" id="ShopSearchCon" style="display:block;">
+            <div class="moreSearchTC_Con_li2 relative">
+              <div class="moreSearchTC_Con_ipt relative fl">
+                <input type="number" id="money" name="money" value="15" />
+                <span class="moreSearchTC_Con_iptDw">{lang dzapp_haodai:apply_htm_7}</span>
+              </div>
+              <div class="moreSearchTC_Con_ipt relative fr" onclick="XfSearchMonthClick()">
+                <input type="number" name="month" id="ShopHsearchMonth" value="12" onkeyup="MoSearchMoneyKup(this)" onblur="HSearchMonthBlu(this)" onfocus="HSearchMonthFoc(this)" />
+                <span class="moreSearchTC_Con_iptDw" id ="xfSearchMonthSpan">{lang dzapp_haodai:apply_htm_9}</span>
+				<ul id="XfSearchMonthUL" class="Search_Money_ul" style="display:none;">
+				   <li onClick="XfSearchMonthList(this)" val = "6" unit ="{lang dzapp_haodai:apply_htm_9}" value="6">6{lang dzapp_haodai:apply_htm_9}</li>
+				   <li onClick="XfSearchMonthList(this)" class = "mo" val = "1" unit ="{lang dzapp_haodai:apply_htm_197}" value="12">1{lang dzapp_haodai:apply_htm_197}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "18" unit ="{lang dzapp_haodai:apply_htm_9}" value="18">18{lang dzapp_haodai:apply_htm_9}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "2" unit ="{lang dzapp_haodai:apply_htm_197}" value="24">2{lang dzapp_haodai:apply_htm_197}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "3" unit ="{lang dzapp_haodai:apply_htm_197}" value="36">3{lang dzapp_haodai:apply_htm_197}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "5" unit ="{lang dzapp_haodai:apply_htm_197}" value="60">5{lang dzapp_haodai:apply_htm_197}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "10" unit ="{lang dzapp_haodai:apply_htm_197}" value="120">10{lang dzapp_haodai:apply_htm_197}</li>
+				</ul>
+              </div>
+            </div>
+            <div class="moreSearchTC_Con_li relative z9" id="profession_xiaofi_div" class="profession_div">            
+                <span class="HomeSelect_span" id="Shop_JobS">{$filtermn[xiaofei][profession]}</span>
+              <select name="profession" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[xiaofei][profession] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>  
+            </div>
+            <div class="moreSearchTC_Con_li relative z8">            
+              <span class="HomeSelect_span" id="xf_show_credit">{$filtermn[xiaofei][credit_record]}</span>
+              <select name="credit_record" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[xiaofei][credit_record] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+               <span class="xl3icon"></span> 
+            </div>
+            <div class="moreSearchTC_Con_li relative z7">            
+              <span class="HomeSelect_span" id="xf_show_house">{$filtermn[xiaofei][has_house]}</span>
+              <select name="has_house" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[xiaofei][has_house] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>
+            </div>
+			<input class="moreSearchTC_Con_Btn" type="submit" value="{lang dzapp_haodai:mobile_2}" />            
+          </div>
+		  </form>
+		<form action="plugin.php" method="GET">
+		<input type="hidden" name="id" value="dzapp_haodai" />
+		<input type="hidden" name="action" value="search" />
+		<input type="hidden" name="xd_type" value="qiye" />
+          <div class="moreSearchTC_Con" id="CompanySearchCon">
+            <div class="moreSearchTC_Con_li2 relative">
+              <div class="moreSearchTC_Con_ipt relative fl">
+                <input type="number" id="CompanyHsearchMoney" name="money" value="50" />
+                <span class="moreSearchTC_Con_iptDw">{lang dzapp_haodai:apply_htm_7}</span>
+              </div>
+              <div class="moreSearchTC_Con_ipt relative fr" onclick ="QySearchMonthClick()">
+                <input type="number" id="CompanyHsearchMonth" onkeyup="MoSearchMoneyKup(this)" name="month" value="12" />
+                <span class="moreSearchTC_Con_iptDw" id ="qySearchMonthSpan">{lang dzapp_haodai:apply_htm_9}</span>
+				<ul id="XfSearchMonthUL" class="Search_Money_ul" style="display:none;">
+				   <li onClick="XfSearchMonthList(this)" val = "6" unit ="{lang dzapp_haodai:apply_htm_9}" value="6">6{lang dzapp_haodai:apply_htm_9}</li>
+				   <li onClick="XfSearchMonthList(this)" class = "mo" val = "1" unit ="{lang dzapp_haodai:apply_htm_197}" value="12">1{lang dzapp_haodai:apply_htm_197}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "18" unit ="{lang dzapp_haodai:apply_htm_9}" value="18">18{lang dzapp_haodai:apply_htm_9}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "2" unit ="{lang dzapp_haodai:apply_htm_197}" value="24">2{lang dzapp_haodai:apply_htm_197}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "3" unit ="{lang dzapp_haodai:apply_htm_197}" value="36">3{lang dzapp_haodai:apply_htm_197}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "5" unit ="{lang dzapp_haodai:apply_htm_197}" value="60">5{lang dzapp_haodai:apply_htm_197}</li>
+				   <li onClick="XfSearchMonthList(this)" val = "10" unit ="{lang dzapp_haodai:apply_htm_197}" value="120">10{lang dzapp_haodai:apply_htm_197}</li>
+				</ul>
+              </div>
+            </div>
+            <div class="moreSearchTC_Con_li relative z9">            
+              <span class="HomeSelect_span" id="qy_show_Job">{$filtermn[qiye][profession]}</span>
+              <select name="profession" class="mHSearch_select_show" onChange="conditionSel(this)">     
+			<!--{loop $filterm[qiye][profession] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>
+            </div>
+            <div class="moreSearchTC_Con_li relative z8">            
+              <span class="HomeSelect_span" id="xf_show_credit">{$filtermn[qiye][credit_record]}</span>
+              <select name="credit_record" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[qiye][credit_record] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>
+            </div>
+            <div class="moreSearchTC_Con_li relative z7">            
+              <span class="HomeSelect_span" id="xf_show_house">{$filtermn[qiye][has_house]}</span>
+              <select name="has_house" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[qiye][has_house] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>
+            </div>
+            <input class="moreSearchTC_Con_Btn" type="submit" value="{lang dzapp_haodai:mobile_2}" />
+          </div>
+		  </form>
+		<form action="plugin.php" method="GET">
+		<input type="hidden" name="id" value="dzapp_haodai" />
+		<input type="hidden" name="action" value="search" />
+		<input type="hidden" name="xd_type" value="gouche" />
+          <div class="moreSearchTC_Con" id="CarSearchCon">
+            <div class="moreSearchTC_Con_li relative z9">            
+              <span class="HomeSelect_span" id="gc_show_shoufu">{lang dzapp_haodai:calc_chedai_htm_25}</span>
+              <select name="shoufu" class="mHSearch_select_show" onChange="conditionSel(this)">
+                <option value="3">{lang dzapp_haodai:calc_chedai_htm_25}3{lang dzapp_haodai:mobile_1}</option>
+                <option value="4">{lang dzapp_haodai:calc_chedai_htm_25}4{lang dzapp_haodai:mobile_1}</option>
+                <option value="5">{lang dzapp_haodai:calc_chedai_htm_25}5{lang dzapp_haodai:mobile_1}</option>
+                <option value="6">{lang dzapp_haodai:calc_chedai_htm_25}6{lang dzapp_haodai:mobile_1}</option>
+                <option value="7">{lang dzapp_haodai:calc_chedai_htm_25}7{lang dzapp_haodai:mobile_1}</option>
+                <option value="8">{lang dzapp_haodai:calc_chedai_htm_25}8{lang dzapp_haodai:mobile_1}</option>
+                <option value="9">{lang dzapp_haodai:calc_chedai_htm_25}9{lang dzapp_haodai:mobile_1}</option>
+              </select>
+              <span class="moreSearchTC_Con_xl"></span>  
+            </div>
+            <div class="moreSearchTC_Con_li2 relative">
+              <div class="moreSearchTC_Con_ipt relative fl">
+                <input type="number" id="CarHsearchMoney" onkeyup="MoSearchMoneyKup(this)" name="money" value="15" />
+                <span class="moreSearchTC_Con_iptDw">{lang dzapp_haodai:apply_htm_7}</span>
+              </div>
+              <div class="moreSearchTC_Con_ipt relative fr" onclick="GcSearchMonthClick()">
+                <input type="number" id="CarHsearchMonth" name="month" value="12" />
+                <span class="moreSearchTC_Con_iptDw" id="gcSearchMonthSpan">{lang dzapp_haodai:apply_htm_9}</span>
+				 <ul id="GcSearchMonthUL" class="Search_Money_ul" style="display:none;">
+					<li onClick="GcSearchMonthList(this)" class = "mo" val = "1" unit ="{lang dzapp_haodai:apply_htm_197}" value="12">1{lang dzapp_haodai:apply_htm_197}</li>
+                    <li onClick="GcSearchMonthList(this)" val = "2" unit ="{lang dzapp_haodai:apply_htm_197}" value="24">2{lang dzapp_haodai:apply_htm_197}</li>
+                    <li onClick="GcSearchMonthList(this)" val = "3" unit ="{lang dzapp_haodai:apply_htm_197}" value="36">3{lang dzapp_haodai:apply_htm_197}</li>
+                 </ul>
+              </div>
+            </div>
+            <div class="moreSearchTC_Con_li relative z8">            
+              <span class="HomeSelect_span" id="gc_show_house">{$filtermn[gouche][has_house]}</span>
+              <select name="has_house" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[gouche][has_house] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>
+            </div>
+            <div class="moreSearchTC_Con_li relative z7">            
+              <span class="HomeSelect_span" id="gc_show_carnum">{$filtermn[gouche][car_number]}</span>
+              <select name="car_number" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[gouche][car_number] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span> 
+            </div>
+            <div class="moreSearchTC_Con_li relative z6">            
+              <span class="HomeSelect_span" id="gc_show_use">{$filtermn[gouche][car_use]}</span>
+              <select name="car_use" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[gouche][car_use] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>
+            </div>
+            <div class="moreSearchTC_Con_li relative z5">            
+              <span class="HomeSelect_span" id="gc_show_type">{$filtermn[gouche][car_type]}</span>
+              <select name="car_type" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[gouche][car_type] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>
+            </div>
+            <input class="moreSearchTC_Con_Btn" type="submit" value="{lang dzapp_haodai:mobile_2}" />
+          </div>
+		  </form>
+		<form action="plugin.php" method="GET">
+		<input type="hidden" name="id" value="dzapp_haodai" />
+		<input type="hidden" name="action" value="search" />
+		<input type="hidden" name="xd_type" value="goufang" />
+          <div class="moreSearchTC_Con" id="HouseSearchCon">
+            <div class="moreSearchTC_Con_li2 relative">
+              <div class="moreSearchTC_Con_ipt relative fl">
+                <input type="number" id="HouseHsearchMoney" name="money" value="100" />
+                <span class="moreSearchTC_Con_iptDw">{lang dzapp_haodai:apply_htm_7}</span>
+              </div>
+              <div class="moreSearchTC_Con_ipt relative fr" onclick="GfSearchMonthClick()">
+                <input type="number" id="HouseHsearchMonth" name="month" onkeyup="MoSearchMoneyKup(this)" value="240" />
+                <span class="moreSearchTC_Con_iptDw" id="gfSearchMonthSpan">{lang dzapp_haodai:apply_htm_9}</span>
+				<ul id="GfSearchMonthUL" class="Search_Money_ul" style="display:none;">
+					<li onClick="GfSearchMonthList(this)" val = "3" unit ="{lang dzapp_haodai:apply_htm_197}" value="36">3{lang dzapp_haodai:apply_htm_197}</li>
+                    <li onClick="GfSearchMonthList(this)" val = "5" unit ="{lang dzapp_haodai:apply_htm_197}" value="60">5{lang dzapp_haodai:apply_htm_197}</li>
+                    <li onClick="GfSearchMonthList(this)" val = "10" unit ="{lang dzapp_haodai:apply_htm_197}" value="120">10{lang dzapp_haodai:apply_htm_197}</li>
+                    <li onClick="GfSearchMonthList(this)" val = "15" unit ="{lang dzapp_haodai:apply_htm_197}" value="180">15{lang dzapp_haodai:apply_htm_197}</li>
+                    <li onClick="GfSearchMonthList(this)" class = "mo" val = "20" unit ="{lang dzapp_haodai:apply_htm_197}" value="240">20{lang dzapp_haodai:apply_htm_197}</li>
+                    <li onClick="GfSearchMonthList(this)" val = "25" unit ="{lang dzapp_haodai:apply_htm_197}" value="300">25{lang dzapp_haodai:apply_htm_197}</li>
+                    <li onClick="GfSearchMonthList(this)" val = "30" unit ="{lang dzapp_haodai:apply_htm_197}" value="360">30{lang dzapp_haodai:apply_htm_197}</li>
+				</ul>
+              </div>
+            </div>
+            <div class="moreSearchTC_Con_li relative z9">            
+              <span class="HomeSelect_span" id="gf_show_PropertyType">{$filtermn[goufang][house_type]}</span>
+               <select name="house_type" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[goufang][house_type] $value}-->
+                  <option value="$value[val]">$value[name]</li>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span>
+            </div>
+            <div class="moreSearchTC_Con_li relative z8">            
+              <span class="HomeSelect_span" id="gf_show_shopHouse">{$filtermn[goufang][fitsr_suite]}</span>
+              <select name="fitsr_suite" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[goufang][fitsr_suite] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span> 
+            </div>
+            <div class="moreSearchTC_Con_li relative z7">            
+              <span class="HomeSelect_span" id="gf_show_houseType">{$filtermn[goufang][second_hand_house]}</span>
+              <select name="secondhand_house" class="mHSearch_select_show" onChange="conditionSel(this)">
+			<!--{loop $filterm[goufang][second_hand_house] $value}-->
+                  <option value="$value[val]">$value[name]</option>
+			<!--{/loop}-->
+              </select>
+              <span class="xl3icon"></span> 
+            </div>
+            <input class="moreSearchTC_Con_Btn" type="submit" value="{lang dzapp_haodai:mobile_2}" />
+          </div>
+		  </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="SearchTCZZC" id="SearchTCZZC"></div>
+<div class="Ptop relative">
+    <a href="$_G[siteurl]" class="Toplogo" title="{$_G['setting']['bbname']}"><img src="static/image/mobile/images/logo.png" /></a>
+    <a href="plugin.php?id=dzapp_haodai:city" class="TopCity" onClick="ChangeCity()">
+      <span class="TopCity_word" id="City">{$zones[$city]}</span>
+      <span class="TopCity_img"><img src="source/plugin/dzapp_haodai/images/wap/mapicon.png" /></span>
+      <div class="clear"></div>
+    </a>
+    <a class="noiconbtn TopRiBtn" onClick="MoreSearchCK()" href="javascript:void(0)"><span>{lang dzapp_haodai:mobile_10}</span></a>
+</div>
+<div class="prod_box">
+  <div class="prod_tit">
+    <div class="miab"><a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> > <a href="{echo rewrite_index();}">{lang dzapp_haodai:apply_htm_1}</a> > <span>{lang dzapp_haodai:news_htm_2}</span></div>
+  </div>
+  <div class="zixun_pic">
+	<!--{loop $articles $value}-->
+   <a class="prolistLink01 relative"  href="{echo rewrite_news($value[id]);}">
+    <div class="infor_pic">
+      <div class="infor_left">
+        <p class="inftit">$value[title]</p>
+        <p class="infcon"><!--{echo cutstr($value[desc], 90);}--></p>
+      </div>
+    </div>
+    </a>
+	<!--{/loop}-->
+  </div>
+  {$pageinfo}
+</div>
+<div class="bottom">
+  <div class="about"><a href="$_G[siteurl]">{$_G['setting']['bbname']}</a></div>
+  <div class="copy"><a href="http://yun.haodai.com/" class="copy" style="text-decoration:none;">{lang dzapp_haodai:notice}</a></div>
+</div>
+</body>
+</html>
+<!--{eval updatesession();}-->
+<!--{if defined('IN_MOBILE')}-->
+	<!--{eval output();}-->
+<!--{else}-->
+	<!--{eval output_preview();}-->
+<!--{/if}-->

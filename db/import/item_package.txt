@@ -1,0 +1,95 @@
+//=============================================================
+// 物品封包数据库（自定义）
+//=============================================================
+//
+// 数据库结构:
+// GroupID,ItemID,Rate{,Amount,Random,isAnnounced,Duration,GUID,isBound,isNamed}
+// 群组ID,道具ID,机率{,数量,随机数量,是否公告,租赁时间,是否产生唯一KEY,是否绑定,显示开箱者名字}
+//
+// 群组ID:			箱子的群组编号, 在db/const.txt设定
+// 道具ID:			道具编号
+// 机率:			取得机率(百分比)
+// 数量:			打开箱子后固定数量
+// 随机数量:		打开箱子后随机数量
+// 是否公告:		打开箱子后始否公告(如:某人在神秘子箱中取得"铝x1"个)
+// 租赁时间:		该道具是否为租赁道具
+// 是否产生唯一KEY:	是否产生唯一KEY
+// 是否绑定:		该道具是否绑定在玩家身上(不可交易、放仓库、丢地上、放手推车)
+// 显示开箱者名字:	取得道具后，道具是否显示制造者(如:某人制造的短刀)
+//
+//=======================以下内容为正文========================
+
+// 23146,Angel_Gift_Box,天使礼包
+IG_Angel_Gift_Box,13552,80,1,1		// 1x 油蜜果箱子
+IG_Angel_Gift_Box,12793,50,1,1		// 1x 战斗药10个箱子
+IG_Angel_Gift_Box,14605,10,5,1		// 5x 兽人酋长卷轴
+IG_Angel_Gift_Box,14604,10,5,1		// 5x 兽人英雄卷轴
+IG_Angel_Gift_Box,14598,10,5,1		// 5x 幽灵波利卷轴
+IG_Angel_Gift_Box,12881,30,5,1		// 5x 妖精之泪(沉默)
+IG_Angel_Gift_Box,22553,80,5,1		// 5x 彩色糕饼
+IG_Angel_Gift_Box,14530,10,5,1		// 5x 敏捷的卷轴
+IG_Angel_Gift_Box,12878,30,5,1		// 5x 妖精之泪(冰冻)
+IG_Angel_Gift_Box,23045,80,10,1		// 10x 栗子蒙布朗
+IG_Angel_Gift_Box,6697,5,1,1		// 1x 时装兑换卷
+IG_Angel_Gift_Box,17508,10,10,1		// 1x 喵阳桃10个箱子
+IG_Angel_Gift_Box,16753,5,1,1		// 1x 受祝福的武器矿石箱子
+IG_Angel_Gift_Box,16755,5,1,1		// 1x 受祝福的防具矿石箱子
+IG_Angel_Gift_Box,6232,5,1,1		// 1x 防具精炼+9券
+IG_Angel_Gift_Box,6228,5,1,1		// 1x 武器精炼+9券
+IG_Angel_Gift_Box,20243,4,1,1		// 1x [时装]薄荷巧克力软帽
+IG_Angel_Gift_Box,20202,4,1,1		// 1x [时装]凶悍小恶魔
+IG_Angel_Gift_Box,20239,4,1,1		// 1x [时装]巨型蝴蝶结围巾
+IG_Angel_Gift_Box,20259,4,1,1		// 1x [时装]粉红幸运草
+IG_Angel_Gift_Box,20270,4,1,1		// 1x [时装]狮鹫兽翅膀耳饰
+IG_Angel_Gift_Box,24224,2,1,1		// 1x 强力影之手套
+IG_Angel_Gift_Box,24225,2,1,1		// 1x 强力影之耳环
+IG_Angel_Gift_Box,24226,2,1,1		// 1x 强力影之垂饰
+IG_Angel_Gift_Box,4910,4,1,1		// 1x 魔王的精髓 力量3
+IG_Angel_Gift_Box,20219,4,1,1		// 1x [时装]天使行军帽
+IG_Angel_Gift_Box,5933,2,1,1		// 1x 乌鸦天狗面具
+IG_Angel_Gift_Box,19112,2,1,1		// 1x 天狗的卷轴
+IG_Angel_Gift_Box,20285,4,1,1		// 1x [时装]飘落樱花
+IG_Angel_Gift_Box,19019,2,1,1		// 1x 圣灵之冠
+IG_Angel_Gift_Box,5967,2,1,1		// 1x 会飞的啤酒企鹅
+IG_Angel_Gift_Box,5968,2,1,1		// 1x 圣天使护士帽
+IG_Angel_Gift_Box,5969,2,1,1		// 1x 复仇者海盗帽
+IG_Angel_Gift_Box,4576,1,1,1		// 1x 乔伊亚卡片
+IG_Angel_Gift_Box,15137,2,1,1		// 1x 楯无之铠
+IG_Angel_Gift_Box,4342,1,1,1		// 1x RSX-0806卡片
+
+// 23147,Demon_Gift_Box,恶魔礼包
+IG_Demon_Gift_Box,13551,80,1,1		// 1x 糯米糕箱子
+IG_Demon_Gift_Box,14605,10,5,1		// 5x 兽人酋长卷轴
+IG_Demon_Gift_Box,12794,50,1,1		// 1x 高级战斗药10个箱子
+IG_Demon_Gift_Box,14531,10,5,1		// 5x 集中力的卷轴
+IG_Demon_Gift_Box,12876,30,5,1		// 5x 妖精之泪(眩晕)
+IG_Demon_Gift_Box,13550,80,1,1		// 1x 鲜美生鱼片箱子
+IG_Demon_Gift_Box,11722,10,5,1		// 5x 强效恢复力药水
+IG_Demon_Gift_Box,12880,30,5,1		// 5x 妖精之泪(诅咒)
+IG_Demon_Gift_Box,23079,80,10,1		// 10x 草莓奶油蛋糕
+IG_Demon_Gift_Box,6697,10,1,1		// 1x 时装兑换卷
+IG_Demon_Gift_Box,17508,10,1,1		// 1x 喵阳桃10个箱子
+IG_Demon_Gift_Box,16753,5,1,1		// 1x 受祝福的武器矿石箱子
+IG_Demon_Gift_Box,16755,5,1,1		// 1x 受祝福的防具矿石箱子
+IG_Demon_Gift_Box,6228,5,1,1		// 1x 武器精炼+9券
+IG_Demon_Gift_Box,6232,5,1,1		// 1x 防具精炼+9券
+IG_Demon_Gift_Box,20267,4,1,1		// 1x [时装]国王企鹅帽
+IG_Demon_Gift_Box,20258,4,1,1		// 1x [时装]蓝色精美头饰
+IG_Demon_Gift_Box,20240,4,1,1		// 1x [时装]珍贵雪礼
+IG_Demon_Gift_Box,20266,4,1,1		// 1x [时装]神奇拉链
+IG_Demon_Gift_Box,20237,4,1,1		// 1x [时装]粉红色毛帽
+IG_Demon_Gift_Box,24078,2,1,1		// 1x 影子精神武器
+IG_Demon_Gift_Box,24079,2,1,1		// 1x 影子精神耳环
+IG_Demon_Gift_Box,24080,2,1,1		// 1x 影子精神坠饰
+IG_Demon_Gift_Box,4913,4,1,1		// 1x 魔王的精髓 智力3
+IG_Demon_Gift_Box,20316,4,1,1		// 1x [时装]炽天使羽翼头具
+IG_Demon_Gift_Box,1679,2,1,1		// 1x 守护精灵魔杖
+IG_Demon_Gift_Box,2198,2,1,1		// 1x 守护精灵神盾
+IG_Demon_Gift_Box,20255,4,1,1		// 1x [时装]爱情红晕
+IG_Demon_Gift_Box,19020,2,1,1		// 1x 生存头带
+IG_Demon_Gift_Box,5934,2,1,1		// 1x 快乐汽球头饰
+IG_Demon_Gift_Box,5966,2,1,1		// 1x 柯杜威之耳
+IG_Demon_Gift_Box,5970,2,1,1		// 1x 卢恩帽子
+IG_Demon_Gift_Box,4580,1,1,1		// 1x 亡灵守护者卡德斯卡片
+IG_Demon_Gift_Box,2899,2,1,1		// 1x 音波增幅器
+IG_Demon_Gift_Box,4556,1,1,1		// 1x 芬里尔卡片

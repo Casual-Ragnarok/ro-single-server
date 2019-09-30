@@ -1,0 +1,754 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> Powered by Discuz!</title>
+        <link href="source/plugin/dzapp_haodai/images/wap/public.css?v=201401251537" rel="stylesheet" type="text/css"/>
+        <link href="source/plugin/dzapp_haodai/images/wap/page.css?v=201401251605" rel="stylesheet" type="text/css"/>
+        <script src="source/plugin/dzapp_haodai/images/wap/jquery-1.8.0.min.js" type="text/javascript"></script>
+		<script src="source/plugin/dzapp_haodai/images/wap/jquery.cookie.js" type="text/javascript"></script>
+        <script src="source/plugin/dzapp_haodai/images/wap/wapciyty.js?v=201401251651" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <div class="mat_top">
+            <div class="header">
+				<a class="head_left backbtn" href="{echo rewrite_index();}">{lang dzapp_haodai:mobile_11}</a>
+				<a class="head_right shouy" href="./"><span>{lang homepage}</span></a>
+            </div>
+            <div class="head_cen">
+                <div class="cen_mat">
+                    <div class="tit">{lang dzapp_haodai:apply_htm_2}</div>
+                </div>
+            </div>
+        </div>
+        <div class="prod_box">
+            <div class="prod_com">
+                <div class="deta_tit"> <span>{$xd[bank_name]} | {$xd[name]}
+                        <div class="clear"> </div>
+                    </span></div>
+                <div class="clear"> </div>
+				<form method="post" name="apply" action="plugin.php?id=dzapp_haodai&action=apply">
+				<input type="hidden" name="month" value="{$_GET[month]}" />
+				<input type="hidden" name="money" value="{$_GET[money]}" />
+				<input type="hidden" name="xd_id" value="{$_GET[xd_id]}" />
+				<input type="hidden" name="xd_type" value="{$_GET[xd_type]}" />
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="applysubmit" value="TRUE" />
+				<!--{if $_GET[xd_type] == 'goufang'}-->
+				<input type="hidden" name="has_secondhandhouse" value=""> 		
+				<input type="hidden" name="hukou" value="">
+				<input type="hidden" name="house_type" value="">
+				<!--{elseif $_GET[xd_type] == 'gouche'}-->
+				<input type="hidden" name="car_step" value="">
+				<input type="hidden" name="has_house" value="">
+				<!--{elseif $_GET[xd_type] == 'qiye'}-->
+				<input type="hidden" name="company_type" value="">
+				<input type="hidden" name="business_time" value="">
+				<input type="hidden" name="has_house" value="">
+				<!--{elseif $_GET[xd_type] == 'xiaofei'}-->
+				<input type="hidden" value="" name="salary">
+				<input type="hidden" value="" name="salary_type">
+				<input type="hidden" value="" name="year_born">
+				<input type="hidden" value="" name="company_type">
+				<input type="hidden" value="" name="job_year">
+				<input type="hidden" value="" name="job_month">
+				<input type="hidden" value="" name="has_creditcard">
+				<input type="hidden" value="" name="creditcard_num">
+				<input type="hidden" value="" name="creditcard_money">
+				<input type="hidden" value="" name="has_debt">
+				<input type="hidden" value="" name="debt_money">
+				<input type="hidden" value="" name="has_succ_apply">
+				<input type="hidden" value="" name="has_debt_loan">
+				<input type="hidden" value="" name="debt_loan_money">
+				<!--{/if}-->
+                <div class="pd15 ApplyOne_info"> {lang dzapp_haodai:mobile_26}<span>{$xd[bank_name]}-{$xd[name]}</span>,{lang dzapp_haodai:mobile_27}<span>{$_GET[money]}</span>{lang dzapp_haodai:apply_htm_7}{lang dzapp_haodai:mobile_28}<span>{$_GET[month]}</span>{lang dzapp_haodai:apply_htm_9}{lang dzapp_haodai:mobile_29}</div>
+                <div class="ApplyOne_tit">{lang dzapp_haodai:mobile_30}</div>
+				<!--{if $_GET[xd_type] == 'goufang'}-->
+               <div class="posi" onclick="ApplyZK(this)">
+                    <div class="Applytype_tit" style="margin-bottom:0;">{lang dzapp_haodai:apply_htm_11}</div>
+                    <div class="pulldown"></div>
+                </div>
+                <div class="ApplyZKCon" id="houseType">
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_13}90m<sup>2</sup>{lang dzapp_haodai:apply_htm_14}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_13}90m<sup>2</sup>{lang dzapp_haodai:apply_htm_14}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_17}90m<sup>2</sup>{lang dzapp_haodai:apply_htm_14}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_17}90m<sup>2</sup>{lang dzapp_haodai:apply_htm_14}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_21}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_21}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_23}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_23}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_25}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_25}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_27}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_27}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_29}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_29}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_31}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_31}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_33}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_33}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_35}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_35}'></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="posi" onclick="ApplyZK(this)">
+                    <div class="Applytype_tit" style="margin-bottom:0;">{lang dzapp_haodai:apply_htm_141}</div>
+                    <div class="pulldown"></div>
+                </div>
+                <div class="ApplyZKCon" id="youLocal">
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_76}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_76}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_78}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_78}'></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="posi" onclick="ApplyZK(this)">
+                    <div class="Applytype_tit" style="margin-bottom:0;">{lang dzapp_haodai:apply_htm_47}</div>
+                    <div class="pulldown"></div>
+                </div>
+                <div class="ApplyZKCon" id="yesTwoHouse">
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_48}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_48}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_50}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_50}'></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="daikj">
+                    <div class="relative" onClick="hideTS()">
+                        <div class="ApplyOne_li_name ApplyOne_li_name02 fl">{lang dzapp_haodai:mobile_66}</div>
+                        <div class="clear"></div>
+                        <div class="ApplyOne_li_con">
+                            <div class="ApplyOne_pd02">
+                                <div class="ApplyOne_li_ipt">
+                                    <input name="monthly" type="number" id="Usermoney" class="w100 iptCLA" onfocus="figureFoc(this)" onBlur="figureBlu(this)" value="{lang dzapp_haodai:mobile_67}">
+                                </div>
+                                <div class="unit">{lang dzapp_haodai:apply_htm_39}</div>
+                            </div>
+                        </div>
+                        <div class="wordTS" id="UsermoneyTS"></div>
+                    </div>
+                </div>
+				<!--{elseif $_GET[xd_type] == 'gouche'}-->
+                <div class="posi" onclick="ApplyZK(this)">
+                    <div class="Applytype_tit" style="margin-bottom:0;">{lang dzapp_haodai:apply_htm_68}</div>
+                    <div class="pulldown pulldownOpen"></div>
+                </div>
+                <div class="ApplyZKCon" id="hasLocalHouse">
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_69}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_69}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_71}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_71}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_73}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_73}'></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="posi" onclick="ApplyZK(this)">
+                    <div class="Applytype_tit" style="margin-bottom:0;">{lang dzapp_haodai:apply_htm_85}</div>
+                    <div class="pulldown pulldownOpen"></div>
+                </div>
+                <div class="ApplyZKCon" id="shopCarPhase">
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_86}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_86}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_88}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_88}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_90}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_90}'></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="daikj">
+                    <div class="relative" onClick="hideTS()">
+                        <div class="ApplyOne_li_name ApplyOne_li_name02 fl">{lang dzapp_haodai:mobile_66}</div>
+                        <div class="clear"></div>
+                        <div class="ApplyOne_li_con">
+                            <div class="ApplyOne_pd02">
+                                <div class="ApplyOne_li_ipt">
+                                    <input type="number" name="monthly" id="Usermoney" class="w100 iptCLA" onfocus="figureFoc(this)" onBlur="figureBlu(this)" value="{lang dzapp_haodai:mobile_67}">
+                                </div>
+                                <div class="unit">{lang dzapp_haodai:apply_htm_39}</div>
+                            </div>
+                        </div>
+                        <div class="wordTS" id="UsermoneyTS"></div>
+                    </div>
+                </div>
+				<!--{elseif $_GET[xd_type] == 'qiye'}-->
+                <div class="posi" onclick="ApplyZK(this)">
+                    <div class="Applytype_tit" style="margin-bottom:0;">{lang dzapp_haodai:apply_htm_113}</div>
+                    <div class="pulldown pulldownOpen"></div>
+                </div>
+                <div class="ApplyZKCon" id="companyType">
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_115}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_115}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_117}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_117}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_119}/{lang dzapp_haodai:apply_htm_120}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_119}/{lang dzapp_haodai:apply_htm_120}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_123}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_123}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_125}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_125}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_127}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_127}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_129}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_129}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_131}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_131}'></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="posi" onclick="ApplyZK(this)">
+                    <div class="Applytype_tit" style="margin-bottom:0;">{lang dzapp_haodai:apply_htm_68}</div>
+                    <div class="pulldown pulldownOpen"></div>
+                </div>
+                <div class="ApplyZKCon" id="hasLocalHouse">
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_69}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_69}'></span></div>
+                        </div>
+                    </div>
+                    <div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+                        <div class="w100 relative"> {lang dzapp_haodai:apply_htm_71}
+                            <div class="changeOp01"><span value='{lang dzapp_haodai:apply_htm_71}'></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="daikj">
+                    <div class="relative" onClick="hideTS()">
+                        <div class="ApplyOne_li_name fl">{lang dzapp_haodai:mobile_68}</div>
+                        <div class="clear"></div>
+                        <div class="ApplyOne_li_con">
+                            <div class="ApplyOne_pd">
+                                <div class="ApplyOne_li_ipt">
+                                    <input type="number" name="monthly" id="monthly" class="w100 iptCLA" onfocus="qianFoc(this)" onBlur="qianBlu(this)" value="{lang dzapp_haodai:mobile_69}">
+                                </div>
+                                <div class="unit">{lang dzapp_haodai:apply_htm_39}</div>
+                            </div>
+                        </div>
+                        <div class="wordTS2" id="monthlyTS"></div>
+                    </div>
+                </div>
+                <div class="daikj">
+                    <div class="relative" onClick="hideTS()">
+                        <div class="ApplyOne_li_name fl">{lang dzapp_haodai:mobile_70}</div>
+                        <div class="ApplyOne_li_con">
+                            <div class="ApplyOne_pd">
+                                <div class="ApplyOne_li_ipt w100 relative">
+                                    <span class="ApplyOne_li_ipt_show" value='' id="BusinessTime">{lang dzapp_haodai:mobile_71}</span>
+                                    <select onchange="BusinessTimeCK()" class="select" id="BusinessTimeSelect">  
+                                        <option></option> 
+                                        <option value="1">{lang dzapp_haodai:mobile_72}</option>
+                                        <option value="2">{lang dzapp_haodai:mobile_73}</option>
+                                        <option value="3">1{lang dzapp_haodai:mobile_74}</option>
+                                        <option value="4">2{lang dzapp_haodai:mobile_74}</option>
+                                        <option value="5">3{lang dzapp_haodai:mobile_74}</option>
+                                        <option value="6">4{lang dzapp_haodai:mobile_74}</option>
+                                        <option value="7">{lang dzapp_haodai:mobile_75}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ApplyOne_li_xl fr"></div>
+                        <div class="clear"></div>
+                        <div class="wordTS2" id="BusinessTimeTS"></div>
+                    </div>
+                </div>
+				<!--{elseif $_GET[xd_type] == 'xiaofei'}-->
+				<div class="posi" onclick="ApplyZK(this)">
+					<div class="Applytype_tit" style="margin-bottom: 0;">{lang dzapp_haodai:apply_htm_113}</div>
+					<div class="pulldown pulldownOpen"></div>
+				</div>
+				<div class="ApplyZKCon" id="xf_companyType">
+					<div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_115}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_115}'></span>
+							</div>
+						</div>
+					</div>
+					<div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_117}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_117}'></span>
+							</div>
+						</div>
+					</div>
+					<div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_119}/{lang dzapp_haodai:apply_htm_120}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_119}/{lang dzapp_haodai:apply_htm_120}'></span>
+							</div>
+						</div>
+					</div>
+					<div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_123}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_123}'></span>
+							</div>
+						</div>
+					</div>
+					<div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_125}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_125}'></span>
+							</div>
+						</div>
+					</div>
+					<div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_127}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_127}'></span>
+							</div>
+						</div>
+					</div>
+					<div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_129}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_129}'></span>
+							</div>
+						</div>
+					</div>
+					<div class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_131}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_131}'></span>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div class="posi" onclick="ApplyZK(this)">
+                    <div class="Applytype_tit" style="margin-bottom:0;">{lang dzapp_haodai:apply_htm_185}</div>
+                    <div class="pulldown pulldownOpen"></div>
+                </div>
+				<div class="ApplyZKCon" id="xf_incomeType">
+					<div yk="a" class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_186}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_186}'></span>
+							</div>
+						</div>
+					</div>
+					<div yk="a" class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_188}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_188}'></span>
+							</div>
+						</div>
+					</div>
+					<div yk="b" class="pd15 ApplyOne_yon" onClick="Apply_RadioGroupsCK(this)">
+						<div class="w100 relative">
+							{lang dzapp_haodai:apply_htm_190}
+							<div class="changeOp01">
+								<span value='{lang dzapp_haodai:apply_htm_190}'></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="daikj">
+					<div class="relative" onClick="hideTS()">
+						<div id="ykdiv" class="ApplyOne_li_name ApplyOne_li_name02 fl">{lang dzapp_haodai:mobile_66}</div>
+						<div class="clear"></div>
+						<div class="ApplyOne_li_con">
+							<div class="ApplyOne_pd02">
+								<div class="ApplyOne_li_ipt">
+									<input type="number" id="Usermoney" class="w100 iptCLA"
+										onfocus="figureFoc(this)" onBlur="figureBlu(this)"
+										value="{lang dzapp_haodai:mobile_67}">
+								</div>
+								<div class="unit">{lang dzapp_haodai:apply_htm_39}</div>
+								<div class="wordTS" id="UsermoneyTS"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="daikj">
+					<div class="relative" onClick="hideTS()">
+						<div id="ykdiv" class="ApplyOne_li_name ApplyOne_li_name02 fl">{lang dzapp_haodai:mobile_76}</div>
+						<div class="clear"></div>
+						<div class="ApplyOne_li_con">
+							<div class="ApplyOne_pd02">
+								<div class="ApplyOne_li_ipt">
+									<input type="number" id="BirthYear" class="w100 iptCLA"
+										onfocus="BirthfigureFoc(this)" onBlur="BirthfigureBlu(this)"
+										value="{lang dzapp_haodai:mobile_77}">
+								</div>
+								<div class="unit">{lang dzapp_haodai:mobile_74}</div>
+								<div class="wordTS" id="year_born_inpTS"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="daikj z7">
+					<div class="relative">
+						<div class="ApplyOne_li_name ApplyOne_li_name02 fl">{lang dzapp_haodai:mobile_78}</div>
+						<div class="clear"></div>
+						<div class="ApplyOne_li_con">
+							<div class="ApplyOne_pd02">
+								<div class="nisnf fl">
+									<div class="appy_nian">
+										<div class="ApplyOne_li_con01">
+											<div class="nian_pd">
+												<div class="ApplyOne_li_nian relative">
+													<span class="ApplyOne_li_ipt_show" val='' id="work_year">{lang dzapp_haodai:mobile_71}</span>
+													<select onchange="niankey()" class="select" id="nianSelect">
+														<option value="0">0</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+														<option value="8">8</option>
+														<option value="9">9</option>
+														<option value="10">10</option>
+														<option value="11">11</option>
+														<option value="12">12</option>
+														<option value="13">13</option>
+														<option value="14">14</option>
+														<option value="15">15</option>
+														<option value="16">16</option>
+														<option value="17">17</option>
+														<option value="18">18</option>
+														<option value="19">19</option>
+														<option value="20">20</option>
+														<option value="21">21</option>
+														<option value="22">22</option>
+														<option value="23">23</option>
+														<option value="24">24</option>
+														<option value="25">25</option>
+														<option value="26">26</option>
+														<option value="27">27</option>
+														<option value="28">28</option>
+														<option value="29">29</option>
+														<option value="30">30</option>
+													</select>
+												</div>
+												<div class="ApplyOne_li_xl fr"></div>
+											</div>
+										</div>
+										<div class="wod_nian">{lang dzapp_haodai:mobile_74}</div>
+									</div>
+								</div>
+								<div class="nisnf fr">
+									<div class="appy_nian">
+										<div class="ApplyOne_li_con01">
+											<div class="nian_pd">
+												<div class="ApplyOne_li_nian relative">
+													<span class="ApplyOne_li_ipt_show" val='0' id="work_month">0</span>
+													<select onchange="yuekey()" class="select01" id="yueSelect">
+														<option value="0" selected="selected">0</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+														<option value="8">8</option>
+														<option value="9">9</option>
+														<option value="10">10</option>
+														<option value="11">11</option>
+													</select>
+												</div>
+												<div class="ApplyOne_li_xl fr"></div>
+											</div>
+										</div>
+										<div class="wod_nian">{lang dzapp_haodai:apply_htm_199}</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+						<div class="wordTS" id="YearMonthTS"></div>
+					</div>
+				</div>
+				<div class="daikj" id="hasCreditCard">
+					<div class="daikjPDLR">
+						<div class="daikj_01">
+							<div class="whether_left">{lang dzapp_haodai:apply_htm_201}</div>
+							<div class="whether_right ChangeCK">
+								<span class="whet_no01" ok="no">{lang dzapp_haodai:mobile_79}</span> <span class="whet_yes01"
+									ok="yes">{lang dzapp_haodai:mobile_80}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_ts" id="has_blue_card_tip">
+							<div class="whether_right">
+								<p></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_02">
+							<div class="whether_left">{lang dzapp_haodai:apply_htm_206}</div>
+							<div class="whether_right relative">
+								<input type="number" id="count_creditcard" class="daikj_02_ipt"
+									onfocus="" onBlur="" value=""> <span class="whether_dw">{lang dzapp_haodai:apply_htm_208}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_ts" id="count_blue_card_tip">
+							<div class="whether_right">
+								<p></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_02">
+							<div class="whether_left">{lang dzapp_haodai:apply_htm_209}</div>
+							<div class="whether_right relative">
+								<input type="number" id="number_creditcard" class="daikj_02_ipt"
+									onfocus="" onBlur="" value=""> <span class="whether_dw">{lang dzapp_haodai:apply_htm_39}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_ts" id="money_blue_card_tip">
+							<div class="whether_right">
+								<p></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<div class="daikj" id="hasDebt_Card">
+					<div class="daikjPDLR">
+						<div class="daikj_01">
+							<div class="whether_left">{lang dzapp_haodai:apply_htm_212}</div>
+							<div class="whether_right ChangeCK">
+								<span class="whet_no01" ok="no">{lang dzapp_haodai:mobile_79}</span> <span class="whet_yes01"
+									ok="yes">{lang dzapp_haodai:mobile_80}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_ts" id="has_debt_card_tip">
+							<div class="whether_right">
+								<p></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_02">
+							<div class="whether_left">{lang dzapp_haodai:apply_htm_217}</div>
+							<div class="whether_right relative">
+								<input type="number" id="debt_creditcard" class="daikj_02_ipt"
+									onfocus="" onBlur="" value=""> <span class="whether_dw">{lang dzapp_haodai:apply_htm_39}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_ts" id="money_debt_card_tip">
+							<div class="whether_right">
+								<p></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<div class="daikj" id="hasOkApply">
+					<div class="daikjPDLR">
+						<div class="daikj_01">
+							<div class="whether_left">{lang dzapp_haodai:apply_htm_220}</div>
+							<div class="whether_right ChangeCK">
+								<span class="whet_no01" ok="no">{lang dzapp_haodai:mobile_79}</span> <span class="whet_yes01"
+									ok="yes">{lang dzapp_haodai:mobile_80}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_ts" id="has_succ_reply_tip">
+							<div class="whether_right">
+								<p></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<div class="daikj" id="hasDebt_Daik">
+					<div class="daikjPDLR">
+						<div class="daikj_01">
+							<div class="whether_left">{lang dzapp_haodai:apply_htm_225}</div>
+							<div class="whether_right ChangeCK">
+								<span class="whet_no01" ok="no">{lang dzapp_haodai:mobile_79}</span> <span class="whet_yes01"
+									ok="yes">{lang dzapp_haodai:mobile_80}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_ts" id="has_debt_loan_tip">
+							<div class="whether_right">
+								<p></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_02">
+							<div class="whether_left">{lang dzapp_haodai:apply_htm_217}</div>
+							<div class="whether_right relative">
+								<input type="number" id="has_money_debt_loan"
+									class="daikj_02_ipt" onfocus="" onBlur="" value=""> <span
+									class="whether_dw">{lang dzapp_haodai:apply_htm_39}</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="daikj_ts" id="money_debt_loan_tip">
+							<div class="whether_right">
+								<p></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<!--{/if}-->
+                <div class="pd15 ApplyOne_info">{lang dzapp_haodai:mobile_81}</div>
+				<div class="relative" onClick="hideTS()">
+				  <div class="ApplyOne_li_name ApplyOne_li_name2 fl">{lang dzapp_haodai:mobile_62}</div>
+				  <div class="clear"></div>
+				  <div class="ApplyOne_li_con">
+					<div class="ApplyOne_pd2">
+					  <div class="ApplyOne_li_ipt">
+						<input type="text" id="UserName" name="nickname" class="w100 iptCLA" onfocus="usernameFoc(this)" onBlur="usernameBlu(this)" value="{lang dzapp_haodai:mobile_63}">
+					  </div>
+					</div>
+				  </div>
+				</div>
+				<div class="relative"><div id="UserNameTS" class="ApplyOne_li2 ApplyOne_li_ts"></div></div>
+				
+				<div class="relative" onClick="hideTS()">
+				  <div class="ApplyOne_li_name ApplyOne_li_name2 fl">{lang dzapp_haodai:mobile_82}</div>
+				  <div class="clear"></div>
+				  <div class="ApplyOne_li_con">
+					<div class="ApplyOne_pd2">
+					  <div class="ApplyOne_li_ipt">
+						<input type="tel" id="UserTel" class="w100 iptCLA" onfocus="telFoc(this)" name="mobile" onBlur="telBlu(this)" value="{lang dzapp_haodai:mobile_83}">
+					  </div>
+					</div>
+				  </div>
+				</div>
+				<div class="relative"><div id="UserTelTS" class="ApplyOne_li2 ApplyOne_li_ts"></div></div>
+				
+				<div class="relative" onClick="hideTS()">
+				  <div class="ApplyOne_li_name ApplyOne_li_name2 fl">{lang dzapp_haodai:mobile_84}</div>
+				  <div class="clear"></div>
+				  <div class="ApplyOne_li_con">
+					<div class="ApplyOne_pd2">
+					  <div class="ApplyOne_li_ipt">
+						<input type="email" id="UserEmail" name="email" class="w100 iptCLA" onfocus="emailFoc(this)" onBlur="emailBlu(this)" value="{lang dzapp_haodai:mobile_85}">
+					  </div>
+					</div>
+				  </div>
+				</div>
+				<div class="relative"><div id="UserEmailTS" class="ApplyOne_li2 ApplyOne_li_ts"></div></div>
+			   <div class="pdlr15">
+				 <div class="pageTS_word2">
+				   <p class="orange">{lang dzapp_haodai:apply_htm_62}</p>
+				 </div>
+			   </div>
+			  <div class="pd15">
+				<div class="w100 applyArea">
+				  <div class="pd5">
+					<div class="w100">
+					  <textarea rows="5" placeholder='{lang dzapp_haodai:mobile_86}' class="applyArea_zone" id="details" name="details" cols="100%"></textarea>
+					</div>
+				  </div>
+				</div>
+			  </div>
+				<div class="pd15 ApplyOne_info">
+				  {lang dzapp_haodai:apply_htm_244}
+				</div>
+                <div class="sqBbtnDiv" style="padding-bottom:30px; padding-top:20px"><a class="sqBbtn auto" onClick="applyNext('{$_GET[xd_type]}_two')">{lang dzapp_haodai:mobile_25}</a></div>
+            </div>
+        </div>
+        <div class="bottom">
+		  <div class="about"><a href="$_G[siteurl]">{$_G['setting']['bbname']}</a></div>
+		  <div class="copy"><a href="http://yun.haodai.com/" class="copy" style="text-decoration:none;">{lang dzapp_haodai:notice}</a></div>
+        </div>
+    </body>
+</html>
+<!--{eval updatesession();}-->
+<!--{if defined('IN_MOBILE')}-->
+	<!--{eval output();}-->
+<!--{else}-->
+	<!--{eval output_preview();}-->
+<!--{/if}-->

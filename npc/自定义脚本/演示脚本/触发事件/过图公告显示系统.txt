@@ -1,0 +1,18 @@
+//============================================================
+//= 99MaxEa 自定义触发事件 [演示脚本]
+//============================================================
+//- OnPCBeforeLoadMapEvent 当玩家准备过图时触发
+//============================================================
+-	script	Before_LoadMap	-1,{
+
+OnPCBeforeLoadMapEvent:
+
+	if (@loadmap_oldmap_id == 0){
+		dispbottom "[过图公告] 您已进入到 [ " + @loadmap_newmap_name$ + "," + @loadmap_newmap_x + "," + @loadmap_newmap_y + " ]";
+	}
+	
+	else {
+		dispbottom "[过图公告] 您已从 [ " + @loadmap_oldmap_name$ + "," + @loadmap_oldmap_x + "," + @loadmap_oldmap_y + " ] 进入到 [ " + @loadmap_newmap_name$ + "," + @loadmap_newmap_x + "," + @loadmap_newmap_y + " ]";
+	}
+	end;
+}
