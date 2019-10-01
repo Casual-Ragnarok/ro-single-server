@@ -118,20 +118,23 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 
 
-## 版本说明
+## 版本说明 & 下载
 
-- EA 服务端版本：v8.19.0 【[Github（免费已破解）](https://github.com/lyy289065406/ro-single-server)】 【[99Max（收费）](http://www.99max.me/thread-12926-1-1.html)】
-- 客户端补丁版本：v4.3 【[百度网盘（rkk0）](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】 【[99Max（收费）](http://www.99max.me/thread-3674-1-1.html)】
-- 韩服客户端版本（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘（dgui）](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】 【[韩国官网](http://ro.gnjoy.com/pds/down/)】 【[99Max（收费）](http://www.99max.me/forum.php?mod=viewthread&tid=485&from=portal)】
+- EA 服务端版本：v8.19.0 【[Github(免费已破解)](https://github.com/lyy289065406/ro-single-server)】~【[99Max(收费)](http://www.99max.me/thread-12926-1-1.html)】~
+- 客户端补丁版本：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max(收费)](http://www.99max.me/thread-3674-1-1.html)】~
+- 韩服客户端版本（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max(收费)](http://www.99max.me/forum.php?mod=viewthread&tid=485&from=portal)】~
 
-
-## 版本特色
 
 
 ## 使用教程
 
 
+## 版本特色
 
+
+
+
+## FAQ
 
 
 ------
