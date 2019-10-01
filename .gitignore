@@ -1,2 +1,8 @@
+# 日志文件
 ROEmulator/usr/local/apache2/logs
+
+# 连接 mysql 数据库时生成的管道文件和日志
 ROEmulator/usr/local/mysql/data/mysql_mini.*
+
+# ST3 编辑器转换 GBK 文件时生成的临时文件
+*.dump
