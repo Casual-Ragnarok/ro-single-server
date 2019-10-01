@@ -73,7 +73,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 之所以要破解，是因为 99Max 原本一直提倡都是做免费的 RO 单机，而且因为坚持与韩服 KRO 同步更新，算是做得不错的。
 
-但是从 v8.11.0 版本（这是 99Max 的二次开发版本号，不是 RO 的版本号）开始，99Max 摒弃了以往的理念、违背了 EA 的协议，开起了淘宝店盈利，实在令人不齿。 那就不要怪我黑吃黑咯。
+但是从 v8.11.0 版本（这是 99Max 的二次开发版本号，不是 RO 的版本号）开始，99Max 摒弃了以往的理念、违背了 EA 的协议，开起了淘宝店盈利，实在令人不齿。 作为 RO 的钻粉之一，那就不要怪我黑吃黑咯。
 
 于是本人花了 ¥200 从 99Max 买了最新的 v8.19.0 的服务端和客户端，然后就有了这个破解版的 RO 单机。
 
@@ -144,6 +144,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 > 注：
 <br/>　若启动过程中报错丢失 0xc000007b，安装环境修复包 DirectXRepair 即可
 <br/>　服务端运行过程中不要关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe`
+<br/>　因为 mysql 内置在服务端，懂 git 的同学可以 Fork 走这个仓库，只要 Checkout 一个分支就可以用 github 远程备份存档了
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/01.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/02.png)
@@ -173,6 +174,9 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 
 ------
+## 服务端目录说明
+
+------
 ## GM 使用教程
 
 
@@ -185,6 +189,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 1.不要重复导入数据库，一键版已含最新数据库；
 2.设置自己MySQL的帐号与密码，默认为root root,
 
+web 地址功能
 
 ------
 ## FAQ
