@@ -6,7 +6,7 @@
 
 ## 运行环境
 
-　![](https://img.shields.io/badge/Platform-Windows%20x64-brightgreen.svg) 
+　![](https://img.shields.io/badge/Platform-Windows%207%2f8%2f10%20x64-brightgreen.svg) 
 
 
 ## 简介
