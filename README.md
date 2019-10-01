@@ -97,7 +97,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 综上所述，不难判断 99Max 把试用期写到了系统注册表。
 
-于是科学地监听了注册表的读写，发现每次点击 `继续试用` 的时候，注册表地址 `HKCU\Software\Classes\{49064D4F-D3C0-8818-C173-74BE82606519}` 就会被读写一次。
+于是科学地监听了该进程对注册表的读写，发现每次点击 `继续试用` 的时候，注册表地址 `HKCU\Software\Classes\{49064D4F-D3C0-8818-C173-74BE82606519}` 就会被读写一次。
 
 该注册表项的内容是加密的，虽然不知道加密算法，但是 <b>直接删除该注册表项即可重置试用期</b> 了，这样也省得脱壳了。
 
@@ -174,8 +174,21 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 双击运行 `99Max仙境传说_v4.3_Data.exe` 即可进入游戏
 
 
+
+### 内置门户站点
+
+
+
+
 ------
 ## 版本特色
+
+- 三转职业最高 BASE 等级 175, 最高 JOB 等级 60
+- 扩展职业最高 BASE 等级 160, 最高 JOB 等级 50
+- 全新职业 [杜兰族]
+- 无登录限制，无限在线人数
+- 正式进入 2018 年新 UI 界面时代！
+- 签到系统、一键换装、成就系统等等
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/04.png)
@@ -184,44 +197,34 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
 
 
-------
-## 服务端目录说明
+
+
+
 
 ------
 ## GM 使用教程
 
+group_id设置为99即可，GM的权限查看在D:\99MaxEathena\conf\groups.conf内
+
+
 游戏内已设置默认的 GM 账号密码 admin admin , 默认 GM 外观.
+设置自己MySQL的帐号与密码，默认为root root,
+
+游戏账号无需网页注册，进入登陆画面，输入账号_M或_F，即可自动注册
+程序自带GM账号:admin 密码:admin 中的人物 最后防线
+
+本一键安装版内含 门户/论坛/空间Discuz! X3.2系统（简体中文） ↓
+自带论坛访问网址:
+http://127.0.0.1:8096
+管理员访问网址:
+http://127.0.0.1:8096/admin.php
+管理员帐号:admin 密码:admin
+
+3. [问题]如何注册游戏账号
+可使用注册页 http://127.0.0.1:8096/ro , 也可使用 M/F 注册, 百度可查(关键词: RO的MF注册)
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 
-99MaxEathena SQL 一键版 - 使用说明:
-
-服务端内char-server_sql.exe、login-server_sql.exe、map-server_sql.exe
-为复兴后SQL版使用，可用【启动 99MaxEathena 三转（复兴后）SQL版】开启三转服务端。
-
-在开启SQL一键版服务端前要做2件事情：
-1.不要重复导入数据库，一键版已含最新数据库；
-2.设置自己MySQL的帐号与密码，默认为root root,
-
-web 地址功能
-
-查看GM指令大全 - help.txt
-
-修改经验倍率 - exp.conf
-
-修改掉落倍率 - drops.conf
-
-修改游戏名称 - char_athena.conf
-
-修改物品属性 - item_db.txt
-
-修改魔物属性 - mob_db.txt
-
-修改在线商城 - item_cash_db.txt
-
-修改交易限制 - item_trade.txt
-
-修改宠物属性 - pet_db.txt
 
 ------
 ## FAQ
@@ -242,6 +245,57 @@ RO 服务端启动后，会开启 5 个服务：
 
 ### 怎样搭建联机服务器？
 
+第一，我们在 99MaxEathena v8.7.0 端内添加联机IP：
+★如果IP只是外网的，将 char_athena.conf 和 map_athena.conf 内
+的 login_ip、char_ip、map_ip 全部修改为外网IP即可，一共有4处IP修改。
+
+★如果IP分为内/外网的，那设置稍微复杂点，学会之后，其实也不难，呵呵...
+除了以上4处IP修改以外，将 char_athena.conf、login_athena.conf 和 map_athena.conf 内
+的 bind_ip 功能打开，并将其修改为内网IP即可，加上之前4处，一共有7处IP修改。
+
+第二，我们在 99MaxRo_Patch_v3.0 补丁内添加联机IP：
+将 clientinfo.xml 文件复制黏贴在客户端 Data 文件夹内，
+修改其内容<address>127.0.0.1</address>为外网IP即可。
+
+clientinfo.xml
+```
+<?xml version="1.0" encoding="gbk3212" ?>
+<clientinfo>
+
+        <servicetype>china</servicetype>
+        <servertype>primary</servertype>
+        <extendedslot>2</extendedslot>
+
+        <connection>
+                <display>单机测试 大陆 中国电信/网通</display>
+                <desc></desc>
+                <balloon></balloon>
+                <address>127.0.0.1</address>
+                <port>6900</port>
+                <version>45</version>
+                <langtype>3</langtype>
+                <registrationweb>http://127.0.0.1/</registrationweb>
+                <yellow>
+                        <admin>2000000</admin>
+                </yellow>
+                <loading>
+                        <image>loading00.jpg</image>
+                        <image>loading01.jpg</image>
+                        <image>loading02.jpg</image>
+                        <image>loading03.jpg</image>
+                        <image>loading04.jpg</image>
+                        <image>loading05.jpg</image>
+                        <image>loading06.jpg</image>
+                        <image>loading07.jpg</image>
+                        <image>loading08.jpg</image>
+                </loading>
+        </connection>
+
+</clientinfo>
+```
+
+
+
 
 
 1. [问题]启动 map-server.exe 时出现 0xc000007b 的解决办法
@@ -250,8 +304,7 @@ http://www.99max.me/thread-21246-1-1.html
 2. [问题]运行中出现计算机丢失 msvcr110.dll 和 vcruntime140.dll 的解决办法
 http://www.99max.me/thread-26184-1-1.html
 
-3. [问题]如何注册游戏账号
-可使用注册页 http://127.0.0.1:8096/ro , 也可使用 M/F 注册, 百度可查(关键词: RO的MF注册)
+
 
 4. [问题]如何将新注册游戏账号设置GM权限
 先安装以下地址的[工具]8, 再参考[教程]2, 数据库默认的账号密码为 root root
@@ -294,6 +347,389 @@ http://www.99max.me/thread-18709-1-2.html
 
 10.[分享]还有更多的教程及工具，请大家自行去查阅吧
 http://www.99max.me/forum-18-1.html
+
+
+------
+## 【附】 目录 & 文件功能说明
+
+GM指令大全 - help.txt
+角色指令大全 - charhelp.txt
+修改经验倍率 - exp.conf
+修改掉落倍率 - drops.conf
+修改游戏名称 - char_athena.conf
+修改物品属性 - item_db.txt
+修改魔物属性 - mob_db.txt
+修改在线商城 - item_cash_db.txt
+修改交易限制 - item_trade.txt
+修改宠物属性 - pet_db.txt
+
+<details>
+<summary>展开查看</summary>
+<br/>
+
+ro-single-server
+|-- 01-启动架设环境.bat
+|-- 02-启动RO服务端.bat
+|-- 03-关闭假设环境.bat
+|-- 04-重置试用时间.bat
+|-- charserv.bat
+|-- char-server.exe
+|-- history
+|-- img
+|-- libmysql.dll
+|-- login-server.exe
+|-- logserv.bat
+|-- mapserv.bat
+|-- map-server.exe
+|-- msvcr110.dll
+|-- npc
+|-- pcre8.dll
+|-- zlib.dll
+|-- serv.bat
+|-- sql-files
+|-- vcruntime140.dll
+|-- conf
+|   |-- atcommand_athena.conf
+|   |-- battle
+|   |   |-- battle.conf
+|   |   |-- battleground.conf
+|   |   |-- client.conf
+|   |   |-- drops.conf
+|   |   |-- exp.conf
+|   |   |-- feature.conf
+|   |   |-- gm.conf
+|   |   |-- guild.conf
+|   |   |-- homunc.conf
+|   |   |-- items.conf
+|   |   |-- misc.conf
+|   |   |-- monster.conf
+|   |   |-- party.conf
+|   |   |-- pet.conf
+|   |   |-- player.conf
+|   |   |-- skill.conf
+|   |   └-- status.conf
+|   |-- battle_athena.conf
+|   |-- channels.conf
+|   |-- char_athena.conf
+|   |-- charhelp.txt
+|   |-- charhelp.txt.dump
+|   |-- grf-files.txt
+|   |-- groups.conf
+|   |-- help.txt
+|   |-- import
+|   |   |-- battle_conf.txt
+|   |   |-- char_conf.txt
+|   |   |-- inter_conf.txt
+|   |   |-- inter_server.yml
+|   |   |-- log_conf.txt
+|   |   |-- login_conf.txt
+|   |   |-- map_conf.txt
+|   |   |-- packet_conf.txt
+|   |   └-- script_conf.txt
+|   |-- inter_athena.conf
+|   |-- inter_athena.conf.dump
+|   |-- inter_server.yml
+|   |-- log_athena.conf
+|   |-- login_athena.conf
+|   |-- map_athena.conf
+|   |-- maps_athena.conf
+|   |-- motd.txt
+|   |-- msg_conf
+|   |   |-- char_msg.conf
+|   |   |-- import
+|   |   |   |-- map_msg_chn_conf.txt
+|   |   |   |-- map_msg_eng_conf.txt
+|   |   |   |-- map_msg_frn_conf.txt
+|   |   |   |-- map_msg_grm_conf.txt
+|   |   |   |-- map_msg_idn_conf.txt
+|   |   |   |-- map_msg_mal_conf.txt
+|   |   |   |-- map_msg_por_conf.txt
+|   |   |   |-- map_msg_rus_conf.txt
+|   |   |   |-- map_msg_spn_conf.txt
+|   |   |   └-- map_msg_tha_conf.txt
+|   |   |-- login_msg.conf
+|   |   |-- map_msg_chn.conf
+|   |   |-- map_msg.conf
+|   |   |-- map_msg_frn.conf
+|   |   |-- map_msg_grm.conf
+|   |   |-- map_msg_idn.conf
+|   |   |-- map_msg_mal.conf
+|   |   |-- map_msg_por.conf
+|   |   |-- map_msg_rus.conf
+|   |   |-- map_msg_spn.conf
+|   |   |-- map_msg_tha.conf
+|   |   └-- translation.conf
+|   |-- packet_athena.conf
+|   |-- readme.md
+|   |-- script_athena.conf
+|   |-- subnet_athena.conf
+|   └-- valkyrie_sample.cfg
+|-- db
+|   |-- abra_db.txt
+|   |-- castle_db.txt
+|   |-- const.txt
+|   |-- create_arrow_db.txt
+|   |-- elemental_db.txt
+|   |-- elemental_skill_db.txt
+|   |-- GeoIP.dat
+|   |-- guild_skill_tree.txt
+|   |-- homun_skill_tree.txt
+|   |-- import
+|   |   |-- abra_db.txt
+|   |   |-- achievement_db.yml
+|   |   |-- attendance.yml
+|   |   |-- attr_fix.txt
+|   |   |-- castle_db.txt
+|   |   |-- const.txt
+|   |   |-- create_arrow_db.txt
+|   |   |-- elemental_db.txt
+|   |   |-- elemental_skill_db.txt
+|   |   |-- exp_guild.txt
+|   |   |-- exp_homun.txt
+|   |   |-- guild_skill_tree.txt
+|   |   |-- homunculus_db.txt
+|   |   |-- homun_skill_tree.txt
+|   |   |-- instance_db.txt
+|   |   |-- item_avail.txt
+|   |   |-- item_bluebox.txt
+|   |   |-- item_buyingstore.txt
+|   |   |-- item_cardalbum.txt
+|   |   |-- item_cash_db.txt
+|   |   |-- item_combo_db.txt
+|   |   |-- item_db.txt
+|   |   |-- item_delay.txt
+|   |   |-- item_findingore.txt
+|   |   |-- item_flag.txt
+|   |   |-- item_giftbox.txt
+|   |   |-- item_group_db.txt
+|   |   |-- item_misc.txt
+|   |   |-- item_noequip.txt
+|   |   |-- item_nouse.txt
+|   |   |-- item_package.txt
+|   |   |-- item_randomopt_db.txt
+|   |   |-- item_randomopt_group.txt
+|   |   |-- item_stack.txt
+|   |   |-- item_trade.txt
+|   |   |-- item_violetbox.txt
+|   |   |-- job_basehpsp_db.txt
+|   |   |-- job_db1.txt
+|   |   |-- job_db2.txt
+|   |   |-- job_exp.txt
+|   |   |-- job_noenter_map.txt
+|   |   |-- job_param_db.txt
+|   |   |-- level_penalty.txt
+|   |   |-- magicmushroom_db.txt
+|   |   |-- map_cache.dat
+|   |   |-- map_index.txt
+|   |   |-- mercenary_db.txt
+|   |   |-- mercenary_skill_db.txt
+|   |   |-- mob_avail.txt
+|   |   |-- mob_boss.txt
+|   |   |-- mob_branch.txt
+|   |   |-- mob_chat_db.txt
+|   |   |-- mob_classchange.txt
+|   |   |-- mob_db.txt
+|   |   |-- mob_drop.txt
+|   |   |-- mob_item_ratio.txt
+|   |   |-- mob_mission.txt
+|   |   |-- mob_poring.txt
+|   |   |-- mob_pouch.txt
+|   |   |-- mob_race2_db.txt
+|   |   |-- mob_random_db.txt
+|   |   |-- mob_skill_db.txt
+|   |   |-- pet_db.txt
+|   |   |-- produce_db.txt
+|   |   |-- quest_db.txt
+|   |   |-- refine_db.yml
+|   |   |-- size_fix.txt
+|   |   |-- skill_cast_db.txt
+|   |   |-- skill_castnodex_db.txt
+|   |   |-- skill_changematerial_db.txt
+|   |   |-- skill_copyable_db.txt
+|   |   |-- skill_damage_db.txt
+|   |   |-- skill_db.txt
+|   |   |-- skill_improvise_db.txt
+|   |   |-- skill_nocast_db.txt
+|   |   |-- skill_nonearnpc_db.txt
+|   |   |-- skill_require_db.txt
+|   |   |-- skill_tree.txt
+|   |   |-- skill_unit_db.txt
+|   |   |-- spellbook_db.txt
+|   |   |-- statpoint.txt
+|   |   └-- status_disabled.txt
+|   |-- item_auto_change.txt
+|   |-- item_avail.txt
+|   |-- item_drop_announce.txt
+|   |-- item_findingore.txt
+|   |-- item_nouse.txt
+|   |-- item_vending.txt
+|   |-- job_db2.txt
+|   |-- magicmushroom_db.txt
+|   |-- map_index.txt
+|   |-- mercenary_db.txt
+|   |-- mercenary_skill_db.txt
+|   |-- mob_avail.txt
+|   |-- mob_chat_db.txt
+|   |-- mob_classchange.txt
+|   |-- mob_item_ratio.txt
+|   |-- mob_mission.txt
+|   |-- mob_pouch.txt
+|   |-- re
+|   |   |-- achievement_db.yml
+|   |   |-- attendance.yml
+|   |   |-- attr_fix.txt
+|   |   |-- exp_guild.txt
+|   |   |-- exp_homun.txt
+|   |   |-- homunculus_db.txt
+|   |   |-- instance_db.txt
+|   |   |-- item_bluebox.txt
+|   |   |-- item_buyingstore.txt
+|   |   |-- item_cardalbum.txt
+|   |   |-- item_cash_db.txt
+|   |   |-- item_combo_db.txt
+|   |   |-- item_db.txt
+|   |   |-- item_delay.txt
+|   |   |-- item_flag.txt
+|   |   |-- item_giftbox.txt
+|   |   |-- item_group_db.txt
+|   |   |-- item_misc.txt
+|   |   |-- item_noequip.txt
+|   |   |-- item_package.txt
+|   |   |-- item_randomopt_db.txt
+|   |   |-- item_randomopt_group.txt
+|   |   |-- item_stack.txt
+|   |   |-- item_trade.txt
+|   |   |-- item_violetbox.txt
+|   |   |-- job_basehpsp_db.txt
+|   |   |-- job_db1.txt
+|   |   |-- job_exp.txt
+|   |   |-- job_noenter_map.txt
+|   |   |-- job_param_db.txt
+|   |   |-- level_penalty.txt
+|   |   |-- map_cache.dat
+|   |   |-- mob_boss.txt
+|   |   |-- mob_branch.txt
+|   |   |-- mob_db.txt
+|   |   |-- mob_drop.txt
+|   |   |-- mob_poring.txt
+|   |   |-- mob_race2_db.txt
+|   |   |-- mob_random_db.txt
+|   |   |-- mob_skill_db.txt
+|   |   |-- pet_db.txt
+|   |   |-- produce_db.txt
+|   |   |-- quest_db.txt
+|   |   |-- refine_db.yml
+|   |   |-- skill_cast_db.txt
+|   |   |-- skill_castnodex_db.txt
+|   |   |-- skill_db.txt
+|   |   |-- skill_nocast_db.txt
+|   |   |-- skill_require_db.txt
+|   |   |-- skill_tree.txt
+|   |   |-- skill_unit_db.txt
+|   |   └-- statpoint.txt
+|   |-- readme.md
+|   |-- size_fix.txt
+|   |-- skill_changematerial_db.txt
+|   |-- skill_copyable_db.txt
+|   |-- skill_damage_db.txt
+|   |-- skill_improvise_db.txt
+|   |-- skill_nonearnpc_db.txt
+|   |-- spellbook_db.txt
+|   └-- status_disabled.txt
+|-- doc
+|   |-- 99MaxEa_atcommands.txt
+|   |-- 99MaxEa_bonus.txt
+|   |-- 99MaxEa_events.txt
+|   |-- 99MaxEa_mapflags.txt
+|   |-- 99MaxEa_script_commands.txt
+|   |-- 99MaxEa.txt
+|   |-- achievements.txt
+|   |-- atcommands.txt
+|   |-- ea_job_system.txt
+|   |-- effect_list.txt
+|   |-- item_bonus.txt
+|   |-- item_db.txt
+|   |-- item_group.txt
+|   |-- map_cache.txt
+|   |-- mapflags.txt
+|   |-- md5_hashcheck.txt
+|   |-- mob_db_mode_list.txt
+|   |-- mob_db.txt
+|   |-- mob_skill_db_powerskill.txt
+|   |-- model
+|   |   |-- Model_Relation.mwb
+|   |   |-- Model_Relation.png
+|   |   └-- rathena.vpp
+|   |-- packet_client.txt
+|   |-- packet_interserv.txt
+|   |-- packet_struct_notation.txt
+|   |-- permissions.txt
+|   |-- quest_variables.txt
+|   |-- sample
+|   |   |-- bank_test.txt
+|   |   |-- basejob_baseclass_upper.txt
+|   |   |-- checkoption.txt
+|   |   |-- delitem2.txt
+|   |   |-- getequipcardid.txt
+|   |   |-- getequipid.txt
+|   |   |-- getiteminfo.txt
+|   |   |-- getmonsterinfo.txt
+|   |   |-- gstorage_test.txt
+|   |   |-- inarray.txt
+|   |   |-- instancing.txt
+|   |   |-- localized_npc.txt
+|   |   |-- navigate.txt
+|   |   |-- npc_dynamic_shop.txt
+|   |   |-- npc_extend_shop.txt
+|   |   |-- npc_live_dialogues.txt
+|   |   |-- npc_shop_test.txt
+|   |   |-- npc_test_array.txt
+|   |   |-- npc_test_chat.txt
+|   |   |-- npc_test_duplicate.txt
+|   |   |-- npc_test_func.txt
+|   |   |-- npc_test_getunits.txt
+|   |   |-- npc_test_npctimer2.txt
+|   |   |-- npc_test_npctimer.txt
+|   |   |-- npc_test_pcre.txt
+|   |   |-- npc_test_quest.txt
+|   |   |-- npc_test_setitemx.txt
+|   |   |-- npc_test_setmapflag.txt
+|   |   |-- npc_test_skill.txt
+|   |   |-- npc_test_time.txt
+|   |   └-- randomopt.txt
+|   |-- script_commands.txt
+|   |-- skill_require_db.txt
+|   |-- source_doc.txt
+|   |-- status_change.txt
+|   |-- whisper_sys.txt
+|   └-- woe_time_explanation.txt
+|-- gm-cmd
+|   |-- GM命令快捷菜单.exe
+|   |-- roa.ini
+|   └-- ro.ini
+|-- ROEmulator
+|   |-- desktop.ini
+|   |-- home
+|   |   |-- admin
+|   |   |   └-- program
+|   |   |       |-- pskill.exe
+|   |   |       |-- unidelay.exe
+|   |   |       └-- uniserv.exe
+|   |   └-- desktop.ini
+|   |-- tmp
+|   |-- usr
+|   |   └-- local
+|   |       |-- apache2
+|   |       |-- mysql
+|   |       └-- php
+|   └-- www
+└-- README.md
+
+994 directories, 10054 files
+
+
+</details>
+
 
 
 ------
