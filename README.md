@@ -111,29 +111,72 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 </details>
 
 
-
+------
 ## 运行环境
 
-　![](https://img.shields.io/badge/Platform-Windows%207%2f8%2f10%20x64-brightgreen.svg) 
+　![](https://img.shields.io/badge/Platform-Windows%207%2f8%2f10%20x64-brightgreen.svg) ![](https://img.shields.io/badge/Platform-Windows%20Server%202003%2f2012%20x64-brightgreen.svg) 
 
 
-
+------
 ## 版本说明 & 下载
 
-- EA 服务端版本：v8.19.0 【[Github(免费已破解)](https://github.com/lyy289065406/ro-single-server)】~【[99Max(收费)](http://www.99max.me/thread-12926-1-1.html)】~
-- 客户端补丁版本：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max(收费)](http://www.99max.me/thread-3674-1-1.html)】~
-- 韩服客户端版本（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max(收费)](http://www.99max.me/forum.php?mod=viewthread&tid=485&from=portal)】~
+- EA 服务端模拟器：v8.19.0 【[Github(免费已破解)](https://github.com/lyy289065406/ro-single-server)】~【[99Max(收费)](http://www.99max.me/thread-12926-1-1.html)】~
+- 服务端环境修复包： DirectXRepair-v3.9 【[百度网盘(vs1m)](https://pan.baidu.com/s/1zoBXTi5rp7Yj1bhzMzo-oQ)】 (如果可以直接运行就不用装了)
+- 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max(收费)](http://www.99max.me/forum.php?mod=viewthread&tid=485&from=portal)】~
+- 客户端补丁（登陆器）：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max(收费)](http://www.99max.me/thread-3674-1-1.html)】~
+
+
+------
+## 安装教程
+
+### 安装 & 启动服务端
+
+- 服务端只能运行于 Windows 平台，实测 Windows 7/8/10 均可，推荐 Windows 7
+- 安装 git，执行命令 `git clone https://github.com/lyy289065406/ro-single-server` 下载 EA 服务端
+- 不懂 git 的同学可以直接点击本 [Github](https://github.com/lyy289065406/ro-single-server) 仓库的 【Clone and download】 ，解压后也是一样的
+- 服务端可解压到任意位置即可（<b>路径不要有中文</b>）
+- 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）
+- 双击运行 `02-启动RO服务端.bat`，会依次自动启动：
+<br/>  登陆服务器 `login-server.exe`
+<br/>  人物服务器 `char-server.exe`
+<br/>  地图服务器 `map-server.exe` （此时会提示注册，点击 【继续试用】 按钮即可）
+
+> 注：若启动过程中报错丢失 0xc000007b，安装环境修复包 DirectXRepair 即可
+<br/>  服务端运行过程中不要关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe`
+
+
+### 停止服务端
+
+- 手动关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe` 窗口
+- 双击运行 `03-关闭架设环境.bat`
+- 双击运行 `04-重置试用时间.bat` （可选，只要未过期都可以不执行）
+
+> 注：重置试用时间并不会影响存档，存档是在 mysql 数据库中的
+
+
+### 安装 & 启动客户端
 
 
 
+------
 ## 使用教程
 
 
+99MaxEathena SQL 一键版 - 使用说明:
+
+服务端内char-server_sql.exe、login-server_sql.exe、map-server_sql.exe
+为复兴后SQL版使用，可用【启动 99MaxEathena 三转（复兴后）SQL版】开启三转服务端。
+
+在开启SQL一键版服务端前要做2件事情：
+1.不要重复导入数据库，一键版已含最新数据库；
+2.设置自己MySQL的帐号与密码，默认为root root,
+
+------
 ## 版本特色
 
 
 
-
+------
 ## FAQ
 
 
