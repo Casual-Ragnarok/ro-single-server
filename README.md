@@ -41,13 +41,15 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 <b>本单机服务器使用的正正就是 eAthena （下文简称 EA ）</b>。
 
-需要知道的是， [eAthena](https://github.com/eathena/eathena) 是在 Github 上的一个免费开源项目，所以使用 EA 做 RO 模拟器，只要不涉及商业利益就是合法的。 
+[EA](https://github.com/eathena/eathena) 是在 Github 上的一个免费开源项目，所以使用 EA 做 RO 模拟器，只要不涉及商业利益就是合法的。 
 
-> 注： EA 的源码可以看一下，但是它的官方域名 eathena.ws 已过期并被挟持，就不要随便打开了
+> 注： EA 的源码可以看一下，使用 C 编写，需要编译使用。 但是它的官方域名 eathena.ws 已过期并被挟持，就不要随便打开了
 
 ------
 
-此外，这里再扩展介绍一下 SeAthena （下文简称 SeA ），它是由 Inkfish 做的一个汉化版 EA ，现在 <b>大部分私服都是使用 SeA 做的</b>。
+这里再扩展介绍一下 SeAthena （下文简称 SeA ）。
+
+它是由 Inkfish 做的一个汉化版 EA ，现在 <b>大部分私服都是使用 SeA 做的</b>。
 
 原因是 SeA 的收费版有很多不错的扩展功能（但免费版则有限制）。
 
