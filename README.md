@@ -9,7 +9,20 @@
 　![](https://img.shields.io/badge/Platform-Windows%207%2f8%2f10%20x64-brightgreen.svg) 
 
 
+## 关于网游单机化的历史背景
+<details>
+<summary>展开查看</summary>
+
+> 来源：《[还记得大明湖畔的RO么？一起来搭建自己的仙境传说](http://www.360doc.com/content/15/0713/07/7863900_484558332.shtml)》
+
+</details>
+
+
 ## 简介
+
+
+
+## 破解说明
 
 ## 素材版本
 
