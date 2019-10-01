@@ -1,4 +1,4 @@
-# 99MaxEathena 历史版本更新内容
+# 99MaxEathena 历史版本更新内容 - 服务端
 
 ------
 ## 99MaxEathena v8.19.0 (2019.03.12)

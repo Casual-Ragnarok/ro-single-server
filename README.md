@@ -120,12 +120,12 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ------
 ## 版本说明 & 下载
 
-- EA 服务端模拟器：v8.19.0 【[Github(免费已破解)](https://github.com/lyy289065406/ro-single-server)】~【[99Max(收费)](http://www.99max.me/thread-12926-1-1.html)】~
+- EA 服务端模拟器：v8.19.0 【[Github:免费已破解](https://github.com/lyy289065406/ro-single-server)】【[百度网盘(zx39):VMWare永久激活](https://pan.baidu.com/s/1M-W-bra6h16Bq7vqPI_Rng)】~【[99Max:收费](http://www.99max.me/thread-12926-1-1.html)】~
 - 服务端环境修复包： DirectXRepair-v3.9 【[百度网盘(vs1m)](https://pan.baidu.com/s/1zoBXTi5rp7Yj1bhzMzo-oQ)】 (如果可以直接运行就不用装了)
-- 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max(收费)](http://www.99max.me/thread-485-1-1.html)】~
-- 客户端补丁（登陆器）：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max(收费)](http://www.99max.me/thread-3674-1-1.html)】~
+- 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max:收费](http://www.99max.me/thread-485-1-1.html)】~
+- 客户端补丁（登陆器）：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
 
-> 历史版本更新内容详见 [这里](https://github.com/lyy289065406/ro-single-server/tree/master/history/README.md)
+> 历史版本更新内容详见 [这里](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-server.md)
 
 ------
 ## 安装教程
@@ -167,6 +167,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 下载客户端补丁（版本必须是 v4.3）
 - 解压客户端到任意位置（<b>路径不要有中文</b>）
 - 解压客户端补丁到韩服客户端根目录，同名文件全覆盖
+- 双击运行 `Setup_Plus.exe` 修改配置
 - 双击运行 `99Max仙境传说_v4.3_Data.exe` 即可进入游戏
 
 
@@ -202,19 +203,21 @@ web 地址功能
 ------
 ## FAQ
 
-### 搭建服务端会占用哪些端口?
+### 搭建服务端会占用哪些端口？
 
 RO 服务端启动后，会开启 5 个服务：
 
-- 角色服务器 `char-server.exe`： 占用端口 5121
+- 角色服务器 `char-server.exe`： 占用端口 6121
 - 登陆服务器 `login-server.exe`： 占用端口 6900
-- 地图服务器 `map-server.exe`： 占用端口 6121
+- 地图服务器 `map-server.exe`： 占用端口 5121
 - 存档数据库 `Mysql`： 占用端口 3306
 - 配套Web站点 `Apache` ： 占用端口 8096 （较旧的版本占用的是 80 端口）
 
 如果有时服务端启动失败，不妨检查一下这些端口是否被占用。
 
-另外如果需要架设成联网服务器（或部署到 VMWare 等虚拟机），则至少对外开放 6900、 5121、 6121 这 3 个端口，客户端才能成功登陆。
+另外如果需要架设成联机服务器（或部署到 VMWare 等虚拟机），则至少对外开放 6900、 5121、 6121 这 3 个端口，客户端才能成功登陆。
+
+### 怎样搭建联机服务器？
 
 ------
 
