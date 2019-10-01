@@ -85,7 +85,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 对比 EA 的源码，很明显 99Max 对 `map-server.exe` 加了一个激活用的壳。
 
-该激活码是常规的机器码注册方式，点击 `继续试用` 可以获得 30 天的试用期。
+该激活码是比较经典的机器码注册方式，点击 `继续试用` 可以获得 30 天的试用期。
 
 通过测试可以发现以下特征：
 
@@ -118,16 +118,20 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 
 
-## 破解说明
+## 版本说明
 
-## 素材版本
+- EA 服务端版本：v8.19.0 [\[Github（免费破解）\]](https://github.com/lyy289065406/ro-single-server) [\[99Max（收费）\]](http://www.99max.me/thread-12926-1-1.html)
+- 客户端补丁版本：v4.3 [\[百度网盘（rkk0）\]](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg) [\[99Max（收费）\]](http://www.99max.me/thread-3674-1-1.html)
+- 韩服客户端版本（三转复兴后）：Ragnarok_KRO_20190306_Lite [\[百度网盘（dgui）\]](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw) [\[官网\]](http://ro.gnjoy.com/pds/down/) [\[99Max（收费）\]](http://www.99max.me/forum.php?mod=viewthread&tid=485&from=portal)
 
-8.19.0
-4.3
-KRO
+
+## 版本特色
 
 
 ## 使用教程
+
+
+
 
 
 ------
