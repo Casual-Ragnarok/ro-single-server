@@ -73,7 +73,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 之所以要破解，是因为 99Max 原本一直提倡都是做免费的 RO 单机，而且因为坚持与韩服 KRO 同步更新，算是做得不错的。
 
-但是从 v8.11.0 版本（这是 99Max 的二次开发版本号，不是 RO 的版本号）开始，99Max 摒弃了以往的理念、违背了 EA 的协议，开起了淘宝店盈利，实在令人不齿。 那就不要怪我黑吃黑咯。
+但是从 v8.11.0 版本（这是 99Max 的二次开发版本号，不是 RO 的版本号）开始，99Max 摒弃了以往的理念、违背了 EA 的协议，开起了淘宝店盈利，实在令人不齿。 作为 RO 的钻粉之一，那就不要怪我黑吃黑咯。
 
 于是本人花了 ¥200 从 99Max 买了最新的 v8.19.0 的服务端和客户端，然后就有了这个破解版的 RO 单机。
 
@@ -93,7 +93,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 过期后删除服务端再重新解压，依然提示过期，说明记录试用期的时间点不在服务端的文件夹内
 - 检查系统 %temp% 目录，点击试用前后并没有生成特别的文件（包括隐藏文件）
 - 用 OD 稍微反汇编了一下 `map-server.exe` ，发现大量读写系统注册表的行为
-- 社工了一下 99Max 的淘宝客服，他透露了不是联机校验，因为只会对硬盘、 CPU、 主板信息进行识别，所以重装系统不会导致激活失效
+- 社工了一下 99Max 的淘宝客服，她透露了不是联机校验，因为只会对硬盘、 CPU、 主板信息进行识别，所以重装系统不会导致激活失效
 
 综上所述，不难判断 99Max 把试用期写到了系统注册表。
 
@@ -122,9 +122,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 - EA 服务端模拟器：v8.19.0 【[Github(免费已破解)](https://github.com/lyy289065406/ro-single-server)】~【[99Max(收费)](http://www.99max.me/thread-12926-1-1.html)】~
 - 服务端环境修复包： DirectXRepair-v3.9 【[百度网盘(vs1m)](https://pan.baidu.com/s/1zoBXTi5rp7Yj1bhzMzo-oQ)】 (如果可以直接运行就不用装了)
-- 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max(收费)](http://www.99max.me/forum.php?mod=viewthread&tid=485&from=portal)】~
+- 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max(收费)](http://www.99max.me/thread-485-1-1.html)】~
 - 客户端补丁（登陆器）：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max(收费)](http://www.99max.me/thread-3674-1-1.html)】~
 
+> 历史版本更新内容详见 [这里](https://github.com/lyy289065406/ro-single-server/tree/master/history/README.md)
 
 ------
 ## 安装教程
@@ -144,6 +145,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 > 注：
 <br/>　若启动过程中报错丢失 0xc000007b，安装环境修复包 DirectXRepair 即可
 <br/>　服务端运行过程中不要关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe`
+<br/>　因 mysql 内置在服务端，懂 git 的同学可以 Fork 这个仓库，再 Checkout 一个分支就可以用 github 远程备份存档了
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/01.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/02.png)
@@ -171,10 +173,20 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ------
 ## 版本特色
 
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/04.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/05.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/06.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
+
+
+------
+## 服务端目录说明
 
 ------
 ## GM 使用教程
 
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 
 99MaxEathena SQL 一键版 - 使用说明:
 
@@ -185,10 +197,24 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 1.不要重复导入数据库，一键版已含最新数据库；
 2.设置自己MySQL的帐号与密码，默认为root root,
 
+web 地址功能
 
 ------
 ## FAQ
 
+### 搭建服务端会占用哪些端口?
+
+RO 服务端启动后，会开启 5 个服务：
+
+- 登陆服务器 `login-server.exe`： 占用端口 6900
+- 人物服务器 `char-server.exe`： 占用端口 5121
+- 地图服务器 `map-server.exe`： 占用端口 6121
+- 存档数据库 `Mysql`： 占用端口 3306
+- 配套Web站点 `Apache` ： 占用端口 8096 （较旧的版本占用的是 80 端口）
+
+如果有时服务端启动失败，不妨检查一下这些端口是否被占用。
+
+另外如果需要架设成联网服务器（或部署到 VMWare 等虚拟机），则至少对外开放 6900、 5121、 6121 这 3 个端口，客户端才能成功登陆。
 
 ------
 
