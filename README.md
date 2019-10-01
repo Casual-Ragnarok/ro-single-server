@@ -137,12 +137,13 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 服务端可解压到任意位置即可（<b>路径不要有中文</b>）
 - 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）
 - 双击运行 `02-启动RO服务端.bat`，会依次自动启动：
-<br/>  登陆服务器 `login-server.exe`
-<br/>  人物服务器 `char-server.exe`
-<br/>  地图服务器 `map-server.exe` （此时会提示注册，点击 【继续试用】 按钮即可）
+<br/>　○ 登陆服务器 `login-server.exe`
+<br/>　○ 人物服务器 `char-server.exe`
+<br/>　○ 地图服务器 `map-server.exe` （此时会提示注册，点击 【继续试用】 按钮即可）
 
-> 注：若启动过程中报错丢失 0xc000007b，安装环境修复包 DirectXRepair 即可
-<br/>  服务端运行过程中不要关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe`
+> 注：
+<br/>　若启动过程中报错丢失 0xc000007b，安装环境修复包 DirectXRepair 即可
+<br/>　服务端运行过程中不要关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe`
 
 
 ### 停止服务端
