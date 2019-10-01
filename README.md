@@ -133,6 +133,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ------
 ## 安装教程
 
+<details>
+<summary>展开查看</summary>
+<br/>
+
 ### 安装 & 启动服务端
 
 - 服务端只能运行于 Windows 系统
@@ -174,8 +178,12 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 双击运行 `99Max仙境传说_v4.3_Data.exe` 即可进入游戏
 
 
+</details>
 
-### 内置门户站点
+
+------
+## 内置门户站点
+
 
 
 
@@ -190,19 +198,26 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 正式进入 2018 年新 UI 界面时代！
 - 签到系统、一键换装、成就系统等等
 
+<details>
+<summary>展开查看</summary>
+<br/>
+
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/04.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/05.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/06.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
 
-
-
+</details>
 
 
 
 ------
 ## GM 使用教程
+
+<details>
+<summary>展开查看</summary>
+<br/>
 
 group_id设置为99即可，GM的权限查看在D:\99MaxEathena\conf\groups.conf内
 
@@ -225,9 +240,15 @@ http://127.0.0.1:8096/admin.php
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 
+</details>
+
 
 ------
 ## FAQ
+
+<details>
+<summary>展开查看</summary>
+<br/>
 
 ### 搭建服务端会占用哪些端口？
 
@@ -315,8 +336,15 @@ GM指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入GM指�
 对自己使用 @ 符号, 比如 @cash 50000
 对玩家使用 # 符号, 比如 #cash 玩家名字 50000
 
+</details>
 
+
+------
 ## 常用教程/工具
+
+<details>
+<summary>展开查看</summary>
+<br/>
 
 1.[教程]给新人如何使用 V8系 一键版 顺利进入游戏的教程
 http://www.99max.me/thread-19115-1-1.html
@@ -347,6 +375,8 @@ http://www.99max.me/thread-18709-1-2.html
 
 10.[分享]还有更多的教程及工具，请大家自行去查阅吧
 http://www.99max.me/forum-18-1.html
+
+</details>
 
 
 ------
