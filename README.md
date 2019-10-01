@@ -125,7 +125,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max:收费](http://www.99max.me/thread-485-1-1.html)】~
 - 客户端补丁（登陆器）：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
 
-> 历史版本更新内容详见 [这里](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-server.md)
+> 备：
+<br/>　服务端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-server.md)
+<br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
+
 
 ------
 ## 安装教程
@@ -187,6 +190,8 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ------
 ## GM 使用教程
 
+游戏内已设置默认的 GM 账号密码 admin admin , 默认 GM 外观.
+
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 
 99MaxEathena SQL 一键版 - 使用说明:
@@ -199,6 +204,24 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 2.设置自己MySQL的帐号与密码，默认为root root,
 
 web 地址功能
+
+查看GM指令大全 - help.txt
+
+修改经验倍率 - exp.conf
+
+修改掉落倍率 - drops.conf
+
+修改游戏名称 - char_athena.conf
+
+修改物品属性 - item_db.txt
+
+修改魔物属性 - mob_db.txt
+
+修改在线商城 - item_cash_db.txt
+
+修改交易限制 - item_trade.txt
+
+修改宠物属性 - pet_db.txt
 
 ------
 ## FAQ
@@ -218,6 +241,60 @@ RO 服务端启动后，会开启 5 个服务：
 另外如果需要架设成联机服务器（或部署到 VMWare 等虚拟机），则至少对外开放 6900、 5121、 6121 这 3 个端口，客户端才能成功登陆。
 
 ### 怎样搭建联机服务器？
+
+
+
+1. [问题]启动 map-server.exe 时出现 0xc000007b 的解决办法
+http://www.99max.me/thread-21246-1-1.html
+
+2. [问题]运行中出现计算机丢失 msvcr110.dll 和 vcruntime140.dll 的解决办法
+http://www.99max.me/thread-26184-1-1.html
+
+3. [问题]如何注册游戏账号
+可使用注册页 http://127.0.0.1:8096/ro , 也可使用 M/F 注册, 百度可查(关键词: RO的MF注册)
+
+4. [问题]如何将新注册游戏账号设置GM权限
+先安装以下地址的[工具]8, 再参考[教程]2, 数据库默认的账号密码为 root root
+
+5. [问题]没有GM工具情况下, 如何正确使用GM指令
+GM工具很早就不用了, 因为很长时间没更新, 新的GM指令已经不支持.
+GM指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入GM指令.
+对自己使用 @ 符号, 比如 @cash 50000
+对玩家使用 # 符号, 比如 #cash 玩家名字 50000
+
+
+## 常用教程/工具
+
+1.[教程]给新人如何使用 V8系 一键版 顺利进入游戏的教程
+http://www.99max.me/thread-19115-1-1.html
+
+2.[教程]99MaxEathena v8系 GM账号的设置
+http://www.99max.me/thread-12928-1-1.html
+
+3.[教程]99MaxEathena v8系 外网联机教程
+http://www.99max.me/thread-16792-1-2.html
+
+4.[原创]GM命令快捷菜单 可直接执行命令99Max专用版
+http://www.99max.me/thread-14899-1-1.html
+
+5.[工具]Yiko製造 - 99Max Eathena 文本数据编辑器 v1.1.3
+http://www.99max.me/thread-18936-1-1.html
+
+6.[教程]99MaxEathena v8系 添加自定义头饰教程
+http://www.99max.me/thread-16795-1-1.html
+
+7.[教程]99MaxEathena v8.10.0 版本 VIP系统 新增功能介绍
+http://www.99max.me/thread-19005-1-1.html
+
+8.[工具]Na.vicat110_mysql_cs 32位+64位+破解补丁
+http://www.99max.me/thread-16484-1-1.html
+
+9.[工具]给大家一个专业的文本编辑器 Notepad++ 6.6.9
+http://www.99max.me/thread-18709-1-2.html
+
+10.[分享]还有更多的教程及工具，请大家自行去查阅吧
+http://www.99max.me/forum-18-1.html
+
 
 ------
 
