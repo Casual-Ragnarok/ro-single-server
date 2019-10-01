@@ -111,13 +111,12 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 </details>
 
 
-------
 ## 运行环境
 
 　![](https://img.shields.io/badge/Platform-Windows%207%2f8%2f10%20x64-brightgreen.svg) ![](https://img.shields.io/badge/Platform-Windows%20Server%202003%2f2012%20x64-brightgreen.svg) 
 
 
-------
+
 ## 版本说明 & 下载
 
 - EA 服务端模拟器：v8.19.0 【[Github:免费已破解](https://github.com/lyy289065406/ro-single-server)】【[百度网盘(zx39):VMWare永久激活](https://pan.baidu.com/s/1M-W-bra6h16Bq7vqPI_Rng)】~【[99Max:收费](http://www.99max.me/thread-12926-1-1.html)】~
@@ -130,7 +129,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
 
 
-------
+
 ## 安装教程
 
 <details>
@@ -181,23 +180,22 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 </details>
 
 
-------
+
 ## 内置站点
 
 - Discuz! X3.2 系统（含门户/论坛/空间）： [http://127.0.0.1:8096](http://127.0.0.1:8096)
 - Discuz! 管理员后台（账密 admin/admin）： [http://127.0.0.1:8096/admin.php](http://127.0.0.1:8096/admin.php)
-- 用户角色注册页： [http://127.0.0.1:8096/ro](http://127.0.0.1:8096/ro) （同时支持 M/F 注册系统）
+- 玩家注册页： [http://127.0.0.1:8096/ro](http://127.0.0.1:8096/ro) （同时支持 M/F 注册系统）
 
 > 备： RO 的 M/F 注册系统
 <br/>　M 表示 男
 <br/>　F 表示 女
 <br/>　玩家通过客户端正常启动游戏
-<br/>　第一次登陆时，在帐号栏里填写 abc_M 或者 abc_F
-<br/>　其中 abc 就是要注册的帐号，密码栏填写要注册的密码
-<br/>　第二次登陆时，把后面的 \_M/\_F 去掉即可正常登陆
+<br/>　第一次登陆时，在帐号栏里填写 abc_M 或者 abc_F，其中 abc 就是要注册的帐号，密码栏填写要注册的密码
+<br/>　第二次登陆时，把后面的 \_M/\_F 去掉，即可正常登陆
 
 
-------
+
 ## 版本特色
 
 - 三转职业最高 BASE 等级 175, 最高 JOB 等级 60
@@ -221,7 +219,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 
 
-------
+
 ## GM 使用教程
 
 <details>
@@ -247,14 +245,14 @@ group_id设置为99即可，GM的权限查看在D:\99MaxEathena\conf\groups.conf
 </details>
 
 
-------
+
 ## FAQ
 
 <details>
 <summary>展开查看</summary>
 <br/>
 
-### 搭建服务端会占用哪些端口？
+### 0x01 搭建服务端会占用哪些端口？
 
 RO 服务端启动后，会开启 5 个服务：
 
@@ -268,7 +266,8 @@ RO 服务端启动后，会开启 5 个服务：
 
 另外如果需要架设成联机服务器（或部署到 VMWare 等虚拟机），则至少对外开放 6900、 5121、 6121 这 3 个端口，客户端才能成功登陆。
 
-### 怎样搭建联机服务器？
+
+### 0x02 怎样搭建联机服务器？
 
 第一，我们在 99MaxEathena v8.7.0 端内添加联机IP：
 ★如果IP只是外网的，将 char_athena.conf 和 map_athena.conf 内
@@ -343,7 +342,7 @@ GM指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入GM指�
 </details>
 
 
-------
+
 ## 常用教程/工具
 
 <details>
@@ -383,7 +382,7 @@ http://www.99max.me/forum-18-1.html
 </details>
 
 
-------
+
 ## 【附】 目录 & 文件功能说明
 
 - GM指令大全 - help.txt
