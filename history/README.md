@@ -40,7 +40,7 @@
 
 ------
 ## 99MaxEathena v8.18.0 (2018.08.10)
-- 编写于99MaxEathenaSVN小组r2447版本
+> 编写于99MaxEathenaSVN小组r2447版本
 - 新增upgrade_v8.18.0.sql数据库升级补丁
 - 新增时装装备支持插卡功能
 - 新增实时地图克隆系统
@@ -93,7 +93,7 @@
 
 ------
 ## 99MaxEathena v8.17.0 (2018.02.08)
-- 编写于99MaxEathenaSVN小组r2321版本
+> 编写于99MaxEathenaSVN小组r2321版本
 - 新增upgrade_v8.17.0.sql数据库升级补丁
 - 修正BOSS坟墓的魔物名字读取错误
 - \[汉化\] 海底5<->海底6 传送守门人脚本
@@ -111,7 +111,7 @@
 
 ------
 ## 99MaxEathena v8.16.0 (2017.08.18)
-- 编写于99MaxEathenaSVN小组r2242版本
+> 编写于99MaxEathenaSVN小组r2242版本
 - 新增upgrade_v8.16.0.sql数据库升级补丁
 - 修正小青不能成功抓宠的错误
 - 修正地狱南瓜帽子不能变身的错误
@@ -152,7 +152,7 @@
 
 ------
 ## 99MaxEathena v8.15.0 (2017.03.23)
-- 编写于99MaxEathenaSVN小组r2116版本
+> 编写于99MaxEathenaSVN小组r2116版本
 - 新增upgrade_v8.15.0.sql数据库升级补丁
 - 添加\[自动赞助系统\]预览脚本
 - 添加\[自定义\]农场种植园副本脚本
@@ -193,7 +193,7 @@
 
 ------
 ## 99MaxEathena v8.14.0 (2016.10.16)
-- 编写于99MaxEathenaSVN小组r1952版本
+> 编写于99MaxEathenaSVN小组r1952版本
 - 新增upgrade_v8.14.0.sql数据库升级补丁
 - 新增玩家登录游戏时, 有欢迎词显示
 - 新增\[时装精炼师\]脚本, 可全身时装精炼\[需item_db可精炼支持\]
@@ -284,7 +284,7 @@
 
 ------
 ## 99MaxEathena v8.13.1 (2016.04.20)
-- 编写于99MaxEathenaSVN小组r1751版本
+> 编写于99MaxEathenaSVN小组r1751版本
 - 新增upgrade_v8.13.1.sql数据库升级补丁
 - 修正大量物品、魔物、技能BUG错误
 - 正式进入全民\[杜兰族\]时代
@@ -298,11 +298,11 @@
 - 修改PACKETVER = 20151029
 - 修改登录器20151029封包密钥
 - 修正杜兰族不能打开仓库的错误, 感谢\[叶叔叔\]反馈
-- 新增\[活动管理器\]脚本, 演示: http://www.99max.me/thread-20089-1-1.html
+- 新增\[活动管理器\]脚本, [演示](http://www.99max.me/thread-20089-1-1.html)
 - 修改\[PvP大作战\]玩家死亡强制传送复活点
 - 修改\[竞技场排名\]中的1v1地图改为pvp_n_1-3
 - 新增2015-11-04aRagex封包
-- 新增自动售货机\[扩展\]系统, 演示: http://www.99max.me/thread-20096-1-1.html
+- 新增自动售货机\[扩展\]系统, [演示](http://www.99max.me/thread-20096-1-1.html)
 - 新增在PVP/GVG时最大的ASPD设定(player.conf)
 - 修改\[邮箱脚本\], 使其可在2015客户端内收件使用
 - 修正\[自动售货机\]显示已出售的物品名称BUG
@@ -312,7 +312,7 @@
 
 ------
 ## 99MaxEathena v8.13.0 (2016.03.27)
-- 编写于99MaxEathenaSVN小组r1706版本
+> 编写于99MaxEathenaSVN小组r1706版本
 - 新增upgrade_v8.13.0.sql数据库升级补丁
 - 修正大量物品、魔物、技能BUG错误
 - 修正 ATK/MATK 参数错误
@@ -345,7 +345,7 @@
 
 ------
 ## 99MaxEathena v8.12.0 (2015.11.18)
-- 编写于99MaxEathenaSVN小组r1566版本
+> 编写于99MaxEathenaSVN小组r1566版本
 - 新增upgrade_v8.12.0.sql数据库升级补丁
 - 修正大量物品、魔物、技能BUG错误
 - 添加日本头饰\[JRO_217-JRO_275\]DB数据
@@ -408,7 +408,7 @@
 
 ------
 ## 99MaxEathena v8.11.0 (2015.06.16)
-- 编写于99MaxEathenaSVN小组r1494版本
+> 编写于99MaxEathenaSVN小组r1494版本
 - 新增upgrade_v8.11.0.sql数据库升级补丁
 - 修正大量物品、魔物、技能BUG错误
 - 加入妖西头饰DB及在商城内演示
@@ -446,7 +446,7 @@
 
 ------
 ## 99MaxEathena v8.10.0 (2015.03.18)
-- 编写于99MaxEathenaSVN小组r1430版本
+> 编写于99MaxEathenaSVN小组r1430版本
 - 新增upgrade_v8.10.0.sql数据库升级补丁
 - 修正大量物品、魔物、技能BUG错误
 - 完整汉化莫拉村任务脚本
@@ -474,7 +474,7 @@
 
 ------
 ## 99MaxEathena v8.9.0 (2015.01.01)
-- 编写于99MaxEathenaSVN小组r1346版本
+> 编写于99MaxEathenaSVN小组r1346版本
 - 新增upgrade_v8.9.0.sql数据库升级补丁
 - 修正大量物品、魔物、技能BUG错误
 - 修改事件最大数量 50 -> 200
@@ -497,7 +497,7 @@
 
 ------
 ## 99MaxEathena v8.8.0 (2014.09.07)
-- 编写于99MaxEathenaSVN小组r1258版本
+> 编写于99MaxEathenaSVN小组r1258版本
 - 新增upgrade_v8.8.0.sql数据库升级补丁
 - 修正大量物品、魔物、技能BUG错误
 - 修正\[重力圣人\]无效果BUG
@@ -522,7 +522,7 @@
 
 ------
 ## 99MaxEathena v8.7.0 (2014.05.18)
-- 编写于99MaxEathenaSVN小组r1063版本
+> 编写于99MaxEathenaSVN小组r1063版本
 - 新增upgrade_v8.7.0.sql数据库升级补丁
 - 新增2转公式、脚本等
 - 新增\[WOE信息牌\]\[刻印师\]NPC
@@ -538,32 +538,40 @@
 
 ------
 ## 99MaxEathena v8.6.0 (2014.01.28)
-- 编写于99MaxEathenaSVN小组r836版本
+> 编写于99MaxEathenaSVN小组r836版本
 - 新增upgrade_v8.6.0.sql数据库升级补丁
 - 详细内容见更新图片
-- 由于此次更新内容较多，更新图片分为第一、二、三页
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.6.0-1.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.6.0-2.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.6.0-3.png)
 
 ------
 ## 99MaxEathena v8.5.0 (2013.05.28)
-- 编写于99MaxEathenaSVN小组r600版本
+> 编写于99MaxEathenaSVN小组r600版本
 - 新增upgrade_v8.5.0.sql数据库升级补丁
 - 详细内容见更新图片
-- 由于此次更新内容较多，更新图片一张不够，故r509-545更新内容省略，只显示r546-600
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.5.0.png)
 
 ------
 ## 99MaxEathena v8.4.0 (2013.02.16)
-- 编写于99MaxEathenaSVN小组r508版本
+> 编写于99MaxEathenaSVN小组r508版本
 - 新增upgrade_v8.4.0.sql数据库升级补丁
 - 详细内容见更新图片
 
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.4.0.png)
+
 ------
 ## 99MaxEathena v8.3.0 (2012.11.12)
-- 编写于99MaxEathenaSVN小组r475版本
+> 编写于99MaxEathenaSVN小组r475版本
 - 详细内容见更新图片
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.3.0.png)
 
 ------
 ## 99MaxEathena v8.2.0 (2012.08.31)
-- 编写于99MaxEathenaSVN小组r382版本
+> 编写于99MaxEathenaSVN小组r382版本
 - 新增公会同盟聊天频道
 - 新增魔物资讯显示系统
 - 新增公会人数扩增系统
@@ -572,24 +580,32 @@
 - 新增upgrade_v8.2.0.sql数据库升级补丁
 - 详细内容见更新图片
 
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.2.0.png)
+
 ------
 ## 99MaxEathena v8.1.0 (2012.07.29)
-- 编写于99MaxEathenaSVN小组r281版本
+> 编写于99MaxEathenaSVN小组r281版本
 - 详细内容见更新图片
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.1.0.png)
 
 ------
 ## 99MaxEathena v8.0.0 (2012.06.24)
-- 编写于99MaxEathenaSVN小组r121版本
+> 编写于99MaxEathenaSVN小组r121版本
 - 详细内容见更新图片
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v8.0.0.png)
 
 ------
 ## 99MaxEathena v7.1.0 (2011.12.16)
-- 编写于99MaxEathenaSVN小组r80版本
+> 编写于99MaxEathenaSVN小组r80版本
 - 详细内容见更新图片
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/history/v7.1.0.png)
 
 ------
 ## 99MaxEathena v7.0.0 (2011.11.25)
-- 成立99MaxEathenaSVN小组，编写于r55版本
+> 成立99MaxEathenaSVN小组，编写于r55版本
 - 整合源代码eA+3CeAM+RR，使其能更好支持RE客户端
 - 修正v6系发现的几个重大BUG
 - 修正飞空艇NPC一处错误
