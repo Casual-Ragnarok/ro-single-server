@@ -138,8 +138,8 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 服务端可放到任意位置（<b>路径不要有中文</b>）
 - 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）
 - 双击运行 `02-启动RO服务端.bat`，会依次自动启动：
+<br/>　○ 角色服务器 `char-server.exe`
 <br/>　○ 登陆服务器 `login-server.exe`
-<br/>　○ 人物服务器 `char-server.exe`
 <br/>　○ 地图服务器 `map-server.exe` （此时会提示注册，点击 【继续试用】 按钮即可）
 
 > 注：
@@ -206,8 +206,8 @@ web 地址功能
 
 RO 服务端启动后，会开启 5 个服务：
 
+- 角色服务器 `char-server.exe`： 占用端口 5121
 - 登陆服务器 `login-server.exe`： 占用端口 6900
-- 人物服务器 `char-server.exe`： 占用端口 5121
 - 地图服务器 `map-server.exe`： 占用端口 6121
 - 存档数据库 `Mysql`： 占用端口 3306
 - 配套Web站点 `Apache` ： 占用端口 8096 （较旧的版本占用的是 80 端口）
