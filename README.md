@@ -382,21 +382,22 @@ http://www.99max.me/forum-18-1.html
 ------
 ## 【附】 目录 & 文件功能说明
 
-GM指令大全 - help.txt
-角色指令大全 - charhelp.txt
-修改经验倍率 - exp.conf
-修改掉落倍率 - drops.conf
-修改游戏名称 - char_athena.conf
-修改物品属性 - item_db.txt
-修改魔物属性 - mob_db.txt
-修改在线商城 - item_cash_db.txt
-修改交易限制 - item_trade.txt
-修改宠物属性 - pet_db.txt
+- GM指令大全 - help.txt
+- 角色指令大全 - charhelp.txt
+- 修改经验倍率 - exp.conf
+- 修改掉落倍率 - drops.conf
+- 修改游戏名称 - char_athena.conf
+- 修改物品属性 - item_db.txt
+- 修改魔物属性 - mob_db.txt
+- 修改在线商城 - item_cash_db.txt
+- 修改交易限制 - item_trade.txt
+- 修改宠物属性 - pet_db.txt
 
 <details>
 <summary>展开查看</summary>
 <br/>
 
+```
 ro-single-server
 |-- 01-启动架设环境.bat
 |-- 02-启动RO服务端.bat
@@ -756,7 +757,7 @@ ro-single-server
 └-- README.md
 
 994 directories, 10054 files
-
+```
 
 </details>
 
