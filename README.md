@@ -105,7 +105,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 > 注：注册表地址 `HKCU` 是 `HKEY_CURRENT_USER` 的缩写
 
-![](https://github.com/lyy289065406/ro-single-server/blob/modify/img/01.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/00.png)
 
 
 </details>
@@ -131,10 +131,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 ### 安装 & 启动服务端
 
-- 服务端只能运行于 Windows 平台，实测 Windows 7/8/10 均可，推荐 Windows 7
+- 服务端只能运行于 Windows 系统
 - 安装 git，执行命令 `git clone https://github.com/lyy289065406/ro-single-server` 下载 EA 服务端
 - 不懂 git 的同学可以直接点击本 [Github](https://github.com/lyy289065406/ro-single-server) 仓库的 【Clone and download】 ，解压后也是一样的
-- 服务端可解压到任意位置即可（<b>路径不要有中文</b>）
+- 服务端可放到任意位置（<b>路径不要有中文</b>）
 - 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）
 - 双击运行 `02-启动RO服务端.bat`，会依次自动启动：
 <br/>　○ 登陆服务器 `login-server.exe`
@@ -144,6 +144,9 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 > 注：
 <br/>　若启动过程中报错丢失 0xc000007b，安装环境修复包 DirectXRepair 即可
 <br/>　服务端运行过程中不要关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe`
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/01.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/02.png)
 
 
 ### 停止服务端
@@ -157,10 +160,20 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 ### 安装 & 启动客户端
 
+- 客户端只能运行于 Windows 系统
+- 下载韩服客户端（版本必须是 Ragnarok_KRO_20190306_Lite）
+- 下载客户端补丁（版本必须是 v4.3）
+- 解压客户端到任意位置（<b>路径不要有中文</b>）
+- 解压客户端补丁到韩服客户端根目录，同名文件全覆盖
+- 双击运行 `99Max仙境传说_v4.3_Data.exe` 即可进入游戏
 
 
 ------
-## 使用教程
+## 版本特色
+
+
+------
+## GM 使用教程
 
 
 99MaxEathena SQL 一键版 - 使用说明:
@@ -171,10 +184,6 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 在开启SQL一键版服务端前要做2件事情：
 1.不要重复导入数据库，一键版已含最新数据库；
 2.设置自己MySQL的帐号与密码，默认为root root,
-
-------
-## 版本特色
-
 
 
 ------
