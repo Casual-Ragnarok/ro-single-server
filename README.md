@@ -147,9 +147,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/05.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/06.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/09.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/10.png)
 
 </details>
-
 
 
 ## 安装教程
@@ -221,8 +222,8 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　第二次登陆时，把后面的 \_M/\_F 去掉，即可正常登陆
 
 
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/12.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/13.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/12.png)
 
 </details>
 
@@ -287,8 +288,6 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　GM 指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/09.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/10.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/11.png)
 
 
@@ -477,7 +476,7 @@ ro-single-server
 |-- mapserv.bat  ............................  [启动地图服务器 login-server.exe 的脚本]
 |-- map-server.exe  .........................  [地图服务器]
 |-- libmysql.dll  ...........................  [连接 mysql 模块的库文件]
-|-- pcre8.dll  ..............................  [perl 正则表达式模块的库文件]]
+|-- pcre8.dll  ..............................  [perl 正则表达式模块的库文件]
 |-- zlib.dll  ...............................  [解压模块的库文件]
 |-- msvcr110.dll  ...........................  [.NET 库文件之一]
 |-- vcruntime140.dll  .......................  [.NET 库文件之一]
