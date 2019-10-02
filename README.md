@@ -460,7 +460,9 @@ RO 服务端启动后，会开启 5 个服务：
 <summary>展开查看</summary>
 <br/>
 
-> 注：历史原因，服务端大部分文件的编码都是以 GBK 为主，目前主流编码是 UTF-8，但是修改文件时不要随便改变文件编码，避免引起不必要的异常
+> 注：
+<br/>　RO 服务端除了使用 mysql 作为动态数据库之外，还会使用 txt 和 conf 作为静态数据库
+<br/>　历史原因，服务端大部分文件的编码都是以 GBK 为主，目前主流编码是 UTF-8，但是修改文件时不要随便改变文件编码，避免引起不必要的异常
 
 ```
 ro-single-server
@@ -495,82 +497,47 @@ ro-single-server
 |   |       └-- mysql  ......................  [mysql 存档数据库]
 |   └-- www  ................................  [Discuz! 门户网站前端源码]
 |-- conf  ...................................  [RO 服务端配置目录]
-|   |-- battle_athena.conf
-|   |-- channels.conf
-|   |-- char_athena.conf
-|   |-- charhelp.txt
-|   |-- charhelp.txt.dump
-|   |-- grf-files.txt
-|   |-- groups.conf
-|   |-- help.txt
-|   |-- atcommand_athena.conf
-|   |-- inter_athena.conf
-|   |-- inter_athena.conf.dump
+|   |-- help.txt  ...........................  [GM 命令配置文件]
+|   |-- charhelp.txt  .......................  [角色命令配置文件]
+|   |-- atcommand_athena.conf ...............  [命令别名配置文件]
+|   |-- char_athena.conf  ...................  [角色服务器配置文件（可修改服务器参数）]
+|   |-- login_athena.conf  ..................  [登录服务器配置文件]
+|   |-- map_athena.conf  ....................  [地图服务器配置文件]
+|   |-- maps_athena.conf  ...................  [地图名称数据库]
+|   |-- groups.conf  ........................  [各个玩家角色组的权限配置文件（GM 权限配置）]
+|   |-- script_athena.conf ..................  [脚本配置文件]
+|   |-- subnet_athena.conf ..................  [子网配置文件]
+|   |-- packet_athena.conf ..................  [Socket 配置文件]
+|   |-- log_athena.conf .....................  [日志配置文件]
+|   |-- inter_athena.conf  ..................  [数据库配置文件]
 |   |-- inter_server.yml
-|   |-- log_athena.conf
-|   |-- login_athena.conf
-|   |-- map_athena.conf
-|   |-- maps_athena.conf
 |   |-- motd.txt
-|   |-- packet_athena.conf
 |   |-- valkyrie_sample.cfg
-|   |-- script_athena.conf
-|   |-- subnet_athena.conf
+|   |-- channels.conf
+|   |-- grf-files.txt
+|   |-- battle_athena.conf  .................  [通过 import 导入汇总了所有与战斗相关的配置文件]
 |   |-- battle
-|   |   |-- battle.conf
-|   |   |-- battleground.conf
-|   |   |-- client.conf
-|   |   |-- drops.conf
-|   |   |-- exp.conf
-|   |   |-- feature.conf
-|   |   |-- gm.conf
-|   |   |-- guild.conf
-|   |   |-- homunc.conf
-|   |   |-- items.conf
-|   |   |-- misc.conf
-|   |   |-- monster.conf
-|   |   |-- party.conf
-|   |   |-- pet.conf
-|   |   |-- player.conf
-|   |   |-- skill.conf
-|   |   └-- status.conf
-|   |-- import
-|   |   |-- battle_conf.txt
-|   |   |-- char_conf.txt
-|   |   |-- inter_conf.txt
-|   |   |-- inter_server.yml
-|   |   |-- log_conf.txt
-|   |   |-- login_conf.txt
-|   |   |-- map_conf.txt
-|   |   |-- packet_conf.txt
-|   |   └-- script_conf.txt
-|   |-- msg_conf
-|   |   |-- char_msg.conf
-|   |   |-- import
-|   |   |   |-- map_msg_chn_conf.txt
-|   |   |   |-- map_msg_eng_conf.txt
-|   |   |   |-- map_msg_frn_conf.txt
-|   |   |   |-- map_msg_grm_conf.txt
-|   |   |   |-- map_msg_idn_conf.txt
-|   |   |   |-- map_msg_mal_conf.txt
-|   |   |   |-- map_msg_por_conf.txt
-|   |   |   |-- map_msg_rus_conf.txt
-|   |   |   |-- map_msg_spn_conf.txt
-|   |   |   └-- map_msg_tha_conf.txt
-|   |   |-- login_msg.conf
-|   |   |-- map_msg_chn.conf
-|   |   |-- map_msg.conf
-|   |   |-- map_msg_frn.conf
-|   |   |-- map_msg_grm.conf
-|   |   |-- map_msg_idn.conf
-|   |   |-- map_msg_mal.conf
-|   |   |-- map_msg_por.conf
-|   |   |-- map_msg_rus.conf
-|   |   |-- map_msg_spn.conf
-|   |   |-- map_msg_tha.conf
-|   |   └-- translation.conf
-|   └-- README.md
-|-- db
+|   |   |-- battle.conf  ....................  [有关一般战斗的配置]
+|   |   |-- battleground.conf  ..............  [战役/战场配置]
+|   |   |-- client.conf .....................  [客户端效果的配置]
+|   |   |-- drops.conf  .....................  [物品掉落几率配置]
+|   |   |-- exp.conf  .......................  [经验倍率/经验处罚率、人物状态、人物最高等级的配置]
+|   |   |-- feature.conf  ...................  [功能控制（开/关）配置]
+|   |   |-- gm.conf  ........................  [GM 等级、GM 命令和相关防止恶意攻击的配置]
+|   |   |-- guild.conf  .....................  [公会和 GVG 配置]
+|   |   |-- homunc.conf  ....................  [人工生命体配置]
+|   |   |-- items.conf  .....................  [物品效果和物品验证的配置]
+|   |   |-- status.conf  ....................  [状态配置]
+|   |   |-- monster.conf  ...................  [魔物配置]
+|   |   |-- party.conf  .....................  [组队配置]
+|   |   |-- pet.conf  .......................  [宠物配置]
+|   |   |-- player.conf  ....................  [人物效果配置]
+|   |   |-- skill.conf  .....................  [技能配置]
+|   |   └-- misc.conf  ......................  [环境配置（不属于上面分类里的设置，如 PVP、昼夜、禁言、日志等）]
+|   |-- msg_conf  ...........................  [各种事件、地图、任务、系统等消息的配置]
+|   |-- import  .............................  [目录已失效]
+|   └-- README.md  ..........................  [RO 服务端配置目录说明]
+|-- db  .....................................  [RO 服务端文本数据库]
 |   |-- abra_db.txt
 |   |-- castle_db.txt
 |   |-- const.txt
@@ -699,9 +666,9 @@ ro-single-server
 |   |   |-- item_bluebox.txt
 |   |   |-- item_buyingstore.txt
 |   |   |-- item_cardalbum.txt
-|   |   |-- item_cash_db.txt
+|   |   |-- item_cash_db.txt  ...............  [在线商城]
 |   |   |-- item_combo_db.txt
-|   |   |-- item_db.txt
+|   |   |-- item_db.txt  ....................  [物品属性]
 |   |   |-- item_delay.txt
 |   |   |-- item_flag.txt
 |   |   |-- item_giftbox.txt
@@ -712,7 +679,7 @@ ro-single-server
 |   |   |-- item_randomopt_db.txt
 |   |   |-- item_randomopt_group.txt
 |   |   |-- item_stack.txt
-|   |   |-- item_trade.txt
+|   |   |-- item_trade.txt  .................  [交易限制]
 |   |   |-- item_violetbox.txt
 |   |   |-- job_basehpsp_db.txt
 |   |   |-- job_db1.txt
@@ -723,13 +690,13 @@ ro-single-server
 |   |   |-- map_cache.dat
 |   |   |-- mob_boss.txt
 |   |   |-- mob_branch.txt
-|   |   |-- mob_db.txt
+|   |   |-- mob_db.txt  .....................  [魔物属性]
 |   |   |-- mob_drop.txt
 |   |   |-- mob_poring.txt
 |   |   |-- mob_race2_db.txt
 |   |   |-- mob_random_db.txt
 |   |   |-- mob_skill_db.txt
-|   |   |-- pet_db.txt
+|   |   |-- pet_db.txt  .....................  [宠物属性]
 |   |   |-- produce_db.txt
 |   |   |-- quest_db.txt
 |   |   |-- refine_db.yml
@@ -741,7 +708,7 @@ ro-single-server
 |   |   |-- skill_tree.txt
 |   |   |-- skill_unit_db.txt
 |   |   └-- statpoint.txt
-|   └-- README.md
+|   └-- README.md  ..........................  [RO 服务端文本数据库说明]
 |-- doc
 |   |-- 99MaxEa_atcommands.txt
 |   |-- 99MaxEa_bonus.txt
@@ -810,7 +777,7 @@ ro-single-server
 |   |   |-- npc_test_time.txt
 |   |   └-- randomopt.txt
 |   └-- README.md
-└-- README.md
+└-- README.md  ..............................  [RO 服务端说明]
 
 994 directories, 10054 files
 ```
