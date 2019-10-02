@@ -187,6 +187,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - Discuz! 管理员后台（账密 admin/admin）： [http://127.0.0.1:8096/admin.php](http://127.0.0.1:8096/admin.php)
 - 玩家注册页： [http://127.0.0.1:8096/ro](http://127.0.0.1:8096/ro) （同时支持 M/F 注册系统）
 
+<details>
+<summary>展开查看更多</summary>
+<br/>
+
 > 备： RO 的 M/F 注册系统
 <br/>　M 表示 男
 <br/>　F 表示 女
@@ -194,6 +198,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　第一次登陆时，在帐号栏里填写 abc_M 或者 abc_F，其中 abc 就是要注册的帐号，密码栏填写要注册的密码
 <br/>　第二次登陆时，把后面的 \_M/\_F 去掉，即可正常登陆
 
+</details>
 
 
 ## 版本特色
@@ -206,7 +211,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 签到系统、一键换装、成就系统等等
 
 <details>
-<summary>展开查看</summary>
+<summary>展开查看更多</summary>
 <br/>
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
@@ -219,26 +224,55 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 
 
-
 ## GM 使用教程
 
+### 默认 GM 账号
+
+- 账号： admin
+- 密码： admin
+- 名称： GM01
+- 外观： GM 默认外观
+
+### 默认数据库
+
+- 类型： mysql
+- IP： 127.0.0.1
+- 端口： 3306
+- 账号： root
+- 密码： root
+- 库名：
+- 账号管理表： login
+- 角色管理表： char
+
+> 注：
+<br/>　mysql 的 root 账号只允许本地连接
+<br/>　若需要通过联网访问，需增加新的 mysql 账号并授权（具体方法自行搜索）
+
+### 添加 GM 账号
+
+- 注册普通账号
+- 使用任意工具（如 navicat）登录数据库
+- 打开账号管理表 login ，找到刚刚注册的普通账号
+- 修改 group_id 列为 99 即可赋予其 GM 权限
+
+> 注：group_id 表示 GM 等级，各个等级权限详见 [conf/groups.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/groups.conf) 文件
+
+### GM 常用配置
+
+- GM指令大全： [conf/help.txt](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
+- 角色指令大全：  [conf/charhelp.txt](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
+- 修改游戏名称：  [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+- 修改经验倍率：  [conf/battle/exp.conf](https://github.com/lyy289065406/ro-single-server/blob/master/)
+- 修改掉落倍率：  [conf/battle/drops.conf](https://github.com/lyy289065406/ro-single-server/blob/master/)
+- 修改物品属性：  [db/re/item_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/)
+- 修改魔物属性：  [db/re/mob_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/)
+- 修改在线商城：  [db/re/item_cash_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/)
+- 修改交易限制：  [db/re/item_trade.txt](https://github.com/lyy289065406/ro-single-server/blob/master/)
+- 修改宠物属性：  [db/re/pet_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/)
+
 <details>
-<summary>展开查看</summary>
+<summary>展开查看更多</summary>
 <br/>
-
-group_id设置为99即可，GM的权限查看在D:\99MaxEathena\conf\groups.conf内
-
-
-游戏内已设置默认的 GM 账号密码 admin admin , 默认 GM 外观.
-设置自己MySQL的帐号与密码，默认为root root,
-
-游戏账号无需网页注册，进入登陆画面，输入账号_M或_F，即可自动注册
-程序自带GM账号:admin 密码:admin 中的人物 最后防线
-
-
-
-3. [问题]如何注册游戏账号
-可使用注册页 http://127.0.0.1:8096/ro , 也可使用 M/F 注册, 百度可查(关键词: RO的MF注册)
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 
@@ -385,16 +419,7 @@ http://www.99max.me/forum-18-1.html
 
 ## 【附】 目录 & 文件功能说明
 
-- GM指令大全 - help.txt
-- 角色指令大全 - charhelp.txt
-- 修改经验倍率 - exp.conf
-- 修改掉落倍率 - drops.conf
-- 修改游戏名称 - char_athena.conf
-- 修改物品属性 - item_db.txt
-- 修改魔物属性 - mob_db.txt
-- 修改在线商城 - item_cash_db.txt
-- 修改交易限制 - item_trade.txt
-- 修改宠物属性 - pet_db.txt
+
 
 <details>
 <summary>展开查看</summary>
