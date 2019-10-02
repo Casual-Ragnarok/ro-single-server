@@ -455,26 +455,26 @@ RO 服务端启动后，会开启 5 个服务：
 
 ```
 ro-single-server
-|-- 01-启动架设环境.bat  ..................  [启动 mysql 存档数据库和 Apache 门户网站]
-|-- 02-启动RO服务端.bat  ..................  [启动 RO服务端（含登录、角色、地图服务器）]
-|-- 03-关闭假设环境.bat
-|-- 04-重置试用时间.bat
-|-- serv.bat
-|-- logserv.bat
-|-- login-server.exe
-|-- charserv.bat
-|-- char-server.exe
-|-- mapserv.bat
-|-- map-server.exe
-|-- libmysql.dll
-|-- pcre8.dll
-|-- zlib.dll
-|-- msvcr110.dll
-|-- vcruntime140.dll
+|-- 01-启动架设环境.bat  .....................  [启动 mysql 存档数据库和 Apache 门户网站]
+|-- 02-启动RO服务端.bat  .....................  [启动 RO 服务端（含登录、角色、地图服务器）]
+|-- 03-关闭架设环境.bat  .....................  [停止 mysql 存档数据库和 Apache 门户网站]
+|-- 04-重置试用时间.bat  .....................  [服务端试用期破解脚本]
+|-- serv.bat  ...............................  [调用脚本 logserv.bat、 charserv.bat、 mapserv.bat 的前置脚本]
+|-- logserv.bat  ............................  [启用登录服务器 login-server.exe 的脚本]
+|-- login-server.exe  .......................  [登录服务器]
+|-- charserv.bat  ...........................  [启动角色服务器 char-server.exe 的脚本]
+|-- char-server.exe  ........................  [角色服务器]
+|-- mapserv.bat  ............................  [启动地图服务器 login-server.exe 的脚本]
+|-- map-server.exe  .........................  [地图服务器]
+|-- libmysql.dll  ...........................  [连接 mysql 模块的库文件]
+|-- pcre8.dll  ..............................  [perl 正则表达式模块的库文件]]
+|-- zlib.dll  ...............................  [解压模块的库文件]
+|-- msvcr110.dll  ...........................  [.NET 库文件之一]
+|-- vcruntime140.dll  .......................  [.NET 库文件之一]
+|-- npc  ....................................  [NPC 数据库（在 re 文件夹内表示"复兴后"）]
+|-- sql-files  ..............................  [mysql 建库脚本]
 |-- history
 |-- img
-|-- npc
-|-- sql-files
 |-- conf
 |   |-- atcommand_athena.conf
 |   |-- battle
