@@ -255,11 +255,12 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ### 添加 GM 账号
 
 - 注册普通账号
-- 使用任意工具（如 navicat）登录数据库
+- 使用任意工具（如 Navicat【[百度网盘(5z29)](https://pan.baidu.com/s/19AfofEPg37YoootVpgMeDg)】）登录数据库
 - 打开账号管理表 login ，找到刚刚注册的普通账号
 - 修改 group_id 列为 99 即可赋予其 GM 权限
 
 > 注：group_id 表示 GM 等级，各个等级权限详见 [conf/groups.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/groups.conf) 文件
+
 
 ### GM 常用配置
 
