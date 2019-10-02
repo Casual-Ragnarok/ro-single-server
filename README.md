@@ -129,12 +129,31 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
 
 
+## 版本特色
 
-## 安装教程
+- 三转职业最高 BASE 等级 175, 最高 JOB 等级 60
+- 扩展职业最高 BASE 等级 160, 最高 JOB 等级 50
+- 全新职业 [杜兰族]
+- 无登录限制，无限在线人数
+- 正式进入 2018 年新 UI 界面时代！
+- 签到系统、一键换装、成就系统等等
 
 <details>
-<summary>展开查看</summary>
+<summary>展开查看更多</summary>
 <br/>
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/04.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/05.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/06.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/09.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/10.png)
+
+</details>
+
+
+## 安装教程
 
 ### 安装 & 启动服务端
 
@@ -152,6 +171,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　若启动过程中报错丢失 0xc000007b，安装环境修复包 DirectXRepair 即可
 <br/>　服务端运行过程中不要关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe`
 <br/>　因 mysql 内置在服务端，懂 git 的同学可以 Fork 这个仓库，再 Checkout 一个分支就可以用 github 远程备份存档了
+
+<details>
+<summary>展开查看更多</summary>
+<br/>
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/01.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/02.png)
@@ -187,6 +210,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - Discuz! 管理员后台（账密 admin/admin）： [http://127.0.0.1:8096/admin.php](http://127.0.0.1:8096/admin.php)
 - 玩家注册页： [http://127.0.0.1:8096/ro](http://127.0.0.1:8096/ro) （同时支持 M/F 注册系统）
 
+<details>
+<summary>展开查看更多</summary>
+<br/>
+
 > 备： RO 的 M/F 注册系统
 <br/>　M 表示 男
 <br/>　F 表示 女
@@ -195,64 +222,102 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　第二次登陆时，把后面的 \_M/\_F 去掉，即可正常登陆
 
 
-
-## 版本特色
-
-- 三转职业最高 BASE 等级 175, 最高 JOB 等级 60
-- 扩展职业最高 BASE 等级 160, 最高 JOB 等级 50
-- 全新职业 [杜兰族]
-- 无登录限制，无限在线人数
-- 正式进入 2018 年新 UI 界面时代！
-- 签到系统、一键换装、成就系统等等
-
-<details>
-<summary>展开查看</summary>
-<br/>
-
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/04.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/05.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/06.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/13.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/12.png)
 
 </details>
-
-
 
 
 ## GM 使用教程
 
+### 默认 GM 账号
+
+- 账号： admin
+- 密码： admin
+- 名称： GM01
+- 外观： GM 默认外观
+
 <details>
-<summary>展开查看</summary>
-<br/>
+<summary>展开查看更多</summary>
 
-group_id设置为99即可，GM的权限查看在D:\99MaxEathena\conf\groups.conf内
+### 服务器数据库
+
+- 类型： mysql
+- IP： 127.0.0.1
+- 端口： 3306
+- 账号： root
+- 密码： root
+- 库名： ragnarok
+- 账号管理表： login
+- 角色管理表： char
+
+> 注：
+<br/>　mysql 的 root 账号只允许本地连接
+<br/>　若需要通过联网访问，需增加新的 mysql 账号并授权（具体方法自行搜索）
+
+### 添加 GM 账号
+
+- 注册普通账号
+- 使用任意工具（如 Navicat【[百度网盘(5z29)](https://pan.baidu.com/s/19AfofEPg37YoootVpgMeDg)】）登录数据库
+- 打开账号管理表 login ，找到刚刚注册的普通账号
+- 修改 group_id 列为 99 即可赋予其 GM 权限
+
+> 注：group_id 表示 GM 等级，各个等级权限详见 [conf/groups.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/groups.conf) 文件
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/14.png)
 
 
-游戏内已设置默认的 GM 账号密码 admin admin , 默认 GM 外观.
-设置自己MySQL的帐号与密码，默认为root root,
+### GM 常用配置
 
-游戏账号无需网页注册，进入登陆画面，输入账号_M或_F，即可自动注册
-程序自带GM账号:admin 密码:admin 中的人物 最后防线
+- GM 指令辅助工具： [`gm-cmd/GM命令快捷菜单.exe`](https://github.com/lyy289065406/ro-single-server/blob/master/gm-cmd/GM命令快捷菜单.exe)
+- GM 指令大全： [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
+- 角色指令大全：  [`conf/charhelp.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
+- 修改服务器参数：  [`conf/char_athena.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+- 修改经验倍率：  [`conf/battle/exp.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/exp.conf)
+- 修改掉落倍率：  [`conf/battle/drops.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/drops.conf)
+- 修改物品属性：  [`db/re/item_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_db.txt)
+- 修改魔物属性：  [`db/re/mob_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/mob_db.txt)
+- 修改在线商城：  [`db/re/item_cash_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_cash_db.txt)
+- 修改交易限制：  [`db/re/item_trade.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_trade.txt)
+- 修改宠物属性：  [`db/re/pet_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/pet_db.txt)
 
-
-
-3. [问题]如何注册游戏账号
-可使用注册页 http://127.0.0.1:8096/ro , 也可使用 M/F 注册, 百度可查(关键词: RO的MF注册)
+> 注：
+<br/>　"GM指令辅助工具" 因为很长时间没更新, 新的 GM 指令已经不支持了，建议直接查看 [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
+<br/>　若对自己使用 GM 指令，则使用 `@` 符号, 如 `@cash 50000`
+<br/>　若对玩家使用 GM 指令，则使用 `#` 符号, 如 `#cash 玩家名字 50000`
+<br/>　GM 指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/11.png)
+
 
 </details>
-
 
 
 ## FAQ
 
 <details>
 <summary>展开查看</summary>
-<br/>
 
-### 0x01 搭建服务端会占用哪些端口？
+### 0x01 运行服务端报错：计算机丢失 `msvcr110.dll` 和 `vcruntime140.dll`
+
+.NET 版本过旧或缺失必要的 VC++ 运行库导致，由于服务端根目录下已经有这两个文件，一般不会出现这个问题。
+
+可以尝试把服务端根目录下的 `msvcr110.dll` 和 `vcruntime140.dll` 文件复制到 `C:\Windows\System32` 目录。
+
+若还是不行则需要修复 .NET【[百度网盘(m2e4)](https://pan.baidu.com/s/1Sics3B5rGCUZl-47Tv5n7A)
+
+
+------
+### 0x02 运行服务端报错： `0xc000007b`
+
+缺失 DirectX 或版本过旧导致，
+
+修复包： DirectXRepair-v3.9 【[百度网盘(vs1m)](https://pan.baidu.com/s/1zoBXTi5rp7Yj1bhzMzo-oQ)】 (如果可以直接运行就不用装了)
+
+
+------
+### 0x03 搭建服务端会占用哪些端口？
 
 RO 服务端启动后，会开启 5 个服务：
 
@@ -267,21 +332,87 @@ RO 服务端启动后，会开启 5 个服务：
 另外如果需要架设成联机服务器（或部署到 VMWare 等虚拟机），则至少对外开放 6900、 5121、 6121 这 3 个端口，客户端才能成功登陆。
 
 
-### 0x02 怎样搭建联机服务器？
+------
+### 0x04 怎样搭建联机服务器？
 
-第一，我们在 99MaxEathena v8.7.0 端内添加联机IP：
-★如果IP只是外网的，将 char_athena.conf 和 map_athena.conf 内
-的 login_ip、char_ip、map_ip 全部修改为外网IP即可，一共有4处IP修改。
+假设服务器 IP 如下：
 
-★如果IP分为内/外网的，那设置稍微复杂点，学会之后，其实也不难，呵呵...
-除了以上4处IP修改以外，将 char_athena.conf、login_athena.conf 和 map_athena.conf 内
-的 bind_ip 功能打开，并将其修改为内网IP即可，加上之前4处，一共有7处IP修改。
+- 本地回环地址： 127.0.0.1
+- 局域网地址： 192.168.1.2
+- 公网地址： 9.8.7.6
 
-第二，我们在 99MaxRo_Patch_v3.0 补丁内添加联机IP：
-将 clientinfo.xml 文件复制黏贴在客户端 Data 文件夹内，
-修改其内容<address>127.0.0.1</address>为外网IP即可。
+首先需要知道 <b>服务端</b> 和 <b>客户端</b> 在哪里配置 IP 的。
 
-clientinfo.xml
+在 <b>单机</b> 情况下，服务端配置是这样的：
+
+- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+<br/>　○ bind_ip: 127.0.0.1 （默认被注释）
+- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+<br/>　○ char_ip: 127.0.0.1
+<br/>　○ login_ip: 127.0.0.1
+<br/>　○ bind_ip: 127.0.0.1 （默认被注释）
+- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+<br/>　○ map_ip: 127.0.0.1
+<br/>　○ char_ip: 127.0.0.1
+<br/>　○ bind_ip: 127.0.0.1 （默认被注释）
+
+------
+
+根据联机所架设的网络不同（共 3 种架设方式），配置方法也不同。
+
+若<b>仅需 局域网 联机</b>，服务端配置修改为（共修改 4 处）：
+
+- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+<br/>　○ char_ip: 192.168.1.2
+<br/>　○ login_ip: 192.168.1.2
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+<br/>　○ map_ip: 192.168.1.2
+<br/>　○ char_ip: 192.168.1.2
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+
+------
+
+若<b>仅需 公网 联机</b>，服务端配置修改为（共修改 4 处）：
+
+- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+<br/>　○ char_ip: 9.8.7.6
+<br/>　○ login_ip: 9.8.7.6
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+<br/>　○ map_ip: 9.8.7.6
+<br/>　○ char_ip: 9.8.7.6
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+
+------
+
+若<b>同时需 局域网+公网 联机</b>，服务端配置修改为（共修改 7 处）：
+
+- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+<br/>　○ bind_ip: 192.168.1.2
+- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+<br/>　○ char_ip: 9.8.7.6
+<br/>　○ login_ip: 9.8.7.6
+<br/>　○ bind_ip: 192.168.1.2
+- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+<br/>　○ map_ip: 9.8.7.6
+<br/>　○ char_ip: 9.8.7.6
+<br/>　○ bind_ip: 192.168.1.2
+
+
+------
+
+而对于 <b>客户端</b> 配置则简单得多。
+
+客户端默认情况下是不存在 IP 配置文件的，在安装登录器补丁后，需要手动添加一个文件 `Data/clientinfo.xml`。
+
+根据客户端要走 <b>局域网</b> 还是 <b>公网</b> 接入服务端，对应修改 `<address>` 的值即可。
+
+完整的 `Data/clientinfo.xml` 文件内容如下:
 ```
 <?xml version="1.0" encoding="gbk3212" ?>
 <clientinfo>
@@ -318,452 +449,215 @@ clientinfo.xml
 </clientinfo>
 ```
 
-
-
-
-
-1. [问题]启动 map-server.exe 时出现 0xc000007b 的解决办法
-http://www.99max.me/thread-21246-1-1.html
-
-2. [问题]运行中出现计算机丢失 msvcr110.dll 和 vcruntime140.dll 的解决办法
-http://www.99max.me/thread-26184-1-1.html
-
-
-
-4. [问题]如何将新注册游戏账号设置GM权限
-先安装以下地址的[工具]8, 再参考[教程]2, 数据库默认的账号密码为 root root
-
-5. [问题]没有GM工具情况下, 如何正确使用GM指令
-GM工具很早就不用了, 因为很长时间没更新, 新的GM指令已经不支持.
-GM指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入GM指令.
-对自己使用 @ 符号, 比如 @cash 50000
-对玩家使用 # 符号, 比如 #cash 玩家名字 50000
-
-</details>
-
-
-
-## 常用教程/工具
-
-<details>
-<summary>展开查看</summary>
-<br/>
-
-1.[教程]给新人如何使用 V8系 一键版 顺利进入游戏的教程
-http://www.99max.me/thread-19115-1-1.html
-
-2.[教程]99MaxEathena v8系 GM账号的设置
-http://www.99max.me/thread-12928-1-1.html
-
-3.[教程]99MaxEathena v8系 外网联机教程
-http://www.99max.me/thread-16792-1-2.html
-
-4.[原创]GM命令快捷菜单 可直接执行命令99Max专用版
-http://www.99max.me/thread-14899-1-1.html
-
-5.[工具]Yiko製造 - 99Max Eathena 文本数据编辑器 v1.1.3
-http://www.99max.me/thread-18936-1-1.html
-
-6.[教程]99MaxEathena v8系 添加自定义头饰教程
-http://www.99max.me/thread-16795-1-1.html
-
-7.[教程]99MaxEathena v8.10.0 版本 VIP系统 新增功能介绍
-http://www.99max.me/thread-19005-1-1.html
-
-8.[工具]Na.vicat110_mysql_cs 32位+64位+破解补丁
-http://www.99max.me/thread-16484-1-1.html
-
-9.[工具]给大家一个专业的文本编辑器 Notepad++ 6.6.9
-http://www.99max.me/thread-18709-1-2.html
-
-10.[分享]还有更多的教程及工具，请大家自行去查阅吧
-http://www.99max.me/forum-18-1.html
-
 </details>
 
 
 
 ## 【附】 目录 & 文件功能说明
 
-- GM指令大全 - help.txt
-- 角色指令大全 - charhelp.txt
-- 修改经验倍率 - exp.conf
-- 修改掉落倍率 - drops.conf
-- 修改游戏名称 - char_athena.conf
-- 修改物品属性 - item_db.txt
-- 修改魔物属性 - mob_db.txt
-- 修改在线商城 - item_cash_db.txt
-- 修改交易限制 - item_trade.txt
-- 修改宠物属性 - pet_db.txt
 
 <details>
 <summary>展开查看</summary>
 <br/>
 
+> 注：
+<br/>　RO 服务端除了使用 mysql 作为动态数据库之外，还会使用 txt 和 conf 作为静态数据库
+<br/>　历史原因，大部分文件的编码都是以 GBK 为主，修改文件时不要随便改变编码，避免引起不必要的异常
+
 ```
 ro-single-server
-|-- 01-启动架设环境.bat
-|-- 02-启动RO服务端.bat
-|-- 03-关闭假设环境.bat
-|-- 04-重置试用时间.bat
-|-- charserv.bat
-|-- char-server.exe
-|-- history
-|-- img
-|-- libmysql.dll
-|-- login-server.exe
-|-- logserv.bat
-|-- mapserv.bat
-|-- map-server.exe
-|-- msvcr110.dll
-|-- npc
-|-- pcre8.dll
-|-- zlib.dll
-|-- serv.bat
-|-- sql-files
-|-- vcruntime140.dll
-|-- conf
-|   |-- atcommand_athena.conf
-|   |-- battle
-|   |   |-- battle.conf
-|   |   |-- battleground.conf
-|   |   |-- client.conf
-|   |   |-- drops.conf
-|   |   |-- exp.conf
-|   |   |-- feature.conf
-|   |   |-- gm.conf
-|   |   |-- guild.conf
-|   |   |-- homunc.conf
-|   |   |-- items.conf
-|   |   |-- misc.conf
-|   |   |-- monster.conf
-|   |   |-- party.conf
-|   |   |-- pet.conf
-|   |   |-- player.conf
-|   |   |-- skill.conf
-|   |   └-- status.conf
-|   |-- battle_athena.conf
-|   |-- channels.conf
-|   |-- char_athena.conf
-|   |-- charhelp.txt
-|   |-- charhelp.txt.dump
-|   |-- grf-files.txt
-|   |-- groups.conf
-|   |-- help.txt
-|   |-- import
-|   |   |-- battle_conf.txt
-|   |   |-- char_conf.txt
-|   |   |-- inter_conf.txt
-|   |   |-- inter_server.yml
-|   |   |-- log_conf.txt
-|   |   |-- login_conf.txt
-|   |   |-- map_conf.txt
-|   |   |-- packet_conf.txt
-|   |   └-- script_conf.txt
-|   |-- inter_athena.conf
-|   |-- inter_athena.conf.dump
-|   |-- inter_server.yml
-|   |-- log_athena.conf
-|   |-- login_athena.conf
-|   |-- map_athena.conf
-|   |-- maps_athena.conf
-|   |-- motd.txt
-|   |-- msg_conf
-|   |   |-- char_msg.conf
-|   |   |-- import
-|   |   |   |-- map_msg_chn_conf.txt
-|   |   |   |-- map_msg_eng_conf.txt
-|   |   |   |-- map_msg_frn_conf.txt
-|   |   |   |-- map_msg_grm_conf.txt
-|   |   |   |-- map_msg_idn_conf.txt
-|   |   |   |-- map_msg_mal_conf.txt
-|   |   |   |-- map_msg_por_conf.txt
-|   |   |   |-- map_msg_rus_conf.txt
-|   |   |   |-- map_msg_spn_conf.txt
-|   |   |   └-- map_msg_tha_conf.txt
-|   |   |-- login_msg.conf
-|   |   |-- map_msg_chn.conf
-|   |   |-- map_msg.conf
-|   |   |-- map_msg_frn.conf
-|   |   |-- map_msg_grm.conf
-|   |   |-- map_msg_idn.conf
-|   |   |-- map_msg_mal.conf
-|   |   |-- map_msg_por.conf
-|   |   |-- map_msg_rus.conf
-|   |   |-- map_msg_spn.conf
-|   |   |-- map_msg_tha.conf
-|   |   └-- translation.conf
-|   |-- packet_athena.conf
-|   |-- readme.md
-|   |-- script_athena.conf
-|   |-- subnet_athena.conf
-|   └-- valkyrie_sample.cfg
-|-- db
-|   |-- abra_db.txt
-|   |-- castle_db.txt
-|   |-- const.txt
-|   |-- create_arrow_db.txt
-|   |-- elemental_db.txt
-|   |-- elemental_skill_db.txt
-|   |-- GeoIP.dat
-|   |-- guild_skill_tree.txt
-|   |-- homun_skill_tree.txt
-|   |-- import
-|   |   |-- abra_db.txt
-|   |   |-- achievement_db.yml
-|   |   |-- attendance.yml
-|   |   |-- attr_fix.txt
-|   |   |-- castle_db.txt
-|   |   |-- const.txt
-|   |   |-- create_arrow_db.txt
-|   |   |-- elemental_db.txt
-|   |   |-- elemental_skill_db.txt
-|   |   |-- exp_guild.txt
-|   |   |-- exp_homun.txt
-|   |   |-- guild_skill_tree.txt
-|   |   |-- homunculus_db.txt
-|   |   |-- homun_skill_tree.txt
-|   |   |-- instance_db.txt
-|   |   |-- item_avail.txt
-|   |   |-- item_bluebox.txt
-|   |   |-- item_buyingstore.txt
-|   |   |-- item_cardalbum.txt
-|   |   |-- item_cash_db.txt
-|   |   |-- item_combo_db.txt
-|   |   |-- item_db.txt
-|   |   |-- item_delay.txt
-|   |   |-- item_findingore.txt
-|   |   |-- item_flag.txt
-|   |   |-- item_giftbox.txt
-|   |   |-- item_group_db.txt
-|   |   |-- item_misc.txt
-|   |   |-- item_noequip.txt
-|   |   |-- item_nouse.txt
-|   |   |-- item_package.txt
-|   |   |-- item_randomopt_db.txt
-|   |   |-- item_randomopt_group.txt
-|   |   |-- item_stack.txt
-|   |   |-- item_trade.txt
-|   |   |-- item_violetbox.txt
-|   |   |-- job_basehpsp_db.txt
-|   |   |-- job_db1.txt
-|   |   |-- job_db2.txt
-|   |   |-- job_exp.txt
-|   |   |-- job_noenter_map.txt
-|   |   |-- job_param_db.txt
-|   |   |-- level_penalty.txt
-|   |   |-- magicmushroom_db.txt
-|   |   |-- map_cache.dat
-|   |   |-- map_index.txt
-|   |   |-- mercenary_db.txt
-|   |   |-- mercenary_skill_db.txt
-|   |   |-- mob_avail.txt
-|   |   |-- mob_boss.txt
-|   |   |-- mob_branch.txt
-|   |   |-- mob_chat_db.txt
-|   |   |-- mob_classchange.txt
-|   |   |-- mob_db.txt
-|   |   |-- mob_drop.txt
-|   |   |-- mob_item_ratio.txt
-|   |   |-- mob_mission.txt
-|   |   |-- mob_poring.txt
-|   |   |-- mob_pouch.txt
-|   |   |-- mob_race2_db.txt
-|   |   |-- mob_random_db.txt
-|   |   |-- mob_skill_db.txt
-|   |   |-- pet_db.txt
-|   |   |-- produce_db.txt
-|   |   |-- quest_db.txt
-|   |   |-- refine_db.yml
-|   |   |-- size_fix.txt
-|   |   |-- skill_cast_db.txt
-|   |   |-- skill_castnodex_db.txt
-|   |   |-- skill_changematerial_db.txt
-|   |   |-- skill_copyable_db.txt
-|   |   |-- skill_damage_db.txt
-|   |   |-- skill_db.txt
-|   |   |-- skill_improvise_db.txt
-|   |   |-- skill_nocast_db.txt
-|   |   |-- skill_nonearnpc_db.txt
-|   |   |-- skill_require_db.txt
-|   |   |-- skill_tree.txt
-|   |   |-- skill_unit_db.txt
-|   |   |-- spellbook_db.txt
-|   |   |-- statpoint.txt
-|   |   └-- status_disabled.txt
-|   |-- item_auto_change.txt
-|   |-- item_avail.txt
-|   |-- item_drop_announce.txt
-|   |-- item_findingore.txt
-|   |-- item_nouse.txt
-|   |-- item_vending.txt
-|   |-- job_db2.txt
-|   |-- magicmushroom_db.txt
-|   |-- map_index.txt
-|   |-- mercenary_db.txt
-|   |-- mercenary_skill_db.txt
-|   |-- mob_avail.txt
-|   |-- mob_chat_db.txt
-|   |-- mob_classchange.txt
-|   |-- mob_item_ratio.txt
-|   |-- mob_mission.txt
-|   |-- mob_pouch.txt
-|   |-- re
-|   |   |-- achievement_db.yml
-|   |   |-- attendance.yml
-|   |   |-- attr_fix.txt
-|   |   |-- exp_guild.txt
-|   |   |-- exp_homun.txt
-|   |   |-- homunculus_db.txt
-|   |   |-- instance_db.txt
-|   |   |-- item_bluebox.txt
-|   |   |-- item_buyingstore.txt
-|   |   |-- item_cardalbum.txt
-|   |   |-- item_cash_db.txt
-|   |   |-- item_combo_db.txt
-|   |   |-- item_db.txt
-|   |   |-- item_delay.txt
-|   |   |-- item_flag.txt
-|   |   |-- item_giftbox.txt
-|   |   |-- item_group_db.txt
-|   |   |-- item_misc.txt
-|   |   |-- item_noequip.txt
-|   |   |-- item_package.txt
-|   |   |-- item_randomopt_db.txt
-|   |   |-- item_randomopt_group.txt
-|   |   |-- item_stack.txt
-|   |   |-- item_trade.txt
-|   |   |-- item_violetbox.txt
-|   |   |-- job_basehpsp_db.txt
-|   |   |-- job_db1.txt
-|   |   |-- job_exp.txt
-|   |   |-- job_noenter_map.txt
-|   |   |-- job_param_db.txt
-|   |   |-- level_penalty.txt
-|   |   |-- map_cache.dat
-|   |   |-- mob_boss.txt
-|   |   |-- mob_branch.txt
-|   |   |-- mob_db.txt
-|   |   |-- mob_drop.txt
-|   |   |-- mob_poring.txt
-|   |   |-- mob_race2_db.txt
-|   |   |-- mob_random_db.txt
-|   |   |-- mob_skill_db.txt
-|   |   |-- pet_db.txt
-|   |   |-- produce_db.txt
-|   |   |-- quest_db.txt
-|   |   |-- refine_db.yml
-|   |   |-- skill_cast_db.txt
-|   |   |-- skill_castnodex_db.txt
-|   |   |-- skill_db.txt
-|   |   |-- skill_nocast_db.txt
-|   |   |-- skill_require_db.txt
-|   |   |-- skill_tree.txt
-|   |   |-- skill_unit_db.txt
-|   |   └-- statpoint.txt
-|   |-- readme.md
-|   |-- size_fix.txt
-|   |-- skill_changematerial_db.txt
-|   |-- skill_copyable_db.txt
-|   |-- skill_damage_db.txt
-|   |-- skill_improvise_db.txt
-|   |-- skill_nonearnpc_db.txt
-|   |-- spellbook_db.txt
-|   └-- status_disabled.txt
-|-- doc
-|   |-- 99MaxEa_atcommands.txt
-|   |-- 99MaxEa_bonus.txt
-|   |-- 99MaxEa_events.txt
-|   |-- 99MaxEa_mapflags.txt
-|   |-- 99MaxEa_script_commands.txt
-|   |-- 99MaxEa.txt
-|   |-- achievements.txt
-|   |-- atcommands.txt
-|   |-- ea_job_system.txt
-|   |-- effect_list.txt
-|   |-- item_bonus.txt
-|   |-- item_db.txt
-|   |-- item_group.txt
-|   |-- map_cache.txt
-|   |-- mapflags.txt
-|   |-- md5_hashcheck.txt
-|   |-- mob_db_mode_list.txt
-|   |-- mob_db.txt
-|   |-- mob_skill_db_powerskill.txt
-|   |-- model
-|   |   |-- Model_Relation.mwb
-|   |   |-- Model_Relation.png
-|   |   └-- rathena.vpp
-|   |-- packet_client.txt
-|   |-- packet_interserv.txt
-|   |-- packet_struct_notation.txt
-|   |-- permissions.txt
-|   |-- quest_variables.txt
-|   |-- sample
-|   |   |-- bank_test.txt
-|   |   |-- basejob_baseclass_upper.txt
-|   |   |-- checkoption.txt
-|   |   |-- delitem2.txt
-|   |   |-- getequipcardid.txt
-|   |   |-- getequipid.txt
-|   |   |-- getiteminfo.txt
-|   |   |-- getmonsterinfo.txt
-|   |   |-- gstorage_test.txt
-|   |   |-- inarray.txt
-|   |   |-- instancing.txt
-|   |   |-- localized_npc.txt
-|   |   |-- navigate.txt
-|   |   |-- npc_dynamic_shop.txt
-|   |   |-- npc_extend_shop.txt
-|   |   |-- npc_live_dialogues.txt
-|   |   |-- npc_shop_test.txt
-|   |   |-- npc_test_array.txt
-|   |   |-- npc_test_chat.txt
-|   |   |-- npc_test_duplicate.txt
-|   |   |-- npc_test_func.txt
-|   |   |-- npc_test_getunits.txt
-|   |   |-- npc_test_npctimer2.txt
-|   |   |-- npc_test_npctimer.txt
-|   |   |-- npc_test_pcre.txt
-|   |   |-- npc_test_quest.txt
-|   |   |-- npc_test_setitemx.txt
-|   |   |-- npc_test_setmapflag.txt
-|   |   |-- npc_test_skill.txt
-|   |   |-- npc_test_time.txt
-|   |   └-- randomopt.txt
-|   |-- script_commands.txt
-|   |-- skill_require_db.txt
-|   |-- source_doc.txt
-|   |-- status_change.txt
-|   |-- whisper_sys.txt
-|   └-- woe_time_explanation.txt
-|-- gm-cmd
-|   |-- GM命令快捷菜单.exe
-|   |-- roa.ini
-|   └-- ro.ini
-|-- ROEmulator
-|   |-- desktop.ini
-|   |-- home
-|   |   |-- admin
-|   |   |   └-- program
-|   |   |       |-- pskill.exe
-|   |   |       |-- unidelay.exe
-|   |   |       └-- uniserv.exe
-|   |   └-- desktop.ini
-|   |-- tmp
+|-- 01-启动架设环境.bat  ......................  [启动 mysql 存档数据库和 Apache 门户网站]
+|-- 02-启动RO服务端.bat  ......................  [启动 RO 服务端（含登录、角色、地图服务器）]
+|-- 03-关闭架设环境.bat  ......................  [停止 mysql 存档数据库和 Apache 门户网站]
+|-- 04-重置试用时间.bat  ......................  [服务端试用期破解脚本]
+|-- serv.bat  ...............................  [调用脚本 logserv.bat、 charserv.bat、 mapserv.bat 的前置脚本]
+|-- logserv.bat  ............................  [启用登录服务器 login-server.exe 的脚本]
+|-- login-server.exe  .......................  [登录服务器]
+|-- charserv.bat  ...........................  [启动角色服务器 char-server.exe 的脚本]
+|-- char-server.exe  ........................  [角色服务器]
+|-- mapserv.bat  ............................  [启动地图服务器 login-server.exe 的脚本]
+|-- map-server.exe  .........................  [地图服务器]
+|-- libmysql.dll  ...........................  [连接 mysql 模块的库文件]
+|-- pcre8.dll  ..............................  [perl 正则表达式模块的库文件]
+|-- zlib.dll  ...............................  [解压模块的库文件]
+|-- msvcr110.dll  ...........................  [.NET 库文件之一]
+|-- vcruntime140.dll  .......................  [.NET 库文件之一]
+|-- npc  ....................................  [NPC 数据库（在 re 文件夹内表示"复兴后"）]
+|-- sql-files  ..............................  [mysql 建库脚本]
+|-- history  ................................  [历史版本的更新内容说明]
+|-- img  ....................................  [README 文档插图]
+|-- gm-cmd  .................................  [GM 指令辅助工具]
+|-- ROEmulator  .............................  [RO 服务端模拟器工作目录]
+|   |-- home  ...............................  [admin HOME 目录]
+|   |-- tmp  ................................  [缓存模拟器内各个应用临时文件的临时]
 |   |-- usr
 |   |   └-- local
-|   |       |-- apache2
-|   |       |-- mysql
-|   |       └-- php
-|   └-- www
-└-- README.md
+|   |       |-- apache2  ....................  [Apache 模块，用于支持 Discuz! 门户网站]
+|   |       |-- php  ........................  [php 模块，用于支持 Discuz! 门户网站]
+|   |       └-- mysql  ......................  [mysql 存档数据库]
+|   └-- www  ................................  [Discuz! 门户网站前端源码]
+|-- conf  ...................................  [RO 服务端配置目录]
+|   |-- help.txt  ...........................  [GM 命令配置文件]
+|   |-- charhelp.txt  .......................  [角色命令配置文件]
+|   |-- atcommand_athena.conf ...............  [命令别名配置文件]
+|   |-- char_athena.conf  ...................  [角色服务器配置文件（可修改服务器参数）]
+|   |-- login_athena.conf  ..................  [登录服务器配置文件]
+|   |-- map_athena.conf  ....................  [地图服务器配置文件]
+|   |-- maps_athena.conf  ...................  [地图名称数据库]
+|   |-- groups.conf  ........................  [各个玩家角色组的权限配置文件（GM 权限配置）]
+|   |-- script_athena.conf ..................  [脚本配置文件]
+|   |-- subnet_athena.conf ..................  [子网配置文件]
+|   |-- packet_athena.conf ..................  [Socket 配置文件]
+|   |-- log_athena.conf .....................  [日志配置文件]
+|   |-- inter_athena.conf  ..................  [数据库配置文件]
+|   |-- inter_server.yml
+|   |-- grf-files.txt  ......................  [GRF 文件默认位置]
+|   |-- motd.txt
+|   |-- valkyrie_sample.cfg
+|   |-- channels.conf
+|   |-- battle_athena.conf  .................  [通过 import 导入汇总了所有与战斗相关的配置文件]
+|   |-- battle  .............................  [战斗相关配置]
+|   |   |-- battle.conf  ....................  [有关一般战斗的配置]
+|   |   |-- battleground.conf  ..............  [战役/战场配置]
+|   |   |-- client.conf .....................  [客户端效果的配置]
+|   |   |-- drops.conf  .....................  [物品掉落几率配置]
+|   |   |-- exp.conf  .......................  [经验倍率/经验处罚率、人物状态、人物最高等级的配置]
+|   |   |-- feature.conf  ...................  [功能控制（开/关）配置]
+|   |   |-- gm.conf  ........................  [GM 等级、GM 命令和相关防止恶意攻击的配置]
+|   |   |-- guild.conf  .....................  [公会和 GVG 配置]
+|   |   |-- homunc.conf  ....................  [人工生命体配置]
+|   |   |-- items.conf  .....................  [物品效果和物品验证的配置]
+|   |   |-- status.conf  ....................  [状态配置]
+|   |   |-- monster.conf  ...................  [魔物配置]
+|   |   |-- party.conf  .....................  [组队配置]
+|   |   |-- pet.conf  .......................  [宠物配置]
+|   |   |-- player.conf  ....................  [人物效果配置]
+|   |   |-- skill.conf  .....................  [技能配置]
+|   |   └-- misc.conf  ......................  [环境配置（不属于上面分类里的设置，如 PVP、昼夜、禁言、日志等）]
+|   |-- msg_conf  ...........................  [各种事件、地图、任务、系统等消息的配置]
+|   |-- import  .............................  [该目录下的配置文件已失效]
+|   └-- README.md  ..........................  [RO 服务端配置目录说明]
+|-- db  .....................................  [RO 服务端文本数据库]
+|   |-- abra_db.txt  ........................  [贤者随机技能发动数据库]
+|   |-- castle_db.txt  ......................  [公会城堡数据库]
+|   |-- const.txt  ..........................  [常量表]
+|   |-- create_arrow_db.txt  ................  [制作箭技能数据库]
+|   |-- elemental_db.txt  ...................  [元素精灵数据库]
+|   |-- elemental_skill_db.txt  .............  [元素精灵技能数据库]
+|   |-- GeoIP.dat  ..........................  [IP 地理位置数据库]
+|   |-- guild_skill_tree.txt  ...............  [公会技能树数据库]
+|   |-- homun_skill_tree.txt  ...............  [人工生命体技能树数据库]
+|   |-- item_auto_change.txt  ...............  [自动转换武器属性的物品库]
+|   |-- item_avail.txt  .....................  [物品外观替换库]
+|   |-- item_drop_announce.txt  .............  [物品掉落全服公告]
+|   |-- item_findingore.txt  ................  [获得寻找的矿石数据库]
+|   |-- item_nouse.txt  .....................  [物品使用限制数据库]
+|   |-- item_vending.txt  ...................  [自动售货机物品库]
+|   |-- job_db2.txt  ........................  [Job 升级奖励库]
+|   |-- magicmushroom_db.txt  ...............  [狂笑之毒数据库]
+|   |-- map_index.txt  ......................  [地图索引库]
+|   |-- mercenary_db.txt  ...................  [雇佣兵资料库]
+|   |-- mercenary_skill_db.txt  .............  [雇佣兵技能库]
+|   |-- mob_avail.txt  ......................  [魔物外观替换库]
+|   |-- mob_chat_db.txt  ....................  [魔物对话数据库]
+|   |-- mob_classchange.txt  ................  [魔物召唤数据库]
+|   |-- mob_item_ratio.txt  .................  [魔物进阶掉率设置]
+|   |-- mob_mission.txt  ....................  [跆拳道任务召唤怪物数据库]
+|   |-- mob_pouch.txt  ......................  [红色炸弹能召唤出来的魔物数据库]
+|   |-- status_disabled.txt  ................  [状态改变限制数据库]
+|   |-- size_fix.txt  .......................  [体型大小对武器伤害的修正数据库]
+|   |-- skill_changematerial_db.txt  ........  [基因技能: "素材变化" 转换成品资料数据库]
+|   |-- skill_copyable_db.txt  ..............  [技能: 威吓/抄袭/重现 技能库]
+|   |-- skill_damage_db.txt  ................  [技能: 伤害调整数据库]
+|   |-- skill_improvise_db.txt  .............  [技能: 随机发动魔法数据库]
+|   |-- skill_nonearnpc_db.txt  .............  [技能: 距离 NPC 数据库]
+|   |-- spellbook_db.txt  ...................  [阅读魔法书保存点数数据库]
+|   |-- import  .............................  [该目录下的配置文件部分已失效]
+|   |   |-- achievement_db.yml
+|   |   |-- attendance.yml
+|   |   |-- const.txt  ......................  [官方常量表]
+|   |   |-- instance_db.txt  ................  [副本数据库]
+|   |   |-- item_combo_db.txt  ..............  [套装产生额外效果数据库]
+|   |   |-- item_db.txt  ....................  [追加物品数据库]
+|   |   |-- item_group_db.txt  ..............  [物品分组数据库]
+|   |   |-- item_package.txt  ...............  [物品封包数据库]
+|   |   |-- item_randomopt_db.txt
+|   |   |-- item_randomopt_group.txt
+|   |   |-- item_stack.txt  .................  [物品叠加量限制数据库]
+|   |   |-- item_trade.txt  .................  [物品交易限制数据库]
+|   |   |-- job_exp.txt  ....................  [Job 升级所需经验数据库]
+|   |   |-- map_cache.dat  ..................  [地图缓存库]
+|   |   |-- map_index.txt  ..................  [地图索引库]
+|   |   |-- mercenary_db.txt  ...............  [雇佣兵数据库]
+|   |   |-- mercenary_skill_db.txt  .........  [雇佣兵技能库]
+|   |   |-- mob_db.txt  .....................  [魔物资料库]
+|   |   |-- mob_drop.txt  ...................  [魔物掉落数据库]
+|   |   |-- mob_mission.txt  ................  [跆拳道任务召唤怪物数据库]
+|   |   |-- mob_skill_db.txt  ...............  [魔物技能库]
+|   |   |-- pet_db.txt  .....................  [宠物属性库]
+|   |   |-- quest_db.txt  ...................  [制作任务数据库]
+|   |   |-- refine_db.yml  ..................  [精炼数据库]
+|   |-- re  .................................  [复兴后的数据库]
+|   |   |-- achievement_db.yml
+|   |   |-- attendance.yml
+|   |   |-- attr_fix.txt  ...................  [属性伤害调整]
+|   |   |-- exp_guild.txt  ..................  [公会等级经验值库]
+|   |   |-- exp_homun.txt  ..................  [人工生命体等级经验值库]
+|   |   |-- homunculus_db.txt  ..............  [人工生命体资料库]
+|   |   |-- instance_db.txt  ................  [副本数据库]
+|   |   |-- item_bluebox.txt  ...............  [蓝箱开出物品资料库]
+|   |   |-- item_buyingstore.txt  ...........  [采购系统物品限定数据库]
+|   |   |-- item_cardalbum.txt  .............  [老旧收集册能开启到的物品数据库]
+|   |   |-- item_cash_db.txt  ...............  [在线商城]
+|   |   |-- item_combo_db.txt  ..............  [套装产生额外效果数据库]
+|   |   |-- item_db.txt  ....................  [物品属性]
+|   |   |-- item_delay.txt  .................  [物品使用延迟数据库]
+|   |   |-- item_flag.txt
+|   |   |-- item_giftbox.txt  ...............  [开启礼物盒所获得的物品数据库]
+|   |   |-- item_group_db.txt
+|   |   |-- item_misc.txt  ..................  [开启神秘红色箱子所获得的物品数据库]
+|   |   |-- item_noequip.txt  ...............  [装备/物品/卡片 限制库]
+|   |   |-- item_package.txt  ...............  [物品封包数据库]
+|   |   |-- item_randomopt_db.txt
+|   |   |-- item_randomopt_group.txt
+|   |   |-- item_stack.txt  .................  [物品叠加量限制数据库]
+|   |   |-- item_trade.txt  .................  [物品交易限制数据库]
+|   |   |-- item_violetbox.txt  .............  [开启老紫箱所获得的物品数据库]
+|   |   |-- job_basehpsp_db.txt .............  [Base 升级所需经验数据库]
+|   |   |-- job_db1.txt  ....................  [Job 具体值数据库]
+|   |   |-- job_exp.txt  ....................  [Job 升级所需经验数据库]
+|   |   |-- job_noenter_map.txt
+|   |   |-- job_param_db.txt
+|   |   |-- level_penalty.txt  ..............  [经验和掉落率修改数据库]
+|   |   |-- map_cache.dat  ..................  [地图缓存库]
+|   |   |-- mob_boss.txt  ...................  [魔物 BOSS 数据库]
+|   |   |-- mob_branch.txt  .................  [Dead Branch Summonable 魔物资料库]
+|   |   |-- mob_db.txt  .....................  [魔物属性]
+|   |   |-- mob_drop.txt  ...................  [魔物掉落数据库]
+|   |   |-- mob_poring.txt  .................  [Poring Box Summonable 魔物资料库]
+|   |   |-- mob_race2_db.txt  ...............  [怪物族群数据库]
+|   |   |-- mob_random_db.txt
+|   |   |-- mob_skill_db.txt  ...............  [魔物技能数据库]
+|   |   |-- pet_db.txt  .....................  [宠物属性]
+|   |   |-- produce_db.txt  .................  [物品制造数据库]
+|   |   |-- quest_db.txt  ...................  [制作任务数据库]
+|   |   |-- refine_db.yml  ..................  [精炼数据库]
+|   |   |-- skill_cast_db.txt  ..............  [技能时间数据库]
+|   |   |-- skill_castnodex_db.txt  .........  [影响技能时间数据库]
+|   |   |-- skill_db.txt  ...................  [技能数据库]
+|   |   |-- skill_nocast_db.txt  ............  [技能限制数据库]
+|   |   |-- skill_require_db.txt  ...........  [前置技能数据库]
+|   |   |-- skill_tree.txt  .................  [技能树]
+|   |   |-- skill_unit_db.txt
+|   |   └-- statpoint.txt
+|   └-- README.md  ..........................  [RO 服务端文本数据库说明]
+|-- doc  ....................................  [游戏内的文档库]
+└-- README.md  ..............................  [RO 服务端说明]
 
 994 directories, 10054 files
 ```
 
 </details>
-
 
 
 ------
