@@ -235,9 +235,8 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 <details>
 <summary>展开查看更多</summary>
-<br/>
 
-### 默认数据库
+### 服务器数据库
 
 - 类型： mysql
 - IP： 127.0.0.1
@@ -264,16 +263,16 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 ### GM 常用配置
 
-- GM指令大全： [conf/help.txt](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
-- 角色指令大全：  [conf/charhelp.txt](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
-- 修改服务器参数：  [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
-- 修改经验倍率：  [conf/battle/exp.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/exp.conf)
-- 修改掉落倍率：  [conf/battle/drops.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/drops.conf)
-- 修改物品属性：  [db/re/item_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_db.txt)
-- 修改魔物属性：  [db/re/mob_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/mob_db.txt)
-- 修改在线商城：  [db/re/item_cash_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_cash_db.txt)
-- 修改交易限制：  [db/re/item_trade.txt](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_trade.txt)
-- 修改宠物属性：  [db/re/pet_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/pet_db.txt)
+- GM指令大全： [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
+- 角色指令大全：  [`conf/charhelp.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
+- 修改服务器参数：  [`conf/char_athena.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+- 修改经验倍率：  [`conf/battle/exp.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/exp.conf)
+- 修改掉落倍率：  [`conf/battle/drops.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/drops.conf)
+- 修改物品属性：  [`db/re/item_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_db.txt)
+- 修改魔物属性：  [`db/re/mob_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/mob_db.txt)
+- 修改在线商城：  [`db/re/item_cash_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_cash_db.txt)
+- 修改交易限制：  [`db/re/item_trade.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_trade.txt)
+- 修改宠物属性：  [`db/re/pet_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/pet_db.txt)
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 
@@ -303,19 +302,84 @@ RO 服务端启动后，会开启 5 个服务：
 
 ### 0x02 怎样搭建联机服务器？
 
-第一，我们在 99MaxEathena v8.7.0 端内添加联机IP：
-★如果IP只是外网的，将 char_athena.conf 和 map_athena.conf 内
-的 login_ip、char_ip、map_ip 全部修改为外网IP即可，一共有4处IP修改。
+假设服务器 IP 如下：
 
-★如果IP分为内/外网的，那设置稍微复杂点，学会之后，其实也不难，呵呵...
-除了以上4处IP修改以外，将 char_athena.conf、login_athena.conf 和 map_athena.conf 内
-的 bind_ip 功能打开，并将其修改为内网IP即可，加上之前4处，一共有7处IP修改。
+- 本地回环地址： 127.0.0.1
+- 局域网地址： 192.168.1.2
+- 公网地址： 9.8.7.6
 
-第二，我们在 99MaxRo_Patch_v3.0 补丁内添加联机IP：
-将 clientinfo.xml 文件复制黏贴在客户端 Data 文件夹内，
-修改其内容<address>127.0.0.1</address>为外网IP即可。
+首先需要知道 <b>服务端</b> 和 <b>客户端</b> 在哪里配置 IP 的。
 
-clientinfo.xml
+在 <b>单机</b> 情况下，服务端配置是这样的：
+
+- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+<br/>　○ bind_ip: 127.0.0.1 （默认被注释）
+- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+<br/>　○ char_ip: 127.0.0.1
+<br/>　○ login_ip: 127.0.0.1
+<br/>　○ bind_ip: 127.0.0.1 （默认被注释）
+- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+<br/>　○ map_ip: 127.0.0.1
+<br/>　○ char_ip: 127.0.0.1
+<br/>　○ bind_ip: 127.0.0.1 （默认被注释）
+
+------
+
+根据联机所架设的网络不同（共 3 种架设方式），配置方法也不同。
+
+若<b>仅需 局域网 联机</b>，服务端配置修改为（共修改 4 处）：
+
+- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+<br/>　○ char_ip: 192.168.1.2
+<br/>　○ login_ip: 192.168.1.2
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+<br/>　○ map_ip: 192.168.1.2
+<br/>　○ char_ip: 192.168.1.2
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+
+------
+
+若<b>仅需 公网 联机</b>，服务端配置修改为（共修改 4 处）：
+
+- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+<br/>　○ char_ip: 9.8.7.6
+<br/>　○ login_ip: 9.8.7.6
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+<br/>　○ map_ip: 9.8.7.6
+<br/>　○ char_ip: 9.8.7.6
+<br/>　○ bind_ip: 127.0.0.1 （保持被注释）
+
+------
+
+若<b>同时需 局域网+公网 联机</b>，服务端配置修改为（共修改 7 处）：
+
+- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+<br/>　○ bind_ip: 192.168.1.2
+- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+<br/>　○ char_ip: 9.8.7.6
+<br/>　○ login_ip: 9.8.7.6
+<br/>　○ bind_ip: 192.168.1.2
+- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+<br/>　○ map_ip: 9.8.7.6
+<br/>　○ char_ip: 9.8.7.6
+<br/>　○ bind_ip: 192.168.1.2
+
+
+------
+
+而对于 <b>客户端</b> 配置则简单得多。
+
+客户端默认情况下是不存在 IP 配置文件的，在安装登录器补丁后，需要手动添加一个文件 `Data/clientinfo.xml`。
+
+根据客户端要走 <b>局域网</b> 还是 <b>公网</b> 接入服务端，对应修改 `<address>` 的值即可。
+
+完整的 `Data/clientinfo.xml` 文件内容如下:
 ```
 <?xml version="1.0" encoding="gbk3212" ?>
 <clientinfo>
