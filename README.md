@@ -261,7 +261,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 - GM指令大全： [conf/help.txt](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
 - 角色指令大全：  [conf/charhelp.txt](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
-- 修改游戏名称：  [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+- 修改服务器参数：  [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
 - 修改经验倍率：  [conf/battle/exp.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/exp.conf)
 - 修改掉落倍率：  [conf/battle/drops.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/drops.conf)
 - 修改物品属性：  [db/re/item_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_db.txt)
