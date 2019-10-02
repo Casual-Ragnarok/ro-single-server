@@ -243,7 +243,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 端口： 3306
 - 账号： root
 - 密码： root
-- 库名：
+- 库名： ragnarok
 - 账号管理表： login
 - 角色管理表： char
 
@@ -263,6 +263,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 ### GM 常用配置
 
+- GM指令辅助工具： [`gm-cmd/GM命令快捷菜单.exe`](https://github.com/lyy289065406/ro-single-server/blob/master/gm-cmd/GM命令快捷菜单.exe)
 - GM指令大全： [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
 - 角色指令大全：  [`conf/charhelp.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
 - 修改服务器参数：  [`conf/char_athena.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
@@ -274,6 +275,12 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 修改交易限制：  [`db/re/item_trade.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_trade.txt)
 - 修改宠物属性：  [`db/re/pet_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/pet_db.txt)
 
+> 注：
+<br/>　"GM指令辅助工具" 因为很长时间没更新, 新的 GM 指令已经不支持了，建议直接查看 [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
+<br/>　若对自己使用 GM 指令，则使用 `@` 符号, 如 `@cash 50000`
+<br/>　若对玩家使用 GM 指令，则使用 `#` 符号, 如 `#cash 玩家名字 50000`
+<br/>　GM 指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入
+
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 
 </details>
@@ -283,9 +290,24 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 <details>
 <summary>展开查看</summary>
-<br/>
 
-### 0x01 搭建服务端会占用哪些端口？
+### 0x01 运行服务端报错：计算机丢失 `msvcr110.dll` 和 `vcruntime140.dll`
+
+.NET 版本过旧或缺失必要的 VC++ 运行库导致，由于服务端根目录下已经有这两个文件，一般不会出现这个问题。
+
+可以尝试把服务端根目录下的 `msvcr110.dll` 和 `vcruntime140.dll` 文件复制到 `C:\Windows\System32` 目录。
+
+若还是不行则需要修复 .NET【[百度网盘(m2e4)](https://pan.baidu.com/s/1Sics3B5rGCUZl-47Tv5n7A)
+
+
+### 0x02 运行服务端报错： `0xc000007b`
+
+缺失 DirectX 或版本过旧导致，
+
+修复包： DirectXRepair-v3.9 【[百度网盘(vs1m)](https://pan.baidu.com/s/1zoBXTi5rp7Yj1bhzMzo-oQ)】 (如果可以直接运行就不用装了)
+
+
+### 0x03 搭建服务端会占用哪些端口？
 
 RO 服务端启动后，会开启 5 个服务：
 
@@ -300,7 +322,7 @@ RO 服务端启动后，会开启 5 个服务：
 另外如果需要架设成联机服务器（或部署到 VMWare 等虚拟机），则至少对外开放 6900、 5121、 6121 这 3 个端口，客户端才能成功登陆。
 
 
-### 0x02 怎样搭建联机服务器？
+### 0x04 怎样搭建联机服务器？
 
 假设服务器 IP 如下：
 
@@ -416,73 +438,11 @@ RO 服务端启动后，会开启 5 个服务：
 </clientinfo>
 ```
 
-
-
-
-
-1. [问题]启动 map-server.exe 时出现 0xc000007b 的解决办法
-http://www.99max.me/thread-21246-1-1.html
-
-2. [问题]运行中出现计算机丢失 msvcr110.dll 和 vcruntime140.dll 的解决办法
-http://www.99max.me/thread-26184-1-1.html
-
-
-
-4. [问题]如何将新注册游戏账号设置GM权限
-先安装以下地址的[工具]8, 再参考[教程]2, 数据库默认的账号密码为 root root
-
-5. [问题]没有GM工具情况下, 如何正确使用GM指令
-GM工具很早就不用了, 因为很长时间没更新, 新的GM指令已经不支持.
-GM指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入GM指令.
-对自己使用 @ 符号, 比如 @cash 50000
-对玩家使用 # 符号, 比如 #cash 玩家名字 50000
-
-</details>
-
-
-
-## 常用教程/工具
-
-<details>
-<summary>展开查看</summary>
-<br/>
-
-1.[教程]给新人如何使用 V8系 一键版 顺利进入游戏的教程
-http://www.99max.me/thread-19115-1-1.html
-
-2.[教程]99MaxEathena v8系 GM账号的设置
-http://www.99max.me/thread-12928-1-1.html
-
-3.[教程]99MaxEathena v8系 外网联机教程
-http://www.99max.me/thread-16792-1-2.html
-
-4.[原创]GM命令快捷菜单 可直接执行命令99Max专用版
-http://www.99max.me/thread-14899-1-1.html
-
-5.[工具]Yiko製造 - 99Max Eathena 文本数据编辑器 v1.1.3
-http://www.99max.me/thread-18936-1-1.html
-
-6.[教程]99MaxEathena v8系 添加自定义头饰教程
-http://www.99max.me/thread-16795-1-1.html
-
-7.[教程]99MaxEathena v8.10.0 版本 VIP系统 新增功能介绍
-http://www.99max.me/thread-19005-1-1.html
-
-8.[工具]Na.vicat110_mysql_cs 32位+64位+破解补丁
-http://www.99max.me/thread-16484-1-1.html
-
-9.[工具]给大家一个专业的文本编辑器 Notepad++ 6.6.9
-http://www.99max.me/thread-18709-1-2.html
-
-10.[分享]还有更多的教程及工具，请大家自行去查阅吧
-http://www.99max.me/forum-18-1.html
-
 </details>
 
 
 
 ## 【附】 目录 & 文件功能说明
-
 
 
 <details>
@@ -852,7 +812,6 @@ ro-single-server
 ```
 
 </details>
-
 
 
 ------
