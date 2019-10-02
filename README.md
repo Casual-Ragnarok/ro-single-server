@@ -466,10 +466,10 @@ RO 服务端启动后，会开启 5 个服务：
 
 ```
 ro-single-server
-|-- 01-启动架设环境.bat  .....................  [启动 mysql 存档数据库和 Apache 门户网站]
-|-- 02-启动RO服务端.bat  .....................  [启动 RO 服务端（含登录、角色、地图服务器）]
-|-- 03-关闭架设环境.bat  .....................  [停止 mysql 存档数据库和 Apache 门户网站]
-|-- 04-重置试用时间.bat  .....................  [服务端试用期破解脚本]
+|-- 01-启动架设环境.bat  ......................  [启动 mysql 存档数据库和 Apache 门户网站]
+|-- 02-启动RO服务端.bat  ......................  [启动 RO 服务端（含登录、角色、地图服务器）]
+|-- 03-关闭架设环境.bat  ......................  [停止 mysql 存档数据库和 Apache 门户网站]
+|-- 04-重置试用时间.bat  ......................  [服务端试用期破解脚本]
 |-- serv.bat  ...............................  [调用脚本 logserv.bat、 charserv.bat、 mapserv.bat 的前置脚本]
 |-- logserv.bat  ............................  [启用登录服务器 login-server.exe 的脚本]
 |-- login-server.exe  .......................  [登录服务器]
@@ -584,7 +584,7 @@ ro-single-server
 |   |   |-- item_randomopt_db.txt
 |   |   |-- item_randomopt_group.txt
 |   |   |-- item_stack.txt  .................  [物品叠加量限制数据库]
-|   |   |-- item_trade.txt  .................  [自定义物品交易限制数据库]
+|   |   |-- item_trade.txt  .................  [物品交易限制数据库]
 |   |   |-- job_exp.txt  ....................  [Job 升级所需经验数据库]
 |   |   |-- map_cache.dat  ..................  [地图缓存库]
 |   |   |-- map_index.txt  ..................  [地图索引库]
@@ -596,7 +596,7 @@ ro-single-server
 |   |   |-- mob_skill_db.txt  ...............  [魔物技能库]
 |   |   |-- pet_db.txt  .....................  [宠物属性库]
 |   |   |-- quest_db.txt  ...................  [制作任务数据库]
-|   |   |-- refine_db.yml ...................  [精炼数据库]
+|   |   |-- refine_db.yml  ..................  [精炼数据库]
 |   |-- re  .................................  [复兴后的数据库]
 |   |   |-- achievement_db.yml
 |   |   |-- attendance.yml
@@ -612,113 +612,46 @@ ro-single-server
 |   |   |-- item_combo_db.txt  ..............  [套装产生额外效果数据库]
 |   |   |-- item_db.txt  ....................  [物品属性]
 |   |   |-- item_delay.txt  .................  [物品使用延迟数据库]
-|   |   |-- item_flag.txt  ..................  [物品编号库]
-|   |   |-- item_giftbox.txt
+|   |   |-- item_flag.txt
+|   |   |-- item_giftbox.txt  ...............  [开启礼物盒所获得的物品数据库]
 |   |   |-- item_group_db.txt
-|   |   |-- item_misc.txt
-|   |   |-- item_noequip.txt
-|   |   |-- item_package.txt
+|   |   |-- item_misc.txt  ..................  [开启神秘红色箱子所获得的物品数据库]
+|   |   |-- item_noequip.txt  ...............  [装备/物品/卡片 限制库]
+|   |   |-- item_package.txt  ...............  [物品封包数据库]
 |   |   |-- item_randomopt_db.txt
 |   |   |-- item_randomopt_group.txt
-|   |   |-- item_stack.txt
-|   |   |-- item_trade.txt  .................  [交易限制]
-|   |   |-- item_violetbox.txt
-|   |   |-- job_basehpsp_db.txt
-|   |   |-- job_db1.txt
-|   |   |-- job_exp.txt
+|   |   |-- item_stack.txt  .................  [物品叠加量限制数据库]
+|   |   |-- item_trade.txt  .................  [物品交易限制数据库]
+|   |   |-- item_violetbox.txt  .............  [开启老紫箱所获得的物品数据库]
+|   |   |-- job_basehpsp_db.txt .............  [Base 升级所需经验数据库]
+|   |   |-- job_db1.txt  ....................  [Job 具体值数据库]
+|   |   |-- job_exp.txt  ....................  [Job 升级所需经验数据库]
 |   |   |-- job_noenter_map.txt
 |   |   |-- job_param_db.txt
-|   |   |-- level_penalty.txt
-|   |   |-- map_cache.dat
-|   |   |-- mob_boss.txt
-|   |   |-- mob_branch.txt
+|   |   |-- level_penalty.txt  ..............  [经验和掉落率修改数据库]
+|   |   |-- map_cache.dat  ..................  [地图缓存库]
+|   |   |-- mob_boss.txt  ...................  [魔物 BOSS 数据库]
+|   |   |-- mob_branch.txt  .................  [Dead Branch Summonable 魔物资料库]
 |   |   |-- mob_db.txt  .....................  [魔物属性]
-|   |   |-- mob_drop.txt
-|   |   |-- mob_poring.txt
-|   |   |-- mob_race2_db.txt
+|   |   |-- mob_drop.txt  ...................  [魔物掉落数据库]
+|   |   |-- mob_poring.txt  .................  [Poring Box Summonable 魔物资料库]
+|   |   |-- mob_race2_db.txt  ...............  [怪物族群数据库]
 |   |   |-- mob_random_db.txt
-|   |   |-- mob_skill_db.txt
+|   |   |-- mob_skill_db.txt  ...............  [魔物技能数据库]
 |   |   |-- pet_db.txt  .....................  [宠物属性]
-|   |   |-- produce_db.txt
-|   |   |-- quest_db.txt
-|   |   |-- refine_db.yml
-|   |   |-- skill_cast_db.txt
-|   |   |-- skill_castnodex_db.txt
-|   |   |-- skill_db.txt
-|   |   |-- skill_nocast_db.txt
-|   |   |-- skill_require_db.txt
-|   |   |-- skill_tree.txt
+|   |   |-- produce_db.txt  .................  [物品制造数据库]
+|   |   |-- quest_db.txt  ...................  [制作任务数据库]
+|   |   |-- refine_db.yml  ..................  [精炼数据库]
+|   |   |-- skill_cast_db.txt  ..............  [技能时间数据库]
+|   |   |-- skill_castnodex_db.txt  .........  [影响技能时间数据库]
+|   |   |-- skill_db.txt  ...................  [技能数据库]
+|   |   |-- skill_nocast_db.txt  ............  [技能限制数据库]
+|   |   |-- skill_require_db.txt  ...........  [前置技能数据库]
+|   |   |-- skill_tree.txt  .................  [技能树]
 |   |   |-- skill_unit_db.txt
 |   |   └-- statpoint.txt
 |   └-- README.md  ..........................  [RO 服务端文本数据库说明]
-|-- doc
-|   |-- 99MaxEa_atcommands.txt
-|   |-- 99MaxEa_bonus.txt
-|   |-- 99MaxEa_events.txt
-|   |-- 99MaxEa_mapflags.txt
-|   |-- 99MaxEa_script_commands.txt
-|   |-- 99MaxEa.txt
-|   |-- achievements.txt
-|   |-- atcommands.txt
-|   |-- ea_job_system.txt
-|   |-- effect_list.txt
-|   |-- item_bonus.txt
-|   |-- item_db.txt
-|   |-- item_group.txt
-|   |-- map_cache.txt
-|   |-- mapflags.txt
-|   |-- md5_hashcheck.txt
-|   |-- mob_db_mode_list.txt
-|   |-- mob_db.txt
-|   |-- mob_skill_db_powerskill.txt
-|   |-- packet_client.txt
-|   |-- packet_interserv.txt
-|   |-- packet_struct_notation.txt
-|   |-- permissions.txt
-|   |-- quest_variables.txt
-|   |-- script_commands.txt
-|   |-- skill_require_db.txt
-|   |-- source_doc.txt
-|   |-- status_change.txt
-|   |-- whisper_sys.txt
-|   |-- woe_time_explanation.txt
-|   |-- model
-|   |   |-- Model_Relation.mwb
-|   |   |-- Model_Relation.png
-|   |   └-- rathena.vpp
-|   |-- sample
-|   |   |-- bank_test.txt
-|   |   |-- basejob_baseclass_upper.txt
-|   |   |-- checkoption.txt
-|   |   |-- delitem2.txt
-|   |   |-- getequipcardid.txt
-|   |   |-- getequipid.txt
-|   |   |-- getiteminfo.txt
-|   |   |-- getmonsterinfo.txt
-|   |   |-- gstorage_test.txt
-|   |   |-- inarray.txt
-|   |   |-- instancing.txt
-|   |   |-- localized_npc.txt
-|   |   |-- navigate.txt
-|   |   |-- npc_dynamic_shop.txt
-|   |   |-- npc_extend_shop.txt
-|   |   |-- npc_live_dialogues.txt
-|   |   |-- npc_shop_test.txt
-|   |   |-- npc_test_array.txt
-|   |   |-- npc_test_chat.txt
-|   |   |-- npc_test_duplicate.txt
-|   |   |-- npc_test_func.txt
-|   |   |-- npc_test_getunits.txt
-|   |   |-- npc_test_npctimer2.txt
-|   |   |-- npc_test_npctimer.txt
-|   |   |-- npc_test_pcre.txt
-|   |   |-- npc_test_quest.txt
-|   |   |-- npc_test_setitemx.txt
-|   |   |-- npc_test_setmapflag.txt
-|   |   |-- npc_test_skill.txt
-|   |   |-- npc_test_time.txt
-|   |   └-- randomopt.txt
-|   └-- README.md
+|-- doc  ....................................  [游戏内的文档库]
 └-- README.md  ..............................  [RO 服务端说明]
 
 994 directories, 10054 files
