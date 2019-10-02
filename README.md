@@ -577,7 +577,7 @@ ro-single-server
 |   |   |-- attendance.yml
 |   |   |-- const.txt  ......................  [官方常量表]
 |   |   |-- instance_db.txt  ................  [副本数据库]
-|   |   |-- item_combo_db.txt  ..............  [物品合成库]
+|   |   |-- item_combo_db.txt  ..............  [套装产生额外效果数据库]
 |   |   |-- item_db.txt  ....................  [追加物品数据库]
 |   |   |-- item_group_db.txt  ..............  [物品分组数据库]
 |   |   |-- item_package.txt  ...............  [物品封包数据库]
@@ -597,22 +597,22 @@ ro-single-server
 |   |   |-- pet_db.txt  .....................  [宠物属性库]
 |   |   |-- quest_db.txt  ...................  [制作任务数据库]
 |   |   |-- refine_db.yml ...................  [精炼数据库]
-|   |-- re
+|   |-- re  .................................  [复兴后的数据库]
 |   |   |-- achievement_db.yml
 |   |   |-- attendance.yml
-|   |   |-- attr_fix.txt
-|   |   |-- exp_guild.txt
-|   |   |-- exp_homun.txt
-|   |   |-- homunculus_db.txt
-|   |   |-- instance_db.txt
-|   |   |-- item_bluebox.txt
-|   |   |-- item_buyingstore.txt
-|   |   |-- item_cardalbum.txt
+|   |   |-- attr_fix.txt  ...................  [属性伤害调整]
+|   |   |-- exp_guild.txt  ..................  [公会等级经验值库]
+|   |   |-- exp_homun.txt  ..................  [人工生命体等级经验值库]
+|   |   |-- homunculus_db.txt  ..............  [人工生命体资料库]
+|   |   |-- instance_db.txt  ................  [副本数据库]
+|   |   |-- item_bluebox.txt  ...............  [蓝箱开出物品资料库]
+|   |   |-- item_buyingstore.txt  ...........  [采购系统物品限定数据库]
+|   |   |-- item_cardalbum.txt  .............  [老旧收集册能开启到的物品数据库]
 |   |   |-- item_cash_db.txt  ...............  [在线商城]
-|   |   |-- item_combo_db.txt
+|   |   |-- item_combo_db.txt  ..............  [套装产生额外效果数据库]
 |   |   |-- item_db.txt  ....................  [物品属性]
-|   |   |-- item_delay.txt
-|   |   |-- item_flag.txt
+|   |   |-- item_delay.txt  .................  [物品使用延迟数据库]
+|   |   |-- item_flag.txt  ..................  [物品编号库]
 |   |   |-- item_giftbox.txt
 |   |   |-- item_group_db.txt
 |   |   |-- item_misc.txt
