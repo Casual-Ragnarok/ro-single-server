@@ -129,6 +129,28 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
 
 
+## 版本特色
+
+- 三转职业最高 BASE 等级 175, 最高 JOB 等级 60
+- 扩展职业最高 BASE 等级 160, 最高 JOB 等级 50
+- 全新职业 [杜兰族]
+- 无登录限制，无限在线人数
+- 正式进入 2018 年新 UI 界面时代！
+- 签到系统、一键换装、成就系统等等
+
+<details>
+<summary>展开查看更多</summary>
+<br/>
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/04.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/05.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/06.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
+
+</details>
+
+
 
 ## 安装教程
 
@@ -199,29 +221,6 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　第二次登陆时，把后面的 \_M/\_F 去掉，即可正常登陆
 
 </details>
-
-
-## 版本特色
-
-- 三转职业最高 BASE 等级 175, 最高 JOB 等级 60
-- 扩展职业最高 BASE 等级 160, 最高 JOB 等级 50
-- 全新职业 [杜兰族]
-- 无登录限制，无限在线人数
-- 正式进入 2018 年新 UI 界面时代！
-- 签到系统、一键换装、成就系统等等
-
-<details>
-<summary>展开查看更多</summary>
-<br/>
-
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/04.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/05.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/06.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
-
-</details>
-
 
 
 ## GM 使用教程
@@ -452,28 +451,30 @@ RO 服务端启动后，会开启 5 个服务：
 <summary>展开查看</summary>
 <br/>
 
+> 注：历史原因，服务端大部分文件的编码都是以 GBK 为主，目前主流编码是 UTF-8，但是修改文件时不要随便改变文件编码，避免引起不必要的异常
+
 ```
 ro-single-server
-|-- 01-启动架设环境.bat
-|-- 02-启动RO服务端.bat
+|-- 01-启动架设环境.bat  ..................  [启动 mysql 存档数据库和 Apache 门户网站]
+|-- 02-启动RO服务端.bat  ..................  [启动 RO服务端（含登录、角色、地图服务器）]
 |-- 03-关闭假设环境.bat
 |-- 04-重置试用时间.bat
+|-- serv.bat
+|-- logserv.bat
+|-- login-server.exe
 |-- charserv.bat
 |-- char-server.exe
-|-- history
-|-- img
-|-- libmysql.dll
-|-- login-server.exe
-|-- logserv.bat
 |-- mapserv.bat
 |-- map-server.exe
-|-- msvcr110.dll
-|-- npc
+|-- libmysql.dll
 |-- pcre8.dll
 |-- zlib.dll
-|-- serv.bat
-|-- sql-files
+|-- msvcr110.dll
 |-- vcruntime140.dll
+|-- history
+|-- img
+|-- npc
+|-- sql-files
 |-- conf
 |   |-- atcommand_athena.conf
 |   |-- battle
