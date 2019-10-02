@@ -220,6 +220,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　第一次登陆时，在帐号栏里填写 abc_M 或者 abc_F，其中 abc 就是要注册的帐号，密码栏填写要注册的密码
 <br/>　第二次登陆时，把后面的 \_M/\_F 去掉，即可正常登陆
 
+
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/12.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/13.png)
+
 </details>
 
 
@@ -259,11 +263,13 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 > 注：group_id 表示 GM 等级，各个等级权限详见 [conf/groups.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/groups.conf) 文件
 
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/14.png)
+
 
 ### GM 常用配置
 
-- GM指令辅助工具： [`gm-cmd/GM命令快捷菜单.exe`](https://github.com/lyy289065406/ro-single-server/blob/master/gm-cmd/GM命令快捷菜单.exe)
-- GM指令大全： [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
+- GM 指令辅助工具： [`gm-cmd/GM命令快捷菜单.exe`](https://github.com/lyy289065406/ro-single-server/blob/master/gm-cmd/GM命令快捷菜单.exe)
+- GM 指令大全： [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
 - 角色指令大全：  [`conf/charhelp.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
 - 修改服务器参数：  [`conf/char_athena.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
 - 修改经验倍率：  [`conf/battle/exp.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/exp.conf)
@@ -281,6 +287,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　GM 指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/09.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/10.png)
+![](https://github.com/lyy289065406/ro-single-server/blob/master/img/11.png)
+
 
 </details>
 
@@ -473,10 +483,40 @@ ro-single-server
 |-- vcruntime140.dll  .......................  [.NET 库文件之一]
 |-- npc  ....................................  [NPC 数据库（在 re 文件夹内表示"复兴后"）]
 |-- sql-files  ..............................  [mysql 建库脚本]
-|-- history
-|-- img
-|-- conf
+|-- history  ................................  [历史版本的更新内容说明]
+|-- img  ....................................  [README 文档插图]
+|-- gm-cmd  .................................  [GM 指令辅助工具]
+|-- ROEmulator  .............................  [RO 服务端模拟器工作目录]
+|   |-- home  ...............................  [admin HOME 目录]
+|   |-- tmp  ................................  [缓存模拟器内各个应用临时文件的临时]
+|   |-- usr
+|   |   └-- local
+|   |       |-- apache2  ....................  [Apache 模块，用于支持 Discuz! 门户网站]
+|   |       |-- php  ........................  [php 模块，用于支持 Discuz! 门户网站]
+|   |       └-- mysql  ......................  [mysql 存档数据库]
+|   └-- www  ................................  [Discuz! 门户网站前端源码]
+|-- conf  ...................................  [RO 服务端配置目录]
+|   |-- battle_athena.conf
+|   |-- channels.conf
+|   |-- char_athena.conf
+|   |-- charhelp.txt
+|   |-- charhelp.txt.dump
+|   |-- grf-files.txt
+|   |-- groups.conf
+|   |-- help.txt
 |   |-- atcommand_athena.conf
+|   |-- inter_athena.conf
+|   |-- inter_athena.conf.dump
+|   |-- inter_server.yml
+|   |-- log_athena.conf
+|   |-- login_athena.conf
+|   |-- map_athena.conf
+|   |-- maps_athena.conf
+|   |-- motd.txt
+|   |-- packet_athena.conf
+|   |-- valkyrie_sample.cfg
+|   |-- script_athena.conf
+|   |-- subnet_athena.conf
 |   |-- battle
 |   |   |-- battle.conf
 |   |   |-- battleground.conf
@@ -495,14 +535,6 @@ ro-single-server
 |   |   |-- player.conf
 |   |   |-- skill.conf
 |   |   └-- status.conf
-|   |-- battle_athena.conf
-|   |-- channels.conf
-|   |-- char_athena.conf
-|   |-- charhelp.txt
-|   |-- charhelp.txt.dump
-|   |-- grf-files.txt
-|   |-- groups.conf
-|   |-- help.txt
 |   |-- import
 |   |   |-- battle_conf.txt
 |   |   |-- char_conf.txt
@@ -513,14 +545,6 @@ ro-single-server
 |   |   |-- map_conf.txt
 |   |   |-- packet_conf.txt
 |   |   └-- script_conf.txt
-|   |-- inter_athena.conf
-|   |-- inter_athena.conf.dump
-|   |-- inter_server.yml
-|   |-- log_athena.conf
-|   |-- login_athena.conf
-|   |-- map_athena.conf
-|   |-- maps_athena.conf
-|   |-- motd.txt
 |   |-- msg_conf
 |   |   |-- char_msg.conf
 |   |   |-- import
@@ -546,11 +570,7 @@ ro-single-server
 |   |   |-- map_msg_spn.conf
 |   |   |-- map_msg_tha.conf
 |   |   └-- translation.conf
-|   |-- packet_athena.conf
-|   |-- readme.md
-|   |-- script_athena.conf
-|   |-- subnet_athena.conf
-|   └-- valkyrie_sample.cfg
+|   └-- README.md
 |-- db
 |   |-- abra_db.txt
 |   |-- castle_db.txt
@@ -561,6 +581,31 @@ ro-single-server
 |   |-- GeoIP.dat
 |   |-- guild_skill_tree.txt
 |   |-- homun_skill_tree.txt
+|   |-- item_auto_change.txt
+|   |-- item_avail.txt
+|   |-- item_drop_announce.txt
+|   |-- item_findingore.txt
+|   |-- item_nouse.txt
+|   |-- item_vending.txt
+|   |-- job_db2.txt
+|   |-- magicmushroom_db.txt
+|   |-- map_index.txt
+|   |-- mercenary_db.txt
+|   |-- mercenary_skill_db.txt
+|   |-- mob_avail.txt
+|   |-- mob_chat_db.txt
+|   |-- mob_classchange.txt
+|   |-- mob_item_ratio.txt
+|   |-- mob_mission.txt
+|   |-- mob_pouch.txt
+|   |-- status_disabled.txt
+|   |-- size_fix.txt
+|   |-- skill_changematerial_db.txt
+|   |-- skill_copyable_db.txt
+|   |-- skill_damage_db.txt
+|   |-- skill_improvise_db.txt
+|   |-- skill_nonearnpc_db.txt
+|   |-- spellbook_db.txt
 |   |-- import
 |   |   |-- abra_db.txt
 |   |   |-- achievement_db.yml
@@ -644,23 +689,6 @@ ro-single-server
 |   |   |-- spellbook_db.txt
 |   |   |-- statpoint.txt
 |   |   └-- status_disabled.txt
-|   |-- item_auto_change.txt
-|   |-- item_avail.txt
-|   |-- item_drop_announce.txt
-|   |-- item_findingore.txt
-|   |-- item_nouse.txt
-|   |-- item_vending.txt
-|   |-- job_db2.txt
-|   |-- magicmushroom_db.txt
-|   |-- map_index.txt
-|   |-- mercenary_db.txt
-|   |-- mercenary_skill_db.txt
-|   |-- mob_avail.txt
-|   |-- mob_chat_db.txt
-|   |-- mob_classchange.txt
-|   |-- mob_item_ratio.txt
-|   |-- mob_mission.txt
-|   |-- mob_pouch.txt
 |   |-- re
 |   |   |-- achievement_db.yml
 |   |   |-- attendance.yml
@@ -714,15 +742,7 @@ ro-single-server
 |   |   |-- skill_tree.txt
 |   |   |-- skill_unit_db.txt
 |   |   └-- statpoint.txt
-|   |-- readme.md
-|   |-- size_fix.txt
-|   |-- skill_changematerial_db.txt
-|   |-- skill_copyable_db.txt
-|   |-- skill_damage_db.txt
-|   |-- skill_improvise_db.txt
-|   |-- skill_nonearnpc_db.txt
-|   |-- spellbook_db.txt
-|   └-- status_disabled.txt
+|   └-- README.md
 |-- doc
 |   |-- 99MaxEa_atcommands.txt
 |   |-- 99MaxEa_bonus.txt
@@ -743,15 +763,21 @@ ro-single-server
 |   |-- mob_db_mode_list.txt
 |   |-- mob_db.txt
 |   |-- mob_skill_db_powerskill.txt
-|   |-- model
-|   |   |-- Model_Relation.mwb
-|   |   |-- Model_Relation.png
-|   |   └-- rathena.vpp
 |   |-- packet_client.txt
 |   |-- packet_interserv.txt
 |   |-- packet_struct_notation.txt
 |   |-- permissions.txt
 |   |-- quest_variables.txt
+|   |-- script_commands.txt
+|   |-- skill_require_db.txt
+|   |-- source_doc.txt
+|   |-- status_change.txt
+|   |-- whisper_sys.txt
+|   |-- woe_time_explanation.txt
+|   |-- model
+|   |   |-- Model_Relation.mwb
+|   |   |-- Model_Relation.png
+|   |   └-- rathena.vpp
 |   |-- sample
 |   |   |-- bank_test.txt
 |   |   |-- basejob_baseclass_upper.txt
@@ -784,32 +810,7 @@ ro-single-server
 |   |   |-- npc_test_skill.txt
 |   |   |-- npc_test_time.txt
 |   |   └-- randomopt.txt
-|   |-- script_commands.txt
-|   |-- skill_require_db.txt
-|   |-- source_doc.txt
-|   |-- status_change.txt
-|   |-- whisper_sys.txt
-|   └-- woe_time_explanation.txt
-|-- gm-cmd
-|   |-- GM命令快捷菜单.exe
-|   |-- roa.ini
-|   └-- ro.ini
-|-- ROEmulator
-|   |-- desktop.ini
-|   |-- home
-|   |   |-- admin
-|   |   |   └-- program
-|   |   |       |-- pskill.exe
-|   |   |       |-- unidelay.exe
-|   |   |       └-- uniserv.exe
-|   |   └-- desktop.ini
-|   |-- tmp
-|   |-- usr
-|   |   └-- local
-|   |       |-- apache2
-|   |       |-- mysql
-|   |       └-- php
-|   └-- www
+|   └-- README.md
 └-- README.md
 
 994 directories, 10054 files
