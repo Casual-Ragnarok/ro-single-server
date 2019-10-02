@@ -233,6 +233,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 名称： GM01
 - 外观： GM 默认外观
 
+<details>
+<summary>展开查看更多</summary>
+<br/>
+
 ### 默认数据库
 
 - 类型： mysql
@@ -270,14 +274,9 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 修改交易限制：  [db/re/item_trade.txt](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_trade.txt)
 - 修改宠物属性：  [db/re/pet_db.txt](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/pet_db.txt)
 
-<details>
-<summary>展开查看更多</summary>
-<br/>
-
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 
 </details>
-
 
 
 ## FAQ
