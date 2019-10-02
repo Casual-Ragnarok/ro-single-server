@@ -462,7 +462,7 @@ RO 服务端启动后，会开启 5 个服务：
 
 > 注：
 <br/>　RO 服务端除了使用 mysql 作为动态数据库之外，还会使用 txt 和 conf 作为静态数据库
-<br/>　历史原因，服务端大部分文件的编码都是以 GBK 为主，目前主流编码是 UTF-8，但是修改文件时不要随便改变文件编码，避免引起不必要的异常
+<br/>　历史原因，大部分文件的编码都是以 GBK 为主，修改文件时不要随便改变编码，避免引起不必要的异常
 
 ```
 ro-single-server
@@ -511,12 +511,12 @@ ro-single-server
 |   |-- log_athena.conf .....................  [日志配置文件]
 |   |-- inter_athena.conf  ..................  [数据库配置文件]
 |   |-- inter_server.yml
+|   |-- grf-files.txt  ......................  [GRF 文件默认位置]
 |   |-- motd.txt
 |   |-- valkyrie_sample.cfg
 |   |-- channels.conf
-|   |-- grf-files.txt
 |   |-- battle_athena.conf  .................  [通过 import 导入汇总了所有与战斗相关的配置文件]
-|   |-- battle
+|   |-- battle  .............................  [战斗相关配置]
 |   |   |-- battle.conf  ....................  [有关一般战斗的配置]
 |   |   |-- battleground.conf  ..............  [战役/战场配置]
 |   |   |-- client.conf .....................  [客户端效果的配置]
@@ -535,126 +535,68 @@ ro-single-server
 |   |   |-- skill.conf  .....................  [技能配置]
 |   |   └-- misc.conf  ......................  [环境配置（不属于上面分类里的设置，如 PVP、昼夜、禁言、日志等）]
 |   |-- msg_conf  ...........................  [各种事件、地图、任务、系统等消息的配置]
-|   |-- import  .............................  [目录已失效]
+|   |-- import  .............................  [该目录下的配置文件已失效]
 |   └-- README.md  ..........................  [RO 服务端配置目录说明]
 |-- db  .....................................  [RO 服务端文本数据库]
-|   |-- abra_db.txt
-|   |-- castle_db.txt
-|   |-- const.txt
-|   |-- create_arrow_db.txt
-|   |-- elemental_db.txt
-|   |-- elemental_skill_db.txt
-|   |-- GeoIP.dat
-|   |-- guild_skill_tree.txt
-|   |-- homun_skill_tree.txt
-|   |-- item_auto_change.txt
-|   |-- item_avail.txt
-|   |-- item_drop_announce.txt
-|   |-- item_findingore.txt
-|   |-- item_nouse.txt
-|   |-- item_vending.txt
-|   |-- job_db2.txt
-|   |-- magicmushroom_db.txt
-|   |-- map_index.txt
-|   |-- mercenary_db.txt
-|   |-- mercenary_skill_db.txt
-|   |-- mob_avail.txt
-|   |-- mob_chat_db.txt
-|   |-- mob_classchange.txt
-|   |-- mob_item_ratio.txt
-|   |-- mob_mission.txt
-|   |-- mob_pouch.txt
-|   |-- status_disabled.txt
-|   |-- size_fix.txt
-|   |-- skill_changematerial_db.txt
-|   |-- skill_copyable_db.txt
-|   |-- skill_damage_db.txt
-|   |-- skill_improvise_db.txt
-|   |-- skill_nonearnpc_db.txt
-|   |-- spellbook_db.txt
-|   |-- import
-|   |   |-- abra_db.txt
+|   |-- abra_db.txt  ........................  [贤者随机技能发动数据库]
+|   |-- castle_db.txt  ......................  [公会城堡数据库]
+|   |-- const.txt  ..........................  [常量表]
+|   |-- create_arrow_db.txt  ................  [制作箭技能数据库]
+|   |-- elemental_db.txt  ...................  [元素精灵数据库]
+|   |-- elemental_skill_db.txt  .............  [元素精灵技能数据库]
+|   |-- GeoIP.dat  ..........................  [IP 地理位置数据库]
+|   |-- guild_skill_tree.txt  ...............  [公会技能树数据库]
+|   |-- homun_skill_tree.txt  ...............  [人工生命体技能树数据库]
+|   |-- item_auto_change.txt  ...............  [自动转换武器属性的物品库]
+|   |-- item_avail.txt  .....................  [物品外观替换库]
+|   |-- item_drop_announce.txt  .............  [物品掉落全服公告]
+|   |-- item_findingore.txt  ................  [获得寻找的矿石数据库]
+|   |-- item_nouse.txt  .....................  [物品使用限制数据库]
+|   |-- item_vending.txt  ...................  [自动售货机物品库]
+|   |-- job_db2.txt  ........................  [Job 升级奖励库]
+|   |-- magicmushroom_db.txt  ...............  [狂笑之毒数据库]
+|   |-- map_index.txt  ......................  [地图索引库]
+|   |-- mercenary_db.txt  ...................  [雇佣兵资料库]
+|   |-- mercenary_skill_db.txt  .............  [雇佣兵技能库]
+|   |-- mob_avail.txt  ......................  [魔物外观替换库]
+|   |-- mob_chat_db.txt  ....................  [魔物对话数据库]
+|   |-- mob_classchange.txt  ................  [魔物召唤数据库]
+|   |-- mob_item_ratio.txt  .................  [魔物进阶掉率设置]
+|   |-- mob_mission.txt  ....................  [跆拳道任务召唤怪物数据库]
+|   |-- mob_pouch.txt  ......................  [红色炸弹能召唤出来的魔物数据库]
+|   |-- status_disabled.txt  ................  [状态改变限制数据库]
+|   |-- size_fix.txt  .......................  [体型大小对武器伤害的修正数据库]
+|   |-- skill_changematerial_db.txt  ........  [基因技能: "素材变化" 转换成品资料数据库]
+|   |-- skill_copyable_db.txt  ..............  [技能: 威吓/抄袭/重现 技能库]
+|   |-- skill_damage_db.txt  ................  [技能: 伤害调整数据库]
+|   |-- skill_improvise_db.txt  .............  [技能: 随机发动魔法数据库]
+|   |-- skill_nonearnpc_db.txt  .............  [技能: 距离 NPC 数据库]
+|   |-- spellbook_db.txt  ...................  [阅读魔法书保存点数数据库]
+|   |-- import  .............................  [该目录下的配置文件部分已失效]
 |   |   |-- achievement_db.yml
 |   |   |-- attendance.yml
-|   |   |-- attr_fix.txt
-|   |   |-- castle_db.txt
-|   |   |-- const.txt
-|   |   |-- create_arrow_db.txt
-|   |   |-- elemental_db.txt
-|   |   |-- elemental_skill_db.txt
-|   |   |-- exp_guild.txt
-|   |   |-- exp_homun.txt
-|   |   |-- guild_skill_tree.txt
-|   |   |-- homunculus_db.txt
-|   |   |-- homun_skill_tree.txt
-|   |   |-- instance_db.txt
-|   |   |-- item_avail.txt
-|   |   |-- item_bluebox.txt
-|   |   |-- item_buyingstore.txt
-|   |   |-- item_cardalbum.txt
-|   |   |-- item_cash_db.txt
-|   |   |-- item_combo_db.txt
-|   |   |-- item_db.txt
-|   |   |-- item_delay.txt
-|   |   |-- item_findingore.txt
-|   |   |-- item_flag.txt
-|   |   |-- item_giftbox.txt
-|   |   |-- item_group_db.txt
-|   |   |-- item_misc.txt
-|   |   |-- item_noequip.txt
-|   |   |-- item_nouse.txt
-|   |   |-- item_package.txt
+|   |   |-- const.txt  ......................  [官方常量表]
+|   |   |-- instance_db.txt  ................  [副本数据库]
+|   |   |-- item_combo_db.txt  ..............  [物品合成库]
+|   |   |-- item_db.txt  ....................  [追加物品数据库]
+|   |   |-- item_group_db.txt  ..............  [物品分组数据库]
+|   |   |-- item_package.txt  ...............  [物品封包数据库]
 |   |   |-- item_randomopt_db.txt
 |   |   |-- item_randomopt_group.txt
-|   |   |-- item_stack.txt
-|   |   |-- item_trade.txt
-|   |   |-- item_violetbox.txt
-|   |   |-- job_basehpsp_db.txt
-|   |   |-- job_db1.txt
-|   |   |-- job_db2.txt
-|   |   |-- job_exp.txt
-|   |   |-- job_noenter_map.txt
-|   |   |-- job_param_db.txt
-|   |   |-- level_penalty.txt
-|   |   |-- magicmushroom_db.txt
-|   |   |-- map_cache.dat
-|   |   |-- map_index.txt
-|   |   |-- mercenary_db.txt
-|   |   |-- mercenary_skill_db.txt
-|   |   |-- mob_avail.txt
-|   |   |-- mob_boss.txt
-|   |   |-- mob_branch.txt
-|   |   |-- mob_chat_db.txt
-|   |   |-- mob_classchange.txt
-|   |   |-- mob_db.txt
-|   |   |-- mob_drop.txt
-|   |   |-- mob_item_ratio.txt
-|   |   |-- mob_mission.txt
-|   |   |-- mob_poring.txt
-|   |   |-- mob_pouch.txt
-|   |   |-- mob_race2_db.txt
-|   |   |-- mob_random_db.txt
-|   |   |-- mob_skill_db.txt
-|   |   |-- pet_db.txt
-|   |   |-- produce_db.txt
-|   |   |-- quest_db.txt
-|   |   |-- refine_db.yml
-|   |   |-- size_fix.txt
-|   |   |-- skill_cast_db.txt
-|   |   |-- skill_castnodex_db.txt
-|   |   |-- skill_changematerial_db.txt
-|   |   |-- skill_copyable_db.txt
-|   |   |-- skill_damage_db.txt
-|   |   |-- skill_db.txt
-|   |   |-- skill_improvise_db.txt
-|   |   |-- skill_nocast_db.txt
-|   |   |-- skill_nonearnpc_db.txt
-|   |   |-- skill_require_db.txt
-|   |   |-- skill_tree.txt
-|   |   |-- skill_unit_db.txt
-|   |   |-- spellbook_db.txt
-|   |   |-- statpoint.txt
-|   |   └-- status_disabled.txt
+|   |   |-- item_stack.txt  .................  [物品叠加量限制数据库]
+|   |   |-- item_trade.txt  .................  [自定义物品交易限制数据库]
+|   |   |-- job_exp.txt  ....................  [Job 升级所需经验数据库]
+|   |   |-- map_cache.dat  ..................  [地图缓存库]
+|   |   |-- map_index.txt  ..................  [地图索引库]
+|   |   |-- mercenary_db.txt  ...............  [雇佣兵数据库]
+|   |   |-- mercenary_skill_db.txt  .........  [雇佣兵技能库]
+|   |   |-- mob_db.txt  .....................  [魔物资料库]
+|   |   |-- mob_drop.txt  ...................  [魔物掉落数据库]
+|   |   |-- mob_mission.txt  ................  [跆拳道任务召唤怪物数据库]
+|   |   |-- mob_skill_db.txt  ...............  [魔物技能库]
+|   |   |-- pet_db.txt  .....................  [宠物属性库]
+|   |   |-- quest_db.txt  ...................  [制作任务数据库]
+|   |   |-- refine_db.yml ...................  [精炼数据库]
 |   |-- re
 |   |   |-- achievement_db.yml
 |   |   |-- attendance.yml
