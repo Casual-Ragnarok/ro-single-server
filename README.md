@@ -132,10 +132,6 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 ## 安装教程
 
-<details>
-<summary>展开查看</summary>
-<br/>
-
 ### 安装 & 启动服务端
 
 - 服务端只能运行于 Windows 系统
@@ -152,6 +148,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　若启动过程中报错丢失 0xc000007b，安装环境修复包 DirectXRepair 即可
 <br/>　服务端运行过程中不要关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe`
 <br/>　因 mysql 内置在服务端，懂 git 的同学可以 Fork 这个仓库，再 Checkout 一个分支就可以用 github 远程备份存档了
+
+<details>
+<summary>展开查看更多</summary>
+<br/>
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/01.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/02.png)
