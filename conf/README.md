@@ -9,7 +9,7 @@
 ------
 ### 登录服务器
 
-假如希望关闭 `_M/F` 注册系统，采用 MD5 密码的注册方式，可以增加一个自定义配置文件 `conf/import/login_conf.txt` ，在其中写入配置项：
+假如希望关闭 `_M/F` 注册系统，代替采用 MD5 密码的注册方式，可以增加一个自定义配置文件 `conf/import/login_conf.txt` ，在其中写入配置项：
 
 ```
 new_account: no
@@ -22,10 +22,10 @@ use_MD5_passwords: yes
 ------
 ### 角色服务器
 
-假如希望更改服务器名称为 "RO仙境传说" ，可以增加一个自定义配置文件 `conf/import/char_conf.txt` ，在其中写入配置项：
+假如希望更改服务器名称为 "RO仙境" ，可以增加一个自定义配置文件 `conf/import/char_conf.txt` ，在其中写入配置项：
 
 ```
-server_name: RO仙境传说
+server_name: RO仙境
 ```
 
 > `server_name` 本是 `conf/char_athena.conf` 里面的同名配置项，它将被覆盖
@@ -49,7 +49,7 @@ map: shops
 
 
 ------
-### Socket服务器
+### Socket 服务器
 
 假如希望使用 mysql 数据库代替 txt 文件库，可以增加一个自定义配置文件 `conf/import/inter_conf.txt` ，在其中写入配置项：
 
