@@ -102,7 +102,7 @@ echo "
 					<TD width='14%' height=30><DIV align=center><SPAN class=txt><A href='".$config_cilent_url1."' target=_blank>百度网盘(dgui)</A></SPAN></DIV></TD>
 					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url2."' target=_blank>99Max(收费)</A></SPAN></DIV></TD>
 					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url3."' target=_blank>韩国官网</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url4."' target=_blank>FTP下载点</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url4."' target=_blank>本地下载</A></SPAN></DIV></TD>
 					</TR>
 					</TBODY>
 					</TABLE>
