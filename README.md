@@ -12,7 +12,7 @@
 - master: 主分支，当前最新版服务端的原始档
 - tag: 基线，历史版本服务端的原始档
 - playing: 存档分支，这是我从 master checkout 出来玩的远程存档分支，其他人可以删掉
-- modify: 修改分支，这是从 master checkout 出来用于调整的分支，以便随时 MR 到 master 和 playing，其他人可以删掉
+- modify: 修改分支，从 master checkout 出来用于调整的分支，以便随时 MR 到 master 和 playing，其他人可以删掉
 
 </details>
 
@@ -146,7 +146,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 - 三转职业最高 BASE 等级 175, 最高 JOB 等级 60
 - 扩展职业最高 BASE 等级 160, 最高 JOB 等级 50
-- 全新职业 [杜兰族]
+- 全新种族 [杜兰族] （即喵族，原本 RO 只能控制人族）
 - 无登录限制，无限在线人数
 - 正式进入 2018 年新 UI 界面时代！
 - 签到系统、一键换装、成就系统等等
@@ -318,7 +318,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 可以尝试把服务端根目录下的 `msvcr110.dll` 和 `vcruntime140.dll` 文件复制到 `C:\Windows\System32` 目录。
 
-若还是不行则需要修复 .NET【[百度网盘(m2e4)](https://pan.baidu.com/s/1Sics3B5rGCUZl-47Tv5n7A)
+若还是不行则需要修复 .NET【[百度网盘(m2e4)](https://pan.baidu.com/s/1Sics3B5rGCUZl-47Tv5n7A)】
 
 
 ------
@@ -344,6 +344,7 @@ RO 服务端启动后，会开启 5 个服务：
 
 另外如果需要架设成联机服务器（或部署到 VMWare 等虚拟机），则至少对外开放 6900、 5121、 6121 这 3 个端口，客户端才能成功登陆。
 
+> 注：若搭建联机服务器，需确保防火墙策略已放行上述的 5 个端口
 
 ------
 ### 0x04 怎样搭建联机服务器？
@@ -421,11 +422,11 @@ RO 服务端启动后，会开启 5 个服务：
 
 而对于 <b>客户端</b> 配置则简单得多。
 
-客户端默认情况下是不存在 IP 配置文件的，在安装登录器补丁后，需要手动添加一个文件 `Data/clientinfo.xml`。
+客户端默认情况下是不存在 IP 配置文件的，在安装登录器补丁后，需要手动添加一个文件 `data/clientinfo.xml`。
 
 根据客户端要走 <b>局域网</b> 还是 <b>公网</b> 接入服务端，对应修改 `<address>` 的值即可。
 
-完整的 `Data/clientinfo.xml` 文件内容如下:
+完整的 `data/clientinfo.xml` 文件内容如下:
 ```
 <?xml version="1.0" encoding="gbk3212" ?>
 <clientinfo>
