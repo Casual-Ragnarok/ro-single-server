@@ -99,10 +99,10 @@ echo "
 					<TD colSpan=4 height=30><DIV align=center><SPAN class=txt><IMG height=46 src='images/c_http1.gif' width=228 border=0></SPAN></DIV></TD>
 					</TR>
 					<TR>
-					<TD width='14%' height=30><DIV align=center><SPAN class=txt><A href='".$config_cilent_url1."' target=_blank>下载点一</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url2."' target=_blank>下载点二</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url3."' target=_blank>下载点三</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url4."' target=_blank>下载点四</A></SPAN></DIV></TD>
+					<TD width='14%' height=30><DIV align=center><SPAN class=txt><A href='".$config_cilent_url1."' target=_blank>百度网盘(dgui)</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url2."' target=_blank>99Max(收费)</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url3."' target=_blank>韩国官网</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url4."' target=_blank>FTP下载点</A></SPAN></DIV></TD>
 					</TR>
 					</TBODY>
 					</TABLE>
@@ -112,10 +112,10 @@ echo "
 					<TD height=30 colspan='4'><DIV class=txt align=center><IMG src='images/c_http2.gif' width=228 height=46 border=0></DIV></TD>
 					</TR>
 					<TR>
-					<TD width='14%' height=30><DIV class=txt align=center><A href='".$config_patch_url1."' target=_blank>下载点一</A></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url2."' target=_blank>下载点二</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url3."' target=_blank>下载点三</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url4."' target=_blank>下载点四</A></SPAN></DIV></TD>
+					<TD width='14%' height=30><DIV class=txt align=center><A href='".$config_patch_url1."' target=_blank>百度网盘(rkk0)</A></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url2."' target=_blank>99Max(收费)</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url3."' target=_blank>本地下载一</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url4."' target=_blank>本地下载二</A></SPAN></DIV></TD>
 					</TR>
 					</TBODY>
 					</TABLE>
