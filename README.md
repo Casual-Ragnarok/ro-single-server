@@ -4,8 +4,21 @@
 
 ------
 
+## 关于此仓库（非开发者可不看）
+
+<details>
+<summary>展开查看</summary>
+
+- master: 主分支，当前最新版服务端的原始档
+- tag: 基线，历史版本服务端的原始档
+- playing: 存档分支，这是我从 master checkout 出来玩的远程存档分支，其他人可以删掉
+- modify: 修改分支，这是从 master checkout 出来用于调整的分支，以便随时 MR 到 master 和 playing，其他人可以删掉
+
+</details>
+
 
 ## 关于网游单机化的历史背景
+
 <details>
 <summary>展开查看</summary>
 <br/>
