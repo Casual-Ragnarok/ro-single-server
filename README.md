@@ -118,7 +118,9 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 为了方便操作，我把此删除动作封装成 DOS 脚本，只要过期后执行一下（未过期也可执行），就可以永久试用了。
 
-> 注：注册表地址 `HKCU` 是 `HKEY_CURRENT_USER` 的缩写
+> 注：
+<br/>　注册表地址 `HKCU` 是 `HKEY_CURRENT_USER` 的缩写
+<br/>　由于没有从根本上破解，每隔 1 小时服务端会弹出一次激活框，可以不管，也可以点击【继续试用】，不影响游戏
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/00.png)
 
@@ -139,7 +141,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max:收费](http://www.99max.me/thread-485-1-1.html)】~
 - 客户端补丁（登陆器）：v4.3 【[Github](https://github.com/lyy289065406/ro-single-client)】【[百度网盘(0nph)](https://pan.baidu.com/s/1g7VVkA5C2pjplko-uTwggg)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
  
-> 备：
+> 备注：
 <br/>　服务端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-server.md)
 <br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
 
@@ -332,7 +334,17 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 
 ------
-### 0x03 搭建服务端会占用哪些端口？
+### 0x03 服务端每小时提示弹一次激活框
+
+由于没有从根本上破解（脱壳），确实每隔 1 小时服务端会弹出一次激活框。
+
+其实可以不管，也可以点击【继续试用】，顺便执行脚本 `04-重置试用时间.bat`，不影响游戏。
+
+> 注：找时间我会把整个激活逻辑删掉
+
+
+------
+### 0x04 搭建服务端会占用哪些端口？
 
 RO 服务端启动后，会开启 5 个服务：
 
@@ -349,7 +361,7 @@ RO 服务端启动后，会开启 5 个服务：
 > 注：若搭建联机服务器，需确保防火墙策略已放行上述的 5 个端口
 
 ------
-### 0x04 怎样搭建联机服务器？
+### 0x05 怎样搭建联机服务器？
 
 假设服务器 IP 如下：
 
