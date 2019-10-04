@@ -56,9 +56,9 @@ $config_cilent_url2=		"http://www.99max.me/thread-485-1-1.html";
 $config_cilent_url3=		"http://ro.gnjoy.com/pds/down/";
 $config_cilent_url4=		"http://127.0.0.1/ro/download/Ragnarok_KRO_20190306_Lite.rar";
 //
-$config_patch_url1=		"https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg";
+$config_patch_url1=		"https://pan.baidu.com/s/1g7VVkA5C2pjplko-uTwggg";
 $config_patch_url2=		"http://www.99max.me/thread-3674-1-1.html";
-$config_patch_url3=		"http://127.0.0.1/ro/download/99MaxRo_Patch_v4.3.rar";
+$config_patch_url3=		"http://127.0.0.1/ro/download/RO_Singel_Patch_v4.3 CHS µÇÂ¼²¹¶¡.zip";
 $config_patch_url4=		"#";
 /***********************************************************************************************\
 *************************************************************************************************

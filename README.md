@@ -14,6 +14,8 @@
 - playing: 存档分支，这是我从 master checkout 出来玩的远程存档分支，其他人可以删掉
 - modify: 修改分支，从 master checkout 出来用于调整的分支，以便随时 MR 到 master 和 playing，其他人可以删掉
 
+> 配套客户端仓库：[https://github.com/lyy289065406/ro-single-client](https://github.com/lyy289065406/ro-single-client)
+
 </details>
 
 
@@ -135,8 +137,8 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - EA 服务端模拟器：v8.19.0 【[Github:免费已破解](https://github.com/lyy289065406/ro-single-server)】【[百度网盘(zx39):VMWare永久激活](https://pan.baidu.com/s/1M-W-bra6h16Bq7vqPI_Rng)】~【[99Max:收费](http://www.99max.me/thread-12926-1-1.html)】~
 - 服务端环境修复包： DirectXRepair-v3.9 【[百度网盘(vs1m)](https://pan.baidu.com/s/1zoBXTi5rp7Yj1bhzMzo-oQ)】 (如果可以直接运行就不用装了)
 - 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max:收费](http://www.99max.me/thread-485-1-1.html)】~
-- 客户端补丁（登陆器）：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
-
+- 客户端补丁（登陆器）：v4.3 【[Github](https://github.com/lyy289065406/ro-single-client)】【[百度网盘(0nph)](https://pan.baidu.com/s/1g7VVkA5C2pjplko-uTwggg)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
+ 
 > 备：
 <br/>　服务端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-server.md)
 <br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
@@ -209,8 +211,8 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 下载客户端补丁（版本必须是 v4.3）
 - 解压客户端到任意位置（<b>路径不要有中文</b>）
 - 解压客户端补丁到韩服客户端根目录，同名文件全覆盖
-- 双击运行 `Setup_Plus.exe` 修改配置
-- 双击运行 `99Max仙境传说_v4.3_Data.exe` 即可进入游戏
+- 双击运行 `RO仙境传说_Setup_Plus.exe` 修改配置
+- 双击运行 `RO仙境传说_v4.3_Data.exe` 即可进入游戏
 
 
 </details>
