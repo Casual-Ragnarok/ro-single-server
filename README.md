@@ -387,6 +387,8 @@ RO 服务端启动后，会开启 5 个服务：
 <br/>　○ char_ip: 192.168.1.2
 <br/>　○ bind_ip: 127.0.0.1 （保持被注释）
 
+> 注：局域网下，子网掩码配置文件 [conf/subnet_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf) 可能会影响客户端登录。该文件通过子网掩码计算客户端所配置的服务端 IP ，只要结果和服务器的真实局域网 IP 一致就允许服务端登录（换言之允许客户端配置服务端的 IP 段）。
+
 ------
 
 若<b>仅需 公网 联机</b>，服务端配置修改为（共修改 4 处）：
@@ -422,11 +424,11 @@ RO 服务端启动后，会开启 5 个服务：
 
 而对于 <b>客户端</b> 配置则简单得多。
 
-客户端默认情况下是不存在 IP 配置文件的，在安装登录器补丁后，需要手动添加一个文件 `data/clientinfo.xml`。
+客户端默认情况下是不存在 IP 配置文件的，在安装登录器补丁后，需要手动添加一个文件 `data/sclientinfo.xml`。
 
 根据客户端要走 <b>局域网</b> 还是 <b>公网</b> 接入服务端，对应修改 `<address>` 的值即可。
 
-完整的 `data/clientinfo.xml` 文件内容如下:
+完整的 `data/sclientinfo.xml` 文件内容如下:
 ```
 <?xml version="1.0" encoding="gbk3212" ?>
 <clientinfo>
@@ -436,14 +438,14 @@ RO 服务端启动后，会开启 5 个服务：
         <extendedslot>2</extendedslot>
 
         <connection>
-                <display>单机测试 大陆 中国电信/网通</display>
+                <display>单机服务器 电信/网通双线</display>
                 <desc></desc>
                 <balloon></balloon>
                 <address>127.0.0.1</address>
                 <port>6900</port>
                 <version>45</version>
                 <langtype>3</langtype>
-                <registrationweb>http://127.0.0.1/</registrationweb>
+                <registrationweb>http://127.0.0.1/ro</registrationweb>
                 <yellow>
                         <admin>2000000</admin>
                 </yellow>
@@ -462,6 +464,8 @@ RO 服务端启动后，会开启 5 个服务：
 
 </clientinfo>
 ```
+
+
 
 </details>
 
@@ -520,7 +524,7 @@ ro-single-server
 |   |-- maps_athena.conf  ...................  [地图名称数据库]
 |   |-- groups.conf  ........................  [各个玩家角色组的权限配置文件（GM 权限配置）]
 |   |-- script_athena.conf ..................  [脚本配置文件]
-|   |-- subnet_athena.conf ..................  [子网配置文件]
+|   |-- subnet_athena.conf ..................  [子网掩码配置文件（在局域网下架设服务器需关注）]
 |   |-- packet_athena.conf ..................  [Socket 配置文件]
 |   |-- log_athena.conf .....................  [日志配置文件]
 |   |-- inter_athena.conf  ..................  [数据库配置文件]
