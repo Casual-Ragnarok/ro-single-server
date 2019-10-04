@@ -14,6 +14,8 @@
 - playing: 存档分支，这是我从 master checkout 出来玩的远程存档分支，其他人可以删掉
 - modify: 修改分支，从 master checkout 出来用于调整的分支，以便随时 MR 到 master 和 playing，其他人可以删掉
 
+> 配套客户端仓库：[https://github.com/lyy289065406/ro-single-client](https://github.com/lyy289065406/ro-single-client)
+
 </details>
 
 
@@ -116,7 +118,9 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 为了方便操作，我把此删除动作封装成 DOS 脚本，只要过期后执行一下（未过期也可执行），就可以永久试用了。
 
-> 注：注册表地址 `HKCU` 是 `HKEY_CURRENT_USER` 的缩写
+> 注：
+<br/>　注册表地址 `HKCU` 是 `HKEY_CURRENT_USER` 的缩写
+<br/>　由于没有从根本上破解，每隔 1 小时服务端会弹出一次激活框，可以不管，也可以点击【继续试用】，不影响游戏
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/00.png)
 
@@ -135,9 +139,9 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - EA 服务端模拟器：v8.19.0 【[Github:免费已破解](https://github.com/lyy289065406/ro-single-server)】【[百度网盘(zx39):VMWare永久激活](https://pan.baidu.com/s/1M-W-bra6h16Bq7vqPI_Rng)】~【[99Max:收费](http://www.99max.me/thread-12926-1-1.html)】~
 - 服务端环境修复包： DirectXRepair-v3.9 【[百度网盘(vs1m)](https://pan.baidu.com/s/1zoBXTi5rp7Yj1bhzMzo-oQ)】 (如果可以直接运行就不用装了)
 - 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max:收费](http://www.99max.me/thread-485-1-1.html)】~
-- 客户端补丁（登陆器）：v4.3 【[百度网盘(rkk0)](https://pan.baidu.com/s/1qVFAwz55pdz-e_qTyjaXQg)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
-
-> 备：
+- 客户端补丁（登陆器）：v4.3 【[Github](https://github.com/lyy289065406/ro-single-client)】【[百度网盘(0nph)](https://pan.baidu.com/s/1g7VVkA5C2pjplko-uTwggg)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
+ 
+> 备注：
 <br/>　服务端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-server.md)
 <br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
 
@@ -208,9 +212,9 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 下载韩服客户端（版本必须是 Ragnarok_KRO_20190306_Lite）
 - 下载客户端补丁（版本必须是 v4.3）
 - 解压客户端到任意位置（<b>路径不要有中文</b>）
-- 解压客户端补丁到韩服客户端根目录，同名文件全覆盖
-- 双击运行 `Setup_Plus.exe` 修改配置
-- 双击运行 `99Max仙境传说_v4.3_Data.exe` 即可进入游戏
+- 覆盖客户端补丁到韩服客户端根目录
+- 双击运行 `RO仙境传说_Setup_Plus.exe` 修改配置
+- 双击运行 `RO仙境传说_v4.3_Data.exe` 即可进入游戏
 
 
 </details>
@@ -330,7 +334,25 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 
 ------
-### 0x03 搭建服务端会占用哪些端口？
+### 0x03 服务端每小时提示弹一次激活框
+
+由于没有从根本上破解（脱壳），确实每隔 1 小时服务端会弹出一次激活框。
+
+其实可以不管，也可以点击【继续试用】，顺便执行脚本 `04-重置试用时间.bat`，不影响游戏。
+
+> 注：找时间我会把整个激活逻辑删掉
+
+
+### 0x04 游戏中存在乱码
+
+例如【导航】、【Tips Box】等。
+
+翻译组的锅，没有完全翻译（客户端内的 `data_ch.grf` 就是语言包，配置文件为 `data.ini`），不过并不影响游戏。
+
+所谓的乱码其实是没有翻译的韩文，主要因为我们在中文系统上用韩服客户端就会出现这种情况。
+
+------
+### 0x05 搭建服务端会占用哪些端口？
 
 RO 服务端启动后，会开启 5 个服务：
 
@@ -347,7 +369,7 @@ RO 服务端启动后，会开启 5 个服务：
 > 注：若搭建联机服务器，需确保防火墙策略已放行上述的 5 个端口
 
 ------
-### 0x04 怎样搭建联机服务器？
+### 0x06 怎样搭建联机服务器？
 
 假设服务器 IP 如下：
 
@@ -387,6 +409,8 @@ RO 服务端启动后，会开启 5 个服务：
 <br/>　○ char_ip: 192.168.1.2
 <br/>　○ bind_ip: 127.0.0.1 （保持被注释）
 
+> 注：局域网下，子网掩码配置文件 [conf/subnet_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf) 可能会影响客户端登录。该文件通过子网掩码计算客户端所配置的服务端 IP ，只要结果和服务器的真实局域网 IP 一致就允许服务端登录（换言之允许客户端配置服务端的 IP 段）。
+
 ------
 
 若<b>仅需 公网 联机</b>，服务端配置修改为（共修改 4 处）：
@@ -422,11 +446,11 @@ RO 服务端启动后，会开启 5 个服务：
 
 而对于 <b>客户端</b> 配置则简单得多。
 
-客户端默认情况下是不存在 IP 配置文件的，在安装登录器补丁后，需要手动添加一个文件 `data/clientinfo.xml`。
+客户端默认情况下是不存在 IP 配置文件的，在安装登录器补丁后，需要手动添加一个文件 `data/sclientinfo.xml`。
 
 根据客户端要走 <b>局域网</b> 还是 <b>公网</b> 接入服务端，对应修改 `<address>` 的值即可。
 
-完整的 `data/clientinfo.xml` 文件内容如下:
+完整的 `data/sclientinfo.xml` 文件内容如下:
 ```
 <?xml version="1.0" encoding="gbk3212" ?>
 <clientinfo>
@@ -436,14 +460,14 @@ RO 服务端启动后，会开启 5 个服务：
         <extendedslot>2</extendedslot>
 
         <connection>
-                <display>单机测试 大陆 中国电信/网通</display>
+                <display>单机服务器 电信/网通双线</display>
                 <desc></desc>
                 <balloon></balloon>
                 <address>127.0.0.1</address>
                 <port>6900</port>
                 <version>45</version>
                 <langtype>3</langtype>
-                <registrationweb>http://127.0.0.1/</registrationweb>
+                <registrationweb>http://127.0.0.1/ro</registrationweb>
                 <yellow>
                         <admin>2000000</admin>
                 </yellow>
@@ -462,6 +486,8 @@ RO 服务端启动后，会开启 5 个服务：
 
 </clientinfo>
 ```
+
+
 
 </details>
 
@@ -520,7 +546,7 @@ ro-single-server
 |   |-- maps_athena.conf  ...................  [地图名称数据库]
 |   |-- groups.conf  ........................  [各个玩家角色组的权限配置文件（GM 权限配置）]
 |   |-- script_athena.conf ..................  [脚本配置文件]
-|   |-- subnet_athena.conf ..................  [子网配置文件]
+|   |-- subnet_athena.conf ..................  [子网掩码配置文件（在局域网下架设服务器需关注）]
 |   |-- packet_athena.conf ..................  [Socket 配置文件]
 |   |-- log_athena.conf .....................  [日志配置文件]
 |   |-- inter_athena.conf  ..................  [数据库配置文件]
