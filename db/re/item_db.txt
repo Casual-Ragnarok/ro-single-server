@@ -13,12 +13,12 @@
 
 // Healing Items
 //=============================================================
-501,Red_Potion,红色药水,0,50,,70,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(45,65),0; },{},{}
-502,Orange_Potion,赤色药水,0,200,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(105,145),0; },{},{}
-503,Yellow_Potion,黄色药水,0,550,,130,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(175,235),0; },{},{}
-504,White_Potion,白色药水,0,1200,,150,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(325,405),0; },{},{}
-505,Blue_Potion,蓝色药水,0,5000,,150,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 0,rand(40,60); },{},{}
-506,Green_Potion,绿色药水,0,40,,70,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_HALLUCINATION; },{},{}
+501,Red_Potion,红色药水,0,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(45,65),0; },{},{}
+502,Orange_Potion,赤色药水,0,20,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(105,145),0; },{},{}
+503,Yellow_Potion,黄色药水,0,50,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(175,235),0; },{},{}
+504,White_Potion,白色药水,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(325,405),0; },{},{}
+505,Blue_Potion,蓝色药水,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 0,rand(40,60); },{},{}
+506,Green_Potion,绿色药水,0,20,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_HALLUCINATION; },{},{}
 507,Red_Herb,红色药草,0,18,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(18,28),0; },{},{}
 508,Yellow_Herb,黄色药草,0,40,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(38,58),0; },{},{}
 509,White_Herb,白色药草,0,120,,70,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(75,115),0; },{},{}
@@ -34,9 +34,9 @@
 519,Milk,牛奶,0,25,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(27,37),0; },{},{}
 520,Leaflet_Of_Hinal,西纳雷叶子,0,150,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(175,235),0; },{},{}
 521,Leaflet_Of_Aloe,芦荟叶子,0,360,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(325,405),0; },{},{}
-522,Fruit_Of_Mastela,玛丝黛拉果实,0,8500,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(400,600),0; },{},{}
+522,Fruit_Of_Mastela,玛丝黛拉果实,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 15,15; },{},{}
 523,Holy_Water,圣水,0,20,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_end SC_CURSE; },{},{}
-525,Panacea,万能药,0,500,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE; sc_end SC_Hallucination; },{},{}
+525,Panacea,万能药,0,500,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE; sc_end SC_Hallucination; },{},{}
 526,Royal_Jelly,蜂胶,0,7000,,150,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(325,405),rand(40,60); sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE; sc_end SC_Hallucination; },{},{}
 528,Monster's_Feed,怪物饲料,0,60,,150,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(72,108),0; },{},{}
 529,Candy,糖果,0,10,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(45,65),0; },{},{}
@@ -46,8 +46,8 @@
 533,Grape_Juice,葡萄汁,0,250,,40,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 0,rand(15,25); },{},{}
 534,Carrot_Juice,红萝卜汁,0,20,,40,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(27,33),0; },{},{}
 535,Pumpkin,南瓜,0,15,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 19,0; },{},{}
-536,Ice_Cream,冰淇淋,0,150,,80,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(105,145),0; sc_start SC_FREEZE,10000,0,2500,0; },{},{}
-537,Pet_Food,宠物饲料,0,1000,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(50,90),0; },{},{}
+536,Ice_Cream,冰淇淋,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,20; sc_start SC_FREEZE,10000,0,2500,0; },{},{}
+537,Pet_Food,宠物饲料,0,500,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 50,50; },{},{}
 538,Well_Baked_Cookie,姜饼,0,1000,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(160,200),0; },{},{}
 539,Piece_Of_Cake,小蛋糕,0,3000,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(270,330),0; },{},{}
 540,Falcon's_Feed,猎鹰饲料,0,2000,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(185,225),0; },{},{}
@@ -71,7 +71,7 @@
 558,Chocolate,巧克力,0,1,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 1,1; },{},{}
 559,HandMade_Chocolate,手制巧克力,0,1,,80,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 50,50; },{},{}
 560,HandMade_Chocolate_,手制巧克力 ,0,5000,,80,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 50,50; },{},{}
-561,White_Chocolate,白色情人巧克力,0,5000,,80,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 50,50; },{},{}
+561,White_Chocolate,白色情人巧克力,0,5000,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 1000,500; },{},{}
 562,Pizza,双层夹心瑞士比萨,0,100,,150,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(70,100),0; },{},{}
 563,Pizza_01,双层夹心瑞士比萨,0,1200,,150,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(375,445),0; },{},{}
 564,Rice_Ball,肉粽,0,1,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 200,0; },{},{}
@@ -113,17 +113,17 @@
 //===================================================================
 // Usable Items
 //===================================================================
-601,Wing_Of_Fly,苍蝇翅膀,11,60,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; },{},{}
-602,Wing_Of_Butterfly,蝴蝶翅膀,11,300,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",3; },{},{}
+601,Wing_Of_Fly,苍蝇翅膀,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; },{},{}
+602,Wing_Of_Butterfly,蝴蝶翅膀,11,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",3; },{},{}
 603,Old_Blue_Box,神秘箱子,2,10000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ getrandgroupitem(IG_BlueBox,1); },{},{}
 604,Branch_Of_Dead_Tree,枯树枝,2,50,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ monster "this",-1,-1,"--ja--",-1-MOBG_Branch_Of_Dead_Tree,1,""; },{},{}
 605,Anodyne,曼特疗伤药,11,2000,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "SM_ENDURE",1; },{},{}
 606,Aloebera,芦荟汁液,11,1500,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "SM_SELFPROVOKE",1; },{},{}
-607,Yggdrasilberry,天地树果实,0,5000,,300,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 100,100; },{},{}
-608,Seed_Of_Yggdrasil,天地树芽,0,5000,,300,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 50,50; },{},{}
+607,Yggdrasilberry,天地树果实,0,500,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 100,100; },{},{}
+608,Seed_Of_Yggdrasil,天地树芽,0,300,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 50,50; },{},{}
 609,Amulet,返魂符,2,100,,100,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
-610,Leaf_Of_Yggdrasil,天地树叶子,11,4000,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "ALL_RESURRECTION",1; },{},{}
-611,Spectacles,放大镜,11,40,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "MC_IDENTIFY",1; },{},{}
+610,Leaf_Of_Yggdrasil,天地树叶子,11,250,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "ALL_RESURRECTION",1; },{},{}
+611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "MC_IDENTIFY",1; },{},{}
 612,Portable_Furnace,携带用熔矿炉,2,150,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 21; },{},{}
 613,Iron_Hammer,钢铁锤子,2,1000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 1; },{},{}
 614,Golden_Hammer,黄金锤子,2,3000,,300,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 2; },{},{}
@@ -221,9 +221,9 @@
 712,Flower,花,3,2,,10,,,,,,,,,,,,,{},{},{}
 713,Empty_Bottle,空瓶,3,6,,20,,,,,,,,,,,,,{},{},{}
 714,Emperium,华丽金属,3,2,,1000,,,,,,,,,,,,,{},{},{}
-715,Yellow_Gemstone,黄色魔力矿石,3,600,,30,,,,,,,,,,,,,{},{},{}
-716,Red_Gemstone,红色魔力矿石,3,600,,30,,,,,,,,,,,,,{},{},{}
-717,Blue_Gemstone,蓝色魔力矿石,3,600,,30,,,,,,,,,,,,,{},{},{}
+715,Yellow_Gemstone,黄色魔力矿石,30,1,,0,,,,,,,,,,,,,{},{},{}
+716,Red_Gemstone,红色魔力矿石,3,10,,0,,,,,,,,,,,,,{},{},{}
+717,Blue_Gemstone,蓝色魔力矿石,3,10,,0,,,,,,,,,,,,,{},{},{}
 718,Dark_Red_Jewel,深红宝石,3,6000,,100,,,,,,,,,,,,,{},{},{}
 719,Violet_Jewel,紫宝石,3,6000,,100,,,,,,,,,,,,,{},{},{}
 720,Skyblue_Jewel,天蓝宝石,3,6000,,100,,,,,,,,,,,,,{},{},{}
@@ -246,21 +246,21 @@
 737,Black_Ladle,黑色杓子,3,400,,50,,,,,,,,,,,,,{},{},{}
 738,Pencil_Case,笔筒,3,400,,100,,,,,,,,,,,,,{},{},{}
 739,Rouge,化妆品,3,10000,,10,,,,,,,,,,,,,{},{},{}
-740,Stuffed_Doll,疯兔娃娃,3,1000,,100,,,,,,,,,,,,,{},{},{}
-741,Poring_Doll,波利娃娃,3,1800,,100,,,,,,,,,,,,,{},{},{}
-742,Chonchon_Doll,苍蝇娃娃,3,3000,,100,,,,,,,,,,,,,{},{},{}
-743,Spore_Doll,魔菇娃娃,3,5500,,100,,,,,,,,,,,,,{},{},{}
+740,Stuffed_Doll,疯兔娃娃,3,100000,,100,,,,,,,,,,,,,{},{},{}
+741,Poring_Doll,波利娃娃,3,180000,,100,,,,,,,,,,,,,{},{},{}
+742,Chonchon_Doll,苍蝇娃娃,3,300000,,100,,,,,,,,,,,,,{},{},{}
+743,Spore_Doll,魔菇娃娃,3,550000,,100,,,,,,,,,,,,,{},{},{}
 744,Bunch_Of_Flowers,花束,3,2000,,50,,,,,,,,,,,,,{},{},{}
 745,Wedding_Bouquet,捧花,3,12000,,50,,,,,,,,,,,,,{},{},{}
 746,Glass_Bead,玻璃珠,3,1400,,50,,,,,,,,,,,,,{},{},{}
 747,Crystal_Mirror,水晶镜子,3,15000,,50,,,,,,,,,,,,,{},{},{}
-748,Witherless_Rose,永恒玫瑰,3,55000,,10,,,,,,,,,,,,,{},{},{}
-749,Frozen_Rose,冰雕玫瑰,3,35000,,10,,,,,,,,,,,,,{},{},{}
-750,Baphomet_Doll,巴风特娃娃,3,18000,,100,,,,,,,,,,,,,{},{},{}
-751,Osiris_Doll,俄塞里斯娃娃,3,14000,,100,,,,,,,,,,,,,{},{},{}
-752,Grasshopper_Doll,摇滚蝗虫娃娃,3,4000,,100,,,,,,,,,,,,,{},{},{}
-753,Monkey_Doll,溜溜猴娃娃,3,6000,,100,,,,,,,,,,,,,{},{},{}
-754,Raccoondog_Doll,狸猫娃娃,3,5000,,100,,,,,,,,,,,,,{},{},{}
+748,Witherless_Rose,永恒玫瑰,3,550000,,10,,,,,,,,,,,,,{},{},{}
+749,Frozen_Rose,冰雕玫瑰,3,350000,,10,,,,,,,,,,,,,{},{},{}
+750,Baphomet_Doll,巴风特娃娃,3,1800000,,100,,,,,,,,,,,,,{},{},{}
+751,Osiris_Doll,俄塞里斯娃娃,3,1400000,,100,,,,,,,,,,,,,{},{},{}
+752,Grasshopper_Doll,摇滚蝗虫娃娃,3,400000,,100,,,,,,,,,,,,,{},{},{}
+753,Monkey_Doll,溜溜猴娃娃,3,600000,,100,,,,,,,,,,,,,{},{},{}
+754,Raccoondog_Doll,狸猫娃娃,3,500000,,100,,,,,,,,,,,,,{},{},{}
 756,Oridecon_Stone,神之金属原石,3,550,,200,,,,,,,,,,,,,{},{},{}
 757,Elunium_Stone,铝原石,3,650,,200,,,,,,,,,,,,,{},{},{}
 901,Danggie,辫子,3,260,,10,,,,,,,,,,,,,{},{},{}
@@ -5250,7 +5250,7 @@
 7269,Bib,围兜兜,3,960,,10,,,,,,,,,,,,,{},{},{}
 7270,Milk_Bottle,婴儿的奶瓶,3,1100,,10,,,,,,,,,,,,,{},{},{}
 7271,Figure,Novice Figure,3,10000,,10,,,,,,,,,,,,,{},{},{}
-7272,Meat_Dumpling_Doll,肉粽娃娃,3,500,,10,,,,,,,,,,,,,{},{},{}
+7272,Meat_Dumpling_Doll,肉粽娃娃,3,50000,,10,,,,,,,,,,,,,{},{},{}
 7273,Golden_Necklace,RWC颈炼,3,2,,10,,,,,,,,,,,,,{},{},{}
 7274,Ancient_Translator,古代语言的解说文,3,0,,10,,,,,,,,,,,,,{},{},{}
 7275,Ancient_Document,古代语言的文书,3,0,,10,,,,,,,,,,,,,{},{},{}
@@ -5501,7 +5501,7 @@
 7521,Flame_Stone,热火石,3,150,,10,,,,,,,,,,,,,{},{},{}
 7522,Ice_Stone,冰闪石,3,150,,10,,,,,,,,,,,,,{},{},{}
 7523,Wind_Stone,风灵石,3,150,,10,,,,,,,,,,,,,{},{},{}
-7524,Shadow_Orb,环球,3,300,,20,,,,,,,,,,,,,{},{},{}
+7524,Shadow_Orb,环球,3,10,,1,,,,,,,,,,,,,{},{},{}
 7525,Summer_Feast_Ticket,夏季庆祝会门票,3,10,,10,,,,,,,,,,,,,{},{},{}
 7526,Manuscript_Paper,原稿纸,3,2,,0,,,,,,,,,,,,,{},{},{}
 7527,Life_Book,真实的生活之书,3,0,,100,,,,,,,,,,,,,{},{},{}

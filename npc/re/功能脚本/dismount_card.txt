@@ -1,0 +1,189 @@
+// Card removal NPC by TyrNemesis^
+// DANGEROUS! TODO: Think.. think 8) [Lupus]
+// Transelated By Memory.
+
+prt_in.gat,23,73,4	script	安全拆卡老巫婆	78,{
+
+UPGRADEROOT:
+	mes "[拆卡老婆婆]";
+	mes "你好啊~~年轻人.我可以使用魔法来帮你拆下装备上的卡片.你喜欢这项服务吗?";
+	next;
+	menu "是的.",REMOVEMENU,
+	     "你收费多少啊?",REMOVEPRICE,
+	     "不,谢谢.",CLOSEOUT;
+
+REMOVEPRICE:
+	mes "[拆卡老婆婆]";
+	mes "嗯....卸除一件装备需要支付^4040FF200000z^000000Zeny.";
+	mes "一张卡片加收^4040FF25000z^000000Zeny.";
+	mes "另外,我需要一些^4040FF星星的角^000000和^4040FF黄色魔力矿石^000000来辅助我.";
+	next;
+	menu "那帮我卸除吧.",REMOVEMENU,
+	     "想想还是算了.",CLOSEOUT;
+
+REMOVEMENU:
+	mes "[拆卡老婆婆]";
+	mes "想我帮你卸除哪一件装备呢?";
+	next;
+	menu "嗯..让我想想.",CLOSEOUT,
+	     getequipname(1),SLOT1,
+	     getequipname(2),SLOT2,
+	     getequipname(3),SLOT3,
+	     getequipname(4),SLOT4,
+	     getequipname(5),SLOT5,
+	     getequipname(6),SLOT6,
+	     getequipname(7),SLOT7,
+	     getequipname(8),SLOT8,
+	     getequipname(9),SLOT9,
+	     getequipname(10),SLOT10;
+
+SLOT1:
+	set @part,1;
+	goto CARDNUMCHECK;
+
+SLOT2:
+	set @part,2;
+	goto CARDNUMCHECK;
+
+SLOT3:
+	set @part,3;
+	goto CARDNUMCHECK;
+
+SLOT4:
+	set @part,4;
+	goto CARDNUMCHECK;
+
+SLOT5:
+	set @part,5;
+	goto CARDNUMCHECK;
+
+SLOT6:
+	set @part,6;
+	goto CARDNUMCHECK;
+
+SLOT7:
+	set @part,7;
+	goto CARDNUMCHECK;
+
+SLOT8:
+	set @part,8;
+	goto CARDNUMCHECK;
+
+SLOT9:
+	set @part,9;
+	goto CARDNUMCHECK;
+
+SLOT10:
+	set @part,10;
+	goto CARDNUMCHECK;
+
+CARDNUMCHECK:
+	if(getequipcardcnt(@part) == 0) goto DENYCARDCOUNT;
+	set @cardcount,getequipcardcnt(@part);
+
+	// Ensure there is room for the items.
+	if (!checkweight(1202,(@cardcount+1))) { 
+		mes "^3355FFJust a minute!";
+		mes "I can't offer any of my";
+		mes "services to you because";
+		mes "you're carrying too much";
+		mes "stuff. Put your extra items in";
+		mes "Kafra Storage and come again~";
+		close;
+	}
+
+	if(@cardcount > 1) goto CARDNUMMULTIMSG;
+	mes "[拆卡老婆婆]";
+	mes "这件装备的插槽上已经插上了" + @cardcount + "张卡片. 你必须支付^0000FF" + (200000+(@cardcount * 25000)) + "Zeny^000000和^0000FF星星的角^000000和^0000FF黄色魔力矿石^000000.";
+	goto CARDNUMPOSTMSG;
+CARDNUMMULTIMSG:
+	mes "[拆卡老婆婆]";
+	mes "这件装备的插槽上已经插上了" + @cardcount + "张卡片. 必须支付^0000FF" + (200000+(@cardcount * 25000)) + "Zeny^000000和^0000FF星星的角^000000和^0000FF黄色魔力矿石^000000..";
+CARDNUMPOSTMSG:
+	next;
+	menu "嗯,开始吧.",REMOVECARDWARNING,
+	     "我还没准备好.",CLOSEOUT;
+
+REMOVECARDWARNING:
+	mes "[拆卡老婆婆]";
+	mes "在开始之前我得先告诉你--使用这种魔法万一失败了.能会损坏了卡片或装备. 我^FF4040不会赔偿^000000给你的.如果损坏的话^FF4040你想保留卡片还是装备^000000呢?";
+	next;
+	menu "算了...",CLOSEOUT,
+	     "装备.",PRIORITYITEM,
+	     "卡片.",PRIORITYCARD;
+
+PRIORITYITEM:
+	set @failtype,1;
+	goto REMOVECARD;
+
+PRIORITYCARD:
+	set @failtype,2;
+	goto REMOVECARD;
+
+REMOVECARD:
+	mes "[拆卡老婆婆]";
+	mes "那我开始了.";
+	if((zeny < (200000+(@cardcount * 25000))) || (countitem(1000) < 1) || (countitem(715) < 1)) goto DENYMATERIAL;
+	set zeny,zeny - (200000+(@cardcount * 25000));
+	delitem 1000,1;
+	delitem 715,1;
+// Replace the constants in the next 3 lines with failure chance values defined in refine_db.txt
+// First value = Total failure chance (item and cards destroyed)
+// Second value = Partial failure chance (one or the other is destroyed, player decides which one is safe)
+// Third value = Harmless failure chance (all that's lost is your investment)
+
+	set @failchance,rand(100);
+//	if(@failchance < 2) goto FAILREMOVECARD0;
+//	if((@failchance < 8) && (@failtype == 1)) goto FAILREMOVECARD1;
+//	if((@failchance < 8) && (@failtype == 2)) goto FAILREMOVECARD2;
+//	if(@failchance < 10) goto FAILREMOVECARD3;
+	successremovecards @part;
+	next;
+	mes "[拆卡老婆婆]";
+	mes "大功告成啦. 这是你的卡片和道具.再见.";
+	close;
+
+FAILREMOVECARD0:
+	failedremovecards @part,0;
+	next;
+	mes "[拆卡老婆婆]";
+	mes "真太糟糕了.卡片和装备都坏了.";
+	close;
+
+FAILREMOVECARD1:
+	failedremovecards @part,1;
+	next;
+	mes "[拆卡老婆婆]";
+	mes "最担心的事情终于发生了.卡片坏掉了,幸好装备还在.";
+	close;
+
+FAILREMOVECARD2:
+	failedremovecards @part,2;
+	next;
+	mes "[拆卡老婆婆]";
+	mes "尽管我已经设法将卡片从装备的插槽中卸除,但还是被损坏了.幸好,装备还是好的.";
+	close;
+
+FAILREMOVECARD3:
+	failedremovecards @part,3;
+	next;
+	mes "[拆卡老婆婆]";
+	mes " 幸运哦~装备和卡片都没事.";
+	close;
+
+DENYCARDCOUNT:
+	mes "[拆卡老婆婆]";
+	mes "青年人,道具上没插卡.";
+	close;
+
+DENYMATERIAL:
+	next;
+	mes "[拆卡老婆婆]";
+	mes "你没有把材料带齐喔.";
+	close;
+
+CLOSEOUT:
+	mes "[拆卡老婆婆]";
+	mes "很好,以后随时都可以来找我.";
+	close;
+}

@@ -11,8 +11,8 @@
 
 - master: 主分支，当前最新版服务端的原始档
 - tag: 基线，历史版本服务端的原始档
-- playing: 存档分支，这是我从 master checkout 出来玩的远程存档分支，其他人可以删掉
-- modify: 修改分支，从 master checkout 出来用于调整的分支，以便随时 MR 到 master 和 playing，其他人可以删掉
+- staging: 测试环境分支，用于本地调试服务器修改的内容，其他人可以删掉
+- produce: 生产环境分支，含我的服务器的远程存档，其他人可以删掉
 
 > 配套客户端仓库：[https://github.com/lyy289065406/ro-single-client](https://github.com/lyy289065406/ro-single-client)
 
