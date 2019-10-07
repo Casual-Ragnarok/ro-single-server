@@ -1,0 +1,57 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 克魔岛 卡普拉脚本 - 
+//===================================
+// 版本：2.3
+//===================================
+
+// In Town ==============================================
+comodo,195,150,4	script	卡普拉服务人员::kaf_comodo	721,{
+	cutin "kafra_07",2;
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpD$[0], "梦罗克", "发乐斯 灯塔岛", "汶巴拉";
+	setarray @wrpP[0], 1800, 1200, 1800;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], "取消";
+	mes "[卡普拉服务人员]";
+	mes "我们卡普拉西部中心";
+	mes "通过改编程序";
+	mes "提供更好品质的服务.";
+	mes "谢谢大家~";
+	next;
+	mes "[卡普拉服务人员]";
+	mes "需要什么服务吗?";
+	callfunc "F_Kafra",5,0,1,80,1000;
+
+	M_Save:
+		savepoint "comodo",204,143;
+		callfunc "F_KafEnd",0,1,"in Pyros Lighthouse";
+}
+
+// Comodo Pharos Lighthouse (Beacon Island) ===================>\\
+cmd_fild07,136,134,4	script	卡普拉服务人员::kaf_cmd_fild07	721,{
+	cutin "kafra_07",2;
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpD$[0], "克魔岛", "梦罗克";
+	setarray @wrpP[0], 1200, 1200;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], "取消";
+	mes "[卡普拉服务人员]";
+	mes "我们卡普拉西部中心";
+	mes "通过改编程序";
+	mes "提供更好品质的服务.";
+	mes "谢谢大家~";
+	next;
+	mes "[卡普拉服务人员]";
+	mes "需要什么服务吗?";
+	callfunc "F_Kafra",5,0,1,80,1000;
+
+	M_Save:
+		savepoint "cmd_fild07",127,134;
+		callfunc "F_KafEnd",0,1,"in the town of Comodo";
+}

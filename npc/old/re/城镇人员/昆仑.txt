@@ -1,0 +1,1267 @@
+// 昆仑城市脚本
+// 
+// 中文化作者:		不明
+// 
+// 中文版本编号:	20041119.0.2
+//
+//============================================================
+//===== eAthena Script ======================================= 
+//= Gonryun Town
+//===== By: ================================================== 
+//= x[tsk], KarLaeda
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= eAthena 1.0
+//===== Description: ========================================= 
+//
+//===== Additional Comments: ================================= 
+// May be missing npc's and dialogue.
+//= 1.1 Fixed Typo [Nexon]
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Max NPC Name is 23 [Toms]
+//= 1.3a Removed temp NPC plugs due Broken Sword quest [Lupus]
+//= 1.4 Added missing NPC [KarLaeda]
+//============================================================
+
+//Event未调查(过于复杂)
+alberta,245,69,4	script	昆仑宣传使臣#01	776,{
+	mes "[瓦百豪]";
+	mes "您好,我想邀请大家,";
+	mes "来到我的故乡昆仑,";
+	mes "和 卢恩-米德加兹王国,";
+	mes "完全不同的昆仑大陆,";
+	mes "为贵宾们服务,";
+	mes "是我的大荣幸";
+	next;
+	menu "询问有关昆仑的事情",M_1,"去昆仑",M_2,"取消",M_End;
+
+	M_1:
+		mes "[瓦百豪]";
+		mes "我们昆仑是个可以,";
+		mes "让大陆的旅客享受最棒";
+		mes "的观光胜地,经过由小小的家组成的";
+		mes "小人过之后,再通过发着神秘";
+		mes "光彩的柱子就可以走向";
+		mes "天空之路了";
+		next;
+		mes "[瓦百豪]";
+		mes "听说在这大陆上也有着";
+		mes "漂浮在空中的都市,";
+		mes "我们昆仑不具特别的动力";
+		mes "就可以漂浮在空中,多亏";
+		mes "可以欣赏到美丽的风景";
+		next;
+		mes "[瓦百豪]";
+		mes "我们昆仑的特产品大包子";
+		mes "以及天道石番桃的口味跟更是一品,";
+		mes "当然也有危险的秘穴";
+		mes "如果要去的话,";
+		mes "就要彻底的准备好再去";
+		next;
+		mes "[瓦百豪]";
+		mes "那么,有兴趣的话,";
+		mes "跟我说一声吧,能够为大陆的贵宾们服务,";
+		mes "是我最大的欢喜";
+		next;
+	M_End:
+		mes "[瓦百豪]";
+		mes "如果以后想要过去的话,";
+		mes "请来找我吧,能够为大陆的贵宾们服务,";
+		mes "是我最大的欢喜";
+		close;
+	M_2:
+		mes "[瓦百豪]";
+		mes "那么,马上就出发吧,";
+		mes "我们需要一点去昆仑";
+		mes "的旅费,如果您预付10,000钱币的话,";
+		mes "当您回程的时候,";
+		mes "我们会免费接待的";
+		next;
+		mes "[瓦百豪]";
+		mes "那么,可以出发了吗?";
+		next;
+		menu "出发！",-,"取消",M_End;
+
+			mes "[瓦百豪]";
+			mes "准备好要出发啰!";
+			next;
+			if (Zeny < 10000){
+				mes "[瓦百豪]";
+				mes "很抱歉,您要准备好";
+				mes "旅行时所需要的";
+				mes "10,000 钱币,请再确认一下";
+				mes "您所携带的钱币,";
+				mes "谢谢";
+				close;
+			}
+			set Zeny,Zeny-10000;
+			warp "gon_fild01",258,82;
+			end;
+}
+
+//===============================================================================
+
+gon_fild01,255,79,6	script	昆仑宣传使臣#02	776,{
+	mes "[瓦百豪]";
+	mes "是否有个愉快的旅途了呢？那么";
+	mes "现在应该是要回去的时候了吧！";
+	mes "往返大陆的船现在已经准备好了";
+	next;
+	menu "回艾尔贝塔",-,"取消",M_End;
+
+		mes "[瓦百豪]";
+		mes "那么出发啰！";
+		close2;
+		warp "alberta",243,67;
+		end;
+	M_End:
+		mes "[瓦百豪]";
+		mes "那么请你再慢慢的逛吧！";
+		mes "在昆仑还有很多";
+		mes "你没有去过的地方呢";
+		close;
+}
+
+//===============================================================================
+
+gon_fild01,187,239,4	script	昆仑宣传使臣#03	776,{
+	mes "[张澄龙]";
+	mes "请往上走过去就可以了";
+	mes "真希望你能够在昆仑";
+	mes "制造很多美好的回忆";
+	mes "再回去…";
+	close;
+}
+
+//===============================================================================
+
+gonryun,153,64,0	script	昆仑宣传使臣#04	776,{
+	mes "[张澄龙]";
+	mes "希望在昆仑有个愉快的一天，";
+	mes "旅游结束了的话，";
+	mes "我们会亲自引导到返往大陆的船";
+	next;
+	menu "回到港口",-,"取消",M_End;
+
+		mes "[张澄龙]";
+		mes "出发啰！";
+		close2;
+		warp "gon_fild01",258,82;
+		end;
+	M_End:
+		mes "[张澄龙]";
+		mes "那么请你再慢慢的逛吧！";
+		mes "在昆仑还有很多";
+		mes "你没有去过的地方呢";
+		close;
+}
+
+//===============================================================================
+//Inn
+//===============================================================================
+
+gon_in,153,35,4	script	主人	702,{
+	if ((event_gonryun == 1) || (event_gonryun == 2)) goto LStart2;
+	if (event_gonryun == 3) goto LStart3;
+	if (event_gonryun == 4) goto LStart4;
+	if (event_gonryun == 98) goto LStartend;
+	if (event_gonryun == 99) goto Lend;
+	mes "[魔盐房]";
+	mes "哇阿..初次见面啊,";
+	mes "是从外地来的吗?";
+	mes "最近我们村落里";
+	mes "多了很多外地人,因为这样人手不够";
+	mes "真糟糕";
+	next;
+	mes "[魔盐房]";
+	mes "唉呀呀 怎么对客人讲这些勒,";
+	mes "有需要什么需要的吗?";
+	next;
+	menu "酒",L1,"不需要",L2;
+L1:
+	mes "[魔盐房]";
+	mes "这怎么办啊…";
+	mes "最近客人越来越多了";
+	mes "保管的酒也都没有了";
+	mes "客人却愈愈来愈多呢";
+	mes "这真是糟糕啊…";
+	close;
+L2:
+	mes "[魔盐房]";
+	mes "那么好好的玩吧，";
+	mes "下次再来喔";
+	close;
+LStart2:
+	mes "[魔盐房]";
+	mes "唉呀！你有听说吗？";
+	mes "昨天村长家里遭小偷了";
+	mes "最近己经常常遭小偷，";
+	mes "所以感到不安……";
+	next;
+	mes "[魔盐房]";
+	mes "连村长家都遭小偷的话，";
+	mes "像我们这种平民要怎么办呢…";
+	mes "啊…抱歉，不该对客人";
+	mes "说些奇怪的话，";
+	mes "玩得愉快一点吧！呵呵";
+	set event_gonryun,2;
+	close;
+LStart3:
+	mes "[魔盐房]";
+	mes "唉呀 是你抓到小偷的啊，";
+	mes "真是大幸啊，呵呵呵";
+	mes "现在生意会比较好点了吧，";
+	mes "啊，那得先准备缺货的酒啊";
+	next;
+	mes "[魔盐房]";
+	mes "那个 雪锋先生喝完之后，";
+	mes "又没什么生意所以就没有补酒";
+	mes "那么下次再来玩吧";
+	mes "我会好好的招待你的，呵呵呵";
+	set event_gonryun,4;
+	close;
+LStart4:
+	mes "[魔盐房]";
+	mes "最近村落的气氛很糟糕吧？";
+	mes "要赶快抓到小偷才行…";
+	close;
+LStartend:
+	mes "[魔盐房]";
+	mes "啊 是客人啊，";
+	mes "听说你要帮助村长啊？";
+	mes "一定要帮忙抓到那个小偷，";
+	mes "实在太不安了";
+	next;
+	mes "[魔盐房]";
+	mes "啊 有看到那个人吗，";
+	mes "就趴在桌上的那个人，";
+	mes "那个人好像知道有关昨天";
+	mes "那小偷的事情，昨晚";
+	mes "喝醉之后 唉呦…";
+	close;
+
+Lend:
+	mes "[魔盐房]";
+	mes "最近村落的气氛很糟糕吧？";
+	mes "要赶快抓到小偷才行…";
+	close;
+}
+
+//===============================================================================
+gonryun,139,142,0	script	少女#gon	772,{
+	if (event_gonryun == 99) goto Lend;
+	emotion 9;
+	mes "[史恩晓]";
+	mes ".............";
+	mes "因为最近村落里的客人";
+	mes "变多了而感到快乐，突然家里遭小偷";
+	mes "就变的不愉快了";
+	close;
+Lend:
+	mes "[史恩晓]";
+	mes "嘿嘿……";
+	mes "最近好了很多";
+	mes "村里多了很多愉快的事";
+	mes "很多客人，被偷的东西";
+	mes "也都找到了，嘿嘿……";
+	mes "啊～帮我找到东西的那位，";
+	mes "一定很帅吧？";
+	close;
+}
+
+//===============================================================================
+
+gon_in,18,27,4	script	妇人	771,{
+	mes "[尚花燕]";
+	mes "呵呵呵呵呵呵";
+	mes "这是谁呀，这不是从外地来的";
+	mes "贵宾吗，呵呵";
+	next;
+	menu "您好",-,"村长在那里?",M_End;
+
+		mes "[尚花燕]";
+		mes "你好，";
+		mes "真是很久都没有客人来啊";
+		mes "所以没什么东西可以招待";
+		mes "不过好好的玩玩再回去吧！呵呵呵";
+		close;
+	M_End:
+		mes "[尚花燕]";
+		mes "我家那口子在楼上";
+		if (Sex == 0) goto LWoman;
+		mes "你也长的蛮帅的嘛，";
+		mes "不过还是比不上我家那口子";
+		mes "呵呵呵呵呵";
+		close;
+	LWoman:
+		mes "你长的满贤淑的嘛，";
+		mes "不过和我比起来，只差我一点点啦";
+		mes "希望你听到这样不会介意，呵呵呵呵";
+		close;
+}
+
+//===============================================================================
+
+gonryun,119,111,4	script	员石 千	89,{
+	mes "[员石 千]";
+	mes "这里的村长是个很开放的人";
+	mes "不过就是因为他那开放的性格";
+	mes "也是有人不喜欢的，喔嗯…";
+	next;
+	mes "[员石 千]";
+	mes "不过因为他，而使我们村落";
+	mes "变得开放是件不错的事啊…";
+	mes "不过希望不要有无厘头";
+	mes "的人出现";
+	close;
+}
+
+//===============================================================================
+
+gonryun,237,225,4	script	延乔 含	776,{
+	if(event_gonryun_1 == 2) goto L_START;
+	if(countitem(1201) > 0 && event_gonryun_1 == 1) goto L_START;
+	mes "[延乔 含]";
+	mes "喔啊... 这要怎么办呢!";
+	mes "居然把我重要的";
+	mes "短剑弄掉了! 喔啊啊啊";
+	next;
+	mes "[延乔 含]";
+	mes "想要下去，";
+	mes "可是很怕魔物";
+	mes "所以又不敢下去... 唉呦! 烦死了!";
+//假设触发事件为下
+	set event_gonryun_1, 1;
+	close;
+
+L_START:
+	mes "[延乔 含]";
+	mes "呜呜呜…怎么办呢…嗯？";
+	mes "你找我有什么事情吗？";
+	mes "啊啊？";
+	next;
+	mes "[延乔 含]";
+	mes "…啊！那，那短剑是我";
+	mes "在这里掉的祖先的短剑！！";
+	mes "这个是在哪里发现的？";
+	next;
+	mes "[延乔 含]";
+	mes "事实上那是我在这里，";
+	mes "不小心掉在地上的";
+	mes "祖先的遗产，虽然是";
+	mes "街上的便宜货短剑";
+	mes "不过对我来说是";
+	mes "很重要的传家之宝";
+	next;
+	mes "[延乔 含]";
+	mes "要不要把那短剑";
+	mes "交给我呢？";
+	next;
+	menu "交给他",L_ROOT_1,"不交给他",L_ROOT_2;
+
+	L_ROOT_1:
+		mes "[延乔 含]";
+		mes "欧欧！谢谢";
+		mes "虽然微薄了点，";
+		mes "不过请收下这个吧！";
+		mes "这是我常常爱用的药喔";
+		getitem 505, 2;
+		next;
+		mes "[延乔 含]";
+		mes "真的谢谢你，如果不是你的话，";
+		mes "我一定会被祖先骂死，哈哈哈";
+		set event_gonryun_1, 2;
+		close;
+	L_ROOT_2:
+		mes "[延乔 含]";
+		mes "把人家的传家之宝…呜呜！";
+		mes "恶魔！撒旦！禽兽！蚯蚓！";
+		mes "我会恨你的喔喔喔喔喔！";
+		close;
+L_START2:
+		mes "[延乔 含]";
+		mes "嗯，这样想也是，";
+		mes "邻居大人也不知道为了什么事情，";
+		mes "一直在烦恼中，不过这也不是我";
+		mes "可以干预的事。";
+		close;
+}
+
+//===============================================================================
+
+gonryun,51,101,4	script	Gaiysonchoru	778,{
+	mes "[Gaiysonchoru]";
+	emotion e_swt;
+	mes "..............";
+	next;
+	mes "[Gaiysonchoru]";
+	mes "Well......... I'm worried.";
+	next;
+	mes "[Gaiysonchoru]";
+	mes "So very worried.";
+	close;
+}
+
+//===============================================================================
+
+gonryun,237,226,3	script	YunKyoHam#gn	776,{
+	mes "[YunKyoHam]";
+	if (nakha < 2) {
+		mes "Oh no~ Holy cow!";
+		mes "Can't believe I dropped";
+		mes "my valuable knife! ahhhhhh.";
+		if (baselevel >= 20) {
+			next;
+			if (nakha == 0) set nakha,1;
+			mes "[YunKyoHam]";
+			mes "I need to go down to get it";
+			mes "but...the monsters..";
+			mes "I am so scared..  What should I do!";
+		}
+	} else if (nakha == 2) {
+		mes "ehhhh.. what should I do..";
+		mes "got any business to";
+		mes "take care of?";
+		mes "hmm?";
+		if (countitem(1201) < 1) close;
+		next;
+		mes "[YunKyoHam]";
+		mes "uk! that...that knife";
+		mes "is my ancestor's knife that";
+		mes "I dropped from here.";
+		mes "Where did you get it?";
+		next;
+		mes "[YunKyoHam]";
+		mes "I dropped that knife from";
+		mes "here and it belongs to my";
+		mes "ancestor's property. It sure is";
+		mes "a cheap knife,";
+		mes "but really valuable to me";
+		mes "and my family.";
+		next; 
+		mes "[YunKyoHam]";
+		mes "Would you hand that";
+		mes "knife to me?";
+		next;
+		if (select("give.:ignore.") == 2 || countitem(1201) < 1) {
+			mes "[YunKyoHam]";
+			mes "Huk! my family heiloom!!";
+			mes "You Evil! Satan! Animal! Hode";
+			mes "My curse shall be on his head!!!";
+			close;
+		}
+		mes "[YunKyoHam]";
+		mes "ohoh! Thank you!";
+		mes "Take these potions.";
+		mes "They are not expensive";
+		mes "but my favorites.";
+		set nakha,3;
+		delitem 1201, 1; // Knife
+		getitem 505,2; // Blue_Potion
+		next;
+		mes "[YunKyoHam]";
+		mes "You kept my family";
+		mes "treasure safe. Thank you!!";
+		mes "hahaha";
+	} else {
+		mes "next.. I heard my neighbor";
+		mes "is worrying about something";
+		mes "these days.. well, I got my";
+		mes "own business to take care of.";
+	}
+	close;
+}
+
+gon_fild01,245,257,0	script	lost knife#gn	139,1,1,{
+	if (nakha == 1) {
+		set nakha, 2;
+		mes "-something is hidden underneath the sand dunes-";
+		mes " ";
+		mes "-You have found an -";
+		mes "-undefined knife.-";
+		close2;
+		getitem 1201, 1; // Knife
+		end;
+	}
+}
+
+//===============================================================================
+gonryun,200,82,3	script	成松 感	774,{
+	mes "[成松 感]";
+	mes "庆祝活动真是快乐极了，";
+	mes "所以我好喜欢好喜欢，";
+	mes "总是有着庆祝活动";
+	mes "的这个村落，嘿嘿";
+	close;
+}
+
+gonryun,268,88,4	script	准坡 良	776,{
+	mes "[准坡 良]";
+	mes "我们是独立的民族，";
+	mes "因羡慕这种被祝福的国土，";
+	mes "没有被受略我们的恶群敌战败，";
+	mes "反而战胜";
+	next;
+	mes "[准坡 良]";
+	mes "我相信，胜利的凯歌！";
+	mes "那是我们早上的日出！";
+	close;
+}
+
+gonryun,118,111,5	script	Wonsuk Chen#gn	89,{
+	mes "[Wonsuk Chen]";
+	mes "A chieft of this town is";
+	mes "an open-hearted man.";
+	mes "But I heard that there are some";
+	mes "people who don't like his character. hmm..";
+	next;
+	mes "[Wonsuk Chen]";
+	mes "Well, I like my town. Chief's efforts";
+	mes "make our town way better. I just hope";
+	mes "I don't get to see some dummies";
+	mes "around the town anymore.";
+	close;
+}
+
+//===============================================================================
+gonryun,181,161,4	script	玟珍 郑	773,{
+	mes "[玟珍 郑]";
+	mes "我们昆仑的男生，";
+	mes "全部都很有力而且精力旺盛，";
+	mes "不过最近那些男生，";
+	mes "都不能够娶个老婆";
+	next;
+	mes "[玟珍 郑]";
+	mes "这都是因为男生变多了";
+	mes "相对的女生，";
+	mes "不足才会这样，";
+	mes "不知道我这儿子能不能";
+	mes "娶得到老婆…呼鸣";
+	close;
+}
+
+//===============================================================================
+gonryun,113,135,6	script	守门人	780,{
+	mes "[守门人]";
+	mes "欢迎光临，这里是";
+	mes "领导昆仑的";
+	mes "史艳文的住宅";
+	next;
+	mes "[守门人]";
+	mes "应该不会有那种事，";
+	mes "不过万一做一些丑恶的事情，";
+	mes "我们会当场刺你";
+	next;
+	mes "[守门人]";
+	mes "应该不会有那种事发生";
+	mes "不要太担心，";
+	mes "祝你有个愉快的访问";
+	close;
+}
+//===============================================================================
+gonryun,113,127,6	script	守门人#gon	780,{
+	mes "[守门人]";
+	mes "欢迎光临，这里是";
+	mes "领导昆仑的";
+	mes "史艳文的住宅";
+	next;
+	mes "[守门人]";
+	mes "应该不会有那种事，";
+	mes "不过万一做一些丑恶的事情，";
+	mes "我们会当场刺你";
+	next;
+	mes "[守门人]";
+	mes "应该不会有那种事发生";
+	mes "不要太担心，";
+	mes "祝你有个愉快的访问";
+	close;
+}
+
+gon_in,73,82,5	script	SungChul Ki#gn	778,{
+	mes "[SungChul Ki]";
+	if (nakha != 3) {
+		mes "............";
+		next;
+		mes "[SungChul Ki]";
+		mes "puuuuu....This sure is";
+		mes "something to worry about.";
+		close;
+	}
+	set cha, 1;
+	mes "SungChul Ki is my name.";
+	mes "I am a great tea maker.";
+	mes "I give all my efforts";
+	mes "in making tasty tea";
+	mes "night and day.";
+	next;
+	mes "[SungChul Ki]";
+	mes "hu...but I haven't make any";
+	mes "great tea lately.";
+	mes "I need some special";
+	mes "ingredients...";
+	next;
+	mes "[SungChul Ki]";
+	mes "There's a rumor says with snake,";
+	mes "it's possible to make great tea.";
+	mes "But where can I find and how can";
+	mes "I catch one? that's not possible.";
+	mes "hmm...";
+	close;
+
+//	no idea what should happen after you started the quest...
+//	if ((v[cha] == 1) & (v[勒??] > 0))
+//		mes "[SungChul Ki]"
+//		mes "...馄? 寝? 濩_钥- _矽?
+//		mes "僭勒桧塭坚? ?馄..."
+//		mes "讽虽 赅筷啪 谣_Ⅵ蜕岯箪?"
+//		mes "桧祺 丑尔啪. フ廓 离蒂"
+//		mes "虏玃_蹎萼焥?"
+//		next;
+//		mes "................................"
+//		next;
+//		mes "................................"
+//		next;
+//		mes "................................"
+//		next;
+//	endif
+//
+//
+//
+}
+
+//==============蹴薯 妇祺樯================
+//npc "gon_in" "й桧 _? 4_M_TWMIDMAN 101 21 3 5 5
+//OnClick:
+//	mes "[й桧 _榜"
+//	mes "?办... 副姜桧+?"
+//	mes "____ 桧廓缣蠰 蹴薯蒂 弊橾"
+//	mes "颤桧墅桧 谘_离_ _邅霠?
+//	mes "橾樯虽 瞪Б 蹴薯遽绿陛"
+//	mes "麶虽_佤浨?.."
+//	next;
+//	mes "[й桧 _榜"
+
+gon_in,173,27,2	script	鸩侠 吴	774,{
+	mes "[鸩侠 吴]";
+	mes "果然…我这年龄来到酒店，";
+	mes "也不卖我酒啊，";
+	mes "看大人都很会喝，";
+	mes "真好奇是什么味道啊…唉";
+	next;
+	mes "[鸩侠 吴]";
+	mes "不过正在开发像我这样的小孩子，";
+	mes "也可以饮用的美味茶，";
+	mes "不知道…那是什么时候，";
+	mes "想到要喝美味的茶时，";
+	mes "真的好兴奋喔";
+	close;
+}
+
+gonryun,163,60,4	script	Gonryun Guide	780,{
+	mes "[Wonchi Ha]";
+	mes "Come to Gonryun where passion";
+	mes "and energy overflows. You can feel liveliness";
+	mes "just by walking around!";
+	next;
+	mes "[Wonchi Ha]";
+	mes "I am responsible to help you";
+	mes "with any questions you may have.";
+	mes "so please feel free to ask any";
+	next;
+	switch(select("resident of Chief:Tool Dealer:Weapon Dealer:Armor Dealer:wine shop")){
+	case 1:
+		viewpoint 1,109,131,1,0xFF3355;
+		mes "[Wonchi Ha]";
+		mes "In your minimap";
+		mes "Head to ^FF3355+^000000";
+		mes "You'll get to a resident of chief.";
+		mes "Enjoy your trip in";
+		mes "lovely Gonryun!";
+		break;
+	case 2:
+		viewpoint 1,147,82,2,0xCE6300;
+		mes "[Wonchi Ha]";
+		mes "In your minimap";
+		mes "Head to ^CE6300+^000000";
+		mes "You'll get to a Tool Dealer.";
+		mes "Enjoy your trip in";
+		mes "lovely Gonryun!";
+		break;
+	case 3:
+		viewpoint 1,174,104,3,0x55FF33;
+		mes "[Wonchi Ha]";
+		mes "In your minimap";
+		mes "Head to ^55FF33+^000000";
+		mes "You'll get to a Weapon Dealer.";
+		mes "Enjoy your trip in";
+		mes "lovely Gonryun!";
+		break;
+	case 4:
+		viewpoint 1,173,84,4,0x3355FF;
+		mes "[Wonchi Ha]";
+		mes "In your minimap";
+		mes "Head to ^3355FF+^000000";
+		mes "You'll get to an Armor Dealer.";
+		mes "Enjoy your trip in";
+		mes "lovely Gonryun!";
+		break;
+	case 5:
+		viewpoint 1,215,114,5,0xFFFFFF;
+		mes "[Wonchi Ha]";
+		mes "In your minimap";
+		mes "Head to ^FFFFFF+^000000";
+		mes "You'll get to a wine shop.";
+		mes "Enjoy your trip in";
+		mes "lovely Gonryun!";
+		break;
+	}
+	close;
+}
+
+gonryun,166,196,4	script	士兵#gon	780,{
+	mes "[哇鸩欧]";
+	mes "你知道吗？";
+	mes "这里本来是祠堂，";
+	mes "不知何时开始一些无法登仙的神仙。";
+	mes "开始占了位子，变成了魔物的";
+	mes "巢穴，因此祠堂也被荒废了…";
+	close;
+//Event中
+	next;
+	mes "[哇鸩欧]";
+	mes "????、祭??始??????。";
+	mes "???、????今回?、???";
+	mes "???????。今??、";
+	mes "???事?????????。";
+	close;
+}
+
+gonryun,169,71,4	script	介绍人员	770,{
+	mes "[李喜敏]";
+	mes "欢迎光临，";
+	mes "进来村落之前，";
+	mes "有好好的逛村落的下方吗？";
+	mes "村外的建筑物是我们，";
+	mes "这次制造的精心之作";
+	next;
+	mes "[李喜敏]";
+	mes "为了使一眼看清，";
+	mes "卢恩…米德加兹王国的都市";
+	mes "而制作的小模型…";
+	mes "因为我们很久没有与";
+	mes "外面交流，虽然很累";
+	mes "不过是很认真制作的";
+	next;
+	mes "[李喜敏]";
+	mes "每个角落到处都走走看看的话，";
+	mes "会发现很多很美的风景";
+	close;
+}
+
+//===============================================================================
+gon_in,165,16,4	script	像是宿醉的人	748,{
+	if (event_gonryun == 4) goto Levent;
+	if (event_gonryun == 98) goto Leventend;
+	emotion 19;
+	mes "[雪锋]";
+	mes "喔喔 我的胃…";
+	mes "果然昨天不应该喝太多…";
+	mes "喔…喔喔喔喔喔喔喔喔";
+	close;
+Levent:
+	mes "[雪锋]";
+	mes "喔喔 我的胃…";
+	mes "谁可以带给我";
+	mes "解酒的东西就好了…喔喔…";
+	if (countitem(506) < 1) close;
+	mes "嗯？你…可以给我你身上的";
+	mes "^00ff00绿色药水^000000吗？";
+	mes "我的骨很痛啊";
+	next;
+	menu "不给他",L1,"给他",L2;
+L1:
+	mes "[雪锋]";
+	mes "喔喔…";
+	mes "真的不给我吗？";
+	next;
+	menu "真的不给他",L1_1,"给他",L2;
+	L1_1:
+		mes "[雪锋]";
+		mes "呜呜…快走开啦，";
+		mes "你这个人………";
+		set event_gonryun,98;
+		close;
+L2:
+	delitem 506,1;
+	mes "[雪锋]";
+	mes "呵嗯…谢谢你，";
+	mes "现在总算得救了，";
+	mes "啊，不过你好像有什么话要讲吗";
+	next;
+	menu "听说村长家遭小偷了",-,"到底喝了多少…",L2_1,"没什么事",L2_2;
+	mes "啊 那个嘛，";
+	mes "嗯，就是昨晚在这里";
+	mes "喝酒时，想要解酒";
+	mes "就暂时出去了一下，";
+	mes "于是听到很吵的声音，";
+	mes "看看周围就发现村长家";
+	next;
+	mes "[雪锋]";
+	mes "附近亮亮的？";
+	mes "所以就看看发生了什么事";
+	mes "接下来就看到，附近屋顶上有个";
+	mes "会动的东西";
+	mes "咻～一下就消失了";
+	next;
+	menu "往哪里走了呢？",-,"可能是猫吧",L2_0_1;
+		mes "[雪锋]";
+		mes "嗯？";
+		mes "嗯…我看看";
+		mes "从那里出来再往那里消失";
+		mes "碎碎念…";
+		next;
+		mes "他暂时碎碎念了一下";
+		mes "…………";
+		next;
+		mes "[雪锋]";
+		mes "啊 这样啊";
+		mes "那里啊，往祠堂那里";
+		mes "消失了，不知道是人，还是猫";
+		mes "看来体格蛮大的，";
+		mes "应该不是人吧";
+		next;
+		mes "[雪锋]";
+		mes "那么还有其它的疑问吗";
+		mes "给你问好了，算是报答你给的药";
+		next;
+		menu "已经足够了",L2_0_0_1,"不要再喝酒了",L2_0_0_2,"下次吧",-;
+			mes "[雪锋]";
+			mes "好吧，下次如果有疑问的话，再来吧";
+			//set event_gonryun,?;
+			close;
+L2_0_0_1:
+		mes "未调?";
+		close;
+L2_0_0_2:
+		mes "未调?";
+		close;
+L2_0_1:
+		mes "未调?";
+		close;
+L2_1:
+		mes "未调?";
+		close;
+L2_2:
+		mes "未调?";
+		close;
+Leventend:
+	emotion 32;
+	mes "[雪锋]";
+	mes "呜呜…走开啦，";
+	mes "真没人情味";
+	mes "唉呀…";
+	close;
+
+Lnotsure:
+	mes "[雪锋]";
+	mes "那么好好的找找看吧，";
+	mes "村长的忧愁消失后，";
+	mes "我们村落才会平安不是吗";
+	close;
+}
+
+//===============================================================================
+gon_in,17,93,4	script	村长	775,{
+if (event_gonryun == 2) goto Levent;
+if (event_gonryun == 3) goto LStart2;
+	if (event_gonryun == 89) goto LStartend;
+	if (event_gonryun == 98) goto Lfinal;
+	if (event_gonryun == 99) goto Lfinal2;
+	mes "[史艳文]";
+	mes "嗯……";
+	next;
+	mes "[史艳文]";
+	mes "啊，欢迎光临，";
+	mes "我是这个村落的村长";
+	mes "我叫史艳文，";
+	mes "欢迎你来到昆仑";
+	next;
+	mes "[史艳文]";
+	mes "事实上这里到目前为止，与其他地方没什么来往";
+	mes "不过到最近才透过，艾尔贝塔有点往来之后，";
+	mes "开始接收一些外地人";
+	next;
+	mes "[史艳文]";
+	mes "事实上之前，这里是太孤立了，";
+	mes "所以这里的人，对外地人并没有什么好感";
+	next;
+	mes "[史艳文]";
+	mes "最近的治安不是很好";
+	mes "不过既然来了就好好玩吧！";
+//	set event_gonryun,1;
+	close;
+Levent:
+	mes "[史艳文]";
+	mes "啊，是你啊…";
+	mes "对这村落还满意吗";
+	mes "你也应该知道，";
+	mes "最近这村落里的气氛不是很好";
+	next;
+	menu "还不错啦",-,"听说有遭小偷…",L1;
+		mes "[史艳文]";
+		mes "那就好了，要小心小偷…";
+		mes "啊…还有不要被村民讨厌喔";
+		close;
+	L1:
+		mes "[史艳文]";
+		mes "…嗯，你也已经听说了，";
+		mes "事实上昨晚有遭小偷，";
+		mes "考说最近小偷都很猖蹶，";
+		mes "所以加强了警卫";
+		next;
+		menu "……………",L1_1,"你被偷什么了呢",L1_2,"有没有人受伤？",L1_3;
+		L1_1:
+			mes "[史艳文]";
+			mes "就这样啊，";
+			mes "如果有可疑的人的话，";
+			mes "请通知我吧";
+			set event_gonryun,3;
+			close;
+L1_2:
+			mes "[史艳文]";
+			mes "那个呢…";
+			mes "嗯…";
+			mes "被偷的是一把剑，";
+			mes "那可是我家世世代代";			
+			mes "传下来的家宝";
+			next;
+			mes "[史艳文]";
+			mes "所以要找到那把剑，";
+			mes "要我亲自去找，";
+			mes "不过我实在太多事了，";
+			mes "身为一个村落的首长，";
+			next;
+			mes "所要处理的事相当多";
+			mes "所以正在烦恼中，";
+Lconfuse:
+			mes "[史艳文]";
+			mes "这件事情已经变成大麻烦了";
+			next;
+			menu "希望你能找到",L1_2_1,"我可以帮忙吗？",L1_2_2;
+			L1_2_1:
+				mes "[史艳文]";
+				mes "真的很感谢你的安慰";
+				mes "如果有宝剑的消息的话，";
+				mes "请通知我吧";
+				set event_gonryun,89;
+				close;
+
+			L1_2_2:
+				mes "[史艳文]";
+				mes "哇~可以帮我吗？";
+				mes "自从我们村落开放之后，";
+				mes "为了应付外地来的人，";
+				mes "村里的人都变得很忙，";
+				mes "如果你帮我找到剑的话，";
+				mes "我一定会报答你的";
+				set event_gonryun,3;
+				close;
+L1_3:
+			mes "[史艳文]";
+			mes "唉！好在没有人因此而受伤";
+			mes "不过重要的宝剑却被偷走了";
+			next;
+			mes "[史艳文]";
+			mes "祖先世代相传的宝物，我真的想";
+			mes "亲自去寻找，不过因为我是村长的身份";
+			mes "没有办法去作这件事";
+			next;
+			goto Lconfuse;
+LStart2:
+	mes "[史艳文]";
+	mes "看来还没找到啊";
+	mes "不要太勉强啊，";
+	mes "即使别人的要求很重要，";
+	mes "自已的身体才是最重要的";
+	close;
+Lfinal:
+	mes "[史艳文]";
+	mes "嗯…完全找不到痕迹吗？";
+	mes "无论如可，";
+	mes "谢谢你的帮忙";
+	next;
+	getitem 504,1;
+	set event_gonryun,99;
+	mes "[史艳文]";
+	mes "就把这当作是辛苦费用吧，";
+	mes "那么好好的逛吧！";
+	close;
+Lfinal2:
+	mes "[史艳文]";
+	mes "现在村子里已经平静许多了";
+	close;
+LStartend:
+	mes "[史艳文]";
+	mes "现在村子里已经平静许多了";
+	mes "这都要感谢你。";
+	close;
+
+Lnotsure:
+	mes "[史艳文]";
+	mes "喔 有找到它的痕迹啊？";
+	mes "那就继续麻烦你了，";
+	mes "啊 这是我们家中的灵药，";
+	mes "应该会有帮助的";
+	getitem 504,3;
+//	set event_gonryun, ?;
+	close;
+
+Lnotsure2:
+	mes "[史艳文]";
+	mes "那就交给你了，";
+	mes "偷走的那个人也受了伤，";
+	mes "所以不会跑得很远";
+//	set event_gonryun, ?;
+	close;	
+}
+
+//===============================================================================
+gonryun,100,241,0	script	奇怪的男人	733,{
+	emotion 9;
+	mes "[左黑]";
+	mes "啊嗯…";
+	mes "现在很忙请下次再来";
+	close;
+}
+
+//===============================================================================
+
+gon_fild01,242,257,4	script	#Drop1	111,{
+	if(event_gonryun_1 != 1) goto L_NotFound;
+	mes "这里感觉怎么怪怪的呢";
+	mes "啊啊！这个是…";
+	mes "发现有一把短剑埋在土里";
+	getitem 1201, 1;
+	close;
+L_NotFound:
+	close;
+}
+
+//===============================================================================
+gon_in,73,82,4	script	成哲 基	778,{
+	mes "[成哲 基]";
+	mes "………………";
+	next;
+	mes "[成哲 基]";
+	mes "呼鸣......";
+	mes "真令人担心啊，担心";
+	close;
+}
+
+//????Drop地==============================================================
+//发动条件???暧昧、D?部??利?移动????事。详细不明
+gon_dun01,130,184,0	script	　#F1-1	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun01,138,256,0	script	　#F1-2	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun01,164,53,0	script	　#F1-3	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun01,191,159,0	script	　#F1-4	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun01,202,25,0	script	　#F1-5	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun02,24,105,0	script	　#F2-1	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun02,150,74,0	script	　#F2-2	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun02,249,38,0	script	　#F2-3	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun02,248,129,0	script	　#F2-4	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun02,265,200,0	script	　#F2-5	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun03,10,075,0	script	　#F3-1	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun03,14,162,0	script	　#F3-2	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun03,68,211,0	script	　#F3-3	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun03,169,189,0	script	　#F3-4	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//===============================================================================
+gon_dun03,198,101,0	script	　#F3-5	111,{
+//if (发动条件) goto Lsucsess;
+	close;
+Lsucsess:
+	mes "取得^ff0000残剑^000000";
+	mes "村长的家传之剑的碎片";
+//set Flag
+	close;
+}
+//３F死骸======================================================================
+gon_dun03,63,221,0	script	奇怪的尸体	111,{
+	mes "地上发现一具奇怪的尸体";
+	mes "嗯！上面好像有一张纸的样子";
+	next;
+	menu "我要看",L1,"不理他",-;
+		mes "太不吉利了";
+		mes "赶快离开吧…";
+		close;
+L1:
+		mes "看起来似乎是很古老";
+		mes "上面黑色的字体好像是用血写的";
+		mes "写些什么呢……";
+		next;
+		mes "^ff0000真是 来…到这里 实…啊";
+		mes "史艳…没有被那家伙……";
+		mes "打败…";
+		mes "喀喀 …样的，那家伙……折断";
+		mes "的地方……3……寻找……";
+		mes "用这个……^000000";
+		next;
+		mes "因为是用血来书写，血迹消失后";
+		mes "有些重点都无法保留下来";
+		close;
+}
+//Yuno女医生======================================================================
+yuno_in01,99,101,4	script	女医生	744,{
+	mes "[]";
+	mes "谁？";
+	mes "我现在真的很忙，如果没有别的事";
+	mes "请你离开好吗？";
+	close;
+OnArea:
+	mes "[]";
+	mes "^ff0000这里是私人的地方！！";
+	mes "请立刻离开！！^000000";
+	next;
+	warp "yuno",246,143;
+	end;
+}
+yuno_in01,99,101,4	script	女医生#area	139,6,6,{
+	doevent "女医生::OnArea";
+	end;
+}
+//==============================================================================
+prontera,275,86,0	script	青年#gon	97,{
+	mes "[礼]";
+	mes "身体好不舒服";
+	mes "应该到医院去看看";
+	next;
+	mes "[礼]";
+	mes "自已的身体还是要自己";
+	mes "好好的照顾，才会健康！";
+	close;
+}

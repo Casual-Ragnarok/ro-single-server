@@ -1,0 +1,308 @@
+//===== rAthena Script ======================================= 
+//= HD Refiners
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= [Official Conversion]
+//= Refiners that use HD ores to refine equipment. Upon
+//= failure, the equipment is not destroyed; rather, its
+//= refine level decreases by 1. The success rate is identical
+//= to that for Enriched ores.
+//= - "Blacksmith Mighty Hammer" only refines from +7~9.
+//= - "Basta" only refines from +10 and up.
+//===== Additional Comments: =================================
+//= 1.0 First version. [Euphy]
+//============================================================
+
+// Blacksmith Mighty Hammer (+7~9)
+//============================================================
+-	script	::MightyHammer	-1,{
+	disable_items;
+	mes "[铁匠 麦特·铁锤]";
+	mes "不像其他人, 我是一个铁匠, 精炼的物品数量非常有限.";
+	mes "我只精炼等级在 ^CC0000+7 到 +9^000000 之间的装备.";
+	next;
+	mes "[铁匠 麦特·铁锤]";
+	mes "我可以在精炼失败的时候完整的保护装备不损坏, 仅让装备下降一个精炼等级, 是不是很伟大?";
+	next;
+	mes "[铁匠 麦特·铁锤]";
+	mes "好吧让我们言归正传, 你想要精炼哪个装备?";
+	next;
+	setarray .@position$[1],"- 头上","- 衣服","- 左手","- 右手","- 披肩","- 鞋子","- 装饰品左","- 装饰品右","- 头中","- 头下";
+	set .@menu$,"";
+	for(set .@i,1; .@i<=10; set .@i,.@i+1)
+		set .@menu$, .@menu$+((getequipisequiped(.@i))?getequipname(.@i):.@position$[.@i]+"-[未装备]")+":";
+	set .@part, select(.@menu$);
+	if (!getequipisequiped(.@part)) {
+		mes "[铁匠 麦特·铁锤]";
+		switch(.@part) {
+		case 1:
+			mes "我是个铁匠, 不是一个发型师.";
+			break;
+		case 2:
+			mes "用我的铁锤, 我会让你成为天上的明星.";
+			break;
+		case 3:
+		case 4:
+			mes "做假肢可不是我的专长.";
+			break;
+		case 5:
+			mes "穿上要精炼的装备!";
+			break;
+		case 6:
+			mes "这是哪里来脚臭?";
+			break;
+		case 7:
+		case 8:
+			mes "装饰品在哪里?";
+			break;
+		case 9:
+			mes "你想让我敲哪里?";
+			break;
+		case 10:
+			mes "噗? 你想让我干嘛?";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[铁匠 麦特·铁锤]";
+		mes "这装备不能精炼.";
+		close;
+	}
+	if (getequiprefinerycnt(.@part) < 7 || getequiprefinerycnt(.@part) > 9) {
+		mes "[铁匠 麦特·铁锤]";
+		mes "我只精炼精炼值在 +7 到 +9 之间的装备.";
+		close;
+	}
+	switch(getequipweaponlv(.@part)) {
+	default:
+	case 0:
+		set .@price,20000;
+		set .@material,6241; //HD_Elunium
+		break;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		set .@price,20000;
+		set .@material,6240; //HD_Oridecon
+		break;
+	}
+	mes "[铁匠 麦特·铁锤]";
+	mes "精炼这件装备你需要支付 ^ff9999"+getitemname(.@material)+"^000000 和 20,000 zeny 服务费.";
+	mes "你准备好材料和钱了吗?";
+	next;
+	if(select("- 是:- 否") == 2) {
+		mes "[铁匠 麦特·铁锤]";
+		mes "装备好了再来找我吧.";
+		close;
+	}
+	if (getequippercentrefinery(.@part) < 100) {
+		mes "[铁匠 麦特·铁锤]";
+		mes "看上去精炼这个装备可能会失败.";
+		mes "如果失败的话, 它将会降低一个精炼级别.";
+		mes "你是否想继续?";
+		next;
+		if(select("- 是:- 否") == 2) {
+			mes "[铁匠 麦特·铁锤]";
+			mes "只有那些不惧怕害怕失败的人, 才会获得一个举世无双的成就.";
+			close;
+		}
+	}
+	if (countitem(.@material) == 0 || Zeny < .@price) {
+		mes "[铁匠 麦特·铁锤]";
+		mes "你刚才不是说你一切准备好了吗?";
+		close;
+	}
+	delitem .@material,1;
+	set Zeny, Zeny-.@price;
+	mes "[铁匠 麦特·铁锤]";
+	mes "锵! 锵! 锵!";
+	if (getequippercentrefinery(.@part) > rand(100) || getequippercentrefinery(.@part) > rand(100)) {
+		successrefitem .@part;
+		next;
+		emotion e_no1;
+		mes "[铁匠 麦特·铁锤]";
+		mes "每当我的脑海中响起这种声音.";
+		mes "我就知道成功了, 拿去, 完美的作品!";
+		close;
+	}
+	downrefitem .@part;
+	next;
+	emotion e_omg;
+	mes "[铁匠 麦特·铁锤]";
+	mes "唉呀!!";
+	next;
+	mes "[铁匠 麦特·铁锤]";
+	mes "相信你绝不会埋怨我把你的精炼值弄掉了1级.";
+	close;
+}
+prt_in,59,54,3	duplicate(MightyHammer)	麦特·铁锤#prt	826
+morocc_in,65,30,3	duplicate(MightyHammer)	麦特·铁锤#morocc	826
+payon,148,176,3	duplicate(MightyHammer)	麦特·铁锤#pay	826
+alberta_in,16,56,3	duplicate(MightyHammer)	麦特·铁锤#alb	826
+yuno_in01,171,18,3	duplicate(MightyHammer)	麦特·铁锤#yuno	826
+ein_in01,22,82,3	duplicate(MightyHammer)	麦特·铁锤#ein	826
+lhz_in02,280,19,3	duplicate(MightyHammer)	麦特·铁锤#lhz	826
+
+// iRO NPC locations:
+// moc_para01,38,185,4	duplicate(MightyHammer)	Mighty Hammer#ed	826
+// payon,174,133,4	duplicate(MightyHammer)	Mighty Hammer#im	826
+
+// Basta (+10 and up)
+//============================================================
+-	script	::Basta	-1,{
+	disable_items;
+	mes "[巴斯塔]";
+	mes "我是世界上最好的铁匠, 巴斯塔.";
+	mes "不过我不会做平凡的精炼.";
+	mes "我只精炼 ^CC0000大于等于 +10^000000 的装备.";
+	next;
+	mes "[巴斯塔]";
+	mes "你想精炼哪个装备?";
+	next;
+	setarray .@position$[1],"- 头上","- 衣服","- 左手","- 右手","- 披肩","- 鞋子","- 装饰品左","- 装饰品右","- 头中","- 头下";
+	set .@menu$,"";
+	for(set .@i,1; .@i<=10; set .@i,.@i+1)
+		set .@menu$, .@menu$+((getequipisequiped(.@i))?getequipname(.@i):.@position$[.@i]+"-[未装备]")+":";
+	set .@part, select(.@menu$);
+	if (!getequipisequiped(.@part)) {
+		mes "[巴斯塔]";
+		switch(.@part) {
+		case 1:
+			mes "你的头难道就是个装备?";
+			break;
+		case 2:
+			mes "你想让我干嘛?";
+			break;
+		case 3:
+		case 4:
+			mes "做假肢可不是我的专长.";
+			break;
+		case 5:
+			mes "你到底知不知道什么是披肩?";
+			break;
+		case 6:
+			mes "如果想精炼你的脚, 那你找错人了, 你应该去跑几次马拉松.";
+			break;
+		case 7:
+		case 8:
+			mes "装饰品在哪里?";
+			break;
+		case 9:
+			mes "好吧... 我没有看到任何装备可以精炼.";
+			break;
+		case 10:
+			mes "我不能让你变聪明, 去找你的小学老师去.";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[巴斯塔]";
+		mes "我不能精炼这件装备, 完全没有办法.";
+		close;
+	}
+	if (getequiprefinerycnt(.@part) < 10) {
+		mes "[巴斯塔]";
+		mes "难道我没告诉过你? 我只会精炼 +10 以上的装备.";
+		close;
+	}
+	if (getequiprefinerycnt(.@part) == 20) {
+		mes "[巴斯塔]";
+		mes "这件装备已经完美了, 不需要再次精炼~";
+		close;
+	}
+	switch(getequipweaponlv(.@part)) {
+	default:
+	case 0:
+		set .@price,100000;
+		set .@material,6225; //HD_Carnium
+		set .@type$,"防具";
+		break;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		set .@price,100000;
+		set .@material,6226; //HD_Bradium
+		set .@type$,"武器";
+		break;
+	}
+	mes "[巴斯塔]";
+	mes "唔... 这就是你想精炼的装备?";
+	mes "要精炼这件装备, 我需要收取 1 ^ff9999"+getitemname(.@material)+"^000000 和 100,000 zeny 的手续费.";
+	mes "你确定要继续精炼吗?";
+	next;
+	if(select("- 是:- 否") == 2) {
+		mes "[巴斯塔]";
+		mes "好吧. 如你所愿...";
+		close;
+	}
+	if (getequippercentrefinery(.@part) < 100) {
+		mes "[巴斯塔]";
+		mes "这件 "+.@type$+" 已经精炼的足够高级别了.";
+		mes "如果继续尝试精炼的话, 精炼级别有可能反而会降低.";
+		next;
+		mes "[巴斯塔]";
+		mes "我和其它地方的铁匠不同.";
+		mes "精炼降级可能会一下子掉 3 或者 4级... 这听起来很吓人.";
+		mes "但是在我这里最多掉 1 级.";
+		next;
+		mes "[巴斯塔]";
+		mes "相比其他铁匠, 风险较小.";
+		mes "我已经给了你所有的忠告. 你还想继续尝试吗?";
+		next;
+		if(select("- 是:- 否") == 2) {
+			mes "[巴斯塔]";
+			mes "好吧~";
+			mes "放弃挑战, 可能也是一种智慧的表现.";
+			close;
+		}
+	}
+	if (countitem(.@material) == 0 || Zeny < .@price) {
+		mes "[巴斯塔]";
+		mes "唔... 你没带齐所需的所有材料.";
+		mes "等你都带了再来吧.";
+		close;
+	}
+	delitem .@material,1;
+	set Zeny, Zeny-.@price;
+	mes "Pow! Pow! Pow! Pow!";
+	if (getequippercentrefinery(.@part) > rand(100) || getequippercentrefinery(.@part) > rand(100)) {
+		successrefitem .@part;
+		next;
+		emotion e_no1;
+		mes "[巴斯塔]";
+		mes "很好! 干的漂亮!!";
+		mes "我真的是整个世界里最好的铁匠!";
+		close;
+	}
+	downrefitem .@part;
+	next;
+	emotion (!rand(5))?e_cash:e_omg;
+	mes "[巴斯塔]";
+	mes "Aaaaaaaaaaak!!!";
+	next;
+	mes "[巴斯塔]";
+	mes "他妈的!";
+	mes "精炼失败, 精炼值降低了!";
+	mes "就算是最好的铁匠, 也不会每次都100%成功的!";
+	mes "太倒霉了.";
+	next;
+	mes "[巴斯塔]";
+	mes "下次我会做的更好的! 别担心!";
+	close;
+}
+prt_in,57,54,3	duplicate(Basta)	巴斯塔#prt	826
+morocc_in,68,30,3	duplicate(Basta)	巴斯塔#morocc	826
+payon,148,174,3	duplicate(Basta)	巴斯塔#payon	826
+alberta_in,18,56,3	duplicate(Basta)	巴斯塔#alberta	826
+yuno_in01,173,18,3	duplicate(Basta)	巴斯塔#yuno	826
+ein_in01,24,82,3	duplicate(Basta)	巴斯塔#einbroch	826
+lhz_in02,280,17,3	duplicate(Basta)	巴斯塔#lighthalzen	826

@@ -1,0 +1,128 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ------------------------------------------
+// - 艾音布罗克 导游 脚本 -
+// ------------------------------------------
+// 版本 1.4
+//===========================================
+
+einbroch,72,202,4	script	导游#einbroch	852,{
+	cutin "ein_soldier",2;
+	mes "[艾音布罗克 服务人员]";
+	mes "欢迎您来到钢铁之都艾音布罗克,";
+	mes "我们提供艾音布罗克的旅客们导引解说的服务,欢迎您随时洽询我们服务人员,如果你是首次向我们洽询的话,请您选择'听取注意事项'的选单";
+	next;
+	while(1) {
+		next;
+		switch (select("开始由导游说明城市:删掉微型地图上全部的记号:听取注意事项:取消")) {
+		case 1:
+			if(@compass&0x80 == 0) {
+				mes "[艾音布罗克 服务人员]";
+				mes "请你选择想知道的选单?";
+				mes "要在微型的图上留下记号吗?";
+				next;
+				if(select("要:不要")==1)
+					set @compass,@compass|0x80;
+			}
+			while(1) {
+				next;
+				switch (select("^FF0000机场^000000","火车站:工厂:广场:饭店:武器商店",
+							"研究所:铁匠公会:纪念塔:取消")) {
+				case 1:
+					mes "[艾音布罗克 服务人员]";
+					mes "在'^FF0000机场^000000'可以搭乘修发兹共和国引以为豪的飞空艇,它位于西北边,若要搭乘飞空艇请先买票,请您注意这一点";
+					if(@compass&0x80)
+						viewpoint 1,64,207,1,0xFF0000;
+					continue;
+				case 2:
+					mes "[艾音布罗克 服务人员]";
+					mes "'火车站'位于村落的东北边,目前经营直通'艾音贝赫'的列车";
+					if(@compass&0x80)
+						viewpoint 1,232,272,2,0xFF00FF;
+					continue;
+				case 3:
+					mes "[艾音布罗克 服务人员]";
+					mes "'工厂'是村落最重要的设施,是我们'艾音布罗克'最基本的地方,它位于村落的南边,并有一间附属建筑物研究所";
+					if(@compass&0x80)
+						viewpoint 1,140,79,3,0xFF00FF;
+					continue;
+				case 4:
+					mes "[艾音布罗克 服务人员]";
+					mes "'广场'位于'艾音布罗克'中央东边,并有形成商店街,那比那同时还有饭店,有需要的话去一下也不错";
+					if(@compass&0x80)
+						viewpoint 1,230,190,4,0xFF00FF;
+					continue;
+				case 5:
+					mes "[艾音布罗克 服务人员]";
+					mes "'饭店'位于'艾音布罗克'广场的东边,拥有六星级的最高级设施,住起来会非常舒适呢";
+					if(@compass&0x80)
+						viewpoint 1,257,199,5,0x00FF00;
+					continue;
+				case 6:
+					mes "[艾音布罗克 服务人员]";
+					mes "'武器店'位于村落广场稍微偏上端的地方";
+					if(@compass&0x80)
+						viewpoint 1,216,214,6,0x00FF00;
+					continue;
+				case 7:
+					mes "[艾音布罗克 服务人员]";
+					mes "'研究所'是工厂的附属设定位于艾音布罗克的西南边的角落";
+					if(@compass&0x80)
+						viewpoint 1,51,52,7,0x00FF00;
+					continue;
+				case 8:
+					mes "[艾音布罗克 服务人员]";
+					mes "'铁匠公会'位于'艾音布罗克'的东南边,并兼有锻冶所,请多加利用";
+					if(@compass&0x80)
+						viewpoint 1,255,107,8,0x00FF00;
+					continue;
+				case 9:
+					mes "[艾音布罗克 服务人员]";
+					mes "'纪念塔'位于'艾音布罗克'的中心位置,在那边可以把'艾音布罗克'的美景尽收眼底";
+					if(@compass&0x80)
+						viewpoint 1,175,196,9,0x00FFFF;
+					continue;
+				case 10:
+					mes "[艾音布罗克 服务人员]";
+					mes "如果要删除标记请选择'删除微型地图上全部的记号'";
+				}
+				break;
+			}
+			continue;
+		case 2:
+			mes "[艾音布罗克 服务人员]";
+			mes "标记已经删除";
+			viewpoint 2,64,207,1,0xFF0000;
+			viewpoint 2,232,272,2,0xFF00FF;
+			viewpoint 2,140,79,3,0xFF00FF;
+			viewpoint 2,230,190,4,0xFF00FF;
+			viewpoint 2,257,199,5,0x00FF00;
+			viewpoint 2,216,214,6,0x00FF00;
+			viewpoint 2,51,52,7,0x00FF00;
+			viewpoint 2,255,107,8,0x00FF00;
+			viewpoint 2,175,196,9,0x00FFFF;
+			set @compass,@compass&~0x80;
+			continue;
+		case 3:
+			mes "[艾音布罗克 服务人员]";
+			mes "摆脱过去功能欠缺的既有类比引导方式,改成今天把想知道的地方标记在微型的图上,是一种利用广域定位系统的最数尖端位化的引导系统方式了,完全排除由秀发兹发德共和国所新发明的魔法力量,纯粹是靠自己的技术创造出的广域定位系统,请您亲身体验它的性能";
+			next;
+			mes "[艾音布罗克 服务人员]";
+			mes "在介绍它之前,请各位务必参考屏幕右上的微型地图,如果看不见微型地图的话,请按'ctrl+tab'键,或选取基本情报视窗的点入'map'键即可,若有看到微型地图的话,请多点几次'-'按键,直到设定完全的村落都能看到为止";
+			continue;
+		case 4:
+			mes "[艾音布罗克 服务人员]";
+			mes "这里已经颁布了";
+			mes "“空气污染警报”";
+			mes "请注意了";
+			close2;
+			cutin "ein_soldier",255;
+			end;
+		}
+	}
+}
+
+//大气污染
+einbroch,155,43,4	duplicate(导游#einbroch)	导游#einbrochdummy1	852
+einbroch,162,317,4	duplicate(导游#einbroch)	导游#einbrochdummy2	852

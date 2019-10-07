@@ -1,0 +1,108 @@
+//===== rAthena Script ======================================= 
+//= Louyang Guide
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guide for the city of Louyang.
+//===== Additional Comments: ================================= 
+//= 1.0 First version, Renewal guide.
+//============================================================ 
+
+louyang,224,104,4	script	洛阳导游#01louyang	818,{
+	mes "[宣传使节]";
+	mes "欢迎光临 历史之都^8B4513洛阳^000000,";
+	next;
+	mes "[宣传使节]";
+	mes "这次为了与国外的积极交流,";
+	mes "开拓了新的航路,";
+	mes "以便这样从外地来的人安心进出";
+	next;
+	mes "[宣传使节]";
+	mes "^8B4513洛阳^000000拥有悠久的历史";
+	mes "由于从来没有交流,";
+	mes "因此也许会有难以见到的东西,";
+	mes "请你慢慢观赏!";
+	while (1) {
+		next;
+		switch(select("[ 城 ]:[ 医院 ]:[ 官厅 ]:[ 武器店 ]:[ 道具店 ]:[ 酒店 ]:[ 了望台 ]:[ 回去艾尔贝塔 ]:删除小地图的标记:结束对话")) {
+		case 1:
+			mes "[宣传使节]";
+			mes "城位于^0A82FF+^000000,";
+			mes "城里是城主及一些高官所居住的地方,";
+			mes "来到陌生的地方,";
+			mes "向城市打个招呼是基本礼仪吧?";
+			viewpoint 1,218,253,0,0x0A82FF;
+			break;
+		case 2:
+			mes "[宣传使节]";
+			mes "在我们洛阳里有一座著名^AAFF00医院^000000";
+			mes "根据传说没有什么病是治不好的,";
+			mes "不过,不知道是不是事实";
+			viewpoint 1,261,93,1,0xAAFF00;
+			break;
+		case 3:
+			mes "[宣传使节]";
+			mes "在^008080+^000000会有官厅,";
+			mes "如果发生问题或有什么情况时,";
+			mes "先去官厅看看吧!!";
+			viewpoint 1,309,78,2,0x20B2AA;
+			break;
+		case 4:
+			mes "[宣传使节]";
+			mes "武器店位于^55FF33+^000000.";
+			mes "你将会看到经过长时间冶炼";
+			mes "所铸造的优秀武器";
+			viewpoint 1,145,172,3,0xFF1493;
+			break;
+		case 5:
+			mes "[宣传使节]";
+			mes "道具店位于^3355FF+^000000.";
+			mes "知己知彼,百战百胜!";
+			mes "就是要准备的彻底,";
+			mes "...不要在意成语啦,嘿嘿!";
+			viewpoint 1,138,99,4,0xFF0000;
+			break;
+		case 6:
+			mes "[宣传使节]";
+			mes "旅途中累了就去酒店坐坐吧!";
+			mes "酒店位于^00FF00+^000000,";
+			mes "谁知道会从别的旅客中,得知什么好消息呢!";
+			viewpoint 1,280,165,5,0xDAA520;
+			break;
+		case 7:
+			mes "[宣传使节]";
+			mes "你会在了望台上更好的观看世界,";
+			mes "一定可以看到这里的.";
+			viewpoint 1,136,245,6,0xD8BFD8;
+			break;
+		case 8:
+			mes "[宣传使节]";
+			mes "如果你想回去艾尔贝塔,";
+			mes "请去镇外的码头上找^00BFFFKGirl^000000.";
+			viewpoint 1,218,22,7,0x00BFFF;
+			break;
+		case 9:
+			mes "[宣传使节]";
+			mes "标记已删除,";
+			mes "还需要其它服务吗?";
+			viewpoint 2,1,1,0,0xFFFFFF;
+			viewpoint 2,1,1,1,0xFFFFFF;
+			viewpoint 2,1,1,2,0xFFFFFF;
+			viewpoint 2,1,1,3,0xFFFFFF;
+			viewpoint 2,1,1,4,0xFFFFFF;
+			viewpoint 2,1,1,5,0xFFFFFF;
+			viewpoint 2,1,1,6,0xFFFFFF;
+			viewpoint 2,1,1,7,0xFFFFFF;
+			break;
+		case 10:
+			mes "[宣传使节]";
+			mes "祝你旅途愉快!";
+			close;
+		}
+	}
+}

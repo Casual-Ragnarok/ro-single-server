@@ -1,0 +1,332 @@
+/*----------------------------------------------------------*\
+                     Ragnarok Scripts
+-------------------------------------------------------------
+
+ 名称：普隆德拉保卫战
+ 类型：游戏娱乐
+ 版本：v1.0
+ 原创：小鬼头宝宝
+ 设计：小鬼头宝宝
+ 编制：小鬼头宝宝
+ 版权：小鬼头宝宝
+ 测试：测试组♂尛魚
+ 环境：99maxro v8.3.0
+ OQ：1217152
+ E-mail：1217152@qq.com
+
+-----------------------更新及简要说明------------------------
+
+可更改地方已用注释说明，如有需要请自行修改，但请勿修改版权信息，谢谢
+
+\*----------------------------------------------------------*/
+prontera,147,171,6	script	特色战场报名官	125,{
+if ($@zhanchang != 1) goto n2;
+OnClock0000:
+OnClock0100:
+OnClock0200:
+OnClock0300:
+OnClock0400:
+OnClock0500:
+OnClock0600:
+OnClock0700:
+OnClock0800:
+OnClock0900:
+OnClock1000:
+OnClock1100:
+OnClock1200:
+OnClock1300:
+OnClock1400:
+OnClock1500:
+OnClock1600:
+OnClock1700:
+OnClock1800:
+OnClock1900:
+OnClock2000:
+OnClock2100:
+OnClock2200:
+OnClock2300:
+set $@zhanchang,1;
+disablenpc "卫兵#1";
+disablenpc "卫兵#2";
+announce "【紧急通告】：卢恩 米德加兹王国紧急召集抵抗叛军的勇士，请到战场报名官处报名!",15;
+mes "[战场报名官]";
+mes "20多年前被驱逐的叛军已经卷土重来了";
+mes "叛军军队已经驻扎在绝望平原";
+mes "准备攻打首都-普隆德拉";
+mes "作为卢恩米德加兹王国的公民";
+mes "拿起你的武器，保卫首都吧";
+next;
+menu "我要参加保卫战",l1,"我要参加高级保卫战",l2,"啊，我还是跑路吧",n1;
+l1:
+mes "[战场报名官]";
+mes "请进入休息室等待激烈的战斗吧";
+close2;
+savepoint "bat_a01.gat",365,216;
+warp "bat_a01.gat",365,216;
+end;
+l2:
+mes "[战场报名官]";
+mes "请进入战场等待激烈的战斗吧";
+close2;
+savepoint "bat_a02.gat",365,216;
+warp "bat_a02.gat",365,216;
+end;
+n1:
+mes "[战场报名官]";
+mes "既然怕就不要参加了";
+close;
+n2:
+mes "[战场报名官]";
+mes "20多年前被驱逐到克雷斯特汉姆古城的叛军有点不正常的举动";
+mes "将有可能又掀起一场大战";
+close;
+OnClock0005:
+OnClock0105:
+OnClock0205:
+OnClock0305:
+OnClock0405:
+OnClock0505:
+OnClock0605:
+OnClock0705:
+OnClock0805:
+OnClock0905:
+OnClock1005:
+OnClock1105:
+OnClock1205:
+OnClock1305:
+OnClock1405:
+OnClock1505:
+OnClock1605:
+OnClock1705:
+OnClock1805:
+OnClock1905:
+OnClock2005:
+OnClock2105:
+OnClock2205:
+OnClock2305:
+set $@zhanchang,0;
+announce "保卫普隆德拉的征兵已结束，请大家为这些勇士加油吧!",15;
+}
+bat_a01.gat,0,0,0	script	a1	-1,{
+OnClock0005:
+OnClock0105:
+OnClock0205:
+OnClock0305:
+OnClock0405:
+OnClock0505:
+OnClock0605:
+OnClock0705:
+OnClock0805:
+OnClock0905:
+OnClock1005:
+OnClock1105:
+OnClock1205:
+OnClock1305:
+OnClock1405:
+OnClock1505:
+OnClock1605:
+OnClock1705:
+OnClock1805:
+OnClock1955:
+OnClock2005:
+OnClock2105:
+OnClock2205:
+OnClock2305:
+mapannounce "guild_vs1-1.gat","普隆德拉保卫战已经开始",15;
+monster "bat_a01.gat",312,219,"熔岩巨石",1549,30,"b1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a01.gat",307,259,"麦斯特",1553,30,"b1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a01.gat",308,216,"苗娃佩瑞丝",1555,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",312,219,"人参精",1565,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",312,219,"狂暴蜈蚣",1567,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",326,139,"熔岩巨石",1549,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",248,213,"乌龟将军",1312,1,"c1::OnKillMob";	//BOSS
+mapannounce "bat_a01.gat","怪物已经大举进攻了，各位勇士冲吧",15;
+}
+bat_a01.gat,0,0,0	script	b1	-1,{ 
+OnKillMob:
+set @guaiwu,@guaiwu+1;
+announce "亲爱的玩家，你已经杀死了"+@guaiwu+"只怪物",3;
+set jifen,jifen+1;	//暂时设定积分变量名为jifen，如有其他的请自行修改
+announce "亲爱的玩家，你现在积分为"+jifen+"分!",3;
+OnSecond55:
+mapannounce "bat_a01.gat","现在地图下还剩下"+mobcount("bat_a01","all")+"只怪物",15;
+}
+bat_a01.gat,0,0,0	script	c1	-1,{ 
+OnKillMob:
+set jifen,jifen+5;
+mapannounce "bat_a01.gat","你们竟然杀死了我的冲锋将军，弟兄们上啊",15;
+monster "bat_a01.gat",158,346,"熔岩巨石",1549,30,"b1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a01.gat",158,346,"麦斯特",1553,30,"b1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a01.gat",158,346,"苗娃佩瑞丝",1555,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",158,346,"人参精",1565,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",158,346,"狂暴蜈蚣",1567,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",158,346,"熔岩巨石",1549,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",158,346,"乌龟将军",1312,1,"dd1::OnKillMob";	//BOSS
+
+}
+bat_a01.gat,0,0,0	script	c2	-1,{ 
+OnKillMob:
+killmonsterall "bat_a01.gat";
+set jifen,jifen+5;
+mapannounce "bat_a01.gat","啊，我竟然会失败，你们给我等着，我还会再来的",15;
+mapannounce "bat_a01.gat","恭喜"+strcharinfo(0)+"玩家杀死了反叛军",15;
+mapannounce "bat_a01.gat","卢恩米德加兹王国的公民们，谢谢你们成功抵御住了怪物们的袭击，请到卫兵处领取奖励",15;
+enablenpc "卫兵#1";
+}
+bat_a01.gat,0,0,0	script	dd1	-1,{ 
+mapannounce "bat_a01.gat","你们竟然杀死了我的冲锋将军，弟兄们上啊",15;
+monster "bat_a01.gat",143,50,"熔岩巨石",1549,30,"b1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a01.gat",143,50,"麦斯特",1553,30,"b1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a01.gat",143,50,"苗娃佩瑞丝",1555,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",143,50,"人参精",1565,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",143,50,"狂暴蜈蚣",1567,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",143,50,"熔岩巨石",1549,30,"b1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a01.gat",143,50,"巴风特",1399,1,"c2::OnKillMob";	//最终BOSS
+
+}
+bat_a01.gat,365,216,4	script	卫兵#1	708,{ 
+mes "[卫兵]";
+mes "谢谢你们成功抵御了怪物的进攻，现在将你们传送到首都";
+close2;
+savepoint "prontera.gat",151,171;
+warp "prontera.gat",151,171;
+set $@zhanchang,0;
+end;
+}
+bat_a01.gat,361,221,4	shop	消耗品商人#1	726,611:-1,7135:-1,7136:-1,7142:-1,7137:-1,7138:-1,605:-1,523:-1,528:-1,537:-1,643:-1,610:-1,645:-1,656:-1,657:-1,521:-1,526:-1,7139:-1,7134:-1,7135:-1,7136:-1,7137:-1,7138:-1,7139:-1,7140:-1,7141:-1,7142:-1,7143:-1,909:-1,910:-1,913:-1,911:-1,912:-1,905:-1,504:-1,505:-1,536:-1,522:-1,526:-1,505:-1,504:-1,715:-1,716:-1,717:-1,645:-1,656:-1,657:-1,1750:-1
+
+
+bat_a02.gat,0,0,0	script	aa1	-1,{
+OnClock0005:
+OnClock0105:
+OnClock0205:
+OnClock0305:
+OnClock0405:
+OnClock0505:
+OnClock0605:
+OnClock0705:
+OnClock0805:
+OnClock0905:
+OnClock1005:
+OnClock1105:
+OnClock1205:
+OnClock1305:
+OnClock1405:
+OnClock1505:
+OnClock1605:
+OnClock1705:
+OnClock1805:
+OnClock1955:
+OnClock2005:
+OnClock2105:
+OnClock2205:
+OnClock2305:
+monster "bat_a02.gat",312,219,"熔岩巨石",1549,50,"bb1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a02.gat",307,259,"麦斯特",1553,50,"bb1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a02.gat",308,216,"苗娃佩瑞丝",1555,50,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",312,219,"人参精",1565,50,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",312,219,"狂暴蜈蚣",1567,50,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",326,139,"熔岩巨石",1549,50,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",248,213,"乌龟将军",1312,3,"cc1::OnKillMob";	//BOSS
+mapannounce "bat_a02.gat","怪物已经大举进攻了，各位勇士冲吧",15;
+}
+
+bat_a02.gat,0,0,0	script	bb1	-1,{ 
+OnKillMob:
+set @guaiwu,@guaiwu+1;
+announce "亲爱的玩家，你已经杀死了"+@guaiwu+"只怪物",3;
+set jifen,jifen+1;	//暂时设定积分变量名为jifen，如有其他的请自行修改
+announce "亲爱的玩家，你现在积分为"+jifen+"分!",3;
+OnSecond55:
+mapannounce "bat_a02.gat","现在地图下还剩下"+mobcount("bat_a02","all")+"只怪物",15;
+}
+bat_a02.gat,0,0,0	script	cc1	-1,{ 
+OnKillMob:
+set jifen,jifen+5;
+mapannounce "bat_a02.gat","你们竟然杀死了我的冲锋将军，兄弟们冲啊",15;
+monster "bat_a02.gat",160,306,"熔岩巨石",1549,30,"bb1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a02.gat",160,306,"麦斯特",1553,30,"bb1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a02.gat",160,306,"苗娃佩瑞丝",1555,30,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",160,306,"人参精",1565,30,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",160,306,"狂暴蜈蚣",1567,30,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",160,306,"熔岩巨石",1549,30,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",158,346,"乌龟将军",1312,1,"dd2::OnKillMob";	//BOSS
+}
+bat_a02.gat,0,0,0	script	dd2	-1,{ 
+mapannounce "bat_a01.gat","你们竟然杀死了我的冲锋将军，弟兄们上啊",15;
+monster "bat_a02.gat",152,96,"熔岩巨石",1549,30,"bb1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a02.gat",152,96,"麦斯特",1553,30,"bb1::OnKillMob";			//这里改怪物名字和ID
+monster "bat_a02.gat",152,96,"苗娃佩瑞丝",1555,30,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",152,96,"人参精",1565,30,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",152,96,"狂暴蜈蚣",1567,30,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",152,96,"熔岩巨石",1549,30,"bb1::OnKillMob";	//这里改怪物名字和ID
+monster "bat_a02.gat",143,50,"巴风特",1399,1,"cc2::OnKillMob";	//最终BOSS
+
+
+}
+bat_a02.gat,0,0,0	script	cc2	-1,{ 
+OnKillMob:
+killmonsterall "bat_a02.gat";
+set jifen,jifen+5;
+mapannounce "bat_a02.gat","啊，我竟然会失败，你们给我等着，我还会再来的",15;
+mapannounce "bat_a02.gat","恭喜"+strcharinfo(0)+"玩家杀死了反叛军",15;
+mapannounce "bat_a02.gat","卢恩米德加兹王国的公民们，谢谢你们成功抵御住了怪物们的袭击，请到卫兵处领取奖励",15;
+enablenpc "卫兵#2";
+}
+bat_a01.gat,365,216,4	script	卫兵#2	708,{ 
+mes "[卫兵]";
+mes "谢谢你们成功抵御了怪物的进攻，现在将你们传送到首都";
+close2;
+savepoint "prontera.gat",151,171;
+warp "prontera.gat",151,171;
+set $@zhanchang,0;
+end;
+}
+
+bat_a02.gat,361,221,4	shop	消耗品商人#2	726,611:-1,7135:-1,7136:-1,7142:-1,7137:-1,7138:-1,605:-1,523:-1,528:-1,537:-1,643:-1,610:-1,645:-1,656:-1,657:-1,521:-1,526:-1,7139:-1,7134:-1,7135:-1,7136:-1,7137:-1,7138:-1,7139:-1,7140:-1,7141:-1,7142:-1,7143:-1,909:-1,910:-1,913:-1,911:-1,912:-1,905:-1,504:-1,505:-1,536:-1,522:-1,526:-1,505:-1,504:-1,715:-1,716:-1,717:-1,645:-1,656:-1,657:-1,1750:-1
+
+prontera.gat,143,171,4	script	积分兑换员	48,{
+mes "在我这里可以用战场积分兑换奖励";
+mes "10积分可以兑换10个苹果";
+mes "20积分可以兑换20个苹果";
+mes "30积分可以兑换30个苹果";
+mes "60积分可以兑换60个苹果";
+mes "600积分可以兑换600个苹果";
+mes "6000积分可以兑换6000个苹果";
+mes "请问你要兑换什么";
+next;
+menu "我要用10积分兑换10个苹果",s1,"我要用20积分兑换20个苹果",s2,"我要用30积分兑换30个苹果",s3,"我要用60积分兑换60个苹果",s4,"我要用600积分兑换600个苹果",s5,"我要用6000积分兑换6000个苹果",s6,"让我再想想吧",s7;
+s1:
+mes "这是给你的物品，请拿好";
+set jifen,jifen-10;
+getitem 502,10; //修改物品及数量
+close;
+s2:
+mes "这是给你的物品，请拿好";
+set jifen,jifen-20;
+getitem 502,20; //修改物品及数量
+close;
+s3:
+mes "这是给你的物品，请拿好";
+set jifen,jifen-30;
+getitem 502,30; //修改物品及数量
+close;
+s4:
+mes "这给你的物品，请拿好";
+set jifen,jifen-60;
+getitem 502,60; //修改物品及数量
+close;
+s5:
+mes "这是你的物品，请拿好";
+set jifen,jifen-600;
+getitem 502,600; //修改物品及数量
+close;
+s6:
+mes "这是你的物品，请拿好";
+set jifen,jifen-6000;
+getitem 502,600; //修改物品及数量
+close;
+s7:
+mes "等你想好再来吧";
+close;
+}

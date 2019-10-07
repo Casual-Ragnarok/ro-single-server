@@ -1,0 +1,56 @@
+// ---------------------------------
+// - 冷艳舞姬 转职脚本 - 
+//===================================
+// 版本：1.3c
+//===================================
+
+valkyrie,53,56,3	script	冷艳舞姬#Valkyrie	101,{
+	if (ADVJOB == 0 || Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[冷艳舞姬]";
+			mes "恭喜你转生了!";
+			mes "这是战士们的光荣!";
+			close;
+		}
+		mes "[冷艳舞姬]";
+		mes "左边踩一下再换右边~ : [→]";
+		mes ".....";
+		close;
+	}
+	else if (ADVJOB == Job_Gypsy && Class == Job_Archer_High && JobLevel > 39) {
+		mes "[冷艳舞姬]";
+		mes "恢复本来面貌、";
+		mes "给世界带来新的曙光的时候来临了";
+		mes "请以崭新的姿态继续你的旅程吧";
+		next;
+		mes "[冷艳舞姬]";
+		mes "要转职吗?";
+		next;
+		if (select("不要:转职成为冷艳舞姬") == 1) {
+			mes "[冷艳舞姬]";
+			mes "准备好了的话，";
+			mes "请随时找我吧";
+			mes "祝你好运!";
+			close;
+		}
+		if (SkillPoint) {
+			mes "[冷艳舞姬]";
+			mes "好像学习的还不够多，";
+			mes "学会所有技能之后再来吧";
+			close;
+		}
+		jobchange Job_Gypsy;
+		set ADVJOB,0;
+		mes "[冷艳舞姬]";
+		mes "恭喜你转职成功";
+		mes "请回到陆地上，";
+		mes "用你的舞蹈把快乐带给人们吧";
+		close;
+	}
+	mes "[冷艳舞姬]";
+	mes "欢迎来到荣誉的巴哈拉，";
+	mes "好好的休息再回去吧，";
+	mes "戏给战士们光荣!";
+	close;
+}

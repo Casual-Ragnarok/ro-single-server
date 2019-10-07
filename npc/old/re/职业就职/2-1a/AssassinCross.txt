@@ -1,0 +1,68 @@
+// ---------------------------------
+// - 十字刺客 转职脚本 - 
+//===================================
+// 版本：1.3c
+//===================================
+
+valkyrie,44,58,5	script	十字刺客#Valkyrie	725,{
+	if (ADVJOB == 0 || Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[十字刺客]";
+			mes "恭喜你转生成功...";
+			next;
+			mes "[十字刺客]";
+			mes "...";
+			next;
+			mes "[十字刺客]";
+			mes "...";
+			mes "......";
+			next;
+			mes "[十字刺客]";
+			mes "...";
+			mes "......";
+			mes "献给战士们...光荣";
+			close;
+		}
+		mes "[十字刺客]";
+		mes "不管人家说什么我们还是 '沙漠的臼齿'";
+		mes "刺客呢，";
+		mes "我们绝不能容忍自尊心被毁";
+		close;
+	}
+	else if (ADVJOB == Job_Assassin_Cross && Class == Job_Thief_High && JobLevel > 39) {
+		mes "[十字刺客]";
+		mes "恢复本来面貌、";
+		mes "给世界带来新的曙光的时候来临了";
+		mes "请以崭新的姿态继续你的旅程吧";
+		next;
+		mes "[十字刺客]";
+		mes "要转职吗?";
+		next;
+		if (select("不要:转职成为十字刺客") == 1) {
+			mes "[十字刺客]";
+			mes "准备好了的话，";
+			mes "请随时找我吧";
+			mes "祝你好运!";
+			close;
+		}
+		if (SkillPoint) {
+			mes "[十字刺客]";
+			mes "好像学习的还不够多，";
+			mes "学会所有技能之后再来吧";
+			close;
+		}
+		jobchange Job_Assassin_Cross;
+		set ADVJOB,0;
+		mes "[十字刺客]";
+		mes "恭喜你转职成功";
+		mes "请回到陆地上，";
+		mes "用你的力量指导人们吧";
+		close;
+	}
+	mes "[十字刺客]";
+	mes "欢迎来到荣誉的巴哈拉，";
+	mes "好好的休息再回去吧，";
+	mes "戏给战士们光荣!";
+	close;
+}

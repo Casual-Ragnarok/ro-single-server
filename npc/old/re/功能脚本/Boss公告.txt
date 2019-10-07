@@ -1,0 +1,271 @@
+
+xmas_dun02.gat,0,0,0,0	monster	冰暴骑士	1251,1,3600000,1800000,BOSS::OnBOSS1
+xmas_fild01.gat,0,0,0,0	monster	卡仑	1252,1,3600000,1800000,BOSS::OnBOSS2
+gef_fild10.gat,0,0,0,0	monster	兽人酋长	1190,1,7200000,3600000,BOSS::OnBOSS3
+pay_fild11.gat,0,0,0,0	monster	虎王	1115,1,7200000,3600000,BOSS::OnBOSS4
+gef_dun01.gat,0,0,0,0	monster	德古拉男爵	1389,1,3600000,1800000,BOSS::OnBOSS5
+in_sphinx5.gat,0,0,0,0	monster	法老王	1157,1,3600000,1800000,BOSS::OnBOSS6
+moc_pryd06.gat,102,165,0,0	monster	古埃及王	1511,1,3600000,1800000,BOSS::OnBOSS7
+prt_maze03.gat,0,0,0,0	monster	巴风特	1039,1,7200000,3600000,BOSS::OnBOSS8
+prt_sewb4.gat,0,0,0,0	monster	黄金盗虫	1086,1,3600000,1800000,BOSS::OnBOSS9
+pay_dun04.gat,0,0,0,0	monster	月夜猫	1150,1,3600000,1800000,BOSS::OnBOSS10
+moc_pryd04.gat,0,0,0,0	monster	俄赛里斯	1038,1,3600000,1800000,BOSS::OnBOSS11
+treasure02.gat,101,151,8,8	monster	海盗之王	1112,1,7200000,3600000,BOSS::OnBOSS12
+gl_chyard.gat,0,0,0,0	monster	黑暗之王	1272,1,3600000,1800000,BOSS::OnBOSS13
+beach_dun.gat,0,0,0,0	monster	塔奥群卡	1583,1,7200000,3600000,BOSS::OnBOSS14
+gef_fild14.gat,0,0,0,0	monster	兽人英雄	1087,1,3600000,1800000,BOSS::OnBOSS15
+tur_dun04.gat,100,92,20,20	monster	乌龟将军	1312,1,3600000,7200000,BOSS::OnBOSS16
+ama_dun03.gat,0,0,0,0	monster	元灵武士	1492,1,5400000,2700000,BOSS::OnBOSS17
+gon_dun03.gat,0,0,0,0	monster	墨蛇君	1418,1,5400000,2700000,BOSS::OnBOSS18
+lou_dun03.gat,0,0,0,0	monster	白素贞	1630,1,7200000,3600000,BOSS::OnBOSS19
+ayo_dun02.gat,0,0,0,0	monster	嗒妮小姐	1688,1,7200000,3600000,BOSS::OnBOSS20
+ein_dun02.gat,0,0,0,0	monster	RSX0806	1623,1,7200000,3600000,BOSS::OnBOSS21
+jupe_core.gat,0,0,0,0	monster	贝思波	1685,1,7200000,3600000,BOSS::OnBOSS22
+lhz_dun02.gat,0,0,0,0	monster	剑士 赛尼亚	1658,1,7200000,3600000,BOSS::OnBOSS23
+abyss_03.gat,0,0,0,0	monster	迪塔勒泰晤勒斯	1719,1,10800000,5400000,BOSS::OnBOSS24
+lhz_dun03.gat,0,0,0,0	monster	超魔导师 凯特莉娜	1645,1,3600000,1800000,BOSS::OnBOSS25
+lhz_dun03.gat,0,0,0,0	monster	神射手 迪文	1644,1,3600000,1800000,BOSS::OnBOSS26
+lhz_dun03.gat,0,0,0,0	monster	神官 玛嘉雷特	1643,1,3600000,1800000,BOSS::OnBOSS27
+lhz_dun03.gat,0,0,0,0	monster	神工匠 哈沃得	1642,1,3600000,1800000,BOSS::OnBOSS28
+lhz_dun03.gat,0,0,0,0	monster	十字刺客 艾勒梅斯	1641,1,3600000,1800000,BOSS::OnBOSS29
+lhz_dun03.gat,0,0,0,0	monster	骑士领主 赛依连	1640,1,3600000,1800000,BOSS::OnBOSS30
+thana_boss.gat,135,119,0,0	monster	魔剑士 达纳托斯的记忆	1708,1,7200000,3600000,BOSS::OnBOSS31
+kh_dun02.gat,0,0,0,0	monster	基尔-D-01	1734,1,7200000,3600000,BOSS::OnBOSS32
+ice_dun03.gat,0,0,0,0	monster	寒冰龙	1779,1,7200000,3600000,BOSS::OnBOSS33
+odin_tem03.gat,0,0,0,0	monster	巴基力 兰特克力斯	1751,1,28800000,7200000,BOSS::OnBOSS34
+ra_fild02.gat,0,0,0,0	monster	阿特罗斯	1785,1,14400000,7200000,BOSS::OnBOSS35
+ra_fild03.gat,0,0,0,0	monster	阿特罗斯	1785,1,10800000,5400000,BOSS::OnBOSS36
+ra_fild04.gat,0,0,0,0	monster	阿特罗斯	1785,1,18000000,9000000,BOSS::OnBOSS37
+ra_san05.gat,0,0,0,0	monster	影魔	1768,1,7200000,3600000,BOSS::OnBOSS38
+ve_fild02.gat,0,0,0,0	monster	阿特罗斯	1785,1,7200000,3600000,BOSS::OnBOSS39
+moc_fild15.gat,0,0,0,0	monster	皮里恩	1159,1,7200000,3600000,BOSS::OnBOSS310
+anthell02.gat,0,0,0,0	monster	蚁后	1147,1,7200000,3600000,BOSS::OnBOSS311
+mjolnir_04.gat,0,0,0,0	monster	蜂后	1059,1,7200000,3600000,BOSS::OnBOSS312
+gef_dun02.gat,0,0,0,0	monster	死灵	1046,1,7200000,3600000,BOSS::OnBOSS340
+abbey02.gat,0,0,0,0	monster	堕落的大神官	1871,1,7200000,3600000,BOSS::OnBOSS341
+abbey03.gat,0,0,0,0	monster	贝雷杰	1873,1,43200000,19800000,BOSS::OnBOSS342
+thor_v03.gat,0,0,0,0	monster	伊夫利特	1832,1,39600000,39000000,BOSS::OnBOSS343
+
+//-	script	BOSS1	-1,{
+//OnBOSS9:
+//	announce "〖公告〗[黄金盗虫]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+//	set Reputation,Reputation+5;
+//	end;
+//}
+
+-	script	BOSS	-1,{
+OnBOSS1:
+	announce "〖公告〗[冰暴骑士]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS2:
+	announce "〖公告〗[卡仑]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS3:
+	announce "〖公告〗[兽人酋长]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS4:
+	announce "〖公告〗[虎王]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS5:
+	announce "〖公告〗[德古拉男爵]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS6:
+	announce "〖公告〗[法老王]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS7:
+	announce "〖公告〗[古埃及王]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS8:
+	announce "〖公告〗[巴风特]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS9:
+	announce "〖公告〗[黄金盗虫]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS10:
+	announce "〖公告〗[月夜猫]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS11:
+	announce "〖公告〗[俄赛里斯]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS12:
+	announce "〖公告〗[海盗之王]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS13:
+	announce "〖公告〗[黑暗之王]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS14:
+	announce "〖公告〗[塔奥群卡]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS15:
+	announce "〖公告〗[兽人英雄]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS16:
+	announce "〖公告〗[乌龟将军]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS17:
+	announce "〖公告〗[元灵武士]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS18:
+	announce "〖公告〗[墨蛇君]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS19:
+	announce "〖公告〗[白素贞]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS20:
+	announce "〖公告〗[嗒妮小姐]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS21:
+	announce "〖公告〗[RSX0806]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS22:
+	announce "〖公告〗[贝思波]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS23:
+	announce "〖公告〗[剑士 赛尼亚]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS24:
+	announce "〖公告〗[迪塔勒泰晤勒斯]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS25:
+	announce "〖公告〗[超魔导师 凯特莉娜]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS26:
+	announce "〖公告〗[神射手 迪文]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS27:
+	announce "〖公告〗[神官 玛嘉雷特]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS28:
+	announce "〖公告〗[神工匠 哈沃得]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS29:
+	announce "〖公告〗[十字刺客 艾勒梅斯]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS30:
+	announce "〖公告〗[骑士领主 赛依连]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS31:
+	announce "〖公告〗[魔剑士 达纳托斯的记忆]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS32:
+	announce "〖公告〗[基尔-D-01]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS33:
+	announce "〖公告〗[寒冰龙]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS34:
+	announce "〖公告〗[巴基力 兰特克力斯]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS35:
+	announce "〖公告〗[阿特罗斯]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS36:
+	announce "〖公告〗[阿特罗斯]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS37:
+	announce "〖公告〗[阿特罗斯]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS38:
+	announce "〖公告〗[影魔]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+
+OnBOSS39:
+	announce "〖公告〗[阿特罗斯]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS310:
+	announce "〖公告〗[皮里恩]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS311:
+	announce "〖公告〗[蚁后]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS312:
+	announce "〖公告〗[蜂后]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS340:
+	announce "〖公告〗[死灵]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS341:
+	announce "〖公告〗[堕落的大神官]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS342:
+	announce "〖公告〗[贝雷杰]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+OnBOSS343:
+	announce "〖公告〗[伊夫利特]在 " +gettime(3)+ "时" +gettime(2)+ "分" +gettime(1)+ "秒 被勇者[" + strcharinfo(0) + "]击败了",0;
+	set Reputation,Reputation+5;
+	end;
+}

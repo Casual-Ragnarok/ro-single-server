@@ -1,0 +1,665 @@
+/************************************************************\
+                    99MaxEathena Script
+**************************************************************
+【名    称】快速精炼
+【类    型】服务组件
+【版    本】v1.1
+【版权所有】EmuDev
+【授权费用】免费
+【服 务 端】99MaxEathena
+【制作人员】.L., guochaohui
+【更新人员】99MaxEa 脚本组♂一生一叹一痕沙
+
+提示：请修改 exp.conf 的 use_statpoint_table 项目为 no 否则会
+      出现重置点数不正确的情况
+
+2012年09月04日 更新 v1.1 by 99MaxEa 【脚本组♂一生一叹一痕沙】
+添加龙类、魔导机械、狮鹫租凭，系统自动判断
+
+\************************************************************/
+
+prt_in,133,39,3	script	多功能就职人员	811,{
+mes "[多功能就职人员]";
+mes "请问您有什么需要帮助的吗？";
+next;
+switch(select("我要转职","我要转生","学习新技能","租赁职业道具","重置点数","三转转职",getgmlevel()>98?"后台设置":"")){
+	case 1: //转职
+		mes "[多功能就职人员]";
+		switch(Class){
+			case 0: //初
+			case 4001:
+			case 4023:
+				if (JobLevel<10||SkillPoint!=0) { mes "您的职业等级不足10级，或有剩余职业点数，无法转职！"; close; }
+				break;
+			default: //其他
+				if (JobLevel<40||SkillPoint!=0) { mes "您的基本等级不足40级，或有剩余职业点数，无法转职！"; close; }
+				break;
+			}
+		mes "请选择您要转的职业。";
+		next;
+		switch(Upper){
+			case 0: //普通职业
+				switch(Class){
+					case 0: //初
+						set @xz,select("剑士","法师","弓手","服侍","商人","盗贼","超初","枪手","忍者","跆拳","初心宝宝");
+						setarray @jobcode[0],0,1,2,3,4,5,6,23,24,25,4046,4023;
+						if (@jobcode[@xz]==23&&BaseLevel<40) { mes "[多功能就职人员]"; mes "您的基本等级不足40级，无法转职！"; close; }
+						jobchange @jobcode[@xz];
+						if (@jobcode[@xz]==23) { set SkillPoint,20; }
+						if (@jobcode[@xz]==4023) { set JobLevel,10; set SkillPoint,0; }
+						break;
+					case 1: //剑
+						set @xz,select("骑士","十字军");
+						setarray @jobcode[0],0,7,14;
+						jobchange @jobcode[@xz];
+						break;
+					case 2: //法
+						set @xz,select("巫师","贤者");
+						setarray @jobcode[0],0,9,16;
+						jobchange @jobcode[@xz];
+						break;
+					case 3: //弓
+						set @xz,select("猎人","诗人/舞女");
+						setarray @jobcode[0],0,11,20;
+						jobchange @jobcode[@xz]-((@xz==2&&Sex==1)?1:0);
+						break;
+					case 4: //服
+						set @xz,select("牧师","武僧");
+						setarray @jobcode[0],0,8,15;
+						jobchange @jobcode[@xz];
+						break;
+					case 5: //商
+						set @xz,select("铁匠","炼金术士");
+						setarray @jobcode[0],0,10,18;
+						jobchange @jobcode[@xz];
+						break;
+					case 6: //盗
+						set @xz,select("刺客","流氓");
+						setarray @jobcode[0],0,12,17;
+						jobchange @jobcode[@xz];
+						break;
+					case 4046: //拳
+						set @xz,select("拳圣","灵媒");
+						setarray @jobcode[0],0,4047,4049;
+						jobchange @jobcode[@xz];
+						break;
+					default: //其他
+						mes "[多功能就职人员]";
+						mes "对不起，没有您可以转的职业。";
+						close;
+						break;
+					}
+				break;
+			case 1: //进阶职业
+				switch(Class){
+					case 4001: //初
+						set @xz,select((Reclass==7||Reclass==14||Reclass==4008||Reclass==4015||Reclass==4030||Reclass==4037||$Job_option[1]==1)?"剑士":"",
+										(Reclass==9||Reclass==16||Reclass==4010||Reclass==4017||Reclass==4032||Reclass==4039||$Job_option[1]==1)?"法师":"",
+										(Reclass==11||Reclass==19||Reclass==20||Reclass==4012||Reclass==4020||Reclass==4021||Reclass==4042||Reclass==4043||$Job_option[1]==1)?"弓手":"",
+										(Reclass==8||Reclass==15||Reclass==4009||Reclass==4016||Reclass==4031||Reclass==4038||$Job_option[1]==1)?"服侍":"",
+										(Reclass==10||Reclass==18||Reclass==4011||Reclass==4019||Reclass==4033||Reclass==4041||$Job_option[1]==1)?"商人":"",
+										(Reclass==12||Reclass==17||Reclass==4013||Reclass==4018||Reclass==4035||Reclass==4040||$Job_option[1]==1)?"盗贼":"",
+										($Job_option[1]==1)?"超初":"",
+										($Job_option[1]==1)?"枪手":"",
+										($Job_option[1]==1)?"忍者":"",
+										($Job_option[1]==1)?"跆拳":"",
+										($Job_option[1]==1)?"初心宝宝":"");
+						setarray @jobcode[0],0,4002,4003,4004,4005,4006,4007,23,24,25,4046,4023;
+						if (@jobcode[@xz]==23&&BaseLevel<40) { mes "[多功能就职人员]"; mes "您的基本等级不足40级，无法转职！"; close; }
+						jobchange @jobcode[@xz];
+						if (@jobcode[@xz]==23) { set SkillPoint,20; }
+						if (@jobcode[@xz]==4023) { set JobLevel,10; set SkillPoint,0; }
+						break;
+					case 4002: //剑
+						set @xz,select((Reclass==7||Reclass==4008||Reclass==4030||$Job_option[1]==1)?"骑士领主":"",
+										(Reclass==14||Reclass==4015||Reclass==4037||$Job_option[1]==1)?"圣堂十字军":"");
+						setarray @jobcode[0],0,4008,4015;
+						jobchange @jobcode[@xz];
+						break;
+					case 4003: //法
+						set @xz,select((Reclass==9||Reclass==4010||Reclass==4032||$Job_option[1]==1)?"超魔导师":"",
+										(Reclass==16||Reclass==4017||Reclass==4039||$Job_option[1]==1)?"智者":"");
+						setarray @jobcode[0],0,4010,4017;
+						jobchange @jobcode[@xz];
+						break;
+					case 4004: //弓
+						set @xz,select((Reclass==11||Reclass==4012||Reclass==4034||$Job_option[1]==1)?"神射手":"",
+										(Reclass==19||Reclass==20||Reclass==4020||Reclass==4021||Reclass==4042||Reclass==4042||$Job_option[1]==1)?"搞笑艺人/冷艳舞姬":"");
+						setarray @jobcode[0],0,4012,4021;
+						jobchange @jobcode[@xz]-((@xz==2&&Sex==1)?1:0);
+						break;
+					case 4005: //服
+						set @xz,select((Reclass==8||Reclass==4009||Reclass==4031||$Job_option[1]==1)?"神官":"",
+										(Reclass==15||Reclass==4016||Reclass==4038||$Job_option[1]==1)?"武术宗师":"");
+						setarray @jobcode[0],0,4009,4016;
+						jobchange @jobcode[@xz];
+						break;
+					case 4006: //商
+						set @xz,select((Reclass==10||Reclass==4011||Reclass==4033||$Job_option[1]==1)?"神工匠":"",
+										(Reclass==18||Reclass==4019||Reclass==4041||$Job_option[1]==1)?"创造者":"");
+						setarray @jobcode[0],0,4011,4019;
+						jobchange @jobcode[@xz];
+						break;
+					case 4007: //盗
+						set @xz,select((Reclass==12||Reclass==4013||Reclass==4035||$Job_option[1]==1)?"十字刺客":"",
+										(Reclass==17||Reclass==4018||Reclass==4040||$Job_option[1]==1)?"神行太保":"");
+						setarray @jobcode[0],0,4013,4018;
+						jobchange @jobcode[@xz];
+						break;
+					default: //其他
+						mes "[多功能就职人员]";
+						mes "对不起，没有您可以转的职业。";
+						close;
+						break;
+					}
+				break;
+			case 2: //宝宝职业
+				switch(Class){
+					case 4023: //初
+						set @xz,select("剑士宝宝","法师宝宝","弓手宝宝","服侍宝宝","商人宝宝","盗贼宝宝","超初宝宝");
+						setarray @jobcode[0],0,4024,4025,4026,4027,4028,4029,4045;
+						if (@jobcode[@xz]==4045&&BaseLevel<40) { mes "[多功能就职人员]"; mes "您的基本等级不足40级，无法转职！"; close; }
+						if (@jobcode[@xz]==4045) { set SkillPoint,20; }
+						jobchange @jobcode[@xz];
+						break;
+					case 4024: //剑
+						set @xz,select("骑士宝宝","十字军宝宝");
+						setarray @jobcode[0],0,4030,4037;
+						jobchange @jobcode[@xz];
+						break;
+					case 4025: //法
+						set @xz,select("巫师宝宝","贤者宝宝");
+						setarray @jobcode[0],0,4032,4039;
+						jobchange @jobcode[@xz];
+						break;
+					case 4026: //弓
+						set @xz,select("猎人宝宝","诗人/舞女宝宝");
+						setarray @jobcode[0],0,4034,4043;
+						jobchange @jobcode[@xz]-((@xz==2&&Sex==1)?1:0);
+						break;
+					case 4027: //服
+						set @xz,select("牧师宝宝","武僧宝宝");
+						setarray @jobcode[0],0,4031,4038;
+						jobchange @jobcode[@xz];
+						break;
+					case 4028: //商
+						set @xz,select("铁匠宝宝","炼金术士宝宝");
+						setarray @jobcode[0],0,4033,4041;
+						jobchange @jobcode[@xz];
+						break;
+					case 4029: //盗
+						set @xz,select("刺客宝宝","流氓宝宝");
+						setarray @jobcode[0],0,4035,4040;
+						jobchange @jobcode[@xz];
+						break;
+					default: //其他
+						mes "[多功能就职人员]";
+						mes "对不起，没有您可以转的职业。";
+						close;
+						break;
+					}
+				break;
+			}
+		for (set @t,1;@t<11;set @t,@t+1) unequip @t;
+		mes "[多功能就职人员]";
+		mes "恭喜您转职成功！";
+		break;
+	case 2: //转生
+		mes "[多功能就职人员]";
+		if ($Job_option[3]>1) mes "您目前的转生次数为"+metempsychosis+"次，";
+		mes "确定要转生吗？";
+		next;
+		menu "确定转生",-;
+		mes "[多功能就职人员]";
+		if (metempsychosis>=$Job_option[3]) { mes "您已经无法再转生了!"; close; }
+		if (BaseLevel<$Job_option[2]||(Class>=0&&Class<=6)||(Class>=4001&&Class<=4007)||(Class>=4023&&Class<=4029)||JobLevel<50) {
+			mes "对不起，您的等级不够"+$Job_option[2]+"级或职业等级不够50级或不是二转职业。";
+			close;
+			}
+		if (checkcart()>0||checkfalcon()>0||checkriding()>0) { mes "请您把手推车、鹰、鸟移除。"; close; }
+		if (Zeny<$Job_option[4]) { mes "我需要"+$Job_option[4]+"Zeny。"; close; }
+		if ($Job_option[1]==0 && (Class==23||Class==24||Class==25||Class>=4023)) { mes "对不起，您的职业不能转生。"; close; }
+		set Zeny,Zeny-$Job_option[4];
+		set Reclass,Class;
+		setoption 0;
+		jobchange 0,1;
+		resetskill;
+		resetstatus;
+		set SkillPoint,0;
+		set StatusPoint,0;
+		set BaseLevel,1;
+		set JobLevel,1;
+		set BaseExp,0;
+		set JobExp,0;
+		for (set @t,1;@t<11;set @t,@t+1) unequip @t;
+		set metempsychosis,metempsychosis+1;
+		if ($Job_option[3]>=2) set StatusPoint,$Job_option[5]*metempsychosis;
+		if ($Job_option[3]==1) set StatusPoint,100;
+		if (metempsychosis==5) {
+			getitem2 28105,1,1,7,0,0,0,0,0;
+			getitem2 28106,1,1,7,0,0,0,0,0;
+			getitem2 28108,1,1,7,0,0,0,0,0;
+			getitem2 28109,1,1,7,0,0,0,0,0;
+		}
+		mes "恭喜您第"+metempsychosis+"次转生成功。";
+		break;
+	case 3: //技能
+		mes "[多功能就职人员]";
+		mes "我是新技能指导员，您将会在我这里学到每一个职业的新技能";
+		mes "当然，必须要对应职业才可以学到该技能咯。";
+		next;
+		switch(class){
+			case 0: //初心
+			case 23:
+			case 4001:
+			case 4023:
+			case 4045:
+				if (getskilllv(142)==0) skill 142,1,0;
+				if (getskilllv(143)==0 && Class!=23 && Class!=4045) skill 143,1,0;
+				break;
+			case 1: //剑士
+			case 4002:
+			case 14: //十字军
+			case 21:
+			case 4015:
+			case 4022:
+			case 7: //骑士
+			case 13:
+			case 4008:
+			case 4014:
+			case 4024:
+			case 4030:
+			case 4037:
+			case 4036:
+			case 4044:
+				if (getskilllv(144)==0) skill 144,1,0;
+				if (getskilllv(145)==0) skill 145,1,0;
+				if (getskilllv(146)==0) skill 146,1,0;
+				if (getskilllv(1001)==0 && Class==7) skill 1001,1,0;
+				if (getskilllv(1001)==0 && Class==13) skill 1001,1,0;
+				if (getskilllv(1001)==0 && Class==4008) skill 1001,1,0;
+				if (getskilllv(1001)==0 && Class==4014) skill 1001,1,0;
+				if (getskilllv(1002)==0 && Class==14) skill 1002,1,0;
+				if (getskilllv(1002)==0 && Class==21) skill 1002,1,0;
+				if (getskilllv(1002)==0 && Class==4015) skill 1002,1,0;
+				if (getskilllv(1002)==0 && Class==4022) skill 1002,1,0;
+				break;
+			case 2: //魔法师
+			case 4003:
+			case 9: //巫师
+			case 4010:
+			case 4017: //贤者
+			case 16:
+			case 4025:
+			case 4032:
+			case 4039:
+				if (getskilllv(157)==0) skill 157,1,0;
+				if (getskilllv(1006)==0 && Class==9) skill 1006,1,0;
+				if (getskilllv(1006)==0 && Class==4010) skill 1006,1,0;
+				if (getskilllv(1007)==0 && Class==16) skill 1007,1,0;
+				if (getskilllv(1007)==0 && Class==4017) skill 1007,1,0;
+				if ((getskilllv(1008)+getskilllv(1017)+getskilllv(1018)+getskilllv(1019)==0) && Class==16) {
+					mes "[多功能就职人员]";
+					mes "这里有四种技能可以学习！";
+					mes "^ff2030但只能学习其中的一种^000000";
+					mes "您要学习哪一种呢？";
+					next;
+					switch(select("水属性转换","地属性转换","火属性转换","风属性转换")) {
+						case 1:	skill 1008,1,0;	break;
+						case 2:	skill 1017,1,0;	break;
+						case 3:	skill 1018,1,0;	break;
+						case 4:	skill 1019,1,0;	break;
+						}
+					}
+				if ((getskilllv(1008)+getskilllv(1017)+getskilllv(1018)+getskilllv(1019)==0) && Class==4017) {
+					mes "[多功能就职人员]";
+					mes "这里有四种技能可以学习！";
+					mes "^ff2030但只能学习其中的一种^000000";
+					mes "您要学习哪一种呢？";
+					next;
+					switch(select("水属性转换","地属性转换","火属性转换","风属性转换")) {
+						case 1:	skill 1008,1,0;	break;
+						case 2:	skill 1017,1,0;	break;
+						case 3:	skill 1018,1,0;	break;
+						case 4:	skill 1019,1,0;	break;
+						}
+					}
+				break;
+			case 3: //弓箭手
+			case 4004:
+			case 11: //猎人
+			case 4012:
+			case 19: //吟游诗人
+			case 4020:
+			case 20: //舞娘
+			case 4021:
+			case 4026:
+			case 4034:
+			case 4042:
+			case 4043:
+				if (getskilllv(147)==0) skill 147,1,0;
+				if (getskilllv(148)==0) skill 148,1,0;
+				if (getskilllv(1009)==0 && Class==11) skill 1009,1,0;
+				if (getskilllv(1009)==0 && Class==4012) skill 1009,1,0;
+				if (getskilllv(1010)==0 && Class==19) skill 1010,1,0;
+				if (getskilllv(1010)==0 && Class==4020) skill 1010,1,0;
+				if (getskilllv(1011)==0 && Class==20) skill 1011,1,0;
+				if (getskilllv(1011)==0 && Class==4021) skill 1011,1,0;
+				break;
+			case 4: //服事
+			case 4005:
+			case 8: //祭司
+			case 4009:
+			case 15: //武道家
+			case 4016:
+			case 4027:
+			case 4031:
+			case 4038:
+				if (getskilllv(156)==0) skill 156,1,0;
+				if (getskilllv(1014)==0 && Class==8) skill 1014,1,0;
+				if (getskilllv(1014)==0 && Class==4009) skill 1014,1,0;
+				if (getskilllv(1015)==0 && Class==15) skill 1015,1,0;
+				if (getskilllv(1015)==0 && Class==4016) skill 1015,1,0;
+				if (getskilllv(1016)==0 && Class==15) skill 1016,1,0;
+				if (getskilllv(1016)==0 && Class==4016) skill 1016,1,0;
+				break;
+			case 5: //商人
+			case 4006:
+			case 10: //铁匠
+			case 4011:
+			case 18: //炼金
+			case 4019:
+			case 4028:
+			case 4033:
+			case 4041:
+				if (getskilllv(153)==0) skill 153,1,0;
+				if (getskilllv(154)==0) skill 154,1,0;
+				if (getskilllv(155)==0) skill 155,1,0;
+				if (getskilllv(1012)==0 && Class==10) skill 1012,1,0;
+				if (getskilllv(1012)==0 && Class==4011) skill 1012,1,0;
+				if (getskilllv(1013)==0 && Class==10) skill 1013,1,0;
+				if (getskilllv(1013)==0 && Class==4011) skill 1013,1,0;
+				if (getskilllv(238)==0 && Class==18) skill 238,1,0;
+				if (getskilllv(238)==0 && Class==4019) skill 238,1,0;
+				if (getskilllv(238)==0 && Class==4041) skill 238,1,0;
+				break;
+			case 6: //盗贼
+			case 4007:
+			case 12: //刺客
+			case 4013:
+			case 17: //流氓
+			case 4018:
+			case 4029:
+			case 4035:
+			case 4040:
+				if (getskilllv(149)==0) skill 149,1,0;
+				if (getskilllv(150)==0) skill 150,1,0;
+				if (getskilllv(151)==0) skill 151,1,0;
+				if (getskilllv(152)==0) skill 152,1,0;
+				if (getskilllv(1003)==0 && Class==12) skill 1003,1,0;
+				if (getskilllv(1003)==0 && Class==4013) skill 1003,1,0;
+				if (getskilllv(1004)==0 && Class==12) skill 1004,1,0;
+				if (getskilllv(1004)==0 && Class==4013) skill 1004,1,0;
+				if (getskilllv(1005)==0 && Class==17) skill 1005,1,0;
+				if (getskilllv(1005)==0 && Class==4018) skill 1005,1,0;
+				break;
+			case 4048: //媒灵
+			case 4047: //拳圣
+			case 4049: //悟灵士
+			case 4046: //跆拳道
+				if (getskilllv(493)==0) skill 493,1,0;
+				break;
+			default: //枪手
+				mes "[多功能就职人员]";
+				mes "这个职业暂时没有新技能学习！";
+				close;
+			}
+		mes "[多功能就职人员]";
+		mes "我已经把新技能教给您了，打开技能表看一下吧！";
+		break;
+	case 4: //租赁
+		mes "[多功能就职人员]";
+		if (checkcart()) { mes "您已经装备了手推车"; close; }
+		if (checkriding()) { mes "您不是有鸟骑了吗？"; close; }
+		if (checkfalcon()) { mes "您不是有鹰了吗？"; close; }
+		if (checkdragon()) { mes "您不是有龙了吗？"; close; }
+		if (checkmadogear()) { mes "您不是有魔导机械了吗？"; close; }
+		switch($Job_option[6]){
+			case 0: //不可混租
+				switch(Class){
+					case 5: //车
+					case 10:
+					case 18:
+					case 23:
+					case 4006:
+					case 4011:
+					case 4019:
+					case 4028:
+					case 4033:
+					case 4041:
+					case 4045:
+					case 4071:
+					case 4078:
+					case 4107:
+						if (getskilllv(39)<1) { mes "抱歉！您没有学会手推车使用这项技能。"; close; }
+						if (Zeny<$Job_option[7]) { mes "很抱歉，您的金钱不足。这至少需要 "+$Job_option[7]+" Zeny。"; close; }
+						set Zeny,Zeny-$Job_option[7];
+						if (Class==23) setcart 4;
+						else setcart 1;
+						mes "给您的小车。";
+						break;
+					case 7: //鸟
+					case 14:
+					case 4008:
+					case 4015:
+					case 4030:
+					case 4037:
+					case 4066:
+					case 4073:
+					case 4102:
+						if (getskilllv(63)<1) { mes "抱歉！您没有学会骑乘术这项技能。"; close; }
+						if (Zeny<$Job_option[8]) { mes "很抱歉，您的金钱不足。这至少需要 "+$Job_option[8]+" Zeny。"; close; }
+						set Zeny,Zeny-$Job_option[8];
+						mes "给您的大鸟。";
+						setriding;
+						break;
+					case 11: //鹰
+					case 4012:
+					case 4034:
+						if (getskilllv(127)<1) { mes "抱歉！您没有学会训鹰术这项技能。"; close; }
+						if (Zeny<$Job_option[9]) { mes "很抱歉，您的金钱不足。这至少需要 "+$Job_option[9]+" Zeny。"; close; }
+						set Zeny,Zeny-$Job_option[9];
+						mes "给您的猎鹰。";
+						setfalcon;
+						break;
+					case 4054: // 龙类
+					case 4060:
+					case 4096:
+						if(getskilllv(2007) == 0) { mes "抱歉！您没有学会训龙术这项技能。"; close; }
+						setdragon(1);
+						break;
+					
+					case 4058: // 机匠
+					case 4064:
+					case 4100:
+						if(getskilllv(39) > 0 && checkcart() == 0) {
+							setcart;
+						}
+						if(getskilllv(2255) > 0 && checkmadogear() == 0) {
+							setmadogear;
+						}
+						break;
+					default:
+						mes "对不起，没有您这个职业的道具租赁服务。";
+						break;
+					}
+				break;
+			case 1: //可以混租
+				mes "请选择您要租赁的道具。";
+				next;
+				switch(select("租赁手推车","租赁大鸟","租赁猎鹰","租魔导机械","租龙")){
+					case 1: //车
+						if (Zeny<$Job_option[7]) { mes "很抱歉，您的金钱不足。这至少需要 "+$Job_option[7]+" Zeny。"; close; }
+						set Zeny,Zeny-$Job_option[7];
+						setoption 8;
+						mes "给您的小车。";
+						break;
+					case 2: //鸟
+						if (Zeny<$Job_option[8]) { mes "很抱歉，您的金钱不足。这至少需要 "+$Job_option[8]+" Zeny。"; close; }
+						set Zeny,Zeny-$Job_option[8];
+						mes "给您的大鸟。";
+						setoption 32;
+						break;
+					case 3: //鹰
+						if (Zeny<$Job_option[9]) { mes "很抱歉，您的金钱不足。这至少需要 "+$Job_option[9]+" Zeny。"; close; }
+						set Zeny,Zeny-$Job_option[9];
+						mes "给您的猎鹰。";
+						setoption 16;
+						break;
+					case 4: //魔导机械
+						mes "给您的魔导机械。";
+						setmadogear;
+						break;
+					case 5: //龙
+						mes "给您的龙";
+						setdragon(1);
+						break;
+					}
+				break;
+			}
+		break;
+	case 5: //重置
+		mes "[多功能就职人员]";
+		mes "您想重置什么呢？";
+		next;
+		set @menu,select("属性点(费用"+$Job_option[10]+")","技能点(费用"+$Job_option[11]+")","属性点和技能点(费用"+$Job_option[12]+")");
+		mes "[多功能就职人员]";
+		switch(@menu) {
+			case 1: set @price,$Job_option[10]; break;
+			case 2: set @price,$Job_option[11]; break;
+			case 3: set @price,$Job_option[12]; break;
+			}
+		if (Zeny<@price) { mes "您好像没那么多钱。"; close; }
+		//set Zeny,Zeny-@price;
+		switch(@menu) {
+			case 1:
+				if((Class>=4060)&&(Class<=4079)) {
+					if((Baselevel<150)||(metempsychosis<5)) {
+						mes "三转职业必须达到150级才能重置点数!";
+						close;
+					}
+				}
+				resetstatus;
+				if((Class>=4060)&&(Class<=4079)) {				
+					set StatusPoint,3372;
+				}
+				set Zeny,Zeny-@price;
+				break;
+			case 2: resetskill; break;
+			case 3:
+				if((Class>=4060)&&(Class<=4079)) {
+					if((Baselevel<150)||(metempsychosis<5)) {
+						mes "三转职业必须达到150级才能重置点数!";
+						close;
+					}
+				}
+				resetskill;
+				resetstatus;
+				if((Class>=4060)&&(Class<=4079)) {				
+					set StatusPoint,3372;
+				}
+				set Zeny,Zeny-@price;
+				break;
+			}
+		mes "重置成功，这次可不要再加错了哦~";
+		close;
+		break;
+
+	case 6:
+//-------------------------------------------------------------------------------------------------------------------
+	mes "[多功能就职人员]";
+	mes "-------------------------------";
+	mes " 你确定要转职成为三转职业吗?";
+	mes "-------------------------------";
+	menu "- 是的，我要！",-;
+	next;
+	if((Upper!=1)||(BaseLevel<99)||(JobLevel<70)||(SkillPoint>0)||(metempsychosis<5)) {
+		mes "[多功能就职人员]";
+		mes "-------------------------------";
+		mes " 你未转生 或者 未达到 99/70";
+		mes " 或者你的技能点数未加完!";
+		mes " 或者你未达到5次转生!";
+		mes "-------------------------------";
+		close;
+	}
+	switch(Class) {
+		case 4008: jobchange 4060; getitem 1424,1; getitem 5746,1; break;
+		case 4009: jobchange 4063; getitem 1632,1; getitem 5747,1; break;
+		case 4010: jobchange 4061; getitem 1632,1; getitem 5753,1; break;
+		case 4011: jobchange 4064; getitem 1379,1; if(rand(1,2)==1) getitem 5749,1; else getitem 5760,1; break;
+		case 4012: jobchange 4062; getitem 1738,1; getitem 5748,1; getitem 6124,1; break;
+		case 4013: jobchange 4065; getitem 1279,1; getitem 5755,1; break;
+		case 4015: jobchange 4073; getitem 13410,1; getitem 5757,1; break;
+		case 4016: jobchange 4077; getitem 1823,1; getitem 5754,1; break;
+		case 4017: jobchange 4074; getitem 1632,1; getitem 5756,1; break;
+		case 4018: jobchange 4079; getitem 13025,1; getitem 5750,1; break;
+		case 4019: jobchange 4078; getitem 13410,1; getitem 5752,1; break;
+		case 4020: jobchange 4075; getitem 1923,1; getitem 5751,1; break;
+		case 4021: jobchange 4076; getitem 1975,1; getitem 5758,1; break;
+		default:
+			mes "＊ 你这个职业没有三转职业！";
+			close;
+	}
+	next;
+	mes "[多功能就职人员]";
+	mes "-------------------------------";
+	mes "＊ 恭喜你，转职成功！";
+	mes "-------------------------------";
+	close;
+	break;
+//-------------------------------------------------------------------------------------------------------------------
+	case 7: //后台
+		mes "[多功能就职人员]";
+		mes "请问管理员有什么需要修改的吗？";
+		next;
+		set @op,select("可否混转["+(($Job_option[1]==0)?"不可":"可以")+"]",
+									"转生等级["+$Job_option[2]+"]",
+									"转生次数["+$Job_option[3]+"]",
+									"转生费用["+$Job_option[4]+"]",
+									"转生赠点["+$Job_option[5]+"]",
+									"可否混租["+(($Job_option[6]==0)?"不可":"可以")+"]",
+									"租车费用["+$Job_option[7]+"]",
+									"租鸟费用["+$Job_option[8]+"]",
+									"租鹰费用["+$Job_option[9]+"]",
+									"素质重置费["+$Job_option[10]+"]",
+									"技能重置费["+$Job_option[11]+"]",
+									"同时重置费["+$Job_option[12]+"]");
+		setarray @word$[0],"","可否混转","转生等级","转生次数","转生费用","转生赠点","可否混租","租车费用","租鸟费用","租鹰费用","素质重置费","技能重置费","同时重置费";
+		mes "[多功能就职人员]";
+		mes "请"+((@op==1||@op==6)?"选择":"输入")+@word$[@op]+"。";
+		if (@op!=1&&@op!=5) mes "输入范围：1~1000000000";
+		next;
+		switch(@op){
+			case 1:
+			case 6:
+				set $Job_option[@op],select("不可","可以")-1;
+				break;
+			default:
+				input @num;
+				if (@num>1000000000||@num<1) { mes "[多功能就职人员]"; mes "输入的数值不在允许范围内。"; close; }
+				set $Job_option[@op],@num;
+				break;
+			}
+		mes "[多功能就职人员]";
+		mes "设置修改成功！";
+		break;
+	}
+close;
+end;
+
+OnInit:
+	//waitingroom "转职处",0;
+	//判断初始化(此项勿动),混转(1可),转生等级,转生次数,转生费用,转生增点(次数大于1有效),混租赁(1可),租车费用,租鸟费用,租鹰费用,素质重置费,技能重置费,同时重置费
+	if ($Job_option[0]==0) setarray $Job_option[0],1,1,99,5,1000000,150,0,800,2500,2500,800000,800000,1000000;
+	end;
+}

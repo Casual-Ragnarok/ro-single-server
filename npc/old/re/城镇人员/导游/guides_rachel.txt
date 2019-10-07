@@ -1,0 +1,102 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ------------------------------------------
+// - 拉赫 导游 脚本 -
+// ------------------------------------------
+// 版本 1.2a
+//===========================================
+rachel,138,146,5	script	拉赫 导游	934,{
+	mes "[拉赫 导游]";
+	mes "欢迎您来到 有着女神菲依雅温和的气息";
+	mes "阿卢纳贝兹的首都 拉赫，";
+	mes "第一次接受我们介绍的旅客们，先按选单";
+	mes "'听取注意事项'，了解必须注意的事情";
+	set .@loop1,1;
+	while(.@loop1) {
+		next;
+		switch(select("开始由导游说明城市:删掉小地图上全部的记号:听取注意事项:取消")) {
+		case 1:
+			mes "[拉赫 导游]";
+			mes "好的，现在就为你导游城市";
+			if (.@compass_check == 0) {
+				mes "要在小地图上留下记号吗?";
+				next;
+				if (select("好的:不要") == 1) set .@compass_check,1;
+			}
+			set .@loop2,1;
+			while(.@loop2) {
+				if (.@wait_button_chk == 0) set .@wait_button_chk,1;
+				else next;
+
+				switch(select("瑟斯隆尼勒:饭店:武器店:工具商店:飞空艇:取消")) {
+				case 1:
+					mes "[拉赫 导游]";
+					mes "瑟斯隆尼勒神殿是女神菲依雅的化身";
+					mes "教皇圣人所居住的神圣场所，";
+					mes "往北边跟着路走的话，就会看到的";
+					if (.@compass_check == 1) viewpoint 1,150,249,1,0xFF0000;
+					break;
+				case 2:
+					mes "[拉赫 导游]";
+					mes "为了恢复旅行带来的疲劳，旅馆还是首选";
+					mes "在左边的建筑物就是旅馆了";
+					if (.@compass_check == 1) viewpoint 1,115,149,2,0xFF00FF;
+					break;
+				case 3:
+					mes "[拉赫 导游]";
+					mes "想在拉赫买到好武器吗?";
+					mes "武器店就在西门的附近";
+					if (.@compass_check == 1) viewpoint 1,42,87,3,0x99FFFF;
+					break;
+				case 4:
+					mes "[拉赫 导游]";
+					mes "只使用优质的最高级药水的拉赫道具店在西门的附近";
+					if (.@compass_check == 1) viewpoint 1,83,78,4,0x0000FF;
+					break;
+				case 5:
+					mes "[拉赫 导游]";
+					mes "飞空艇停靠站是位于在拉赫的东门外面";
+					if (.@compass_check == 1) viewpoint 1,273,125,5,0x00FF00;
+					break;
+				case 6:
+					mes "[拉赫 导游]";
+					mes "需要删除记号请选择“删掉小地图上全部的记号”";
+					set .@loop2,0;
+					break;
+				}
+			}
+			break;
+
+		case 2:
+			viewpoint 2,150,249,1,0xFF0000;
+			viewpoint 2,115,149,2,0xFF00FF;
+			viewpoint 2,42,87,3,0x99FFFF;
+			viewpoint 2,83,78,4,0x0000FF;
+			viewpoint 2,273,125,5,0x00FF00;
+			mes "[拉赫 导游]";
+			mes "已删掉小地图上所有标志了";
+			mes "如果想要重新在地图上做标志的话，";
+			mes "请随时来找我吧";
+			break;
+		case 3:
+			mes "[拉赫 导游]";
+			mes "我们废除了原来较差的指引方式，采用最现代化的";
+			mes "无论您在哪里都可以籍由小地图知道您的位置";
+			next;
+			mes "[拉赫 导游]";
+			mes "在浏览之前，必须先参考右上方的小地图";
+			mes "如果看不见小地图的话，请按“Ctrl + Tab”或者选取基本情报视窗内的“map”";
+			mes "微型地图出现之后，在地图上按“-”几下可以看见所有城市";
+			break;
+		case 4:
+			mes "[拉赫 导游]";
+			mes "那么，祝你有个愉快的旅行";
+			close2;
+			set .@loop1,0;
+			break;
+		}
+	}
+	close;
+	end;
+}

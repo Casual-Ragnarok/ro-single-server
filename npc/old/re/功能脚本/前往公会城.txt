@@ -1,0 +1,25 @@
+-	script	前往公会城	105,{	
+		warp "prt_gld",160,246;
+	close;
+OnInit:
+	waitingroom "前往公会城",0;
+}
+
+
+prontera.gat,171,108,0	duplicate(前往公会城)	前往公会城#1	105
+izlude.gat,101,119,4	duplicate(前往公会城)	前往公会城#2	105
+aldebaran.gat,128,141,5	duplicate(前往公会城)	前往公会城#3	105
+morocc.gat,130,106,4	duplicate(前往公会城)	前往公会城#4	105
+alberta.gat,107,71,2	duplicate(前往公会城)	前往公会城#6	105
+payon.gat,191,135,4	duplicate(前往公会城)	前往公会城#7	105
+yuno.gat,176,187,3	duplicate(前往公会城)	前往公会城#9	105
+amatsu.gat,125,123,5	duplicate(前往公会城)	前往公会城#10	105
+gonryun.gat,170,140,5	duplicate(前往公会城)	前往公会城#11	105
+xmas.gat,157,128,2	duplicate(前往公会城)	前往公会城#12	105
+geffen.gat,97,69,1	duplicate(前往公会城)	前往公会城#13	105
+comodo.gat,189,166,4	duplicate(前往公会城)	前往公会城#14	105
+louyang.gat,223,120,4	duplicate(前往公会城)	前往公会城#18	105
+ayothaya.gat,150,173,4	duplicate(前往公会城)	前往公会城#20	105
+lighthalzen.gat,158,58,0	duplicate(前往公会城)	前往公会城#23	105
+rachel.gat,104,137,4	duplicate(前往公会城)	前往公会城#25	105
+

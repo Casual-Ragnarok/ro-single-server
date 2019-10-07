@@ -1,0 +1,799 @@
+//===== eAthena script =======================================
+//= Umbala Town script
+//===== By: ==================================================
+//= jAthena (1.0) Fusion Dev Team (1.1) Muad Dib (1.2) Darkchild (1.3)
+//===== Current Version: =====================================
+//= 1.9
+//===== Compatible With: =====================================
+//= Any eAthena Version; RO Episode XX
+//===== Description: =========================================
+//= Umbala Town Npcs
+//==================================================
+//===== Additional Comments: =================================
+//= 1.0 - Done By jAthena (dunno Who)
+//= 1.1 - Translated by Fusion Dev Team
+//= 1.2 - Fixed Something by Muad Dib
+//= 1.3 - Fixed up For eA by Darkchild
+//= 1.4 - Fixed some wrong item names [Lupus]
+//= 1.5 ?Spell Checked [massdriller]
+//= 1.6 - Fixed item names, added a chance to get to Niflheim via Jumping Bungy Area [Lupus]
+//= 1.7 - Fixed bugs and exploits [Lupus]
+//= 1.8 - Warps you to Niff with 1HP [Lance]
+//= 1.9 - Moved Umbala Event, Create Essence/Dismantle Stone, and Skeletal Gate to npc/quests/quests_umbala.txt [Evera]
+//= 2.0 - Removed duplicates, max NPC name length is 23, so Utan Tribe Young Adult#1, the 1 is skipped [Toms]
+//============================================================
+
+
+//========================================================
+// == NPCs on the road to Umbala ==
+//========================================================
+//Note that On_Emotion is NOT an npc command but just an trigger for DoNpcEvent!!
+comodo,170,137,7	script	拉艾德::Reid	84,{
+	close;
+On_Emotion20:
+	emotion e_hmm;
+	end;
+On_Emotion29:
+	emotion e_gg;
+	end;
+}
+
+//========================================================
+comodo,171,137,1	script	黑伊司	92,{
+	mes "[拉艾德]";
+	mes "一定是藏有惊人的宝物啊!";
+	next;
+	mes "[黑伊司]";
+	mes "找到宝物的话，一直以来把我们当笨蛋二人组看待的那些人，也会消失吧!!";
+	next;
+	mes "[拉艾德]";
+	mes "我们也来去寻找宝物吧!";
+	next;
+	donpcevent "Reid::On_Emotion29";
+	emotion e_gg;
+	mes "[黑伊司]";
+	mes "好吧- !!";
+	next;
+	mes "[拉艾德]";
+	mes "............";
+	next;
+	donpcevent "Reid::On_Emotion29";
+	emotion e_hmm;
+	mes "[拉艾德]";
+	mes "不过他会轻易的开口吗?";
+	next;
+	menu "什么话啊? 宝物?",-;
+		mes "[拉艾德]";
+		mes "啊，你从什么时候开始听的啊?!";
+		next;
+		emotion e_gg;
+		mes "[黑伊司]";
+		mes "呵喔，你也想要听有关宝物的事情啊?";
+		mes "当然你也是冒险家的话，应该知道对重要的东西，总是需要妥当的补偿吧?";
+		next;
+		mes "[拉艾德?黑伊司]";
+		donpcevent "Reid::On_Emotion29";
+		emotion e_gg;
+		mes "给我1000金币的话，我会告诉你的!";
+		next;
+		if(select("付1000金币给他:不付给他")==2) {
+			donpcevent "Reid::On_Emotion20";
+			emotion e_hmm;
+			mes "[黑伊司]";
+			mes "哼! 不要就算了~";
+			close;
+		}
+		if(Zeny < 1000) {
+			mes "[拉艾德]";
+			mes "嗨，你没钱啊";
+			close;
+		}
+		set Zeny,Zeny-1000;
+		mes "[黑伊司]";
+		mes "呼呼 蛮懂事的家伙嘛!";
+		next;
+		mes "[拉艾德]";
+		mes "..老实说，不久前在这个地方，";
+		mes "有位著名的冒险家尼尔斯结束旅行回来，";
+		next;
+		mes "[黑伊司]";
+		mes "(小声小声的)两手抱着大箱子回来了，";
+		next;
+		mes "[拉艾德]";
+		mes "在半夜偷偷回来，一定是怕被别人发现吧?";
+		next;
+		mes "[黑伊司]";
+		mes "大箱子里所装的宝贵东西~...";
+		mes "除了宝物外还有别的吗?!!";
+		next;
+		mes "[拉艾德]";
+		mes "所以说我们也要去寻找宝物-!!";
+		next;
+		emotion e_hmm;
+		mes "[黑伊司]";
+		mes "可是问题是，尼尔斯真的会轻易的告诉我们，宝物的所在地点吗..";
+		next;
+		mes "[拉艾德]";
+		mes "尼尔斯平时都把我们当笨蛋看待!!";
+		mes "哼-!!";
+		next;
+		menu "那个叫尼尔斯的人在哪里呢?",-;
+		mes "[拉艾德]";
+		mes "他居住在村落的北边";
+		next;
+		mes "[黑伊司]";
+		mes "我告诉你有利的情报了，如果你也得知了什么情报也得告诉我，这才是人之常情啊!";
+		next;
+		mes "[拉艾德、黑伊司]";
+		mes "那么祝你好运了!";
+		close;
+}
+
+//========================================================
+cmd_in01,175,120,3	script	伊立亚	69,{
+	mes "[伊立亚]";
+	mes "位在那角落桌的那位是，冒险家尼尔斯，";
+	mes "他会到处旅游而且会讲一些有趣的话";
+	next;
+	mes "[伊立亚]";
+	mes "这次到底去哪回来了呢，";
+	mes "他只是呵呵的笑着说";
+	mes "- 我果然不适合当老师的样子 -";
+	next;
+	mes "[伊立亚]";
+	mes "人们又一直来找尼尔斯..";
+	mes "到底是去哪里回来了呢?";
+	close;
+}
+
+//========================================================
+cmd_in01,164,115,1	script	尼尔斯	731,{
+	mes "[尼尔斯]";
+	mes "...呵呵? 什么";
+	mes "喔- 你也是听到谣言而跑来的笨蛋吗?";
+	mes "也不能太勉强吧. . .喀喀";
+	next;
+	mes "[尼尔斯]";
+	mes "说什么世上最好的宝物那类的话，";
+	mes "那只是从人们的误解而引起的，";
+	mes "应该不是宝物而只是我的收集品吧~";
+	next;
+	mes "[尼尔斯]";
+	mes "也对... '假如那个是'";
+	mes "实际上真的存在的事实，";
+	mes "也许只要用我双眼确认而已，就像是得到了值钱的宝石一样，";
+	next;
+	mes "[尼尔斯]";
+	mes "这里这克魔岛村落!";
+	mes "不觉得它的洞穴有点过份的小吗?";
+	next;
+	mes "[尼尔斯]";
+	mes "所以我想过了..";
+	mes "一定是有什么东西藏在里面..";
+	next;
+	mes "[尼尔斯]";
+	mes "然后呢 !";
+	mes "就终于找到了，";
+	mes "直到目前还没找到的，通往'那里'的路!";
+	next;
+	mes "[尼尔斯]";
+	mes "............";
+	next;
+	mes "[尼尔斯]";
+	mes "......什么呢?";
+	next;
+	mes "[尼尔斯]";
+	mes "这时候应该要来点 '咚咚' 的效果音不是吗!";
+	mes "没意思..";
+	next;
+	mes "[尼尔斯]";
+	mes "反正呢，最好是不要问我 '那里' 怎么去，还有 '那里' 有什么";
+	next;
+	mes "[尼尔斯]";
+	mes "如果是真正的探险家的话!!!";
+	mes "我讲到这里时!";
+	mes "应该要有着<啊啊啊啊! 想知道想到快疯了!>";
+	mes "的表情并把门踹开跑出去，用动物般的感觉及本能去寻找那个地方!!";
+	next;
+	mes "[尼尔斯]";
+	mes "好! 快点!";
+	mes "出去吧 !!!!!!";
+	next;
+	mes "[尼尔斯]";
+	mes "在我面前呈现的是发现耀眼的未知世界呢! 还是死亡的陷阱呢!";
+	mes "喀 哈 哈 哈 !!!!";
+	close;
+}
+
+
+//==================================================================
+//	Umbala NPCs and Quests
+//==================================================================
+
+//==================================================================
+//Trade money for meat
+umbala,70,106,3	script	雨檀族 小孩#1	781,{
+if(event_umbala < 3) goto LumWord;
+	mes "[???]";
+	mes "哎呀?您..";
+	mes "不是我们汶巴拉的人啊?";
+	next;
+	mes "[???]";
+	mes "吓一跳!但是很高兴认识你";
+	mes "我叫哈坦";
+	emotion e_heh;
+	next;
+	mes "[哈坦]";
+	mes "....但是，现在很可惜的是";
+	mes "不能和您一起玩";
+	mes "最近，突然在我家有雷落下后";
+	mes "把屋顶弄破了....";
+	emotion e_sob;
+	next;
+	mes "[哈坦]";
+	mes "....!";
+	next;
+	mes "[哈坦]";
+	mes "对了!请等一下，";
+	mes "可请求你吗?";
+	mes "你的日子好像过的还不错，";
+	mes "有多余的钱可以借我吗?";
+	mes "拜托你!";
+	emotion e_sob;
+	next;
+	menu "给他",-,"不给他",Lend2;
+
+		if(Zeny < 1000) goto LError2;
+		mes "[哈坦]";
+		mes "给我吗!!";
+		mes "你真是个好人啊~";
+		mes "太好了!";
+		set Zeny,Zeny-1000;
+		getitem 517,1;//Items: Meat,
+		emotion e_swt2;
+		next;
+		mes "[哈坦]";
+		mes "这是我的一点小意思，谢谢你";
+		emotion e_heh;
+		close;
+
+		LError2:
+			mes "[哈坦]";
+			mes "什么!没有钱";
+			mes "却装作有钱....";
+			emotion e_pif;
+			close;
+	Lend2:
+		mes "[哈坦]";
+		mes "........这样啊";
+		emotion e_sob;
+		close;
+
+LumWord:
+	mes "[???]";
+	mes "汶巴汶巴!!";
+	mes "汶~巴汶巴~汶~巴汶巴~";
+	mes "拉~巴汶巴~汶~巴汶巴拉~";
+	emotion e_heh;
+	next;
+	mes "[Hatan]";
+	mes "...Umba, Umbaumbaumba.";
+	mes "Umbaumbaumbababa.";
+	mes "Umbabawaumbaumbaba.";
+	mes "Umbaumba.";
+	mes "...Umbaumbamabababumba.";
+	emotion e_sob;
+	next;
+	mes "[Hatan]";
+	mes "...!";
+	next;
+	mes "[Hatan]";
+	mes "Umba!";
+	mes "Umbaumbaumbababa.";
+	mes "Umbababaumbawabaumba!";
+	mes "Umbaumbaumbababa.";
+	mes "wamfuba!  Umba!";
+	emotion e_sob;
+	next;
+	menu "Nod",-,"Shake Head",Lend;
+
+		if(Zeny < 1000) goto LError;
+		mes "[Hatan]";
+		mes "Umbaumba!!";
+		mes "Um!-babaumba-baumba-.";
+		mes "Umba-umba-Umbabawamamaba!";
+		set Zeny,Zeny-1000;
+		getitem 517,1;//Items: Meat,
+		emotion e_swt2;
+		next;
+		mes "[Hatan]";
+		mes "Umbaumba....";
+		emotion e_heh;
+		close;
+
+		LError:
+			mes "[Hatan]";
+			mes "Umba-Umbana!";
+			emotion e_pif;
+			close;
+	Lend:
+		mes "[Hatan]";
+		mes "....Umba....";
+		emotion e_sob;
+		close;
+}
+
+//==================================================================
+//Trade Meat for Clover, ???, and Soft Fur 
+umbala,59,243,5	script	雨檀族 小孩#4	787,{
+if(event_umbala < 3) goto LumWord;
+	mes "[寇坦]";
+	mes ".........";
+	mes ".......嘻嘻";
+	mes "....肉好吃";
+	mes "...给我肉";
+	next;
+	menu "给他",-,"不给他",L2;
+	if(countitem(517) < 1) goto LError;//Items: Meat,
+		delitem 517,1;//Items: Meat,
+		mes "[寇坦]";
+		mes "真的要给我吗? 谢谢!";
+		mes "这没什么是我给你的谢礼";
+		emotion e_scissors;
+		getitem 909,2;//Items: Jellopy,
+		getitem 914,2;//Items: Fluff,
+		getitem 705,2;//Items: Clover,
+		close;
+	L2:
+		mes "[寇坦]";
+		mes ".......";
+		mes "....肚子饿";
+		mes "....想吃肉";
+		emotion e_sob;
+		close;
+LError:
+	mes "[寇坦]";
+	mes "什么嘛，没有肉，";
+	mes "还装作有!";
+	mes "雨檀族是非常";
+	mes "讨厌诈欺的!";
+	emotion e_an;
+	close;
+LumWord:
+	mes "[???]";
+	mes ".........";
+	mes "......汶巴";
+	mes ".....汶巴巴";
+	mes ".....呼巴";
+	emotion e_rock;
+	next;
+	menu "Umba",-,"Umbabu",Lu2;
+	if(countitem(517) < 1) goto LuError;//Items: Meat,
+		delitem 517,1;//Items: Meat,
+		mes "[???]";
+		mes "Umbaumbaumbababa.";
+		mes "Umbababauma.";
+		emotion e_scissors;
+		getitem 909,2;//Items: Jellopy,
+		getitem 914,2;//Items: Fluff,
+		getitem 705,2;//Items: Clover,
+		close;
+	Lu2:
+		mes "[???]";
+		mes "....";
+		mes "......Unguba!";
+		mes "....Umbababa.";
+		emotion e_sob;
+		close;
+LuError:
+	mes "[???]";
+	mes "Umbawamufumabababa!";
+	mes "Umbabababaumbaumbu!";
+	emotion e_an;
+	close;
+}
+
+
+//=====================================================================
+umbala,177,153,3	script	帕斯托	97,{
+	if (event_umbala>=3) emotion e_gasp;
+	mes "[帕斯托]";
+	mes "呜哇-! 有人耶!?";
+	mes "没想到在这种偏僻的地方会发现人!";
+	mes "反正很高兴见到你，我叫帕斯托";
+	next;
+	mes "[帕斯托]";
+	mes "这里是叫做汶巴拉的村落，";
+	mes "可能是位于这种深山丛林里，所以与其他村落形成完全不同的文化圈";
+	next;
+	mes "[帕斯托]";
+	mes "肤色也不同，语言也是跟我们用的语言完全不同啊，";
+	mes "来到这里之后最荒唐的就是， ";
+	mes "他们表达感情的方式与我们不同";
+	next;
+	mes "[帕斯托]";
+	mes "当然也有相似的地方，";
+	mes "不过有几项事情没有注意的话，可能会很难堪喔，";
+	mes "还会有包含着完全相反的意思";
+	next;
+	mes "[帕斯托]";
+	mes "不要以为他们的脸在笑， ";
+	mes "就觉得他们的心里也在笑，";
+	mes "懂了吗?";
+	next;
+	emotion e_sob;
+	mes "[帕斯托]";
+	mes "倒不如语言相通的话...";
+	mes "不知道有没有人懂得我们的语言呢..";
+	mes "唉唷 真郁闷啊 - ! !";
+	close;
+}
+
+//=====================================================================
+umbala,80,146,4	script	优武克	753,{
+	mes "[优武克]";
+	mes "不是...汶巴 汶巴 呜嘎呜，";
+	mes "你也是别地方的人啊?";
+	mes "呀啊~ 很高兴见到你，没想到";
+	mes "在这种地方还会见到";
+	mes "别的外地人啊，哈哈哈";
+	next;
+	mes "[优武克]";
+	mes "为了寻找强者而来到了";
+	mes "这里是还可以啦，可是语言";
+	mes "都不通该怎么办呢...这本来";
+	mes "真是个令人抓狂的事，不过";
+	mes "听久了变得熟悉了，哈哈哈";
+	next;
+	mes "[优武克]";
+	mes "在这村落语言不通是其次啦，";
+	mes "真正暧昧的是这村落";
+	mes "男人们的种族保存之";
+	mes "需求很强烈，真的";
+	mes "到处都像是风流鬼似的";
+	next;
+	mes "[优武克]";
+	mes "因为是比较接近原始的村落，";
+	mes "好像不太适合以法律来阻挡... ";
+	mes "可是还是感觉到";
+	mes "很暧昧啊";
+	close;
+}
+
+//=====================================================================
+um_in,101,73,3	script	薇娜坦 	783,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[薇娜坦]";
+	mes "究竟呢...一到晚上就出现，";
+	mes "在身旁故意扰乱，";
+	mes "真是烦死了 唉! ";
+	mes "真令人讨厌的汶坡克利欧坦";
+	close;
+LumWord:
+	mes "[?????]";
+	mes "汶巴汶巴 汶巴汶巴 汶巴";
+	mes "呜嘎呜嘎 呜嘎呜嘎 呜嘎";
+	mes "汶汶汶汶 汶汶汶汶 汶汶";
+	close;
+}
+
+//=====================================================================
+um_in,94,123,5	script	贝尔慈坦	783,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[贝尔慈坦]";
+	mes "啊... 汶坡什么的变态家伙!";
+	mes "都说过很讨厌了还一直";
+	mes "死皮赖脸的，到底要我";
+	mes "怎么做事呢! 唉呦...真是";
+	mes "再也不想看到他";
+	close;
+LumWord:
+	mes "[?????]";
+	mes "汶巴 呜嘎汶巴汶巴 汶!";
+	mes "汶~ 呜嘎呜嘎 汶巴汶";
+	mes "汶巴...呜汶";
+	close;
+}
+
+//=====================================================================
+umbala,140,157,6	script	雨檀族 青年::UtanTribeYougAdult1	785,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[且乐坦]";
+	mes "高空弹跳非常危险，";
+	mes "因为是冒着生命危险的事情，";
+	mes "所以成功的人，";
+	mes "会被认定为是雨檀族里";
+	mes "的大人";
+	close;
+LumWord:
+	mes "[?????]";
+	mes "汶巴汶巴呼巴，";
+	mes "呜汶巴汶巴汶巴巴呜呼巴";
+	mes "汶巴巴巴汶巴汶巴";
+	close;
+}
+
+//=====================================================================
+umbala,146,157,4	script	雨檀族 青年#2	786,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[阿罗坦]";
+	mes "顺利的完成高空弹跳";
+	mes "是非常困难的，";
+	mes "所以为了庆祝顺利完成的人，而聚集在这里举行仪式的";
+	close;
+LumWord:
+	mes "[????]";
+	mes "汶巴汶巴汶巴巴汶巴巴";
+	mes "汶巴汶巴巴汶巴巴巴汶呼巴巴";
+	close;
+}
+
+//=====================================================================
+umbala,149,165,4	script	雨檀族 小孩#3	781,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[克露马坦]";
+	mes "从那么高的地方掉下来";
+	mes "真是太可怕了，";
+	mes "不过呢在我们雨檀族，";
+	mes "要表现出那种样子，";
+	mes "才会被认定为有勇气的人";
+	close;
+LumWord:
+	mes "[??????]";
+	mes "汶巴汶巴汶巴巴巴，";
+	mes "汶巴汶巴汶汶巴巴汶呼巴，";
+	mes "汶巴汶巴汶汶巴呼巴，";
+	close;
+}
+
+//=====================================================================
+umbala,92,159,4	script	卑乐坦	785,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[卑乐坦]";
+	mes "你知道汶巴拉居民的皮肤为什么都很黑吗?";
+	mes ". . . 那就是因为";
+	next;
+	mes "[卑乐坦]";
+	mes "汶巴拉人在每晚睡前都会吃巧克力的关系!";
+	next;
+	mes "[卑乐坦]";
+	mes "好喜欢巧克力 恩哈~";
+	close;
+LumWord:
+	mes "[????]";
+	mes "汶巴汶巴 汶巴汶巴";
+	mes "汶巴汶巴 汶巴汶巴";
+	mes "汶巴 汶巴 汶巴汶巴";
+	next;
+	mes "[????]";
+	mes "汶巴 汶巴巴 恩哈";
+	emotion e_sob;
+	close;
+}
+
+//=====================================================================
+umbala,194,104,4	script	雨檀族 小孩#2	787,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[布乐喀坦]";
+	mes "唉呀，是外地人啊?";
+	mes "你有跳过高空弹跳吗?";
+	next;
+	menu "有",-,"没有",L2;
+		mes "[布乐喀坦]";
+		mes "哇啊，外地人会跳这个真是了不起啊，";
+		mes "我们赞许你有这样的勇气，雨檀族欢迎你";
+		close;
+	L2:
+		mes "[布乐喀坦]";
+		mes "还没跳过啊...";
+		mes "想要被认定为大人的话，";
+		mes "不管是谁都要经历过的仪式啊，";
+		mes "等我长大，一定要来这里挑战，然后被大家认定是有勇气的人!";
+		close;
+LumWord:
+	mes "[???]";
+	mes "汶巴汶巴巴巴汶呼巴，";
+	mes "汶巴巴汶汶巴汶巴汶巴?";
+	next;
+	menu "Um...yes?",-,"Nope...",Lu2;
+		mes "[???]";
+		mes "Umbaumbaumbababa.";
+		mes "Umbaumbaumubaba.";
+		close;
+	Lu2:
+		mes "[???]";
+		mes "Umbaumbaumuam.";
+		mes "Umbaumbaumbaba.";
+		mes "Umbaumfumababaumu.";
+		close;
+}
+
+//=====================================================================
+umbala,193,208,6	script	雨檀族 青年#3	789,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[辉宜坦]";
+	mes "我年轻时也跳过高空弹跳，";
+	mes "虽然差点没命，不过成功后的那种成就感是无法言喻的，";
+	mes "也有人觉得很盲目，";
+	mes "但我觉得那是年轻人的雄心啊";
+	close;
+LumWord:
+	mes "[????]";
+	mes "汶巴汶巴汶巴巴，";
+	mes "汶巴汶巴呼巴汶汶巴巴汶，";
+	mes "汶汶巴巴巴汶巴呼";
+	close;
+}
+
+//=====================================================================
+umbala,139,205,4	script	雨檀族 青年::UtanTribeYougAdult5	785,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[朱坦]";
+	mes "好久不见的外地人啊!";
+	mes "这里是人们玩高空弹跳";
+	mes "的地方，";
+	mes "很多雨檀族的年轻人，";
+	mes "为了证明自己的勇气，";
+	mes "而在这跳下去";
+	next;
+	mes "[朱坦]";
+	mes "再往前面走的话会掉下去的，";
+	mes "最好是先做好心理准备喔";
+	next;
+	mes "[朱坦]";
+	mes "掉下去之后可以爬绳子上来，不然在水里仔细找的话，";
+	mes "有个可以通到对面的水中洞穴";
+	mes "对了，偶而也有运气差的人会直接掉下去而死亡的";
+	next;
+	mes "[朱坦]";
+	mes "其中也有光看就吓死的人，所以要小心点，";
+	mes "在水里还有不明的怪物，你待久的话也会死掉的";
+	close;
+LumWord:
+	mes "[????]";
+	mes "汶巴汶巴!";
+	mes "汶巴汶巴巴巴巴汶汶巴，";
+	mes "巴巴汶呜坦汶巴汶巴巴，";
+	mes "汶巴巴巴呼，";
+	mes "汶汶呼巴巴汶巴汶巴汶巴巴";
+	next;
+	mes "[????]";
+	mes "汶巴呼嘛巴巴汶巴，";
+	mes "汶巴巴坦汶巴汶巴，";
+	mes "巴，汶巴汶巴汶汶巴巴汶，";
+	mes "汶巴汶巴汶巴呼";
+	close;
+}
+
+//=====================================================================
+um_in,158,71,3	script	雨檀族 居民	787,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[牧塔库坦]";
+	mes "汶巴拉里有很多很多树木!";
+	mes "我牧塔库坦，非常喜欢树木，嘿嘿";
+	next;
+	mes "[牧塔库坦]";
+	mes "其中有个特别喜欢的树木! 是在汶巴拉最大- 最久的树木!";
+	mes "不对，应该是世上最- 大的!";
+	close;
+LumWord:
+	mes "[????]";
+	mes "汶巴汶巴 汶巴巴 汶哈!";
+	mes "汶巴 汶巴 汶巴巴巴 汶巴";
+	mes "汶巴 汶巴 汶巴";
+	mes "汶巴巴 汶巴 汶巴巴";
+	close;
+}
+
+//=====================================================================
+umbala,145,217,3	script	恰比玛坦	783,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[恰比玛坦]";
+	mes "啊... 汶坡克利欧坦像是有老婆，";
+	mes "不知道为什么每次";
+	mes "看到女人就老是";
+	mes "缠着不放呢，人间败类?";
+	close;
+LumWord:
+	mes "[恰比玛坦]";
+	mes "汶巴巴~~~~~~~";
+	mes "呜嘎呜嘎 汶巴 汶巴 呜 呜 呜!";
+	mes "呜嘎汶巴呜嘎汶巴 呜嘎呜嘎嘎";
+	close;
+}
+
+//=====================================================================
+um_in,139,48,5	script	普利内坦::Purenotan	783,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[普利内坦]";
+	mes "我被这男人的风流，";
+	mes "快逼疯了呢... 呜呼!";
+	mes "再被我抓到一次的话，";
+	mes "我真的会打死你这，";
+	mes "像个仇人的丈夫!";
+	close;
+LumWord:
+	mes "[普利内坦]";
+	mes "汶巴汶巴呜嘎呜嘎";
+	mes "汶巴汶巴巴 巴巴巴巴!";
+	mes "汶巴汶!";
+	emotion e_an;
+	next;
+	mes "[普利内坦]";
+	mes "汶巴 汶巴汶巴 汶巴汶巴";
+	mes "汶巴巴巴巴巴 呜嘎呜!";
+	mes "呜嘎呜嘎 汶巴巴汶巴汶!";
+	emotion e_oh;
+	next;
+	emotion e_go;
+	close;
+On_emo:
+emotion e_an;
+end;
+}
+
+//=====================================================================
+um_in,144,45,5	script	汶坡克利欧坦	789,{
+	if(event_umbala < 3) goto LumWord;
+	mes "[汶坡克利欧坦]";
+	mes "啊啊啊....好痛啊";
+	next;
+	mes "[汶坡克利欧坦]";
+	mes "薇娜坦、贝尔慈坦、";
+	mes "好美啊!她们大概也在想我吧!";
+	close;
+LumWord:
+	mes "[汶坡克利欧坦]";
+	mes "汶巴 汶巴汶巴 汶巴汶巴";
+	mes "汶巴巴巴巴巴 呜嘎呜!";
+	mes "呜嘎呜嘎 汶巴巴汶巴汶!";
+	emotion e_heh;
+	next;
+	donpcevent "Purenotan::On_emo";
+	close;
+}
+
+
+//==============================================================================
+//Bungee jumping!
+//==============================================================================
+umbala,140,197,0	script	#Shibonochikka	139,0,1,{
+	set @jumprand,rand(0,4);
+	if (@jumprand == 1) goto L1;
+	if (@jumprand == 2) goto L2;
+	if (@jumprand == 3) goto L3;
+	if (@jumprand == 4) goto L4;
+	mapannounce "umbala","在高空弹跳台上: " + strcharinfo(0) + " : 呼嘎啊啊啊啊啊啊~~~~~~!",8;
+	end;
+
+L1:
+//Dead
+	mapannounce "umbala","在高空弹跳台上: " + strcharinfo(0) + " : 嘎呀呀呀呀呀呀啊啊啊啊~~~~~~~",8;
+	percentheal -100,0;
+	end;
+
+L2:
+//HP50% Damage
+	mapannounce "umbala","在高空弹跳台上: " + strcharinfo(0) + " : 呼嘎啊啊啊啊啊啊~~~~~~!",8;
+	percentheal -50,0;
+	end;
+
+L3:
+//HP99% Damage
+	mapannounce "umbala","在高空弹跳台上: " + strcharinfo(0) + " : 嘎呀呀呀呀呀呀啊啊啊啊~~~~~~~",8;
+	percentheal -99,0;
+	end;
+
+L4:
+//1 HP left, warp to Niflheim
+	mapannounce "umbala","在高空弹跳台上: " + strcharinfo(0) + " : No-o!",8;
+	heal -HP+1,0;
+	warp "nif_in",69,15;
+	end;
+}
+
+//=====================================================================
+umbala,136,195,0	script	#Warp Point	139,1,1,{
+	warp "umbala",145,166;
+	end;
+}

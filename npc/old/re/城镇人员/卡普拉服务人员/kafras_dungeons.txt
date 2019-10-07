@@ -1,0 +1,73 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 各大迷宫外 卡普拉脚本 - 
+//===================================
+// 版本：2.7c
+//===================================
+
+izlu2dun,106,58,8	script	卡普拉服务人员::kaf_izlu2dun	115,{
+
+	cutin "kafra_03",2;
+	if(BaseJob==Job_Novice && job_merchant_q2>0) callfunc "F_MercKafra";  //F_MercKafra found in merchant.txt
+	callfunc "F_Kafra",0,5,1,120,1200;
+
+	M_Save:
+		savepoint "izlu2dun",87,170;
+		callfunc "F_KafEnd",0,1,"at Byalan Island";
+}
+
+
+//<============================ Culvert Sewers ============================>\\
+prt_fild05,290,224,3	script	卡普拉服务人员::prt_fild05	114,{
+	cutin "kafra_04",2;
+	callfunc "F_Kafra",0,8,1,40,0;
+
+	M_Save:
+		savepoint "prt_fild05",274,243;
+		callfunc "F_KafEnd",0,1, "at the Prontera Culverts";
+}
+
+
+//<=========================== Coal Mine (Dead Pitt) =======================>\\
+mjolnir_02,83,362,4	script	卡普拉服务人员::kaf_mjolnir_02	116,{
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",0,6,1,100,0;
+
+	M_Save:
+		savepoint "mjolnir_02",98,352;
+		callfunc "F_KafEnd",0,1,"at Mjolnir Dead Pit";
+}
+
+
+//<=============================== Morroc Ruins ============================>\\
+moc_ruins,59,157,5	script	卡普拉服务人员::moc_ruins	114,{
+	cutin "kafra_04",2;
+	callfunc "F_Kafra",0,5,1,90,1200;
+
+	M_Save:
+		savepoint "moc_ruins",41,141;
+		callfunc "F_KafEnd",0,1," at the Pyramids";
+}
+
+
+//<================================ Orc Dungeon ============================>\\
+gef_fild10,73,340,5	script	卡普拉服务人员::kaf_gef_fild10	116,{
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",0,6,1,130,0;
+
+	M_Save:
+		savepoint "gef_fild10",54,326;
+		callfunc "F_KafEnd",0,1,"at the Orc Dungeon";
+}
+
+//<============================== Treasure Island ==========================>\\
+alb2trea,59,69,5	script	卡普拉服务人员::kaf_alb2trea	117,{
+	cutin "kafra_01",2;
+	callfunc "F_Kafra",0,11,1,50,0;
+
+	M_Save:
+		savepoint "alb2trea",92,64;
+		callfunc "F_KafEnd",0,1,0,"at Sunken Ship";
+}

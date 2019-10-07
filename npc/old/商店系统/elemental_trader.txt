@@ -1,0 +1,160 @@
+//===== rAthena Script ======================================= 
+//= Elemental Stone Trader
+//===== By: ================================================== 
+//= rAthena Team & MasterOfMuppets
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Trade impure types of elemental stones for pure ones.
+//===== Additional Comments: ================================= 
+//= 1.0 Rescripted to Aegis 10.3 standards. [L0ne_W0lf]
+//= 1.1 Optimized. [Euphy]
+//============================================================ 
+
+ama_in02,61,27,7	script	炼金术师#ama	749,{
+	mes "[克勒咕哩]";
+	mes "呵呵呵呵呵哈哈哈哈哈!";
+	mes "真的令人惊讶!";
+	mes "这种试验是我平生的第一次!";
+	next;
+	mes "[克勒咕哩]";
+	mes "没想到我来到这么遥远的地方";
+	mes "还会发挥我的能力!";
+	mes "城主这家伙...";
+	mes "原来比想像中的还有趣";
+	next;
+	mes "[克勒咕哩]";
+	mes "呵呵呵...要小心点..";
+	mes "如果组织那边发现我们在这里";
+	mes "泄露出配药方法应该会很生气吧..";
+	mes "喀喀喀..";
+	next;
+	mes "[克勒咕哩]";
+	mes "疑!有什么话要跟我说吗?";
+	mes "是来观光的话稍稍的看完之后";
+	mes "回到故乡去吧";
+	mes "喀喀喀..不然就给你尝尝";
+	mes "盐酸瓶的味道..";
+	next;
+	if (select("请,稍等:有需要帮忙的地方吗?") == 1) {
+		mes "[克勒咕哩]";
+		mes "好好好...";
+		mes "如果有听到什么最好是乖乖的把它忘掉吧";
+		mes "那个可是活命长久的秘诀唷...";
+		mes "喀喀喀...";
+		close;
+	}
+	mes "[克勒咕哩]";
+	mes "你说要帮我吗?";
+	mes "这样啊...";
+	mes "我现在还需要一些物品来完成";
+	mes "喀喀喀...";
+	next;
+	mes "[克勒咕哩]";
+	mes "我的实验需要几个属性石";
+	mes "如果能搜集到的话";
+	mes "我将会表示感激";
+	mes "现在有带着这些吗?";
+	next;
+	if(select("没有:我有几个")==1) {
+		mes "[克勒咕哩]";
+		mes "那样的话";
+		mes "去搜集何种类的属性石8个来吧";
+		mes "如果带同类过来的话";
+		mes "我会换好一点的给你..";
+		next;
+		mes "[克勒咕哩]";
+		mes "呢么. 去搜集何种类的属性石8个来吧";
+
+		mes "[克勒咕哩]";
+		mes "别弄错拿来之后哭闹";
+		mes "不然我会让你的脚吃火烟瓶的!";
+		next;
+		mes "[克勒咕哩]";
+		mes "那么拿来吧!你说好要帮我的";
+		mes "要遵守诺言!喀喀喀喀...";
+		close;
+	}
+	mes "[克勒咕哩]";
+	mes "很好，你带的是什么呢?";
+	next;
+	setarray .@Items[1],995,997,994,996;
+	set .@i,select("水灵原石","土灵原石","火灵原石","风灵原石")-1;
+	mes "[克勒咕哩]";
+	if (countitem(.@i) > 7) {
+		mes "我会用8个来和你换...";
+		mes "一个属性石头";
+		mes "感觉如何!";
+		mes "叽叽叽...咕哩咕哩咕哩...";
+		next;
+		mes "[克勒咕哩]";
+		mes "怎么样, 要不要选一个?";
+		next;
+		set .@menu$, "";
+		for(set .@j,1; .@j<5; set .@j,.@j+1) {
+			if (.@Items[.@j] != .@i) set .@menu$, .@menu$+getitemname(.@Items[.@j]);
+			set .@menu$, .@menu$+":";
+		}
+		set .@menu$, .@menu$+"取消交易";
+		set .@j, select(.@menu$);
+		mes "[克勒咕哩]";
+		if (.@j == 5) {
+		mes "好了.";
+		mes "不要出去告诉别人说我在这里";
+		mes "约定好了啊!";
+			close;
+		}
+		else if (.@j == 4) {
+			if (countitem(.@i) > 11) {
+				delitem .@i,12;
+				getitem 996,1;
+				mes "你应该知道";
+				mes "我的存活也不是很多";
+				mes "所以我想要你^0000FF12^000000个, 如何?";
+				mes "还有的话再拿过来吧!";
+				mes "叽叽叽...咕哩咕哩咕哩...";
+				close;
+			}
+			mes "你应该知道";
+			mes "要收取你8个水灵原石";
+			mes "来换一个不同属性的原石";
+			mes "如果你想皇城粗糙的风灵石";
+			mes "那就多带4个石头来. 8 + 4 = 12...";
+			mes "需要 ^0000FF12^000000 石头.";
+			next;
+			mes "[克勒咕哩]";
+			mes "给我石头, 仆人~!!";
+			mes "同时保持你的承诺! Kehheheheheh...";
+			close;
+		}
+		else {
+			delitem .@i,8;
+			getitem .@Items[.@j],1;
+			mes "Keheheh! 你选择了个好东西!";
+			mes "好好使用它...";
+			mes "如果还有石头的话记得给我带来!";
+			close;
+		}
+	} else if (countitem(.@i)) {
+		mes "你不能只用清水来报答你的再生父母";
+		mes "关于属性石头... 我说 8!";
+		mes "给我带来8个石头!";
+		mes "Keheheh.....";
+		next;
+		mes "[克勒咕哩]";
+		mes "给我石头, 仆人~!!";
+		mes "同时保持你的承诺! Kehheheheheh...";
+		close;
+	}
+	mes "Keheheh~ 看看你的口袋";
+	mes "然后再回答我";
+	mes "真是个蠢货.....";
+	next;
+	mes "[克勒咕哩]";
+	mes "给我石头! 你可是说好要帮我的!";
+	mes "同时保持你的承诺! Kehheheheheh...";
+	close;
+}

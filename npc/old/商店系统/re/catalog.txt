@@ -1,0 +1,110 @@
+//===== rAthena Script =======================================
+//= Catalog Magician
+//===== By: ==================================================
+//= skyiing, Scriptor
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= [Official Conversion]
+//= Catalogs allow players to easily search for items in-game,
+//= and to buy/sell directly from the catalog interface.
+//===== Additional Comments: =================================
+//= 1.0 Moved from root directory. [Euphy]
+//= 1.1 Updated dialogue. [Euphy]
+//============================================================ 
+
+moc_para01,22,16,5	script	检索达人#catal01	704,{
+	if (!checkweight(1301,3)) {
+		mes "- 你身上的物品太多了，腾点空位后再来找我吧。 -";
+		close;
+	}
+	set .@ticket_cost, 200;
+	mes "[检索达人]";
+	mes "听着...";
+	mes "走过路过别错过咯!";
+	mes "由吉芬魔法学会直接供应的新产品：";
+	mes "^007777露天商店检索卡(银)^000000!";
+	next;
+	mes "他看写在手心的文字，";
+	mes "头也不抬，";
+	mes "好像很忙的样子...";
+	mes "......";
+	next;
+	mes "[检索达人]";
+	mes "一个全新的产品，";
+	mes "才刚刚出来!";
+	mes "可以帮助你快速找出，";
+	mes "市场流通哪些商品，";
+	mes "露天商店出售些什么商品，";
+	mes "这是最受露天商店欢迎的东西了。";
+	next;
+	mes "[检索达人]";
+	mes "^007777露天商店检索卡(银)^000000~";
+	mes "每张成本为 200z !";
+	mes "你一次最多可以购买50张哟。";
+	mes "你想要吗!";
+	next;
+	switch(select("购买 ^007777露天商店检索卡(银)^000000:我并不需要!:你看起来好像不商人的样子...")) {
+	case 1:
+		mes "[检索达人]";
+		mes "你... 想要 50 张吗?";
+		mes "还是你想要多少?";
+		next;
+		while (1) {
+			input .@input;
+			mes "[检索达人]";
+			if (.@input == 0) {
+				mes "你不想买噢!";
+				mes "接下来不知如何是好...";
+				mes "我应该怎么办呢?";
+				emotion e_swt2,1;
+				close;
+			} else if (.@input < 1 || .@input > 50) {
+				mes "新产品一次最多只能购买50张~.";
+				next;
+			} else
+				break;
+		}
+		set .@sell, .@ticket_cost * .@input;
+		mes "谢谢您!!";
+		mes "您购买的张数与费用为：";
+		mes .@input + " 张和 " + .@sell + " z.";
+		if (Zeny < .@sell) {
+			mes "我看你好像没有足够的金钱可以购买哦。";
+			mes "如果你真的想要...";
+			mes "可以卖掉你的装备来凑钱。";
+			close;
+		}
+		mes "给您，请收好.";
+		set Zeny, Zeny - .@sell;
+		getitem 12580,.@input; //Vending_Search_Scroll
+		close;
+	case 2:
+		mes "[检索达人]";
+		mes "阿...";
+		mes "你真的不想买吗?";
+		mes "需要重新给你解说一下吗？";
+		mes "接下来不知如何是好...";
+		mes "我该怎么办呢？";
+		emotion e_swt2,1;
+		close;
+	case 3:
+		mes "[检索达人]";
+		mes "我本职是一位魔法师，";
+		mes "本来要委托商人公会出售~";
+		mes "但是他们总是想和扫把搭配贩卖，";
+		mes "所以我只能亲自来卖咯。";
+		mes "交个朋友吧!!";
+		mes "相信这产品绝对不会让你失望.";
+		next;
+		mes "[检索达人]";
+		mes "这里是冒险家们来往频繁的地方，";
+		mes "相信这东西肯定会在这里大卖吧？";
+		mes "我敢肯定，可以卖给他们,";
+		mes "能否请你多买几个呢...";
+		mes "求求你了...!";
+		close;
+	}
+}
