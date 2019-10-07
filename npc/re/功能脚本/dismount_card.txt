@@ -2,7 +2,8 @@
 // DANGEROUS! TODO: Think.. think 8) [Lupus]
 // Transelated By Memory.
 
-prontera.gat,165,75,4		script	安全拆卡老巫婆	78,{
+
+prontera.gat,165,75,4	script	安全拆卡老巫婆	78,{
 
 UPGRADEROOT:
 	mes "[拆卡老婆婆]";

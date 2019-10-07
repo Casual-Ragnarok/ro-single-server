@@ -286,7 +286,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 ### GM 常用配置
 
-- GM 指令辅助工具： [`gm-cmd/GM命令快捷菜单.exe`](https://github.com/lyy289065406/ro-single-server/blob/master/gm-cmd/GM命令快捷菜单.exe)
+- GM 指令辅助工具： [`tools/GM命令菜单/GM命令快捷菜单.exe`](https://github.com/lyy289065406/ro-single-server/blob/staging/tools/GM%E5%91%BD%E4%BB%A4%E8%8F%9C%E5%8D%95/GM%E5%91%BD%E4%BB%A4%E5%BF%AB%E6%8D%B7%E8%8F%9C%E5%8D%95.exe)
 - GM 指令大全： [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
 - 角色指令大全：  [`conf/charhelp.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
 - 修改服务器参数：  [`conf/char_athena.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
