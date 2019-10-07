@@ -1,0 +1,66 @@
+//===== rAthena Script =======================================
+//= Milk Trader
+//===== By: ==================================================
+//= kobra_k88; L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.5
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= [Official Conversion]
+//= Trades bottles for milk
+//===== Additional Comments: =================================
+//= Fully working
+//= 1.1 Negative input bug fixed [Lupus]
+//= 1.2 Raised the price to close zeny exploit [Lupus]
+//= 1.2a Switched to Lupus's "loopless" technique.[kobra_k88]
+//= 1.3 Rescripted to Aegis 10.3 standards. [L0ne_W0lf]
+//= 1.4 Implemented checkweight. [L0ne_W0lf]
+//= 1.5 Fixed missed variable. (bugreport:1523) [L0ne_W0lf]
+//============================================================
+
+prontera,73,140,0	script	牛奶供应商	86,{
+	if (checkweight(1201,1) == 0) {
+		mes "[牛奶供应商]";
+		mes "我无法为你提供服务了，";
+		mes "因为你身上携带的东西太多了。";
+		mes "请将暂时不用的东西存放到卡普拉仓库之后，再来找我吧~";
+		close;
+	}
+	mes "[牛奶供应商]";
+	mes "嗨, 嗨...";
+	mes "如果你给我带来 ^0000FF1个空瓶^000000 和 ^FF000015金币^000000，";
+	mes "那么我会帮你将空瓶装满牛奶。";
+	mes "怎么样？要不要试一下？";
+	next;
+	if (select("将身上所有空瓶装满成牛奶:取消") == 1) {
+		if (countitem(713) <= 0) {
+			mes "[牛奶供应商]";
+			mes "囧...你好像一个空瓶都没有呢。";
+			mes "我真的没办法给你制作成牛奶，";
+			mes "你懂的...";
+			close;
+		}
+		set .@bottles,countitem(713);
+		set .@total_weight,.@bottles * 50;
+		set .@total_cost,.@bottles * 15;
+		if (zeny < .@Total_cost) {
+			mes "[牛奶供应商]";
+			mes "噢, 我汗~!";
+			mes "你没有足够的金钱来呢，想将身上的空瓶全都装满牛奶需要" + .@total_cost + " 金币。";
+			close;
+		}
+		if ((maxweight-weight) < .@total_weight) {
+			mes "[牛奶供应商]";
+			mes "唔...";
+			mes "再多腾出一点背包的空间吧。";
+			mes "否则装这么多牛奶的话，你会背不动的。";
+			close;
+		}
+		set zeny,zeny-.@total_cost;
+		delitem 713,.@bottles; //Empty Bottles
+		getitem 519,.@bottles; //Milk
+		close;
+	}
+	close;
+}

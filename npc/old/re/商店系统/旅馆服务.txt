@@ -1,0 +1,329 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 旅馆服务生 脚本 - 改写自JA
+//===========================================
+//= 备注:
+//= 20120107 更新brasilis旅馆。
+//===========================================
+
+function	script	TownInn	{
+	next;
+	switch (select("储存:休息 - 5000金币:取消")) {
+	case 1:
+		savepoint getarg(2),getarg(3),getarg(4);
+		mes "["+getarg(1)+"]";
+		switch(getarg(0)) {
+			case 0:
+				mes "已为您储存好了! 谢谢 !";
+				return;
+			case 1:
+				mes "好的！";
+				mes "我会好好储存的！下次在这里见面吧！噗噗～";
+				break;
+			case 2:
+				mes "好的！";
+				mes "我会在这里好好储存的！谢谢您使用我！";
+				mes "下次再见～";
+				break;
+			case 3:
+				mes "已为您储存好了... 再见~";
+				return;
+		}
+		next;
+		break;
+	case 2:
+		if(Zeny<5000) {
+			mes "["+getarg(1)+"]";
+			switch(getarg(0)) {
+			case 0:
+				mes "旅馆费用是5000z!";
+				return;
+			case 1:
+				mes "旅馆费用是5000z!";
+				return;
+			case 2:
+				mes "旅馆费用是5000z!";
+				return;
+			case 3:
+				mes "旅馆费用是5000z!";
+				return;
+			}
+		}
+		mes "["+getarg(1)+"]";
+		switch(getarg(0)) {
+			case 0: mes "好好的休息吧"; 	break;
+			case 1: mes "好好的休息吧~"; 	break;
+			case 2: mes "好好的休息吧~"; 	break;
+			case 3: mes "祝你有个愉快的时间!"; 	break;
+		}
+		close2;
+		set Zeny,Zeny-5000;
+		warp getarg(2),getarg(5),getarg(6);
+		percentheal 100,100;
+		end;
+	}
+	switch(getarg(0)) {
+		case 0:
+			break;
+		case 1:
+		case 2:
+			break;
+		case 3:
+			break;
+	}
+	return;
+}
+
+// プロンテラ
+prt_in,244,135,0	script	旅馆 服务生#Sammy	53,{
+	mes "[服务生 善美]";
+	mes "欢迎光临!";
+	mes "欢迎光临'内卡拉司'旅馆我能为您服务什么？";
+	callfunc "TownInn",1,"服务生 善美","prt_in",238,131,247,104;
+	close;
+}
+
+prt_in,61,141,4	script	旅馆 服务生#Ahlma	94,{
+	mes "[服务生 阿玛]";
+	mes "欢迎光临!～欢迎光临'内卡拉司'旅馆我能为您服务什么？";
+	callfunc "TownInn",2,"服务生 阿玛","prt_in",63,136,60,166;
+	close;
+}
+
+ein_in01,206,224,3	script	饭店 职员#ein	855,{
+	mes "[饭店 职员]";
+	mes "你好吗-";
+	mes "我们饭店是以整洁、亲切、幸福作为三大";
+	mes "经营的宗旨，希望任何时候能提供给顾客";
+	mes "最佳的休息环境而不断努力，更成为艾音布罗克最好的模范饭店";
+	if(EIN_2QUE == 4) {
+		next;
+		mes "[饭店 职员]";
+		mes "请稍等";
+		next;
+		mes "[饭店 职员]";
+		mes "弧光先生是201号房间";
+		mes "欢迎光临";
+		next;
+		mes "[饭店 职员]";
+		mes "美好的一天";
+		close;
+	}
+	callfunc "TownInn",3,"饭店 职员","ein_in01",201,223,272,167;
+	close;
+}
+
+// 艾尔帕兰
+aldeba_in,92,58,2	script	旅馆服务生#Rilim	53,{
+	mes "[服务生 立琳]";
+	mes "欢迎光临!";
+	mes "请问有什么需要帮忙的呢?";
+	callfunc "TownInn",0,"服务生 立琳","aldeba_in",93,50,92,112;
+	close;
+}
+
+// (新)斐扬
+payon_in01,132,62,2	script	旅馆服务生#Ahee	53,{
+	mes "[服务生 阿喜]";
+	mes "啊，客人...这里是斐扬旅馆";
+	mes "请问有什么需要帮忙的呢";
+	callfunc "TownInn",3,"服务生 阿喜","payon_in01",135,62,132,11;
+	close;
+}
+/*
+// 梦罗克
+morocc_in,147,141,2	script	旅馆服务生#Hasna	53,{
+	mes "[服务生 哈斯娜]";
+	mes "欢迎光临!";
+	mes "请问有什么需要帮忙的呢?";
+	callfunc "TownInn",0,"服务生 哈斯娜","morocc_in",142,139,173,135;
+	close;
+}
+
+// 梦罗克
+morocc_in,78,100,4	script	旅馆服务生#Marlu	53,{
+	mes "[服务生 马那乐]";
+	mes "欢迎光临!";
+	mes "请问有什么需要帮忙的呢?";
+	callfunc "TownInn",0,"服务生 马那乐","morocc_in",78,94,79,123;
+	close;
+}
+*/
+// 艾尔贝塔
+alberta_in,32,142,2	script	旅馆服务生#Moira	53,{
+	mes "[服务生杰尼]";
+	mes "欢迎光临! 我是旅馆'服务生'!";
+	mes "请问有什么需要帮忙的呢?";
+	callfunc "TownInn",0,"服务生杰尼","alberta_in",25,142,16,105;
+	close;
+}
+
+// 吉芬
+geffen_in,70,64,3	script	旅馆服务生#Cena	53,{
+	mes "[服务生赛娜]";
+	mes "欢迎光临，这里是吉芬唯一的旅馆'依芙丽特'";
+	callfunc "TownInn",0,"服务生赛娜","geffen_in",70,60,31,31;
+	close;
+}
+
+// 里希塔乐镇
+lhz_in02,230,284,4	script	饭店 职员#lhz	86,{
+	mes "[饭店 职员]";
+	mes "欢迎光临，我们是业界最高级的饭店，";
+	mes "叫做'皇龙'饭店，拥有宽敞的空间，";
+	mes "和其它饭店差异化的服务，";
+	mes "提供最佳舒适的休憩环境，";
+	mes "让顾客宾至如归保证满意";
+	next;
+	switch(select("储存","休息 - 5000金币","取消")) {
+	case 1:
+		savepoint "lhz_in02",375,61;
+		mes "[饭店 职员]";
+		mes "储存完成，谢谢你";
+		close;
+	case 2:
+		if(Zeny<5000) {
+			mes "[饭店 职员]";
+			mes "顾客您的钱不够喔!";
+			mes "休息一次要5000金币";
+			close;
+		}
+		mes "[饭店 职员]";
+		mes "祝你休息愉快";
+		close2;
+		set Zeny,Zeny-5000;
+		skilleffect 34,0;
+		sc_start SC_BLESSING,240000,10;
+		warp "lhz_in02",220,150;
+		percentheal 100,100;
+		end;
+	case 3:
+		mes "[饭店 职员]";
+		mes "谢谢你，";
+		mes "欢迎再度光临";
+		close;
+	}
+}
+
+// 毁葛
+hu_in01,246,107,3	script	旅馆 员工#Receptionist	53,{
+	mes "[旅馆 员工]";
+	mes "欢迎光临";
+	mes "我们旅馆是为了疲惫的旅客，随时随地的";
+	mes "准备好干净又清爽的寝具的";
+	callfunc "TownInn",0,"旅馆 员工","hu_in01",263,95,267,5;
+	close;
+}
+// 拉赫
+ra_in01,376,69,4	script	饭店 职员#Annie	931,{
+	mes "[饭店 职员]";
+	mes "愿菲依雅的恩典与你同在....";
+	mes "欢迎光临来到菲依雅永无止尽的爱一样";
+	mes "以温馨为自豪的拉赫饭店";
+	next;
+	switch(select("储存:休息 - 5000z:取消")) {
+	case 1:
+		savepoint "ra_in01",375,61;
+		mes "[饭店 职员]";
+		mes "谢谢你的利用";
+		next;
+		mes "[饭店 职员]";
+		mes "愿菲依雅女神保佑你有个快乐的一天!";
+		close;
+	case 2:
+		if(Zeny<5000) {
+			mes "[饭店 职员]";
+			mes "顾客您的钱不够喔!";
+			mes "休息一次要5000金币";
+			close;
+		}
+		mes "[饭店 职员]";
+		mes "请您好好休息";
+		close2;
+		set Zeny,Zeny-5000;
+		warp "ra_in01",358,130;
+		percentheal 100,100;
+		end;
+	case 3:
+		mes "[饭店 职员]";
+		mes "谢谢你，";
+		mes "欢迎再度光临";
+		close;
+	}
+}
+
+// 菲音斯
+ve_in,157,219,5	script	旅馆 主人#venis	709,{
+	mes "[旅馆 主人]";
+	mes "您好~";
+	mes "欢迎您来到在菲音斯里最凉快的旅馆~";
+	next;
+	switch(select("储存位置:休息后再走 - 5000z:结束")) {
+	case 1:
+		savepoint "ve_in",157,210;
+		mes "[旅馆 主人]";
+		mes "谢谢你的利用";
+		mes "愿菲依雅女神保佑你有个快乐的一天!";
+		close;
+	case 2:
+		if(Zeny<5000) {
+			mes "[旅馆 主人]";
+			mes "顾客您的钱不够喔!";
+			mes "休息一次要5000金币";
+			close;
+		}
+		mes "[旅馆 主人]";
+		mes "请您好好休息";
+		close2;
+		set Zeny,Zeny-5000;
+		warp "ve_in",184,228;
+		percentheal 100,100;
+		end;
+	case 3:
+		mes "[旅馆 主人]";
+		mes "谢谢你，";
+		mes "欢迎再度光临";
+		close;
+	}
+}
+
+//======================== Brasilis =================================
+bra_in01,27,24,3	script	Hotel Keeper#bra1	478,{
+	mes "[Hotel Keeper]";
+	mes "Welcome to the beautiful Brasilis Hotel.";
+	next;
+	switch(select("Save:Rest -5000 zeny")) {
+	case 1:
+		mes "[Hotel Keeper]";
+		mes "Do you want to save here at the Brasilis Hotel?";
+		next;
+		switch(select("No thank you.:Absolutely.")) {
+		case 1:
+			mes "[Hotel Keeper]";
+			mes "Ok then, enjoy your stay.";
+			close;
+		case 2:
+			mes "[Hotel Keeper]";
+			mes "Your respawn has been saved here at the hotel. I hope that you enjoy your stay here in Brasilis.";
+			savepoint "bra_in01",144,69;
+			close;
+		}
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Hotel Keeper]";
+			mes "I will show you a great room.";
+			close2;
+			set zeny,zeny-5000;
+			percentheal 100,100;
+			warp "bra_in01",144,69;
+			end;
+		}
+		else {
+			mes "[Hotel Keeper]";
+			mes "I'm sorry, but the service charge is 5,000 zeny per night.";
+			close;
+		}
+	}
+}

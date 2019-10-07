@@ -1,0 +1,123 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 准它 企划社 服务人员 -
+//===================================
+
+function	script	ZondaMain	{
+
+	cutin "zonda_01",2;
+	mes "[准它 企划社 服务人员]";
+	mes "欢迎光临，准它";
+	mes "企划社永远秉持着最好的服务的，";
+	mes "请问您需要哪一种服务呢?";
+	next;
+	switch(select("储存服务:仓库服务:手推车服务:结束")){
+
+	case 1:
+		savepoint getarg(0),getarg(1),getarg(2);
+		mes "[准它 企划社 服务人员]";
+		mes "已经储存好了，";
+		mes "谢谢您的使用";
+		break;
+
+	case 2:
+		mes "[准它 企划社 服务人员]";
+		if(basicskillcheck() && getskilllv(1) < 6){
+			mes "你的基本技能要6级以上";
+			mes "才能使用仓库服务";
+			emotion e_sry;
+			break;
+		}
+		if(Zeny < 40){
+			mes "顾客，您支付的金额不足啊，";
+			mes "仓库使用费是 40金币";
+			emotion e_cash;
+			close2;
+			cutin "",255;
+			end;
+		}
+		set Zeny, Zeny - 40;
+		set RESRVPTS, RESRVPTS + 4;
+		mes "仓库将打开了，";
+		mes "感谢您的使用";
+		close2;
+		openstorage;
+		cutin "",255;
+		end;
+
+	case 3:
+		mes "[准它 企划社 服务人员]";
+		if(BaseClass != Job_Merchant){
+			mes "很抱歉，";
+			mes "手推车是商人和铁匠、炼金术师专用的服务";
+			emotion e_sry;
+			break;
+		}
+		if(getskilllv(39) == 0){
+			mes "如果没学相关技能的话";
+			mes "是没有手推车的";
+			break;
+		}
+		if(checkcart() == 1){
+			mes "你已经租过手推车了";
+			break;
+		}
+		if(countitem(7061)){
+			delitem 7061,1;
+			setcart;
+			break;
+		}
+		mes "手推车使用费是800金币，";
+		mes "请问您要使用吗?";
+		next;
+		if(select("使用:取消") == 1){
+			if(Zeny < 800){
+				mes "[准它 企划社 服务人员]";
+				mes "顾客，您支付的金额不足啊，";
+				mes "手推车使用费是800金币，";
+				emotion e_cash;
+				break;
+			} else {
+				set Zeny, Zeny - 800;
+				set RESRVPTS, RESRVPTS + 80;
+				setcart;
+				break;
+			}
+			break;
+		}
+		break;
+
+	case 4:
+		mes "[准它 企划社 服务人员]";
+		mes "我们准它 企划社";
+		mes "永远提供最好服务的，若有不便之处的";
+		mes "话请随时告知我们，";
+		mes "下一次预计以更好的服务与你见面";
+		break;
+	}
+	close2;
+	cutin "",255;
+	end;
+}
+
+lighthalzen,94,248,4	script	准它 企划 服务人员	874,{
+	callfunc "ZondaMain","lighthalzen",94,240;
+	end;
+}
+
+hugel,88,168,4	script	准它 企划 服务人员::CoolEventCorpStaffHugel	874,{
+	callfunc "ZondaMain","hugel",96,155;
+	end;
+}
+
+rachel,109,138,5	script	准它 企划 服务人员::CoolEventCorpStaffRachel	874,{
+	callfunc "ZondaMain","rachel",115,125;
+	end;
+}
+
+veins,208,128,5	script	准它 企划 服务人员::CoolEventCorpStaffVeins	874,{
+	callfunc "ZondaMain","veins",204,103;
+	end;
+}

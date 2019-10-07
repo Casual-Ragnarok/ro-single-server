@@ -1,0 +1,197 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ------------------------------------------
+// - 斐扬 导游 脚本 -
+// ------------------------------------------
+// 版本 1.5
+//===========================================
+
+payon,162,67,4	script	导游#pay1	708,{
+	cutin "pay_soldier",2;
+	mes "[斐扬导游]";
+	mes "欢迎光临  山岳之都斐扬.";
+	mes "我们为了来到斐扬的旅客 安排了导游为您们介绍这个城市. 当您们有问题的时候随时, 可以询问他们.";
+	next;
+	mes "[斐扬导游]";
+	mes "第一次来到这里的旅客  先按选单 '选择注意事项' 了解必须注意的事情.";
+	while(1) {
+		next;
+		switch (select("开始由导游说明城市:删掉微型地图上全部的记号:听取注意事项:取消")) {
+		case 1:
+			if(@compass&0x08 == 0) {
+				mes "[斐扬导游]";
+				mes "请您选择想知道的选单";
+				mes "要在微型地图上留下记号吗?";
+				next;
+				if(select("要:不要")==1)
+					set @compass,@compass|0x08;
+			}
+			while(1) {
+				next;
+				switch (select("^FF0000弓箭手协会^000000","武器?防御具屋:道具商店:酒店:中央宫",
+									"宫殿的前庭:宫殿的分馆:弓箭手房间:精练所:取消")) {
+				case 1:
+					mes "[斐扬导游]";
+					mes "专门办理弓箭手转职业务的弓箭手协会位在经过弓箭手村后最角落的东北方.";
+					if(@compass&0x08)
+						viewpoint 1,228,325,1,0xFF0000;
+					continue;
+				case 2:
+					mes "[斐扬导游]";
+					mes "武器商店位在以微型地图为中心的西北方.";
+					if(@compass&0x08)
+						viewpoint 1,138,158,2,0xFF00FF;
+					continue;
+				case 3:
+					mes "[斐扬导游]";
+					mes "道具商店位在经过弓箭手存的西北方.";
+					if(@compass&0x08)
+						viewpoint 1,149,87,3,0xFF00FF;
+					continue;
+				case 4:
+					mes "[斐扬导游]";
+					mes "旅馆位在以微型地图为中心的东方.";
+					if(@compass&0x08)
+						viewpoint 1,220,117,4,0xFF00FF;
+					continue;
+				case 5:
+					mes "[斐扬导游]";
+					mes "中央宫位在以微型地图为中心北方.";
+					if(@compass&0x08)
+						viewpoint 1,156,243,5,0x00FF00;
+					continue;
+				case 6:
+					mes "[斐扬导游]";
+					mes "宫殿的前庭在西北方向";
+					if(@compass&0x08)
+						viewpoint 1,107,320,6,0x00FF00;
+					continue;
+				case 7:
+					mes "[斐扬导游]";
+					mes "宫殿的分馆在西面";
+					if(@compass&0x08)
+						viewpoint 1,135,194,7,0x00FF00;
+					continue;
+				case 8:
+					mes "[斐扬导游]";
+					mes "弓箭手房间在北面";
+					if(@compass&0x08)
+						viewpoint 1,155,324,8,0x00FF00;
+					continue;
+				case 9:
+					mes "[斐扬导游]";
+					mes "精练所的位置已经标记好";
+					if(@compass&0x08)
+						viewpoint 1,144,169,9,0x00FF00;
+					continue;
+				case 10:
+					mes "[斐扬导游]";
+					mes "需要删掉记号请选取 '删掉微型地图上全部的记号' .";
+				}
+				break;
+			}
+			continue;
+		case 2:
+			viewpoint 2,228,325,1,0xFF0000;
+			viewpoint 2,138,158,2,0xFF00FF;
+			viewpoint 2,149,87,3,0xFF00FF;
+			viewpoint 2,220,117,4,0xFF00FF;
+			viewpoint 2,156,243,5,0x00FF00;
+			viewpoint 2,107,320,6,0x00FF00;
+			viewpoint 2,135,194,7,0x00FF00;
+			viewpoint 2,155,324,8,0x00FF00;
+			viewpoint 2,144,169,9,0x00FF00;
+			set @compass,@compass&~0x08;
+			continue;
+		case 3:
+			mes "[斐扬导游]";
+			mes "我们废除了原来较差的指引方式采用最现代化的。无论您在那里都可以借由微型地图知道您的位置.";
+			mes "您们可以直接确认卢恩米德加尔特王国魔法和科学技术组合后的广域测位系统的功能.";
+			next;
+			mes "[斐扬导游]";
+			mes "在流览之前必须先参考右上方的微型地图.";
+			mes "如果看不见微型地图的话 请按'ctrl+tab'或者选取基本情报视窗 内的'map'.";
+			mes "微型地图出现之后, 在地图上按  '-' 几下可以看见所有城市.";
+			continue;
+		case 4:
+			mes "[斐扬导游]";
+			mes "祝您旅游快乐.";
+			close2;
+			cutin "pay_soldier",255;
+			end;
+		}
+	}
+}
+
+// Archer Village ----------------------------------------------------------------
+pay_arche,85,30,2	script	导游#pay2	708,{
+	cutin "pay_soldier",2;
+	mes "[斐扬导游]";
+	mes "欢迎光临  山岳之都斐扬.";
+	mes "我们为了来到斐扬的旅客 安排了导游为您们介绍这个城市. 当您们有问题的时候随时, 可以询问他们.";
+	mes "第一次来到这里的旅客  先按选单 '选择注意事项' 了解必须注意的事情.";
+	while(1) {
+		next;
+		switch (select("开始由导游说明城市:删掉微型地图上全部的记号:听取注意事项:取消")) {
+		case 1:
+			if(@compass&0x10 == 0) {
+				mes "[斐扬导游]";
+				mes "要在微型地图上留下记号吗?";
+				next;
+				if(select("要:不要")==1)
+					set @compass,@compass|0x10;
+			}
+			while(1) {
+				next;
+				switch (select("^FF0000弓箭手协会^000000","道具商店:斐扬 洞穴:取消")) {
+				case 1:
+					mes "[斐扬导游]";
+					mes "专门办理弓箭手转职业务的弓箭手协会.";
+					if(@compass&0x10)
+						viewpoint 1,144,164,1,0xFF0000;
+					continue;
+				case 2:
+					mes "[斐扬导游]";
+					mes "道具商店位在以微型地图为中心的西北方.";
+					if(@compass&0x10)
+						viewpoint 1,71,156,2,0xFF00FF;
+					continue;
+				case 3:
+					mes "[斐扬导游]";
+					mes "斐扬密洞位在以微型地图为中心的西方.";
+					if(@compass&0x10)
+						viewpoint 1,34,132,3,0xFFFFFF;
+					continue;
+				case 4:
+					mes "[斐扬导游]";
+					mes "要删掉记号请选取 '删掉微型地图上全部的记号' .";
+				}
+				break;
+			}
+			continue;
+		case 2:
+			viewpoint 2,144,164,1,0xFF0000;
+			viewpoint 2,71,156,2,0xFF00FF;
+			viewpoint 2,34,132,3,0xFFFFFF;
+			set @compass,@compass&~0x10;
+			continue;
+		case 3:
+			mes "[斐扬导游]";
+			mes "我们废除了原来较差的指引方式采用最现代化的。无论您在那里都可以借由微型地图知道您的位置.";
+			mes "您们可以直接确认卢恩米德加尔特王国魔法和科学技术组合后的广域测位系统的功能.";
+			next;
+			mes "[斐扬导游]";
+			mes "在流览之前必须先参考右上方的微型地图.";
+			mes "如果看不见微型地图的话 请按'ctrl+tab'或者选取基本情报视窗 内的'map'.";
+			mes "微型地图出现之后, 在地图上按  '-' 几下可以看见所有城市.";
+			continue;
+		case 4:
+			mes "[斐扬导游]";
+			mes "祝您旅游快乐.";
+			close2;
+			cutin "pay_soldier",255;
+			end;
+		}
+	}
+}

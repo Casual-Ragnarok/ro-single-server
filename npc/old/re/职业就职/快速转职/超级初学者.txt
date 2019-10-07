@@ -1,0 +1,73 @@
+//Super Novice for Athena by Script&DB Team 
+// 优化 By aspd199 马仔 2006-8-11  QQ：229522449
+//修改 by 水夏 于 2006-11-26 
+prt_in.gat,118,35,6	script	超级初学者	729,{
+	mes "[超级初学者]";
+	mes "你好!你真的喜欢作一个初学者么?";
+	mes "如果这样有个方法可以使你永远作初新者";
+	next; 
+	if(select("是的.","不，我不喜欢.")==1)
+	{
+		mes "假如你真的很喜欢初新者，";
+		mes "那么你可以尝试成为超级初新者！";
+		mes "你将转职成更加强壮的超级初心者，";
+		mes "并学会很多实用的技能。";
+		mes "你甚至能装备弓箭和法杖!";
+		mes "你还能得到额外20点技能点作为奖励!";
+		next; 
+		if(select("是的.","不，我不喜欢.")==1)
+		{
+			if(Class==23)
+			{
+				mes "[超级初学者]";
+				mes "你已经是一名超级初学者了...?";
+				close;
+				end;
+			}
+			if(Class!=0)
+			{
+				mes "[超级初学者]";
+				mes "你不是一名初学者!";
+				close;
+				end;
+			}
+			if(BaseLevel<45)
+			{
+				mes "[超级初学者]";
+				mes "你的职业等级不够，等到45级再来找我吧.";
+				close;
+				end;
+			}
+			if(joblevel<10)
+			{
+				mes "[超级初学者]";
+				mes "Sorry,你的职业等级必须达到^008000 10级 ^000000才能进行转职工作,继续努力吧!^008000 10级 ^000000以后再来找我,快去练吧!";
+				close;
+				end;
+			}
+			if(SkillPoint>0)
+			{
+				mes "[超级初学者]";
+				mes "Sorry,你的职业技能点数必须加到^008000 9级 ^000000不能有剩余点数才能进行转职工作!";
+				close;
+				end;
+			}
+			mes "[超级初学者]";
+			mes "收到,稍等片刻...";
+			jobchange 23;
+			announce strcharinfo(0) + " 成功转职为超级初学者!!!",3; 
+			mes "恭喜,你已经是一名超级初学者了!";
+			next;
+			mes "[超级初学者]";
+			mes "这是给你的技能点数，加油吧!";
+			mes "(请检查你的技能栏)";
+			close2;
+			set SkillPoint,SkillPoint+20;
+			end;
+		}
+	}
+	mes "[初学者]";
+	mes "只有初学者才是最强的!";
+	close;
+	end;
+}

@@ -1,0 +1,151 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 外地区 卡普拉脚本 - 
+//===================================
+// 版本：3.0c-fix2 加入莫斯科比亚
+//===================================
+
+// 天津
+amatsu,102,149,4	script	卡普拉 职员::kaf_amatsu	116,{
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",3,3,1,50,700;
+
+	M_Save:
+		savepoint "amatsu",116,94;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 哎哟泰雅
+ayothaya,212,169,5	script	卡普拉服务人员::kaf_ayothaya	116,{
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",3,3,1,50,700;
+
+	M_Save:
+		savepoint "ayothaya",149,69;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 艾音贝赫
+einbech,181,132,5	script	卡普拉服务人员::kaf_einbech	860,{
+	cutin "kafra_08",2;
+	callfunc "F_Kafra",4,13,1,40,850;
+
+	M_Save:
+		savepoint "einbech",182,124;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 艾音布罗克 (东南)
+einbroch,242,205,5	script	卡普拉服务人员::kaf_einbroch	860,{
+	cutin "kafra_08",2;
+	callfunc "F_Kafra",4,13,1,50,800;
+
+	M_Save:
+		savepoint "einbroch",238,198;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 艾音布罗克 (东)
+einbroch,59,203,6	script	卡普拉服务人员::kaf_einbroch2	861,{
+	cutin "kafra_09",2;
+	callfunc "F_Kafra",4,13,1,50,800;
+
+	M_Save:
+		savepoint "einbroch",240,197;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 昆仑
+gonryun,159,122,4	script	卡普拉 职员::kaf_gonryun	116,{
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",3,14,1,50,700;
+
+	M_Save:
+		savepoint "gonryun",160,62;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 莫斯科比亚
+moscovia,223,191,4	script	卡普拉 职员::kaf_mosco	114,{
+	cutin "kafra_04",2;
+	callfunc "F_Kafra",3,14,1,50,700;
+
+	M_Save:
+		savepoint "moscovia",219,193;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 里希塔乐镇
+
+//旅馆外
+lighthalzen,164,100,4	script	卡普拉 服务人员::kaf_lighthalzen	860,{
+	cutin "kafra_08",2;
+	callfunc "F_Kafra",6,12,1,40,800;
+
+	M_Save:
+		savepoint "lighthalzen",158,94;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 入口
+lighthalzen,191,320,4	script	卡普拉 服务人员::kaf_lighthalzen2	861,{
+	cutin "kafra_09",2;
+	callfunc "F_Kafra",6,12,1,40,800;
+
+	M_Save:
+		savepoint "lighthalzen",194,313;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 旅馆内
+lhz_in02,237,284,4	script	卡普拉 服务人员::kaf_lhz_in02	861,{
+	cutin "kafra_09",2;
+	callfunc "F_Kafra",6,12,1,40,800;
+
+	M_Save:
+		savepoint "lhz_in02",278,215;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 龙之城
+louyang,210,104,5	script	卡普拉服务人员::kaf_louyang	117,{
+	cutin "kafra_01",2;
+	callfunc "F_Kafra",3,14,1,50,700;
+
+	M_Save:
+		savepoint "louyang",217,92;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 汶巴拉
+umbala,87,160,6	script	卡普拉服务人员::kaf_umbala	721,{
+	cutin "kafra_07",2;
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpD$[0], "克魔岛";
+	setarray @wrpP[0], 1800;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], "取消";
+	mes "[卡普拉服务人员]";
+	mes "我们卡普拉西部中心";
+	mes "通过改编程序";
+	mes "提供更好品质的服务.";
+	mes "谢谢大家~";
+	next;
+	mes "[卡普拉服务人员]";
+	mes "需要什么服务吗?";
+	callfunc "F_Kafra",5,10,1,80,0;
+	M_Save:
+		savepoint "umbala",100,154;
+		callfunc "F_KafEnd",0,1," ";
+}
+
+// 尼芙菲姆
+niflheim,202,180,3	script	卡普拉服务人员::kaf_niflheim	791,{
+	callfunc "F_Kafra",1,2,1,150,0;
+
+	M_Save:
+		savepoint "niflheim",192,182;
+		callfunc "F_KafEnd",1,1," ";
+}

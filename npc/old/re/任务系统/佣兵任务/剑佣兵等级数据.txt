@@ -1,0 +1,566 @@
+//---------------------------------------------剑佣兵1等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll1	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵1等级")) {
+	case 1:	set .@SMName,1980;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵1等级完---------------------------------------------//
+//---------------------------------------------剑佣兵2等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll2	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵2等级")) {
+	case 1:	set .@SMName,1981;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵2等级完---------------------------------------------//
+//---------------------------------------------剑佣兵3等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll3	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵3等级")) {
+	case 1:	set .@SMName,1982;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵3等级完---------------------------------------------//
+//---------------------------------------------剑佣兵4等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll4	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵4等级")) {
+	case 1:	set .@SMName,2033;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵4等级完---------------------------------------------//
+//---------------------------------------------剑佣兵5等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll5	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵5等级")) {
+	case 1:	set .@SMName,1984;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵5等级完---------------------------------------------//
+//---------------------------------------------剑佣兵6等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll6	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵6等级")) {
+	case 1:	set .@SMName,1985;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵6等级完---------------------------------------------//
+//---------------------------------------------剑佣兵7等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll7	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵8等级")) {
+	case 1:	set .@SMName,1986;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵7等级完---------------------------------------------//
+//---------------------------------------------剑佣兵8等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll8	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵7等级")) {
+	case 1:	set .@SMName,1987;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵8等级完---------------------------------------------//
+//---------------------------------------------剑佣兵9等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll9	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵9等级")) {
+	case 1:	set .@SMName,2038;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵9等级完---------------------------------------------//
+//---------------------------------------------剑佣兵10等级数据---------------------------------------------//
+function	script	SwordMercenary_Scroll10	{
+
+	if ( SummonName != 0 ) {
+	mes "您已经雇用过佣兵了唷！";
+	mes "请问您需要什么服务呢？";
+	next;
+	switch(select("寄放佣兵","领回佣兵","解雇佣兵")) {
+case 1:
+	mes "您的佣兵将被您寄放，";
+	mes "寄放时您会被强制下线唷！";
+	next;
+	set SummonING,1;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+case 2:
+	if ( SummonING == 0 ) {	
+				mes "您并没有寄放任何的佣兵！";
+				close;	}
+	set SummonING,0;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+case 3:
+	mes "您的佣兵将被您解雇，";
+	mes "解雇时您会被强制下线唷！";
+	next;
+	set SummonName,0;
+	atcommand strcharinfo(0)+":@kick "+strcharinfo(0)+"";
+	close;
+	}
+}		
+
+	mes "佣兵租用的时间为^00ff00三十分钟^000000时间一到，佣兵将会消失唷！";
+	mes "如果您^00ff00死掉、登出^000000的话佣兵将会消失唷！";
+	next;
+	switch(select("剑佣兵10等级")) {
+	case 1:	set .@SMName,1989;	break;
+}
+	set SummonName,.@SMName;
+	atcommand "@summon "+SummonName+" 30";
+	close;
+
+OnPCLoginEvent:
+	if ( SummonName != 0 && SummonING == 0 ) {
+	atcommand "@summon "+SummonName+" 30";
+	}
+	end;
+
+OnPCDieEvent:
+	if ( SummonING == 0 ) {
+	set SummonName,0;
+	}
+	end;
+
+}
+//---------------------------------------------剑佣兵10等级完---------------------------------------------//
+
+
+
+
+
+

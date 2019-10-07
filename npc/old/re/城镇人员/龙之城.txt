@@ -1,0 +1,338 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 龙之城 城镇脚本 -
+//========================
+//= 版本：2.9
+//============================================================
+//= 采用JA对话内容换新
+//= 兵士,四神转入汤之任务转入quest_louyang.txt
+//= 保留下来的NPC--[春花][贼五平][张勇]
+//============================================================
+
+// Louyang Transportaion
+//Girl#0lou
+alberta,245,45,3	script	姑娘#0lou	815,{
+	mes "[姑娘]";
+	mes "那那～ 那那那那～ 今天的心情";
+	mes "真好呢～ 好想要";
+	mes "出去玩喔～";
+	next;
+	switch(select("有关龙之城．．．:去龙之城:取消")) {
+	case 1:
+		mes "[姑娘]";
+		mes "您想去龙之城吗？";
+		mes "那儿真的是个很棒的地方呀，";
+		mes "拥有数千年神秘之都市呀，";
+		mes "都市也很漂亮，原野也很漂亮呀";
+		next;
+		mes "[姑娘]";
+		mes "尤其这里也会发生与";
+		mes "神秘魔物之间不可";
+		mes "预测的事情呀，还可以";
+		mes "找到稀少且可医治百病的药呀";
+		next;
+		mes "[姑娘]";
+		mes "也有很多会拳法的人，";
+		mes "姑娘每天早上也是在那里";
+		mes "努力的修练拳法的呀，";
+		mes "姑娘很坚强的呀．．．！";
+		next;
+		mes "[姑娘]";
+		mes "想去的话随时跟我说呀，";
+		mes "我会收一点钱，然后";
+		mes "把您踢到龙之城去呀．．．";
+		mes "哈哈-哈，不要当真呀！";
+		close;
+	case 2:
+		mes "[姑娘]";
+		mes "马上出发呀，";
+		mes "给我 10,000 金币就帮您送过去呀，";
+		mes "去玩的愉快一点呀";
+		next;
+		mes "[姑娘]";
+		mes "好，可以出发了呀？";
+		next;
+		if (select("出发！:取消") == 1) {
+			if (Zeny > 9999) {
+				mes "[姑娘]";
+				mes "咿～　哈啊～～";
+				mes "出发了呀～～～";
+				close2;
+				set zeny,zeny-10000;
+				warp "lou_fild01",190,101;
+				end;
+			}
+			mes "[姑娘]";
+			mes "没钱呀～";
+			mes "需要 10,000 金币呀～";
+			mes "没有的话绝对不行呀！";
+			close;
+		}
+	case 3:
+		mes "[姑娘]";
+		mes "哼！ 失望呀，回家";
+		mes "去包饺子吃呀！！";
+		close;
+	}
+}
+//Girl#1lou
+lou_fild01,190,100,7	script	姑娘#1lou	815,{
+	mes "[姑娘]";
+	mes "那么要回去了呀?";
+	next;
+	if (select("回到艾尔贝塔:取消") == 1) {
+		mes "[姑娘]";
+		mes "下次再来呀~";
+		mes "出发~~";
+		close2;
+		warp "alberta",235,45;
+		end;
+	}
+	mes "[姑娘]";
+	mes "可以的话就留下来呀，";
+	mes "有美食又有漂亮美眉呀";
+	close;
+}
+
+// Generic Louyang NPCs
+//============================================================
+//Muscular Woman#lou
+louyang,297,167,2	script	看起来很坚强的女人#lou	815,{
+	if (!Sex) {
+		mes "[季岑琉]";
+		mes "在我们少女宫里， ";
+		mes "宫主以下的成员是由女性所构成的，";
+		mes "不过";
+		mes "最近想要加入宫里的人比较少，";
+		mes "所以目前宫里并不是在很理想的情况";
+		next;
+		mes "[季岑琉]";
+		mes "所以我这次为了打听";
+		mes "有没有人想要加入宫里，";
+		mes "所以就从宫里出来走走";
+		emotion e_dots;
+		close;
+	}
+	mes "[季岑琉]";
+	mes "..........";
+	mes "现在很忙不要烦我";
+	mes "..........";
+	close;
+}
+//Powerful-looking guy#lou
+louyang,274,136,4	script	散发着强烈气息的男人#lou	819,{
+	mes "[阿吉拉]";
+	mes "‘八极拳’这个名称含有三种意义";
+	mes "一是“简”";
+	mes "二是“变”";
+	mes "三是“不变”";
+	next;
+	mes "[阿吉拉]";
+	mes "易是指着万物生生不息，";
+	mes "这也叫做德，";
+	mes "拥有易简的意思，";
+	mes "变易是指着万物生生不息的道理，";
+	mes "虽然会变， ";
+	mes "但是会互相接续的，";
+	next;
+	mes "[阿吉拉]";
+	mes "不易是指天地的定位，也就是说不能互相定位变更的东西，";
+	mes "易就是以变化的道理，指宇宙万物不停地运作的意思，";
+	mes "不停的运作(生生不息)就是在不断的变化的意思";
+	close;
+}
+//Fist master#lou
+louyang,276,136,4	script	领悟到权利的人#lou	819,{
+	mes "[郑克志]";
+	mes "不过天地间的万物当然正在改变当中，";
+	mes "但在这变化中还有不变的法则，";
+	mes "除了支援这变化的变易之外，";
+	mes "还会有不易的道理";
+	next;
+	mes "[郑克志]";
+	mes "变易是现象，";
+	mes "不易是法则，";
+	mes "简易则成为那方法，";
+	mes "伏羲一下就开启天地，";
+	mes "并不是如此的简单";
+	next;
+	mes "[郑克志]";
+	mes "太极当作为第一，阴阳当作为第二，";
+	mes "所以万象万变不会脱离那阴阳的，";
+	mes "从简变为繁，有连续又有理";
+	mes "从繁化为简，才会有系统又有根来源，";
+	mes "八极龙拳术就是以这一个原理作为基础";
+	close;
+}
+//Trainee#1lou::LouTrainee
+louyang,276,133,0	script	修练生#1lou::LouTrainee	819,{
+	mes "[修练生]";
+	mes "伊呀!!";
+	mes "呼呼呼~~~~!!";
+	mes "唷呵...唷呵...";
+	close;
+}
+//Trainee#2lou
+louyang,276,131,0	script	修练生#2lou	819,{
+	mes "[修练生]";
+	mes "恰啊!";
+	mes "呼呀~~!!";
+	mes "呀........：!!!";
+	close;
+}
+//Trainee#3lou
+louyang,276,129,0	script	修练生#3lou	819,{
+	mes "[修练生]";
+	mes "咿..呵..!!";
+	mes "咑啊~~~~!!!!";
+	mes "呵...";
+	close;
+}
+//Trainee#4lou
+louyang,274,133,0	script	修练生#4lou	819,{
+	mes "[修练生]";
+	mes "卡!!";
+	mes "咑啊!!!!";
+	mes "咿呀!!!!";
+	close;
+}
+//Trainee#5lou
+louyang,274,131,0	script	修练生#5lou	819,{
+	mes "[修练生]";
+	mes "呼...";
+	mes "伊喔...!!";
+	mes "翻来翻去...";
+	close;
+}
+//Trainee#6lou
+louyang,274,129,0	script	修练生#6lou	819,{
+	mes "[修练生]";
+	mes "哇咑!";
+	mes "啊啾~~~~!!";
+	mes "哇咑啊啊啊!!!!";
+	close;
+}
+
+louyang,278,133,0	duplicate(LouTrainee)	修练生#7lou	819
+louyang,278,131,0	duplicate(LouTrainee)	修练生#8lou	819
+louyang,278,129,0	duplicate(LouTrainee)	修练生#9lou	819
+louyang,272,133,0	duplicate(LouTrainee)	修练生#10lou	819
+louyang,272,131,0	duplicate(LouTrainee)	修练生#11lou	819
+louyang,272,129,0	duplicate(LouTrainee)	修练生#12lou	819
+
+// Louyang Viewing Tower
+//============================================================
+//Friendly Looking Lady#lo
+lou_in01,25,23,5	script	看起来很亲切的小姐#lo	817,{
+	mes "[红庙]";
+	mes "欢迎光临，";
+	mes "这里是上去了望台的电梯，";
+	mes "只要付一定的费用，";
+	mes "我们会安全的将您送达到了望台，";
+	mes "请多多使用，";
+	mes "请问您要使用吗?";
+	next;
+	switch(select("听取说明:我要使用:下一次再使用")) {
+	case 1:
+		mes "[红庙]";
+		mes "本了望台是我们龙之城观光事业的一环，";
+		mes "由于很多人反应说，";
+		mes "无法好好的享受我们龙之城的风景，";
+		mes "所以便设定了";
+		mes "这间了望台";
+		next;
+		mes "[红庙]";
+		mes "为了使您安全的使用了望台";
+		mes "我们设定了电梯，";
+		mes "使用电梯的费用是500金币，";
+		mes "为了乘客的安全我们会尽最大的努力";
+		close;
+	case 2:
+		if (Zeny < 500) {
+			mes "[红庙]";
+			mes "很可惜...你身上的钱不足5000金币";
+			close;
+		}
+		mes "[红庙]";
+		mes "谢谢您的使用，";
+		mes "为了乘客的安全";
+		mes "我们了望台会尽最大的努力，";
+		mes "谢谢，";
+		mes "欢迎您再次来使用";
+		close2;
+		set zeny,zeny-500;
+		warp "lou_in01",17,19;
+		end;
+	case 3:
+		mes "[红庙]";
+		mes "那么请下一次再来使用吧，";
+		mes "再见";
+		close;
+	}
+}
+//Exit#lou
+louyang,84,254,0	script	紧急出口#lou	111,{
+	mes "有个可以下去的装置，";
+	mes "请问您要下去吗?";
+	next;
+	if (select("我要下去:不要下去") == 1) {
+		//不确定TRO是否有此功能
+		//if (rand(1,100) == 34) {
+		//	percentheal -99,0;
+		//	warp "louyang",86,269;
+		//	mapannounce "louyang",""+strnpcinfo(0)+" : Oh God, I'm faaaaaaaaaaaalling~~!!!!",bc_map;
+		//}
+		//else {
+			warp "lou_in01",10,18;
+		//}
+		end;
+	}
+	close;
+}
+//=====================
+// PlutoEA 旧版NPC
+//=====================
+louyang,260,96,2	script	春花	770,{
+	mes "[^000080春花^000000]";
+	mes "嗨! 旅行的人! 你一定又饿又渴吧?";
+	mes "请进来吧! 这里有很多食物喔!";
+	next;
+	mes "[^000080春花^000000]";
+	mes "别怕吃不够, 这里的东西足够你吃上一辈子呢!";
+	close;
+}
+
+louyang,261,123,3	script	贼五平	824,{
+	mes "[贼五平]";
+	mes "没什么胃口..是中暑了吗..";
+	mes "呵喔，好无力喔...";
+	mes "唉呀，我的头、腰、肩膀、膝盖啊...";
+	mes "这个时候，应该要吃那个呢...";
+	next;
+	emotion 23;//ET_SURPRISE
+	mes "[贼五平]";
+	mes "喂，你不是这里的人吧？";
+	mes "顺着这条路上去的话，有家很大的酒店，";
+	mes "那家卖的食品是在这村子里最健康的养生食品呢";
+	next;
+	mes "[贼五平]";
+	if (BaseLevel < 80)mes "对你这种瘦巴巴的人，是必备的食品呢！";
+	mes "对你这种心身疲劳的人，是必备的食品呢！";
+	close;
+}
+
+lou_in02,43,169,1	script	张勇	827,{
+	mes "[张勇]";
+	mes "四龙转入汤的人气当然是在于那清爽香甜又微辣的口味，";
+	mes "而且加入很多有益的药材，也是对健康非常好的食品呢!!";
+	next;
+	mes "[张勇]";
+	mes "可以除掉身体上不需要的热量，也可以畅通处处阻塞的气血，";
+	mes "会使新陈代谢顺畅，可以维持自然健康，就像个补药般食品! 喀哈哈!!";
+	next;
+	mes "[张勇]";
+	mes "因为我年轻的时候常吃四龙转入汤的关系，现在就算这个年纪也是个血气旺盛的老人家呢! 不是吗?";
+	close;
+}

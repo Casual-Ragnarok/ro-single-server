@@ -1,0 +1,102 @@
+//===== eAthena Script =======================================
+//= Bullet Dealer Tony
+//===== By ===================================================
+//= Playtester, Paradox924X
+//===== Version ==============================================
+//= 1.3
+//===== Compatible With ======================================
+//= eAthena SVN with jAthena scripting engine and . variables
+//===== Description ==========================================
+//= Bullet trader.
+//===== Comments =============================================
+//= 1.0 First version [Playtester]
+//= 1.1 Converted from Aegis [Paradox924X]
+//= 1.2 More optimized conversion [Legionaire]
+//= 1.2a Removed .GATs [Lupus]
+//= 1.3 Fixed [Playtester] Optimized. Got rid of @vars [Lupus]
+//============================================================
+
+-	script	弹药经销商 托尼	-1,{
+
+	mes "[托尼]";
+	if (BaseJob == Job_Gunslinger) {
+		mes "我是弹牙托尼!";
+		mes "如果你缺少子弹的话,";
+		mes "来找我!!!";
+		next;
+		mes "[托尼]";
+		mes "现在~! 朋友~伙计~ 老兄";
+		mes "你需要些什么东西?!";
+		mes "挑选下~!";
+		mes "然后付钱~!";
+		next;
+		switch(select("毒物子弹:火焰子弹:雷击子弹:暗盲子弹:冰冻子弹:取消")) {
+		case 1: callfunc "Bullet_Trade",937,10,13205; break;
+		case 2: callfunc "Bullet_Trade",7097,2,13203; break;
+		case 3: callfunc "Bullet_Trade",7053,3,13204; break;
+		case 4: callfunc "Bullet_Trade",1024,5,13206; break;
+		case 5: callfunc "Bullet_Trade",7054,2,13207; break;
+		default:
+			mes "[托尼]";
+			mes "嗯~ 好吧~";
+			mes "请以后再来找我~";
+			mes "我, 弹牙托尼,";
+			mes "会永远在这里的~!!!";
+			close;
+		}
+	}
+	mes "我是专门为枪手们提供贸易货品的商人.";
+	mes "我是弹牙托尼.";
+	next;
+	mes "[托尼]";
+	mes "我想你应该不是一名枪手吧";
+	mes "那你就随便走走逛逛吧.";
+	close;
+}
+
+function	script	Bullet_Trade	{
+	mes "[托尼]";
+	mes "输入你想要购买的数量.";
+	next;
+	mes "[托尼]";
+	mes "我交易30 发"+getitemname(getarg(2))+"需要";
+	mes "1 块强化武器金属-级数一,";
+	mes "1 块强化武器金属-级数二,";
+	mes "和"+getarg(1)+" 个"+getitemname(getarg(0))+".";
+	next;
+	mes "[托尼]";
+	mes "你能交易的最大数量为500.";
+	mes "如果你想要取消, 输入0.";
+	next;
+	input .@amount;
+	mes "[托尼]";
+	if (.@amount < 1 || .@amount > 500) {
+		mes "无效的数量!";
+		mes "重新输入~!";
+		close;
+	} else if (countitem(1010) >= .@amount && countitem(1011) >= .@amount && countitem(getarg(0)) >= (.@amount*getarg(1))) {
+		if (checkweight(getarg(2),.@amount * 30) == 0) {
+			mes "我不能给你子弹因为你的背包已经装满了. 等你腾些空出来, 再来吧.";
+			close;
+		} else {
+			mes "喔~ 很好!";
+			mes "交易数额检查完了!";
+			mes "我将立刻和你交易.";
+			delitem 1010,.@amount;
+			delitem 1011,.@amount;
+			delitem getarg(0),.@amount * getarg(1);
+			getitem getarg(2),.@amount * 30;
+			close;
+		}
+	} else {
+		mes "啧啧啧啧~";
+		mes "你没有为你想要交易的物品准备足够的材";
+		mes "料.";
+		mes "准备好了再来吧.";
+		close;
+	}
+}
+
+que_ng,187,156,3	duplicate(弹药经销商 托尼)	弹药经销商 托尼#que	86
+izlude,171,133,3	duplicate(弹药经销商 托尼)	弹药经销商 托尼#iz	86
+alberta,118,160,3	duplicate(弹药经销商 托尼)	弹药经销商 托尼#alb	86

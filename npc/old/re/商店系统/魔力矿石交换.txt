@@ -1,0 +1,84 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 魔力矿石交换 - 改写自JA
+//===========================================
+payon,173,238,5	script	杰依德	754,{
+	mes "[杰依德]";
+	mes "您好~";
+	mes "如果你拿两个相同色彩的魔力矿石来给我的话，";
+	mes "我会马上帮你做成不同色彩的魔力矿石喔!";
+	next;
+	switch (select("蓝色魔力矿石换为红色魔力矿石!","红色魔力矿石换为黄色魔力矿石!","黄色魔力矿石换为蓝色魔力矿石!")) {
+		case 1:
+			set .@itemid,717;
+			set .@gain,716;
+			break;
+		case 2:
+			set .@itemid,716;
+			set .@gain,715;
+			break;
+		case 3:
+			set .@itemid,715;
+			set .@gain,717;
+			break;
+	}
+	if(countitem(.@itemid)<2) {
+		mes "[杰依德]";
+		mes "哈哈哈!";
+		mes "这位朋友你在开玩笑嘛!";
+		mes getitemname(.@itemid)+ "没有2个的话";
+		mes getitemname(.@gain)+ "就没有办法给你呢!";
+		close;
+	}
+	set .@max,countitem(.@itemid)/2;
+	mes "[杰依德]";
+	mes "嗯...";
+	mes "用这些差不多可以做" +.@max+ "个";
+	mes "" +getitemname(.@gain)+ "";
+	mes "你要交换几个呢?";
+	next;
+	switch (select("我要把所有的都换掉","我要指定几个","取消")) {
+	case 1:
+		set .@num,.@max;
+		break;
+	case 2:
+		mes "[杰依德]";
+		mes "需要几个呢?";
+		mes "请以100个为上限";
+		while(1) {
+			next;
+			input .@num;
+			if(.@num > 100) {
+				mes "[杰依德]";
+				mes "嗯?";
+				mes "只能做100个以下喔!?";
+				continue;
+			}
+			break;
+		}
+		if(.@num > .@max)
+			close;
+		if(.@num <= 0) {
+			mes "[杰依德]";
+			mes "别开玩笑了";
+			close;
+		}
+		break;
+	case 3:
+		mes "[杰依德]";
+		mes "这样啊...";
+		mes "如果有需要交换的话";
+		mes "不用客气随时都可以来";
+		close;
+	}
+	delitem .@itemid,.@num*2;
+	getitem .@gain,.@num;
+	mes "[杰依德]";
+	mes "来，你要的";
+	mes getitemname(.@gain)+ "都在这";
+	mes "有需要的话随时再来找我吧!";
+	mes "...嗯? 我脸上有什么东西吗?";
+	close;
+}

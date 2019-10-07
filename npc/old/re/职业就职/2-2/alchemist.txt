@@ -1,0 +1,1537 @@
+// ---------------------------------
+// - 炼金术师 转职脚本 - 
+//===================================
+// 版本：2.6
+//===================================
+
+alde_alche,27,185,5	script	炼金术师 组合员#am	744,{
+	mes "[帕乐米 基阿尼诺]";
+	if (Upper == 1) {
+		mes "欢迎光临，这里是炼金术师组合...";
+		mes "...噢噢? 怎么会这样?";
+		next;
+		mes "[帕乐米 基阿尼诺]";
+		mes ".....应该，不会吧";
+		mes "和我之前认识的人长得一模一样啊，";
+		mes "是心理的作用吗...";
+		close;
+	}
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes "欢迎光临，" +strcharinfo(0)+ "";
+			mes "炼金术师工会今天也如往日一样忙碌";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "这里是向人偶注入生命这类的研究，";
+			mes "也就是对于生命工学的研究相当繁盛的地方";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "谁都想取得研究的成功";
+			mes "因为这些都是复杂的研究，";
+			mes "所以大家都很忙";
+			close;
+		}
+		else if (BaseClass == Job_Novice) {
+			mes "欢迎光临，这里是炼金术师组织，";
+			mes "我们在征求有能力有实力的人才，";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "如果你对化学有兴趣的话，下次再来吧，";
+			mes "不过...";
+			mes "要以商人的身分，了解一些对物品的知识";
+			close;
+		}
+		mes "欢迎光临这里是炼金术师工会";
+		mes "我们都在寻找才华横溢的年轻人";
+		next;
+		mes "[帕乐米 基阿尼诺]";
+		mes "如果你发现了优秀的商人，";
+		mes "请务必通知我们工会";
+		mes "我们一直在寻找有炼金术师才能的人";
+		close;
+	}
+	if (ALCH_Q == 0) {
+		mes "欢迎光临这里是炼金术师工会";
+		mes "有什么事吗?";
+		next;
+		switch(select("询问有关炼金术师:申请转职为炼金术师:结束对话")) {
+		case 1:
+			mes "[帕乐米 基阿尼诺]";
+			mes "炼金术师是从目前已知的各种物质中研究并提炼创造出新物质的人.";
+			mes "他们研究化学元素中最微小的物质，并尝试改变这些物质的特性.";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "大部分的人都以为炼金术师的最终目的是为了要提炼黄金，但那并非完全是事实.";
+			mes "他们从简单的化学药品中提炼创造初各种新的物质.";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "有时候，有些研究的目的在于创造出新的生命....但那是属于上帝的领域....";
+			mes "那个领域太复杂难懂了，所以到目前为止仍是处于研究阶段.";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "如果你有兴趣成为一名炼金术师，我建议你先培养一些作商人的经验.";
+			mes "作一名商人能让你有绝佳的机会在交易各种物品时了解它们的特性.";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "只有你能为你自己作决定.";
+			mes "通往成为一名炼金术师的道路是充满了挑战的.";
+			mes "你需要把心思专注在对于物品特性的了解与研究，而不只是单纯的交易买卖上.";
+			close;
+		case 2:
+			mes "[帕乐米 基阿尼诺]";
+			mes "这样吗? 我是 炼金术师 组合员 '帕乐米 基阿尼诺'";
+			mes "很高兴认识你.";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "如果你加入我们的工会并通过我们的测验，你就可以得到工会的认可，";
+			mes "成为一名炼金术师并可以与我们一同作研究.";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "不过我们并不是来者不拒统统接受的.";
+			mes "你必须非常努力、有坚强的韧性、并且有决心把自己奉献给炼金研究.";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "在加入工会前有一些东西需要你去准备....";
+			mes "不过那等你申请加入之后我们再来讨论吧!";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "说了那么多，你想要加入炼金术师工会吗?";
+			next;
+			if (select("我要申请加入:让我再考虑考虑吧") == 1) {
+				if (JobLevel < 40) {
+					mes "[帕乐米 基阿尼诺]";
+					mes "等一下....";
+					mes "你的职业等级似乎不够啊";
+					mes "想要成为炼金术师，";
+					mes "职业等级起码需要40或以上才行";
+					close;
+				}
+				mes "[帕乐米 基阿尼诺]";
+				mes "那么，接受你的申请啰";
+				mes "要加入工会最基本先要交出^3355FF50,000^000000金币，";
+				mes "还要先带几项物品来";
+				next;
+				mes "[帕乐米 基阿尼诺]";
+				mes "不过，有把^3355FF古魔法书^000000及^3355FF高级铁砧^000000带来的人，";
+				mes "可以不用缴交一些必要的物品";
+				next;
+				mes "[帕乐米 基阿尼诺]";
+				mes "首先请在加入申请书上签名";
+				next;
+				select(strcharinfo(0));
+				mes "[帕乐米 基阿尼诺]";
+				mes "很好，那先收下你的入会费啰";
+				mes "再来，告诉你必须要带来的物品，请把必要的物品带来";
+				next;
+				if (Zeny < 50000) {
+					mes "[帕乐米 基阿尼诺]";
+					mes "不过，入会费好像不够啊";
+					mes "准备好50,000金币之后再来吧";
+					close;
+				}
+				set zeny,zeny-50000;
+				mes "[帕乐米 基阿尼诺]";
+				mes "好的，让我看看啊..";
+				mes "" + name + "";
+				mes "要带来的物品是";
+				switch(rand(1,3)) {
+				case 1:
+					set ALCH_Q,1;
+					mes "^551A8B菠色克药水7个^000000.";
+					break;
+				case 2:
+					set ALCH_Q,2;
+					mes "^551A8B携带用熔矿炉100个^000000.";
+					break;
+				case 3:
+					set ALCH_Q,3;
+					mes "^551A8B火箭矢 7,500支^000000.";
+				}
+				next;
+				mes "[帕乐米 基阿尼诺]";
+				mes "准备这些东西就好了，";
+				mes "东西都准备好后就拿来交给我吧";
+				mes "那就祝你一路顺风";
+				close;
+			}
+			mes "[帕乐米 基阿尼诺]";
+			mes "只要是有才能的商人的话，";
+			mes "我们工会随时欢迎你的加入";
+			mes "请下次再拜访吧";
+			close;
+		case 3:
+			mes "[帕乐米 基阿尼诺]";
+			mes "那么，如有任何问题";
+			mes "欢迎你向我询问喔";
+			close;
+		}
+	}
+	else if (ALCH_Q >= 1 && ALCH_Q <= 3) {
+		if (countitem(1006) > 0 && countitem(1005) > 0) {
+			mes "哇呜!";
+			mes "你把古魔法书和高级铁砧带来了啊";
+			mes "既然如此，第一个考试就让你通过吧";
+			next;
+			delitem 1006,1; //古魔法书
+			delitem 1005,1; //高级铁砧
+			mes "[帕乐米 基阿尼诺]";
+			mes "再来就是要学习炼金术师的基础";
+			mes "现在要学习药品组合的过程";
+			set ALCH_Q,4;
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "在这之前....";
+			mes "拉斯普琴先生找你噢";
+			mes "不知道有什么事....";
+			mes "先到楼下去看看可以吗?";
+			close;
+		}
+		switch(ALCH_Q) {
+		case 1: setarray .@items[0],657,7; break;
+		case 2: setarray .@items[0],612,100; break;
+		case 3: setarray .@items[0],1752,7500; break;
+		}
+		if (countitem(.@items[0]) >= .@items[1]) {
+			mes "看来你已经准备好了";
+			mes "这些物品会对我们工会有帮助的";
+			next;
+			delitem .@items[0],.@items[1];
+			mes "[帕乐米 基阿尼诺]";
+			mes "再来就是要学习炼金术师的基础";
+			mes "现在要学习药品组合的过程";
+			next;
+			mes "[帕乐米 基阿尼诺]";
+			mes "在这之前....";
+			mes "拉斯普琴先生找你噢";
+			mes "不知道有什么事....";
+			mes "先到楼下去看看可以吗?";
+			set ALCH_Q,4;
+			close;
+		}
+		mes "还没准备好吗?";
+		mes "加入工会的话要带来";
+		mes "^551A8B"+.@items[1]+"个"+getitemname(.@items[0])+"s^000000";
+		mes "东西都准备好后，再拿来给我吧";
+		close;
+	}
+	else if (ALCH_Q == 4) {
+		mes "请你去找拉斯普琴先生吧";
+		mes "去看看有什么事情";
+		close;
+	}
+	else {
+		mes "啊，对不起";
+		mes "现在有点忙";
+		next;
+		mes "[帕乐米 基阿尼诺]";
+		mes "那么，请去问别人吧";
+		close;
+	}
+}
+
+alde_alche,175,107,3	script	怪癖的 炼金术师#am	749,{
+	mes "[拉斯普琴 克勒咕哩]";
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes "喀喀喀喀..咳咳咳咳..";
+			mes "又是你这小子?!";
+			next;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "打算偷我的研究成果吗!";
+			mes "说，在哪里听到的!!";
+			next;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "这个东西，不是你那浅薄的知识能做出来的....";
+			mes "你岂能称心如意的做出来";
+			mes "喀喀喀喀..咳咳咳咳..";
+			close;
+		}
+		else if (BaseClass == Job_Novice) {
+			mes "喀喀喀喀... 可爱的家伙，";
+			mes "来到这么远的地方玩是吗?";
+			next;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "现在我放过你...";
+			mes "下次再碰到时，不会这么便宜你的...";
+			close;
+		}
+		else {
+			mes "这是什么? 嘻嘻嘻嘻...你很好奇我在作什么?";
+			mes "我只告诉你一个人...你看我...呵呵呵呵";
+			next;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "是一个研究者! 等这个药剂完成了... 你就有能力征服一个国家!!";
+			next;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "嘻嘻嘻嘻呵呵呵呵... 普隆德拉的人都还不知道这个秘密呢.....";
+			close;
+		}
+	}
+	if (ALCH_Q == 0) {
+		mes "嘻嘻嘻嘻呵呵呵呵...";
+		mes "这是什么? 你这个不学无术的笨蛋.";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "商人就该去开个店面卖东西...";
+		mes "你来这里作什么?!?";
+		mes "找东西搞破坏吗?";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "嘻嘻嘻... 滚! 离开这里!";
+		mes "别在这里闲晃 ... 呵呵呵...";
+		close;
+	}
+	else if (ALCH_Q >= 1 && ALCH_Q <= 3) {
+		mes "喀喀喀喀..咳咳咳咳..";
+		mes "又是你这小子?!";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "想学习炼金术?!";
+		mes "是在睡觉时脱口而出的梦话吗!!";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "咳咳咳咳!!千年万年后就可以了!";
+		mes "喂，赶快出去!";
+		close;
+	}
+	else if (ALCH_Q == 4) {
+		mes "呵呵... 有个笨蛋摔跤摔进来了...";
+		mes "加入工会?";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "我不喜欢这样... 我不喜欢...!";
+		mes "世界各地的阿猫阿狗都来加入工会然后称自己为 '炼金术师' 结果呢? 只知道怎么捣药草!!!";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "嘻嘻嘻... 所以，想加入工会的人都需要通过面试才行!";
+		mes "我决定要狠狠教训那些愚蠢的家伙然后再把他们统统赶出去!!";
+		next;
+		next;
+		if (JobLevel == 50) {
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "噢... 你的等级还满高的嘛.....";
+			mes "我今天就放你一马好了...";
+			mes "接下来你需要去找 ^5533FF塔罗西亚^000000.";
+			mes "他会教你怎么进行实验.";
+			mes "告诉他是我叫你去的.";
+			set ALCH_Q,6;
+			close;
+		}
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "你看起来真是有够蠢的. 实在是太疯狂了...";
+		mes "如果你刚刚只是在想要换件衣服的话我可以告诉你，你大错特错了... 呵呵呵..";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "哼! 现在我要出几个问题考你，看看你的脑袋转不转得过来.";
+		mes "看看你有多聪明.";
+		next;
+L_AskQuestions:
+		switch(rand(1,3)) {
+		case 1:
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "12 + 23 + 34 + 45 = ?";
+			next;
+			input .@input;
+			if (.@input != 114) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "1000 - 36 - 227 - 348 = ?";
+			next;
+			input .@input;
+			if (.@input != 389) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "14 * 17 * 3 = ?";
+			next;
+			input .@input;
+			if (.@input != 714) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "9765 / 3 / 5 / 7 = ?";
+			next;
+			input .@input;
+			if (.@input != 93) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "(47 * 28) - (1376 / 4) = ?";
+			next;
+			input .@input;
+			if (.@input != 972) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "(2646 / 7) + (13 * 28) = ?";
+			next;
+			input .@input;
+			if (.@input != 742) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "当用 7.6 折低价买进时";
+			mes "红色药水 12 瓶";
+			mes "苍蝇翅膀 5 个";
+			mes "再加上 1 个蝴蝶翅膀总共多少钱?";
+			next;
+			input .@input;
+			if (.@input != 909) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "弯刀 3 把";
+			mes "金属头盔 2 顶";
+			mes "再加上 1 件长大衣总共多重?";
+			next;
+			input .@input;
+			if (.@input != 450) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "圣职之帽、大衣、舞会面具、紫蝶发带、披肩、战士长靴、耳罩";
+			mes "以上装备防御值加起来总共多少?";
+			next;
+			input .@input;
+			if (.@input != 20) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "如果你以 7.6 折低价买进金属头盔";
+			mes "然后再以原价的 8 折卖出去";
+			mes "那么你可以赚多少钱?";
+			next;
+			input .@input;
+			if (.@input != 8800) set .@w_point,.@w_point+1;
+			break;
+		case 2:
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "13 + 25 + 37 + 48 = ?";
+			next;
+			input .@input;
+			if (.@input != 123) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "1000 - 58 - 214 - 416 = ?";
+			next;
+			input .@input;
+			if (.@input != 312) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "12 * 24 * 3 = ?";
+			next;
+			input .@input;
+			if (.@input != 864) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "10530 / 3 / 5 / 2 = ?";
+			next;
+			input .@input;
+			if (.@input != 351) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "(35 * 19) - (1792 / 7) = ?";
+			next;
+			input .@input;
+			if (.@input != 409) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "(2368 / 8) + (24 * 17) = ?";
+			next;
+			input .@input;
+			if (.@input != 704) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "(2646 / 7) + (13 * 28) = ?";
+			next;
+			input .@input;
+			if (.@input != 742) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "当用 7.6 折低价买进时";
+			mes "绿色药水 15 瓶";
+			mes "放大镜 6 个";
+			mes "再加上 4 个设置用陷阱道具总共多少钱?";
+			next;
+			input .@input;
+			if (.@input != 934) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "圆柄马刀 3 把";
+			mes "无边帽 4 顶";
+			mes "再加上 2 双战士长靴总共多重?";
+			next;
+			input .@input;
+			if (.@input != 550) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "圆盾、长大衣、防毒面具";
+			mes "红蝶发带、紫蝶发带、草帽";
+			mes "眼镜.";
+			mes "以上装备防御值加起来总共多少?";
+			next;
+			input .@input;
+			if (.@input != 16) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "如果你以 7.6 折低价买进紧身便衣";
+			mes "然后再以原价的 8 折卖出去";
+			mes "那么你可以赚多少钱?";
+			next;
+			input .@input;
+			if (.@input != 8520) set .@w_point,.@w_point+1;
+			break;
+		case 3:
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "12 + 23 + 34 + 45 = ?";
+			next;
+			input .@input;
+			if (.@input != 114) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "1000 - 58 - 214 - 416 = ?";
+			next;
+			input .@input;
+			if (.@input != 312) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "14 * 17 * 3 = ?";
+			next;
+			input .@input;
+			if (.@input != 714) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "10530 / 3 / 5 / 2 = ?";
+			next;
+			input .@input;
+			if (.@input != 351) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "(47 * 28) - (1376 / 4) = ?";
+			next;
+			input .@input;
+			if (.@input != 972) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "(2646 / 7) + (13 * 28) = ?";
+			next;
+			input .@input;
+			if (.@input != 742) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "用7.6折低价买进红水6个、绿水7个、苍翅8个共要多少钱?";
+			next;
+			input .@input;
+			if (.@input != 798) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "圆柄马刀2个、无边帽3个、战靴3个，总重量是多少?";
+			next;
+			input .@input;
+			if (.@input != 480) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "镜盾、皮制外套、笑脸面具、丝质外袍、婚礼头饰、披肩、独眼龙眼罩";
+			mes "防御值加起来是多少?";
+			next;
+			input .@input;
+			if (.@input != 12) set .@w_point,.@w_point+1;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "用7.6折低价买进铁铠4个，再打8折卖出，赚取的金额是?";
+			next;
+			if (.@input != 7680) set w_point,w_point+1;
+		}
+		if (.@w_point == 0) {
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "噢...";
+			mes "真是太棒太完美了!";
+			mes "全部题目都答对啊!?";
+			mes "喀喀喀...我果然没有错看你啊";
+			next;
+		}
+		else if (.@w_point == 1) {
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "唉呀呀，错了一题喔!";
+			mes "不过我会当作没看到...";
+			mes "就让你通过吧!";
+			next;
+		}
+		else if (.@w_point == 2 && ALCH_Q == 5) {
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "喀喀喀..看得出来你下了不少功夫喔";
+			mes "好吧，这次就饶你一次";
+			next;
+		}
+		else {
+			set ALCH_Q,5;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "...呵呵呵... 你这个蠢蛋...";
+			mes "我竟然笨到以为你能回答所有的问题!";
+			mes "你简直是错得一塌糊涂!!!";
+			next;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "连这么简单的问题都不会还想作什么炼金术师?!";
+			mes "什么? 你有没有答对任何一题?";
+			next;
+			mes "[拉斯普琴 克勒咕哩]";
+			mes "笨蛋! 在炼金术师的世界里只要错一个小地方就全盘皆错了!";
+			mes "滚!! 滚远一点!!";
+			close;
+		}
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "你还在这里作什么? 快滚吧!";
+		mes "去找 ^5533FF塔罗西亚^000000 吧!";
+		mes "他会教你怎么进行实验.";
+		mes "告诉他是我叫你去的.";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "嘻嘻嘻呵呵呵...";
+		mes "别以为这样就结束了!";
+		set ALCH_Q,6;
+		close;
+	}
+	else if (ALCH_Q == 5) {
+		mes "什么?! 你想再考一次?";
+		mes "我不是叫你滚了吗?";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "好吧! 就让你再考一次...";
+		mes "我原谅你... 呵呵呵.,.";
+		mes "这次好好表现吧...";
+		next;
+		mes "[拉斯普琴 克勒咕哩]";
+		mes "好，现在开始回答我的问题.";
+		mes "看看你有多聪明.";
+		next;
+		goto L_AskQuestions;
+	}
+	else if (ALCH_Q == 6) {
+		mes "去找 ^5533FF塔罗西亚^000000 吧!";
+		mes "他会教你怎么进行实验.";
+		mes "告诉他是我叫你去的.";
+		next;
+	}
+	mes "嘻嘻嘻呵呵呵...";
+	mes "别以为这样就结束了!";
+	close;
+}
+
+alde_alche,13,15,7	script	研究者#am	750,{
+	mes "[塔罗西亚]";
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes "啊....是你来了吗....这样啊";
+			mes "是为了成为优秀的炼金术师来的吧....";
+			next;
+			mes "[塔罗西亚]";
+			mes "如果有像幻想花....";
+			mes "那样美丽而皎洁的花....啊啊....";
+			next;
+			mes "[塔罗西亚]";
+			mes "能看到那个光的话这事就可以完成";
+			mes "可爱的哈莫娜....";
+			mes "哈哈哈哈....";
+			close;
+		}
+		else {
+			mes "不再有任何得失了....";
+			mes "本来就是这样....";
+			next;
+			mes "[塔罗西亚]";
+			mes "在被我诅咒的眼睛里映照着遗失许久的幻想";
+			mes "啊哈哈哈哈....";
+			next;
+			mes "[塔罗西亚]";
+			mes "没有所谓的乐园....对吧....";
+			mes "我所爱的哈莫娜....啊啊....";
+			close;
+		}
+	}
+	if (ALCH_Q == 6) {
+		mes "...";
+		next;
+		mes "[塔罗西亚]";
+		mes "...";
+		mes "......";
+		next;
+		mes "[塔罗西亚]";
+		mes "...........";
+		mes ".........";
+		mes "....是谁...?";
+		next;
+		monster "alde_alche",13,15,"Wolf",1013,1;
+		killmonsterall "alde_alche";
+		mes "[塔罗西亚]";
+		mes "狼? 还是人...";
+		mes "你一定也在找寻某样东西吧...";
+		next;
+		mes "[塔罗西亚]";
+		mes "如果你有某样你很珍爱的东西，小心...";
+		mes "人很容易在追寻另一件东西的时候失去了原有的东西...";
+		next;
+		mes "[塔罗西亚]";
+		mes "..........";
+		next;
+		mes "[塔罗西亚]";
+		mes "... 呃...你为什么会来到这里?";
+		mes "来到一个像这样的地方...";
+		next;
+		switch(select("我想学习如何做实验:请告诉我更多有关哈莫娜的事:取消对话")) {
+		case 1:
+			mes "[塔罗西亚]";
+			mes "你想学炼金术...";
+			mes "我所拥有的全部知识..";
+			mes "为了让我的梦想成真...";
+			next;
+			mes "[塔罗西亚]";
+			mes "我先教你基本的....";
+			mes "要怎么做，最后还是要你自己判断....";
+			next;
+			mes "[塔罗西亚]";
+			mes "好吧，这些都是最基本的.";
+			mes "要制造一些最简单的药剂...";
+			mes "准备一些材料...";
+			next;
+			mes "[塔罗西亚]";
+			mes "^3355FF药钵^000000 3个";
+			mes "^3355FF空瓶^000000 3个";
+			mes "^3355FF红色药草^000000 1个";
+			mes "^3355FF黄色药草^000000 1个";
+			mes "^3355FF白色药草^000000 1个";
+			set ALCH_Q,7;
+			next;
+			mes "[塔罗西亚]";
+			mes "等你准备好了....再来吧";
+			close;
+		case 2:
+			mes "[塔罗西亚]";
+			mes ".......";
+			mes "......";
+			mes "...想一下你最珍爱的东西...";
+			next;
+			mes "[塔罗西亚]";
+			mes ".... 我依稀记得曾经有一朵花....";
+			next;
+			mes "[塔罗西亚]";
+			mes "我加了一些东西到我的研究里.....";
+			mes "为了我的珍爱...";
+			next;
+			mes "[塔罗西亚]";
+			mes "就说是狼与花之间的风流韵事吧...";
+			mes "我不会告诉你细节的...";
+			next;
+			mes "[塔罗西亚]";
+			mes "但，是的... 那是一朵花...";
+			mes "在她闪耀的光芒下，听说可以让你看见天堂里如幻影一般的花...";
+			next;
+			mes "[塔罗西亚]";
+			mes "我创造了一个生命.";
+			mes "没有人相信我从一朵花创造了一个类人生物!!!";
+			mes "我的研究啊!";
+			next;
+			mes "[塔罗西亚]";
+			mes "但现在，我身无长物...";
+			mes "都结束了，全部都结束了...";
+			mes "我的生命就停在那一刹那之间...";
+			next;
+			mes "[塔罗西亚]";
+			mes "啊... 哈莫娜...美丽原野中的花朵们...";
+			mes "到哪里去了....";
+			close;
+		case 3:
+			mes "[塔罗西亚]";
+			mes "....................";
+			mes "....................";
+			mes "最重要的东西是什么....";
+			mes "不要忘记....";
+			close;
+		}
+	}
+	else if (ALCH_Q == 7) {
+		mes "...........";
+		mes ".........";
+		mes "...谁....";
+		next;
+		mes "[塔罗西亚]";
+		mes "呃...你是那个想学炼金术的人啊...";
+		mes "你准备好需要的东西了吗?";
+		next;
+		if (countitem(710) > 0) {
+			mes "[塔罗西亚]";
+			mes "......啊....请你等一下..";
+			mes "那一朵花是 幻想花吗?";
+			mes "你是怎得到她的...";
+			next;
+			mes "[塔罗西亚]";
+			mes "你是在哪里找到的啊?";
+			mes "真是太美了...";
+			mes "这花只开在满月的夜晚啊..";
+			next;
+			mes "[塔罗西亚]";
+			mes "请让我...请让我看看那朵花!";
+			mes "是幻想花啊...";
+			mes "噢噢...啊啊啊...";
+			next;
+			mes "[塔罗西亚]";
+			mes "好心的你可以把这朵花让给我吗?";
+			mes "这是我看过最美丽的月夜花了...";
+			next;
+			if (select("抱歉，不能给你.:你要的话就送你吧") == 1) {
+				mes "[塔罗西亚]";
+				mes "我知道...";
+				mes "要把这珍贵的花朵送给人";
+				mes "事件很难抉择的事";
+				mes "不过这没关系的";
+				next;
+				mes "[塔罗西亚]";
+				mes "I我只是想起过去的回忆，";
+				mes "我只是回想不起在哪见过，";
+				mes "无论如何，请把实验需要的物品";
+				mes "给带来吧";
+				next;
+				mes "[塔罗西亚]";
+				mes "请把这花拿离我远一点，";
+				mes "她唤醒我太多回忆了...噢...";
+				close;
+			}
+			mes "[塔罗西亚]";
+			mes "你是说真的吗?";
+			mes "真是太感谢你了...";
+			mes "真是漂亮的花朵啊...";
+			mes "噢..我美丽的哈莫娜...";
+			next;
+			mes "[塔罗西亚]";
+			mes "嗯...";
+			mes "我应该传授给你我所有知道的炼金术知识.";
+			mes "以作为我的回报..";
+			next;
+			mes "[塔罗西亚]";
+			mes "打开你的双眼，";
+			mes "并且注视着我的眼睛，";
+			mes "在过程结束之前，请不要阖上";
+			next;
+			mes "Lorem ipsum dolor sit amet,";
+			next;
+			mes "Lorem ipsum dolor sit amet,";
+			mes "consectetuer adipiscing elit.";
+			next;
+			mes "Lorem ipsum dolor sit amet,";
+			mes "consectetuer adipiscing elit.";
+			mes "Aenean fermentum ullamcorper.";
+			next;
+			mes "Lorem ipsum dolor sit amet,";
+			mes "consectetuer adipiscing elit.";
+			mes "Aenean fermentum ullamcorper.";
+			mes "Vestibulum ante ipsum primis in";
+			next;
+			mes "Lorem ipsum dolor sit amet,";
+			mes "consectetuer adipiscing elit.";
+			mes "Aenean fermentum ullamcorper.";
+			mes "Vestibulum ante ipsum primis in";
+			mes "faucibus orci luctus et ultrices";
+			next;
+			mes "Lorem ipsum dolor sit amet,";
+			mes "consectetuer adipiscing elit.";
+			mes "Aenean fermentum ullamcorper.";
+			mes "Vestibulum ante ipsum primis in";
+			mes "faucibus orci luctus et ultrices";
+			mes "posuere cubilia Curae; Morbi";
+			next;
+			mes "Lorem ipsum dolor sit amet,";
+			mes "consectetuer adipiscing elit.";
+			mes "Aenean fermentum ullamcorper.";
+			mes "Vestibulum ante ipsum primis in";
+			mes "faucibus orci luctus et ultrices";
+			mes "posuere cubilia Curae; Morbi";
+			mes "massa, fermentum vitae...";
+			next;
+			delitem 710,1; //幻想花
+			mes "[塔罗西亚]";
+			mes "好了，你现在跟一般的炼金术师";
+			mes "没有两样了，";
+			mes "去找工会长吧，他会帮你转职的";
+			set ALCH_Q,40;
+			close;
+		}
+		else if (countitem(7134) > 2 && countitem(713) > 2 && countitem(507) > 0 && countitem(508) > 0 && countitem(509) > 0) {
+			mes "[塔罗西亚]";
+			mes "嗯，看来该有的东西都有了.";
+			mes "就如同我先前答应你的，教你制造一些最简单的药剂";
+			next;
+			mes "[塔罗西亚]";
+			mes "首先，准备好药钵，把一部份少量的药草像这样放进药钵里.";
+			mes "然后慢慢地研磨.";
+			next;
+			mes "[塔罗西亚]";
+			mes "倒进一些干净的清水然后搅拌直到变成浓稠状";
+			mes "接着继续加入其他剩下的药草";
+			next;
+			mes "[塔罗西亚]";
+			mes "就这样慢慢做，等到你觉得份量够用了";
+			mes "就慢慢地把它装进空瓶里";
+			next;
+			mes "[塔罗西亚]";
+			mes "呐! 你看，完成了.";
+			mes "现在，照我刚刚的方法作一遍.";
+			mes "这应该很简单吧!";
+			delitem 7134,3; //药钵
+			delitem 713,3; //空瓶
+			delitem 507,1; //红色药草
+			delitem 508,1; //黄色药草
+			delitem 509,1; //白色药草
+			set w_point,0;
+			next;
+			switch(select("准备药钵:把药钵戴在头上:把药钵一脚踢飞")) {
+			case 1:
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "什么...?";
+				next;
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "不!";
+				next;
+				break;
+			}
+			switch(select("在药钵中放入沙子:在药钵中放入药草:在药钵中放入跳蚤")) {
+			case 1:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "...噢!?";
+				mes "这不是药吧?";
+				next;
+				break;
+			case 2:
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "跳蚤?";
+				mes "你想干嘛呢?";
+				next;
+				break;
+			}
+			switch(select("打碎药草:打碎药钵:打碎塔罗西亚的脚")) {
+			case 1:
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "你...你在做什么啊!?";
+				next;
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "噢! 我的天啊?! 你知道做什么吗?";
+				next;
+				break;
+			}
+			switch(select("喷洒清水:把水喝掉:倒进清水")) {
+			case 1:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "你...你在做什么啊!?";
+				next;
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "等等...喝光还有屁用??";
+				next;
+				break;
+			case 3:
+				break;
+			}
+			switch(select("继续研磨药草:继续吃掉药草:继续唱歌跳舞")) {
+			case 1:
+				break;
+			case 2:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "你确定要把药草吃掉吗?";
+				next;
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "唱歌跳舞?";
+				mes "身为炼金术师，你不认为这样太夸张了吗?";
+				next;
+				break;
+			}
+			switch(select("放进面条用高温油炸:把成品倒入空瓶:举起药钵一饮而尽")) {
+			case 1:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "我们是炼金术师，不是厨师!";
+				next;
+				break;
+			case 2:
+				break;
+			case 3:
+				set .@w_point,.@w_point+1;
+				mes "[塔罗西亚]";
+				mes "干杯是吧..";
+				mes "真爽快，啊?";
+				next;
+				break;
+			}
+			if (.@w_point > 0) {
+				mes "[塔罗西亚]";
+				mes "...";
+				mes "......";
+				next;
+				mes "[塔罗西亚]";
+				mes "... 简直是一塌糊涂，原料都被你搞烂了...";
+				mes "... 再去准备一份材料来吧.";
+				close;
+			}
+			getitem 501,1; //红色药水
+			getitem 503,1; //黄色药水
+			getitem 504,1; //白色药水
+			mes "[塔罗西亚]";
+			mes "....还不错第一次还算做得不错....";
+			mes "拿回去留着做纪念吧";
+			set ALCH_Q,8;
+			next;
+			mes "[塔罗西亚]";
+			mes "你去找隔壁房间的斑 黑文特吧....";
+			mes "他会更详细的教你";
+			mes "去向他学习吧....";
+			next;
+			mes "[塔罗西亚]";
+			mes "不要忘了....";
+			mes "最自己来说....";
+			mes "最珍贵的东西是什么....";
+			mes "必须守护的东西是什么....";
+			close;
+		}
+		else {
+			mes "[塔罗西亚]";
+			mes "....你好像忘记带材料了";
+			mes "我再念一次给你听，";
+			mes "这次不要忘记了....";
+			next;
+			mes "[塔罗西亚]";
+			mes "^3355FF药钵^000000 3个";
+			mes "^3355FF空瓶^000000 3个";
+			mes "^3355FF红色药草^000000 1个";
+			mes "^3355FF黄色药草^000000 1个";
+			mes "^3355FF白色药草^000000 1个";
+			next;
+			mes "[塔罗西亚]";
+			mes "都准备好了....再来吧";
+			close;
+		}
+	}
+	else if (ALCH_Q == 8) {
+		mes "我叫你去找'斑 黑文特'啊....";
+		mes "我还想要继续教你，";
+		mes "不过没办法了....不会再看到我的";
+		next;
+		mes "[塔罗西亚]";
+		mes "啊啊，哈莫娜....我心爱的人";
+		mes "现在连那朵花都看不到了....";
+		mes "我的灵魂也跟着的枯萎了....";
+		close;
+	}
+	else if (ALCH_Q == 40) {
+		mes "我已经把我毕生所学的所有炼金术";
+		mes "都教给你了";
+		next;
+		mes "[塔罗西亚]";
+		mes "去楼上找工会长吧，";
+		mes "他会帮你转职的";
+		close;
+	}
+	else {
+		mes "失去的总比得到的多...";
+		mes "永远都是这样的...";
+		next;
+		mes "[塔罗西亚]";
+		mes "一切都是幻觉啊!!";
+		mes "吓不倒我的!!";
+		mes "哈哈哈哈哈...";
+		next;
+		mes "[塔罗西亚]";
+		mes "天堂是不存在的... 曾经存在过吗?";
+		mes "我珍爱的哈莫娜.... 啊....";
+		close;
+	}
+}
+
+alde_alche,79,19,5	script	实验专家#am	748,{
+	mes "[班 黑文特]";
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes "我现在很忙!!";
+			mes "有什么事就快说吧";
+			next;
+			mes "[斑 黑文特]";
+			mes "是啊，成为炼金术师当然很高兴啰....";
+			mes "但往后发展和修练不可以中断喔";
+			next;
+			mes "[斑 黑文特]";
+			mes "所以，凭这股热情，";
+			mes "致力于研究生命论理";
+			mes "但是千万不能骄傲哦";
+			close;
+		}
+		else {
+			mes "再... 对，再一点..";
+			mes "啊啊，再一点就可以成功了!";
+			next;
+			mes "[斑 黑文特]";
+			mes "怎么会又失败呢!!";
+			mes "没有任何错误啊!";
+			mes "到底! 是为什么啊!!";
+			next;
+			mes "[斑 黑文特]";
+			mes "要重新获取材料吗....";
+			mes "不过，总有一天会完成的";
+			mes "呼呜呜....";
+			close;
+		}
+	}
+	if (ALCH_Q == 8) {
+		mes "啊啊啊... 为什么这个程序停住了...出了什么错?";
+		mes "理论上来说应该都正确啊...";
+		mes "应该是哪一个步骤出了问题了吧...";
+		mes "到底是哪一个步骤...";
+		next;
+		mes "[班 黑文特]";
+		mes "就是这里! 到这里的时候它停住了... 而这个步骤是解决不流动的方法.";
+		mes "我怎么会犯这么愚蠢的错误...我怎么会把它搞混了...";
+		next;
+		mes "[班 黑文特]";
+		mes "对了对了，就是这样，我得修正这个地方.";
+		mes "应该不需要全部从头来...";
+		mes "我只要修正这个地方...";
+		mes "....但是，等一下... 等等...";
+		next;
+		mes "[班 黑文特]";
+		mes ".....................";
+		next;
+		mes "[班 黑文特]";
+		mes "....你是谁?";
+		next;
+		if (select("想成为炼金术师的考生.:.......") == 2) {
+			mes "[班 黑文特]";
+			mes "如果你在这里没有事要干就请你赶快离开好吗!!!";
+			close;
+		}
+		mes "[班 黑文特]";
+		mes "噢! 这样啊....";
+		mes "哈哈! 你想学像这样的炼金术? 有趣的商人... 啊?";
+		next;
+		mes "[班 黑文特]";
+		mes "嗯! 好吧! 但是我现在有个很迫切的实验需要去做.";
+		mes "所以...别挡住我的路!";
+		next;
+		if (select("多少教我一些吧.:...") == 1) {
+			mes "[班 黑文特]";
+			mes "吓... 我不是叫你别打扰我吗?";
+			mes "我说的话你听不懂吗?!";
+			next;
+			mes "[班 黑文特]";
+			mes "好好好，我会出一些功课给你.";
+			mes "自己去研究，有结果了再回来.";
+			mes "我看看...什么比较好... 嗯...";
+			next;
+			mes "[班 黑文特]";
+			mes "噢! 我想到了! 去向 ^5533FF莫基斯坦^000000 打听吧. 向他学习如何制造 ^009500中和剂^000000 与 ^FF3355混和剂^000000.";
+			mes "你可以在 ^5533FF吉分城^000000 找到他.";
+			next;
+			mes "[班 黑文特]";
+			mes "你不需要把制作好的中和剂跟混和剂带来. 但一定要专心看他是怎么制造的并把制造方法学起来.";
+			mes "了解吗?";
+			next;
+			mes "[班 黑文特]";
+			mes "那么，祝你好运.";
+			mes "你最好赶快出发，才不会继续打扰我.";
+			set ALCH_Q,9;
+			close;
+		}
+		mes "如果你在这里没有事要干就请你赶快离开好吗!!!";
+		close;
+	}
+	else if (ALCH_Q == 9) {
+		mes "嗯...剪一段触须...";
+		mes "混和一些粘稠液体...";
+		mes "在试管里加入一些杰勒比结晶... 咦? 药钵跑哪儿去了?...";
+		next;
+		mes "[班 黑文特]";
+		mes "嗯...就这样混和在一起... 就像这样，嗝... 尼克拉斯不知道有没有忘记什么...";
+		mes "哼... 真是伟大的计划啊...";
+		mes "....啊! 等等... 等一下...";
+		next;
+		if (select("我想成为炼金术师..:.......") == 2) {
+			mes "[班 黑文特]";
+			mes "....................";
+			next;
+			mes "[斑 黑文特]";
+			mes "....你是哪位?";
+			next;
+			mes "[斑 黑文特]";
+			mes "虽然不知道你是谁，";
+			mes "不过不要在这里逗留!";
+			mes "出去吧，这里是我的房间";
+			close;
+		}
+		mes "[班 黑文特]";
+		mes "啊，想成为炼金术师的商人啊";
+		mes "有好好学习过了吗?";
+		mes "我可不是叫你过去混的喔....";
+		next;
+		mes "[斑 黑文特]";
+		mes "那么我问你几个问题";
+		mes "依你学到的来作答吧";
+		next;
+		if(DYE_EVE < 3) {
+			mes "[斑 黑文特]";
+			mes "制作中和剂所需要的物品是?";
+			next;
+			select ("柔毛:黏稠液体:家畜血");
+			mes "[斑 黑文特]";
+			mes "制作混合剂所需要的物品是?";
+			next;
+			select ("魔物饲料:人鱼嘴巴:腐烂绷带");
+		}
+		else {
+			mes "[斑 黑文特]";
+			mes "制作中和剂所需要的物品是?";
+			next;
+			if(select("卡勒波迪药水:帝特立米药水:酒精")==2)
+				set .@point,.@point+1;
+			mes "[斑 黑文特]";
+			mes "制作混合剂所需要的物品是?";
+			next;
+			if(select("卡勒波迪药水:帝特立米药水:酒精")==1)
+				set .@point,.@point+1;
+		}
+		if(.@point < 2) {
+			mes "[斑 黑文特]";
+			mes "....说实话我真的很不爽";
+			mes "我明明叫你去跟莫基斯坦好好的学习....";
+			next;
+			mes "[斑 黑文特]";
+			mes "连这个都不会!";
+			mes "在你学会制作方法之前别想要回来!";
+			mes "不要妨碍我，快点出去吧!";
+			close;
+		}
+		mes "[班 黑文特]";
+		mes "嗯，很明白了吧";
+		mes "所以，理解药品是很重要的事";
+		mes "在这方面的事情一直持续研究着，";
+		mes "保护人类的身体啊";
+		next;
+		mes "[斑 黑文特]";
+		mes "请去外面找隔壁房间的尼古拉斯";
+		mes "会教你更多各式各样的东西";
+		next;
+		mes "[斑 黑文特]";
+		mes "还在这里做什么，赶快走吧";
+		mes "我这里已经没有什么好教给你的了";
+		set ALCH_Q,20;
+		close;
+	}
+	else if (ALCH_Q == 20) {
+		mes "你在这里做什么? 我不是叫你去隔壁的房间找  ^5533FF尼克拉斯^000000 吗?";
+		mes "他或许比我有更多可以教你的，我这里没你的事了.";
+		close;
+	}
+	else {
+		mes "再加一点进去 ... 对，再加一点点进去....";
+		mes "嗯...只要再加一点点进去应该就能成功了!";
+		next;
+		mes "[班 黑文特]";
+		mes "为什么!! 为什么又失败了!!!";
+		mes "没有错啊!";
+		mes "为什么! 为什么!";
+		next;
+		mes "[班 黑文特]";
+		mes "这表示我得再去搜集更多材料吗...";
+		mes "总有一天我一定能成功....呼...";
+		close;
+	}
+}
+
+alde_alche,101,184,4	script	精通 炼金术师#am	122,{
+	cutin "job_alche_vincent",2;
+	mes "[宾珊特 卡乐士阿罗]";
+	if (Upper == 1) {
+		mes "你是新诞生者吗...";
+		mes "真厉害啊";
+		next;
+		mes "[宾珊特 卡乐士阿罗]";
+		mes "在这种狭窄的地方真不适合呢，";
+		mes "往宽广的世界去吧，快啊";
+		close2;
+		cutin "",255;
+		end;
+	}
+	if (BaseJob != Job_Merchant) {
+		if (BaseJob == Job_Alchemist) {
+			mes "研究进度如何了?";
+			mes "制作药品的时候要非常注意啊";
+			next;
+			mes "[宾珊特 卡乐士阿罗]";
+			mes "有时候实验失败会带来不可预料的后果!";
+			mes "在很多实验中都必须非常小心";
+			next;
+			mes "[宾珊特 卡乐士阿罗]";
+			mes "做出了新的人工生命体时，";
+			mes "一定要向工会汇报哦";
+			mes "大家都在积极的研究中呢";
+			mes "你也要加油哦!";
+		}
+		else if (BaseClass == Job_Novice) {
+			mes "小朋友不准在这";
+			mes "在这儿玩会受伤的";
+			next;
+			mes "[宾珊特 卡乐士阿罗]";
+			mes "看看，这里有很多很危险的东西呢";
+			mes "到外面玩吧";
+		}
+		else {
+			mes "嗯...?";
+			mes "冒险者，";
+			mes "来到炼金术师工会有什么事情吗?";
+			next;
+			mes "[宾珊特 卡乐士阿罗]";
+			mes "不好意思，若你不是炼金术师的话，";
+			mes "请原谅我们不能提供你什么服务啊";
+		}
+		close2;
+		cutin "",255;
+		end;
+	}
+	if (ALCH_Q == 0) {
+		mes "是商人啊";
+		mes "对炼金术师有兴趣吗?";
+		next;
+		mes "[宾珊特 卡乐士阿罗]";
+		mes "我们炼金术师工会进行着各种各样物质的研究";
+		mes "是和魔法不同性质的东西";
+		next;
+		mes "[宾珊特 卡乐士阿罗]";
+		mes "生命体研究、长生不老、";
+		mes "用普通物质转化成新的物质，";
+		mes "这些都是我们研究之列";
+		next;
+		mes "[宾珊特 卡乐士阿罗]";
+		mes "商人经过在生意上的磨练，";
+		mes "对事物有很高的洞察分析能力";
+		mes "如果你想学习炼金术的话，";
+		mes "那就加入我们的工会吧";
+		close2;
+		cutin "",255;
+		end;
+	}
+	else if (ALCH_Q == 40) {
+		if (SkillPoint) {
+			mes "技能点数还没加完呢";
+			mes "转职的时候不允许有剩余的点数!";
+			close2;
+			cutin "",255;
+			end;
+		}
+		mes "不错，加入工会必须的基础知识都掌握了";
+		next;
+		set ALCH_Q,0;
+		set .@jlevel,JobLevel;
+		callfunc "Job_Change",Job_Alchemist;
+		callfunc "F_ClearJobVar";
+		mes "[宾珊特 卡乐士阿罗]";
+		mes "现在你已经是炼金术师工会的一员了";
+		mes "请努力研究奋发向上吧";
+		next;
+		if (.@jlevel == 50) {
+			getitem 7133,1; //纤细药水制作说明书
+			mes "[宾珊特 卡乐士阿罗]";
+			mes "来，这是送给你的特别礼物";
+			mes "请用它来研究更深一层的炼金术吧";
+		}
+		else {
+			switch(rand(1,6)) {
+			case 1:
+				getitem 7127,1; //酒精制作说明书
+				break;
+			case 2:
+				getitem 7128,1; //火烟瓶制作说明书
+				break;
+			case 3:
+				getitem 7129,1; //盐酸瓶制作说明书
+				break;
+			case 4:
+				getitem 7130,1; //植物瓶制作说明书
+				break;
+			case 5:
+				getitem 7131,1; //刺锤瓶制作说明书
+				break;
+			case 6:
+				getitem 7144,1; //一般药水制作说明书
+			}
+			mes "[宾珊特 卡乐士阿罗]";
+			mes "这里有个小礼物要送给你";
+			mes "不是很贵重的东西，";
+			mes "请你不要见怪啊";
+		}
+		next;
+		mes "[宾珊特 卡乐士阿罗]";
+		mes "那么再见了";
+		mes "千万不要忘记作为炼金术师要不断磨练自己的本领!";
+		close2;
+		cutin "",255;
+		end;
+	}
+	else {
+		mes "好像已经申请过了....";
+		mes "请努力研究奋发向上吧";
+		next;
+		mes "[宾珊特 卡乐士阿罗]";
+		mes "所以也不要忘记听取其他炼金术师的建议";
+		mes "从其他人身上也能学到很多知识的";
+		close2;
+		cutin "",255;
+		end;
+	}
+}
+
+alde_alche,145,19,1	script	首席研究员#am	57,{
+
+	if (ALCH_Q > 19 && ALCH_Q < 22) {
+		if (ALCH_Q == 20) {
+			mes "[尼克拉斯 波拉媒]";
+			mes "噢... 你是想成为炼金术师的商人?";
+			mes "但你知道的... 不是任何人都能成为炼金术师的.";
+			next;
+			mes "[尼克拉斯 波拉媒]";
+			mes "炼金术师工会不喜欢没有明确目标却想成为炼金术师的人.";
+			mes "所以... 我来测验测验你，看看你有没有资格.";
+			next;
+			mes "[尼克拉斯 波拉媒]";
+			mes "如你所见，炼金术师必须熟记许多化学反应方程序";	
+			mes "除此之外还有大量的各种知识";
+			mes "如果你没有足够的水准的话..";
+			mes "我的测验对你来说是很困难的.";
+			next;
+			mes "[尼克拉斯 波拉媒]";
+			mes "这个测验的目的是为了防止无用、没前途的人加入炼金工会成为负担!";
+			next;
+		}
+		mes "[尼克拉斯 波拉媒]";
+		mes "好吧... 那我就开始出题了!";
+		mes "这是要测验你的集中精神够不够，避免你在看那些图表的时候被自己搞混了.";
+		next;
+		mes "[尼克拉斯 波拉媒]";
+		mes "找出这些字母里隐藏的单字. 这个隐藏的单字可能有用到这些字母的一部分或全部都用到";
+		next;
+		mes "[尼克拉斯 波拉媒]";
+		mes "如果你找得出这些隐藏的单字，你就能通过我的测验.";
+		next;
+		switch(rand(1,3)) {
+		case 1:
+			mes "t m y a n y e o b n e g p r i";
+			next;
+			if (select("Brake:Brass:Bug:Broken:Brigan?") == 5) set .@alch_t,.@alch_t+10;
+			mes "o n c u t a p j l e r s v m u";
+			next;
+			if (select("vendor:storage:weapon:simple:streetshop") == 1) set .@alch_t,.@alch_t+10;
+			mes "t v a r m e g p h e u b o y l";
+			next;
+			if (select("molasses:party:leader:sweets:treacle") == 2) set .@alch_t,.@alch_t+10;
+			mes "q z a h n a i n b r d p t n c";
+			next;
+			if (select("partisan:partizan:pato:paros:pack") == 2) set .@alch_t,.@alch_t+10;
+			break;
+		case 2:
+			mes "m p d i c f a r o g n k w a s";
+			next;
+			if (select("packman:sunshine:ragnarok:wonderland:frost") == 1) set .@alch_t,.@alch_t+10;
+			mes "g b n o p r e f a r e t a s k";
+			next;
+			if (select("purple:smoker:ragnarok:bolt:burnt wood") == 3) set .@alch_t,.@alch_t+10;
+			mes "u g n i s j e k c e o g n d p";
+			next;
+			if (select("scab:kinship:donate:source:opening") == 5) set .@alch_t,.@alch_t+10;
+			mes "r o e h n r o m c a i n p t t";
+			next;
+			if (select("forgemerchant:potionmerchant:dcmerchant:vendingmerchant:battlemerchant") == 2) set .@alch_t,.@alch_t+10;
+			break;
+		case 3:
+			mes "s m i e x b w u n e t a g l r";
+			next;
+			if (select("tiger:wolf:pumpkin:tripped:tore") == 1) set .@alch_t,.@alch_t+10;
+			mes "n i e g b o p d s o a u w r v";
+			next;
+			if (select("bash:provoke:endure:stun:abracadabra") == 3) set .@alch_t,.@alch_t+10;
+			mes "l r m g r e x t a v i n e d e";
+			next;
+			if (select("alberta:latifoliate:crimson:maple:evergreen") == 5) set .@alch_t,.@alch_t+10;
+			mes "r o e h n r o m c a i n p t t";
+			next;
+			if (select("forgemerchant:potionmerchant:dcmerchant:vendingmerchant:battlemerchant") == 2) set .@alch_t,.@alch_t+10;
+			break;
+		}
+		mes "[尼克拉斯 波拉媒]";
+		mes "噢..终于完成啦..";
+		mes "我看看你的成绩如何...";
+		if (.@alch_t > 30) {
+			set ALCH_Q,22;
+			mes "做得太好了!";
+			mes "可以进入下一个考试了";
+			mes "因为要准备时间，等一下再来找我吧";
+			close;
+		}
+		else {
+			set ALCH_Q,21;
+			mes "这样是不行的，再多多注意一下吧，";
+			mes "不仔细看的话，以后是要如何背下化学式呢?";
+			close;
+
+		}
+	}
+	else if (ALCH_Q == 22) {
+		set .@now_weight,MaxWeight-Weight;
+		if (.@now_weight < 1370) {
+			mes "[尼克拉斯 波拉媒]";
+			mes "负重不足";
+			close;
+		}
+		mes "[尼克拉斯 波拉媒]";
+		mes "接着，你要到一个地方";
+		mes "到'朱诺'去拜访与贤者们一起研究炼金术的'发镇'兄弟";
+		mes "去帮助他们的研究吧";
+		next;
+		mes "[尼克拉斯 波拉媒]";
+		mes "来，把这个带上";
+		mes "这些东西应该对他们有用的";
+		next;
+		mes "[尼克拉斯 波拉媒]";
+		mes "混合剂 1个";
+		mes "燃烧一半的木材 5个";
+		mes "黄晶沙 5个";
+		mes "神之金属原石、铝原石各3个";
+		set ALCH_Q,23;
+		getitem 974,1; //混合剂
+		getitem 7068,5; //燃烧一半的木材
+		getitem 7043,5; //黄晶沙
+		getitem 756,3; //神之金属原石
+		getitem 757,3; //铝原石
+		next;
+		mes "[尼克拉斯 波拉媒]";
+		mes "愿你一路平安";
+		mes "请慢走";
+		close;
+	}
+	else if (ALCH_Q == 23) {
+		mes "[尼克拉斯 波拉媒]";
+		mes "发仁与发镇两兄弟在朱诺! 快去协助他们吧.";
+		close;
+	}
+	else if (ALCH_Q == 24) {
+		set ALCH_Q,40;
+		mes "[尼克拉斯 波拉媒]";
+		mes "噢! 你终于回来了啊.";
+		mes "我收到他们两兄弟寄来的信，他们说很高兴见到你.";
+		next;
+		mes "[尼克拉斯 波拉媒]";
+		mes "你应该是成功的帮他们解决了问题吧.";
+		mes "既然你能够解决他们的问题，那么我想你应该是有资格成为一名炼金术师的.";
+		next;
+		mes "[尼克拉斯 波拉媒]";
+		mes "现在，你只要去楼上找工会长，";
+		mes "他会帮你转职的";
+		close;
+	}
+	else if (ALCH_Q == 40 && BaseJob == Job_Merchant) {
+		mes "[尼克拉斯 波拉媒]";
+		mes "现在你该做的就是去二楼找工会长!";
+		mes "恭喜你! 你就快要可以转职了!";
+		close;
+	}
+	else {
+		mes "[尼克拉斯 波拉媒]";
+		mes "加勒昆保欲豪原非物沾久审的击字";
+		mes "路宣败不原狼给心木爬提肝祥兔怪";
+		mes "翁波宣商人理安壁力大全怕理课感";
+		mes "商率寿朋兜知商伤花全踢理有食差";
+		mes "食草受商于善伤的久战多怕九分当";
+		next;
+		mes "[尼克拉斯 波拉媒]";
+		mes "......念念....";
+		close;
+	}
+}

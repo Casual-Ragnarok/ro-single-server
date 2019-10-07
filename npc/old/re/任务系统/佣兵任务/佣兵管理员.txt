@@ -1,0 +1,654 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 佣兵签约 脚本 -
+//========================
+//= 版本：1.1+SeAr1.3
+//========================
+
+prontera,41,337,5	script	佣兵公会相关人员#Spear	105,{
+	set .@faith_lancer, mercenary_get_faith(SPEAR_MERC_GUILD);
+	mes "[佣兵管理员]";
+	mes "欢迎光临，";
+	mes "这里是枪佣兵公会";
+	mes "请问找我什么事吗?";
+	next;
+	switch( select("我想跟佣兵签约:佣兵吗?:没事没事:没有10等级的佣兵吗?") )
+	{
+	case 1:
+		mes "[佣兵管理员]";
+		mes "呵呵... 你想跟哪种佣兵签约呢?";
+		next;
+		set .@Grade, select("1等级枪佣兵:2等级枪佣兵:3等级枪佣兵:4等级枪佣兵:5等级枪佣兵:6等级枪佣兵:7等级枪佣兵:8等级枪佣兵:9等级枪佣兵");
+		set .@BaseLevel, 5 + (.@Grade * 10);
+		if( .@BaseLevel > 90 )
+			set .@BaseLevel, 90;
+		
+		set .@ZenyCost, 7 * .@Grade;
+
+		if( .@Grade == 7 )
+			set .@FaithCost, 50;
+		else if( .@Grade == 8 )
+			set .@FaithCost, 100;
+		else if( .@Grade == 9 )
+			set .@FaithCost, 300;
+		else
+			set .@FaithCost, 0;
+
+		mes "[佣兵管理员]";
+		mes "你要跟" + .@Grade + "等级的枪佣兵签约吗?";
+		mes "与" + .@Grade + "等级的签约条件是自己的等级在";
+		mes "" + .@BaseLevel + "级以上就可以了，";
+		mes "还有签约金是" + .@ZenyCost + "000金币，";
+		mes "请问您要与佣兵签约吗?";
+		next;
+		if( select("要:不要") == 2 )
+		{
+			mes "[佣兵管理员]";
+			mes "是吗? 那欢迎你下次再来吧";
+		}
+		else if( .@FaithCost && .@faith_lancer < .@FaithCost )
+		{
+			mes "[佣兵管理员]";
+			mes "哎唷...";
+			mes "你和我们枪佣兵公会间的信赖度不够啊";
+			mes "要和这佣兵签约的话，";
+			mes "信赖度至少要" + .@FaithCost + "以上喔";
+		}
+		else if( BaseLevel < .@BaseLevel )
+		{
+			mes "[佣兵管理员]";
+			mes "哎呀...";
+			mes "你的等级还不够啊，";
+			mes "等到了" + .@BaseLevel + "等级候再来吧";
+		}
+		else if( Zeny < .@ZenyCost * 1000 )
+		{
+			mes "[佣兵管理员]";
+			mes "很抱歉，不过您的钱不够";
+			mes "要雇用这名佣兵的话至少要" + .@ZenyCost + "000金币喔";
+		}
+		else
+		{
+			mes "[佣兵管理员]";
+			mes "选的好啊，";
+			mes "号称不上是很强的佣兵，";
+			mes "但对你会有很大的帮助，";
+			mes "召唤佣兵后只能使用30分钟的";
+			mes "时间，请你善加利用吧";
+			set Zeny, Zeny - (.@ZenyCost * 1000);
+			getitem 12172 + .@Grade, 1;
+		}
+		close;
+	case 2:
+		mes "[佣兵管理员]";
+		mes "佣兵顾名思义就是";
+		mes "在自己身边协助我";
+		mes "一同去战斗";
+		next;
+		mes "[佣兵管理员]";
+		mes "不过协助是有条件的，";
+		mes "必须依据自己的能力、与佣兵公会间的关系";
+		mes "等等须符合多项条件下，";
+		mes "才能和对应等级的佣兵签约";
+		next;
+		mes "[佣兵管理员]";
+		mes "还有最高等级的佣兵，";
+		mes "需要满足特定的条件才能";
+		mes "签约，所以想签约";
+		mes "是有一定的难度";
+		next;
+		mes "[佣兵管理员]";
+		mes "另外一旦与佣兵签约后，";
+		mes "就不能把该佣兵送给别人，";
+		mes "也不能与比自己等级高出";
+		mes "很多的佣兵签约，";
+		mes "而且自己与佣兵的等级差距，";
+		mes "不能相差5级以上";
+		next;
+		mes "[佣兵管理员]";
+		mes "最后一个条件是与佣兵公会间的";
+		mes "信赖度，若是低等级佣兵的话，";
+		mes "是无所谓，但一定等级以上的";
+		mes "佣兵则与公会之间的信赖度，";
+		mes "必须达到一定等级以上";
+		next;
+		mes "[佣兵管理员]";
+		mes "至于条件细节等你与佣兵签约时，";
+		mes "再向你说明吧";
+		next;
+		mes "[佣兵管理员]";
+		mes "啊，我差点忘了一件重要的事情，";
+		mes "与佣兵签约时就可以得到";
+		mes "召唤卷轴";
+		next;
+		mes "[佣兵管理员]";
+		mes "但那个卷轴也不能转让给";
+		mes "别人，且利用卷轴召唤";
+		mes "佣兵后，只能使用30分钟，";
+		mes "请您注意";
+		close;
+	case 3:
+		mes "[佣兵管理员]";
+		mes "你说话老冷喔，";
+		mes "那下次再来吧";
+		close;
+	case 4:
+		mes "[佣兵管理员]";
+		mes "10等级的佣兵算是相当特别的，";
+		mes "由于它的能力非常出众，";
+		mes "所以不容易签约";
+		next;
+		mes "[佣兵管理员]";
+		mes "与10等级佣兵签约是不用花钱的，";
+		mes "需要的只是与公会之间的信赖度，";
+		mes "且与10等级佣兵签约的最低条件为";
+		mes "与公会的信赖度500";
+		next;
+		mes "[佣兵管理员]";
+		mes "还有签约时会减少400的信赖度，";
+		mes "因为我们认为带着";
+		mes "10等级佣兵是件相当";
+		mes "危险的事，所以角色对";
+		mes "公会的信赖度才会减少";
+		next;
+		mes "[佣兵管理员]";
+		mes "而且签约者的等级要 90";
+		mes "以上才可以，";
+		mes "请问您要与10等级佣兵签约吗?";
+		next;
+		if( select("要:不要") == 2 )
+		{
+			mes "[佣兵管理员]";
+			mes "毕竟要与10等级佣兵一起共事不是件容易的事情";
+		}
+		else if( .@faith_lancer < 500 )
+		{
+			mes "[佣兵管理员]";
+			mes "嗯.. 你与我们枪佣兵公会间的";
+			mes "信赖度不足啊，";
+			mes "若想与10等级佣兵签约的话，";
+			mes "需要500以上的信赖度";
+		}
+		else if( BaseLevel < 90 )
+		{
+			mes "[佣兵管理员]";
+			mes "哎呀...";
+			mes "你的等级还不够啊，";
+			mes "等到了90等级候再来吧";
+		}
+		else
+		{
+			mes "[佣兵管理员]";
+			mes "恭喜你啊，你看来像是要来场远征吧";
+			mes "难怪会与10等级的佣兵签约，";
+			mes "祝您一路顺风";
+
+			mercenary_set_faith SPEAR_MERC_GUILD,-400;
+			getitem 12182,1;
+		}
+		close;
+	}
+}
+
+izlude,47,139,5	script	佣兵公会相关人员#Sword	734,{
+	set .@faith_sword, mercenary_get_faith(SWORD_MERC_GUILD);
+	mes "[佣兵管理员]";
+	mes "欢迎光临，";
+	mes "这里是剑佣兵公会";
+	mes "请问找我什么事吗?";
+	next;
+	switch( select("我想跟佣兵签约:佣兵吗?:没事没事:没有10等级的佣兵吗?") )
+	{
+	case 1:
+		mes "[佣兵管理员]";
+		mes "呵呵... 你想跟哪种佣兵签约呢?";
+		next;
+		set .@Grade, select("1等级剑佣兵:2等级剑佣兵:3等级剑佣兵:4等级剑佣兵:5等级剑佣兵:6等级剑佣兵:7等级剑佣兵:8等级剑佣兵:9等级剑佣兵");
+		set .@BaseLevel, 5 + (.@Grade * 10);
+		if( .@BaseLevel > 90 )
+			set .@BaseLevel, 90;
+
+		set .@ZenyCost, 7 * .@Grade;
+
+		if( .@Grade == 7 )
+			set .@FaithCost, 50;
+		else if( .@Grade == 8 )
+			set .@FaithCost, 100;
+		else if( .@Grade == 9 )
+			set .@FaithCost, 300;
+		else
+			set .@FaithCost, 0;
+
+		mes "[佣兵管理员]";
+		mes "你要跟" + .@Grade + "等级的剑佣兵签约吗?";
+		mes "与" + .@Grade + "等级的签约条件是自己的等级在";
+		mes "" + .@BaseLevel + "级以上就可以了，";
+		mes "还有签约金是" + .@ZenyCost + "000金币，";
+		mes "请问您要与佣兵签约吗?";
+		next;
+		if( select("要:不要") == 2 )
+		{
+			mes "[佣兵管理员]";
+			mes "是吗? 那欢迎你下次再来吧";
+		}
+		else if( .@FaithCost && .@faith_sword < .@FaithCost )
+		{
+			mes "[佣兵管理员]";
+			mes "哎唷...";
+			mes "你和我们剑佣兵公会间的信赖度不够啊";
+			mes "要和这佣兵签约的话，";
+			mes "信赖度至少要" + .@FaithCost + "以上喔";
+		}
+		else if( BaseLevel < .@BaseLevel )
+		{
+			mes "[佣兵管理员]";
+			mes "哎呀...";
+			mes "你的等级还不够啊，";
+			mes "等到了" + .@BaseLevel + "等级候再来吧";
+		}
+		else if( Zeny < .@ZenyCost * 1000 )
+		{
+			mes "[佣兵管理员]";
+			mes "很抱歉，不过您的钱不够";
+			mes "要雇用这名佣兵的话至少要" + .@ZenyCost + "000金币喔";
+		}
+		else
+		{
+			mes "[佣兵管理员]";
+			mes "选的好啊，";
+			mes "号称不上是很强的佣兵，";
+			mes "但对你会有很大的帮助，";
+			mes "召唤佣兵后只能使用30分钟的";
+			mes "时间，请你善加利用吧";
+			set Zeny, Zeny - (.@ZenyCost * 1000);
+			getitem 12162 + .@Grade, 1;
+		}
+		close;		
+	case 2:
+		mes "[佣兵管理员]";
+		mes "佣兵顾名思义就是";
+		mes "在自己身边协助我";
+		mes "一同去战斗";
+		next;
+		mes "[佣兵管理员]";
+		mes "不过协助是有条件的，";
+		mes "必须依据自己的能力、与佣兵公会间的关系";
+		mes "等等须符合多项条件下，";
+		mes "才能和对应等级的佣兵签约";
+		next;
+		mes "[佣兵管理员]";
+		mes "还有最高等级的佣兵，";
+		mes "需要满足特定的条件才能";
+		mes "签约，所以想签约";
+		mes "是有一定的难度";
+		next;
+		mes "[佣兵管理员]";
+		mes "另外一旦与佣兵签约后，";
+		mes "就不能把该佣兵送给别人，";
+		mes "也不能与比自己等级高出";
+		mes "很多的佣兵签约，";
+		mes "而且自己与佣兵的等级差距，";
+		mes "不能相差5级以上";
+		next;
+		mes "[佣兵管理员]";
+		mes "最后一个条件是与佣兵公会间的";
+		mes "信赖度，若是低等级佣兵的话，";
+		mes "是无所谓，但一定等级以上的";
+		mes "佣兵则与公会之间的信赖度，";
+		mes "必须达到一定等级以上";
+		next;
+		mes "[佣兵管理员]";
+		mes "至于条件细节等你与佣兵签约时，";
+		mes "再向你说明吧";
+		next;
+		mes "[佣兵管理员]";
+		mes "啊，我差点忘了一件重要的事情，";
+		mes "与佣兵签约时就可以得到";
+		mes "召唤卷轴";
+		next;
+		mes "[佣兵管理员]";
+		mes "但那个卷轴也不能转让给";
+		mes "别人，且利用卷轴召唤";
+		mes "佣兵后，只能使用30分钟，";
+		mes "请您注意";
+		close;
+	case 3:
+		mes "[佣兵管理员]";
+		mes "你说话老冷喔，";
+		mes "那下次再来吧";
+		close;
+	case 4:
+		mes "[佣兵管理员]";
+		mes "10等级的佣兵算是相当特别的，";
+		mes "由于它的能力非常出众，";
+		mes "所以不容易签约";
+		next;
+		mes "[佣兵管理员]";
+		mes "与10等级佣兵签约是不用花钱的，";
+		mes "需要的只是与公会之间的信赖度，";
+		mes "且与10等级佣兵签约的最低条件为";
+		mes "与公会的信赖度500";
+		next;
+		mes "[佣兵管理员]";
+		mes "还有签约时会减少400的信赖度，";
+		mes "因为我们认为带着";
+		mes "10等级佣兵是件相当";
+		mes "危险的事，所以角色对";
+		mes "公会的信赖度才会减少";
+		next;
+		mes "[佣兵管理员]";
+		mes "而且签约者的等级要 90";
+		mes "以上才可以，";
+		mes "请问您要与10等级佣兵签约吗?";
+		next;
+		if( select("要:不要") == 2 )
+		{
+			mes "[佣兵管理员]";
+			mes "毕竟要与10等级佣兵一起共事不是件容易的事情";
+		}
+		else if( .@faith_sword < 500 )
+		{
+			mes "[佣兵管理员]";
+			mes "嗯.. 你与我们剑佣兵公会间的";
+			mes "信赖度不足啊，";
+			mes "若想与10等级佣兵签约的话，";
+			mes "需要500以上的信赖度";
+		}
+		else if( BaseLevel < 90 )
+		{
+			mes "[佣兵管理员]";
+			mes "哎呀...";
+			mes "你的等级还不够啊，";
+			mes "等到了90等级候再来吧";
+		}
+		else
+		{
+			mes "[佣兵管理员]";
+			mes "恭喜你啊，你看来像是要来场远征吧";
+			mes "难怪会与10等级的佣兵签约，";
+			mes "祝您一路顺风";
+
+			mercenary_set_faith SWORD_MERC_GUILD,-400;
+			getitem 12172,1;
+		}
+		close;		
+	}
+}
+
+pay_arche,99,167,4	script	佣兵公会相关人员#Bow	732,{
+	set .@faith_archer,  mercenary_get_faith(ARCH_MERC_GUILD);
+	mes "[佣兵管理员]";
+	mes "欢迎光临，";
+	mes "这里是弓佣兵公会";
+	mes "请问找我什么事吗?";
+	next;
+	switch( select("我想跟佣兵签约:佣兵吗?:没事没事:没有10等级的佣兵吗?") )
+	{
+	case 1:
+		mes "[佣兵管理员]";
+		mes "呵呵... 你想跟哪种佣兵签约呢?";
+		next;
+
+		set .@Grade, select("1等级弓佣兵:2等级弓佣兵:3等级弓佣兵:4等级弓佣兵:5等级弓佣兵:6等级弓佣兵:7等级弓佣兵:8等级弓佣兵:9等级弓佣兵");
+		set .@BaseLevel, 5 + (.@Grade * 10);
+		if( .@BaseLevel > 90 )
+			set .@BaseLevel, 90;
+
+		set .@ZenyCost, 7 * .@Grade;
+
+		if( .@Grade == 7 )
+			set .@FaithCost, 50;
+		else if( .@Grade == 8 )
+			set .@FaithCost, 100;
+		else if( .@Grade == 9 )
+			set .@FaithCost, 300;
+		else
+			set .@FaithCost, 0;
+
+		mes "[佣兵管理员]";
+		mes "你要跟" + .@Grade + "等级的弓佣兵签约吗?";
+		mes "与" + .@Grade + "等级的签约条件是自己的等级在";
+		mes "" + .@BaseLevel + "级以上就可以了，";
+		mes "还有签约金是" + .@ZenyCost + "000金币，";
+		mes "请问您要与佣兵签约吗?";
+		next;
+		if( select("要:不要") == 2 )
+		{
+			mes "[佣兵管理员]";
+			mes "是吗? 那欢迎你下次再来吧";
+		}
+		else if( .@FaithCost && .@faith_archer < .@FaithCost )
+		{
+			mes "[佣兵管理员]";
+			mes "哎唷...";
+			mes "你和我们弓佣兵公会间的信赖度不够啊";
+			mes "要和这佣兵签约的话，";
+			mes "信赖度至少要" + .@FaithCost + "以上喔";
+		}
+		else if( BaseLevel < .@BaseLevel )
+		{
+			mes "[佣兵管理员]";
+			mes "哎呀...";
+			mes "你的等级还不够啊，";
+			mes "等到了" + .@BaseLevel + "等级候再来吧";
+		}
+		else if( Zeny < .@ZenyCost * 1000 )
+		{
+			mes "[佣兵管理员]";
+			mes "很抱歉，不过您的钱不够";
+			mes "要雇用这名佣兵的话至少要" + .@ZenyCost + "000金币喔";
+		}
+		else
+		{
+			mes "[佣兵管理员]";
+			mes "选的好啊，";
+			mes "号称不上是很强的佣兵，";
+			mes "但对你会有很大的帮助，";
+			mes "召唤佣兵后只能使用30分钟的";
+			mes "时间，请你善加利用吧";
+			set Zeny, Zeny - (.@ZenyCost * 1000);
+			getitem 12152 + .@Grade, 1;
+		}
+		close;
+	case 2:
+		mes "[佣兵管理员]";
+		mes "佣兵顾名思义就是";
+		mes "在自己身边协助我";
+		mes "一同去战斗";
+		next;
+		mes "[佣兵管理员]";
+		mes "不过协助是有条件的，";
+		mes "必须依据自己的能力、与佣兵公会间的关系";
+		mes "等等须符合多项条件下，";
+		mes "才能和对应等级的佣兵签约";
+		next;
+		mes "[佣兵管理员]";
+		mes "还有最高等级的佣兵，";
+		mes "需要满足特定的条件才能";
+		mes "签约，所以想签约";
+		mes "是有一定的难度";
+		next;
+		mes "[佣兵管理员]";
+		mes "另外一旦与佣兵签约后，";
+		mes "就不能把该佣兵送给别人，";
+		mes "也不能与比自己等级高出";
+		mes "很多的佣兵签约，";
+		mes "而且自己与佣兵的等级差距，";
+		mes "不能相差5级以上";
+		next;
+		mes "[佣兵管理员]";
+		mes "最后一个条件是与佣兵公会间的";
+		mes "信赖度，若是低等级佣兵的话，";
+		mes "是无所谓，但一定等级以上的";
+		mes "佣兵则与公会之间的信赖度，";
+		mes "必须达到一定等级以上";
+		next;
+		mes "[佣兵管理员]";
+		mes "至于条件细节等你与佣兵签约时，";
+		mes "再向你说明吧";
+		next;
+		mes "[佣兵管理员]";
+		mes "啊，我差点忘了一件重要的事情，";
+		mes "与佣兵签约时就可以得到";
+		mes "召唤卷轴";
+		next;
+		mes "[佣兵管理员]";
+		mes "但那个卷轴也不能转让给";
+		mes "别人，且利用卷轴召唤";
+		mes "佣兵后，只能使用30分钟，";
+		mes "请您注意";
+		close;
+	case 3:
+		mes "[佣兵管理员]";
+		mes "你说话老冷喔，";
+		mes "那下次再来吧";
+		close;
+	case 4:
+		mes "[佣兵管理员]";
+		mes "10等级的佣兵算是相当特别的，";
+		mes "由于它的能力非常出众，";
+		mes "所以不容易签约";
+		next;
+		mes "[佣兵管理员]";
+		mes "与10等级佣兵签约是不用花钱的，";
+		mes "需要的只是与公会之间的信赖度，";
+		mes "且与10等级佣兵签约的最低条件为";
+		mes "与公会的信赖度500";
+		next;
+		mes "[佣兵管理员]";
+		mes "还有签约时会减少400的信赖度，";
+		mes "因为我们认为带着";
+		mes "10等级佣兵是件相当";
+		mes "危险的事，所以角色对";
+		mes "公会的信赖度才会减少";
+		next;
+		mes "[佣兵管理员]";
+		mes "而且签约者的等级要 90";
+		mes "以上才可以，";
+		mes "请问您要与10等级佣兵签约吗?";
+		next;
+		if( select("要:不要") == 2 )
+		{
+			mes "[佣兵管理员]";
+			mes "毕竟要与10等级佣兵一起共事不是件容易的事情";
+		}
+		else if( .@faith_archer < 500 )
+		{
+			mes "[佣兵管理员]";
+			mes "嗯.. 你与我们弓佣兵公会间的";
+			mes "信赖度不足啊，";
+			mes "若想与10等级佣兵签约的话，";
+			mes "需要500以上的信赖度";
+		}
+		else if( BaseLevel < 90 )
+		{
+			mes "[佣兵管理员]";
+			mes "哎呀...";
+			mes "你的等级还不够啊，";
+			mes "等到了90等级候再来吧";
+		}
+		else
+		{
+			mes "[佣兵管理员]";
+			mes "恭喜你啊，你看来像是要来场远征吧";
+			mes "难怪会与10等级的佣兵签约，";
+			mes "祝您一路顺风";
+			mercenary_set_faith ARCH_MERC_GUILD,-400;
+			getitem 12162,1;
+		}
+		close;
+	}
+}
+
+// Mercenary Merchant NPCs
+//============================================================
+-	script	佣兵物品销售商#dummy::MercMerchant	-1,{
+	mes "[物品销售商]";
+	mes "你好，";
+	mes "这里贩售与佣兵相关的物品，";
+	mes "你在找什么东西呢?";
+	next;
+	switch(select("佣兵专用红色药水:佣兵专用蓝色药水:佣兵专用集中药水:佣兵专用觉醒药水:佣兵专用菠色克药水")) {
+	case 1: 
+		mes "[物品销售商]";
+		mes "你要买'佣兵专用红色药水'吗?";
+		mes "每瓶单价是2500金币";
+		mes "你需要几个呢?";
+		next;
+		callfunc "F_PurchaseMercItem",12184,2500;
+	case 2:
+		mes "[物品销售商]";
+		mes "你要买'佣兵专用蓝色药水'吗?";
+		mes "每瓶单价是5000金币";
+		mes "你需要几个呢?";
+		next;
+		callfunc "F_PurchaseMercItem",12185,5000;
+	case 3:
+		mes "[物品销售商]";
+		mes "你要买'佣兵专用集中药水'吗?";
+		mes "每瓶单价是800金币";
+		mes "你需要几个呢?";
+		next;
+		callfunc "F_PurchaseMercItem",12241,800;
+	case 4:
+		mes "[物品销售商]";
+		mes "你要买'佣兵专用觉醒药水'吗?";
+		mes "每瓶单价是1500金币";
+		mes "你需要几个呢?";
+		next;
+		callfunc "F_PurchaseMercItem",12242,1500;
+	case 5:
+		mes "[物品销售商]";
+		mes "你要买'佣兵专用菠色克药水'吗?";
+		mes "每瓶单价是3000金币";
+		mes "你需要几个呢?";
+		next;
+		callfunc "F_PurchaseMercItem",12243,3000;
+	}
+	close;
+}
+
+prontera,30,337,4	duplicate(MercMerchant)	佣兵物品销售商#Spear	700
+izlude,56,139,4	duplicate(MercMerchant)	佣兵物品销售商#Sword	892
+pay_arche,102,167,5	duplicate(MercMerchant)	佣兵物品销售商#Bow	879
+
+// Function for selling items.
+//============================================================
+function	script	F_PurchaseMercItem	{
+	input .@input;
+	if( .@input == 0 )
+	{
+		mes "[物品销售商]";
+		mes "谢谢光临，";
+		mes "你订购物品的数量是0个";
+	}
+	else if( .@input < 0 || .@input > 10000 )
+	{
+		mes "[物品销售商]";
+		mes "请输入0到10000之间的数量";
+	}
+	else if( set(.@total_po, .@input * getarg(1)) > Zeny )
+	{
+		mes "[物品销售商]";
+		mes "你所持有的金币不足呢，";
+		mes "在你持有的金币范围内购买吧";
+	}
+	else if( checkweight(getarg(0), .@input) == 0 )
+	{
+		mes "[物品销售商]";
+		mes "您订购的物品重量会超过负重量的上限";
+		mes "请减少负重量后再订购吧";
+	}
+	else
+	{
+		mes "[物品销售商]";
+		mes "谢谢光临，";
+		mes "你订购的物品是'" +getitemname(getarg(0))+ "'";
+		mes "" + .@input + "个";
+		set Zeny, Zeny - .@total_po;
+		getitem getarg(0), .@input;
+	}
+	close;
+}

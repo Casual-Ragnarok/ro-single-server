@@ -1,0 +1,25 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 依斯鲁得岛 卡普拉脚本 - 
+//===================================
+// 版本：2.3
+//===================================
+
+izlude,134,87,3	script	卡普拉服务人员::kaf_izlude	117,{
+	cutin "kafra_01",2;
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpD$[0], "吉芬", "普隆德拉", "梦罗克", "艾尔帕兰";
+	setarray @wrpP[0], 1200, 1200, 1200, 1800;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], "取消";
+	callfunc "F_Kafra",0,0,1,40,820;
+
+	M_Save:
+		savepoint "izlude",94,103;
+		callfunc "F_KafEnd",0,1,"in the city of Izlude";
+}

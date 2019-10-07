@@ -1,0 +1,679 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 爪哇咿 城镇脚本 -
+//========================
+//= 版本：1.9
+//========================
+
+//===== Shop: ================================================
+jawaii,186,174,2	shop	冰淇淋商人	85,536:150
+
+//===== Jawaii Scripts ===================================
+jawaii,141,200,3	script	服务生#Sweetness Suite	798,{
+	
+	mes "[阿罗达]";
+	mes "啊...";
+	mes "这里是甜蜜套房";
+	mes "呃~非常感谢您的光临";
+	mes "我把它整理很干净，";
+	mes "所以请安心的使用";
+	next;
+	mes "[阿罗达]";
+	mes "住宿费是每人1000Zeny。";
+	mes "给我的话，会送您进去..";
+	mes "真..真的，没有可以直接进去的方法";
+	next;
+	mes "[阿罗达]";
+	mes "啊~行李";
+	mes "那个让我来提就行了";
+	mes "不然的话，那个，";
+	mes "我老板会用六合拳揍人的..";
+	mes "老板的拳头，非常非常的痛";
+	next;
+	if (select("使用:取消")==1) {
+		if(Zeny > 999) {
+			mes "[阿罗达]";
+			mes "哇~谢谢!";
+			mes "好的~请你使用";
+			mes "谢谢。谢谢";
+			mes "祝您有个愉快的时间";
+			close2;
+			set Zeny,Zeny - 1000;
+			warp "jawaii_in",116,64;
+			end;
+		}
+		mes "[阿罗达]";
+		mes "喔~客人!";
+		mes "请你再仔细确认住宿费是否足够，住宿费不足的话就不能使用";
+		mes "我家的老板可是会生气的!";
+		mes "老板的六合拳可是非常痛的喔!!";
+		close;
+	}
+	mes "[阿罗达]";
+	mes "嗯啊、嗯啊";
+	mes "这里比起别的房间";
+	mes "又干净又好，相信我的话，";
+	mes "如果想法改变了，";
+	mes "再来找我吧!嗯啊";
+	close;
+}
+
+jawaii,108,199,5	script	服务生#Classic_Suite	74,{
+	
+	mes "[帕尹欧兰]";
+	mes "欢迎";
+	mes "这里是复古式套房，";
+	mes "有着高级风格的房间，";
+	mes "对两位来说简直是太完美了呢!";
+	mes "外观看起来房间都是一样的，"; 
+	mes "内部却都完全不同呢!";
+	next;
+	mes "[帕尹欧兰]";
+	mes "住宿费每人要1000z。";
+	mes "我们是先付款的呢!";
+	mes "既然都来这里观光了，";
+	mes "就选择好的房间吧!";
+	next;
+	mes "[帕尹欧兰]";
+	mes "有需要的话尽管说吧!";
+	mes "我们会马上为您服务";
+	next;
+	menu "使用",-,"取消",s_Cancel;
+
+			if (Zeny > 999)
+{
+				mes "[帕尹欧兰]";
+				mes "非常感谢您的使用";
+				mes "祝您有个愉快的时间";
+				close2;
+				set Zeny,Zeny - 1000;
+				warp "jawaii_in",130,109;
+				end;
+}
+			else
+{
+				mes "[帕尹欧兰]";
+				mes "抱歉!";
+				mes "您带的钱好像不够喔!";
+				mes "请再确认一下!带足金额给我";
+				close;
+}
+s_Cancel:
+			mes "[帕尹欧兰]";
+			mes "那么的话请你尽情享受观光乐趣";
+			mes "随时欢迎所有的客人";
+			close;
+}
+
+jawaii,107,189,5	script	服务生#Honeymoon Suite	93,{
+	
+	mes "[夏乐其 小姐]";
+	mes "...这里是蜜月套房，住宿费是1000z。";
+	next;
+	mes "[夏乐其 小姐]";
+	mes "...要进去吗?";
+	next;
+	menu "使用",-,"取消",s_Cancel;
+
+			if(Zeny > 999)
+{
+				mes "[夏乐其 小姐]";
+				mes "...请进";
+				close2;
+				set Zeny,Zeny - 1000;
+				warp "jawaii_in",86,117;
+				end;
+}
+			else
+{
+				mes "[夏乐其 小姐]";
+				mes "...亲爱的顾客，您的金钱不足";
+				close;
+}
+s_Cancel:
+			mes "[夏乐其 小姐]";
+			mes "...好吧";
+			close;
+}
+jawaii,112,173,7	script	服务生#Villa Suite	93,{
+	
+	mes "[拉克斯 小姐]";
+	mes "夏乐其...难道不能";
+	mes "亲切的对待客人吗? 客人会感到不舒服呢...";
+	next;
+	mes "[拉克斯 小姐]";
+	mes "...喔，客人!";
+	mes "欢迎光临!";
+	mes "来旅行的吧?";
+	next;
+	mes "[拉克斯 小姐]";
+	mes "这里是别墅式套房，";
+	mes "有自己家般舒适的感觉，";
+	mes "住宿费跟别的房间一样是1000z";
+	next;
+	mes "[拉克斯 小姐]";
+	mes "想要使用的话，马上";
+	mes "为您服务，怎么样呢?";
+	next;
+	menu "使用",-,"取消",s_Cancel;
+			if(Zeny > 999)
+{
+				mes "[拉克斯 小姐]";
+				mes "谢谢您";
+				mes "好好休息吧!";
+				mes "剩下的旅行也祝您玩得愉快!";
+				close2;
+				set Zeny,Zeny - 1000;
+				warp "jawaii_in",87,75;
+				end;
+}
+			else
+{
+				mes "[拉克斯 小姐]";
+				mes "呃!?";
+				mes "好像住宿金额不足唷!";
+				mes "可以向您的伴侣请求看看，如何?";
+				mes "呵呵呵~";
+				close;
+}
+s_Cancel:
+			mes "[拉克斯 小姐]";
+			mes "嗯~方便的话也去看看隔壁的";
+			mes "蜜月套房吧!虽然夏乐其";
+			mes "不太善于交际，但房间可是很漂亮呢!";
+			close;
+}
+
+jawaii,122,263,5	script	船员#Alberta	100,{
+
+	mes "[船员]";
+	mes "此船将返回艾尔贝塔，";
+	mes "在爪哇咿的时间过的是否愉快呢?";
+	mes "请再确认一下有没有";
+	mes "漏掉的物品呢?";
+	next;
+	mes "[船员]";
+	mes "那么..要回去艾尔贝塔罗?";
+	next;
+	menu "走吧，回去啰~",-,"取消",s_Cancel;
+
+			mes "[船员]";
+			mes "往艾尔贝塔出发";
+			close2;
+			warp "alberta",192,157;
+			end;
+
+s_Cancel:
+			mes "[船员]";
+			mes "知道了!那么..";
+			mes "再逛一逛之后再来吧!";
+			mes "因为这并不是可以常来的地方";
+			close;
+}
+
+jawaii,239,112,7	script	船员#Jawaii2	100,{
+
+	mes "[船员]";
+	mes "此船将返回伊斯鲁德岛，";
+	mes "在爪哇咿的时间过的是否愉快呢?";
+	mes "请再确认一下有没有";
+	mes "漏掉的物品呢?";
+	next;
+	mes "[船员]";
+	mes "那么..要回去伊斯鲁德岛罗?";
+	next;
+	menu "走吧，回去啰~",-,"取消",s_Cancel;
+
+			mes "[船员]";
+			mes "往伊斯鲁德岛出发";
+			close2;
+			warp "izlude",176,182;
+			end;
+		
+s_Cancel:
+			mes "[船员]";
+			mes "知道了!那么..";
+			mes "再逛一逛之后再来吧!";
+			mes "因为这并不是可以常来的地方";
+			close;
+}
+
+jawaii,220,235,3	script	爪哇咿居民#Love Bo	724,{
+
+	mes "[夏娃]";
+	mes "你知道在爪哇咿里最美丽的地方是哪里吗? ";
+	mes "那就是位在最北方的'爱心小岛'";
+	next;
+	mes "[夏娃]";
+	mes "因为水不是很深，只要小心翼翼的过海即可到达了";
+	next;
+	mes "[夏娃]";
+	mes "此场所很适合两人共同渡过舒适的时间";
+	mes "然而一个人坐在那里的话，";
+	mes "可能...看起来像是漂流";
+	mes "在无人岛上的人耶!";
+	next;
+	mes "[夏娃]";
+	mes "如果玩'空瓶流浪游戏!'";
+	mes "可是很煞风景的呢!";
+	mes "那看起来会非常的抑郁呢...?";
+	close;
+}
+
+jawaii,239,146,3	script	Jawaii Citizen#Explain1	100,{
+	
+	mes "[WaiiWaii]";
+	mes "Welcome to Jawaii!";
+	mes "What would a marriage be without a honeymoon?";
+	mes "At this place,";
+	mes "you can ignore the threat from those pathetic dateless losers.";
+	next;
+	mes "[WaiiWaii]";
+	mes "You might encounter some monsters here.";
+	mes "But as long as you leave them alone, it will be fine!";
+	mes "They have inhabited this place for a long time,";
+	mes "so you can just take them a part of the view.";
+	close;
+}
+
+jawaii,168,247,5	script	爪哇咿居民#Explain2	724,{
+
+	mes "[亚当]";
+	mes "旅馆聚集在西边，每个房间";
+	mes "各有不同的气氛，选择适合";
+	mes "自己的房间住宿即可";
+	mes "关于各旅馆的事可以请教那边的服务人员";
+	next;
+	mes "[亚当]";
+	mes "回去的时候请利用西北方";
+	mes "及东南方的船即可";
+	mes "都有到艾尔贝塔及依斯鲁得岛的定期船";
+	close;
+}
+
+jawaii,165,121,1	script	爪哇咿居民#Explain3	724,{
+
+	mes "[瓦伊]";
+	mes "爪哇咿 ~是个充满幸福之岛屿";
+	mes "有没有很棒呢? 可以整天懒懒的";
+	mes "什么事情都不做的地方";
+	mes "就是这里，'爪哇咿'";
+	next;
+	mes "[瓦伊]";
+	mes "这里是舞台，偶而也会有公演";
+	mes "之类的，方便的话上去";
+	mes "唱一首歌怎么样呢?";
+	mes "爪哇咿~";
+	mes "啊~这里真是个幸福的岛屿";
+	close;
+}
+
+jawaii_in,43,115,0	script	客人#jaw_1	97,{
+
+	mes "[布琪]";
+	mes "喀喔!!";
+	mes "怎么会来到这种地方了呢!";
+	mes "唉...";
+	mes "这里的人个个都充满着幸福的心情!...";
+	mes "像我...";
+	next;
+	mes "[布琪]";
+	mes "...像我没伴的人在这里只是狼狈不堪啊!!";
+	mes "你，你也有同感吧! 对吧!!";
+	next;
+	mes "[布琪]";
+	mes "喀呜...";
+	mes "老板 !! 再来一杯!!";
+	close;
+}
+
+jawaii_in,41,106,3	script	客人#Kyle Jeet	98,{
+
+	mes "[凯伊吉]";
+	mes "吃吧、吃吧!!";
+	mes "喝吧、喝吧!!";
+	next;
+	mes "[凯伊吉]";
+	mes "喀!";
+	mes "从地狱般的情侣..!";
+	mes "成为自由放任的单身贵族!!";
+	close;
+}
+
+jawaii_in,15,104,0	script	服务生#jawaii	80,{
+
+	mes "[服务生]";
+	mes "...欢迎光临";
+	mes "不知道你是以什么想法流浪到这里来的...";
+	next;
+	//Emotion?
+	next;
+	mes "[服务生]";
+	mes "如果是想要毁谤幸福的人的话，";
+	mes "去找那位调酒师点酒，喝完之后快点走吧!";
+	next;
+	menu "我是单身贵族!!",-,"...只是来祝福...",s_Cong;
+
+		mes "[服务生]";
+		mes "怎么那么小气呢!?";
+		mes "别人幸福的话就祝福一下嘛!";
+		mes "什么单身贵族的，不要再毁谤了!!";
+		mes "如果这样的话不欢迎你的到来!!";
+		next;
+		mes "[服务生]";
+		mes "找到喜欢的对像结婚后";
+		mes "再来找我";
+		mes "一定好好招待!";
+		mes "...好吗?";
+		close;
+s_Cong:
+		mes "[服务生]";
+		mes "啊~特地来祝驾的..";
+		mes "欢迎光临!";
+		mes "真是对不起!!";
+		mes "我不小心心误会了...";
+		mes "那么请尽情享受~";
+		close;
+}
+
+jawaii_in,28,124,6	script	调酒师#jaw	46,{
+
+	mes "[调酒师]";
+	mes "你好~欢迎来到 夏威夷";
+	mes "我这是里最有名的 ^3355FF 调酒师 ^000000";
+	mes "这里有来自世界各地的各种美酒!你想来点么？";
+	next;
+	mes "[调酒师]";
+	mes "这是清单，看看你喜欢品尝哪种？";
+	next;
+        		menu	
+				"名酒-^4466FF 二锅头 ^000000",Lduna,
+				"名酒-^4466FF 白兰地 ^000000",Ldunb,
+				"名酒-^4466FF 甘红葡萄 ^000000",Ldunc,
+				"名酒-^4466FF 扎啤 ^000000",Ldund,
+				"名酒-^4466FF 冰镇干啤 ^000000",Ldung,
+				"名酒-^4466FF 泥坑老窖 ^000000",Ldune,
+				"名酒-^4466FF 人头马 ^000000",Ldunl,
+				"名酒-^4466FF 清酒 ^000000",Ldunf,
+				"我还小，来杯^4466FF 矿泉水^000000吧",Lglast;
+				Lduna:	sc_start SC_Stan,18000,10;	
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的二锅头,他感到有点上头...",3;
+				close;
+
+				Ldunb:	sc_start SC_Blind,18000,10;	
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的白兰地，酒力有些大，他看不清东西了...",3;
+				close;
+
+				Ldunc:	sc_start SC_Sleep,18000,10;
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的甘红葡萄，甜甜的甘红，让人感到有些困...",3;
+				close;
+
+				Ldund:	sc_start SC_Poison,18000,10;
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的扎啤，这东西像毒药一样容易上瘾",3;
+				close;
+
+				Ldung:  sc_start SC_FREEZE,18000,10;
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的冰镇干啤，全身冰凉的感觉好舒服啊...",3;
+				close;
+
+				Ldune:	sc_start SC_Silence,18000,10;
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的泥坑老窖，回味悠长啊... ",3;
+				close;
+
+				Ldunl:  sc_start SC_Curse,18000,10;
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的人头马,像什么东西发出一声尖叫...",3;
+				close;
+
+				Ldunf:  sc_start SC_Confusion,18000,10;
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的清酒，日本酒初喝时没什么，后劲却不小...",3;
+				close;
+
+				Lglast:	sc_start SC_stone,18000,10;
+				mapannounce "jawaii_in",strcharinfo(0) +"喝下一杯爽口的矿泉水,似乎有点钟乳石的味道...",3;
+				close;
+
+		Lcon:
+			mes "[调酒师]";
+			mes "味道怎么样呢";
+			close;
+}
+
+jawaii_in,25,94,5	script	服务生#jaw1	724,{
+
+	mes "[服务生 特利特]";
+	mes "欢迎来到爪哇咿酒店~!";
+	next;
+	mes "[服务生 特利特]";
+	mes "祝你们有个愉快的时间";
+	mes "可是，别喝太多唷!";
+	close;
+}
+
+jawaii_in,25,96,5	script	服务生#jaw2	724,{
+
+	mes "[服务生 帕伊]";
+	mes "欢迎来到爪哇咿酒店~!";
+	next;
+	mes "[服务生 帕伊]";
+	mes "请享受~!";
+	mes "不过，禁止毁谤幸福的人们喔!";
+	close;
+}
+
+jawaii_in,25,98,5	script	服务生#jaw3	724,{
+
+	mes "[服务生 柏匹]";
+	mes "欢迎来到爪哇咿酒店~!";
+	next;
+	mes "[服务生 柏匹]";
+	mes "呃?";
+	mes "外地来的人??";
+	mes "那个~还没有恋人吧?";
+	mes "我也很会煮菜..这样可以吗?";
+	mes "怎么样? 嗯? 怎么样?";
+	close;
+}
+
+jawaii_in,25,100,5	script	服务生#jaw4	724,{
+
+	mes "[服务生 宜特]";
+	mes "欢迎来到爪哇咿酒店~!";
+	next;
+	mes "[服务生 宜特]";
+	mes "妨害禁止!骚动禁止!";
+	mes "烂醉禁止!祝福欢迎!";
+	close;
+}
+
+jawaii_in,30,94,4	script	服务生#jaw5	724,{
+
+	mes "[服务生 肯]";
+	mes "欢迎来到爪哇咿酒店~!";
+	next;
+	mes "[服务生 肯]";
+	mes "...欢迎...";
+	mes "休息是可以啦，不过..";
+	mes "劝你自制一点吧!";
+	close;
+}
+
+jawaii_in,30,96,4	script	服务生#jaw6	724,{
+
+	mes "[服务生 拓那]";
+	mes "欢迎来到爪哇咿酒店~!";
+	next;
+	mes "[服务生 拓那]";
+	mes "请好好享受!";
+	mes "这可是当地最美味的酒啊!";
+	close;
+}
+
+jawaii_in,30,98,4	script	服务生#jaw7	724,{
+
+	mes "[服务生 阿麻得]";
+	mes "欢迎来到爪哇咿酒店~!";
+	next;
+	mes "[服务生 阿麻得]";
+	mes "...不过场合有点不对!";
+	mes "玩得愉快一点吧!";
+	mes "不过不要找人家麻烦喔~";
+	close;
+}
+
+jawaii_in,30,100,4	script	服务生#jaw8	724,{
+
+	mes "[服务生 寇亚]";
+	mes "欢迎来到爪哇咿酒店~!";
+	next;
+	mes "[服务生 寇亚]";
+	mes "就像小说少了些章节";
+	mes "看起来一点都不协调，";
+	mes "快点找到另一半之后，才会玩得愉快吧~";
+	close;
+}
+
+jawaii,213,167,5	script	夏威夷宣传员	816,{
+	mes "[夏威夷宣传员]";
+	mes "我们的夏威夷很漂亮的，很多人都来这里观光游玩";
+	mes "嗯，很浪漫的一旅游圣地，炎热的夏天，来这里一定不错的!!";
+	next;
+	mes "[夏威夷宣传员]";
+	mes "有很多人喜欢在这里向他/她喜欢的人，表达自己的爱意，呵呵!!";
+	mes "丘比特之神已经准备好了哟!!";
+	mes "至于位置的介绍，嘻嘻~~~~~";
+	mes "留给你自己去找寻喽~~";
+	close;
+}
+jawaii_in,85,119,4	script	侍者	822,{
+	mes "[侍者]";
+	if (sex == 0) mes "尊敬的女士，您要出去么？";
+	if (sex == 1) mes "尊敬的先生，您要出去么？";
+	next;
+	menu "是的，请开门",Case1,"不，只是来这透透气",Case2;
+	Case1:
+		warp "jawaii",112,187;
+		close;
+	Case2:
+	mes "[侍者]";
+	mes "非常愿意为您效劳！！";
+	close;
+}
+jawaii_in,131,111,5	script	侍者#jawa	822,{
+	mes "[侍者]";
+	if (sex == 0) mes "尊敬的女士，您要出去么？";
+	if (sex == 1) mes "尊敬的先生，您要出去么？";
+	next;
+	menu "是的，请开门",Case1,"不，只是来这透透气",Case2;
+	Case1:
+		warp "jawaii",116,176;
+		close;
+	Case2:
+	mes "[侍者]";
+	mes "非常愿意为您效劳！！";
+	close;
+}
+jawaii_in,112,63,4	script	侍者#jawa2	822,{
+	mes "[侍者]";
+	if (sex == 0) mes "尊敬的女士，您要出去么？";
+	if (sex == 1) mes "尊敬的先生，您要出去么？";
+	next;
+	menu "是的，请开门",Case1,"不，只是来这透透气",Case2;
+	Case1:
+		warp "jawaii",113,196;
+		close;
+	Case2:
+	mes "[侍者]";
+	mes "非常愿意为您效劳！！";
+	close;
+}
+jawaii_in,24,92,7	script	侍者#jawa3	822,{
+	mes "[侍者]";
+	if (sex == 0) mes "尊敬的女士，您要出去么？";
+	if (sex == 1) mes "尊敬的先生，您要出去么？";
+	next;
+	menu "是的，请开门",Case1,"不，只是来这透透气",Case2;
+	Case1:
+		warp "jawaii",178,170;
+		close;
+	Case2:
+	mes "[侍者]";
+	mes "非常愿意为您效劳！！";
+	close;
+}
+jawaii_in,88,79,3	script	侍者#jawa4	822,{
+	mes "[侍者]";
+	if (sex == 0) mes "尊敬的女士，您要出去么？";
+	if (sex == 1) mes "尊敬的先生，您要出去么？";
+	next;
+	menu "是的，请开门",Case1,"不，只是来这透透气",Case2;
+	Case1:
+		warp "jawaii",136,198;
+		close;
+	Case2:
+	mes "[侍者]";
+	mes "非常愿意为您效劳！！";
+	close;
+}
+
+//草叶NPC
+//jawaii,279,127,7	script	失恋的流氓	779,{
+//        mes "[失恋的流氓]";
+//        mes "随风漂荡，昏昏沉沉……";
+//        mes "我爱的人儿不见了……";
+//	next;
+//	if (sex == 0) goto LG;
+//	close;
+//	end;
+//LG:	getitem 2270,1;
+//	close;
+//	end;
+//}
+//花叶NPC
+//lou_in01,32,165,5	script	失恋的铁匠	726,{
+//        mes "[失恋的铁匠]";
+//        mes "小小的花叶，含在嘴里会让人有幸福浪漫的感觉";
+//        mes "每当手中拿起他送我的这朵咬花，我就回想和他在一起的日子。";
+//	next;
+//	if (sex == 1) goto LP;
+//	close;
+//LP:	getitem 2269,1;
+//	close;
+//	end;
+//}
+//酒店
+//状态测试
+
+jawaii,195,216,1	script	酒馆侍者	724,{
+	mes "[酒馆侍者]";
+	mes "欢迎到酒店里休息！！";
+	emotion 21;
+	close;
+}
+
+jawaii,194,137,6	script	新婚纪念	71,{
+	mes "[新婚纪念]";
+	mes "虽然不可能再举行一次婚礼了，但再次打开相本的话，即可又找回新婚的记忆了。";
+	mes "我已经在这里久候各位的光临了。";
+	next;
+	mes "[新婚纪念]";
+	mes "尽管时光飞逝，也带不走美好的记忆。第一次穿礼服的感觉。这感觉真珍贵。";
+	next;
+	mes "[新婚纪念]";
+	mes "再也没有像夏威夷一样好的蜜月旅行地了。如果以前就来过这，应该会有许多美好的回忆吧？";
+	next;
+	mes "[新婚纪念]";
+	mes "名字嘛…”新婚的记忆”！！那是因为魔法的关系使得可再次感受到新婚的气息。价钱是50000Zeny…觉得如何呢？";
+	next;
+	mes "[新婚纪念]";
+	menu "我想要~",Buy,"没事.",Quit;
+Buy:
+	if (zeny>50000) {getitem 681,1;
+	set Zeny,Zeny-50000;}
+	close;
+Quit:
+	mes "[新婚纪念]";
+	mes "嗯，那就请好好观光吧.";
+	close;
+}

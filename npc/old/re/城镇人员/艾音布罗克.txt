@@ -1,0 +1,811 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 艾音布罗克 城镇脚本 -
+//========================
+//= 版本：1.6
+//========================
+
+
+//== some boards, signs ======================
+einbroch,220,208,5	script	标示牌	858,{
+	mes "[武器店]";
+	close;
+}
+
+einbroch,183,174,5	script	标示牌#einb	858,{
+	mes "东  边 - 武器店,饭店";
+	mes "南  边 - 工厂";
+	mes "西南边 - 飞空艇 维修场,研究所";
+	mes "西北边 - 机场";
+	close;
+}
+
+einbroch,244,255,5	script	标示牌#einb2	858,{
+	mes " ";
+	mes "火车站";
+	close;
+}
+	
+einbroch,68,206,5	script	标示牌#einb3	858,{
+	mes " ";
+	mes "机场";
+	close;
+}
+	
+einbroch,162,256,5	script	标示牌#einb4	858,{
+	mes "东  边 - 火车站";
+	mes "东南边 - 饭店";
+	mes "南  边 - 武器店, 工厂";
+	mes "西南边 - 机场, 飞空艇 维修场, 商店, 研究所 ";
+	close;
+}
+
+einbroch,235,141,5	script	标示牌#einb5	858,{
+	mes "西南边 - 飞空艇 维修场,研究所";
+	mes "西北边 - 机场";
+	mes "北  边 - 武器店,饭店,火车站";
+	close;
+}
+
+//===== Town NPC ===========================================
+function	script	Ein_Tower	{
+	mes "["+ @Tower_Name$ +"]";
+	mes "你好吗~这里是艾音布罗克,";
+	mes "我是了望台的服务人员"+ @Tower_Name$;
+	mes "我的工作是在了望台协助顾客";
+	mes "并将艾音布罗克的美景";
+	mes "一览无遗的提供给顾客之服务";
+	next;
+	mes "["+ @Tower_Name$ +"]";
+	mes "由于本了望台可以将四周的美景";
+	mes "尽收眼底,所以已变成";
+	mes "朋友和情侣们的";
+	mes "热门约会地点";
+	next;
+	mes "["+ @Tower_Name$ +"]";
+	mes "使用了望台的费用是10金币,";
+	mes "如果使用本了望台正在举办的";
+	mes "促销活动之苹果套餐的话,";
+	mes "将可以利用了望台和";
+	mes "获得新鲜苹果的双重享受呢";
+	next;
+	switch (select("我要使用一般的:我要使用苹果套餐:取消")) {
+	case 1:
+		if(Zeny < 10) {
+			mes "["+ @Tower_Name$ +"]";
+			mes "十分抱歉,你没有带够资金.";
+			close;
+		}
+		set Zeny,Zeny-10;
+		break;
+	case 2:
+		if(Zeny < 20) {
+			mes "["+ @Tower_Name$ +"]";
+			mes "十分抱歉，你没有带够资金.";
+			close;
+		}
+		set Zeny,Zeny - 20;
+		mes "["+ @Tower_Name$ +"]";
+		mes "这是新鲜的苹果.请你慢用.";
+		next;
+		getitem 512,1;
+		break;
+	case 3:
+		mes "["+ @Tower_Name$ +"]";
+		mes "是的!!我知道了";
+		mes "如果您下次有使用";
+		mes "的机会.欢迎您再来";
+		close;
+	}
+	mes "["+ @Tower_Name$ +"]";
+	mes "感谢您的使用";
+	mes "首先在使用之前";
+	mes "为了旅客的安全,";
+	mes "先进行安全检查";
+	next;
+	mes "["+ @Tower_Name$ +"]";
+	mes "你已经通过安检了,";
+	mes "那么我就直接";
+	mes "带您到了望台啰";
+	close2;
+	warp "einbroch",174,204;
+	end;
+}
+	
+einbroch,176,172,5	script	肯科	855,{
+	set @Tower_Name$,"肯科";
+	callfunc "Ein_Tower";
+	end;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "肯科";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+}
+
+einbroch,218,198,5	script	马克	855,{
+	set @Tower_Name$,"马克";
+	callfunc "Ein_Tower";
+	end;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "马克";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+}
+
+einbroch,174,228,5	script	欧布鲁	855,{
+	set @Tower_Name$,"欧布鲁";
+	callfunc "Ein_Tower";
+	end;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "欧布鲁";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+	
+einbroch,175,196,5	script	莫里	854,{
+	mes "[莫里]";
+	mes "您好吗~";
+	mes "我是了望台的管理服务员莫里,";
+	next;
+	mes "[莫里]";
+	mes "想要再下去的话";
+	mes "就可以来找我啰";
+	mes "请问你结束了望台的参观,";
+	mes "要准备下去了吗?";
+	next;
+	if(select("是的,我要下去了.:不是,我还要留在这参观.")==2) {
+		mes "[莫里]";
+		mes "是的!!我知道了,";
+		mes "祝您玩的愉快";
+		close;
+	}
+	mes "[莫里]";
+	mes "是的!!我知道了";
+	mes "我现在马上把您";
+	mes "移动到下面去";
+	mes "那么欢迎您";
+	mes "下次再利用啰";
+	close2;
+	switch(rand(1,3)){
+	case 0:
+		warp "einbroch",218,196;
+		end;
+	case 1:
+		warp "einbroch",178,172;
+		end;
+	case 2:
+		warp "einbroch",172,228;
+		end;
+	}
+
+OnHide:
+	specialeffect 16;
+	disablenpc "莫里";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+	
+einbroch,208,208,3	script	凯森波斯	850,{
+	mes "[凯森波斯]";
+	mes "啊啊，卡拉小姐真的有如";
+	mes "艾音布罗克的女神般的存在，";
+	mes "她那清脆的声音，和蔼的";
+	mes "心肠，天使般的灿烂笑容...";
+	mes "优点不止这些呢";
+	next;
+	mes "[凯森波斯]";
+	mes "家里也很富裕，简直是";
+	mes "十全十美的存在啊？";
+	mes "不知道哪一个男孩能娶倒她";
+	mes "真是一辈子修来的福气呢";
+	next;
+	mes "[凯森波斯]";
+	mes "你问我卡拉小姐住哪里啊？";
+	mes "我告诉你先从这里往北边走";
+	mes "再转往西边直~直走后，";
+	mes "再转往南边所看到的房屋";
+	mes "就是卡拉小姐的家啰";
+	close;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "凯森波斯";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+
+einbroch,232,255,5	script	卡吾罗波	847,{
+	mes "[卡吾罗波]";
+	mes "咳咳!咳咳..有发展是不错的啦!";
+	mes "可是空气污染的太严重了...";
+	mes "即使空气变好了像我这样的老人家,";
+	mes "连呼吸都有困难的,";
+	mes "更何况是这么糟的空气..";
+	next;
+	mes "[卡吾罗波]";
+	mes "我才不管什么发展之类的..";
+	mes "我只求能在空气好的又幽静地地方";
+	mes "安渡余生呢";
+	next;
+	mes "[卡吾罗波]";
+	mes "不过我也百般无奈啊,我生活在这里";
+	mes "就像故乡一样了,更何况没有";
+	mes "搬迁的条件,...哼";
+	mes "我也只能在这里,";
+	mes "忍受着呼吸困难的痛苦";
+	mes "等待归西罢了";
+	next;
+	mes "[卡吾罗波]";
+	mes "咳咳...咳咳...";
+	close;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "卡吾罗波";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+
+einbroch,259,327,5	script	乘客	846,{
+	mes "[乘客]";
+	mes "咳咳咳咳!";
+	mes "空气这么差,像我这样的老人家要怎么生活呢,这种地方竟然还有人住了几十年还真不简单,咳咳..";
+	next;
+	mes "[乘客]";
+	mes "我是艾音贝赫的居民,我们住的村落空气也不算好,不过这里是在太严重了!咳咳咳咳";
+	close;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "乘客";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+}
+
+einbroch,232,272,3	script	火车站职员::EinbrochTrain	852,{
+	mes "[职员]";
+	mes "欢迎来到火车站.";
+	mes "通往艾音贝赫的火车运作中";
+	mes "所以你即使错过了上一班车也不用着急.";
+	next;
+	mes "[职员]";
+	mes "到艾音贝赫的车票价格是200 zeny.";
+	mes "你需要购买火车票吗?";
+	next;
+	switch (select("是的.我要买.:不,我还不用走.:关于这里的环境...")) {
+	case 1:
+		if(Zeny < 200) {
+			mes "[职员]";
+			mes "十分抱歉";
+			mes "你没足够的资金购买车票.";
+			close;
+		}
+		mes "[职员]";
+		mes "谢谢光临";
+		mes "祝你旅途愉快";
+		close2;
+		set Zeny,Zeny - 200;
+		warp "einbech",43,215;
+		end;
+	case 2:
+		mes "[职员]";
+		mes "好的.我知道了.希望你在艾音布罗克过得开心.";
+		close;
+	case 3:
+		mes "[职员]";
+		mes "艾音布罗克的空气污染是由于那些无耻的工厂做成的.";
+		next;
+		mes "[职员]";
+		mes "如果你在艾音布罗克听到烟雾警告,";
+		mes "你最好马上找个地方避难";
+		close;
+	}
+OnHide:
+	specialeffect 16;
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+	
+einbroch,252,301,3	duplicate(EinbrochTrain)	火车站 工作人员#einb	852
+
+einbroch,228,121,5	script	村落青年	855,{
+	mes "[村落青年]";
+	mes "请问一下，这里是哪里呢？";
+	mes "这里是机场没错吧？对吧？";
+	mes "我是来接父母的，他们有点晚到耶";
+	next;
+	mes "[村落青年]";
+	mes "因为我搬来这里没多久，";
+	mes "所以完全不认得路啊，到底这里为什么林";
+	mes "立这么多的高楼大厦啊！！";
+	next;
+	mes "[村落青年]";
+	mes "对我这样的路痴简直就是毒药啊，毒药！";
+	close;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "村落青年";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+	
+einbroch,229,149,3	script	斯力克	854,{
+	mes "[斯力克]";
+	mes "我们村落也有火车";
+	mes "很惊讶吧！科学的胜利，";
+	mes "应该就是指这个吧，";
+	mes "什么？你问我它是连到那里嘛？...";
+	next;
+	mes "[斯力克]";
+	mes "...这个嘛，我还没有搭乘过啊，";
+	mes "所以不太清楚耶";
+	next;
+	mes "[斯力克]";
+	mes "我身为一位";
+	mes "能享用有火车的村民";
+	mes "就倍感荣耀耶，";
+	mes "会不由自主地骄傲起来呢？";
+	close;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "斯力克";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+
+einbroch,236,191,3	script	村落青年#einbroch1	855,{
+	mes "[村落青年]";
+	mes "由于这村落工厂太多了，";
+	mes "所以空气才会不得以不好啊";
+	next;
+	mes "[村落青年]";
+	mes "我是飞空艇的修理工人，";
+	mes "我整天被油墨折磨忙翻了，";
+	mes "下班后又要人受烟雾的煎熬，";
+	mes "一整天让我头疼欲裂啊";
+	next;
+	mes "[村落青年]";
+	mes "今天天空也是呈现深红色的，";
+	mes "我有种不祥的预感，";
+	mes "此时像我一样能预知准备口罩的人，才是";
+	mes "真正帅气的人";
+	next;
+	mes "[村落青年]";
+	mes "您也为了健康着想的话，";
+	mes "最好随身携带一个口罩吧";
+	close;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "村落青年#einbroch1";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+
+ein_in01,31,217,3	script	善达特	851,{
+	mes "[善达特]";
+	mes "本工厂的物资确实很缺乏,";
+	mes "目前还能正常运转已经是奇迹了";
+	next;
+	mes "[善达特]";
+	mes "听说以前有人把击败魔物所得到的战利品,";
+	mes "充作工厂的物质...";
+	mes "不晓得是不是真的";
+	next;
+	mes "[善达特]";
+	mes "假如这传闻是属实的话...";
+	mes "唉哟,即使是属实的也莫可奈何啊,";
+	mes "我们工厂也没有可以对抗魔物的强人啊";
+	next;
+	mes "[善达特]";
+	mes "我还是乖乖的去工作了....咻物呜";
+	close;
+}
+
+ein_in01,36,204,3	script	伦琣	851,{
+	mes "[伦琣]";
+	mes "工厂能赚钱固然是好...";
+	mes "不过我也有口难言";
+	mes "令人非常担心喔";
+	next;
+	mes "[伦琣]";
+	mes "嗯?你问我担心什么啊?";
+	mes "啊...就是空气污染啰,";
+	mes "由于排除可疑烟雾的机器数量可观,";
+	mes "加上一整天不停地在运转,";
+	mes "所以空气自然而然就差啰";
+	next;
+	mes "[伦琣]";
+	mes "本村落的空气一直就不好";
+	mes "如今这样一来就更是雪上加霜了...";
+	mes "实在是让我有心忡忡啊";
+	next;
+	mes "[伦琣]";
+	mes "咻呜...不知道有没有";
+	mes "能解决的办法呢?";
+	close;
+}
+
+ein_in01,49,202,3	script	杜普	851,{
+	mes "[杜普]";
+	mes "果然机器很方便,";
+	mes "人类做起来很幸苦的工作";
+	mes "机器就轻轻松松的完成了,";
+	mes "这不就是所谓先进文明的好处吗?";
+	next;
+	mes "[杜普]";
+	mes "不过想要制造一台这样的机械,";
+	mes "需要投入很多的资金＆心血吧...";
+	mes "其实这也不关我的事情啦...";
+	next;
+	mes "[杜普]";
+	mes "我的立场只是希望那机器能够一切顺利的运转,";
+	mes "那就万事大吉,万事大吉了!";
+	close;
+}
+
+ein_in01,48,220,3	script	罗武	851,{
+	mes "[罗武]";
+	mes "……………………";
+	mes "……………………";
+	mes "……………………";
+	next;
+	mes "[罗武]";
+	mes "……………………";
+	mes "……………………";
+	mes "……………………";
+	next;
+	mes "[罗武]";
+	mes "上班时间禁止聊天,";
+	mes "如果聊天被砍培堤主任发现会被责骂的";
+	next;
+	mes "[罗武]";
+	mes "唉唷,是我多嘴了,";
+	mes "抱歉请你继续走你的路吧";
+	close;
+}
+
+ein_in01,43,253,4	script	坎培堤	852,{
+	mes "[坎培堤]";
+	mes "不要偷懒快点给我工作,";
+	mes "主要发现有人偷懒";
+	mes "我会随时过去给他严厉的处罚的";
+	next;
+	mes "[坎培堤]";
+	mes "听懂了吗,你也赶快回去";
+	mes "继续作你的事情吧,";
+	mes "...可是你,并不是我们工厂的人啊?";
+	mes "你不要游手好闲的在工厂里面走来走去好吗,";
+	mes "请你出去";
+	next;
+	mes "[坎培堤]";
+	mes "是谁胆敢让外人进来的,";
+	mes "这些家伙我得给他们颜色瞧瞧";
+	close;
+}
+
+ein_in01,68,209,4	script	卡休蓝切	852,{
+	mes "[卡休蓝切]";
+	mes "我是负责这里的警卫，";
+	mes "这里不是像你一般人可以进来的地方，";
+	mes "你并没有来这里的理由";
+	mes "请你尽快离开这里！";
+	if (EinFactory > 0){
+		next;
+		mes "[卡休蓝切]";
+		mes "Oh? Mr. Zelmeto asked you to help out?";
+		mes "In that case excuse me.";
+		close;
+	}
+	close2;
+	warp "einbroch",179,63;
+	end;
+}
+
+ein_in01,113,211,3	script	塔因斯	851,{
+	mes "[塔因斯]";
+	mes "赚钱啊！我是个爱钱如命的";
+	mes "我喜欢赚钱";
+	mes "你也要吗？但是我不会给你的";
+	mes "哈哈哈哈！";
+	next;
+	mes "[塔因斯]";
+	mes "如果像我这样继续努力";
+	mes "你也会赚到很多钱";
+	mes "虽然工作很辛苦，";
+	mes "但是想到能赚的道钱就太开心了！";
+	mes "哈哈哈哈......";
+	close;
+}
+
+ein_in01,84,218,3	script	慈恩	851,{
+	mes "[慈恩]";
+	mes "我的梦想本来是冒险家，";
+	mes "可是现在落得只是一个工厂工人了...";
+	mes "真是颇感无奈啊？";
+	mes "真的,我小时候都会沉寂于想之中呢";
+	next;
+	mes "[慈恩]";
+	mes "目前的生活还算是差强人意啦，";
+	mes "虽然只是个单纯的劳动，";
+	mes "但我想到我做出来的某样东西，";
+	mes "如果受到使用人的喜欢，";
+	mes "而且广泛使用的话...";
+	mes "我就心满意足了";
+	next;
+	mes "[慈恩]";
+	mes "不过这并不是我真正想要的，";
+	mes "哽...而后如果还有机会的话，";
+	mes "我一定要去冒险！";
+	next;
+	mes "[慈恩]";
+	mes "冒险应该是很不错的感觉吧？";
+	mes "终有一天我也变成冒险家之后，";
+	mes "能在冒险的陆上和你见面该有多好啊，";
+	mes "你说对不对啊？";
+	close;
+}
+
+ein_in01,85,261,3	script	森霖	851,{
+	mes "[森霖]";
+	mes "我是负责管理这里熔岩炉中岩浆状况的工作，";
+	mes "虽然工作不算很忙碌，但需要多费心思";
+	mes "所以精神颇疲惫的工作";
+	next;
+	mes "[森霖]";
+	mes "不过这份工作还不错啦，";
+	mes "托沃的福,我们工厂里的劳工同事们，";
+	mes "可以平平安安的工作，";
+	mes "每次想起会让我";
+	mes "倍感温馨又自豪呢";
+	next;
+	mes "[森霖]";
+	mes "来来，让一下离它远一点！";
+	mes "万一靠近被滚烫的岩浆溅到烫伤的话，";
+	mes "我可不负责喔！";
+	close;
+}
+
+ein_in01,64,271,3	script	潘斯达仁	851,{
+	mes "[潘斯达仁]";
+	mes "热滚滚的岩浆，";
+	mes "望着他就会不由自主的感到心旷神怡啊？";
+	mes "可以感觉到能融化世界上任何困难似的东西";
+	next;
+	mes "[潘斯达仁]";
+	mes "如果有一天当这些岩浆铺满了道路时....哈哈哈，";
+	mes "啊，我又在胡言乱语了，";
+	mes "开玩笑的，忘了它吧";
+	close;	
+}
+
+ein_in01,33,275,9	script	裴达延	848,{
+	mes "[裴达延]";
+	mes "真是的！！这里的工作既无趣，";
+	mes "上司又爱找我麻烦，";
+	mes "这是什么吗！我可不是为了做这种工作才来到这村落的呢！";
+	next;
+	mes "[裴达延]";
+	mes "只是还能赚点钱，";
+	mes "所以也不能离开...哎呦";
+	mes "气死我了！我得去敲打墙壁发泄一下，";
+	mes "才能冷静下来";
+	next;
+	mes "[裴达延]";
+	mes "嘿~咻~！嘿~咻~！锵锵！";
+	close;
+}
+
+ein_in01,87,237,3	script	娣洁	850,{
+	mes "[娣洁]";
+	mes "你问我为什么身为一位女性，";
+	mes "却做男生也倍感吃力的工厂粗活吗！";
+	mes "这不是理所当然的嘛？都怪我丈夫";
+	mes "没办法固定赚钱回来的";
+	mes "缘故，哼哼！";
+	next;
+	mes "[娣洁]";
+	mes "你问我丈夫是谁啊？还会是";
+	mes "谁呀...就是躺在那边";
+	mes "没出息的叫做葛新的";
+	mes "男子！哎咻，真没出息！";
+	next;
+	mes "[娣洁]";
+	mes "为了谋求更高的地位";
+	mes "和赚取更多的财富，";
+	mes "我一秒都不能闲！";
+	mes "我要拚命努力赚钱";
+	mes "一定要变成大富翁啊！";
+	next;
+	mes "[娣洁]";
+	mes "连这种想法都不能理解的";
+	mes "没出息的男子家伙...";
+	mes "身为太太的我也要多加油啊，";
+	mes "不然怎么办呢？吱吱吱...";
+	next;
+	mes "[娣洁]";
+	mes "请你，待一会经过时";
+	mes "帮我用里踹他一下";
+	mes "屁股吧，他到底";
+	mes "不打算起来啊";
+	close;
+}
+
+ein_in01,103,238,9	script	葛新	849,{
+	mes "[葛新]";
+	mes "嗯嗯嗯...累死我了,";
+	mes "我想认活着应该,";
+	mes "适得其所以然就好了,...";
+	mes "何必要强求财富＆名誉呢?嗯嗯...";
+	next;
+	mes "[葛新]";
+	mes "我觉得目前过得也不错啊,";
+	mes "但太太却不认为一直吵着说要一起工作...";
+	mes "";
+	mes "究竟要如何执着于财富和名誉呢...";
+	next;
+	mes "[葛新]";
+	mes "不过,不能理解就算了,";
+	mes "更重要的问题是,";
+	mes "因为我全身无力而起不来嘛";
+	next;
+	mes "葛新[]";
+	mes "哦哦哦...救命啊";
+	mes "钱固然好但是也得让我休息吧";
+	close;
+}
+
+einbroch,188,72,3	script	凯内斯厄茨	855,{
+	mes "[凯内斯厄茨]";
+	mes "呼呼呼...向天空耸立的";
+	mes "那些工厂的烟囱!机器运转";
+	mes "发出的噪音!虽然空气受到";
+	mes "污染,但是想到这些所带来的";
+	mes "财富,还是很划得来呢";
+	next;
+	mes "[凯内斯厄茨]";
+	mes "在这个世界金钱是万能的,";
+	mes "看到隔壁村落穷困潦倒的样子,";
+	mes "我还是不想失去钱啊";
+	close;
+
+OnHide:
+	specialeffect 16;
+	disablenpc "凯内斯厄茨";
+	end;
+
+OnUnhide:
+	misceffect 215;
+	end;
+
+}
+
+ein_in01,206,224,2	script	Hotel Employee	855,{
+	mes "[Hotel Employee]";
+	mes "Good day, welcome to the";
+	mes "Einbroch Hotel. The staff is";
+	mes "always striving to accomodate";
+	mes "our guests with the highest";
+	mes "standards in cleanliness,";
+	mes "service and convenience~";
+	next;
+	if (kain_ticket == 5) {
+		mes "[Hotel Employee]";
+		mes "Are you looking";
+		mes "for Mr. Defru Ark?";
+		mes "Let me see...";
+		next;
+		mes "[Hotel Employee]";
+		mes "Here we are...";
+		mes "He's staying";
+		mes "in Room 201.";
+		close;
+	}
+	switch (select("Save:Rest - 5,000 zeny:Cancel")) {
+		case 1:
+			savepoint "ein_in01",199,224;
+			mes "[Hotel Employee]";
+			mes "Your Respawn Point";
+			mes "has been saved here";
+			mes "in the Einbroch Hotel.";
+			mes "Thank you, and please";
+			mes "come again.";
+			next;
+			mes "[Hotel Employee]";
+			mes "Have a good day.";
+			close;
+		case 2:
+			mes "[Hotel Employee]";
+			if (Zeny < 5000){
+				mes "I'm sorry but";
+				mes "you don't seem";
+				mes "to have enough zeny.";
+				close;
+			}
+			mes "Thank you.";
+			mes "Please enjoy";
+			mes "your rest~";
+			close2;
+			set zeny,zeny - 5000;
+			warp "ein_in01",272,167;
+			percentheal 100,100;
+			end;
+		case 3:
+			mes "[Hotel Employee]";
+			mes "Thank you and";
+			mes "please come again~";
+			close;
+	}
+}
+
+ein_in01,21,147,4	script	魅卡斯	853,3,3,{
+	end;
+
+OnTouch:
+	mes "[魅卡斯]";
+	mes "How dare you...";
+	mes "A vagabond like";
+	mes "you setting foot";
+	mes "into my home!?";
+	mes "Unthinkable!";
+	next;
+	mes "[魅卡斯]";
+	mes "Leave immediately";
+	mes "before I report you";
+	mes "to the authorities";
+	mes "for trespassing!";
+	close2;
+	warp "einbroch",112,245;
+	end;
+}

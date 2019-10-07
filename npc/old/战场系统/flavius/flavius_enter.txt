@@ -1,0 +1,374 @@
+//===== rAthena Script ======================================= 
+//= BattleGround System - Flavius Entrance NPCs
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena 1.0
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Flavius Battleground Entrance NPCs
+//===== Additional Comments: ================================= 
+//= 1.0 First Version.
+//============================================================
+
+// Flavius Officer - Guillaume
+//============================================================
+bat_room,133,178,5	script	威廉王子第二集团军#01a	418,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下! ! -";
+		mes "- 目前你携带 -";
+		mes "- 太多的物品。 -";
+		mes "- 请再试一次 -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[威廉王子第二集团军]";
+	mes "尊敬的冒险家，您是否愿意加入我们？";
+	next;
+	switch(select("我想加入你的军队!:结束谈话")) {
+	case 1:
+		if ((Class == Job_Novice) || (BaseClass == Job_Supernovice)) {
+			mes "[威廉王子第二集团军]";
+			mes "我很高兴，你想和我们一起战斗，但我很抱歉: 我不能让你这样的新手死在残酷的战场.";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[威廉王子第二集团军]";
+				mes "我很高兴，你想和我们一起战斗，但很抱歉: 我不能让你这样的新手死在残酷的战场.";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[威廉王子第二集团军]";
+					mes "你似乎刚刚从战场上归来.";
+					mes "目前暂时不能进入。去休息吧，让其他的士兵去战斗！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b01");
+					if (.@mapcount2 > 0) {
+						mes "[威廉王子第二集团军]";
+						mes "我收到一份通知说一个精锐部队已被派往战场的战斗.";
+						mes "你为什么不去等待一段时间？我建议你休息一会在来.";
+					}
+					else {
+						if ($@FlaviusBG1 > 0) {
+							mes "[威廉王子第二集团军]";
+							mes "一个精英已经被派往战场.";
+							mes "你为什么不去等待一段时间？我建议你休息一会在来.";
+						}
+						else {
+							mes "[威廉王子第二集团军]";
+							mes "你准备好战斗了吗！";
+							mes "让敌人看看我们的实力！";
+							mes "今天，让我们的鲜血挥洒在战场上！";
+							close2;
+							warp "bat_room",85,223;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[威廉王子第二集团军]";
+		mes "今天，我们一定会胜利！";
+		break;
+	}
+	close;
+}
+
+bat_room,133,121,1	script	恺撒王子第二集团军#01b	414,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一分钟！！ -";
+		mes "- 你目前携带 -";
+		mes "- 太多的物品。-";
+		mes "- 请再试一次 -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[恺撒王子第二集团军]";
+	mes "尊敬的冒险家，您是否愿意加入我们？";
+	next;
+	switch(select("我想加入你的军队!:结束谈话")) {
+	case 1:
+		if ((Class == Job_Novice) || (BaseClass == Job_Supernovice)) {
+			mes "[恺撒王子第二集团军]";
+			mes "我很高兴，你想和我们一起战斗，但我很抱歉: 我不能让你这样的新手死在残酷的战场.";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[恺撒王子第二集团军]";
+				mes "我很高兴，你想和我们一起战斗，但很抱歉: 我不能让你这样的新手死在残酷的战场.";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[恺撒王子第二集团军]";
+					mes "你似乎刚刚从战场上归来.";
+					mes "目前暂时不能进入。去休息吧，让其他的士兵去战斗！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b01");
+					if (.@mapcount2 > 0) {
+						mes "[恺撒王子第二集团军]";
+						mes "我收到一份通知说一个精锐部队已被派往战场的战斗.";
+						mes "你为什么不去等待一段时间？我建议你休息一会在来.";
+					}
+					else {
+						if ($@FlaviusBG1 > 0) {
+							mes "[恺撒王子第二集团军]";
+							mes "一个精英已经被派往战场.";
+							mes "你为什么不去等待一段时间？我建议你休息一会在来.";
+						}
+						else {
+							mes "[恺撒王子第二集团军]";
+							mes "你准备好战斗了吗！";
+							mes "让敌人看看我们的实力！";
+							mes "今天，让我们的鲜血挥洒在战场上！";
+							close2;
+							warp "bat_room",85,207;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[恺撒王子第二集团军]";
+		mes "今天，我们一定会胜利！";
+		break;
+	}
+	close;
+}
+
+bat_room,135,178,5	script	威廉王子皇家卫队#3	417,{
+	mes "[威廉王子皇家卫队]";
+	mes "大战的目标，摧毁敌人的晶体。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "晶体受特殊的路障，不能被直接攻击摧毁。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "但可以摧毁敌人的其他军事设施。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "晶体是免疫的每一种技能；你的物理攻击就是摧毁敌人晶体的唯一方式。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "请记住：当你加入战斗，你将收到一个令牌，指示所设定的时间，你不能参加其他战斗的同类型。";
+	mes "你可以通过按下Alt + U键检查时间。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "你准备好战斗了吗？在我旁边报名即刻参战！";
+	close;
+}
+
+bat_room,151,178,5	script	威廉王子皇家卫队#4	417,{
+	mes "[威廉王子皇家卫队]";
+	mes "大战的目标，摧毁敌人的晶体。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "晶体受特殊的路障，不能被直接攻击摧毁。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "但可以摧毁敌人的其他军事设施。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "晶体是免疫的每一种技能；你的物理攻击就是摧毁敌人晶体的唯一方式。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "请记住：当你加入战斗，你将收到一个令牌，指示所设定的时间，你不能参加其他战斗的同类型。";
+	mes "你可以通过按下Alt + U键检查时间。";
+	next;
+	mes "[威廉王子皇家卫队]";
+	mes "你准备好战斗了吗？在我旁边报名即刻参战！";
+	close;
+}
+
+bat_room,135,121,1	script	恺撒王子神职亲卫#3	413,{
+	mes "[恺撒王子神职亲卫]";
+	mes "大战的目标，摧毁敌人的晶体。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "晶体受特殊的路障，不能被直接攻击摧毁。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "但可以摧毁敌人的其他军事设施。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "晶体是免疫的每一种技能；你的物理攻击就是摧毁敌人晶体的唯一方式。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "请记住：当你加入战斗，你将收到一个令牌，指示所设定的时间，你不能参加其他战斗的同类型。";
+	mes "你可以通过按下Alt + U键检查时间。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "你准备好战斗了吗？在我旁边报名即刻参战！";
+	close;
+}
+
+bat_room,151,121,1	script	恺撒王子神职亲卫#4	413,{
+	mes "[恺撒王子神职亲卫]";
+	mes "大战的目标，摧毁敌人的晶体。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "晶体受特殊的路障，不能被直接攻击摧毁。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "但可以摧毁敌人的其他军事设施。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "晶体是免疫的每一种技能；你的物理攻击就是摧毁敌人晶体的唯一方式。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "请记住：当你加入战斗，你将收到一个令牌，指示所设定的时间，你不能参加其他战斗的同类型。";
+	mes "你可以通过按下Alt + U键检查时间。";
+	next;
+	mes "[恺撒王子神职亲卫]";
+	mes "你准备好战斗了吗？在我旁边报名即刻参战！";
+	close;
+}
+
+// Flavius Officer - Croix
+//============================================================
+bat_room,148,178,5	script	威廉王子第四集团军#02a	418,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下! ! -";
+		mes "- 目前你携带 -";
+		mes "- 太多的物品。 -";
+		mes "- 请再试一次 -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[威廉王子第四集团军]";
+	mes "尊敬的冒险家，您是否愿意加入我们？";
+	next;
+	switch(select("我想加入你的军队!:结束谈话")) {
+	case 1:
+		if ((Class == Job_Novice) || (BaseClass == Job_Supernovice)) {
+			mes "[威廉王子第四集团军]";
+			mes "我很高兴，你想和我们一起战斗，但我很抱歉: 我不能让你这样的新手死在残酷的战场.";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[威廉王子第四集团军]";
+				mes "我很高兴，你想和我们一起战斗，但很抱歉: 我不能让你这样的新手死在残酷的战场.";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[威廉王子第四集团军]";
+					mes "你似乎刚刚从战场上归来.";
+					mes "目前暂时不能进入。去休息吧，让其他的士兵去战斗！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b02");
+					if (.@mapcount2 > 0) {
+						mes "[威廉王子第四集团军]";
+						mes "我收到一份通知说一个精锐部队已被派往战场的战斗.";
+						mes "你为什么不去等待一段时间？我建议你休息一会在来.";
+					}
+					else {
+						if ($@FlaviusBG2 > 0) {
+							mes "[威廉王子第四集团军]";
+							mes "一个精英已经被派往战场.";
+							mes "你为什么不去等待一段时间？我建议你休息一会在来.";
+						}
+						else {
+							mes "[威廉王子第四集团军]";
+							mes "你准备好战斗了吗！";
+							mes "让敌人看看我们的实力！";
+							mes "今天，让我们的鲜血挥洒在战场上！";
+							close2;
+							warp "bat_room",141,224;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[威廉王子第四集团军]";
+		mes "今天，我们一定会胜利！";
+		break;
+	}
+	close;
+}
+
+bat_room,148,121,1	script	恺撒王子第四集团军#02b	414,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下! ! -";
+		mes "- 目前你携带 -";
+		mes "- 太多的物品。 -";
+		mes "- 请再试一次 -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[恺撒王子第四集团军]";
+	mes "尊敬的冒险家，您是否愿意加入我们？";
+	next;
+	switch(select("我想加入你的军队!:结束谈话")) {
+	case 1:
+		if ((Class == Job_Novice) || (BaseClass == Job_Supernovice)) {
+			mes "[恺撒王子第四集团军]";
+			mes "我很高兴，你想和我们一起战斗，但我很抱歉: 我不能让你这样的新手死在残酷的战场.";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[恺撒王子第四集团军]";
+				mes "我很高兴，你想和我们一起战斗，但很抱歉: 我不能让你这样的新手死在残酷的战场.";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[恺撒王子第四集团军]";
+					mes "你似乎刚刚从战场上归来.";
+					mes "目前暂时不能进入。去休息吧，让其他的士兵去战斗！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b02");
+					if (.@mapcount2 > 0) {
+						mes "[恺撒王子第四集团军]";
+						mes "我收到一份通知说一个精锐部队已被派往战场的战斗.";
+						mes "你为什么不去等待一段时间？我建议你休息一会在来.";
+					}
+					else {
+						if ($@FlaviusBG2 > 0) {
+							mes "[恺撒王子第四集团军]";
+							mes "一个精英已经被派往战场.";
+							mes "你为什么不去等待一段时间？我建议你休息一会在来.";
+						}
+						else {
+							mes "[恺撒王子第四集团军]";
+							mes "你准备好战斗了吗！";
+							mes "让敌人看看我们的实力！";
+							mes "今天，让我们的鲜血挥洒在战场上！";
+							close2;
+							warp "bat_room",141,207;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[恺撒王子第四集团军]";
+		mes "今天，我们一定会胜利！";
+		break;
+	}
+	close;
+}

@@ -1,0 +1,468 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - EP12打洞 脚本 -
+//===========================================
+// 太阳神失败部分待调查
+// SeAr1.1
+//===========================================
+
+//雷亚布连(EP12)
+-	script	雷亚布连#dummy::SocketEnchant2	-1,{
+	getinventorylist;
+	if ( @inventorylist_count > 99 ) {
+		mes "- 请在这里暂停一下 !! -";
+		mes "- 你所携带的物品太多了 -";
+		mes "- 所以不能获得物品 -";
+		mes "- 请把身上的物品减轻之后 -";
+		mes "- 再来挑战吧 -";
+		close;
+	}
+	mes "[雷亚布连]";
+	mes "我是在一般武器或防具上";
+	mes "进行打洞的技术员雷亚布连，";
+	mes "虽然这是相当辛苦的工作...";
+	mes "不过仍有许多乐趣和";
+	mes "获益良多";
+	next;
+	mes "[雷亚布连]";
+	mes "虽然哥哥世亚布连传授给我";
+	mes "大部分的技术... 但并不容易，";
+	mes "所以我的本事还是";
+	mes "远不如哥哥";
+	next;
+	mes "[雷亚布连]";
+	mes "每次当哥哥教我的时候，";
+	mes "就抱怨说会减少个人的";
+	mes "特质，不过说归说还是";
+	mes "很认真的指导我";
+	next;
+	mes "[雷亚布连]";
+	mes "多亏哥哥让我学到不少东西，";
+	mes "只是经验尚不足是否能不负";
+	mes "哥哥的期待，却不太有把握，";
+	mes "目前我能做的就是全力";
+	mes "以赴完成目标啰";
+	next;
+	mes "[雷亚布连]";
+	mes "其实有一件事情哥哥嘱咐过我";
+	mes "不可以做... 我虽想尝试但又";
+	mes "不敢瞒着哥哥做... 算了，";
+	mes "就当我没说吧!";
+	next;
+	mes "[雷亚布连]";
+	mes "对了，你有想要打洞的";
+	mes "装备吗? 依不同的装备，";
+	mes "手续费，所需材料、成功率等";
+	mes "也都不同... 请你先决定后";
+	mes "我再向你说明好了";
+	next;
+	switch(select("武器:防具:哥哥不允许的事情?:再听听说明:取消")) {
+	case 1:
+		mes "[雷亚布连]";
+		mes "武器嘛... 武器大致依作业的";
+		mes "难易度来区分的话，共分成";
+		mes "4级，C级是最容易的，";
+		mes "S级是最困难的，首先";
+		mes "挑选难易度水准吧";
+		set @sockettype,1;
+		next;
+		switch(select("C级:B级:A级:S级")) {
+		case 1:
+			mes "[雷亚布连]";
+			mes "C级吗? 这样啊! 那么希望";
+			mes "我为你服务哪一种装备呢?";
+			next;
+			switch(select("地灵之书:水灵之书:风灵之书:火灵之书")) {
+			case 1: callfunc "Func_Socket",1,1554,1569,40,66,200,1010,10; break;
+			case 2: callfunc "Func_Socket",1,1553,1568,40,66,200,1010,10; break;
+			case 3: callfunc "Func_Socket",1,1556,1571,40,66,200,1010,10; break;
+			case 4: callfunc "Func_Socket",1,1555,1570,40,66,200,1010,10; break;
+			}
+			break;
+		case 2:
+			mes "[雷亚布连]";
+			mes "B级吗? 这样啊! 那么希望";
+			mes "我为你服务哪一种装备呢?";
+			next;
+			switch(select("兽人斧:弯刀:闇盲之锤")) {
+			case 1: callfunc "Func_Socket",1,1304,1309,40,61,200,984,1; break;
+			case 2: callfunc "Func_Socket",1,1113,1114,40,61,200,984,1; break;
+			case 3: callfunc "Func_Socket",1,1523,1538,40,61,300,984,1; break;
+			}
+			break;
+		case 3:
+			mes "[雷亚布连]";
+			mes "A级吗? 真棒! 那么希望";
+			mes "我在哪一种装备上打洞呢?";
+			next;
+			switch(select("天龙短剑:刺藤拳刃:火灵拳刃:冰灵拳刃:风灵拳刃:黄金之锤:琵琶:女王的鞭子:妖怪的枪:加野矛:风灵之剑")) {
+			case 1: callfunc "Func_Socket",1,13001,13030,40,61,500,984,2; break;
+			case 2: callfunc "Func_Socket",1,1257,1276,40,61,500,984,2; break;
+			case 3: callfunc "Func_Socket",1,1258,1277,40,61,500,984,2; break;
+			case 4: callfunc "Func_Socket",1,1256,1275,40,61,500,984,2; break;
+			case 5: callfunc "Func_Socket",1,1259,1278,40,61,500,984,2; break;
+			case 6: callfunc "Func_Socket",1,1524,1539,40,61,500,984,2; break;
+			case 7: callfunc "Func_Socket",1,1918,1922,40,61,500,984,2; break;
+			case 8: callfunc "Func_Socket",1,1970,1976,40,61,500,984,2; break;
+			case 9: callfunc "Func_Socket",1,1477,1479,40,61,500,984,2; break;
+			case 10: callfunc "Func_Socket",1,1474,1480,40,61,500,984,2; break;
+			case 11: callfunc "Func_Socket",1,1167,1178,40,61,500,984,2; break;
+			}
+			break;
+		case 4:
+			mes "[雷亚布连]";
+			mes "哇! 呃! S级! 颤抖颤抖颤抖......";
+			mes "...你要弄哪一种S级的装备呢?";
+			next;
+			switch(select("风灵之矛:破甲短剑:龙牙剑:削刃短剑:妖短剑 泣神怨:圣锤十字星:死神之剑")) {
+			case 1: callfunc "Func_Socket",2,1468,1481,40,51,1000,984,5,999,10; break;
+			case 2: callfunc "Func_Socket",2,1225,13032,40,51,1000,984,5,999,10; break;
+			case 3: callfunc "Func_Socket",2,1166,1180,40,51,1000,984,5,999,10; break;
+			case 4: callfunc "Func_Socket",2,1224,13031,40,51,1000,984,5,999,10; break;
+			case 5: callfunc "Func_Socket",2,1232,13033,40,51,1000,984,5,999,10; break;
+			case 6: callfunc "Func_Socket",2,1528,1540,40,51,1000,984,5,999,10; break;
+			case 7: callfunc "Func_Socket",2,1169,1179,40,51,1000,984,5,999,10; break;
+			}
+			break;
+		}
+		break;
+	case 2:
+		mes "[雷亚布连]";
+		mes "防具嘛... 防具大概依作业的";
+		mes "难易度来区分的话，共分成";
+		mes "4级，C级是最容易的，";
+		mes "S级是最困难的，首先";
+		mes "挑选难易度水准吧";
+		set @sockettype,2;
+		next;
+		switch(select("C级:B级:A级:S级")) {
+		case 1:
+			mes "[雷亚布连]";
+			mes "C级吗? 这样啊! 那么希望";
+			mes "我为你服务哪一种装备呢?";
+			next;
+			switch(select("向日葵头饰:学士帽:红蝶发带:学生帽")) {
+			case 1: callfunc "Func_Socket",1,2253,5351,40,66,100,999,3; break;
+			case 2: callfunc "Func_Socket",1,5012,5347,40,66,100,999,3; break;
+			case 3: callfunc "Func_Socket",1,2244,5348,40,66,100,999,5; break;
+			case 4: callfunc "Func_Socket",1,5016,5349,40,66,100,999,5; break;
+			}
+			break;
+		case 2:
+			mes "[雷亚布连]";
+			mes "B级吗? 这样啊! 那么希望";
+			mes "我为你服务哪一种装备呢?";
+			next;
+			switch(select("骷髅戒指:抗魔鞋")) {
+			case 1: callfunc "Func_Socket",1,2609,2715,40,61,300,999,5; break;
+			case 2: callfunc "Func_Socket",1,2409,2432,40,61,300,999,5; break;
+			}
+			break;
+		case 3:
+			mes "[雷亚布连]";
+			mes "A级吗? 真棒! 那么希望";
+			mes "我在哪一种装备上打洞呢?";
+			next;
+			switch(select("海盗头巾:黑色皮革长靴")) {
+			case 1: callfunc "Func_Socket",1,2287,5350,40,61,500,985,1; break;
+			case 2: callfunc "Func_Socket",1,2425,2434,40,61,500,985,1; break;
+			}
+			break;
+		case 4:
+			mes "[雷亚布连]";
+			mes "哇! 呃! S级! 颤抖颤抖颤抖......";
+			mes "...你要弄哪一种S级的装备呢?";
+			next;
+			switch(select("魔法外套:天衣月舞:大天使之盾:衬衫:三角裤")) {
+			case 1: callfunc "Func_Socket",1,2334,2372,40,51,1000,985,1; break;
+			case 2: callfunc "Func_Socket",1,2327,2373,40,51,1000,985,1; break;
+			case 3: callfunc "Func_Socket",1,2111,2128,40,51,1000,985,1; break;
+			case 4: callfunc "Func_Socket",1,2522,2523,40,51,1000,985,1; break;
+			case 5: callfunc "Func_Socket",1,2339,2371,40,51,1000,985,1; break;
+			}
+			break;
+		}
+		break;
+	case 3:
+		mes "[雷亚布连]";
+		mes "啊..没什么啦! 只是有一件事，";
+		mes "哥哥一直叮咛我人类绝对";
+		mes "不可以去碰它... 我也怕被";
+		mes "哥哥责备，所以我也";
+		mes "不方便告诉你";
+		next;
+		mes "[雷亚布连]";
+		mes "虽然成功率极高...";
+		mes "但是相对的材料需要很多，";
+		mes "手续费也很贵的关系，所以";
+		mes "即使公开了，我也怀疑";
+		mes "应该没有人会委托吧";
+		next;
+		mes "[雷亚布连]";
+		mes "...嗯...";
+		next;
+		mes "[雷亚布连]";
+		mes ".............";
+		next;
+		mes "[雷亚布连]";
+		mes ".............";
+		next;
+		mes "[雷亚布连]";
+		mes "我看你好像有兴趣... 我";
+		mes "勉为其难的解释给你";
+		mes "听好了，但请你保密...";
+		mes "万一被哥哥察觉的话，";
+		mes "我会被修理的很惨哩";
+		next;
+		mes "[雷亚布连]";
+		mes "成功率为90%，加上需要";
+		mes "黄金 2个和2亿金币，";
+		mes "但有先前作业就是要在";
+		mes "太阳神头盔上打洞...";
+		next;
+		mes "[雷亚布连]";
+		mes "据说从老早以前在这";
+		mes "装备上动手是有禁忌的...";
+		mes "其实我并非因有禁忌";
+		mes "才不想去动它的，";
+		mes "只是不想被哥哥责骂";
+		next;
+		switch(select("委托他:取消")) {
+		case 1:
+			mes "[雷亚布连]";
+			mes ".................";
+			next;
+			mes "[雷亚布连]";
+			mes ".................";
+			next;
+			mes "[雷亚布连]";
+			mes "..什，什么，那眼神是";
+			mes "我再三强调我不干啦";
+			mes "不干! 不干! 不干啦!";
+			next;
+			mes "[雷亚布连]";
+			mes "我不要啦! 不要...";
+			next;
+			mes "[雷亚布连]";
+			mes "我说不要嘛...";
+			next;
+			mes "[雷亚布连]";
+			mes "不...不要...";
+			next;
+			mes "[雷亚布连]";
+			mes ".................";
+			next;
+			mes "[雷亚布连]";
+			mes "嗯......";
+			next;
+			mes "[雷亚布连]";
+			mes "知道啦! 这次是例外好吗?";
+			mes "不过千万别让哥哥知道，";
+			mes "对别人也要绝对保守";
+			mes "秘密喔";
+			next;
+			mes "[雷亚布连]";
+			mes "^FF0000所需材料有黄金 2个，手续费为";
+			mes "^FF00002亿金币，还有基本装备";
+			mes "^FF0000太阳神头盔... 成功率是90%，^000000";
+			mes "懂了吗? 那就打铁趁热，";
+			mes "现在马上动工啰";
+			next;
+			if ( Zeny < 200000000 || countitem(5022) < 1 || countitem(969) < 2 ) {
+				mes "[雷亚布连]";
+				mes "嗯...";
+				next;
+				mes "[雷亚布连]";
+				mes "材料不齐啦! 真是的! 材料";
+				mes "不足就不要委托我嘛!";
+				mes "即使下次备齐材料再来，";
+				mes "我也不会帮你，唭唭";
+				close;
+			}
+			mes "[雷亚布连]";
+			mes "那么准备开工吧?";
+			mes "你就祈祷顺利成功吧";
+			next;
+			set .@socketrand,rand(100);
+			if ( .@socketrand > 9 ) {
+				specialeffect EF_LORD;
+				delitem 5022,1;
+				delitem 969,2;
+				set zeny,zeny-200000000;
+				getitem 5353,1;
+				mes "[雷亚布连]";
+				mes "结果很理想! 哇... 90%的成功率";
+				mes "果然很可靠，洞打的";
+				mes "很漂亮喔! 恭禧你";
+				next;
+				mes "[雷亚布连]";
+				mes "我只帮你做这一次喔!";
+				mes "千万别跟人家提起";
+				mes "这件事，知道了吧?";
+				close;
+			}
+			else {
+				specialeffect EF_SUI_EXPLOSION;
+				delitem 5022,1;
+				delitem 969,2;
+				set zeny,zeny-200000000;
+				mes "[雷亚布连]";
+				mes "呜... 拍谢喔，失败了...";
+				mes "都怪运气不好.. 打洞难免";
+				mes "会有失败的时候，嗯..";
+				mes "虽然这次失败了，但相信";
+				mes "下次一定可以成功滴";
+				next;
+				mes "[雷亚布连]";
+				mes "那么欢迎下次再利用啰";
+				close;
+			}
+		case 2:
+			mes "[雷亚布连]";
+			mes "你绝对不可以";
+			mes "告诉任何人呢?";
+			mes "明白了吧?";
+			close;
+		}
+	case 4:
+		mes "[雷亚布连]";
+		mes "你想再听一下说明喔，";
+		mes "嗯... 其实没什么好再";
+		mes "解释的了，只有一件事";
+		mes "可提供你参考";
+		next;
+		mes "[雷亚布连]";
+		mes "就是依精练度与村落的";
+		mes "不同，打洞的成功率";
+		mes "也会随之不一样，当然";
+		mes "这种说法不是很有根据...";
+		mes "但每个村落的确不尽相同";
+		next;
+		mes "[雷亚布连]";
+		mes "譬如说在某些村落里，";
+		mes "高精炼度的装备打洞的";
+		mes "成功率会越高，而有些";
+		mes "村落则是低精练度的装备，";
+		mes "打洞的成功率却越高...";
+		next;
+		mes "[雷亚布连]";
+		mes "万一打洞失败的话，装备";
+		mes "就会支离破碎难以挽救了，";
+		mes "我当然也非常希望可以";
+		mes "成功... 不过实在是一件";
+		mes "费心费力的工作";
+		next;
+		mes "[雷亚布连]";
+		mes "还有一件需要注意的";
+		mes "事情... 嗯，当持若有";
+		mes "相同装备两个时，谁都";
+		mes "无法预测究竟会轮到";
+		mes "哪一个装备上打洞";
+		next;
+		mes "[雷亚布连]";
+		mes "^FF0000所以当打洞时，尽量";
+		mes "^FF0000不要同时持有同名的";
+		mes "^FF0000装备，以免在不希望的";
+		mes "^FF0000装备上打洞后万一失败的话，";
+		mes "^FF0000那后果就不堪设想啰^000000";
+		next;
+		mes "[雷亚布连]";
+		mes "请务必再三确认无误后，";
+		mes "再来委托我吧，";
+		mes "麻烦你了";
+		close;
+	case 5:
+		mes "[雷亚布连]";
+		mes "那就没办法啰";
+		close;
+	}
+}
+
+payon,236,199,3	duplicate(SocketEnchant2)	雷亚布连#pay	86,{
+lighthalzen,96,137,3	duplicate(SocketEnchant2)	雷亚布连#lhz	86
+prontera,244,169,5	duplicate(SocketEnchant2)	雷亚布连#prt	86
+moc_ruins,154,86,3	duplicate(SocketEnchant2)	雷亚布连#moc	86
+
+function	script	Func_Socket	{
+	mes "[雷亚布连]";
+	mes getitemname(getarg(1))+"...很好! 那个的话，";
+	if (getarg(0) == 1) {
+		mes "^FF0000费用为"+getarg(5) / 10+"万金币，材料是"+getitemname(getarg(6))+" "+getarg(7)+"个，";
+	}
+	else if (getarg(0) == 2) {
+		mes "^FF0000费用为"+getarg(5) / 10+"万金币，材料是";
+		mes "^FF0000"+getitemname(getarg(6))+" "+getarg(7)+"个和"+getitemname(getarg(8))+" "+getarg(9)+"个，";
+	}
+	mes "^FF0000"+getitemname(getarg(1))+"理所当然";
+	mes "^FF0000也要准备妥当^000000";
+	next;
+	mes "[雷亚布连]";
+	mes "材料和费用都带齐了吗?";
+	mes "还有万一失败时材料和装备";
+	mes "都会消失，即使洞成功了，";
+	mes "精炼值或已插上去的卡片，";
+	mes "都会消失不见，要铭记了";
+	next;
+	if ( select("我要打洞:改下次吧") == 2 ) {
+		mes "[雷亚布连]";
+		mes "那么欢迎下次再来";
+		close;
+	}
+	switch(getarg(0)) {
+	case 1:
+		if((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (!countitem(getarg(1)))) {
+			mes "[雷亚布连]";
+			mes "那个... 材有些料不足，";
+			mes "请你再确认一下吧";
+			close;
+		}
+		break;
+	case 2:
+		if((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (countitem(getarg(8)) < getarg(9)) || (!countitem(getarg(1)))) {
+			mes "[雷亚布连]";
+			mes "那个... 材有些料不足，";
+			mes "请你再确认一下吧";
+			close;
+		}
+		break;
+	}
+	mes "[雷亚布连]";
+	mes "那么开始进行吧? 请你";
+	mes "祈祷能圆满成功，呵呵";
+	next;
+	set .@socketrand,rand(1,100);
+	if((.@socketrand > getarg(3)) && (.@socketrand < getarg(4))) {
+		specialeffect EF_LORD;
+		mes "[雷亚布连]";
+		mes "OK... 似乎非常顺利，成功!";
+		mes "洞打的很漂亮呢? 恭喜你啦";
+		delitem getarg(1),1;
+		delitem getarg(6),getarg(7);
+		if(getarg(0) == 2) delitem getarg(8),getarg(9);
+		set Zeny,Zeny - getarg(5)*1000;
+		getitem getarg(2),1;
+		next;
+		mes "[雷亚布连]";
+		mes "那么欢迎下次再利用啰";
+		close;
+	}
+	else {
+		specialeffect EF_SUI_EXPLOSION;
+		mes "[雷亚布连]";
+		mes "呜... 拍谢喔，失败了...";
+		mes "都怪运气不好.. 打洞难免";
+		mes "会有失败的时候，嗯..";
+		mes "虽然这次失败了，但相信";
+		mes "下次一定可以成功滴";
+		delitem getarg(1),1;
+		delitem getarg(6),getarg(7);
+		if(getarg(0) == 2) delitem getarg(8),getarg(9);
+		set Zeny,Zeny - getarg(5)*1000;
+		next;
+		mes "[雷亚布连]";
+		mes "那么欢迎下次再利用啰";
+		close;
+	}
+}

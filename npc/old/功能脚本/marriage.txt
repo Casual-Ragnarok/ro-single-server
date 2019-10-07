@@ -1,0 +1,954 @@
+//===== rAthena Script ======================================= 
+//= Player Marriage
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Official Marriage script.
+//= Added isloggedin() check, even though Aegis doesn't do it.
+//= Currently does not support same-Sex marriages.
+//= Old script located in: npc/custom/marriage.txt
+//= - Variable in use: wedding_sign (max 1)
+//= - Variable in use: $@wedding (max 1) 
+//= - Variable in use: $@wed_groom$ $@wed_bride$
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [L0ne_W0lf]
+//= 1.1 Fixed a missing ")" [L0ne_W0lf]
+//= 1.2 Corrected duration of Wedding status. [L0ne_W0lf]
+//= 1.3 Changed permanent global variables to temporary ones. [Euphy]
+//=     Added GM NPCs (commented).
+//= 1.4 Added GM management function. [Euphy]
+//============================================================
+
+prt_church,97,100,4	script	Wedding Staff#w	71,{
+	cutin "wedding_marry01",2;
+	if (Upper == 2) {
+		mes "[快乐的玛丽]";
+		mes "你好~";
+		mes "我叫玛丽";
+		mes "我在此为您解答";
+		mes "结婚相关的问题!";
+		mes "好了, ";
+		mes "您有什么想知道的么?";
+		next;
+		if (select("- 我想结婚.:- 谢谢你的好意!") == 1) {
+			mes "[快乐的玛丽]";
+			mes "喔, 我很抱歉, ";
+			mes "不过被收养的小孩";
+			mes "是无法结婚的";
+			mes "现在";
+			mes "你为什么不享受下";
+			mes "单纯又美丽的幼年时间呢?";
+			goto L_End;
+		}
+		mes "[快乐的玛丽]";
+		mes "喔, 当然你不是";
+		mes "一个小盆与～";
+		mes "不过你还是不能结婚";
+		mes "这里有太多的法律和伦理";
+		mes "问题阻挡着你";
+		mes "可爱的小盆与?";
+		goto L_End;
+	}
+	mes "[快乐的玛丽]";
+	mes "结婚是两个灵魂最";
+	mes "美妙的结合";
+	mes "选择在一起享受,";
+	mes "美妙的人生.";
+	mes "在恋爱中每个人生而平等";
+	mes "不过是否有些人在你生命中更平等?";
+	next;
+	switch(select("- 询问有关结婚典礼:- 询问有关程序:- 申请婚礼:- 我们是不可战胜的光头一族!")) {
+	case 1:
+		mes "[快乐的玛丽]";
+		mes "明智且博学的国王";
+		mes "曾经组织过结婚仪式";
+		mes "不过他再也不这样做了";
+		mes "现在的他正忙于";
+		mes "他的国家大事! 并且,";
+		mes "他还有一份排满的日程表.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "主教沃玛赤, 是负责爱情的主教";
+		mes "他现在是结婚典礼";
+		mes "的主要司仪.";
+		mes "他是我们圣米德加德王国";
+		mes "最重要的宝藏.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "当你与某人结婚的时候,";
+		mes "这是关系到你一辈子的事情, 所以";
+		mes "请在签订结婚协议时仔细考虑.";
+		mes "当然，你要知道这是个异性恋的国度";
+		mes "同性之间的感情是不允许的.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "如果你真的幸运到";
+		mes "找到了一位愿意与你相伴余生";
+		mes "的人的话，那你就要开始求婚了。";
+		mes "我希望每个人都能找到";
+		mes "他最佳的伴侣~";
+		break;
+
+	case 2:
+		mes "[快乐的玛丽]";
+		mes "结婚程序的";
+		mes "第一步是完善的组织.";
+		mes "新郎和新娘要想完成申请";
+		mes "他们必须组成一个队伍.";
+		mes "方式方法";
+		mes "与平时组队完全相同.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "在组队之后,";
+		mes "两位新人要与";
+		mes "主教沃玛赤对话. 新浪要";
+		mes "先与主教对话";
+		mes "并且必须准确的说出新娘的名字. 否则, 典礼将会停止.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "然后, 新娘要与";
+		mes "主教对话";
+		mes "告诉他新郎的名字.";
+		mes "如果他们告诉主教的";
+		mes "名字都正确的话, 他们就能";
+		mes "开始叫唤戒指了.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "当结婚戒指交换后";
+		mes "双方就正式成为恋人了. 当然,";
+		mes "在此之前, 你还有很多机会去反悔,所以...";
+		next;
+		mes "[快乐的玛丽]";
+		mes "如果同时有太多";
+		mes "的新人想结婚的话";
+		mes "请排队，一对对的";
+		mes "与主教交谈";
+		mes "沃玛赤一次只能接待一对新人.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "最后请确定告诉沃玛赤";
+		mes "你恋人的正式名字";
+		mes "请不要浪费太多的名字. 如果你用的时间太久,";
+		mes "典礼就会自动停止，你就要重来一次了.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "新娘需要记着";
+		mes "你只有3分钟来完成与";
+		mes "主教的对话";
+		mes "在这之后";
+		mes "请新郎再次与主教对话以完成婚礼.";
+		next;
+		if (select("十分感谢你的帮助!:有什么简单的方式来说我新郎的名字么?") == 1) {
+			mes "[快乐的玛丽]";
+			mes "好吧，我会帮你";
+			mes "完成你的婚礼";
+			mes "尽可能的顺利.";
+			mes "如果有什么东西";
+			mes "你还没理解的话,";
+			mes "请再向我询问.";
+			goto L_End;
+		}
+		mes "[快乐的玛丽]";
+		mes "最简单的方法是将";
+		mes "您爱人的名字发送给主教大人.";
+		mes "主教大人会回复一条消息给你.";
+		mes "然后左键点击恋人的名字.";
+		mes "激活对方的人物信息窗口.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "然后按'Ctrl'和'C'";
+		mes "来复制名字.";
+		mes "然后你可以通过按'Insert'与'Shift'";
+		mes "来粘贴你恋人的名字";
+		mes "清楚了么?";
+		next;
+		mes "[快乐的玛丽]";
+		mes "好的, 现在让我们";
+		mes "来试试我给你说的方法吧";
+		mes "把你恋人的名字通过";
+		mes "我刚才说的方法告诉我吧.";
+		next;
+		input .@partner$;
+		mes "[快乐的玛丽]";
+		mes "好了, 当你决定";
+		mes "要结婚了,";
+		mes "就来找我，并提交申请吧";
+		mes "希望能再见到你，冒险者~";
+		mes "祝福你~";
+		break;
+
+	case 3:
+		cutin "wedding_marry02",2;
+		if (Sex) {
+			mes "[快乐的玛丽]";
+			mes "你准备结婚了?";
+			mes "作为个新郎, 你需要准备";
+			mes "^3377FF1 结婚礼服^000000 并且支付 ^3377FF1,300,000 zeny^000000.";
+			mes "新娘的话应该要准备自己的礼服，并且支付";
+			mes "1,200,000 zeny.";
+		}
+		else {
+			mes "[快乐的玛丽]";
+			mes "所以，你准备结婚了?";
+			mes "作为个新娘你需要准备";
+			mes "1 结婚礼服并且支付";
+			mes "1,200,000 zeny. 新浪必须";
+			mes "穿上结婚礼服并支付 1,300,000 zeny才能结婚.";
+		}
+		next;
+		mes "[快乐的玛丽]";
+		mes "新浪和新娘都要准备";
+		mes " ^3377FF1 钻石戒指^000000 ";
+		mes "这样你们才能交换戒指.";
+		mes "你需要准备好这些东西";
+		mes "这样你才能提交你的";
+		mes "结婚典礼申请.";
+		next;
+		mes "[快乐的玛丽]";
+		mes "未来的新郎与新娘";
+		mes "都必须完成了申请";
+		mes "在他们进行结婚之前";
+		mes "现在，你准备要结婚,";
+		mes "并且马上开始进行";
+		mes "结婚仪式吗?";
+		next;
+		if (select("- 是的:- 不") == 1) {
+			if (getpartnerid()) {
+				cutin "wedding_marry02",2;
+				mes "[快乐的玛丽]";
+				mes "我很抱歉，不过";
+				mes "你不能申请结婚!";
+				mes "我不能允许你出卖";
+				mes "你的配偶, ";
+				mes "同时，一夫多妻制";
+				mes "在米德加德是违法的.";
+				break;
+			}
+			else if (wedding_sign == 1) {
+				mes "[快乐的玛丽]";
+				mes "你真的已经完成";
+				mes "这些申请了么?";
+				mes "唔, 去问问你的恋人是否";
+				mes "也完成了同样申请程序";
+				mes "然后再去找主教交谈.";
+				mes "继续完成婚礼.";
+				break;
+			}
+			else if (BaseLevel < 45) {
+				mes "[快乐的玛丽]";
+				mes "唔, 你需要变得更加强壮";
+				mes "才能保护你说爱的人";
+				mes "在你的等级提升之后.";
+				mes "如果同时您又有幸";
+				mes "找到心上人的话.";
+				mes "再来找我吧";
+				goto L_End;
+			}
+			else if (countitem(2613) < 1) {
+				mes "[快乐的玛丽]";
+				mes "唔? 你是不是忘记了";
+				mes "带钻石戒指了？";
+				mes "好好去找找吧";
+				mes "说不定就掉在附近";
+				mes "等你找到了再来找我好么?";
+				mes "请放松噢.";
+				goto L_End;
+			}
+			else if (Sex) {
+				if (Zeny < 1300000) {
+					mes "[快乐的玛丽]";
+					mes "我很抱歉，不过你没有";
+					mes "1,300,000 zeny";
+					mes "所有的新浪都必须";
+					mes "为他的结婚典礼付钱.";
+					mes "你是不是犯错口袋了?";
+					goto L_End;
+				}
+				else if (countitem(7170) < 1) {
+					mes "[快乐的玛丽]";
+					mes "你的结婚礼服呢?";
+					mes "在你结婚的全程你都必须";
+					mes "穿着它！";
+					mes "赶快去把你的礼服找出来";
+					mes "然后我们才能开始你的结婚典礼";
+					mes "懂么?";
+					goto L_End;
+				}
+			}
+			else if (Sex == 0) {
+				if (Zeny < 1200000) {
+					mes "[快乐的玛丽]";
+					mes "我很抱歉，不过所有的新娘必须";
+					mes "支付1,200,000";
+					mes "来继续这结婚典礼";
+					mes "或许你可以找";
+					mes "你的老公来支付这笔钱";
+					goto L_End;
+				}
+				else if (countitem(2338) < 1) {
+					mes "[快乐的玛丽]";
+					mes "Oh dear, did you forget";
+					mes "your Wedding Dress?";
+					mes "Hurry and find it, then";
+					mes "bring it to me-- you";
+					mes "absolutely need it";
+					mes "for the wedding!";
+					goto L_End;
+				}
+			}
+			mes "[快乐的玛丽]";
+			mes "好吧，看起来你";
+			mes "已经准备好所有的东西了.";
+			mes "尽管我都不知道你的恋人是谁";
+			mes "让我成为第一位为你们";
+			mes "即将到来的婚礼祝贺的人吧～";
+			next;
+			mes "[快乐的玛丽]";
+			mes "现在, 让我们开始";
+			mes "申请吧. 请写下你的";
+			mes "的正式姓名吧.";
+			next;
+			while(1) {
+				input .@name$;
+				if (.@name$ != strcharinfo(0)) {
+					mes "[快乐的玛丽]";
+					mes "唔, 你必须写下";
+					mes "你的正式姓名就";
+					mes "如同显示的那样. ";
+					mes "或许你要复制和粘贴一下?";
+					mes "不管怎样，让我们再试一次.";
+					next;
+				}
+				else 
+					break;
+			}
+			mes "[快乐的玛丽]";
+			mes "太棒了, 看起来";
+			mes "我们已经完成了你的申请.";
+			mes "请记住你要写下你";
+			mes "的伴侣的正式姓名";
+			mes "当你和主教交谈一会";
+			mes "之后，懂了吗?";
+			next;
+			mes "[快乐的玛丽]";
+			mes "当你的恋人也";
+			mes "完成了申请之后";
+			mes "你们都需要与主教对话";
+			mes "才能开始你们正确的";
+			mes "结婚典礼.";
+			emotion e_lv;
+			next;
+			mes "[快乐的玛丽]";
+			if (Sex) {
+				mes "因为你是新郎,";
+				mes "所以你要先与教主对话";
+				mes "当你结束对话之后";
+				mes "那就轮到你的恋人";
+				mes "与教主对话了";
+				set Zeny, Zeny-1300000;
+				delitem 7170,1; //Tuxedo
+			}
+			else {
+				mes "因为你是新娘,";
+				mes "所以你要先等你的男友";
+				mes "与教主大人对话之后";
+				mes "然后才轮到你与教主";
+				mes "对话";
+				set Zeny, Zeny-1200000;
+				delitem 2338,1; //Wedding_Dress
+			}
+			delitem 2613,1; //Diamond_Ring
+			set wedding_sign,1;
+			goto L_End;
+		}
+		mes "[快乐的玛丽]";
+		mes "不...?";
+		mes "好吧，当你准备好";
+		mes "要结婚了,";
+		mes "再来找我提交申请好么？";
+		mes "祝你一天过的愉快";
+		break;
+
+	case 4:
+		cutin "wedding_marry02",2;
+		donpcevent "Single Army#Prontera::OnEnable";
+		donpcevent "Single Army#Geffen::OnEnable";
+		donpcevent "Single Army#Morocc::OnEnable";
+		donpcevent "Single Army#Payon::OnEnable";
+		donpcevent "Single Army#Amatsu::OnEnable";
+		donpcevent "Single Army#Gonryun::OnEnable";
+		emotion e_omg;
+		mes "[FFF团]";
+		mes "^CC9933你必须精炼";
+		mes "你所拥有的装备";
+		mes "使他变得更极品!^000000";
+		emotion e_rock,0,"Single Army#Prontera";
+		next;
+		mes "[FFF团]";
+		mes "^330099在副本里练级";
+		mes "简直就是在浪费时间";
+		mes "我自己撸撸就能";
+		mes "练级了!^000000";
+		emotion e_rock,0,"Single Army#Geffen";
+		next;
+		mes "[FFF团]";
+		mes "^666666该死,";
+		mes "我从出生开始就在不断的";
+		mes "训练我自己，只为了";
+		mes "能够挫出火球!^000000";
+		emotion e_rock,0,"Single Army#Morocc";
+		next;
+		mes "[FFF团]";
+		mes "^666600I CHOOSE to spend";
+		mes "孤单的圣诞夜...";
+		mes "玩玩纸牌";
+		mes "玩玩填字游戏，撸撸睡了!^000000";
+		emotion e_rock,0,"Single Army#Payon";
+		next;
+		mes "[FFF团]";
+		mes "^CC9966师傅说";
+		mes "山下的女人是老虎，能吃了你的灵魂";
+		mes "不过他们绝对不能带走我的自由!^000000";
+		emotion e_rock,0,"Single Army#Amatsu";
+		next;
+		mes "[FFF团]";
+		mes "^669900...我们是自由的! ";
+		mes "我们是一只无法被打倒的军队!^000000";
+		emotion e_rock,0,"Single Army#Gonryun";
+		close2;
+		cutin "wedding_marry01",255;
+		emotion e_swt;
+		donpcevent "Single Army#Prontera::OnInit";
+		donpcevent "Single Army#Geffen::OnInit";
+		donpcevent "Single Army#Morocc::OnInit";
+		donpcevent "Single Army#Payon::OnInit";
+		donpcevent "Single Army#Amatsu::OnInit";
+		donpcevent "Single Army#Gonryun::OnInit";
+		end;
+	}
+	close2;
+	cutin "wedding_marry01",255;
+	end;
+
+L_End:
+	close2;
+	cutin "",255;
+	end;
+}
+
+prt_church,97,102,0	script	Single Army#Prontera	105,{
+	mes "[FFF团]";
+	mes "^CC9933你必须精炼";
+	mes "你所拥有的装备";
+	mes "使他变得更极品!^000000";
+	close;
+
+OnInit:
+	hideonnpc "Single Army#Prontera";
+	end;
+
+OnEnable:
+	hideoffnpc "Single Army#Prontera";
+	emotion e_go;
+	end;
+}
+
+prt_church,98,102,0	script	Single Army#Geffen	705,{
+	mes "[FFF团]";
+	mes "^330099在副本里练级";
+	mes "简直就是在浪费时间";
+	mes "我自己撸撸就能";
+	mes "练级了!^000000";
+	close;
+
+OnInit:
+	hideonnpc "Single Army#Geffen";
+	end;
+
+OnEnable:
+	hideoffnpc "Single Army#Geffen";
+	emotion e_go;
+	end;
+}
+
+prt_church,99,102,0	script	Single Army#Morocc	707,{
+	mes "[FFF团]";
+	mes "我从出生开始就在不断的";
+	mes "训练我自己，只为了";
+	mes "能够挫出火球!^000000";
+	close;
+
+OnInit:
+	hideonnpc "Single Army#Morocc";
+	end;
+
+OnEnable:
+	hideoffnpc "Single Army#Morocc";
+	emotion e_go;
+	end;
+}
+
+prt_church,100,102,0	script	Single Army#Payon	708,{
+	mes "[FFF团]";
+	mes "^666600I CHOOSE to spend";
+	mes "孤单的圣诞夜...";
+	mes "玩玩纸牌";
+	mes "玩玩填字游戏，撸撸睡了!^000000";
+	close;
+
+OnInit:
+	hideonnpc "Single Army#Payon";
+	end;
+
+OnEnable:
+	hideoffnpc "Single Army#Payon";
+	emotion e_go;
+	end;
+}
+
+prt_church,101,102,0	script	Single Army#Amatsu	767,{
+	mes "[FFF团]";
+	mes "^CC9966师傅说";
+	mes "山下的女人是老虎，能吃了你的灵魂";
+	mes "不过他们绝对不能带走我的自由!^000000";
+	close;
+
+OnInit:
+	hideonnpc "Single Army#Amatsu";
+	end;
+
+OnEnable:
+	hideoffnpc "Single Army#Amatsu";
+	emotion e_go;
+	end;
+}
+
+prt_church,102,102,0	script	Single Army#Gonryun	780,{
+	mes "[FFF团]";
+	mes "^669900...我们是自由的! ";
+	mes "我们是一只无法被打倒的军队!^000000";
+	close;
+
+OnInit:
+	hideonnpc "Single Army#Gonryun";
+	end;
+
+OnEnable:
+	hideoffnpc "Single Army#Gonryun";
+	emotion e_go;
+	end;
+}
+
+prt_church,100,128,4	script	Bishop#w	60,{
+	cutin "wedding_bomars01",2;
+	if (Upper == 2) {
+		mes "[沃玛赤]";
+		mes "你好啊，孩子.";
+		mes "迷路了么? 唔.";
+		mes "你知道你的爸爸和";
+		mes "妈妈在哪里么?";
+		close2;
+		cutin "wedding_bomars01",255;
+		end;
+	}
+
+	if (!getpartnerid()) {
+		if (!$wedding) {
+			if (wedding_sign == 1) {
+				getpartymember(getcharid(1));
+				set .@partymembercount,$@partymembercount;
+				if (.@partymembercount == 2) {
+					if (Sex) {
+						set $wedding,1;
+						initnpctimer;
+						mes "[沃玛赤]";
+						mes "年轻的恋人啊, 请";
+						mes "记住接下来的时刻";
+						mes "在你余下的生命中. 你的未来将会被宁静所保佑";
+						mes "希望你的伴侣能";
+						mes "在你们生命中的每一天都与你一同成长.";
+						next;
+						mapannounce "prt_church","现在正在举行结婚典礼, Mr. " + strcharinfo(0) + "...",bc_map;
+						mes "[沃玛赤]";
+						mes "直到世界的终结";
+						mes "我也希望你们能";
+						mes "手牵着手一起走下去";
+						mes "鼓励她，保护她";
+						mes "现在，我能知道新娘";
+						mes "的名字了么?";
+						next;
+						input $wed_bride$;
+						mes "[沃玛赤]";
+						mes "Mr. " + strcharinfo(0) + "...";
+						mes "你能发誓在你生命中";
+						mes "你会永远珍爱并且";
+						mes "关心你的新娘么,";
+						mes "Miss " + $wed_bride$ + "?";
+						next;
+						select("I do.");
+						set $wed_groom$,strcharinfo(0);
+						mes "[沃玛赤]";
+						mes "现在我要来问问";
+						mes "新娘来说出她的";
+						mes "结婚誓言.";
+						mes "我们要请新娘向前一步...";
+						close2;
+						mapannounce "prt_church","新郎, Mr. " + strcharinfo(0) + ", 已经与他的新娘 Miss " + $wed_bride$ + "...",bc_map;
+						cutin "",255;
+						end;
+					}
+					mes "[沃玛赤]";
+					mes "我很抱歉，不过我需要";
+					mes "新娘先来和我对话";
+					mes "我们才能继续婚礼.";
+					mes "这虽然是很老的规矩,";
+					mes "不过规定上就是这些写的";
+					mes "并且这样使事情变得很顺利.";
+					goto L_End;
+				}
+				mes "[沃玛赤]";
+				mes "在你结婚之前";
+				mes "你必须重新与你的恋人";
+				mes "组队，然后来找我";
+				mes "这样，就能继续你的.";
+				mes "结婚典礼了";
+				goto L_End;
+			}
+			mes "[沃玛赤]";
+			mes "你必须先与";
+			mes "快乐的玛丽 提交结婚申请";
+			mes "然后你才能过来结婚.";
+			mes "快乐的玛丽会告诉你";
+			mes "所有的结婚流程";
+			mes "并且告诉你需要准备什么.";
+			goto L_End;
+		}
+		else if ($wedding == 1) {
+			if (wedding_sign == 1) {
+				getpartymember(getcharid(1));
+				set .@partymembercount,$@partymembercount;
+				if (.@partymembercount == 2) {
+					if (Sex == 0) {
+						if (strcharinfo(0) == $wed_bride$) {
+							mes "[沃玛赤]";
+							mes "年轻的恋人啊, 请";
+						        mes "记住接下来的时刻";
+						        mes "在你余下的生命中. 你的未来将会被宁静所保佑";
+						        mes "希望你的伴侣能";
+						        mes "在你们生命中的每一天都与你一同成长.";
+							next;
+							mapannounce "prt_church","让我们听听新娘, Miss "+$wed_bride$+", 说...",bc_map;
+							mes "[沃玛赤]";
+							mes "Miss "+$wed_bride$+"...";
+							mes "你是否发誓你将把你个真心";
+							mes "交给 "+$wed_groom$+",";
+							mes "相伴与他身边, 无论";
+							mes "多危险的情况都与他度过?";
+							next;
+							if (select("^FF0000No.^000000:I do.") == 1) {
+								cutin "wedding_bomars03",2;
+								mapannounce "prt_church","Next couple, please proceed...",bc_map;
+								mes "[沃玛赤]";
+								mes "这样 "+$wed_groom$;
+								mes "他并不是";
+								mes "你想与之结婚的人? 唔.";
+								mes "我真诚的道歉";
+								mes "一定是哪里弄错了...";
+								set $wedding,0;
+								close2;
+								stopnpctimer;
+								cutin "",255;
+								end;
+							}
+							mes "[沃玛赤]";
+							mes "你是否真心发誓";
+							mes "你的忠诚与耐心?";
+							mes "你是否愿意与结婚 "+$wed_groom$+"?";
+							next;
+							if (select("Yes, I do.:^FF0000No.^000000") == 1) {
+								if (isloggedin(getcharid(3,$wed_groom$))) {
+									if (marriage($wed_groom$)) {
+										//Call Wedding effect
+										wedding;
+										//Give ring to Bride, and change to wedding sprite.
+										sc_start SC_Wedding,3600000,1;
+										getitem 2635,1; //Bride_Ring
+										//Give ring to Groom, and change to wedding sprite.
+										attachrid(getcharid(3,$wed_groom$));
+										sc_start SC_Wedding,3600000,1;
+										getitem 2634,1; //Bridegroom_Ring
+										detachrid;
+										//Switch Script progression back to Bride
+										attachrid(getcharid(3,$wed_bride$));
+										cutin "wedding_bomars02",2;
+										mapannounce "prt_church","I now pronounce you, "+$wed_groom$+" and "+$wed_bride$+", husband and wife.",bc_map;
+										mes "[沃玛赤]";
+										mes "作为天赐的米德加德帝国的大主教";
+										mes "我现在非常荣耀的";
+										mes "宣布你们正式的在这块";
+										mes "美丽的大地上正式结为夫妻";
+										mes "愿你们未来的生活中";
+										mes "美满与愉悦.";
+										next;
+										mes "[沃玛赤]";
+										mes "最后...";
+										mes "请永远幸福,";
+										mes "亲爱的 "+$wed_bride$+"...";
+										set $wed_groom$,"";
+										set $wed_bride$,"";
+										set $wedding,0;
+										close2;
+										stopnpctimer;
+										cutin "",255;
+										detachrid;
+										end;
+									}
+								}
+								cutin "wedding_bomars03",2;
+								mes "[沃玛赤]";
+								mes "Hm. It seems that";
+								mes "your groom left before";
+								mes "the ceremony has finished";
+								mes "Please try again once he's";
+								mes "returned.";
+								goto L_End;
+							}
+							else {
+								cutin "wedding_bomars03",2;
+								mapannounce "prt_church","Alas! "+$wed_bride$+" has rejected "+$wed_groom$+"'s marriage proposal!",bc_map;
+								mes "[沃玛赤]";
+								mes "唔.这看起来";
+								mes "你好像改变了你的主意";
+								mes "对于新郎我很抱歉";
+								mes "你必须服从你的内心";
+								mes "告诉你自己这样是正确的";
+								mes "好了，滚吧!";
+							}
+							set $wed_groom$,"";
+							set $wed_bride$,"";
+							set $wedding,0;
+							close2;
+							stopnpctimer;
+							cutin "",255;
+							end;
+						}
+						callsub S_Busy;
+					}
+					callsub S_Busy;
+				}
+				callsub S_Busy;
+			}
+			if (strcharinfo(0) == $wed_bride$) {
+				mes "[沃玛赤]";
+				mes "唔? 看起来似乎是";
+				mes "欢乐的玛丽";
+				mes "并没有收到你的结婚申请";
+				mes "请向她提交申请";
+				mes "这样你才能";
+				mes "开始结婚程序了.";
+				goto L_End;
+			}
+			callsub S_Busy;
+		}
+		callsub S_Busy;
+	}
+	mes "[沃玛赤]";
+	mes "我希望你能保持这份欢乐";
+	mes "无论未来的道路有多黑暗";
+	mes "你的伴侣都一直能";
+	mes "陪伴在他的身边";
+	mes "并且着眼未来";
+	mes "你们的幸福也能继续下去.";
+
+L_End:
+	close2;
+	cutin  "",255;
+	end;
+
+S_Busy:
+	if ($wed_groom$ != "" && $wed_bride$ != "") {
+		mes "[沃玛赤]";
+		mes "Miss "+ $wed_bride$ +" and";
+		mes "Mister "+ $wed_groom$;
+		mes "的结婚典礼正在进行.";
+		mes "请小声.";
+		goto L_End;
+	}
+	mes "[沃玛赤]";
+	mes "我正在为另一对";
+	mes "新人组织婚礼";
+	mes "请等待到你们的时候";
+	mes "谢谢你的理解... ^FFFFFF ^000000";
+	goto L_End;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnReset:
+	set $wed_groom$,"";
+	set $wed_bride$,"";
+	set $wedding,0;
+	end;
+
+OnTimer180000:
+	mapannounce "prt_church","你的反应挺慢的... 下一对，请开始吧.",bc_map;
+	donpcevent "Bishop#w::OnReset";
+	stopnpctimer;
+	end;
+}
+
+prt_church,28,178,4	script	The King of Midgart	108,{
+	callfunc "F_GM_NPC";
+	mes "[Vomars]";
+	mes "Wh-who are you?";
+	mes "You must know the";
+	mes "password to invoke";
+	mes "my awesome powers.";
+	next;
+	if (callfunc("F_GM_NPC",1854,0) < 1) {
+		mes "[Vomars]";
+		mes "This is";
+		mes "no place for";
+		mes "fooling around.";
+		close2;
+		warp "prt_church",101,102;
+		end;
+	}
+	mes "[Wedding Switch]";
+	mes "Is there a problem with";
+	mes "the wedding ceremony?";
+	mes "I can reset the Bishop";
+	mes "Vomars NPC if you like.";
+	next;
+	switch(select("No, thanks:RESET")) {
+	case 1:
+		mes "[Wedding Switch]";
+		mes "Alright, then.";
+		mes "However, if the";
+		mes "Bishop Vomars";
+		mes "NPC is stuck, it may";
+		mes "be best to reset it.";
+		close;
+	case 2:
+		donpcevent "Bishop#w::OnStop";
+		donpcevent "Bishop#w::OnReset";
+		mapannounce "prt_church","You've responded too slowly... Next couple, please proceed.",bc_map;
+		mes "[Wedding Switch]";
+		mes "The Bishop Vomars NPC";
+		mes "has now been reactivated.";
+		mes "It should now be possible";
+		mes "to proceed with weddings.";
+		close;
+	}
+}
+
+prt_church,20,179,4	script	Divorce Staff	71,{
+	callfunc "F_GM_NPC";
+	mes "[Bad Ending]";
+	mes "Uh oh...";
+	mes "You know I can't";
+	mes "do anything for you.";
+	next;
+	if (callfunc("F_GM_NPC",1854,0) < 1) {
+		mes "[Bad Ending]";
+		mes "Hmm...";
+		mes "You really";
+		mes "shouldn't be";
+		mes "in this place...";
+		close;
+	}
+	mes "[Bad Ending]";
+	mes "Great, you know the";
+	mes "password! Now, did you";
+	mes "want me to remove the";
+	mes "Wedding Ring in your";
+	mes "inventory?";
+	next;
+	switch(select("Drop 1 Wedding Ring.:Keep it.")) {
+	case 1:
+		set .@ring, (Sex)?2634:2635; //Bridegroom_Ring, Bride_Ring
+		if (countitem(.@ring)) {
+			delitem .@ring,1;
+			mes "[Bad Ending]";
+			mes "It's done!";
+		} else {
+			mes "[Bad Ending]";
+			mes "I couldn't find";
+			mes "the Wedding Ring...";
+			mes "Please make sure";
+			mes "that it's not equipped.";
+		}
+		close;
+	case 2:
+		mes "[Bad Ending]";
+		mes "You sure you want";
+		mes "to keep that ring?";
+		mes "Alright, but if it becomes";
+		mes "a problem, you come to me.";
+		close;
+	}
+}
+
+prt_church,22,179,4	script	Remarry Staff	71,{
+	callfunc "F_GM_NPC";
+	mes "[Wedding Again]";
+	mes "Hmm...?";
+	mes "What exactly are";
+	mes "you doing here?";
+	next;
+	if (callfunc("F_GM_NPC",1854,0) < 1) {
+		mes "[Wedding Again]";
+		mes "Ahk!";
+		mes "An adventurer";
+		mes "like you shouldn't";
+		mes "be in this place!";
+		close;
+	}
+	if (getpartnerid()) {
+		mes "[Wedding Again]";
+		mes "Hmm...";
+		mes "I can only create";
+		mes "a Wedding Ring if the";
+		mes "character is married.";
+		close;
+	}
+	mes "[Wedding Again]";
+	mes "Ah, I see that you";
+	mes "know the password.";
+	mes "Alright, if you somehow";
+	mes "lost your Wedding Ring,";
+	mes "I can make you a new one.";
+	next;
+	switch(select("Make new Wedding Ring.:Cancel.")) {
+	case 1:
+		set .@ring, (Sex)?2634:2635; //Bridegroom_Ring, Bride_Ring
+		if (countitem(.@ring) || isequipped(.@ring)) {
+			mes "[Wedding Again]";
+			mes "Wait, wait...";
+			mes "You're wearing your";
+			mes "Wedding Ring. I better";
+			mes "not make you another since";
+			mes "you don't need more than one.";
+		} else {
+			getitem .@ring,1;
+			mes "[Wedding Again]";
+			mes "Here you go~";
+			mes "It's your brand";
+			mes "new Wedding Ring!";
+		}
+		close;
+	case 2:
+		mes "[Wedding Again]";
+		mes "Alright. If you ever";
+		mes "lose your Wedding Ring,";
+		mes "come to me if you happen";
+		mes "to need a new one, okay?";
+		close;
+	}
+}

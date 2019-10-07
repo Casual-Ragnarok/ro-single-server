@@ -1,0 +1,57 @@
+// ---------------------------------
+// - 搞笑艺人 转职脚本 - 
+//===================================
+// 版本：1.3c
+//===================================
+
+valkyrie,53,54,3	script	搞笑艺人#Valkyrie	741,{
+	if (ADVJOB == 0 || Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[搞笑艺人]";
+			mes "恭喜你转生了!";
+			mes "这是战士们的光荣!";
+			close;
+		}
+		mes "[搞笑艺人]";
+		mes "那么，来唱唱歌吧...?";
+		mes "我先来唱一小段...";
+		mes "......";
+		close;
+	}
+	else if (ADVJOB == Job_Clown && Class == Job_Archer_High && JobLevel > 39) {
+		mes "[搞笑艺人]";
+		mes "恢复本来面貌、";
+		mes "给世界带来新的曙光的时候来临了";
+		mes "请以崭新的姿态继续你的旅程吧";
+		next;
+		mes "[搞笑艺人]";
+		mes "要转职吗?";
+		next;
+		if (select("不要:转职成为搞笑艺人") == 1) {
+			mes "[搞笑艺人]";
+			mes "准备好了的话，";
+			mes "请随时找我吧";
+			mes "祝你好运!";
+			close;
+		}
+		if (SkillPoint) {
+			mes "[搞笑艺人]";
+			mes "好像学习的还不够多，";
+			mes "学会所有技能之后再来吧";
+			close;
+		}
+		jobchange Job_Clown;
+		set ADVJOB,0;
+		mes "[搞笑艺人]";
+		mes "恭喜你转职成功";
+		mes "请回到陆地上，";
+		mes "用歌声把幸福传递给人们吧";
+		close;
+	}
+	mes "[搞笑艺人]";
+	mes "欢迎来到荣誉的巴哈拉，";
+	mes "好好的休息再回去吧，";
+	mes "戏给战士们光荣!";
+	close;
+}

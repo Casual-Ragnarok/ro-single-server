@@ -1,0 +1,138 @@
+//===== rAthena Script =======================================
+//= War of Emperium (Prontera)
+//===== By: ==================================================
+//= L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.4
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= NPCs that relate to Prontera Guild Castle 1
+//===== Additional Comments: =================================
+//= 1.0 First Version. No longer uses functions. [L0ne_W0lf]
+//= 1.1 Corrected flag-in spawn point. [L0ne_W0lf]
+//= 1.2 Corrected treasure room switch coordinates. [L0ne_W0lf]
+//= 1.3 Removed dialog from interior flags. [L0ne_W0lf]
+//= 1.4 Partially rewrote Script. [Masao]
+//============================================================
+
+// Guild Flags (Outside Castle)
+//============================================================
+-	script	克林希特#1::OutsideFlagsPR1	722,{
+
+	set .@GID, GetCastleData("prtg_cas01",1);
+
+	if (.@GID == 0) {
+		mes "[ 神圣卢恩·米德加兹王国法令 ]";
+		mes " ";
+		mes "1. 遵循神圣卢恩·米德加兹王国法令, ";
+		mes "我们正式声明";
+		mes "此城堡没有正式拥有者.";
+		mes " ";
+		mes "2. 经过所有试炼,";
+		mes "并且击碎华丽金属的勇士.";
+		mes "将会得到国王殿下的诏书";
+		mes "被授予该城堡拥有权.";
+		mes "并一同守护卢恩·米德加兹王国!";
+		close;
+	}
+	if (getcharid(2) == .@GID) {
+		mes "[ 回声 ]";
+		mes "勇士们...";
+		mes "想要回到你们的荣耀之地吗?";
+		next;
+		if(select("返回公会城堡.:取消.") == 1) {
+			close2;
+			if (getcharid(2) == GetCastleData("prtg_cas01",1)) {
+				warp "prtg_cas01",96,173;
+				end;
+			}
+			end;
+		}
+		close;
+	}
+	mes "[ 神圣卢恩·米德加兹王国法令 ]";
+	mes " ";
+	mes "1. 遵循神圣卢恩·米德加兹王国法令,";
+	mes "我们认可此处为.";
+	mes " ^ff0000"+GetGuildName(.@GID)+"^000000公会的私人领地.";
+	mes " ";
+	mes "2. 公会 ^ff0000"+GetGuildName(.@GID)+"^000000 的领袖为:";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "如果任何人对此有异议.";
+	mes "请用手中的武器来证明自己的勇气和荣耀!";
+	close;
+
+OnRecvCastlePt01:
+	FlagEmblem GetCastleData("prtg_cas01",1);
+	end;
+}
+
+prt_gld,131,60,6	duplicate(OutsideFlagsPR1)	克林希特#1-2	722
+prt_gld,138,68,6	duplicate(OutsideFlagsPR1)	克林希特#2	722
+prt_gld,138,60,6	duplicate(OutsideFlagsPR1)	克林希特#3	722
+prt_gld,135,60,6	duplicate(OutsideFlagsPR1)	克林希特#4	722
+
+// Guild Flags (Inside Castle)
+//============================================================
+-	script	克林希特#5::InsideFlagsPR1	722,{
+	end;
+
+OnRecvCastlePt01:
+	FlagEmblem GetCastleData("prtg_cas01",1);
+	end;
+}
+
+prtg_cas01,58,56,4	duplicate(InsideFlagsPR1)	克林希特#5-2	722
+prtg_cas01,64,56,4	duplicate(InsideFlagsPR1)	克林希特#6	722
+prtg_cas01,76,32,4	duplicate(InsideFlagsPR1)	克林希特#7	722
+prtg_cas01,84,32,4	duplicate(InsideFlagsPR1)	克林希特#8	722
+prtg_cas01,94,39,4	duplicate(InsideFlagsPR1)	克林希特#9	722
+prtg_cas01,94,24,4	duplicate(InsideFlagsPR1)	克林希特#10	722
+prtg_cas01,73,14,4	duplicate(InsideFlagsPR1)	克林希特#11	722
+prtg_cas01,73,6,4	duplicate(InsideFlagsPR1)	克林希特#12	722
+prtg_cas01,55,46,4	duplicate(InsideFlagsPR1)	克林希特#13	722
+prtg_cas01,45,46,4	duplicate(InsideFlagsPR1)	克林希特#14	722
+
+// Guild Flag (Town)
+//============================================================
+prontera,155,190,4	duplicate(InsideFlagsPR1)	克林希特#15	722
+
+// Kafra Employee
+//============================================================
+prtg_cas01,96,173,0	duplicate(guildkafra)	卡普拉 职员#prtg_cas01	117
+
+// Steward
+//============================================================
+prtg_cas01,112,181,0	duplicate(cm)	Ahvray#prtg_cas01	55
+
+// Treasure Room Exit
+//============================================================
+prtg_cas01,15,208,0	script	#Lever_PR01	111,{
+
+	mes " ";
+	mes "这里有一个小小的控制杆, 去拉一下吗?";
+	next;
+	if(select("上前拉杆.:算了.") == 1) {
+		close2;
+		warp "prtg_cas01",112,183;
+		end;
+	}
+	close;
+}
+
+// Guild Dungeon Switch
+//============================================================
+prtg_cas01,94,200,0	duplicate(gdlever)	#prtg_cas01	111
+
+// Guild Treasure Spawns
+//============================================================
+prtg_cas01,11,208,0	duplicate(Gld_Trea_Spawn)	宝箱#prtg_cas01	-1
+
+// AGIT Manager
+//============================================================
+prtg_cas01,197,197,0	duplicate(Gld_Agit_Manager)	Agit#prtg_cas01	-1
+
+// Guardians
+//============================================================
+prtg_cas01,112,181,0	duplicate(Gld_Guard_Template)	监护人#prtg_cas01	-1

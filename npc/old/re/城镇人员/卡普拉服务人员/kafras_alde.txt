@@ -1,0 +1,88 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 艾尔帕兰 卡普拉脚本 - 
+//===================================
+// 版本：2.3c
+//===================================
+
+// Kafra Main Office (Kafra Leilah) ------------------------------------
+aldeba_in,96,181,4	script	卡普拉服务	113,{
+	cutin "kafra_05",2;
+	mes "[卡普拉克拉丽丝]";
+	mes "我们这里是卡普拉服务中心。";
+	mes "顾客，您有什么事需要我帮忙的吗?";
+	next;
+	switch(select("储存服务:仓库服务.:手推车服务.:取消.")) {
+	case 1:
+		mes "[卡普拉克拉丽丝]";
+		mes "客人，这里是卡普拉服务的指挥中心，";
+		mes "是培养及管理卡普拉服务人员的机关";
+		next;
+		savepoint "aldeba_in",96,179;
+		mes "[卡普拉克拉丽丝]";
+		mes "想要利用服务项目的话，包括这里艾尔帕兰，";
+		mes "请利用位于世界各国的'卡普拉服务中心'.";
+		mes ".. 不过，我帮先你储存";
+		close2;
+		break;
+	case 2:
+		if (zeny < 20) {
+			mes "[卡普拉克拉丽丝]";
+			mes "很抱歉,您的金钱不足";
+			mes "至少需要 20 Zeny";
+		}
+		mes "[卡普拉克拉丽丝]";
+		mes "客人，这里是卡普拉服务的指挥中心，";
+		mes "是培养及管理卡普拉服务人员的机关";
+		next;
+		set zeny,zeny-20;
+		set RESRVPTS, RESRVPTS + (20/5);
+		mes "[卡普拉克拉丽丝]";
+		mes "想要利用服务项目的话，包括这里艾尔帕兰，";
+		mes "请利用位于世界各国的'卡普拉服务中心'.";
+		mes ".. 不过，我帮先你储存";
+		callfunc("F_CheckKafCode");    //check your storage password, if set
+		close2;
+		openstorage;
+		break;
+	case 3:
+		mes "[卡普拉克拉丽丝]";
+		mes "客人，这里是卡普拉服务的指挥中心，";
+		mes "是培养及管理卡普拉服务人员的机关";
+		next;
+		mes "[卡普拉克拉丽丝]";
+		mes "想要利用服务项目的话，包括这里艾尔帕兰，";
+		mes "请利用位于世界各国的'卡普拉服务中心'.";
+		close2;
+		break;
+	case 4:
+		mes "[卡普拉克拉丽丝]";
+		mes "' 取消 ' 啊 ..";
+		mes "是个很好的选择呢";
+		mes "呼呼呼 .....";
+		close2;
+		break;
+	}
+	cutin "",255;
+	end;
+}
+
+// Central --------------------------------------------------
+aldebaran,143,119,4	script	卡普拉服务人员::kaf_aldebaran	113,{
+	cutin "kafra_05",2;
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpP[0], 1200, 1200, 1800, 1700;
+	setarray @wrpD$[0], "吉芬", "朱诺" , "依斯鲁得岛", "妙勒尼 废弃矿场";
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], "取消";
+	callfunc "F_Kafra",0,0,1,20,600;
+
+	M_Save:
+		savepoint "aldebaran",143,109;
+		callfunc "F_KafEnd",0,1,"in the city of Al De Baran";
+}

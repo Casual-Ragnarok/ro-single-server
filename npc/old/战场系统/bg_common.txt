@@ -1,0 +1,621 @@
+//===== rAthena Script ======================================= 
+//= BattleGround System - Common NPCs
+//===== By: ================================================== 
+//= ????, L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= rAthena 1.0
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Battleground NPCs:
+//= - Generals and Aides
+//= - Battleground Warper
+//= - Kafra and Repairman.
+//= - GM Management NPC
+//= - Badge Exchanger (Tierra and Flavius)
+//===== Additional Comments: ================================= 
+//= 1.0 First Version.
+//= 1.1 Updated several NPCs to Official.
+//= 1.2 Updated Repairman NPC
+//= 1.3 Optimized "艾伦德克" NPC. [Euphy]
+//= 1.4 Added GM management function. [Euphy]
+//= 1.5 Added VIP features and created a reward function. [Euphy]
+//============================================================
+
+// Generals
+//============================================================
+bat_room,161,158,3	script	吉永 秘书长#01	419,{ end; }
+bat_room,161,160,3	script	吉永 秘书长#03	419,{ end; }
+
+bat_room,160,141,3	script	克勒亚 马乐罗	416,{
+	cutin "bat_crua1",2;
+	mes "[克勒亚 马乐罗]";
+	mes "有智慧的冒险家喔，愿意助我门一辈之力吗?";
+	next;
+	switch(select("关于战斗的理由:关于吉永 马乐罗")) {
+	case 1:
+		cutin "bat_crua2",2;
+		mes "[克勒亚 马乐罗]";
+		mes "马乐的伟大国王麻勒薛 马乐罗 7世之龙体欠安的关系，";
+		mes "陛下已下旨希望把马乐的未来交给第3王子吉永 马乐罗将军或其他王子中一位";
+		next;
+		mes "[克勒亚 马乐罗]";
+		mes "虽说战斗对身为马乐将军的吉永 马乐罗比较有利，不过事情是没有绝对的，";
+		mes "我一定要从战斗中获胜，好让百姓们远离战争的灾难之中";
+		next;
+		switch(select("我愿与你并肩作战:结束对话")) {
+		case 1:
+			cutin "bat_crua1",2;
+			mes "[克勒亚 马乐罗]";
+			mes "你真是很牢靠的人，";
+			mes "好!";
+			mes "请往下走，可靠又武功高强的战士们正在等著你呢";
+			break;
+		case 2:
+			mes "[克勒亚 马乐罗]";
+			mes "为了马乐!";
+			break;
+		}
+		break;
+	case 2:
+		cutin "bat_crua2",2;
+		mes "[克勒亚 马乐罗]";
+		mes "第3王子吉永 马乐罗是马乐的将军，";
+		mes "握有强大兵力之马乐国将军，他的战斗指挥能力和武艺就不用多说了";
+		next;
+		mes "[克勒亚 马乐罗]";
+		mes "但是依赖马乐军力的人之中也有反对人士，";
+		mes "那真是百姓们所希望的吗?";
+		mes "一直以来马乐的百姓们深受战争的蹂蹑，再好的利刃也有折断的一天";
+		next;
+		mes "[克勒亚 马乐罗]";
+		mes "我不希望再看到血流成河的情景，所以我这次当任不让";
+		next;
+		switch(select("我愿与你并肩作战:结束对话")) {
+		case 1:
+			cutin "bat_crua1",2;
+			mes "[克勒亚 马乐罗]";
+			mes "你真是很牢靠的人，";
+			mes "好!";
+			mes "请往下走，可靠又武功高强的战士们正在等著你呢";
+			break;
+		case 2:
+			mes "[克勒亚 马乐罗]";
+			mes "为了马乐!";
+			break;
+		}
+		break;
+	}
+	close2;
+	cutin "bat_crua1",255;
+	cutin "bat_crua2",255;
+	end;
+}
+
+bat_room,161,140,3	script	克勒亚 秘书长#01	415,{ end; }
+bat_room,161,142,3	script	克勒亚 秘书长#02	415,{ end; }
+
+bat_room,160,159,3	script	将军 吉永 马乐罗	420,{
+	cutin "bat_kiyom2",2;
+	mes "[吉永 马乐罗]";
+	mes "有勇气的冒险家喔，我们需要你的过人才能";
+	next;
+	switch(select("关于战斗的理由:克勒亚 马乐罗???")) {
+	case 1:
+		cutin "bat_kiyom1",2;
+		mes "[吉永 马乐罗]";
+		mes "我们尊崇的陛下，麻勒薛 马乐罗 7世健康亮起红灯了，";
+		mes "陛下从我们 9名王子中，已表明我和克勒亚择一来继承王位";
+		next;
+		mes "[吉永 马乐罗]";
+		mes "不过一山不容二虎! 唯有在父王所指定的战场上获胜者才能统治国家";
+		next;
+		mes "[吉永 马乐罗]";
+		mes "这不仅是我们的战场而已，国家未来的命运取决于战斗的结果，";
+		mes "我要以将军的名誉来证明，能够保护国家来自外部威胁的人，只有我办得到而已";
+		next;
+		switch(select("我愿与你并肩作战:结束对话")) {
+		case 1:
+			cutin "bat_kiyom2",2;
+			mes "[吉永 马乐罗]";
+			mes "你真是位可靠的人，";
+			mes "从你的眼神中就能看出你是个不简单的人物";
+			next;
+			mes "[吉永 马乐罗]";
+			mes "我诚挚地欢迎你!";
+			mes "你现在给予在阶梯上我部下战斗支援的话，他们就会热烈地欢迎你的";
+			break;
+		case 2:
+			mes "[吉永 马乐罗]";
+			mes "我必会枪先取得胜利的旗帜!";
+			break;
+		}
+		break;
+	case 2:
+		cutin "bat_kiyom1",2;
+		mes "[吉永 马乐罗]";
+		mes "第五王子克勒亚 马乐罗目前担任马乐的内政官员，";
+		mes "难道国家的情势、地位只要坐在办公桌上就可以处里吗?";
+		next;
+		mes "[吉永 马乐罗]";
+		mes "再加上什么和平政策?";
+		mes "哈哈!";
+		mes "他应该不知道为了维持和平的社会，需要留下多少的血泪吧";
+		next;
+		mes "[吉永 马乐罗]";
+		mes "他只不过是个井底之蛙而已，";
+		mes "不过把马乐交给憧憬和平的傻小子克勒亚";
+		next;
+		mes "[吉永 马乐罗]";
+		mes "他那安逸的思想会让国家更贫苦，让百姓变软弱，渐渐成为邻近国家并吞的食物，拥有小土地的马乐能够有今天的繁荣，都是靠强大军力作后盾的关系";
+		next;
+		switch(select("我愿与你并肩作战:结束对话")) {
+		case 1:
+			cutin "bat_kiyom2",2;
+			mes "[吉永 马乐罗]";
+			mes "你真是位可靠的人，";
+			mes "从你的眼神中就能看出你是个不简单的人物";
+			next;
+			mes "[吉永 马乐罗]";
+			mes "我诚挚地欢迎你!";
+			mes "你现在给予在阶梯上我部下战斗支援的话，他们就会热烈地欢迎你的";
+			break;
+		case 2:
+			mes "[吉永 马乐罗]";
+			mes "我必会抢先取得胜利的旗帜!";
+			break;
+		}
+		break;
+	}
+	close2;
+	cutin "bat_kiyom1",255;
+	cutin "bat_kiyom2",255;
+	end;
+}
+
+// Flags
+//============================================================
+//bat_room,140,160,3	script	Guillaume Base#roomflag1	973,{ end; }
+//bat_room,167,160,3	script	Guillaume Base#roomflag2	973,{ end; }
+//bat_room,140,139,3	script	Croix Base#roomflag1	974,{ end; }
+//bat_room,167,139,3	script	Croix Base#roomflag2	974,{ end; }
+
+// BattleGround Warper
+//============================================================
+bat_room,148,150,5	script	空间移动师#Battlefield	124,{
+	mes "[空间移动师]";
+	mes "你想离开这里吗? 我可以把你送回先前停留过的地方喔";
+	next;
+	switch(select("返回村落:不回去")) {
+	case 1:
+		mes "[空间移动师]";
+		switch(bat_return) {
+		default:
+		case 1:
+			setarray .@mapname$[0],"普隆德拉.","prontera";
+			setarray .@xy[0],116,72;
+			break;
+		case 2:
+			setarray .@mapname$[0],"梦罗克","moc_ruins";
+			setarray .@xy[0],152,48;
+			break;
+		case 3:
+			setarray .@mapname$[0],"艾尔帕兰","aldebaran";
+			setarray .@xy[0],168,112;
+			break;
+		case 4:
+			setarray .@mapname$[0],"吉芬","geffen";
+			setarray .@xy[0],120,39;
+			break;
+		case 5:
+			setarray .@mapname$[0],"斐扬","payon";
+			setarray .@xy[0],161,58;
+			break;
+		case 6:
+			setarray .@mapname$[0],"里希塔乐镇","lighthalzen";
+			setarray .@xy[0],159,93;
+			break;
+		case 7:
+			setarray .@mapname$[0],"拉赫","rachel";
+			setarray .@xy[0],115,124;
+			break;
+		}
+		mes "把你送回"+.@mapname$[0]+"啰";
+		close2;
+		warp .@mapname$[1],.@xy[0],.@xy[1];
+		break;
+	case 2:
+		mes "[空间移动师]";
+		mes "需要服务时欢迎随时来找我";
+		close;
+	}
+	end;
+}
+
+-	script	马乐战场 募兵官::BatRecruit	728,{
+	mes "[马乐战场 募兵官]";
+	mes "你好冒险家，";
+	mes "我是遥远国度马乐王国的骑士";
+	next;
+	mes "[马乐战场 募兵官]";
+	mes "由于两位王子因马乐的王位继承问题而需要展开战斗，所以我们正在募集像你这样经验丰富的佣兵，";
+	mes "你愿不愿意助我们马乐一臂之力呢?";
+	next;
+	switch(select("参战:不参战")) {
+	case 1:
+		mes "[马乐战场 募兵官]";
+		mes "希望神保佑你的精神与勇气";
+		close2;
+		getmapxy(.@mapname$,.@x,.@y,1);
+		if (.@mapname$ == "prontera")
+			set bat_return,1;
+		else if (.@mapname$ == "moc_ruins")
+			set bat_return,2;
+		else if (.@mapname$ == "aldebaran")
+			set bat_return,3;
+		else if (.@mapname$ == "geffen")
+			set bat_return,4;
+		else if (.@mapname$ == "payon")
+			set bat_return,5;
+		else if (.@mapname$ == "lighthalzen")
+			set bat_return,6;
+		else if (.@mapname$ == "rachel")
+			set bat_return,7;
+		else
+			set bat_return,1;
+		warp "bat_room",154,150;
+		break;
+	case 2:
+		mes "[马乐战场 募兵官]";
+		mes "我会随时在这里为各位服务，等改变心意时再来吧";
+		close;
+	}
+	end;
+}
+
+prontera,123,83,3	duplicate(BatRecruit)	马乐战场 募兵官::BatRecruit1	728
+moc_ruins,75,162,3	duplicate(BatRecruit)	马乐战场 募兵官::BatRecruit2	728
+aldebaran,146,109,3	duplicate(BatRecruit)	马乐战场 募兵官::BatRecruit3	728
+geffen,109,66,3	duplicate(BatRecruit)	马乐战场 募兵官::BatRecruit4	728
+payon,189,105,3	duplicate(BatRecruit)	马乐战场 募兵官::BatRecruit5	728
+lighthalzen,153,86,5	duplicate(BatRecruit)	马乐战场 募兵官::BatRecruit6	728
+rachel,149,138,3	duplicate(BatRecruit)	马乐战场 募兵官::BatRecruit7	728
+
+// Additional warps
+// Empty
+bat_room,57,81,0	warp	bat1	1,1,bat_room,154,149
+bat_room,57,90,0	warp	bat2	1,1,bat_room,154,149
+// Empty
+bat_room,85,81,0	warp	bat5	1,1,bat_room,154,149
+bat_room,85,90,0	warp	bat6	1,1,bat_room,154,149
+// Free BG
+bat_room,113,81,0	warp	bat9	1,1,bat_room,154,149
+bat_room,113,90,0	warp	bat10	1,1,bat_room,154,149
+// Free BG
+bat_room,141,81,0	warp	bat13	1,1,bat_room,154,149
+bat_room,141,90,0	warp	bat14	1,1,bat_room,154,149
+// Free BG
+bat_room,169,81,0	warp	bat17	1,1,bat_room,154,149
+bat_room,169,90,0	warp	bat18	1,1,bat_room,154,149
+// Free BG
+bat_room,197,81,0	warp	bat21	1,1,bat_room,154,149
+bat_room,197,90,0	warp	bat22	1,1,bat_room,154,149
+// Free BG
+bat_room,225,81,0	warp	bat25	1,1,bat_room,154,149
+bat_room,225,90,0	warp	bat26	1,1,bat_room,154,149
+// Empty
+bat_room,253,81,0	warp	bat29	1,1,bat_room,154,149
+bat_room,253,90,0	warp	bat30	1,1,bat_room,154,149
+// Empty
+bat_room,253,220,0	warp	bat31	1,1,bat_room,154,149
+bat_room,253,211,0	warp	bat32	1,1,bat_room,154,149
+
+// Kafra
+//============================================================
+bat_room,148,147,4	script	卡普拉 职员::kaf_bat	861,{
+	cutin "kafra_09",2;
+	callfunc "F_Kafra",0,2,1,150,0;
+}
+
+// Repairman
+//============================================================
+bat_room,138,144,4	script	修理工#bg	86,{
+	callfunc "repairmain","修理工";
+	end;
+}
+
+// GM Management NPC
+//============================================================
+bat_room,1,151,3	script	Switch#batgnd	81,{
+	set .@i, callfunc("F_GM_NPC",1854,0);
+	if (.@i == -1) {
+		mes "The command has been cancelled.";
+		close;
+	} else if (.@i == 0) {
+		end;
+	} else {
+		mes "需要我帮忙吗?";
+		next;
+		switch(select("关闭战场:开启战场:重置a01:重置b01:重置a02:重置b02")) {
+		case 1:
+			disablenpc "Tierra Gorge Officer#01a";
+			disablenpc "Tierra Gorge Officer#02a";
+			disablenpc "Tierra Gorge Officer#01b";
+			disablenpc "Tierra Gorge Officer#02b";
+			disablenpc "Flavius Officer#01a";
+			disablenpc "Flavius Officer#01b";
+			disablenpc "Flavius Officer#02a";
+			disablenpc "Flavius Officer#02b";
+			break;
+		case 2:
+			enablenpc "Tierra Gorge Officer#01a";
+			enablenpc "Tierra Gorge Officer#02a";
+			enablenpc "Tierra Gorge Officer#01b";
+			enablenpc "Tierra Gorge Officer#02b";
+			enablenpc "Flavius Officer#01a";
+			enablenpc "Flavius Officer#01b";
+			enablenpc "Flavius Officer#02a";
+			enablenpc "Flavius Officer#02b";
+			break;
+		case 3:
+			donpcevent "start#bat_a01::OnEnable";
+			break;
+		case 4:
+			donpcevent "start#bat_b01::OnEnable";
+			break;
+		case 5:
+			donpcevent "start#bat_a02::OnEnable";
+			break;
+		case 6:
+			donpcevent "start#bat_b02::OnEnable";
+			break;
+		}
+		mes "Complete";
+		close;
+	}
+}
+
+// Badges Exchange
+//============================================================
+bat_room,160,150,3	script	艾伦德克	109,{
+	if (checkweight(1201,1) == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[艾伦德克]";
+	mes "请问您持有透过战场所获得的徽章吗?";
+	mes "我负责的是换成特攻徽章和勇猛徽章物品的工作";
+	next;
+	switch(select("换成徽章:查看目录")) {
+	case 1:
+		mes "[艾伦德克]";
+		mes "请问您要看哪一种呢?";
+		mes "各物品的详细功能，请参考 ^3131FF目录^000000";
+		next;
+		switch(select("武器:防具:装饰品:消耗性物品")) {
+		case 1:
+			mes "[艾伦德克]";
+			mes "您选的是^3131FF武器^000000，";
+			mes "需要徽章的武器，共有以下几种";
+			mes "分成^3131FF勇猛徽章专用是(勇)^000000，^3131FF特攻徽章专用是(特)^000000，提供您参考";
+			next;
+			switch(select("短剑/单手剑/双手剑/双手枪:手杖/钝器/双手斧/风魔翼飞镖:弓/拳刃/乐器/鞭子:书籍/拳套:左轮手枪/布林其来福枪/格林机关枪/霰弹枪/榴弹发射器")) {
+			case 1:
+				mes "[艾伦德克]";
+				mes "我们所准备的 ^3131FF短剑/单手剑/双手剑/双手枪^000000，共有以下几种物品";
+				next;
+				setarray .@Weapons[0],13036,7828,13037,7829,13411,7828,13410,7829,1183,7828,1184,7829,1425,7828,1482,7829;
+				break;
+			case 2:
+				mes "[艾伦德克]";
+				mes "我们所准备的 ^3131FF手杖/钝器/双手斧/风魔翼飞镖^000000，共有以下几种物品";
+				next;
+				setarray .@Weapons[0],1632,7828,1633,7829,1634,7828,1635,7829,1543,7828,1542,7829,1380,7828,1379,7829,13305,7828,13306,7829;
+				break;
+			case 3:
+				mes "[艾伦德克]";
+				mes "我们所准备的 ^3131FF弓/拳刃/乐器/鞭子^000000，共有以下几种物品";
+				next;
+				setarray .@Weapons[0],1739,7828,1738,7829,1279,7828,1280,7829,1924,7828,1923,7829,1978,7828,1977,7829;
+				break;
+			case 4:
+				mes "[艾伦德克]";
+				mes "我们所准备的 ^3131FF书籍/拳套^000000，共有以下几种物品";
+				next;
+				setarray .@Weapons[0],1574,7828,1575,7829,1824,7828,1823,7829;
+				break;
+			case 5:
+				mes "[艾伦德克]";
+				mes "我们所准备的 ^3131FF左轮手枪/布林其来福枪/格林机关枪/霰弹枪/榴弹发射器^000000，共有以下几种物品";
+				next;
+				setarray .@Weapons[0],13108,7828,13171,7829,13172,7828,13173,7829,13174,7829;
+				break;
+			}
+			set .@menu$,"";
+			for(set .@i,0; .@i<getarraysize(.@Weapons); set .@i,.@i+2)
+				set .@menu$, .@menu$+getitemname(.@Weapons[.@i])+((.@Weapons[.@i+1]==7828)?"(BB)":"(VB)")+":";
+			set .@i, (select(.@menu$)-1)*2;
+			set .@type$, ((.@Weapons[.@i+1]==7828)?"(BB)":"(VB)");
+			mes "[艾伦德克]";
+			mes "您选的是 ^3131FF"+getitemname(.@Weapons[.@i])+.@type$+"^000000";
+			mes "此物品需要 ^FF0000100 "+getitemname(.@Weapons[.@i+1])+"^000000.";
+			mes "请问您要交换吗?";
+			next;
+			switch(select("不交换:交换")) {
+			case 1:
+				break;
+			case 2:
+				mes "[艾伦德克]";
+				mes "Would you like to spend ^FF0000100 "+getitemname(.@Weapons[.@i+1])+"^000000 and receive a ^3131FF"+getitemname(.@Weapons[.@i])+.@type$+"^000000?";
+				next;
+				mes "[艾伦德克]";
+				mes "Remember, Battleground Reward Items are ^FF0000Character Bound^000000. Are you sure you want this item?";
+				next;
+				switch(select("Yes:No")) {
+				case 1:
+					mes "[艾伦德克]";
+					if (countitem(.@Weapons[.@i+1]) >= 100) {
+						mes "Thank you for exchanging.";
+						delitem .@Weapons[.@i+1],100;
+						getitem .@Weapons[.@i],1;
+					}
+					else mes "I'm sorry, but you don't have enough badges to exchange.";
+					close;
+				case 2:
+					break;
+				}
+				break;
+			}
+			mes "[艾伦德克]";
+			mes "Do you need more time to check the items?";
+			close;
+		case 2:
+			mes "[艾伦德克]";
+			mes "您选的是^3131F防具^000000，";
+			mes "需要徽章的防具，共有以下几种";
+			next;
+			switch(select("披肩类/靴子:铠甲")) {
+			case 1:
+				setarray .@Items[0],2538,50,2539,50,2540,50,2435,50,2436,50,2437,50;
+				break;
+			case 2:
+				setarray .@Items[0],2376,80,2377,80,2378,80,2379,80,2380,80,2381,80,2382,80;
+				break;
+			}
+			break;
+		case 3:
+			mes "[艾伦德克]";
+			mes "您选的是^3131FF装饰品^000000，";
+			mes "需要徽章的武功勋章，共分为以下几种职业系列";
+			next;
+			setarray .@Items[0],2733,500,2720,500,2721,500,2722,500,2723,500,2724,500,2725,500;
+			set .@menu1$,"神枪手:剑士:盗贼:服事:魔法师:弓箭手:商人";
+			break;
+		case 4:
+			mes "[艾伦德克]";
+			mes "您选的是^3131FF消耗性物品^000000，";
+			mes "需要徽章的消耗性物品，共有以下几种";
+			next;
+			setarray .@Items[0],12269,10,12270,10,12271,5,12272,10,12273,10;
+			break;
+		}
+		break;
+	case 2:
+		mes "[艾伦德克]";
+		mes "我们备有相当丰富的物品，请慢慢浏览后仔细的挑选吧";
+		close2;
+		readbook 11010,1;
+		end;
+	}
+	set .@menu$,"";
+	if (.@menu1$ != "") set .@menu$, .@menu1$;
+	else for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+2)
+		set .@menu$, .@menu$+getitemname(.@Items[.@i])+":";
+	set .@i, (select(.@menu$)-1)*2;
+	mes "[艾伦德克]";
+	mes "您选的是 ^3131FF"+getitemname(.@Items[.@i])+"^000000.";
+	switch(.@Items[.@i]) {
+		case 2720: mes "This item is for Swordman and Taekwon Master Class only."; break;
+		case 2721: mes "This item is for Thief Class only."; break;
+		case 2722: mes "This item is for Acolyte Class only."; break;
+		case 2723: mes "This item is for Magician Class only."; break;
+		case 2724: mes "This item is for Archer Class only."; break;
+		case 2725: mes "This item is for Merchant Class only."; break;
+		case 2733: mes "This item is for Gunslinger only."; break;
+		default: break;
+	}
+	mes "You can exchange for this item with ^FF0000"+.@Items[.@i+1]+" "+getitemname(7828)+" or "+.@Items[.@i+1]+" "+getitemname(7829)+"^000000.";
+	mes "Would you like to exchange?";
+	next;
+	switch(select("不交换:交换")) {
+	case 1:
+		mes "[艾伦德克]";
+		mes "您要再看看一下吗?";
+		break;
+	case 2:
+		mes "[艾伦德克]";
+		mes "请问您要与哪一种徽章交换呢?";
+		mes "交换所需的数量是 ^3131FF"+.@Items[.@i+1]+"个^000000";
+		next;
+		if (.@item[0] < 12269 || .@item[0] > 12273 ) {
+			mes "[艾伦德克]";
+			mes "Remember, Battleground Reward Items are ^FF0000Character Bound^000000. Are you sure you want this item?";
+			next;
+		}
+		set .@j, select("勇猛徽章:特攻徽章:取消交换");
+		mes "[艾伦德克]";
+		if (.@j == 3) {
+			mes "您已经取消交换了";
+			break;
+		}
+		set .@cost, ((.@j==1)?7828:7829);
+		if (countitem(.@cost) >= .@Items[.@i+1]) {
+			mes "谢谢光临";
+			delitem .@cost, .@Items[.@i+1];
+			getitem .@Items[.@i],1;
+		}
+		else mes "交换所需的"+getitemname(.@cost)+"数量不足呢";
+		break;
+	}
+	close;
+}
+
+// Badge Reward Function
+//============================================================
+function	script	F_BG_Badge	{
+
+	if (getarg(2) == "Tierra") {
+		set .@badge,7828; //BF_Badge1
+		set .@amount_win,3;
+		set .@amount_lose,1;
+	} else if (getarg(2) == "Flavius") {
+		set .@badge,7829; //BF_Badge2
+		set .@amount_win,9;
+		set .@amount_lose,3;
+	} else
+		return;
+
+	if (getarg(0) == 1) {
+		set .@amount, .@amount_win;
+		if (getarg(1) == "Guillaume") {
+			mes "[Axl Rose]";
+			mes "Blessed Guillaume!";
+		} else if (getarg(1) == "Croix") {
+			mes "[Swandery]";
+			mes "Blessed Croix!";
+		}
+		mes "Let's enjoy our glorious victory!";
+		mes strcharinfo(0)+", it's a sign reflecting victory.";
+	} else {
+		set .@amount, .@amount_lose;
+		if (getarg(1) == "Guillaume") {
+			mes "[Axl Rose]";
+			mes "You lost, but you're dedicated to this battle.";
+			mes "This is a reward for your great dedication by Guillaume Marollo!";
+			mes "Just take this defeat as a lesson, and next time you will definitely win.";
+		} else if (getarg(1) == "Croix") {
+			mes "[Swandery]";
+			mes "Oh, "+strcharinfo(0)+" Don't be sad.";
+			mes "Even though we didn't win, we did our best.";
+			mes "This is a Royal gift from Croix, and please don't forget this battle. We will win the next one.";
+		}
+	}
+	close2;
+
+	// If the VIP system is enabled, VIP players receive an extra 2 badges.
+	if (getserverdef(VAR_VIP_SCRIPT) && vip_status(1))
+		set .@amount, .@amount+2;
+
+	set .@medal_gap, 500 - countitem(.@badge);
+	if (.@medal_gap >= .@amount)
+		getitem .@badge,.@amount;
+	else
+		getitem .@badge,.@medal_gap;
+	return;
+}
+
