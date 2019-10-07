@@ -113,8 +113,8 @@
 //===================================================================
 // Usable Items
 //===================================================================
-601,Wing_Of_Fly,²ÔÓ¬³á°ò,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; },{},{}
-602,Wing_Of_Butterfly,ºûµû³á°ò,11,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",3; },{},{}
+601,Wing_Of_Fly,²ÔÓ¬³á°ò,11,10,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; getitem 601,1; },{},{}
+602,Wing_Of_Butterfly,ºûµû³á°ò,11,100,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",3; getitem 602,1; },{},{}
 603,Old_Blue_Box,ÉñÃØÏä×Ó,2,10000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ getrandgroupitem(IG_BlueBox,1); },{},{}
 604,Branch_Of_Dead_Tree,¿ÝÊ÷Ö¦,2,50,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ monster "this",-1,-1,"--ja--",-1-MOBG_Branch_Of_Dead_Tree,1,""; },{},{}
 605,Anodyne,ÂüÌØÁÆÉËÒ©,11,2000,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "SM_ENDURE",1; },{},{}
