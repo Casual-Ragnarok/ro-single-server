@@ -123,7 +123,7 @@
 608,Seed_Of_Yggdrasil,天地树芽,0,300,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 50,50; },{},{}
 609,Amulet,返魂符,2,100,,100,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 610,Leaf_Of_Yggdrasil,天地树叶子,11,250,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "ALL_RESURRECTION",1; },{},{}
-611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "MC_IDENTIFY",1; },{},{}
+611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "MC_IDENTIFY",1; getitem 611,1; },{},{}
 612,Portable_Furnace,携带用熔矿炉,2,150,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 21; },{},{}
 613,Iron_Hammer,钢铁锤子,2,1000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 1; },{},{}
 614,Golden_Hammer,黄金锤子,2,3000,,300,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 2; },{},{}
