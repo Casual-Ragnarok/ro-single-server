@@ -1,0 +1,162 @@
+//===== rAthena Script ======================================= 
+//= Ticket Refiner
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= [Official Conversion]
+//= Refiner that uses +5~9/+11 refine tickets to refine
+//= equipment with no chance of failure.
+//= NOTE: This NPC is currently disabled on official servers.
+//===== Additional Comments: =================================
+//= 1.0 First version. [Euphy]
+//============================================================
+
+prontera,184,177,6	script	精炼研究家	851,{
+	disable_items;
+	if (countitem(6238) || countitem(6228) || countitem(6229) || countitem(6230) || countitem(6231) || countitem(6456))
+		set .@bWeaponUp,1;
+	if (countitem(6239) || countitem(6232) || countitem(6233) || countitem(6234) || countitem(6235) || countitem(6457))
+		set .@bArmorUp,1;
+	if (!.@bWeaponUp && !.@bArmorUp) {
+		mes "[精炼研究家]";
+		mes "你好!";
+		mes "有什么事情?";
+		mes "我是专家.";
+		mes "在物品精炼领域,";
+		mes "但我已经退休了.";
+		next;
+		switch(select("- 那我走了.:- 嗯......这让我好奇.")) {
+		case 1:
+			mes "[精炼研究家]";
+			mes "保重, 探险家.";
+			close;
+		case 2:
+			mes "[精炼研究家]";
+			mes "事实上, 我有时冒险家与提供完善服务 ^006400精炼能力提升券的服务^000000...";
+			mes "再见~!";
+			close;
+		}
+	}
+	emotion e_gasp;
+	mes "[精炼研究家]";
+	mes "你好!";
+	mes "你可以将你的物品精炼到 ^006400与精炼能力提升券相同的级别^000000.";
+	mes "您不必担心! 装备不会有精炼失败的可能.";
+	next;
+	if(select("- 我马上回来.:- 用券来精炼装备.") == 1) {
+		mes "[精炼研究家]";
+		mes "好的.";
+		mes "等你回来.";
+		close;
+	}
+	mes "[精炼研究家]";
+	mes "你想精炼什么装备?";
+	next;
+	setarray .@position$[1],"头上","衣服","左手","右手","披肩","鞋子","装饰品左","装饰品右","头中","头下";
+	set .@menu$,"";
+	for(set .@i,1; .@i<=10; set .@i,.@i+1)
+		set .@menu$, .@menu$+((getequipisequiped(.@i))?getequipname(.@i):.@position$[.@i]+"- [未装备]")+":";
+	set .@part, select(.@menu$);
+	if (!getequipisequiped(.@part)) {
+		mes "[精炼研究家]";
+		mes "你必须装备要精炼的装备.";
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		emotion e_otl;
+		mes "[精炼研究家]";
+		mes "噢, 我很抱歉.";
+		mes "这个物品无法被精炼.";
+		close;
+	}
+	switch(getequipweaponlv(.@part)) {
+	default:
+	case 0:
+		setarray .@tickets[0],6457,6235,6234,6233,6232,6239;
+		setarray .@levels[0],5,6,7,8,9,11;
+		set .@type$,"Armor";
+		set .@check,.@bArmorUp;
+		break;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		setarray .@tickets[0],6456,6231,6230,6229,6228,6238;
+		setarray .@levels[0],5,6,7,8,9,11;
+		set .@type$,"Weapon";
+		set .@check,.@bWeaponUp;
+		break;
+	}
+	if (!.@check) {
+		emotion e_dots;
+		mes "[精炼研究家]";
+		mes "如果你想要精炼这个 ^006400"+.@type$+"^000000, 请带上 ^006400"+.@type$+"精炼能力提升券^000000.";
+		mes "再见!";
+		close;
+	}
+	mes "[精炼研究家]";
+	mes "请选择你想精炼 ^006400"+.@type$+"^000000 所使用的精炼能力提升券.";
+	next;
+	set .@menu$,"";
+	for(set .@i,0; .@i<getarraysize(.@tickets); set .@i,.@i+1)
+		set .@menu$, .@menu$+getitemname(.@tickets[.@i])+":";
+	set .@select, select(.@menu$)-1;
+	set .@ticket_lv, .@levels[.@select];
+	set .@ticket_id, .@tickets[.@select];
+	if (countitem(.@ticket_id) == 0) {
+		emotion e_what;
+		mes "[精炼研究家]";
+		mes getitemname(.@ticket_id)+" 不再你身上, 你是不是把它放仓库了?";
+		mes "请检查一下.";
+		mes "再见!";
+		close;
+	}
+	if (getequiprefinerycnt(.@part) >= .@ticket_lv) {
+		emotion e_swt2;
+		mes "[精炼研究家]";
+		mes "^8B4513这个道具已经精炼到极致了.^000000";
+		mes "请拿一件不到你精炼能力提升券级别的装备来.";
+		close;
+	}
+	mes "[精炼研究家]";
+	mes "我将精炼 ^006400"+getequipname(.@part)+"^8B4513 至 +"+.@ticket_lv+" 级别^000000 消耗 ^006400"+getitemname(.@ticket_id)+"^000000.";
+	mes "我继续?";
+	next;
+	if(select("- 否.:- 是.") == 1) {
+		emotion e_dots;
+		mes "[精炼研究家]";
+		mes "噢, 你改变主意了.";
+		mes "好吧.";
+		mes "你需要的时候再来吧.";
+		close;
+	}
+	mes "[精炼研究家]";
+	mes "很好.";
+	mes "如你所愿!";
+	mes "我有我自己特殊的方式来精炼...";
+	mes ".......咔嘭!";
+	specialeffect EF_SUI_EXPLOSION;
+	if (countitem(.@ticket_id))
+		delitem .@ticket_id,1;
+	else {
+		next;
+		mes "错误!";
+		mes "请报给GM.";
+		close;
+	}
+	for(set .@i,getequiprefinerycnt(.@part); .@i<.@ticket_lv; set .@i,.@i+1)
+		successrefitem .@part;
+	next;
+	emotion e_ho;
+	mes "[精炼研究家]";
+	mes "好了, 就是它了~";
+	mes "很好, ^0000FF"+strcharinfo(0)+"^000000!";
+	mes "恭喜你那闪耀的 "+.@type$+".";
+	mes "你看起来棒极了!";
+	mes "再见~!";
+	close;
+}

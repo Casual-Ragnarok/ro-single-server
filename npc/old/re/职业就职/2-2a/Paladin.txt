@@ -1,0 +1,58 @@
+// ---------------------------------
+// - 圣殿十字军 转职脚本 - 
+//===================================
+// 版本：1.3c
+//===================================
+
+valkyrie,53,39,3	script	圣殿十字军#Valkyrie	752,{
+	if (ADVJOB == 0 || Upper != 1) {
+		set .@karma_d,rand(1,10);
+		if (.@karma_d > 4) {
+			mes "[圣殿十字军]";
+			mes "恭喜你转生了!";
+			mes "这是战士们的光荣!";
+			close;
+		}
+		mes "[圣殿十字军]";
+		mes "别忘了圣战时刻将至，";
+		mes "请不要松懈锻炼!";
+		mes "愿奥丁神保佑你!";
+		mes "请立刻行动!";
+		close;
+	}
+	else if (ADVJOB == Job_Paladin && Class == Job_Swordman_High && JobLevel > 39) {
+		mes "[圣殿十字军]";
+		mes "恢复本来面貌、";
+		mes "给世界带来新的曙光的时候来临了";
+		mes "请以崭新的姿态继续你的旅程吧";
+		next;
+		mes "[圣殿十字军]";
+		mes "要转职吗?";
+		next;
+		if (select("不要:转职成为圣殿十字军") == 1) {
+			mes "[圣殿十字军]";
+			mes "准备好了的话，";
+			mes "请随时找我吧";
+			mes "祝你好运!";
+			close;
+		}
+		if (SkillPoint) {
+			mes "[圣殿十字军]";
+			mes "好像学习的还不够多，";
+			mes "学会所有技能之后再来吧";
+			close;
+		}
+		jobchange Job_Paladin;
+		set ADVJOB,0;
+		mes "[圣殿十字军]";
+		mes "恭喜你转职成功";
+		mes "请回到陆地上，";
+		mes "用你的保护弱者吧";
+		close;
+	}
+	mes "[圣殿十字军]";
+	mes "欢迎来到荣誉的巴哈拉，";
+	mes "好好的休息再回去吧，";
+	mes "戏给战士们光荣!";
+	close;
+}

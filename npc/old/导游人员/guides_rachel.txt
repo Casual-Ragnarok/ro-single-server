@@ -1,0 +1,121 @@
+//===== rAthena Script ======================================= 
+//= Rachel Guides
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guide for the city of Rachel.
+//===== Additional Comments: ================================= 
+//= 1.0 First version, Renewal guide.
+//============================================================ 
+
+rachel,138,146,5	script	拉赫导游#rachel	934,{
+	mes "[拉赫导游]";
+	mes "欢迎光临 阿卢纳贝兹首都^8B4513拉赫^000000";
+	mes "需要为您介绍吗?";
+	next;
+	while (1) {
+		switch(select("[ 主要设施 ]:[ 商店 & 小帮手 ]:删除小地图的标记:结束对话")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 旅馆 ]:[ 武器店 ]:[ 道具店 ]:[ 机场 ]:[ 瑟斯隆尼勒 ]:[ 牧师宾珊特宅邸 ]:返回上一选单")) {
+				case 1:
+					mes "[拉赫导游]";
+					mes "旅途劳顿是最好到旅馆一下,左侧的大楼";
+					mes "就是拉赫的旅馆";
+					viewpoint 1,115,144,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					mes "[拉赫导游]";
+					mes "拉赫的武器店就在西门附近";
+					viewpoint 1,42,82,1,0xFF4500;
+					next;
+					break;
+				case 3:
+					mes "[拉赫导游]";
+					mes "只贩售高级药水的拉赫道具店位于西门附";
+					mes "近";
+					viewpoint 1,83,73,2,0xDAA520;
+					next;
+					break;
+				case 4:
+					mes "[拉赫导游]";
+					mes "飞空艇航站位于拉赫的东门外";
+					viewpoint 1,272,125,3,0x008000;
+					next;
+					break;
+				case 5:
+					mes "[拉赫导游]";
+					mes "瑟斯隆尼勒是女神弗蕾亚的化身教皇所在";
+					mes "的神圣场所,";
+					mes "沿着路往北走即可到达";
+					viewpoint 1,150,243,4,0x0000FF;
+					next;
+					break;
+				case 6:
+					mes "[拉赫导游]";
+					mes "^000080牧师宾珊特宅邸^000000的";
+					mes "位置已经标记在";
+					mes "小地图上了,";
+					viewpoint 1,98,238,5,0x000080;
+					next;
+					break;
+				case 7:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 准它企划公司职员 ]:[ 伊甸园传送师 ]:返回上一选单")) {
+				case 1:
+					mes "[拉赫导游]";
+					mes "^803232准它企划公司职员^000000的";
+					mes "位置已经标记在";
+					mes "小地图上了。";
+					viewpoint 1,110,138,7,0x803232;
+					next;
+					break;
+				case 2:
+					mes "[拉赫导游]";
+					mes "^556B2F伊甸园传送师^000000";
+					mes "位置已经标记在";
+					mes "小地图上了,";
+					viewpoint 1,125,144,8,0x556B2F;
+					next;
+					break;
+				case 3:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[拉赫导游]";
+			mes "标记已删除,";
+			mes "还需要其它服务吗?";
+			viewpoint 2,115,144,0,0xFFFFFF;
+			viewpoint 2,42,82,1,0xFFFFFF;
+			viewpoint 2,83,73,2,0xFFFFFF;
+			viewpoint 2,272,125,3,0xFFFFFF;
+			viewpoint 2,150,243,4,0xFFFFFF;
+			viewpoint 2,98,238,5,0xFFFFFF;
+			viewpoint 2,110,138,7,0xFFFFFF;
+			viewpoint 2,125,144,8,0xFFFFFF;
+			next;
+			break;
+		case 4:
+			mes "[拉赫导游]";
+			mes "祝你旅途愉快!";
+			close;
+		}
+	}
+}

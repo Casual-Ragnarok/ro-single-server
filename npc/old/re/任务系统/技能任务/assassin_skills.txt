@@ -1,0 +1,73 @@
+//===== eAthena Script ======================================= 
+//= Assassin Skills Quests
+//===== By: ================================================== 
+//= Lupus, Reddozen
+//===== Current Version: ===================================== 
+//= 1.3a
+//===== Compatible With: ===================================== 
+//= eAthena Revision 3800+
+//===== Description: ========================================= 
+//= Temp quests for new skills for 2nd classes
+//===== Additional Comments: ================================= 
+//= 1.0 for fully working skills only [Lupus]
+//= 1.1 Added more new skill quests for more classes [Lupus]
+//= Somehow eA engine doesn't let you keep learn't skill V_V'
+//= 1.2 Added to correct locations, correct NPC's, fixed
+//= some of the items required and made them into real
+//= quests. [Reddozen] 
+//= 1.3 Fixed bugs and minor typos. Optimized [Lupus]
+//= 1.3a fixed an item ID typo, thx 2Spiritual Kid
+//= 1.3b Splitted into different files [DracoRPG]
+//============================================================
+
+
+//============================================================
+// 刺客 - 超音速投掷 + 毒刃
+//============================================================
+in_moc_16.gat,23,27,5	script	伊丝米儿	885,{
+	mes "[伊丝米儿]";
+	mes "…………";
+	close;
+}
+
+in_moc_16.gat,14,27,5	script	齐亭	884,{
+	mes "[齐亭]";
+	if(BaseJob!=Job_Assassin) goto L_nosin;
+	if(getskilllv(1003) && getskilllv(1004)) goto L_alreadyhave;
+
+	mes "给我点物品我能教你的新技能！";
+	mes "3 蓝宝石";
+	mes "1 红宝石";
+	next;
+	
+	mes "[齐亭]";
+	mes "让我检查下你的东西带全没.";
+	next;
+	
+	if(countitem(726)<3 || countitem(723)<1) goto L_noitems;//Items: Sapphire, Ruby,
+	delitem 726, 3;//Items: Sapphire,
+	delitem 723, 1;//Items: Ruby,
+
+	mes "[齐亭]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1003,1,0;
+	skill 1004,1,0;
+	close;
+	
+L_noitems:
+	mes "[齐亭]";
+	mes "你没带足物品.";
+	mes "等你带足了再来找我吧";
+	close;
+		
+L_nosin:
+	mes "对不起，你不是刺客.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "我已经教过你啦~！";
+	close;
+}
+

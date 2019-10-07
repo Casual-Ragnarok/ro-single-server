@@ -1,0 +1,187 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ------------------------------------------
+// - 里希塔乐镇 导游 脚本 -
+// ------------------------------------------
+// 版本 1.1
+//===========================================
+
+lighthalzen,220,311,3	script	导游::LhzSlum	852,{
+	mes "[里希塔乐镇 导游]";
+	mes "这里是企业之都 里希塔乐镇，欢迎各位大家的来访，";
+	mes "我们是对来到里希塔乐镇的旅客们，为了他们的便利做村落介绍的，随时像我们导游人员询问吧，";
+	mes "第一次接受我们介绍的旅客们，先按选单'选择注意事项'了解必须注意的事情";
+	while(1) {
+		next;
+		switch(select("开始由导游说明城市:删掉微型地图上全部的记号:听取注意事项:取消")) {
+		case 1:
+			mes "[里希塔乐镇 导游]";
+			mes "我是负责里希塔乐镇'^ff0000右边区域 - 贫民街^000000'的介绍人员，";
+			mes "请您选择想知道的选单";
+			mes "要在微型的图上留下记号吗?";
+			next;
+			if(select("要:不要")==1) {
+				set @tempguide,1;
+			}
+			mes "[里希塔乐镇 导游]";
+			mes "请选择地点";
+			while(1) {
+				next;
+				switch(select("道具屋:捣碎店:酒店:取消")) {
+				case 1:
+					mes "[里希塔乐镇 导游]";
+					mes "'道具店'位于'贫民街' 11点钟的方向";
+					if(@tempguide)viewpoint 1,324,301,1,0xFF0000;
+					continue;
+				case 2:
+					mes "[里希塔乐镇 导游]";
+					mes "'捣碎店'位于'贫民街' 1点钟的方向";
+					if(@tempguide)viewpoint 1,365,301,2,0xFF00FF;
+					continue;
+				case 3:
+					mes "[里希塔乐镇 导游]";
+					mes "'酒店'位于'贫民街' 南边的位置";
+					if(@tempguide)viewpoint 1,346,232,3,0xCCFFFF;
+					continue;
+				case 4:
+					mes "[里希塔乐镇 导游]";
+					mes "需要删掉记号请选取 '删掉微型地图上全部的记号'";
+				}
+				break;
+			}
+			continue;
+		case 2:
+			viewpoint 2,324,301,1,0xFF0000;
+			viewpoint 2,365,301,2,0xFF00FF;
+			viewpoint 2,346,232,3,0xCCFFFF;
+			continue;
+		case 3:
+			mes "[里希塔乐镇 导游]";
+			mes "在浏览之前必须先参考右上方的微型地图.";
+			mes "如果看不见微型地图的话 请按'ctrl+tab'或者选取基本情报视窗 内的'map'.";
+			mes "微型地图出现之后, 在地图上按  '-' 几下可以看见所有城市.";
+			continue;
+		case 4:
+			mes "[里希塔乐镇 导游]";
+			mes "里希塔乐镇以中央的铁路为中心分为两个区域，";
+			mes "为了治安卫兵们随时的在巡逻中，若有不方便的地方或是疑问的话，请随时请求我们的协助吧";
+			next;
+			mes "[里希塔乐镇 导游]";
+			mes "那么祝你有个愉快的旅行";
+			close;
+		}
+	}
+}
+
+lighthalzen,207,311,5	script	导游::LhzWest	852,{
+	mes "[里希塔乐镇 导游]";
+	mes "这里是企业之都 里希塔乐镇，欢迎各位大家的来访，";
+	mes "我们是对来到里希塔乐镇的旅客们，为了他们的便利做村落介绍的，随时像我们导游人员询问吧，";
+	mes "第一次接受我们介绍的旅客们，先按选单'选择注意事项'了解必须注意的事情";
+	while(1) {
+		next;
+		switch(select("开始由导游说明城市:删掉微型地图上全部的记号:听取注意事项:取消")) {
+		case 1:
+			mes "[里希塔乐镇 导游]";
+			mes "我是负责里希塔乐镇'^ff0000右边区域 - 贫民街^000000'的介绍人员，";
+			mes "请您选择想知道的选单";
+			mes "要在微型的图上留下记号吗?";
+			next;
+			if(select("要:不要")==1) {
+				set @tempguide,1;
+			}
+			mes "[里希塔乐镇 导游]";
+			mes "请选择地点";
+			while(1) {
+				next;
+				switch(select("^FF0000雷根贝勒^000000","火车站:派出所:银行:饭店:机场:商人公会:宝石商店:武器店:百货店:取消")) {
+				case 1:
+					mes "[里希塔乐镇 导游]";
+					mes "在村落西北方有秀发兹发德最大的企业 '雷根贝勒'所在的位置，'雷根贝勒'是对秀发兹发德全区域提供飞空艇服务的大规模企业，若有空的话劝你去看看也不错的";
+					if(@tempguide)viewpoint 1,103,244,1,0xFF0000;
+					continue;
+				case 2:
+					mes "[里希塔乐镇 导游]";
+					mes "'火车站'位于村落中央的位置，从矿山之都艾音贝赫出发的火车，也连接到里希塔乐镇这里";
+					if(@tempguide)viewpoint 1,240,163,2,0xFF00FF;
+					continue;
+				case 3:
+					mes "[里希塔乐镇 导游]";
+					mes "由中央稍微往北边走有负责治安的'派出所'，发现有行踪可疑的人或是有任何困难时请随时拜访派出所吧";
+					if(@tempguide)viewpoint 1,236,276,3,0xCCFFFF;
+					continue;
+				case 4:
+					mes "[里希塔乐镇 导游]";
+					mes "由中央稍微往北边走在派出所对面有'银行'，是负责相关各种金钱业务的地方";
+					if(@tempguide)viewpoint 1,199,257,4,0x0000FF;
+					continue;
+				case 5:
+					mes "[里希塔乐镇 导游]";
+					mes "'饭店'是在'里希塔乐镇'南边宽广的中央位置上，是一些有名人士常来使用的饭店，以最好的设备和服务对舒适的旅行有相当大的帮助的";
+					if(@tempguide)viewpoint 1,159,133,5,0x0FFF00;
+					continue;
+				case 6:
+					mes "[里希塔乐镇 导游]";
+					mes "'机场'位于中央大路最低端右边位置，可以透过飞空艇往各个村落便利的移动";
+					if(@tempguide)viewpoint 1,266,76,6,0x00FF00;
+					continue;
+				case 7:
+					mes "[里希塔乐镇 导游]";
+					mes "'商人公会'位于'里希塔乐镇'西南方的位置";
+					if(@tempguide)viewpoint 1,74,52,7,0xEFAEBD;
+					continue;
+				case 8:
+					mes "[里希塔乐镇 导游]";
+					mes "'宝石商店'位于'里希塔乐镇'西南方，是南方广场西边的位置，可以在这里购买些各种贵金属的物品";
+					if(@tempguide)viewpoint 1,92,110,8,0xFF9500;
+					continue;
+				case 9:
+					mes "[里希塔乐镇 导游]";
+					mes "'武器店'位于'里希塔乐镇'中央大道最低端，贩卖项目和规模可算是里希塔乐镇里最好的一家";
+					if(@tempguide)viewpoint 1,196,46,9,0x330033;
+					continue;
+				case 10:
+					mes "[里希塔乐镇 导游]";
+					mes "'百货店'位于'里希塔乐镇'中央的位置，有各个商家们密集的最高的采购区域";
+					if(@tempguide)viewpoint 1,199,163,10,0xFFFF00;
+					continue;
+				case 11:
+					mes "[里希塔乐镇 导游]";
+					mes "需要删掉记号请选取 '删掉微型地图上全部的记号'";
+				}
+				break;
+			}
+			continue;
+		case 2:
+			viewpoint 2,103,244,1,0xFF0000;
+			viewpoint 2,240,163,2,0xFF00FF;
+			viewpoint 2,236,276,3,0xCCFFFF;
+			viewpoint 2,199,257,4,0x0000FF;
+			viewpoint 2,159,133,5,0x0FFF00;
+			viewpoint 2,266,76,6,0x00FF00;
+			viewpoint 2,74,52,7,0xEFAEBD;
+			viewpoint 2,92,110,8,0xFF9500;
+			viewpoint 2,196,46,9,0x330033;
+			viewpoint 2,199,163,10,0xFFFF00;
+			continue;
+		case 3:
+			mes "[里希塔乐镇 导游]";
+			mes "在浏览之前必须先参考右上方的微型地图.";
+			mes "如果看不见微型地图的话 请按'ctrl+tab'或者选取基本情报视窗 内的'map'.";
+			mes "微型地图出现之后, 在地图上按  '-' 几下可以看见所有城市.";
+			continue;
+		case 4:
+			mes "[里希塔乐镇 导游]";
+			mes "里希塔乐镇以中央的铁路为中心分为两个区域，";
+			mes "为了治安卫兵们随时的在巡逻中，若有不方便的地方或是疑问的话，请随时请求我们的协助吧";
+			next;
+			mes "[里希塔乐镇 导游]";
+			mes "那么祝你有个愉快的旅行";
+			close;
+		}
+	}
+}
+
+lighthalzen,154,100,5	duplicate(LhzWest)	导游#lhz1	852
+lighthalzen,307,224,3	duplicate(LhzSlum)	导游#lhz2	852

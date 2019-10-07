@@ -1,0 +1,91 @@
+//===== rAthena Script ======================================= 
+//= Dewata Guide
+//===== By: ================================================== 
+//= Muad_Dib
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guide for the city of Dewata.
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [Lemongrass]
+//============================================================ 
+
+dewata,202,106,4	script	德瓦他导游#dewata01	535,{
+	mes "[德瓦他导游]";
+	mes "欢迎光临 ^8B4513德瓦他群岛^000000,";
+	mes "迷人的景色与耀眼的海光是一个能放松心情的好地方.";
+	mes "如果你有任何问题, 请随时问我.";
+	next;
+	mes "[德瓦他导游]";
+	mes "需要为您介绍吗?";
+	while (1) {
+		next;
+		switch(select("[ 卡普拉职员 ]:[ 武器店 ]:[ 防具店 ]:[ 道具店 ]:[ 喀拉喀拉火山的守门员 ]:[ 民宿主人 ]:[ 艾尔贝塔方向船员 ]:删除小地图的标记:结束对话")) {
+			case 1:
+				callsub L_Mark,"^0000FF卡普拉职员";
+				viewpoint 1,202,184,0,0x000FFF;
+				break;
+
+			case 2:
+				callsub L_Mark,"^008080武器店";
+				viewpoint 1,218,163,1,0x008080;
+				break;
+
+			case 3:
+				callsub L_Mark,"^008080防具店";
+				viewpoint 1,158,188,2,0x008080;
+				break;
+
+			case 4:
+				callsub L_Mark,"^FF1493道具店";
+				viewpoint 1,182,164,3,0xFF1493;
+				break;
+
+			case 5:
+				callsub L_Mark,"^FF1493喀拉喀拉火山的守门员";
+				viewpoint 1,232,59,4,0xFF1493;
+				break;
+
+			case 6:
+				callsub L_Mark,"^8A2BE2民宿主人";
+				viewpoint 1,195,235,5,0x8A2BE2;
+				break;
+
+			case 7:
+				callsub L_Mark,"^00BFFF艾尔贝塔方向船员";
+				viewpoint 1,230,52,6,0x00BFFF;
+				break;
+
+			case 8:
+				mes "[德瓦他导游]";
+				mes "标记已删除.";
+				mes "还需要其它服务吗?";
+				viewpoint 2,202,184,0,0xFFFFFF;
+				viewpoint 2,218,163,1,0xFFFFFF;
+				viewpoint 2,158,182,2,0xFFFFFF;
+				viewpoint 2,182,164,3,0xFFFFFF;
+				viewpoint 2,232,59,4,0xFFFFFF;
+				viewpoint 2,195,235,5,0xFFFFFF;
+				viewpoint 2,230,52,6,0xFFFFFF;
+				break;
+
+			case 9:
+				mes "[德瓦他导游]";
+				mes "祝你旅途愉快!!";
+				close;
+		}
+	}
+
+L_Mark:
+	mes "[德瓦他导游]";
+	mes ""+getarg(0)+"^000000的位置";
+	mes "已标记在小地图上.";
+	mes "请检视你的小地图.";
+	mes "还需要其它服务吗?";
+	return;
+}
+
+dewata,197,184,4	duplicate(德瓦他导游#dewata01)	德瓦他导游#dewata02	535

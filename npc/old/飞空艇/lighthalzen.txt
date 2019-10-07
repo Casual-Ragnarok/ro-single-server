@@ -1,0 +1,80 @@
+//===== rAthena Script ======================================= 
+//= Lighthalzen Airport Staff
+//===== By: ================================================== 
+//= L0ne_W0lf, Muad_Dib
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Lighthalzen Airport Staff
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//============================================================ 
+
+lhz_airport,143,43,5	script	机场职员#lhz_air1a::lhz_airport1	90,{
+	mes "[机场职员]";
+	mes "欢迎来到里希塔乐机场,";
+	mes "我们提供飞往艾音布罗克,毁葛和朱诺的航班.";
+	mes "我们的飞空艇将不做间断的飞向";
+	mes "艾音布罗克,毁葛和朱诺.";
+	next;
+	if (select("搭乘飞空艇.:取消.") == 1) {
+		mes "[机场职员]";
+		mes "搭乘费用是 ";
+		mes "1,200 zeny.";
+		mes "但是如果您有飞空艇免费搭乘券的话";
+		mes "就可以取消这个费用.";
+		next;
+		if (select("搭乘飞空艇:不要") == 1) {
+			if (countitem(7311) > 0) {
+				delitem 7311,1; //Free_Flying_Ship_Ticket
+				warp "lhz_airport",148,51;
+				end;
+			}
+			if (Zeny >= 1200) {
+				set Zeny, Zeny - 1200;
+				warp "lhz_airport",148,51;
+				end;
+			}
+			mes "[飞空艇职员]";
+			mes "抱歉.";
+			mes "您身上的钱不够支付搭乘飞空艇的 1,200 zeny";
+			close;
+		}
+	}
+	mes "[机场职员]";
+	mes "感谢您选择了我们的服务.";
+	mes "欢迎再来.";
+	mes "祝您有个美好的一天~";
+	close;
+}
+
+lhz_airport,158,43,5	duplicate(lhz_airport1)	飞空艇职员#lhz_air1b	90
+lhz_airport,126,43,5	duplicate(lhz_airport1)	飞空艇职员#lhz_air1c	90
+
+lhz_airport,143,49,3	script	离站办理职员#lhz_air2a::lhz_airport2	90,{
+	mes "[离站手续办理职员]";
+	mes "欢迎来到里希塔乐机场.";
+	mes "如果这是您航班的目的地的话,就由我来帮助您离站吧.";
+	mes "如果您是想要搭乘飞空艇的话,那么就请搭乘飞空艇去您想去的目的地好了.";
+	next;
+	if (select("离站:取消.") == 1) {
+		mes "[离站手续办理职员]";
+		mes "一旦您离站以后,如果还想要登机的话就要再付一次钱了.";
+		mes "只有在您要去里希塔乐的情况下才好在这里离站.";
+		mes "那么,请问您坚持要在朱诺这里离站吗";
+		next;
+		if (select("是的:不要了") == 1) {
+			warp "lhz_airport",142,40;
+			end;
+		}
+	}
+	mes "[离站手续办理职员]";
+	mes "谢谢您选择了我们的服务.";
+	mes "祝您旅途愉快~";
+	close;
+}
+
+lhz_airport,126,51,3	duplicate(lhz_airport2)	离站办理职员#lhz_air2b	90
+lhz_airport,158,50,3	duplicate(lhz_airport2)	离站办理职员#lhz_air2c	90

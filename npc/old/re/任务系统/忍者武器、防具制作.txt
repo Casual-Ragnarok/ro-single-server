@@ -1,0 +1,1183 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 忍者武器、防具制作 任务脚本 - 
+//===================================
+// 版本：1.2
+//===================================
+//= * 保秀 => 手臂护腕[1]
+//= * 霸秀 => 改良型手臂护腕[1]
+//= * 卡依巴拉 => 黑龙短剑、破刃剑、匕首[3]、利剑、白骨剑
+//= * 泰兹 => 风魔翼飞镖、风魔轮飞镖[3]、风魔轮飞镖[4]、风魔热火飞镖
+//===================================
+// 2007-02-09  黑色小猫  中文化
+//===================================
+
+que_ng,28,50,3	script	保秀	709,{
+	if (BaseJob != Job_Ninja){
+		mes "[保秀]";
+		mes "虽然我帮具有忍者职业的";
+		mes "年轻人制作最棒的";
+		mes "防具，不过也有最起码的条件";
+		next;
+		mes "[保秀]";
+		mes "依我看你等级还太低，";
+		mes "请你再成长后再来吧";
+		close;
+	}
+	if (BaseLevel < 20){
+		mes "[保秀]";
+		mes "I make the best shields for Ninjas of all ages,";
+		mes "But even I have some minimum requirements";
+		next;
+		mes "[保秀]";
+		mes "It looks like what you need isn't a shield, but more levels.";
+		mes "Come back after you've grown a bit more.";
+		close;
+	}
+	if (countitem(2102) < 1 && !(MISC_QUEST & 2048)){
+		mes "[保秀]";
+		mes "噢~ 你~!";
+		mes "你现在携带的那东西";
+		mes "莫非是隔海对岸国家的";
+		mes "防具，叫做铁盾的东西";
+		mes "是吗? 让我看一下";
+		next;
+		mes "[保秀]";
+		mes "没错!! 就是这个~!";
+		mes "在所有防具装上";
+		mes "插洞的话，应该能";
+		mes "大幅提升效能!";
+		mes "我怎么会忽略如此";
+		mes "简单的道理呢!!";
+		next;
+		mes "[保秀]";
+		mes "我是在东方现存3名的";
+		mes "忍者道具匠人中被称为";
+		mes "最优秀的 慕拉塔 保秀，";
+		mes "我懂得东方所有防具和";
+		mes "铠甲的制作方法";
+		next;
+		mes "[保秀]";
+		mes "不过问题是我所制作的";
+		mes "铠甲，实在是太坚固且";
+		mes "防御力又强，因此穿戴";
+		mes "铠甲的人彼此厮杀时，";
+		mes "却难以分出胜负";
+		next;
+		mes "[保秀]";
+		mes "因此我已金盆洗手";
+		mes "不再制作防具了";
+		next;
+		mes "[保秀]";
+		mes "为了避免手艺变差，";
+		mes "所以现在只从事";
+		mes "防具收集";
+		next;
+		mes "[保秀]";
+		mes "只是最近还是";
+		mes "很无聊啊";
+		next;
+		mes "[保秀]";
+		mes "由于每天只做收集，造成我";
+		mes "原本满脑子源源不断涌出的";
+		mes "创作灵魂，感觉渐渐的";
+		mes "快要消失了";
+		next;
+		mes "[保秀]";
+		mes "可是我现在看到你";
+		mes "那配戴防具的样子，";
+		mes "让我沉睡许久的创作";
+		mes "灵魂重燃了希望似的";
+		next;
+		mes "[保秀]";
+		mes "若你愿意带来手臂护腕1个、";
+		mes "插洞铁盾1个，以及";
+		mes "一万金币的话，我就会";
+		mes "帮你做插洞手臂护腕，";
+		mes "如何呢? 你想不想做一个";
+		mes "来试试看呢?";
+		next;
+		if(select("不要 我不想:好啊~!!赶快帮我制作吧") == 1){
+			mes "[保秀]";
+			mes "嗯 是吗，";
+			mes "这有点可惜呢?";
+			mes "若以后改变主意时，";
+			mes "再来找我吧";
+			close;
+		}
+		else {
+			mes "[保秀]";
+			mes "哦，是吗?";
+			mes "那快点把东西搜集来给我吧";
+			set ninbo,1;
+			close;
+		}
+	}
+	if (ninbo == 1){
+		mes "[保秀]";
+		mes "噢~欢迎你再度光临，";
+		mes "因为需要插洞的手臂";
+		mes "护腕而来的吗?";
+		next;
+		mes "[保秀]";
+		mes "Oh~ ! I see, it's even possible to slot armor!";
+		next;
+		mes "[保秀]";
+		mes "Ahh, Now I'm just itching to imitating this armor and making a slot on other armors.";
+		next;
+		mes "[保秀]";
+		mes "If you have a regular non-slotted Arm Guard and a slotted Guard, I'll make the non-slotted one slotted at the cost of 10,000 Zeny.";
+		next;
+		mes "[保秀]";
+		mes "How 'bout it? Want to try?";
+		next;
+		if(select("No thanks.:Ok, sounds good.") == 1){
+			mes "[保秀]";
+			mes "Hmm, Ok.";
+			mes "I'm so grateful that I was able to see such a rare thing from overseas.";
+			mes "Thanks for everything.";
+			set ninbo,0;
+			close;
+		}
+		else {
+			mes "[保秀]";
+			mes "Oh ok.";
+			mes "I can't wait to begin.";
+			mes "If you bring me 1 Arm Guard";
+			mes "1 Slotted Guard, and";
+			mes "10,000 Zeny..";
+			next;
+			mes "[保秀]";
+			mes "Then I'll slot your slotless Arm Guard.";
+			mes "Come back when you have all the required materials.";
+			set ninbo,2;
+			close;
+		}
+	}
+	else if (ninbo == 2){
+		if (countitem(2102) < 1 || countitem(2117) < 1){
+			mes "[保秀]";
+			mes "Hmm... It looks like you didn't bring me enough materials.";
+			mes "In order to create a Slotted Arm Guard, I need 1 Slotted Guard";
+			mes "1 Arm Guard, and 10,000 Zeny";
+			mes "Come back when you're sure you have everything.";
+			close;
+		}
+		if (Zeny < 10000){
+			mes "[保秀]";
+			mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
+			next;
+			mes "[保秀]";
+			mes "In order to create a Slotted Arm Guard, I need 1 Guard[1]";
+			mes "1 Arm Guard, and 10,000 Zeny.";
+			mes "Come back when you're sure you have everything.";
+			close;
+		}
+		mes "[保秀]";
+		mes "Oh, I see you're back with all the required materials.";
+		mes "But before I start, I must ask you one more time.";
+		mes "Do you want to give me the materials you've brought and recieve a Slotted Arm Guard instead?";
+		next;
+		if(select("No:Yes") == 1){
+			mes "[保秀]";
+			mes "Ok";
+			mes "Well, if you make up your mind again, come and see me.";
+			close;
+		}
+		else {
+			mes "[保秀]";
+			mes "All right!";
+			mes "This should only take a second";
+			mes "Bang Clang~  Bang Clang~";
+			next;
+			if(countitem(2102) < 1 || countitem(2117) < 1 || Zeny < 10000){
+				mes "HACK DETECTED";
+				close;
+			}
+			mes "[保秀]";
+			mes "Here, it's finally complete.";
+			mes "I present to you a Slotted Arm Guard.";
+			mes "Come and find me whenever you're ready to request more.";
+			delitem 2102,1;
+			delitem 2117,1;
+			set Zeny,Zeny-10000;
+			set ninbo,0;
+			set MISC_QUEST,MISC_QUEST | 2048;
+			getitem 2118,1;
+			close;
+		}
+	}
+	else if (MISC_QUEST & 2048){
+		set ninbo,0;
+		mes "[保秀]";
+		mes "Oh~ I see you've come back.";
+		mes "Is it because you need another slotted Arm Guard?";
+		next;
+		if(select("Nope, not really.:Yes, make me another one.") == 1){
+			mes "[保秀]";
+			mes "Hmmph~ You sure a weird one.";
+			mes "Well, I'll see you later~";
+			close;
+		}
+		else {
+			if (countitem(2102) < 1 || countitem(2117) < 1){
+				mes "[保秀]";
+				mes "Hmm... It looks like you didn't bring me enough materials.";
+				mes "In order to make a Slotted Arm Guard,";
+				mes "I need 1 Slotted Guard";
+				mes "1 Arm Guard, and";
+				mes "10,000 Zeny.";
+				mes "Come back when you're sure you have everything.";
+				close;
+			}
+			if (Zeny < 10000){
+				mes "[保秀]";
+				mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
+				next;
+				mes "[保秀]";
+				mes "In order to create one Slotted Arm Guard,";
+				mes "I need 1 Slotted Guard, 1 Arm Guard, and 10,000 Zeny.";
+				mes "Come back when you're sure you have everything.";
+				close;
+			}
+			mes "[保秀]";
+			mes "Oh, You've brought me the needed materials.";
+			mes "Before I begin, let me ask one final time...";
+			mes "Will you give me the materials you've gathered, and in turn, receive a slotted Arm Guard?";
+			next;
+			if(select("No:Yes") == 1){
+				mes "[保秀]";
+				mes "Ok";
+				mes "If you ever make up your mind";
+				mes "come and find me again.";
+				close;
+			}
+			else {
+				mes "[保秀]";
+				mes "All right!";
+				mes "This should only take a second";
+				mes "Bang Clang ~Bang Clang ~";
+				next;
+				mes "[保秀]";
+				mes "Here, it's finally complete.";
+				mes "I present to you a Slotted Arm Guard.";
+				next;
+				if(countitem(2102) < 1 || countitem(2117) < 1 || Zeny < 10000){
+					mes "HACK DETECTED";
+					close;
+				}
+				mes "[保秀]";
+				mes "If you ever want to ask me to make you more items, feel free to come back anytime.";
+				delitem 2102,1;
+				delitem 2117,1;
+				set Zeny,Zeny-10000;
+				getitem 2118,1;
+				close;
+			}
+		}
+	}
+	else {
+		set ninbo,0;
+		mes "[保秀]";
+		mes "Oh~ You~!";
+		mes "Is what you have there the shield from overseas called a Guard? Let me take a look.";
+		next;
+		mes "[保秀]";
+		mes "Unbelievable!! It is~!";
+		mes "If all shields had a slot, they could become more effective than ever.";
+		mes "How is it that I've only realised this now?";
+		next;
+		mes "[保秀]";
+		mes "I'm the best out of the three craftsmen of Ninja tools called Murata 保秀.";
+		mes "I know how to create all the armor and shields of the eastern world.";
+		next;
+		mes "[保秀]";
+		mes "But because the armor I would create was so refined and high in defense, when people wearing my armor would fight again each other, neither side could win.";
+		next;
+		mes "[保秀]";
+		mes "For that reason, I no longer make shields and armor.";
+		next;
+		mes "[保秀]";
+		mes "Nowadays, all I do is collect shields and armor.";
+		next;
+		mes "[保秀]";
+		mes "But life is kind of boring without crafting things.";
+		next;
+		mes "[保秀]";
+		mes "Since all I do is collect now, I feel like the creative spirit within me is disappearing.";
+		next;
+		mes "[保秀]";
+		mes "But at the sight of your shield, I feel like my sleeping spirit of creativity has awoken.";
+		next;
+		mes "[保秀]";
+		mes "I you want to, bring me an Arm Guard, a Slotted Guard, and 10,000 Zeny, and I'll make you a Slotted Arm Guard.";
+		mes "How 'bout it? Would you like to obtain a Slotted Arm Guard?";
+		next;
+		if(select("No, I'd rather not.:Yes~!! Please make it for me!") == 1){
+			mes "[保秀]";
+			mes "Hmm, is that so?";
+			mes "What a shame...";
+			mes "Well, if you change your mind later, come back and see me.";
+			close;
+		}
+		else {
+			if (countitem(2102) < 1 || countitem(2117) < 1){
+				mes "[保秀]";
+				mes "Hmm... It looks like you didn't bring me enough materials.";
+				next;
+				mes "[保秀]";
+				mes "In order to make a Slotted Arm Guard,";
+				mes "I need 1 Slotted Guard";
+				mes "1 Arm Guard, and";
+				mes "10,000 Zeny.";
+				mes "Come back when you're sure you have everything.";
+				close;
+			}
+			if (Zeny < 10000){
+				mes "[保秀]";
+				mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
+				next;
+				mes "[保秀]";
+				mes "In order to make a Slotted Arm Guard,";
+				mes "I need 1 Slotted Guard";
+				mes "1 Arm Guard, and";
+				mes "10,000 Zeny.";
+				mes "Come back when you're sure you have everything.";
+				close;
+			}
+			mes "[保秀]";
+			mes "Oh, You've brought me the needed materials.";
+			mes "Before I begin, let me ask one final time...";
+			mes "Will you give me the materials you've gathered,";
+			mes "and in turn, receive a Slotted Arm Guard?";
+			next;
+			if(select("No:Yes") == 1){
+				mes "[保秀]";
+				mes "Ok";
+				mes "If you ever make up your mind";
+				mes "come and find me again.";
+				close;
+			}
+			else {
+				mes "[保秀]";
+				mes "All right!";
+				mes "This should only take a second";
+				mes "Bang Clang ~Bang Clang ~";
+				next;
+				if(countitem(2102) < 1 || countitem(2117) < 1 || Zeny < 10000){
+					mes "HACK DETECTED";
+					close;
+				}
+				mes "[保秀]";
+				mes "Here, it's finally complete.";
+				mes "I present to you a Slotted Arm Guard.";
+				mes "If you ever want to ask me to make you more items, feel free to come back anytime.";
+				delitem 2102,1;
+				delitem 2117,1;
+				set Zeny,Zeny-10000;
+				set MISC_QUEST,MISC_QUEST | 2048;
+				getitem 2118,1;
+				close;
+			}
+		}
+	}
+}
+
+que_ng,28,45,3	script	霸秀	86,{
+	if(BaseJob != Job_Ninja){
+		mes "[霸秀]";
+		mes "我是现存三名忍者道具";
+		mes "匠人之一，我叫做 霸秀";
+		next;
+		mes "[霸秀]";
+		mes "虽然说是三名，但其余";
+		mes "两位是我的兄长们";
+		next;
+		mes "[霸秀]";
+		mes "不过我看旅行者你";
+		mes "并非是我的主顾，";
+		mes "所以不能替你制作防具了";
+		mes "很抱歉";
+		close;
+	}
+	if(BaseLevel < 50){
+		mes "[霸秀]";
+		mes "I am one of the brothers of the three brothers in charge of crafting shields in the east named Murata 霸秀";
+		next;
+		mes "[霸秀]";
+		mes "Unfortunately, many of my shields have minimum requirements, and I'm afraid you would not meet them.";
+		next;
+		mes "[霸秀]";
+		mes "Come back when you're stronger.";
+		close;
+	}
+	if (countitem(2107) < 1 && !(MISC_QUEST & 4096)){
+		mes "[霸秀]";
+		mes "I am one of the brothers of the three craftsmen in charge of crafting shields in the east named Murata 霸秀";
+		next;
+		mes "[霸秀]";
+		mes "We are called the Three Craftsmen, but the other two craftsmen are my brothers.";
+		mes "I've learned my craft by sneaking looks over my brothers, so my skill is a little less than them, but many people praise me highly.";
+		next;
+		mes "[霸秀]";
+		mes "As of now, I've given up making shields and am currently running an antique shop for shields.";
+		mes "I'm researching to see if shields can be enchanted with magic.";
+		next;
+		mes "[霸秀]";
+		mes "Do you happen to know a shield called the Mirror shield from overseas?";
+		mes "I'd love to see that item, but I can't get my hands on one.";
+		next;
+		mes "[霸秀]";
+		mes "It'd help me greatly if I could see that shield up close.";
+		mes "Can you help me?";
+		next;
+		if(select("Hmm...I don't feel like it.:Very well.") == 1){
+			mes "[霸秀]";
+			mes "Ah~ I guess it was an impossible request.";
+			mes "I'm sorry.";
+			mes "If you ever find a Mirror shield and want to get rid of it, please come and see me.";
+			close;
+		}
+		else {
+			mes "[霸秀]";
+			mes "Oh, thank you.";
+			mes "If you could really find me a Mirror Shield, I might get some really good ideas.";
+			set ninbot,1;
+			close;
+		}
+	}
+	if (ninbot == 1){
+		mes "[霸秀]";
+		mes "Oh. You have it?";
+		mes "Let me see...";
+		mes "Hmm ...";
+		next;
+		mes "[霸秀]";
+		mes "Oh! That's it! This proves it's not impossible to make a shield resistant to magical attacks.";
+		mes "Whew...";
+		next;
+		mes "[霸秀]";
+		mes "This sure gets me excited.";
+		mes "If you have a normal Arm Guard, bring me your Arm Guard, and...";
+		next;
+		mes "[霸秀]";
+		mes "1 Mirror Shield, and";
+		mes "20,000 Zeny, and I'll improve your Arm Guard into an Improved Arm Guard.";
+		next;
+		mes "[霸秀]";
+		mes "How about it? Would you like that?";
+		next;
+		if(select("No, I wouldn't.:Yes, I would.") == 1){
+			mes "[霸秀]";
+			mes "Hmm, Very Well.";
+			mes "I'm so grateful you showed me that rare shield from overseas.";
+			next;
+			mes "[霸秀]";
+			mes "Thanks for everything.";
+			set ninbot,0;
+			close;
+		}
+		else {
+			mes "[霸秀]";
+			mes "Very Well.";
+			mes "I'm looking forward to this.";
+			next;
+			mes "[霸秀]";
+			mes "Bring me 1 Arm Guard,";
+			mes "1 Mirror Shield, and";
+			mes "20,000 Zeny,";
+			mes "and I'll make you an Improved Arm Guard.";
+			next;
+			mes "[霸秀]";
+			mes "Come and see me when you have everything ready.";
+			set ninbot,2;
+			close;
+		}
+	}
+	else if (ninbot == 2){
+		if(countitem(2107) < 1 || countitem(2117) < 1){
+			mes "[霸秀]";
+			mes "Hmm.. It looks like there aren't enough materials.";
+			mes "For an Improved Arm Guard, I require...";
+			mes "1 Mirror Shield, 1 Arm Guard";
+			mes "and 20,000 Zeny.";
+			mes "Come again when you have these materials.";
+			close;
+		}
+		if(Zeny < 20000){
+			mes "[霸秀]";
+			mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
+			mes "In order to create an Improved Arm Guard, I require...";
+			mes "1 Mirror Shield, 1 Arm Guard";
+			mes "and 20,000 Zeny.";
+			mes "Come again when you have these materials.";
+			close;
+		}
+		mes "[霸秀]";
+		mes "The proper ingredients";
+		mes "have been gathered.";
+		mes "Before I begin,";
+		mes "I'll ask one last time.";
+		next;
+		mes "[霸秀]";
+		mes "In trade of the magical defence of the Arm Guard increasing, the shield's ability to block physical attacks may inevitably decrease.";
+		next;
+		mes "[霸秀]";
+		mes "Will you give me the materials you've gathered";
+		mes "and in trade, receive an Improved Arm Guard?";
+		next;
+		if(select("No:Yes") == 1){
+			mes "[霸秀]";
+			mes "Very Well.";
+			mes "If you ever make up your mind";
+			mes "come and find me again.";
+			close;
+		}
+		else {
+			mes "[霸秀]";
+			mes "Hmm~ Well then~";
+			mes "Shall we begin?";
+			mes "Bang Clang ~Bang Clang ~";
+			mes "Sweep Sweep~ Saw Saw~";
+			next;
+			if(countitem(2107) < 1 || countitem(2117) < 1 || Zeny < 20000){
+				mes "HACK DETECTED";
+				close;
+			}
+			mes "[霸秀]";
+			mes "Here it is -- it's complete.";
+			mes "I've made you an Improved Arm Guard.";
+			mes "If you ever want me to create more items, come and ask me anytime.";
+			delitem 2107,1;
+			delitem 2117,1;
+			set Zeny,Zeny-20000;
+			set ninbot,0;
+			set MISC_QUEST,MISC_QUEST | 4096;
+			getitem 2119,1;
+			close;
+		}
+	}
+	else if (MISC_QUEST & 4096){
+		set ninbot,0;
+		mes "[霸秀]";
+		mes "Oh~ I see you've come back.";
+		mes "Are you here because you need an Improved Arm Guard?";
+		next;
+		if(select("Nope, not really.:Yes, make me another one.") == 1){
+			mes "[霸秀]";
+			mes "Aha~ I see~.";
+			mes "Come back and talk to me anytime.";
+			close;
+		}
+		else {
+			if(countitem(2107) < 1 || countitem(2117) < 1){
+				mes "[霸秀]";
+				mes "Hmm.. It looks like there aren't enough materials.";
+				mes "In order to make an Improved Arm Guard, I require...";
+				mes "1 Mirror Shield, 1 Arm Guard,";
+				mes "And 20,000 Zeny.";
+				mes "Come again when you have these materials.";
+				close;
+			}
+			if(Zeny < 20000){
+				mes "[霸秀]";
+				mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
+				mes "In order to make an Improved Arm Guard, I require...";
+				mes "1 Mirror Shield, 1 Arm Guard,";
+				mes "and 20,000 Zeny.";
+				mes "Come again when you have these materials.";
+				close;
+			}
+			mes "[霸秀]";
+			mes "Looks like you brought me the correct ingredients.";
+			mes "Before I begin,";
+			mes "I'll ask one last time.";
+			next;
+			mes "[霸秀]";
+			mes "In trade of the magical defence of the Arm Guard increasing, the shield's ability to block physical attacks may inevitably decrease.";
+			next;
+			mes "[霸秀]";
+			mes "Will you give me the materials you've gathered to receive an Improved Arm Guard?";
+			next;
+			if(select("No:Yes") == 1){
+				mes "[霸秀]";
+				mes "Very Well.";
+				mes "If you make up your mind";
+				mes "come and find me again.";
+				close;
+			}
+			else {
+				mes "[霸秀]";
+				mes "Hmm~ Well then~";
+				mes "Shall we begin?";
+				mes "Bang Clang ~Bang Clang ~";
+				mes "Sweep Sweep~ Saw Saw~";
+				next;
+				mes "[霸秀]";
+				mes "Here it is -- it's complete.";
+				mes "I've made you an Improved Arm Guard";
+				next;
+				if(countitem(2107) < 1 || countitem(2117) < 1 || Zeny < 20000){
+					mes "HACK DETECTED";
+					close;
+				}
+				mes "[霸秀]";
+				mes "If you ever want me to create more items, come and ask me anytime.";
+				delitem 2107,1;
+				delitem 2117,1;
+				set Zeny,Zeny-20000;
+				getitem 2119,1;
+				close;
+			}
+		}
+	}
+	else {
+		set ninbot,0;
+		mes "[霸秀]";
+		mes "Why~ That's~!";
+		mes "Is what you have there that shield which is called a 'Mirror Shield' overseas?";
+		next;
+		mes "[霸秀]";
+		mes "Excuse me, but may I take a look?";
+		next;
+		mes "[霸秀]";
+		mes "I knew it!! It is a Mirror Shield~!";
+		mes "There must be a way any shield can posess magical powers!!";
+		next;
+		mes "[霸秀]";
+		mes "Shields could be much more useful than now.";
+		mes "Why didn't I think of this before?";
+		next;
+		mes "[霸秀]";
+		mes "I have two brothers, and together we are the Three Craftsmen of the East.";
+		mes "I learned my crafting skill by watching my older brothers.";
+		next;
+		mes "[霸秀]";
+		mes "Due to that, my skill is not as good as theirs, but many people say I am skilled...";
+		next;
+		mes "[霸秀]";
+		mes "As of now, I have also given up making shields and am currently running an antique shop for shields.";
+		next;
+		mes "[霸秀]";
+		mes "I'm researching to see if shields can be enchanted with magic.";
+		next;
+		mes "[霸秀]";
+		mes "Therefore, I wanted to get an idea of how magic works on shields by studying a shield from overseas called the Mirror Shield, but I couldn't get my hands on one.";
+		mes "What stress that had caused me.";
+		next;
+		mes "[霸秀]";
+		mes "But luckily, you, a traveller, happened to have a mirror shield, and now I feel my creative spirit burning lively inside.";
+		next;
+		mes "[霸秀]";
+		mes "If you want, I will make you an Improved Arm Guard if you bring me 1 Arm Guard, 1 Mirror Shield, And 20,000 Zeny.";
+		mes "Would you like to try using one?";
+		next;
+		if(select("No, I don't wanna!:Yeah~!! Hurry and make it for me!") == 1){
+			mes "[霸秀]";
+			mes "Hmm, is that so.";
+			mes "What a shame.";
+			mes "Come and find me if you change your mind.";
+			close;
+		}
+		else{
+			if(countitem(2107) < 1 || countitem(2117) < 1){
+				mes "[霸秀]";
+				mes "Hmm.. It looks like there aren't enough materials.";
+				mes "In order to create an Improved Arm Guard, I require...";
+				mes "1 Mirror Shield, 1 Arm Guard";
+				mes "And 20,000 Zeny";
+				mes "Come again when you have these materials.";
+				close;
+			}
+			if(Zeny < 20000){
+				mes "[霸秀]";
+				mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
+				mes "In order to make an Improved Arm Guard, I require...";
+				mes "1 Mirror Shield, 1 Arm Guard,";
+				mes "And 20,000 Zeny.";
+				mes "Come again when you have these materials.";
+				close;
+			}
+			mes "[霸秀]";
+			mes "The proper ingredients";
+			mes "have been gathered.";
+			mes "Before I begin,";
+			mes "I'll ask one last time.";
+			next;
+			mes "[霸秀]";
+			mes "In trade of the magical defence of the Arm Guard increasing, the shield's ability to block physical attacks may inevitably decrease.";
+			next;
+			mes "[霸秀]";
+			mes "Will you give me the materials you've gathered";
+			mes "to receive an Improved Arm Guard?";
+			next;
+			if(select("No:Yes") == 1){
+				mes "[霸秀]";
+				mes "Very Well.";
+				mes "If you ever make up your mind";
+				mes "come and find me again.";
+				close;
+			}
+			else{
+				mes "[霸秀]";
+				mes "Hmm~ Well then~";
+				mes "Shall we begin?";
+				mes "Bang Clang ~Bang Clang ~";
+				mes "Sweep Sweep~ Saw Saw~";
+				next;
+				if(countitem(2107) < 1 || countitem(2117) < 1 || Zeny < 20000){
+					mes "HACK DETECTED";
+					close;
+				}
+				mes "[霸秀]";
+				mes "Here it is -- it's complete.";
+				mes "I've made you an Improved Arm Guard";
+				mes "If you ever want me to create more items, come and ask me anytime.";
+				delitem 2107,1;
+				delitem 2117,1;
+				set Zeny,Zeny-20000;
+				set MISC_QUEST,MISC_QUEST | 4096;
+				getitem 2119,1;
+				close;
+			}
+		}
+	}
+}
+
+que_ng,27,18,3	script	涂秀	709,{
+	if(BaseJob != Job_Ninja){
+		mes "[涂秀]";
+		mes "How are you~";
+		mes "My young friend~";
+		mes "I am one of the three brothers of the eastern world who craft armor. The name is Murata 涂秀.";
+		next;
+		mes "[涂秀]";
+		mes "I've learned how to slot things from a land overseas.";
+		mes "I'm thinking about earning some money using this ability.";
+		next;
+		mes "[涂秀]";
+		mes "But you don't seem like the kind of customer which I can do business with...";
+		close;
+	}
+	mes "[涂秀]";
+	mes "How are you, my young friend~";
+	mes "I'm the middle brother of the three brothers in charge of crafting shields in the east.";
+	mes "They call me Murata 涂秀.";
+	next;
+	mes "[涂秀]";
+	mes "I learned how to slot things from overseas, so I'm thinking about earning some money with that ability part time.";
+	next;
+	mes "[涂秀]";
+	mes "If you want, I can create a Slotted Improved Arm Guard if you bring me";
+	mes "1 Improved Arm Guard, 1 Slotted Buckler";
+	mes "and 40,000 Zeny.";
+	next;
+	mes "[涂秀]";
+	mes "By the way, I'm sorry to say this, but there's a chance I might break your materials and fail slotting the Improved Arm Guard, so you might want to think about it.";
+	mes "How 'bout it? Do we have a deal?";
+	next;
+	if(select("No. I don't want to do this.:Yes! Let's do this!") == 1){
+		mes "[涂秀]";
+		mes "Ok.";
+		mes "Of course, the shields are important to you.";
+		mes "If you decide to go foward with this afterwards, come and find me.";
+		close;
+	}
+	else {
+		if(countitem(2104) < 1 || countitem(2119) < 1){
+			mes "[涂秀]";
+			mes "It doesn't look like you brought me enough materials.";
+			mes "The required materials are 1 Slotted Buckler";
+			mes "1 Improved Arm Guard, and";
+			mes "40,000 Zeny.";
+			mes "You must bring me the right number of materials and Zeny.";
+			mes "Don't forget that.";
+			close;
+		}
+		if(Zeny < 40000){
+			mes "[涂秀]";
+			mes "It looks like you brought the right amount of materials.";
+			mes "However.. you didn't bring enough Zeny.";
+			mes "The required materials are 1 Slotted Buckler";
+			mes "1 Improved Arm Guard, and 40,000 Zeny.";
+			mes "You must bring me the right number of materials and Zeny.";
+			mes "Don't forget that.";
+			close;
+		}
+		mes "[涂秀]";
+		mes "Hmm. materials and zeny checked!";
+		mes "Time to begin my part.";
+		mes "Just to warn you..";
+		next;
+		mes "[涂秀]";
+		mes "While I am in production, I may fail to create your gear, so you may want to think it over.";
+		next;
+		mes "[涂秀]";
+		mes "Do you want me to produce your gear, even if there's a chance I may fail?";
+		next;
+		if(select("I think I better back off. Sob..:Yes! Let's try anyway!") == 1){
+			mes "[涂秀]";
+			mes "Ok.";
+			mes "Well, come back later when you've got the guts to try.";
+			mes "Erherherherher~";
+			close;
+		}
+		else {
+			mes "[涂秀]";
+			mes "OK! I have your order!";
+			mes "Just wait 3 seconds!!";
+			mes "Clink Clank~!Clink Clank~!!";
+			mes "Sweep Sweep~ Saw Saw~";
+			next;
+			if(countitem(2104) < 1 || countitem(2119) < 1 || Zeny < 40000){
+				mes "HACK DETECTED";
+				close;
+			}
+			delitem 2104,1;
+			delitem 2119,1;
+			set Zeny,Zeny-40000;
+			switch (rand(5)) {
+			case 1:
+			case 2:
+				getitem 12043,1;
+				mes "[涂秀]";
+				mes "Aaah!!!";
+				mes "Ah.. this";
+				mes "is bad news.";
+				mes "Slotting the shield has failed";
+				mes "as I feared.";
+				mes "I'm very sorry about this.";
+				mes "Eat this and cheer up.";
+				close;
+			default:
+				getitem 2120,1;
+				mes "[涂秀]";
+				mes "Hmm~~ Looks like everything went all right.";
+				mes "Here is your completed Slotted";
+				mes "Improved Arm Guard.";
+				mes "I was nervous that it might fail, but hey, there's a reason why I'm called a Craftsman, right?";
+				mes "If you need me again, come and seek me.";
+				close;
+			}
+		}
+	}
+}
+
+que_ng,72,34,3	script	匠人 卡依巴拉	847,{
+	if (BaseJob != Job_Ninja){
+		mes "[卡依巴拉]";
+		mes "我是匠人卡依巴拉，";
+		mes "我目前帮忍者职业的人，";
+		mes "制作武器，";
+		mes "依我看你的职业";
+		mes "并不是忍者啊";
+		next;
+		mes "[卡依巴拉]";
+		mes "即使向你展现我的实力，";
+		mes "我想也是白费力气了，";
+		mes "真是好可惜喔";
+		close;
+	}
+	mes "[卡依巴拉]";
+	mes "我是世上仅存的，唯一知道如何用黑龙的鳞片锻造武器的匠人，我叫卡依巴拉";
+	mes "你看起来是个忍者啊，";
+	mes "如我你对我制造的武器有兴趣的话，请先看看吧";
+	next;
+	switch(select("黑龙短剑:破刃剑:匕首[3]:利剑:白骨剑:取消")){
+	case 1:
+		mes "[卡依巴拉]";
+		mes "哦，是^FF0000黑龙短剑^000000吗?";
+		mes "黑龙短剑是把用龙的鳞片";
+		mes "作为材料的剑哦";
+		next;
+		mes "[卡依巴拉]";
+		mes "材料是龙鳞400个、神之金属5个、";
+		mes "龙皮30个，还需要200,000金币";
+		mes "请问你要制作吗?";
+		set .@itemid,13006;
+		setarray .@need,1036,984,7123;
+		setarray .@amount,400,5,30;
+		set .@zeny,200000;
+		break;
+	case 2:
+		mes "[卡依巴拉]";
+		mes "哦，是^FF0000破刃剑^000000吗?";
+		mes "用破刃剑杀敌越杀武器就变得越强有力的剑";
+		next;
+		mes "[卡依巴拉]";
+		mes "材料是钢铁30个、老旧剑柄1个，";
+		mes "还需要2万金币";
+		mes "请问你要制作吗?";
+		set .@itemid,13007;
+		setarray .@need,999,7022;
+		setarray .@amount,30,1;
+		set .@zeny,20000;
+		break;
+	case 3:
+		mes "[卡依巴拉]";
+		mes "哦，是^FF0000匕首[3]^000000吗?";
+		mes "材料需要钢铁25个、老旧魔法图5个，";
+		mes "还需要32,000金币";
+		mes "请问你要制作吗?";
+		set .@itemid,13011;
+		setarray .@need,999,7099;
+		setarray .@amount,25,5;
+		set .@zeny,32000;
+		break;
+	case 4:
+		mes "[卡依巴拉]";
+		mes "哦，是^FF0000利剑^000000吗?";
+		mes "利剑的制作需要钢铁30个、";
+		mes "天蓝宝石10个，还需要48,000金币";
+		mes "请问你要制作吗?";
+		set .@itemid,13012;
+		setarray .@need,999,720;
+		setarray .@amount,30,10;
+		set .@zeny,48000;
+		break;
+	case 5:
+		mes "[卡依巴拉]";
+		mes "哦，是^FF0000白骨剑^000000";
+		mes "白骨剑的材料需要死人遗骨500个、";
+		mes "珍珠5个、治愈术等级3 10个，";
+		mes "还需要120,000金币";
+		mes "请问你要制作吗?";
+		set .@itemid,13014;
+		setarray .@need,932,722,12001;
+		setarray .@amount,500,5,10;
+		set .@zeny,120000;
+		break;
+	case 6:
+		mes "[卡依巴拉]";
+		mes "嗯，知道了";
+		mes "那以后有需要再来找我吧";
+		close;
+	}
+	next;
+	if(select("下次看看吧:对!我想做!")==1) {
+		mes "[卡依巴拉]";
+		mes "嗯，也是啦...";
+		mes "这些材料并不容易弄到....";
+		mes "如果以后准备好了材料";
+		mes "随时可以再来";
+		close;
+	}
+	for(set .@i,0; .@i < getarraysize(.@need); set .@i,.@i+1) {
+		if(countitem(.@need[.@i]) < .@amount[.@i]) {
+			mes "[卡依巴拉]";
+			mes "要制作" +getitemname(.@itemid)+(.@itemid ==13011? "[3]": "")+ "的话...";
+			mes "好像材料不足噢.";
+			next;
+			break;
+		}
+	}
+	if(.@i == getarraysize(.@need) && Zeny < .@zeny) {
+		mes "[卡依巴拉]";
+		mes "嗯...";
+		mes "材料是够了，";
+		mes "不过金钱不足啊!";
+		next;
+	}
+	if(.@i < getarraysize(.@need) || Zeny < .@zeny) {
+		mes "[卡依巴拉]";
+		mes "制作" +getitemname(.@itemid)+(.@itemid ==13011? "[3]": "")+ "的材料是：";
+		switch(.@itemid) {
+		case 13006:
+			mes "^FF0000龙鳞400个^000000、";
+			mes "^FF0000神之金属5个^000000、";
+			mes "^FF0000龙皮30个^000000、";
+			mes "^FF000020万金币^000000";
+			break;
+		case 13007:
+			mes "^FF0000钢铁30个^000000、^FF0000老旧剑柄1个^000000、";
+			mes "^FF00002万金币^000000";
+			break;
+		case 13011:
+			mes "^FF0000钢铁25个^000000、^FF0000老旧魔法图5个^000000、";
+			mes "^FF00003万2千金币^000000";
+			break;
+		case 13012:
+			mes "^FF0000钢铁30个^000000、^FF0000天蓝宝石10个^000000、";
+			mes "^FF00004万8千金币^000000";
+			break;
+		case 13014:
+			mes "^FF0000死人遗骨500个^000000、^FF0000珍珠5个^000000、";
+			mes "^FF0000治愈术等级3 10个^000000、";
+			mes "^FF000012万金币^000000";
+			break;
+		}
+		mes "请确认后再来";
+		close;
+	}
+	if(checkweight(.@itemid,1) == 0) {
+		mes "[卡依巴拉]";
+		mes "你的行李好像很多的样子";
+		mes "先整理一下再来吧";
+		close;
+	}
+	for(set .@i,0; .@i < getarraysize(.@need); set .@i,.@i+1)
+		delitem .@need[.@i],.@amount[.@i];
+	set Zeny,Zeny-.@zeny;
+	getitem .@itemid,1;
+	mes "[卡依巴拉]";
+	mes "好的，材料和金钱都准备好了";
+	mes "请你稍等一下吧!";
+	next;
+	mes "[卡依巴拉]";
+	mes "好了，我的技术果然还是跟以前一样啊";
+	mes "这是" +getitemname(.@itemid)+(.@itemid ==13011? "[3]": "")+ "，";
+	mes "拿去吧";
+	close;
+}
+
+que_ng,22,62,3	script	泰兹	709,{
+	mes "[泰兹]";
+	mes "我是风魔忍者的匠人，";
+	mes "叫做 泰兹";
+	next;
+	mes "[泰兹]";
+	mes "因为好赌，家道中落，";
+	mes "所以靠副业替别人";
+	mes "制作武器";
+	next;
+	if(Class != Job_Ninja) {
+		mes "[泰兹]";
+		mes "我你不像是个忍者，";
+		mes "我想没必要向你浪费口舌说明这些";
+		next;
+		mes "[泰兹]";
+		mes "下次等你经济状况好点时，";
+		mes "我们再来摸个十八圈吧";
+		close;
+	}
+	mes "[泰兹]";
+	mes "不管怎样，目前制造风魔手里剑的人，";
+	mes "还没有人做的比我更好!";
+	mes "让你看看我的作品吧!";
+	next;
+	switch(select("风魔翼飞镖:风魔轮飞镖[3]:风魔轮飞镖[4]:风魔热火飞镖:取消")) {
+	case 1:
+		mes "[泰兹]";
+		mes "制造^FF0000风魔翼飞镖^000000";
+		mes "需要以下材料...";
+		mes "50 个钢铁，20 只哈比的羽毛，5 个神之金属，还要 90,000金币";
+		mes "请问你要制作吗?";
+		set .@itemid,13300;
+		setarray .@need,999,7115,984;
+		setarray .@amount,50,20,5;
+		set .@zeny,90000;
+		break;
+	case 2:
+		mes "[泰兹]";
+		mes "制造^FF0000风魔轮飞镖[3]^000000";
+		mes "需要以下材料...";
+		mes "30 个钢铁，100 个红色流苏，2 个神之金属，还要40,000金币";
+		mes "请问你要制作吗?";
+		set .@itemid,13301;
+		setarray .@need,999,7301,984;
+		setarray .@amount,30,100,2;
+		set .@zeny,40000;
+		break;
+	case 3:
+		mes "[泰兹]";
+		mes "制造^FF0000风魔轮飞镖[4]^000000";
+		mes "需要以下材料...";
+		mes "20 个受损的钻石，1 个风魔轮飞镖[3]，3 个神之金属，还要 40,000金币";
+		mes "请问你要制作吗?";
+		next;
+		mes "[泰兹]";
+		mes "还有如果改造插洞，";
+		mes "风魔轮飞镖[3]会失去精炼度以及插着的卡片，";
+		mes "请你慎重考虑后再作决定";
+		set .@itemid,13302;
+		setarray .@need,733,13301,984;
+		setarray .@amount,20,1,3;
+		set .@zeny,40000;
+		break;
+	case 4:
+		mes "[泰兹]";
+		mes "制造^FF0000风魔热火飞镖^000000";
+		mes "需要以下材料...";
+		mes "50 个钢铁，50 个热火石，100 个燃烧的心脏，100 个火种，还要 78,000金币";
+		mes "请问你要制作吗?";
+		set .@itemid,13303;
+		setarray .@need,999,7098,7097,7521;
+		setarray .@amount,50,100,100,50;
+		set .@zeny,78000;
+		break;
+	case 5:
+		mes "[泰兹]";
+		mes "真可惜";
+		mes "我本来想给你瞧瞧";
+		mes "我注入心血制作的武器来着...";
+		mes "如果想制作的话再回来吧";
+		close;
+	}
+	next;
+	if(select("这也太贵了吧:嗯!万事拜托了!")==1) {
+		mes "[泰兹]";
+		mes "嗯，制作费用也不低";
+		mes "知道了，如果以后准备好了材料";
+		mes "再来找我吧";
+		close;
+	}
+	for(set .@i,0; .@i < getarraysize(.@need); set .@i,.@i+1) {
+		if(countitem(.@need[.@i]) < .@amount[.@i]) {
+			mes "[泰兹]";
+			mes "制作" +getitemname(.@itemid)+(.@itemid ==13301? "[3]": (.@itemid ==13302? "[4]": ""))+ "的材料不足";
+			next;
+			break;
+		}
+	}
+	if(.@i == getarraysize(.@need) && Zeny < .@zeny) {
+		mes "[泰兹]";
+		mes "材料足够了，";
+		mes "但是金钱不足噢!";
+		next;
+	}
+	if(.@i < getarraysize(.@need) || Zeny < .@zeny) {
+		mes "[泰兹]";
+		mes getitemname(.@itemid)+(.@itemid ==13301? "[3]": (.@itemid ==13302? "[4]": ""))+ "的话..";
+		switch(.@itemid) {
+		case 13300:
+			mes "^FF0000钢铁50个^000000、^FF0000哈比的羽毛20个^000000、";
+			mes "^FF0000神之金属5个^000000、";
+			mes "还需要^FF000090,000金币^000000";
+			break;
+		case 13301:
+			mes "^FF0000钢铁30个^000000、^FF0000红色流苏100个^000000、";
+			mes "^FF0000神之金属2个^000000、";
+			mes "还需要^FF000040,000金币^000000";
+			break;
+		case 13302:
+			mes "^FF0000受损的钻石20个^000000、";
+			mes "^FF0000风魔轮飞镖[3]1个^000000、";
+			mes "^FF0000神之金属3个^000000、还需要^FF000040,000金币^000000";
+			break;
+		case 13303:
+			mes "^FF0000钢铁50个^000000、^FF0000火种100个^000000、";
+			mes "^FF0000燃烧的心脏100个^000000、^FF0000热火石50个^000000、";
+			mes "还需要^FF000078,000金币^000000";
+			break;
+		}
+		mes "请确认后再来";
+		close;
+	}
+	if(checkweight(.@itemid,1) == 0) {
+		mes "[泰兹]";
+		mes "你的行李好像很多的样子";
+		mes "先整理一下再来吧";
+		close;
+	}
+	for(set .@i,0; .@i < getarraysize(.@need); set .@i,.@i+1)
+		delitem .@need[.@i],.@amount[.@i];
+	set Zeny,Zeny-.@zeny;
+	getitem .@itemid,1;
+	mes "[泰兹]";
+	mes "嗯，";
+	mes "这是" +getitemname(.@itemid)+(.@itemid ==13301? "[3]": (.@itemid ==13302? "[4]": ""))+ "";
+	mes "好好使用你的新武器吧!";
+	close;
+}

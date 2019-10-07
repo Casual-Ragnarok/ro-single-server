@@ -1,0 +1,248 @@
+//===== rAthena Script ======================================= 
+//= Alberta Guides
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guides for the city of Alberta
+//===== Additional Comments: ================================= 
+//= 1.0 First version, Renewal guides.
+//============================================================ 
+
+alberta,23,238,4	script	导游#01alberta::AlbertaGuide	105,{
+	cutin "prt_soldier",2;
+	mes "[艾尔贝塔导游]";
+	mes "欢迎光临 海港之都^8B4513艾尔贝塔^000000";
+	mes "需要为您介绍吗?";
+	next;
+	while (1) {
+		switch(select("[ 主要设施 ]:[ 商店 & 小帮手 ]:[ 起航地说明 ]:删除小地图的标记:结束对话")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 道具店 ]:[ 铁工厂 ]:[ 武器 & 防具店 ]:[ 旅馆 ]:[ 美发店 ]:[ 商人工会 ]:返回上一选单")) {
+				case 1:
+					mes "[艾尔贝塔导游]";
+					mes "^0000FF道具店^000000的位置已经标记在";
+					mes "小地图上了,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,98,154,0,0x0A82FF;
+					next;
+					break;
+				case 2:
+					mes "[艾尔贝塔导游]";
+					mes "^B9062F铁工厂^000000目前";
+					mes "与商人工会使用";
+					mes "同一栋大楼,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,35,41,1,0xFF0000;
+					next;
+					break;
+				case 3:
+					mes "[艾尔贝塔导游]";
+					mes "^FF5400武器 & 防具店^000000的";
+					mes "位置已经标记在";
+					mes "小地图上了,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,117,37,2,0xFFB400;
+					next;
+					break;
+				case 4:
+					mes "[艾尔贝塔导游]";
+					mes "^006400旅馆^000000的位置已经标记在";
+					mes "小地图上了,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,65,233,3,0xAAFF00;
+					next;
+					break;
+				case 5:
+					mes "[艾尔贝塔导游]";
+					mes "^7F3300美发店^000000的位置已经标记在";
+					mes "小地图上了,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,48,145,4,0xD2691E;
+					next;
+					break;
+				case 6:
+					mes "[艾尔贝塔导游]";
+					mes "是^800080商人转职^000000的";
+					mes "地方,";
+					mes "位置已经标记在";
+					mes "小地图上了,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,33,41,5,0xDA70D6;
+					next;
+					break;
+				case 7:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 伊甸园传送师 ]:[ 卡普拉职员 ]:[ 准它企划公司职员 ]:[ 子弹商人 ]:[ 料理材料商 ]:返回上一选单")) {
+				case 1:
+					mes "[艾尔贝塔导游]";
+					mes "^B9062F伊甸园传送师^000000位于城市南边与";
+					mes "商人工会大楼内的";
+					mes "地方,";
+					mes "已经标记在小地图上了,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,33,41,6,0xFF0000;
+					viewpoint 1,121,68,7,0xFF0000;
+					next;
+					break;
+				case 2:
+					mes "[艾尔贝塔导游]";
+					mes "^0000FF卡普拉职员^000000的";
+					mes "位置请点击小地图上的箱形就可以了,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,33,41,8,0x0A82FF;
+					viewpoint 1,113,60,9,0x0A82FF;
+					next;
+					break;
+				case 3:
+					mes "[艾尔贝塔导游]";
+					mes "领取活动物品等时,";
+					mes "去找^FF5400准它企划公司职员^000000.";
+					mes "就对了,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,148,57,10,0xFFB400;
+					next;
+					break;
+				case 4:
+					mes "[艾尔贝塔导游]";
+					mes "^7F3300神枪手^000000冒险家们";
+					mes "专属的^7F3300子弹商人^000000是";
+					mes "位于都市中央附近,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,117,158,11,0xD2691E;
+					next;
+					break;
+				case 5:
+					mes "[艾尔贝塔导游]";
+					mes "艾尔贝塔的^006400料理材料商^000000";
+					mes "有非常多的常客,";
+					mes "^006400好吃的鱼^000000尤其";
+					mes "大受冒险家们的";
+					mes "欢迎,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,167,135,12,0xAAFF00;
+					next;
+					break;
+				case 6:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 港口 - 北边码头 ]:[ 港口 - 巴西 ]:[ 港口 - 天津 ]:[ 港口 - 昆仑 ]:[ 港口 - 莫斯科利亚 ]:[ 港口 - 洛阳 ]:[ 港口 - 哎呦泰雅 ]:返回上一选单")) {
+				case 1:
+					mes "[艾尔贝塔导游]";
+					mes "可透过^B9062F北边码头^000000前往";
+					mes "^B9062F沉没之船^000000或^B9062F伊斯鲁德港口^000000";
+					mes "还需要其它服务吗??";
+					viewpoint 1,192,151,13,0xFF0000;
+					next;
+					break;
+				case 2:
+					mes "[艾尔贝塔导游]";
+					mes "如果你想去 ^800080巴西^000000,";
+					mes "请去港口找 ^800080布兰妮号 船员^000000,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,246,82,14,0xDA70D6;
+					next;
+					break;
+				case 3:
+					mes "[艾尔贝塔导游]";
+					mes "如果你想去 ^0000FF天津^000000,";
+					mes "请去港口找 ^0000FF贸易船 船长^000000,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,246,74,15,0x0A82FF;
+					next;
+					break;
+				case 4:
+					mes "[艾尔贝塔导游]";
+					mes "如果你想去 ^B9062F昆仑^000000,";
+					mes "请去港口找 ^B9062F昆仑 宣传使节^000000,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,246,62,16,0xFF0000;
+					next;
+					break;
+				case 5:
+					mes "[艾尔贝塔导游]";
+					mes "如果你想去 ^FF5400莫斯科里亚^000000,";
+					mes "请去港口找 ^FF5400莫斯科里亚 宣传使节^000000,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,246,51,17,0xFFB400;
+					next;
+					break;
+				case 6:
+					mes "[艾尔贝塔导游]";
+					mes "如果您想去 ^7F3300洛阳^000000,";
+					mes "请去港口找 ^7F3300姑娘^000000,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,246,40,18,0xD2691E;
+					next;
+					break;
+				case 7:
+					mes "[艾尔贝塔导游]";
+					mes "如果您想去 ^800080哎呦泰雅^000000,";
+					mes "请去港口找 ^800080哎伊拜婷^000000,";
+					mes "还需要其它服务吗?";
+					viewpoint 1,246,29,19,0xDA70D6;
+					next;
+					break;
+				case 8:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 4:
+			mes "[艾尔贝塔导游]";
+			mes "标记已删除,";
+			mes "还需要其它服务吗?";
+			viewpoint 2,1,1,0,0xFFFF00;
+			viewpoint 2,1,1,1,0x000000;
+			viewpoint 2,1,1,2,0xFF0000;
+			viewpoint 2,1,1,3,0xFFFF00;
+			viewpoint 2,1,1,4,0xFFFF00;
+			viewpoint 2,1,1,5,0xFFFF00;
+			viewpoint 2,1,1,6,0xFFFF00;
+			viewpoint 2,1,1,7,0xFFFF00;
+			viewpoint 2,1,1,8,0xFFFF00;
+			viewpoint 2,1,1,9,0xFFFF00;
+			viewpoint 2,1,1,10,0xFFFF00;
+			viewpoint 2,1,1,11,0xFFFF00;
+			viewpoint 2,1,1,12,0x000000;
+			viewpoint 2,1,1,13,0xFFFF00;
+			viewpoint 2,1,1,14,0xFFFF00;
+			viewpoint 2,1,1,15,0xFFFF00;
+			viewpoint 2,1,1,16,0xFFFF00;
+			viewpoint 2,1,1,17,0xFFFF00;
+			viewpoint 2,1,1,18,0xFFFF00;
+			viewpoint 2,1,1,19,0xFFFF00;
+			next;
+			break;
+		case 5:
+			mes "[艾尔贝塔导游]";
+			mes "祝你旅途愉快!";
+			close2;
+			cutin "prt_soldier",255;
+			end;
+		}
+	}
+}
+
+alberta,120,60,3	duplicate(AlbertaGuide)	导游#02alberta	105
+alberta,184,143,4	duplicate(AlbertaGuide)	导游#03alberta	105

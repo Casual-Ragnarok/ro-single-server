@@ -1,0 +1,208 @@
+//===== rAthena Script ======================================= 
+//= Renters
+//===== By: ================================================== 
+//= rAthena Dev Team
+//===== Current Version: ===================================== 
+//= 2.2
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Renewal-specific breeder NPCs.
+//===== Additional Comments: ================================= 
+//= 2.1 Moved some renters to a separate renewal file. [Daegaladh]
+//= 2.2 Updated to match the official scripts. [Euphy]
+//============================================================ 
+
+// Dragon Breeder
+//============================================================
+job3_rune01,88,62,5	script	坐骑龙饲养员	105,{
+	mes "[坐骑龙饲养员]";
+	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune) {
+		mes "您好啊, 冒险者, 想弄条龙来骑骑吗?";
+		next;
+		switch(select("是:否")) {
+		case 1:
+			//if (!getskilllv("RK_DRAGONTRAINING")) {
+			if (!getskilllv("KN_RIDING")) {
+				mes "[坐骑龙饲养员]";
+				mes "您得拿了驾驶执照(训龙术)我才敢给您租龙啊!";
+				close;
+			}
+			else if (checkriding()) {
+				mes "[坐骑龙饲养员]";
+				mes "您这胯下不骑着一头吗?";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[坐骑龙饲养员]";
+				mes "冒险者, 我这小本生意, 不赊账!";
+				close;
+			}
+			setdragon;
+			close;
+		case 2:
+			mes "[坐骑龙饲养员]";
+			mes "没事儿, 做不成生意做朋友嘛, 下次再来嘿!";
+			close;
+		}
+	}
+	mes "这位客官, 有什么事儿能帮您吗?";
+	mes "龙很暴躁的, 只有符文骑士才能驾驭得了啊!";
+	close;
+}
+
+// Dragon/Gryphon Master
+//============================================================
+prontera,130,213,5	script	兽骑管理员	105,{
+	mes "[兽骑管理员]";
+	if (Class == Job_Rune_Knight || Class == Job_Rune_Knight_T || Class == Job_Baby_Rune) {
+		mes "你好啊, 冒险家, 想租用一头坐骑吗?";
+		next;
+		switch(select("- 是:- 否")) {
+		case 1:
+			//if (!getskilllv("RK_DRAGONTRAINING")) {
+			if (!getskilllv("KN_RIDING")) {
+				mes "[兽骑管理员]";
+				mes "请先学会乘骑术, 好吗?";
+				close;
+			}
+			else if (checkriding()) {
+				mes "[兽骑管理员]";
+				mes "你已经骑着一头了嘿......";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[兽骑管理员]";
+				mes "我们不打白条, 谢谢!";
+				close;
+			}
+			setdragon;
+			close;
+		case 2:
+			mes "[兽骑管理员]";
+			mes "我知道了. 那么, 祝你好运!";
+			close;
+		}
+	}
+	if (Class == Job_Royal_Guard || Class == Job_Royal_Guard_T || Class == Job_Baby_Guard) {
+		mes "你好啊, 骚年, 想租用一头狮鹫吗?";
+		next;
+		switch(select("是:否")) {
+		case 1:
+			if(!getskilllv("KN_RIDING")) {
+				mes "[兽骑管理员]";
+				mes "请先学会乘骑术, 好吗?";
+				close;
+			}
+			else if (checkriding()) {
+				mes "[兽骑管理员]";
+				mes "你已经骑着一头了嘿......";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[兽骑管理员]";
+				mes "我们不打白条, 谢谢!";
+				close;
+			}
+			setriding;
+			close;
+		case 2:
+			mes "[狮鹫管理员]";
+			mes "我知道了. 那么, 祝你好运!";
+			close;
+		}
+	}
+	mes "我就是为 符文骑士 和 皇家卫士 提供坐骑的管理员啦!";
+	close;
+}
+
+// Peco removing NPC
+//============================================================
+prontera,125,208,5	script	大嘴鸟管理员	105,{
+	mes "[卫兵]";
+	mes "如果你苦恼于这只大嘴鸟硬是要你骑他,";
+	mes "不让你下来, ";
+	mes "那么来找我就对啦!";
+	if (checkriding()) {
+		next;
+		mes "[卫兵]";
+		mes "你正骑着一只大嘴鸟嘿,";
+		mes "不想再骑了吗?";
+		next;
+		switch(select("- 是:- 否")) {
+		case 1:
+			setriding 0;
+			mes "[卫兵]";
+			mes "怎么样, ";
+			mes "脚踏实地的感觉?";
+			mes "HOLD住吗?";
+			close;
+		case 2:
+			mes "[卫兵]";
+			mes "劝你别逗我玩,";
+			mes "我发起怒来自己都怕.";
+			close;
+		}
+	}
+	close;
+}
+
+// Magic Gear Renter
+//============================================================
+-	script	::mgm	-1,{
+	mes "[机械师]";
+	if (Class == Job_Mechanic || Class == Job_Mechanic_T || Class == Job_Baby_Mechanic) {
+		mes "你好啊, 机匠!";
+		mes "想租用一台手推车, 还是";
+		mes "租用一台高达?";
+		next;
+		switch(select("- 手推车:- 机甲:- 取消")) {
+		case 1:
+			if (checkcart()) {
+				mes "[机械师]";
+				mes "你已经有手推车了.";
+				close;
+			}
+			setcart;
+			mes "[机械师]";
+			mes "没事儿别烦我. ";
+			close;
+		case 2:
+			if (checkmadogear()) {
+				mes "[机械师]";
+				mes "你已经坐在机甲里面了.";
+				close;
+			}
+			else if (!getskilllv("NC_MADOLICENCE")) {
+				mes "[机械师]";
+				mes "拿到了驾驶执照再来见我!";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[机械师]";
+				mes "最为商人系钱不够是耻辱?";
+				close;
+			}
+			setmadogear;
+			mes "[机械师]";
+			mes "质保三年, 记得带发票来找我!";
+			close;
+		case 3:
+			close;
+		}
+	}
+	mes "我能帮到你吗?";
+	mes "机甲只给机匠用, 记住了!";
+	close;
+}
+prontera,163,178,3	duplicate(mgm)	魔导机械管理员#prt	105
+geffen,103,55,5	duplicate(mgm)	魔导机械管理员#gef	105
+payon,166,106,5	duplicate(mgm)	魔导机械管理员#pay	105
+aldebaran,133,112,5	duplicate(mgm)	魔导机械管理员#alde	105
+yuno,167,187,3	duplicate(mgm)	魔导机械管理员#yuno	105
+rachel,106,134,5	duplicate(mgm)	魔导机械管理员#ra	105
+dicastes01,187,207,3	duplicate(mgm)	魔导机械管理员#dic	105
+manuk,273,212,5	duplicate(mgm)	魔导机械管理员#man	105
+splendide,180,174,5	duplicate(mgm)	魔导机械管理员#spl	105
+mid_camp,242,243,3	duplicate(mgm)	魔导机械管理员#mid	105

@@ -1,0 +1,122 @@
+// 一转快速就职NPC
+// Write by robert 蝴蝶君 重写于 2005-05-10
+// 修改 by 水夏 于 2006-11-26
+// 修改 By 最后防线 于 2009-12-18 增加对进阶职业的判断
+ 
+prt_in.gat,135,35,3	script	一转就职人员	748,{
+	if(upper==0 || upper==2) setarray @classname$[0],"剑士","魔法师","服事","商人","盗贼","弓箭手";
+	if(upper==1) setarray @classname$[0],"进阶剑士","进阶魔法师","进阶服事","进阶商人","进阶盗贼","进阶弓箭手";
+	mes "[一转就职人员]";
+	mes "你好，我是为了方便大家转职的一转就职人员，你是来转职的吗？如果你已经转生，也可以到我这里来转职哦";
+	next;
+    	if(class !=0 && class !=4001)
+    	{
+    		mes "[一转就职人员]";
+		mes "对不起，你已经不是初学者了。";
+		close;
+    		end;
+    	}
+	if(joblevel < 10)
+	{
+		mes "[一转就职人员]";
+		mes "Sorry，你的职业等级必须达到^008000 10级 ^000000才能进行转职工作，^008000 10级 ^000000以后再来找我，快去练吧！";
+		close;
+		end;
+   	}
+	if(skillpoint != 0)
+	{
+		mes "[一转就职人员]";
+		mes "Sorry，你的基本技能等级必须加到^008000 9级 ^000000，不能有剩余的技能点数才能进行转职！";
+		close;
+    		end;
+	}
+	switch(select(@classname$[0],@classname$[1],@classname$[2],@classname$[3],@classname$[4],@classname$[5],"取消"))
+	{
+		mes "[一转就职人员]";
+    		case 1:
+    			if(upper == 1 && (Reclass != 7 && Reclass != 14))
+    			{
+    				mes "Sorry，转生之前你的职业并不是骑士或十字军，不能转职为剑士。";
+    				close;
+    				end;
+    				break;
+    			}
+			mes "ok，恭喜你，转职成功！";
+			mes "快看看，你现在是^0000FF"+ @classname$[0] +"^000000了。";
+			jobchange 1,upper;
+			unequip -1;
+		    	break;
+		case 2:
+    			if(upper == 1 && (Reclass != 9 && Reclass != 16))
+    			{
+    				mes "Sorry,转生之前你的职业并不是巫师或贤者，不能转职为法师。";
+    				close;
+    				end;
+    				break;
+    			}
+			mes "ok，恭喜你，转职成功！";
+			mes "快看看，你现在是^0000FF"+ @classname$[1] +"^000000了。";
+			jobchange 2,upper;
+			unequip -1;
+		    	break;
+		case 3:
+    			if(upper == 1 && (Reclass != 8 && Reclass != 15))
+    			{
+    				mes "Sorry,转生之前你的职业并不是祭司或武僧，不能转职为服事。";
+    				close;
+    				end;
+    				break;
+    			}
+			mes "ok，恭喜你，转职成功！";
+			mes "快看看，你现在是^0000FF"+ @classname$[2] +"^000000了。";
+			jobchange 4,upper;
+			unequip -1;
+		    	break;
+		case 4:
+    			if(upper == 1 && (Reclass != 10 && Reclass != 18))
+    			{
+    				mes "Sorry,转生之前你的职业并不是铁匠或炼金术师，不能转职为商人。";
+    				close;
+    				end;
+    				break;
+    			}
+			mes "ok，恭喜你，转职成功！";
+			mes "快看看，你现在是^0000FF"+ @classname$[3] +"^000000了。";
+			jobchange 5,upper;
+			unequip -1;
+		    	break;
+		case 5:
+    			if(upper == 1 && (Reclass != 12 && Reclass != 17))
+    			{
+    				mes "Sorry,转生之前你的职业并不是刺客或流氓，不能转职为盗贼。";
+    				close;
+    				end;
+    				break;
+    			}
+			mes "ok，恭喜你，转职成功！";
+			mes "快看看，你现在是^0000FF"+ @classname$[4] +"^000000了。";
+			jobchange 6,upper;
+			unequip -1;
+		    	break;
+		case 6:
+    			if(upper == 1 && (Reclass != 11 && Reclass != 19 && Reclass != 20))
+    			{
+    				mes "Sorry,转生之前你的职业并不是猎人、诗人或舞者，不能转职为弓箭手。";
+    				close;
+    				end;
+    				break;
+    			}
+
+			mes "ok，恭喜你，转职成功！";
+			mes "快看看，你现在是^0000FF"+ @classname$[5] +"^000000了。";
+			jobchange 3,upper;
+			unequip -1;
+		    	break;
+		case 7:
+			mes "嗯，好的，好好想想吧，决定要转职了随时欢迎回来找我！";
+		    	break;
+	}
+	mes "祝您玩的愉快！";
+	close;
+	end;
+}

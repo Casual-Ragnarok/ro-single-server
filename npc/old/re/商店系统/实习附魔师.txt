@@ -1,0 +1,294 @@
+//===== eAthena Script ======================================= 
+//= Armor Enchanter
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= eAhena SVN
+//===== Description: ========================================= 
+//= [Aegis Conversion]
+//= Add a +1, 2, or 3, of a random stat to specified armor.
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//= v1.0.20091212 初版汉化 [5511]
+//= v1.0.20120309 对话期间禁止任何物品相关操作 [5511]
+//============================================================ 
+
+prontera,165,60,2	script	实习附魔师	73,{
+	disable_items;
+	if (Zeny > 399999) {
+		mes "[实习附魔师]";
+		mes "我一直致力于研究如何提高防具的最大能力.";
+		next;
+		mes "[实习附魔师]";
+		mes "为防具附魔就是一种很高级的技能, 可以将神秘的能力注入到防具里.";
+		next;
+		mes "[实习附魔师]";
+		mes "然而, 你一定要记住如果你带来两件相同的防具, 那将按照它们在物品栏的存放位置的先后进行附魔.";
+		next;
+		mes "[实习附魔师]";
+		mes "假若那样的话, 可能你不想要附魔的防具都会被附魔了. 所以一定只带来^5555ff一件^000000你想要附魔的防具, 这样才最为安全..";
+		next;
+		mes "[实习附魔师]";
+		mes "如果你带来多件同样的防具, 如果有什么意外的话, 我可不负任何责任.";
+		next;
+		switch(select("无洞防具.:有洞防具.:高级系列防具.:下次再说.")) {
+		case 1:
+			//switch(select("大衣:长大衣:钢铁锁子甲:钢铁铠甲:丝质外袍:圣职之衣:天衣 月舞:木制铠甲:紧身便衣:秘银之衣:魔法外套:盗贼之衣:秘银金属铠甲:火鳞铠甲:水鳞铠甲:风鳞铠甲:地鳞铠甲:忍服 血樱:变色龙铠甲:荣光外套:荣光量产型外套:荣光普及用外套")) {
+			switch(select(getitemname(2307)+":"+getitemname(2309)+":"+getitemname(2314)+":"+getitemname(2316)+":"+getitemname(2321)+":"+getitemname(2325)+":"+getitemname(2327)+":"+getitemname(2328)+":"+getitemname(2330)+":"+getitemname(2332)+":"+getitemname(2334)+":"+getitemname(2335)+":"+getitemname(2341)+":"+getitemname(2344)+":"+getitemname(2346)+":"+getitemname(2348)+":"+getitemname(2350)+":"+getitemname(2337)+":"+getitemname(2386)+":"+getitemname(2394)+":"+getitemname(2395)+":"+getitemname(2396))) {
+			case 1:
+				callsub S_EnchantArmor,2307,50;
+			case 2:
+				callsub S_EnchantArmor,2309,50;
+			case 3:
+				callsub S_EnchantArmor,2314,50;
+			case 4:
+				callsub S_EnchantArmor,2316,50;
+			case 5:
+				callsub S_EnchantArmor,2321,50;
+			case 6:
+				callsub S_EnchantArmor,2325,50;
+			case 7:
+				callsub S_EnchantArmor,2327,50;
+			case 8:
+				callsub S_EnchantArmor,2328,50;
+			case 9:
+				callsub S_EnchantArmor,2330,50;
+			case 10:
+				callsub S_EnchantArmor,2332,50;
+			case 11:
+				callsub S_EnchantArmor,2334,50;
+			case 12:
+				callsub S_EnchantArmor,2335,50;
+			case 13:
+				callsub S_EnchantArmor,2341,50;
+			case 14:
+				callsub S_EnchantArmor,2344,50;
+			case 15:
+				callsub S_EnchantArmor,2346,50;
+			case 16:
+				callsub S_EnchantArmor,2348,50;
+			case 17:
+				callsub S_EnchantArmor,2350,50;
+			case 18:
+				callsub S_EnchantArmor,2337,50;
+			case 19:
+				callsub S_EnchantArmor,2386,50;
+			case 20:
+				callsub S_EnchantArmor,2394,50;
+			case 21:
+				callsub S_EnchantArmor,2395,50;
+			case 22:
+				callsub S_EnchantArmor,2396,50;
+			}
+		case 2:
+			//switch(select("毛皮大衣:秘衣 美德:秘衣 恶德:西装外套:大衣(1):长大衣(1):钢铁锁子甲(1):钢铁铠甲(1):丝质外袍(1):圣职之袍(1):圣职之衣(1):紧身便衣(1):秘银之衣(1):盗贼之衣(1):秘银金属铠甲(1):火鳞铠甲(1):水鳞铠甲(1):风鳞铠甲(1):地鳞铠甲(1)")) {
+			switch(select(getitemname(2311)+":"+getitemname(2318)+":"+getitemname(2319)+":"+getitemname(2320)+":"+getitemname(2308)+"(1):"+getitemname(2310)+"(1):"+getitemname(2315)+"(1):"+getitemname(2317)+"(1):"+getitemname(2322)+"(1):"+getitemname(2324)+"(1):"+getitemname(2326)+"(1):"+getitemname(2331)+"(1):"+getitemname(2333)+"(1):"+getitemname(2336)+"(1):"+getitemname(2342)+"(1):"+getitemname(2345)+"(1):"+getitemname(2347)+"(1):"+getitemname(2349)+"(1):"+getitemname(2351)+"(1)")) {
+			case 1:
+				callsub S_EnchantArmor,2311,55;
+			case 2:
+				callsub S_EnchantArmor,2318,55;
+			case 3:
+				callsub S_EnchantArmor,2319,55;
+			case 4:
+				callsub S_EnchantArmor,2320,55;
+			case 5:
+				callsub S_EnchantArmor,2308,55;
+			case 6:
+				callsub S_EnchantArmor,2310,55;
+			case 7:
+				callsub S_EnchantArmor,2315,55;
+			case 8:
+				callsub S_EnchantArmor,2317,55;
+			case 9:
+				callsub S_EnchantArmor,2322,55;
+			case 10:
+				callsub S_EnchantArmor,2324,55;
+			case 11:
+				callsub S_EnchantArmor,2326,55;
+			case 12:
+				callsub S_EnchantArmor,2331,55;
+			case 13:
+				callsub S_EnchantArmor,2333,55;
+			case 14:
+				callsub S_EnchantArmor,2336,55;
+			case 15:
+				callsub S_EnchantArmor,2342,55;
+			case 16:
+				callsub S_EnchantArmor,2345,55;
+			case 17:
+				callsub S_EnchantArmor,2347,55;
+			case 18:
+				callsub S_EnchantArmor,2349,55;
+			case 19:
+				callsub S_EnchantArmor,2351,55;
+			}
+		case 3:
+			//switch(select("陨石 铠甲:奥尔里昂的 制服:生命之环:恐惧长袍:恐惧战甲:将军的突击铠甲:将军的强袭盔甲:将军的阴影外袍:指挥官的战斗外袍:指挥官的医疗外袍:指挥官的皮甲:狙击手的大衣:奔跑铠甲:中东长袍:纳迦鳞甲:改良型紧身便衣")) {
+			switch(select(getitemname(2364)+":"+getitemname(2365)+":"+getitemname(2391)+":"+getitemname(2374)+":"+getitemname(2375)+":"+getitemname(2376)+":"+getitemname(2377)+":"+getitemname(2378)+":"+getitemname(2379)+":"+getitemname(2380)+":"+getitemname(2381)+":"+getitemname(2382)+":"+getitemname(2387)+":"+getitemname(2388)+":"+getitemname(2389)+":"+getitemname(2390))) {
+			case 1:
+				callsub S_EnchantArmor,2364,60;
+			case 2:
+				callsub S_EnchantArmor,2365,60;
+			case 3:
+				callsub S_EnchantArmor,2391,60;
+			case 4:
+				callsub S_EnchantArmor,2374,60;
+			case 5:
+				callsub S_EnchantArmor,2375,60;
+			case 6:
+				callsub S_EnchantArmor,2376,60;
+			case 7:
+				callsub S_EnchantArmor,2377,60;
+			case 8:
+				callsub S_EnchantArmor,2378,60;
+			case 9:
+				callsub S_EnchantArmor,2379,60;
+			case 10:
+				callsub S_EnchantArmor,2380,60;
+			case 11:
+				callsub S_EnchantArmor,2381,60;
+			case 12:
+				callsub S_EnchantArmor,2382,60;
+			case 13:
+				callsub S_EnchantArmor,2387,60;
+			case 14:
+				callsub S_EnchantArmor,2388,60;
+			case 15:
+				callsub S_EnchantArmor,2389,60;
+			case 16:
+				callsub S_EnchantArmor,2390,60;
+			}
+		case 4:
+			mes "[实习附魔师]";
+			mes "如果你对防具附魔有兴趣的话就来找我.";
+			close2;
+			enable_items;
+			end;
+		}
+	}
+	else {
+		mes "[实习附魔师]";
+		mes "我负责防具的附魔工作. 简单来说, 我一直致力于研究如何提高防具的能力.";
+		next;
+		mes "[实习附魔师]";
+		mes "如果你有兴趣想要给你的防具附魔的话, 请带着400,000 Zeny 和你想要附魔的防具来找我.";
+		close2;
+		enable_items;
+		end;
+	}
+
+S_EnchantArmor:
+	set .@itemid,getarg(0);
+	set .@failrate,getarg(1);
+	if ((countitem(.@itemid) > 0) && (countitem(.@itemid) < 2)) {
+		mes "[实习附魔师]";
+		mes "附魔将需要400,000 Zeny. 而且附魔的结果可是随机的. 当然了, 很可能在附魔的时候, 你的防具会损毁掉.";
+		next;
+		mes "[实习附魔师]";
+		mes "最重要的一点就是.";
+		mes "^ff5555被附魔的防具当前的精炼度和卡片都会消失.^000000";
+		mes "那么你还要继续附魔吗?";
+		next;
+		switch(select("嗯... 我再考虑考虑吧.:继续附魔.")) {
+		case 1:
+			mes "[实习附魔师]";
+			mes "好的, 我不会怪你的. 安全第一才最重要, 对吧?";
+			mes "那就祝你愉快了.";
+			close2;
+			enable_items;
+			end;
+		case 2:
+			mes "[实习附魔师]";
+			mes "想要来一次真正的冒险吧? 好的, 那咱们开始了?";
+			close2;
+			specialeffect2 EF_MAPPILLAR;
+			if (Zeny < 400000) {
+				mes "[实习附魔师]";
+				mes "抱歉啊, 你可没有足够的金钱.";
+				close2;
+				enable_items;
+				end;
+			}
+			progressbar "ffff00",7;
+			set .@enc_ran,rand(1,.@failrate);
+			set zeny,zeny-400000;
+			delitem .@itemid,1;
+			if (.@enc_ran == 1) {
+				set .@addpart,4702;
+			}
+			else if (.@enc_ran == 2) {
+				set .@addpart,4712;
+			}
+			else if (.@enc_ran == 3) {
+				set .@addpart,4722;
+			}
+			else if (.@enc_ran == 4) {
+				set .@addpart,4732;
+			}
+			else if (.@enc_ran == 5) {
+				set .@addpart,4742;
+			}
+			else if (.@enc_ran == 6) {
+				set .@addpart,4752;
+			}
+			else if ((.@enc_ran > 6) && (.@enc_ran < 9)) {
+				set .@addpart,4701;
+			}
+			else if ((.@enc_ran > 8) && (.@enc_ran < 11)) {
+				set .@addpart,4711;
+			}
+			else if ((.@enc_ran > 10) && (.@enc_ran < 13)) {
+				set .@addpart,4721;
+			}
+			else if ((.@enc_ran > 12) && (.@enc_ran < 15)) {
+				set .@addpart,4731;
+			}
+			else if ((.@enc_ran > 14) && (.@enc_ran < 17)) {
+				set .@addpart,4741;
+			}
+			else if ((.@enc_ran > 16) && (.@enc_ran < 19)) {
+				set .@addpart,4751;
+			}
+			else if ((.@enc_ran > 18) && (.@enc_ran < 22)) {
+				set .@addpart,4700;
+			}
+			else if ((.@enc_ran > 21) && (.@enc_ran < 25)) {
+				set .@addpart,4710;
+			}
+			else if ((.@enc_ran > 24) && (.@enc_ran < 28)) {
+				set .@addpart,4720;
+			}
+			else if ((.@enc_ran > 27) && (.@enc_ran < 31)) {
+				set .@addpart,4730;
+			}
+			else if ((.@enc_ran > 30) && (.@enc_ran < 34)) {
+				set .@addpart,4740;
+			}
+			else if ((.@enc_ran > 33) && (.@enc_ran < 37)) {
+				set .@addpart,4750;
+			}
+			else {
+				specialeffect2 EF_PHARMACY_FAIL;
+				mes "[实习附魔师]";
+				mes "噢, 真是太不幸了.";
+				mes "附魔竟然失败了.";
+				close2;
+				enable_items;
+				end;
+			}
+			getitem2 .@itemid, 1, 1, 0, 0, 0, 0, 0, .@addpart;
+			enable_items;
+			end;
+		}
+	}
+	else {
+		mes "[实习附魔师]";
+		mes "嗯? 没有东西可以被附魔呀!";
+		mes "请确定你只带来了一件要附魔的防具.";
+		close2;
+		enable_items;
+		end;
+	}
+}

@@ -1,0 +1,196 @@
+//初级道场
+
+guild_vs12.gat	mapflag	nowarp
+guild_vs12.gat	mapflag	nowarpto
+guild_vs12.gat	mapflag	noteleport
+guild_vs12.gat	mapflag	nosave	SavePoint
+guild_vs12.gat	mapflag	nomemo
+guild_vs12.gat	mapflag	nobranch
+guild_vs12.gat	mapflag	noicewall
+guild_vs12.gat	mapflag	restricted	7
+guild_vs12.gat	mapflag	monster_noteleport
+guild_vs12.gat	mapflag	nomobloot
+guild_vs12.gat	mapflag	nomvploot
+guild_vs12.gat	mapflag	nodrop
+
+guild_vs11.gat	mapflag	nowarp
+guild_vs11.gat	mapflag	nowarpto
+guild_vs11.gat	mapflag	noteleport
+guild_vs11.gat	mapflag	nosave	SavePoint
+guild_vs11.gat	mapflag	nomemo
+guild_vs11.gat	mapflag	nobranch
+guild_vs11.gat	mapflag	noicewall
+guild_vs11.gat	mapflag	restricted	7
+guild_vs11.gat	mapflag	monster_noteleport
+guild_vs11.gat	mapflag	nomobloot
+guild_vs11.gat	mapflag	nomvploot
+guild_vs11.gat	mapflag	nodrop
+
+guild_vs13.gat	mapflag	nowarp
+guild_vs13.gat	mapflag	nowarpto
+guild_vs13.gat	mapflag	noteleport
+guild_vs13.gat	mapflag	nosave	SavePoint
+guild_vs13.gat	mapflag	nomemo
+guild_vs13.gat	mapflag	nobranch
+guild_vs13.gat	mapflag	noicewall
+guild_vs13.gat	mapflag	restricted	7
+guild_vs13.gat	mapflag	monster_noteleport
+guild_vs13.gat	mapflag	nomobloot
+guild_vs13.gat	mapflag	nomvploot
+guild_vs13.gat	mapflag	nodrop
+
+guild_vs15.gat	mapflag	nowarp
+guild_vs15.gat	mapflag	nowarpto
+guild_vs15.gat	mapflag	noteleport
+guild_vs15.gat	mapflag	nosave	SavePoint
+guild_vs15.gat	mapflag	nomemo
+guild_vs15.gat	mapflag	nobranch
+guild_vs15.gat	mapflag	noicewall
+guild_vs15.gat	mapflag	restricted	7
+guild_vs15.gat	mapflag	monster_noteleport
+guild_vs15.gat	mapflag	nomobloot
+guild_vs15.gat	mapflag	nomvploot
+guild_vs14.gat	mapflag	nodrop
+
+lingjiang1.gat	mapflag	nowarp
+lingjiang1.gat	mapflag	nowarpto
+lingjiang1.gat	mapflag	noteleport
+lingjiang1.gat	mapflag	nosave	SavePoint
+lingjiang1.gat	mapflag	nomemo
+lingjiang1.gat	mapflag	nobranch
+lingjiang1.gat	mapflag	noicewall
+lingjiang1.gat	mapflag	restricted	7
+lingjiang1.gat	mapflag	monster_noteleport
+lingjiang1.gat	mapflag	nomobloot
+lingjiang1.gat	mapflag	nomvploot
+
+
+//中级道场
+guild_vs21.gat	mapflag	nowarp
+guild_vs21.gat	mapflag	nowarpto
+guild_vs21.gat	mapflag	noteleport
+guild_vs21.gat	mapflag	nosave	SavePoint
+guild_vs21.gat	mapflag	nomemo
+guild_vs21.gat	mapflag	nobranch
+guild_vs21.gat	mapflag	noicewall
+guild_vs21.gat	mapflag	restricted	7
+guild_vs21.gat	mapflag	monster_noteleport
+guild_vs21.gat	mapflag	nomobloot
+guild_vs21.gat	mapflag	nomvploot
+guild_vs21.gat	mapflag	nodrop
+
+guild_vs22.gat	mapflag	nowarp
+guild_vs22.gat	mapflag	nowarpto
+guild_vs22.gat	mapflag	noteleport
+guild_vs22.gat	mapflag	nosave	SavePoint
+guild_vs22.gat	mapflag	nomemo
+guild_vs22.gat	mapflag	nobranch
+guild_vs22.gat	mapflag	noicewall
+guild_vs22.gat	mapflag	restricted	7
+guild_vs22.gat	mapflag	monster_noteleport
+guild_vs22.gat	mapflag	nomobloot
+guild_vs22.gat	mapflag	nomvploot
+guild_vs22.gat	mapflag	nodrop
+
+guild_vs23.gat	mapflag	nowarp
+guild_vs23.gat	mapflag	nowarpto
+guild_vs23.gat	mapflag	noteleport
+guild_vs23.gat	mapflag	nosave	SavePoint
+guild_vs23.gat	mapflag	nomemo
+guild_vs23.gat	mapflag	nobranch
+guild_vs23.gat	mapflag	noicewall
+guild_vs23.gat	mapflag	restricted	7
+guild_vs23.gat	mapflag	monster_noteleport
+guild_vs23.gat	mapflag	nomobloot
+guild_vs23.gat	mapflag	nomvploot
+guild_vs23.gat	mapflag	nodrop
+
+guild_vs24.gat	mapflag	nowarp
+guild_vs24.gat	mapflag	nowarpto
+guild_vs24.gat	mapflag	noteleport
+guild_vs24.gat	mapflag	nosave	SavePoint
+guild_vs24.gat	mapflag	nomemo
+guild_vs24.gat	mapflag	nobranch
+guild_vs24.gat	mapflag	noicewall
+guild_vs24.gat	mapflag	restricted	7
+guild_vs24.gat	mapflag	monster_noteleport
+guild_vs24.gat	mapflag	nomobloot
+guild_vs24.gat	mapflag	nomvploot
+guild_vs24.gat	mapflag	nodrop
+
+lingjiang2.gat	mapflag	nowarp
+lingjiang2.gat	mapflag	nowarpto
+lingjiang2.gat	mapflag	noteleport
+lingjiang2.gat	mapflag	nosave	SavePoint
+lingjiang2.gat	mapflag	nomemo
+lingjiang2.gat	mapflag	nobranch
+lingjiang2.gat	mapflag	noicewall
+lingjiang2.gat	mapflag	restricted	7
+lingjiang2.gat	mapflag	monster_noteleport
+lingjiang2.gat	mapflag	nomobloot
+lingjiang2.gat	mapflag	nomvploot
+
+//高级道场
+guild_vs31.gat	mapflag	nowarp
+guild_vs31.gat	mapflag	nowarpto
+guild_vs31.gat	mapflag	noteleport
+guild_vs31.gat	mapflag	nosave	SavePoint
+guild_vs31.gat	mapflag	nomemo
+guild_vs31.gat	mapflag	nobranch
+guild_vs31.gat	mapflag	noicewall
+guild_vs31.gat	mapflag	restricted	7
+guild_vs31.gat	mapflag	monster_noteleport
+guild_vs31.gat	mapflag	nomobloot
+guild_vs31.gat	mapflag	nomvploot
+guild_vs31.gat	mapflag	nodrop
+
+guild_vs32.gat	mapflag	nowarp
+guild_vs32.gat	mapflag	nowarpto
+guild_vs32.gat	mapflag	noteleport
+guild_vs32.gat	mapflag	nosave	SavePoint
+guild_vs32.gat	mapflag	nomemo
+guild_vs32.gat	mapflag	nobranch
+guild_vs32.gat	mapflag	noicewall
+guild_vs32.gat	mapflag	restricted	7
+guild_vs32.gat	mapflag	monster_noteleport
+guild_vs32.gat	mapflag	nomobloot
+guild_vs32.gat	mapflag	nomvploot
+guild_vs32.gat	mapflag	nodrop
+
+guild_vs33.gat	mapflag	nowarp
+guild_vs33.gat	mapflag	nowarpto
+guild_vs33.gat	mapflag	noteleport
+guild_vs33.gat	mapflag	nosave	SavePoint
+guild_vs33.gat	mapflag	nomemo
+guild_vs33.gat	mapflag	nobranch
+guild_vs33.gat	mapflag	noicewall
+guild_vs33.gat	mapflag	restricted	7
+guild_vs33.gat	mapflag	monster_noteleport
+guild_vs33.gat	mapflag	nomobloot
+guild_vs33.gat	mapflag	nomvploot
+guild_vs33.gat	mapflag	nodrop
+
+guild_vs34.gat	mapflag	nowarp
+guild_vs34.gat	mapflag	nowarpto
+guild_vs34.gat	mapflag	noteleport
+guild_vs34.gat	mapflag	nosave	SavePoint
+guild_vs34.gat	mapflag	nomemo
+guild_vs34.gat	mapflag	nobranch
+guild_vs34.gat	mapflag	noicewall
+guild_vs34.gat	mapflag	restricted	7
+guild_vs34.gat	mapflag	monster_noteleport
+guild_vs34.gat	mapflag	nomobloot
+guild_vs34.gat	mapflag	nomvploot
+guild_vs34.gat	mapflag	nodrop
+
+lingjiang3.gat	mapflag	nowarp
+lingjiang3.gat	mapflag	nowarpto
+lingjiang3.gat	mapflag	noteleport
+lingjiang3.gat	mapflag	nosave	SavePoint
+lingjiang3.gat	mapflag	nomemo
+lingjiang3.gat	mapflag	nobranch
+lingjiang3.gat	mapflag	noicewall
+lingjiang3.gat	mapflag	restricted	7
+lingjiang3.gat	mapflag	monster_noteleport
+lingjiang3.gat	mapflag	nomobloot
+lingjiang3.gat	mapflag	nomvploot

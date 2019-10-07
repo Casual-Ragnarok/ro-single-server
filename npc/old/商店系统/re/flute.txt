@@ -1,0 +1,142 @@
+//===== rAthena Script ======================================= 
+//= Falcon & Wolf Flute Trader
+//===== By: ================================================== 
+//= Masao, Muad_Dib, Ziu
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Sells Falcon Flute and Wolf Flute.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version. [Masao]
+//= 1.1 Added Baby Hunter and Baby Ranger check. bugreport:5728 [Masao]
+//= 1.2 Added Wolf Flute trader, optimized. [Euphy]
+//============================================================
+
+-	script	Falcon Flute Trader::fflute	-1,{
+	mes "[鹰笛商人]";
+	if (BaseJob == Job_Hunter || Class == Job_Ranger || Class == Job_Ranger_T || Class == Job_Baby_Ranger) {
+		mes "你需要一只猎鹰吗?";
+		mes "有个神奇的笛子, 不管你身处何处, 只要使用, 就能马上呼唤猎鹰飞来!";
+		next;
+		mes "[鹰笛商人]";
+		mes "是不是非常的了不起? 哈哈哈!";
+		next;
+		mes "[鹰笛商人]";
+		mes "为何我会贩售鹰笛?";
+		mes "因为我不知如何使用.";
+		mes "哈哈哈!";
+		next;
+		mes "[鹰笛商人]";
+		mes "当然, 你还必须学会 ^ff0000驯鹰术^000000技能.";
+		mes "我不会这项技能, 所以我无法呼唤猎鹰.";
+		mes "我可能一直都没机会能拥有猎鹰.";
+		next;
+		mes "[鹰笛商人]";
+		mes "我无法免费给您!";
+		mes "我还得赚钱生活!";
+		next;
+		mes "[鹰笛商人]";
+		mes "如果你需要鹰笛, 贩售价 12,500 zeny. 会觉得太贵吗?";
+		next;
+		if (BaseJob == Job_Hunter)
+			set .@price,12500;
+		else {
+			mes "[鹰笛商人]";
+			mes "如果是游侠的话, 我会给予优惠价格 10,000 zeny!";
+			set .@price,10000;
+			next;
+		}
+		if(select("不买:购买鹰笛") == 1) {
+			mes "[鹰笛商人]";
+			mes "真是遗憾. 如果你有需要, 请回来找我!";
+			close;
+		}
+		if (Zeny >= .@price) {
+			if (countitem(12848) >= 1) {
+				mes "[鹰笛商人]";
+				mes "你已经有鹰笛了!";
+				mes "这位朋友, 别担心, 使用鹰笛不会消耗, 一但有了就不需要再买";
+				mes "鹰笛使用状况不是非常好吗?";
+				close;
+			}
+			mes "[鹰笛商人]";
+			mes "这, 鹰笛拿去吧.";
+			mes "有了它你能在任何地方吹奏鹰笛呼唤猎鹰飞来.";
+		  	set Zeny, Zeny - .@price;
+			getitem 12848,1; // Falcon Flute
+			next;
+			mes "[鹰笛商人]";
+			mes "在次提醒.";
+			mes "你需要学会技能 ^ff0000驯鹰术^000000 来使用它!";
+			close;
+		}
+		mes "[鹰笛商人]";
+		mes "抱歉, 你没有足够的金钱, 等你有足够的金钱在来买鹰笛!";
+		close;
+	}
+	if (Class == Job_Baby_Archer || Class == Job_Archer) {
+		mes "哈啰！年轻人!";
+		mes "目前帮不上你,";
+		mes "何不等你成为很棒的猎人并且学会驾驭猎鹰在回来找我?";
+		close;
+	}
+	mes "今天是不是美好的一天?";
+	close;
+}
+hu_in01,386,306,3	duplicate(fflute)	鹰笛商人#fft	51
+pay_arche,91,134,3	duplicate(fflute)	鹰笛商人#fft2	51
+
+tur_dun01,89,170,5	script	狼笛工匠	59,{
+	if (Class == Job_Ranger || Class == Job_Ranger_T || Class == Job_Baby_Ranger) {
+		if (countitem(6124)) {
+			mes "[狼笛工匠]";
+			mes "我能使用材料来制作狼笛.";
+			mes "如果你不小心遗失了狼笛可以来找我!";
+			next;
+			mes "[狼笛工匠]";
+			mes "狼笛仅有我能制作.";
+			mes "制作狼笛对我来说是小意思!!";
+			close;
+		}
+		mes "[狼笛工匠]";
+		mes "你还需要什么?";
+		mes "一个新狼笛?";
+		next;
+		switch(select("请给我新的狼笛.:不需要.")) {
+		case 1:
+			if (countitem(7150) && Zeny >= 100000) {
+				mes "[狼笛工匠]";
+				mes "你已经带齐所有材料了吗?";
+				mes "哇! 材料品质都还不错!";
+				mes "非常棒.";
+				next;
+				mes "[狼笛工匠]";
+				mes "这是新的狼笛.";
+				mes "希望你准备好使用它.";
+				delitem 7150,1; //竹筒
+				set Zeny, Zeny-100000;
+				getitem 6124,1; //狼笛
+				close;
+			}
+			mes "[狼笛工匠]";
+			mes "如果你想制作新狼长笛你需要给我 ^4d4dff1 竹筒 和 100,000 zeny.^000000";
+			next;
+			mes "[狼笛工匠]";
+			mes "^4d4dff竹筒 能从 钓鱼河童 或 伞妖 身上获得.^000000";
+			close;
+		case 2:
+			mes "[狼笛工匠]";
+			mes "如果不需要狼, 你就不需要狼笛.";
+			mes "如果你改变了想法 , 欢迎随时来找我.";
+			mes "如何? 好好考虑ㄧ下吧?";
+			close;
+		}
+	}
+	mes "[狼笛工匠]";
+	mes "啥? 你不是游侠?";
+	mes "这笛子对你没什么用处!";
+	close;
+}

@@ -1,0 +1,47 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 梦罗克 卡普拉脚本 - 
+//===================================
+// 版本：2.4c
+//===================================
+
+
+// South ================================
+morocc,156,97,4	script	卡普拉服务人员::kaf_morocc	113,{
+	cutin "kafra_05",2;
+	callfunc "F_KafSetMoc";
+	callfunc "F_Kafra",0,0,0,60,930;
+
+	M_Save:
+		savepoint "morocc",156,46;
+		callfunc "F_KafEnd",0,1,"in the city of Morroc";
+}
+
+// North =================================
+morocc,160,258,4	script	卡普拉服务人员:::kaf_morocc2	114,{
+	cutin "kafra_04",2;
+	callfunc "F_KafSetMoc";
+	callfunc "F_Kafra",0,0,0,60,930;
+
+	M_Save:
+		savepoint "morocc",157,272;
+		callfunc "F_KafEnd",0,1,"in the city of Morroc";
+}
+
+// Function: Sets variables for Morroc Kafras --------------------------------
+function	script	F_KafSetMoc	{
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpD$[0], "普隆德拉", "斐扬", "艾尔贝塔", "克魔岛", "发乐斯 灯塔岛";
+	setarray @wrpP[0], 1200, 1200, 1800, 1800, 1200;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], @wrpD$[4]+" -> "+@wrpP[4];
+	set @wrpC$[5], "取消";
+	setarray @viewpX[0], 156, 163;
+	setarray @viewpY[0], 97, 260;
+	return;
+}

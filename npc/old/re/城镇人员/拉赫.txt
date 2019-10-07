@@ -1,0 +1,578 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 拉赫 城镇脚本 -
+//========================
+//= 版本：0.7
+//========================
+//= [冻僵的少年] 
+//= [Kinos#aru]
+//= [Loomin-1st Class Secret] 
+//= 以上对话内容未知
+//============================================================
+
+//Frozen Boy
+//===== Set 1 ================================================
+ice_dun04,33,166,3	script	冻僵的少年	925,{
+	cutin "ra_sboy.bmp",2;
+        mes "["+strcharinfo(0)+"]";
+        mes "水晶龙所守护的人就是这少年吗...";
+        next;
+        mes "-";
+        mes "像冰河一般在坚硬冻僵的冰中那少年的样";
+        mes "子，与其说是被关不如说像在睡眠 -";
+        next;
+        mes "-";
+        mes "从少年被封印的那巨大冰块柱子上散发出";
+        mes "恶毒的寒气，加上敢觉道未知神秘力量";
+        mes "-";
+        next;
+        mes "-";
+        mes "少年的外貌从头到脚都像清净的雪花般是";
+        mes "个白皙的模样 -";
+        next;
+        mes "-";
+        mes "你虽然还充满疑惑为何年轻少年被封印在";
+        mes "这阴森的地方，但你直觉上就明白任何魔";
+        mes "法师都无法解除这封印的";
+        next;
+        mes "["+strcharinfo(0)+"]";
+        mes "究竟那少年的背后隐藏着什么秘密呢..";
+	close2;
+	cutin "",255;
+	end;
+}
+//Loomin-1st Class Secret
+ra_san04,137,48,3	script	Loomin-1st Class Secret	111,{
+	mes "^3131FFLoomin, the boy";
+	mes "trapped in the Ice Cave.^000000";
+	mes "Class: 1st";
+	mes " ";
+	mes " ";
+	mes " ";
+	mes "^333333The pope was born together";
+	mes "with a twin brother, a fair";
+	mes "skinned boy with pale skin";
+	mes "and silver blonde hair. This";
+	mes "had never happened before";
+	mes "and presented a unique problem";
+	mes " ";
+	mes "High Priest Niren acted as";
+	mes "their maternity nurse and";
+	mes "came to Rachel, where the";
+	mes "twins were cared for by the";
+	mes "Priests. They all argued";
+	mes "over the boy's ultimate fate...";
+	mes " ";
+	mes "No one doubted that the boy";
+	mes "was spiritually powerful, but";
+	mes "was he a sacred complement to";
+	mes "his sister, or a great evil that";
+	mes "was in direct opposition to";
+	mes "her? It was a grueling debate";
+	mes " ";
+	mes "In the end, the High Priests";
+	mes "decided that the boy posed";
+	mes "a great risk to their society";
+	mes "People may not consider the";
+	mes "pope's birth as divine if they";
+	mes "knew she had a twin brother.";
+	mes " ";
+	mes "However, not wanting to fear";
+	mes "the wrath of the gods, the";
+	mes "High Priests did not kill the";
+	mes "boy. Instead, they sealed";
+	mes "him in the Ice Cave.";
+	mes " ";
+	mes "The High Priests made";
+	mes "a contract with Ktullanux,";
+	mes "a fearsome ice monster, to";
+	mes "guard the boy's prison, and";
+	mes "to insure that no one would.";
+	close;
+}
+//Citizen#1
+rachel,124,132,1	script	村民#1 	921,{
+	mes "[村民]";
+	mes "愿菲依雅的恩典与你同在....";
+	next;
+	mes "[村民]";
+	mes "菲依雅是爱与美之女神，如果虔诚地向菲";
+	mes "依雅祈祷的话，就能与像菲依雅一样的美";
+	mes "丽女人陷入命运般的爱情吗?";
+	close;
+}
+//Girl#1
+rachel,74,150,7	script	村落 少女#1	914,{
+	mes "[村落 少女]";
+	mes "我们教皇，听说头发也白皮肤也白呢，";
+	mes "听父亲说，头发和皮肤皆白的每人一时代";
+	mes "里只出现一人，而且一定以女孩身出生，";
+	mes "说是菲依雅的化身之类的吧?";
+	mes "虽然我不太懂什么是化身..";
+	mes "应该是住在漂亮宫廷里的公主吧?";
+	close;
+}
+//Cheshrumnir Guard::ChesGuard
+rachel,144,243,5	script	瑟斯隆尼勒 警卫兵::ChesGuard	934,{
+	mes "[瑟斯隆尼勒 警卫兵]";
+	mes "这里是身为菲依雅之化身的教皇所居住的";
+	mes "瑟斯隆尼勒，";
+	mes "请以庄严肃穆的心入场";
+	close;
+}
+
+rachel,155,243,3	duplicate(ChesGuard)	瑟斯隆尼勒 警卫兵	934
+
+//Kinos#aru
+rachel,209,198,3	script	齐奴斯#aru	921,{
+	mes "[小朋友]";
+	mes "开启此门进入房子里的话，可以选择一个";
+	mes "喜欢的房间还当作自己的房子，";
+	mes "刚开始是移动一下桌子或椅子，之后就挂";
+	mes "挂相框及摆饰书籍看看了";
+	next;
+	mes "[小朋友]";
+	mes "不可以是吗?? 哦哦~ 好奇怪喔";
+	close;
+}
+//Anku#aru
+rachel,260,175,3	script	小朋友#aru	914,{
+	mes "[昂库]";
+	mes "唉咿 真是的~";
+	mes "我正在跟喜牧喜牧玩捉迷藏，已经过了一";
+	mes "个小时了还找不到他";
+	next;
+	mes "[昂库]";
+	mes "我肚子太饿了想告诉他我要回家了...";
+	mes "喜牧喜牧你可以出来了~";
+	close;
+}
+//Himuhimu#aru
+rachel,272,141,3	script	睡觉的小朋友#aru	921,{
+	mes "[睡觉的小朋友]";
+	mes "呀呀..呼呼..........";
+	mes "...嘻嘻.....昂库笨蛋!";
+	mes "..........呼呼.......";
+	close;
+}
+//Rachel Guard#1aru::RaGuard
+rachel,268,120,1	script	拉赫 警卫兵#1aru::RaGuard	934,{
+	mes "[拉赫 警卫兵]";
+	mes "这里是教国阿卢纳贝兹的神圣都市，拉赫";
+	mes "，";
+	mes "导览及各项服务请洽询位于拉赫中央的服";
+	mes "务人员";
+	close;
+}
+
+rachel,125,33,5	duplicate(RaGuard)	拉赫 警卫兵#2aru	934
+rachel,31,130,3	duplicate(RaGuard)	拉赫 警卫兵#3aru	934
+
+//Rachel Priest
+rachel,76,77,3	script	拉赫 神官	927,{
+	mes "[拉赫 神官]";
+	mes "呀哈~! 果然工作时所偷喝的酒最美味!";
+	close;
+}
+
+//Airship Guide#Fild
+ra_fild12,45,230,3	script	飞空艇 服务人员#Fild	934,{
+	mes "[飞空艇 服务人员]";
+	mes "在秀发兹发德所经营的国际线飞空艇，只";
+	mes "有从阿卢纳贝兹飞到拉赫而以，";
+	mes "若要找飞空艇航站的话，只要移动至迷你";
+	mes "地图上所标示的地方就可以了";
+	viewpoint 1,293,208,1,0xFF0000;
+	close;
+}
+
+//Freya's Follower
+rachel,201,174,3	script	菲依雅 信徒	926,{
+	mes "[菲依雅 信徒]";
+	mes "阿卢纳贝兹是信奉菲依雅的国家，也叫做";
+	mes "阿卢纳贝兹教国";
+	next;
+	mes "[菲依雅 信徒]";
+	mes "有一些穿着特殊服装的人吧?";
+	mes "像我一样戴着帽子或假面的人是所谓'一";
+	mes "般信徒'，当然大家都只信奉菲依雅..";
+	mes "可以说是更虔诚的信徒吧?";
+	next;
+	mes "[菲依雅 信徒]";
+	mes "穿着干净又整齐白色服装的人是'神官'们";
+	mes "，他们负责的是关于神殿或各项宗教方面";
+	mes "的业务";
+	next;
+	mes "[菲依雅 信徒]";
+	mes "以及随时在教皇身边服侍与为阿卢纳贝兹";
+	mes "牺牲奉献的人就是'大神官'们，服装比'";
+	mes "神官'更华丽些，所以一眼就能辨认出来";
+	next;
+	mes "[菲依雅 信徒]";
+	mes "大神官或是神官他们都很忙碌，要注意别";
+	mes "给他们造成困扰";
+	close;
+}
+//Freya's Priest#play
+rachel,206,30,3	script	菲依雅 神官#play	920,{
+	mes "[菲依雅 神官]";
+	mes "好无聊....";
+	next;
+	mes "[菲依雅 神官]";
+	mes "好无聊喔.........";
+	next;
+	mes "[菲依雅 神官]";
+	mes "我好无聊啦??????";
+	Emotion e_ag;
+	next;
+	if (select("啊~ 是....:我来逗你开心吧?") == 1) {
+		mes "[菲依雅 神官]";
+		mes "哼，好无趣的家伙..";
+		close;
+	}
+	mes "[菲依雅 神官]";
+	mes "嗯! 嗯!!";
+	mes "你要如何逗我开心呢???";
+	next;
+	if (select("我讲有趣的故事给你听:我会听你的话") == 1) {
+		mes "[菲依雅 神官]";
+		mes "有趣的故事? 好啊!!";
+		mes "来，快点说!";
+		next;
+		mes "- 你把自认为最有趣的故事讲给他听 -";
+		specialeffect2 295; //EF_TALK_FROSTJOKE
+		next;
+		mes "[菲依雅 神官]";
+		mes "呼呜... 变忧郁了";
+		close;
+	}
+	mes "[菲依雅 神官]";
+	mes "呵嗯~ 真的?";
+	mes "那么这个如何? 呀!!!!!";
+	close2;
+	set .@play,rand(1,10);
+	if (.@play == 1) warp "Random",0,0;
+	else if (.@play == 2) warp "Random",0,0;
+	else if (.@play == 3) sc_start SC_SpeedUp1,5000,0;
+	else if (.@play == 4) sc_start SC_SpeedUp1,5000,0;
+	else sc_start SC_SlowDown,5000,0;
+	end;
+}
+//Bard#aru
+rachel,197,137,3	script	流浪诗人#aru	51,{
+	mes "[流浪诗人]";
+	mes "噢噢噢~";
+	mes "我是漂泊他乡的诗人人人人人~~?";
+	next;
+	mes "[流浪诗人]";
+	mes "今天追随美丽的光芒来到拉赫啰啰啰~~?";
+	next;
+	mes "[流浪诗人]";
+	mes "不过却被我听到了~~~?";
+	next;
+	mes "[流浪诗人]";
+	mes "得知像勿忘草般纤细、如百合般刺眼的白";
+	mes "皙又高洁的少女教皇，居住在神殿的事情";
+	mes "~~~?";
+	next;
+	mes "[流浪诗人]";
+	mes "要如何才能拜见教皇呢~~?";
+	mes "我要用美妙的诗和音乐来诱惑她吗~~?";
+	mes "正在路过的你~~ 请回答我吧~~?";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "真差劲";
+	next;
+	mes "[流浪诗人]";
+	mes ".........................";
+	Emotion e_sob;
+	close;
+}
+//===================================
+// 菲依雅大神殿NPC
+//===================================
+//Follower Akarna
+ra_temple,148,91,3	script	信徒 雅卡莉娜	917,{
+	mes "[信徒 雅卡莉娜]";
+	mes "瑟斯隆尼勒......";
+	mes "总有一天会对这美丽的宫殿和伟大的菲依";
+	mes "雅之影子落幕的时候?";
+	mes "一想到内心就觉得颤抖，呼呼";
+	close;
+}
+//Follower Yakum
+ra_temple,115,148,7	script	信徒 雅坤	917,{
+	mes "[信徒 雅坤]";
+	mes "(嘀咕嘀咕)";
+	mes "(嘀咕嘀咕)";
+	mes "(嘀咕嘀咕)";
+	next;
+	mes "-";
+	mes "在眼前的信徒好像正聚精会神的吟咏祈祷";
+	mes "文句，不管怎么叫他都不会回头理我 -";
+	close;
+}
+//Follower Lekua
+ra_temin,287,88,7	script	信徒 卢克亚	927,{
+	mes "[信徒 卢克亚]";
+	mes "这些花.. 你觉得怎么样呢?? 喜欢吗?";
+	mes "瑟斯隆尼勒最浪漫的~ 纯情的男子 我";
+	mes "卢克亚亲自所采摘并装饰的花束";
+	next;
+	mes "[信徒 卢克亚]";
+	mes "虽然普通的花不会太显眼，但由于它们的";
+	mes "存在让周围的环境和气氛更加明亮和美化";
+	mes "，";
+	mes "花好像真的拥有亲切又美丽的心肠一样，";
+	mes "是不是吗?";
+	close;
+}
+//Freya's Follower#in1
+ra_temin,228,303,5	script	菲依雅 信徒#in1	926,{
+	mes "[菲依雅 信徒]";
+	mes "由于昨天忙着祈求菲依雅的复活而祈祷弄";
+	mes "得整晚都没睡，";
+	mes "虽然肩膀酸痛又疲惫，但只要想起菲依雅";
+	mes "内心就感到很充实";
+	close;
+}
+
+//Freya's Follower#in2
+ra_temin,230,303,3	script	菲依雅 信徒#in2	926,{
+	mes "[菲依雅 信徒]";
+	mes "你做了一件非常了不起的事情，";
+	mes "相信菲依雅内心深处也一定对你赞誉有加";
+	close;
+}
+//Child Follower#in1
+ra_temin,138,64,5	script	小孩 信徒#in1	914,{
+	mes "[小孩 信徒]";
+	mes "我的呜呜死掉了!";
+	next;
+	select("呜呜?");
+	mes "[小孩 信徒]";
+	mes "呜呜是上周在路上捡到的可爱小鸟，";
+	mes "我有很细心的照料它却仍然死掉了，哭泣..";
+	emotion e_sob;
+	next;
+	mes "[小孩 信徒]";
+	mes "我本来打算请求教皇救回我的小鸟";
+	mes "呜呜，可是地方太大了遍寻不着";
+	mes "教皇到底在哪呢?";
+	mes "这里又是什么地方呢???";
+	close;
+}
+
+
+//===== Set 2 ================================================
+//Apprentice Priestess	
+ra_fild12,285,208,3	script	见习神官	914,{
+	if ($rachel_donate < 10000) {
+		mes "[帕帕伊]";
+		mes "欢迎您来到 阿卢纳贝兹!";
+		mes "祝您旅途愉快~";
+		next;
+		if (select("请问你不是服务人员吗?:是的，祝你今天愉快") == 1) {
+			mes "[帕帕伊]";
+			mes "啊，我是从神殿里来";
+			mes "做对民众宣传活动的";
+			mes "我叫做帕帕伊，这里有牌子";
+			mes "我相信你应该有看到?";
+			mes "服务人员在西边的都市拉赫";
+			mes "中央的广场北边啊";
+			next;
+			mes "[帕帕伊]";
+			mes "再过不久的话在神殿里为了女神的庆典即将要开了，为了那个我们正在做募款活动啊，";
+			mes "并不是我直接来做收款的...";
+			next;
+			mes "[帕帕伊]";
+			mes "看样子你比较有在关心啊?";
+			mes "若你能走到神殿前面的话，会看到有一位";
+			mes "带着牌子的内麻神官，现在正在那募款啊";
+			next;
+			mes "[帕帕伊]";
+			mes "只要有献金的话";
+			mes "会分给你摸彩券的，";
+			mes "至于会获得什么东西";
+			mes "我们也不知道啊，";
+			mes "我也只听说是给";
+			mes "从仓库里出来的^0000FF某一个好的东西^000000而已啊";
+			next;
+			mes "[帕帕伊]";
+			mes "希望你有空一定要来做献金啊，";
+			mes "那么，助你有一个神的恩宠，神的祝福!";
+			close;
+		}
+		mes "[帕帕伊]";
+		mes "神的恩宠，神的祝福，";
+		mes "若有去神殿的话拜托要献金啊，";
+		mes "在神殿的入口处正在募款啊";
+		close;
+	}
+	mes "[帕帕伊]";
+	mes "欢迎您来到 阿卢纳贝兹!";
+	mes "现在旅行者先生/小姐";
+	mes "所看到的城墙内部的都市叫做";
+	mes "'拉赫'，也是我们 阿卢纳贝兹的首都";
+	mes "在漫长的航海中应该是累坏了吧，先到里";
+	mes "面喝一下饮料解一解渴吧?";
+	next;
+	if (select("请问你不是服务人员吗?:有关首都再做一点详细的说明吧") == 1) {
+		mes "[帕帕伊]";
+		mes "我是从神殿里来 做对民众宣传活动的";
+		mes "我叫做帕帕伊，老实说我们国教信奉菲依";
+		mes "雅女神，不过对外过人还没有做即时的宣";
+		mes "传啊";
+		next;
+		mes "[帕帕伊]";
+		mes "若有兴趣的话 请来神殿拜访一下吧~";
+		next;
+		mes "[帕帕伊]";
+		mes "那么 请慢走啰~";
+		close;
+	}
+	mes "[帕帕伊]";
+	mes "我们祖先们在这宽广的沙漠上做开垦";
+	mes "做成可以使人能生活的地方，依据神的指";
+	mes "示来到这大地之后，在漫长的岁月里洗礼";
+	mes "着教育而在这里活着";
+	next;
+	mes "[帕帕伊]";
+	mes "现在所看到的风景，老实说全部都是人类";
+	mes "所创造出来的，当然，没有那一位的帮忙";
+	mes "的话是不可能的事情";
+	next;
+	mes "[帕帕伊]";
+	mes "互相信赖服从会变成这么大的力量，连我";
+	mes "们的祖先们也是当初没有想到的啊，";
+	mes "所以说我啊";
+	mes "为了对领导我们的菲依雅女神，能为祂奉";
+	mes "献出我的身心是已做好准备了";
+	next;
+	mes "[帕帕伊]";
+	mes "当旅行者若能进入到首都的话";
+	mes "你就会了解我这句话是什么意思了";
+	close;
+}
+//Child Follower#2
+rachel,127,117,4	script	小孩 信徒#2	914,{
+	mes "[迪浓]";
+	mes "不能只有相信神而已，";
+	mes "也不能只观往着祂，";
+	mes "不是因为相信神";
+	mes "会对自己回来福报的";
+	next;
+	mes "[迪浓]";
+	mes "能做的事情都做完之后，";
+	mes "等待神的旨意";
+	mes "这才是人要做的事情啊";
+	next;
+	emotion e_what,1;
+	mes "[迪浓]";
+	mes "虽然现在有点听不懂，";
+	mes "总有一天会有了解的一天";
+	close;
+}
+//Child Follower#3
+ra_temple,167,155,4	script	小孩 信徒#3	914,{
+	mes "[李薇]";
+	mes "嘘!";
+	mes "安静一点";
+	next;
+	mes "[李薇]";
+	mes "......";
+	next;
+	mes "[李薇]";
+	mes "请你到别的地方去啦!";
+	mes "会被发现的!";
+	next;
+	if (select("请问你在做什么呀?:我知道了") == 1) {
+		mes "[李薇]";
+		mes "难道你不知道吗?";
+		mes "你从来没有玩过吗?";
+		mes "就是跷课啊!";
+		mes "看不出来吗?";
+		next;
+		mes "[李薇]";
+		mes "请你去别的地方啦!";
+		close;
+	}
+	mes "[李薇]";
+	mes "嘘!";
+	close;
+}
+//Child Follower#4
+ra_temple,179,161,7	script	小孩 信徒#4	921,{
+	mes "[支卡]";
+	mes "嘘";
+	mes "我们正在玩";
+	mes "捉迷藏啊";
+	next;
+	mes "[支卡]";
+	mes "会被发现的";
+	mes "请到别的地方吧，";
+	mes "若找到其它小孩的话请大声的喧哗吧，";
+	mes "我今天做猫猫已经是第五次了";
+	next;
+	close;
+}
+//Child Follower#5
+ra_temple,77,114,7	script	小孩 信徒#5	921,{
+	mes "[爱弥]";
+	mes "哇 吓一跳啊!";
+	mes "我还以为是猫来抓我了呢?";
+	mes "若被发现要怎么办啊!";
+	mes "请你走开啦! 快一点!";
+	close;
+}
+//Child Follower#6
+ra_temple,172,112,5	script	小孩 信徒#6	921,{
+	mes "[哈斯]";
+	mes "小孩们都跑到哪里去了呢~";
+	mes "到哪里去了呢~ 到哪里去了呢~";
+	next;
+	mes "[哈斯]";
+	mes "玩捉迷藏时我们不会邀请大人参加的";
+	mes "请你到别的地方吧!";
+	close;
+}
+//Adventurer
+airplane,238,54,7	script	旅行者	88,{
+	if ($rachel_donate < 10000) {
+		mes "[旅行者]";
+		mes "我这一次和我的朋友";
+		mes "去过拉赫这都市旅行了，";
+		mes "据说在拉赫神殿里献金的话";
+		mes "会从仓库里开启任何一样物品给你，";
+		mes "所以我就献金了";
+		next;
+		mes "[旅行者]";
+		mes "然后会给你一个书本之类的东西，";
+		mes "据说在书页中插着一个漂亮的卡片似的?";
+		mes "为了纪念到远处旅游";
+		mes "所以就把它当成纪念品带回来了";
+		next;
+		mes "[旅行者]";
+		mes "我也从那仓库里得到一样物品";
+		mes "是一个漂亮的果实，";
+		mes "连神官也不知道那是什么东西啊，";
+		mes "由于第一次见到的东西，";
+		mes "所以就把它吃下肚子";
+		mes "变得全身元气十足啊";
+		next;
+		mes "[旅行者]";
+		mes "好像是为了某个庆典在做献金似的，";
+		mes "虽然不知道要募款到多久，";
+		mes "觉得很好玩想试试看";
+		mes "若下一次去的时候她还在的话";
+		mes "我还想多捐一点献金呢";
+		close;
+	}
+	mes "[旅行者]";
+	mes "在拉赫神殿里做献金的神官";
+	mes "好像有点困扰的样子...";
+	mes "不知现在是否有解决了呢?";
+	close;
+}
