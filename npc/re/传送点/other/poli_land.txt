@@ -1,0 +1,17 @@
+// Card removal NPC by TyrNemesis^
+// DANGEROUS! TODO: Think.. think 8) [Lupus]
+// Transelated By Memory.
+
+
+prontera.gat,141,116,4	script	波利岛虫洞	10007,{
+	mes "你希望穿越到 [波利岛] 吗?";
+	next;
+	switch(select("是:否")) {
+	case 1:
+		close2;
+		warp "pay_fild04",135,200;
+		end;
+	case 2:
+		close;
+	}
+}
