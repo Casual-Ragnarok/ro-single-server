@@ -1,0 +1,29 @@
+// Card removal NPC by TyrNemesis^
+// DANGEROUS! TODO: Think.. think 8) [Lupus]
+// Transelated By Memory.
+
+
+prontera.gat,141,113,4	script	异次元虫洞	10007,{
+	mes "粒子分解传送器：想在哪里重组自己?";
+	next;
+	switch(select("波利岛:吉芬地4（复兴前）:吉芬地4（复兴后）:吉芬-深渊回廊:我怕痛")) {
+	case 1:
+		close2;
+		warp "pay_fild04",135,200;
+		end;
+	case 2:
+		close2;
+		warp "gld_dun04",49,82;
+		end;
+	case 3:
+		close2;
+		warp "gld_dun04_2",49,82;
+		end;
+	case 4:
+		close2;
+		warp "gld2_gef",218,74;
+		end;
+	case 5:
+		close;
+	}
+}
