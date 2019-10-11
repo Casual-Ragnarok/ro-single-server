@@ -1,0 +1,201 @@
+// Card removal NPC by TyrNemesis^
+// DANGEROUS! TODO: Think.. think 8) [Lupus]
+// Transelated By Memory.
+
+
+prontera.gat,164,106,4	script	一键大师	709,{
+
+UPGRADEROOT:
+	mes "[一键大师]";
+	mes "你好啊~~年轻人. 我可以帮你一步登天, 但你需要付出点代价";
+	mes "确认即扣钱，没有回头路！";
+	next;
+	menu "一键全身鉴定（-10000Z）",TO_IDENTITY,
+	     "一键全身修复（-100000Z）",TO_REPAIRE,
+	     "一键满状态（-100000Z）",TO_ALL_STATUS,
+	     "一键精炼+10（-10000000Z）",TO_REFINE_10,
+	     "一键精炼+15（-50000000Z）",TO_REFINE_15,
+	     "一键精炼+20（-100000000Z）",TO_REFINE_20,
+	     "一键卖垃圾（-10000Z）",TO_DO,
+	     "一键丢弃所有道具（-10000Z）",TO_DO,
+	     "一键自杀（+99Z）",TO_DO,
+	     "一键破产（0Z）",TO_BANKRUPTCY,
+	     "不,我想不劳而获.",TO_CLOSE;
+
+
+TO_IDENTITY:
+	set @money,10000;
+	if(zeny >= @money) {
+		set zeny,(zeny - @money);
+		identifyall(true);
+		goto TO_CLOSE;
+
+	} else {
+		goto NO_ZENY;
+	}
+
+
+TO_REPAIRE:
+	set @money,100000;
+	if(zeny >= @money) {
+		set zeny,(zeny - @money);
+		repairall;
+		goto TO_CLOSE;
+
+	} else {
+		goto NO_ZENY;
+	}
+
+
+TO_ALL_STATUS:
+	set @money,100000;
+	if(zeny >= @money) {
+		set zeny,(zeny - @money);
+
+		percentheal 100,100;												// 满 HP/SP
+		skilleffect "AL_BLESSING",0; sc_start SC_BLESSING,240000,10;		// 天使之赐福
+		skilleffect "AL_INCAGI",0; sc_start SC_INCREASEAGI,240000,10;		// 加速术
+		skilleffect "HP_ASSUMPTIO",0; sc_start SC_ASSUMPTIO,100000,5;		// 圣母之祈福
+		skilleffect "SN_WINDWALK",0; sc_start SC_WINDWALK,250000,5;			// 风之步
+
+		goto TO_CLOSE;
+
+	} else {
+		goto NO_ZENY;
+	}
+	
+TO_REFINE_10:
+	set @money,10000000;
+	if(zeny >= @money) {
+		set @refine_num,10;
+		goto TO_SELECT;
+
+	} else {
+		goto NO_ZENY;
+	}
+
+
+TO_REFINE_15:
+	set @money,50000000;
+	if(zeny >= @money) {
+		set @refine_num,15;
+		goto TO_SELECT;
+
+	} else {
+		goto NO_ZENY;
+	}
+
+
+TO_REFINE_20:
+	set @money,100000000;
+	if(zeny >= @money) {
+		set @refine_num,20;
+		goto TO_SELECT;
+
+	} else {
+		goto NO_ZENY;
+	}
+
+
+TO_SELECT:
+	mes "[一键大师]";
+	mes "啊咧咧，你想精炼哪件装备?";
+	next;
+	menu "emmm, 算了...",TO_CLOSE,
+	     getequipname(1),SLOT01,
+	     getequipname(2),SLOT02,
+	     getequipname(3),SLOT03,
+	     getequipname(4),SLOT04,
+	     getequipname(5),SLOT05,
+	     getequipname(6),SLOT06,
+	     getequipname(7),SLOT07,
+	     getequipname(8),SLOT08,
+	     getequipname(9),SLOT09,
+	     getequipname(10),SLOT10;
+
+
+SLOT01:
+	set @slot,1;
+	goto TO_REFINE;
+
+SLOT02:
+	set @slot,2;
+	goto TO_REFINE;
+
+SLOT03:
+	set @slot,3;
+	goto TO_REFINE;
+
+SLOT04:
+	set @slot,4;
+	goto TO_REFINE;
+
+SLOT05:
+	set @slot,5;
+	goto TO_REFINE;
+
+SLOT06:
+	set @slot,6;
+	goto TO_REFINE;
+
+SLOT07:
+	set @slot,7;
+	goto TO_REFINE;
+
+SLOT08:
+	set @slot,8;
+	goto TO_REFINE;
+
+SLOT09:
+	set @slot,9;
+	goto TO_REFINE;
+
+SLOT10:
+	set @slot,10;
+	goto TO_REFINE;
+
+
+TO_REFINE:
+	mes "[一键大师]";
+	set @cur_refine,getequiprefinerycnt(@slot);
+	set @refine_count,(@refine_num - @cur_refine);
+
+	if(@refine_count <= 0) {
+		mes "你TM逗我呢，这件已经[+" + @cur_refine + "]啦！信不信我把它砸烂...";
+
+	} else {
+		set zeny,(zeny - @money);
+		successrefitem @slot,@refine_count;
+		mes "已经可以了，跪安吧，渣渣~";
+	}
+	next;
+	goto TO_CLOSE;
+
+
+TO_BANKRUPTCY:
+//	set zeny,0;
+	mes "[一键大师]";
+	mes "嘿嘿~ 傻仔~";
+	next;
+	goto TO_CLOSE;
+
+
+TO_DO:
+	mes "[一键大师]";
+	mes "此功能正在开发中...";
+	next;
+	goto TO_CLOSE;
+
+
+NO_ZENY:
+	mes "[一键大师]";
+	mes "穷鬼滚远点";
+	close;
+
+
+TO_CLOSE:
+	mes "[一键大师]";
+	mes "OJBK,滚吧";
+	close;
+
+}
