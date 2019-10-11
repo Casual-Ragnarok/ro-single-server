@@ -10,14 +10,14 @@ UPGRADEROOT:
 	mes "你好啊~~年轻人. 我可以帮你一步登天, 但你需要付出点代价";
 	mes "确认即扣钱，没有回头路！";
 	next;
-	menu "一键全身鉴定（-10000Z）",TO_IDENTITY,
-	     "一键全身修复（-100000Z）",TO_REPAIRE,
-	     "一键满状态（-100000Z）",TO_ALL_STATUS,
-	     "一键精炼+10（-10000000Z）",TO_REFINE_10,
-	     "一键精炼+15（-50000000Z）",TO_REFINE_15,
-	     "一键精炼+20（-100000000Z）",TO_REFINE_20,
-	     "一键卖垃圾（-10000Z）",TO_DO,
-	     "一键丢弃所有道具（-10000Z）",TO_DO,
+	menu "一键全身鉴定（-1W）",TO_IDENTITY,
+	     "一键全身修复（-10W）",TO_REPAIRE,
+	     "一键满状态（-10W）",TO_ALL_STATUS,
+	     "一键精炼+10（-1000W）",TO_REFINE_10,
+	     "一键精炼+15（-5000W）",TO_REFINE_15,
+	     "一键精炼+20（-1E）",TO_REFINE_20,
+	     "一键卖垃圾（-1W）",TO_DO,
+	     "一键丢弃所有道具（-100Z）",TO_DO,
 	     "一键自杀（+99Z）",TO_DO,
 	     "一键破产（0Z）",TO_BANKRUPTCY,
 	     "不,我想不劳而获.",TO_CLOSE;
