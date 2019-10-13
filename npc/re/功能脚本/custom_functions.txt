@@ -1,21 +1,166 @@
 //===== rAthena Script ======================================= 
 
 
-// 一键鉴定放大镜
+// 获取当前玩家 ID
 //============================================================ 
-// - 无参数
-function	script	F_Identify_All	{
+// - param: 无参数
+// - return: 玩家 ID
+function	script	F_PLAYER_ID	{
+	set @player_id$, getcharid(0);
+	return @player_id$;
+}
+
+// 获取当前玩家名称
+//============================================================ 
+// - param: 无参数
+// - return: 玩家名称
+function	script	F_PLAYER_NAME	{
+	set @player_name$,strcharinfo(0);
+	return @player_name$;
+}
+
+// 获取当前玩家权限
+//============================================================ 
+// - param: 无参数
+// - return: 玩家权限值（group_id）
+function	script	F_PLAYER_GMLV	{
+	set @player_gmlv,getgmlevel();
+	return @player_gmlv;
+}
+
+// 查看角色可用命令
+//============================================================ 
+// - param: 无参数
+// - return: 无参数
+function	script	F_COMMANDS	{
+	atcommand("@commands");
+	return;
+}
+
+// 全身一键鉴定
+//============================================================ 
+// - param: 无参数
+// - return: 无参数
+function	script	F_IDENTIFY_ALL	{
 	identifyall(true);
 	return;
 }
 
-
-
-
 // 查看在线人数
 //============================================================ 
-// - 无参数
-function	script	F_Online	{
-	// TODO
+// - param: 无参数
+// - return: 无参数
+function	script	F_ONLINE	{
+	atcommand "@who";
 	return;
+}
+
+// 查看当前坐标
+//============================================================ 
+// - param: 无参数
+// - return: 无参数
+function	script	F_WHERE	{
+	set @rst$,callfunc("F_PLAYER_NAME");
+	atcommand("@where " + @rst$);
+	return;
+}
+
+// 查看服务器倍率
+//============================================================ 
+// - param: 无参数
+// - return: 无参数
+function	script	F_SERVER_RATES	{
+	atcommand("@rates");
+	return;
+}
+
+// 开/关自动拾取
+//============================================================ 
+// - param: 无参数
+// - return: 无参数
+function	script	F_AUTOLOOT	{
+	atcommand("@autoloot");
+	return;
+}
+
+
+// RO手册
+//============================================================ 
+// - param: 无参数
+// - return: 无参数
+function	script	F_MANUAL	{
+	mes "[RO 手册]";
+	mes "RO 便利手册";
+	next;
+	mes "[RO 手册]";
+	mes "本手册并无任何效果加成";
+	menu "查看权限指令",_TO_CHAR_COMMANDS,
+		 "查看常用命令",_TO_GAME_COMMANDS,
+		 "查看服务器信息",_TO_SERVER_RATES,
+		 "查看在线人数",_TO_ONLINE,
+		 "查看角色信息",_TO_CHARINFO,
+		 "查看当前坐标",_TO_WHERE,
+		 "自动拾取[开/关]",_TO_AUTOLOOT,
+		 "全身鉴定",_TO_IDENTIFY_ALL,
+		 "没事了.",_TO_CLOSE;
+
+	_TO_CHAR_COMMANDS:
+		callfunc("F_COMMANDS");
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_GAME_COMMANDS:
+		mes "[帮助资讯] /h";
+		mes "[锁定攻击] /noctrl";
+		mes "[效果开关] /effect";
+		mes "[创建队伍] /organize 队伍名称";
+		mes "[创建工会] /guild 工会名称";
+		mes "[自动加点] /str+ 2 /vit+ 5 ...";
+		mes "[坐下站立] /sit";
+		mes "[开聊天室] /chat";
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_SERVER_RATES:
+		mes "已打印到资讯窗口...";
+		callfunc("F_SERVER_RATES");
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_CHARINFO:
+		set @pid$,callfunc("F_PLAYER_ID");
+		set @pname$,callfunc("F_PLAYER_NAME");
+		set @plv,callfunc("F_PLAYER_GMLV");
+		mes "[角色ID] " + @pid$;
+		mes "[角色名称] " + @pname$;
+		mes "[权限等级] " + @plv;
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_WHERE:
+		mes "已打印到资讯窗口...";
+		callfunc("F_WHERE");
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_ONLINE:
+		mes "已打印到资讯窗口...";
+		callfunc("F_ONLINE");
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_AUTOLOOT:
+		callfunc("F_AUTOLOOT");
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_IDENTIFY_ALL:
+		mes "已全部鉴定";
+		callfunc("F_IDENTIFY_ALL");
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_CLOSE:
+		close;
+		return;
 }

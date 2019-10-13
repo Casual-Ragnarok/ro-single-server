@@ -10,24 +10,25 @@ UPGRADEROOT:
 	mes "你好啊~~年轻人. 我可以帮你一步登天, 但你需要付出点代价";
 	mes "确认即扣钱，没有回头路！";
 	next;
-	menu "一键全身鉴定（-1W）",TO_IDENTITY,
-	     "一键全身修复（-10W）",TO_REPAIRE,
-	     "一键满状态（-1W）",TO_ALL_STATUS,
-	     "一键精炼+10（-1000W）",TO_REFINE_10,
-	     "一键精炼+15（-5000W）",TO_REFINE_15,
-	     "一键精炼+20（-1E）",TO_REFINE_20,
-	     "一键卖垃圾（-1W）",TO_DO,
-	     "一键丢弃所有道具（-100Z）",TO_DO,
-	     "一键自杀（+99Z）",TO_DO,
-	     "一键破产（0Z）",TO_BANKRUPTCY,
-	     "不,我想不劳而获.",TO_CLOSE;
+	menu "一键满状态（-1W）",TO_ALL_STATUS,
+		 "一键全身鉴定（-1W）",TO_IDENTITY,
+		 "一键全身修复（-10W）",TO_REPAIRE,
+		 "一键精炼+10（-1000W）",TO_REFINE_10,
+		 "一键精炼+15（-5000W）",TO_REFINE_15,
+		 "一键精炼+20（-1E）",TO_REFINE_20,
+		 "一键破产（0Z）",TO_BANKRUPTCY,
+		 "一键自杀（+444Z）",TO_KILL_SELF,
+		 "一键暗杀（-100W）",TO_KILL_OTHER,
+		 "一键卖垃圾（-1W）",TO_DO,
+		 "一键丢弃所有道具（-100Z）",TO_DO,
+		 "不,我想不劳而获.",TO_CLOSE;
 
 
 TO_IDENTITY:
 	set @money,10000;
 	if(zeny >= @money) {
 		set zeny,(zeny - @money);
-		identifyall(true);
+		callfunc("F_IDENTIFY_ALL");
 		goto TO_CLOSE;
 
 	} else {
@@ -173,11 +174,77 @@ TO_REFINE:
 
 
 TO_BANKRUPTCY:
-//	set zeny,0;
+	mes "[一键大师]";
+	mes "我会没收你身上所有钱，你确定?";
+	next;
+	menu "emmm, 算了...",TO_CLOSE,
+		 "我人傻钱多",_TO_BANKRUPTCY;
+
+_TO_BANKRUPTCY:
+	set zeny,0;
 	mes "[一键大师]";
 	mes "嘿嘿~ 傻仔~";
 	next;
 	goto TO_CLOSE;
+
+
+TO_KILL_SELF:
+//	atcommand "@kill";		// 没有特效
+
+	set @player_name$,strcharinfo(0);
+	atcommand("@nuke " + @player_name$);
+
+	set zeny,(zeny + 444);
+	mes "[一键大师]";
+	mes "你已经死了,冥币拿好";
+	end;
+	close;
+
+
+TO_KILL_OTHER:
+	set @money,1000000;
+	set @money_tips,100000;
+	if(zeny >= @money) {
+		mes "[一键大师]";
+		mes "提醒你：";
+		mes "佣金的八成将会转到目标人物的账号！";
+		mes "这是避免引起麻烦而给他的敛葬费！";
+		next;
+
+		mes "[一键大师]";
+		mes "把他的名字写入 [死亡笔记] 吧！";
+		mes "一个字也不能错！";
+		mes "同时你必须想象着他的样子！";
+		mes "不然可能会失效或者杀错人！";
+
+		input @player_name$;
+		next;
+		mes "[一键大师]";
+
+		set @succ_rate,rand(100);
+		if(@succ_rate < 40) {
+			mes "暗杀失败！";
+			mes "你想象力不太够哦！";
+			mes "但我依然会收取 10% 的服务费！";
+
+			set zeny,(zeny - @money_tips);
+
+		} else {
+			mes "暗杀成功！";
+			mes "[" + @player_name$ + "] 已经 poorguy 了！";
+			mes "我会做好善后工作";
+
+			set zeny,(zeny - @money);
+			charcommand("#zeny " + @player_name$ + " 800000");
+			atcommand("@nuke " + @player_name$);
+		}
+
+		end;
+		close;
+
+	} else {
+		goto NO_ZENY;
+	}
 
 
 TO_DO:
