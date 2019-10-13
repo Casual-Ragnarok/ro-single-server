@@ -123,8 +123,8 @@
 608,Seed_Of_Yggdrasil,天地树芽,0,300,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 50,50; },{},{}
 609,Amulet,返魂符,2,100,,100,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 610,Leaf_Of_Yggdrasil,天地树叶子,11,250,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "ALL_RESURRECTION",1; },{},{}
-// 611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "MC_IDENTIFY",1; getitem 611,1; },{},{}
-611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "F_Identify_All"; },{},{}
+// 611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "MC_IDENTIFY",1; },{},{}
+611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "F_IDENTIFY_ALL"; },{},{}
 612,Portable_Furnace,携带用熔矿炉,2,150,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 21; },{},{}
 613,Iron_Hammer,钢铁锤子,2,1000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 1; },{},{}
 614,Golden_Hammer,黄金锤子,2,3000,,300,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 2; },{},{}
@@ -12590,3 +12590,8 @@
 //===================================================================
 32301,Illusion_Gold_Lux,幻影金色勒克司,5,20,,1800,160,,7,2,0x41000000,63,2,34,4,120,1,17,{ .@r = getrefine(); bonus bHit,10; bonus bLongAtkRate,3*(.@r/2); if (.@r >= 7) { bonus2 bSkillAtk,"GS_DESPERADO",40; if (.@r >= 9) { bonus2 bSkillCooldown,"RL_HEAT_BARREL",-2000; if (.@r >= 11) { bonus2 bSkillAtk,"RL_FIREDANCE",30; } } } },{},{}
 32302,Crimson_Rose,Crimson Rose,5,20,,700,150,,7,2,0x40000000,63,2,34,4,100,1,17,{ .@r = getrefine(); bonus bBaseAtk,10*(.@r/2); bonus bAspdRate,3*(.@r/3); if (.@r >= 7) { bonus bAspd,1; bonus2 bAddClass,Class_All,5; if (.@r >= 9) { bonus bCritAtkRate,20; if (.@r >= 11) { autobonus3 "{ bonus bCritical,20; bonus bLongAtkRate,15; }",1000,60000,"RL_HEAT_BARREL"; } } } },{},{}
+
+
+
+
+50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 50000,1; callfunc "F_MANUAL"; },{},{}
