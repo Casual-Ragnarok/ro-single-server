@@ -15,7 +15,7 @@
 - produce: 生产环境分支，含我的服务器的远程存档，其他人可以删掉
 
 > 配套客户端仓库：[https://github.com/lyy289065406/ro-single-client](https://github.com/lyy289065406/ro-single-client)
-http://ea.dj-yhn.com/
+
 
 </details>
 
@@ -308,6 +308,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/11.png)
 
+
+### GM 进阶 - RO 脚本编辑指引
+
+> [传送门](https://github.com/lyy289065406/ro-single-server/blob/master/tools/README.md)
 
 </details>
 
@@ -706,7 +710,7 @@ ro-single-server
 |   |   |-- 飞空艇
 |   |   └-- 魔物刷新
 |-- doc  ....................................  [游戏用到的函数说明文档]
-|   -- script_commands.txt  .................  [※ 脚本函数（编写 NPC 脚本时经常需要查阅）]
+|   -- script_commands.txt  .................  [※ 脚本函数（编写脚本时经常需要查阅）]
 └-- README.md  ..............................  [RO 服务端说明]
 
 994 directories, 10054 files
