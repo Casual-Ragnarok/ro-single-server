@@ -54,10 +54,20 @@ TO_ALL_STATUS:
 		set zeny,(zeny - @money);
 
 		percentheal 100,100;												// 满 HP/SP
-		skilleffect "AL_BLESSING",0; sc_start SC_BLESSING,240000,10;		// 天使之赐福
-		skilleffect "AL_INCAGI",0; sc_start SC_INCREASEAGI,240000,10;		// 加速术
-		skilleffect "HP_ASSUMPTIO",0; sc_start SC_ASSUMPTIO,100000,5;		// 圣母之祈福
-		skilleffect "SN_WINDWALK",0; sc_start SC_WINDWALK,250000,5;			// 风之步
+		skilleffect "AL_BLESSING",0; sc_start SC_BLESSING,600000,10;		// 天使之赐福
+		skilleffect "AL_INCAGI",0; sc_start SC_INCREASEAGI,600000,10;		// 加速术
+		skilleffect "HP_ASSUMPTIO",0; sc_start SC_ASSUMPTIO,600000,5;		// 圣母之祈福
+		skilleffect "SN_WINDWALK",0; sc_start SC_WINDWALK,600000,5;			// 风之步
+
+		getitem 7139,4;
+		unitskilluseid getcharid(3),"AM_CP_HELM",5;							// 护贝药化学头盔保护
+		sleep2 2100;
+		unitskilluseid getcharid(3),"AM_CP_ARMOR",5;						// 护贝药化学铠甲保护
+		sleep2 2100;
+		unitskilluseid getcharid(3),"AM_CP_WEAPON",5;						// 护贝药化学武器保护
+		sleep2 2100;
+		unitskilluseid getcharid(3),"AM_CP_SHIELD",5;						// 护贝药化学盾牌保护
+		sleep2 2100;
 
 		goto TO_CLOSE;
 
