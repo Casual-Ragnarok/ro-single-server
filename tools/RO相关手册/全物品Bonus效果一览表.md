@@ -3,26 +3,26 @@
 ------
 
 
-·装备相关
-　
-bonus bBreakWeaponRate,n;	以n的机率破坏玩家的武器（n为万分率，机率可叠加）
-bonus bBreakArmorRate,n;	以n的机率破坏玩家的铠甲（n为万分率，机率可叠加）
-bonus bUnbreakableWeapon,n;	武器绝对不会被破坏（n无意义）
-bonus bUnbreakableArmor,n;	铠甲绝对不会被破坏（n无意义）
-bonus bUnbreakableHelm,n;	头具绝对不会被破坏（n无意义）
-bonus bUnbreakableShield,n;	盾牌绝对不会被破坏（n无意义）
-bonus bLossEquipWhenDie,n;	死亡时n机率装备消失（n为万分率）
-bonus bLossEquipWhenAttack,n;	攻击时n机率装备消失（n为万分率）
-bonus bLossEquipWhenHit,n;	受到攻击时n机率装备消失（n为万分率）
-bonus bBreakMyEquipWhenAttack,n,x;	攻击时n机率装备损坏（n为万分率）
-bonus2 bBreakMyEquipWhenAttack,n,x;	攻击时x机率损坏n位置的装备（x为万分率）（456-头具、7-铠甲、8-左手、9-右手、其他位置-无意义）
-bonus bBreakMyEquipWhenHit,n;	受到攻击时n机率装备损坏（n为万分率）
-bonus2 bBreakMyEquipWhenHit,n,x;	受到攻击时x机率损坏n位置的装备（x为万分率）（456-头具、7-铠甲、8-左手、9-右手、其他位置-无意义）
-　
+## 装备相关
 
-　
+| 脚本命令 | 效果 |
+|:--------|:-----|
+| `bonus bBreakWeaponRate,n;` | 以n的机率破坏玩家的武器（n为万分率，机率可叠加） |
+| `bonus bBreakArmorRate,n;` | 以n的机率破坏玩家的铠甲（n为万分率，机率可叠加） |
+| `bonus bUnbreakableWeapon,n;` | 武器绝对不会被破坏（n无意义） |
+| `bonus bUnbreakableArmor,n;` | 铠甲绝对不会被破坏（n无意义） |
+| `bonus bUnbreakableHelm,n;` | 头具绝对不会被破坏（n无意义） |
+| `bonus bUnbreakableShield,n;` | 盾牌绝对不会被破坏（n无意义） |
+| `bonus bLossEquipWhenDie,n;` | 死亡时n机率装备消失（n为万分率） |
+| `bonus bLossEquipWhenAttack,n;` | 攻击时n机率装备消失（n为万分率） |
+| `bonus bLossEquipWhenHit,n;` | 受到攻击时n机率装备消失（n为万分率） |
+| `bonus bBreakMyEquipWhenAttack,n,x;` | 攻击时n机率装备损坏（n为万分率）
+| `bonus2 bBreakMyEquipWhenAttack,n,x;` | 攻击时x机率损坏n位置的装备（x为万分率）（456-头具、7-铠甲、8-左手、9-右手、其他位置-无意义） |
+| `bonus bBreakMyEquipWhenHit,n;` | 受到攻击时n机率装备损坏（n为万分率） |
+| `bonus2 bBreakMyEquipWhenHit,n,x;` | 受到攻击时x机率损坏n位置的装备（x为万分率）（456-头具、7-铠甲、8-左手、9-右手、其他位置-无意义） |
 
-·状态异常
+
+## 状态异常
 　
 bonus2 bAddEff,e,n;	以n的机率造成攻击对象e状态（n为万分率）
 bonus2 bAddRevEff,e,n;	受到近身物理攻击时，n机率让攻击对象陷入e状态（n为万分率）
