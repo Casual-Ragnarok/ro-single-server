@@ -25,40 +25,36 @@
 
 | 脚本命令 | 效果 |
 |:--------|:-----|
-| `bonus bCurseByMuramasa,n; | Lv>Luk时，n机率被诅咒（n为万分率） |
-| `bonus2 bAddEff,e,n; | 以n的机率造成攻击对象e状态（n为万分率） |
-| `bonus2 bAddRevEff,e,n; | 受到近身物理攻击时，n机率让攻击对象陷入e状态（n为万分率） |
-| `bonus2 bAddEff2,e,n; | 以n机率造成自己e状态（n为万分率） |
-| `bonus2 bAddEffShort,e,n; | 近距离物理攻击时，n机率造成攻击对象e状态（n为万分率） |
-| `bonus2 bAddEffLong,e,n; | 远距离物理攻击时，n机率造成攻击对象e状态（n为万分率） |
-| `bonus2 bResEff,e,n; | e状态的耐久度+n（n为万分率） |
+| `bonus bCurseByMuramasa,n;` | Lv>Luk时，n机率被诅咒（n为万分率） |
+| `bonus2 bAddEff,e,n;` | 以n的机率造成攻击对象e状态（n为万分率） |
+| `bonus2 bAddRevEff,e,n;` | 受到近身物理攻击时，n机率让攻击对象陷入e状态（n为万分率） |
+| `bonus2 bAddEff2,e,n;` | 以n机率造成自己e状态（n为万分率） |
+| `bonus2 bAddEffShort,e,n;` | 近距离物理攻击时，n机率造成攻击对象e状态（n为万分率） |
+| `bonus2 bAddEffLong,e,n;` | 远距离物理攻击时，n机率造成攻击对象e状态（n为万分率） |
+| `bonus2 bResEff,e,n;` | e状态的耐久度+n（n为万分率） |
 
 状态值 e 枚举：
-- Eff_Blind     - 黑暗
-- Eff_Sleep     - 睡眠
-- Eff_Poison    - 中毒
-- Eff_Freeze    - 冰冻
-- Eff_Silence   - 沉默
-- Eff_Stan      - 昏眩
-- Eff_Curse     - 诅咒
-- Eff_Confusion - 混乱
-- Eff_Stone     - 石化
-- Eff_Bleed     - 出血
-　
+- `Eff_Blind`: 黑暗
+- `Eff_Sleep`: 睡眠
+- `Eff_Poison`: 中毒
+- `Eff_Freeze`: 冰冻
+- `Eff_Silence`: 沉默
+- `Eff_Stan`: 昏眩
+- `Eff_Curse`: 诅咒
+- `Eff_Confusion`: 混乱
+- `Eff_Stone`: 石化
+- `Eff_Bleed`: 出血
 
-　
-
-　
 
 ## 即死/濒死
+
+| 脚本命令 | 效果 |
+|:--------|:-----|
+| `bonus2 bWeaponComaEle,n,x;` | 对n属性以x机率发动濒死之术[HP=1,SP=1]（x为万分率，可叠加） |
+| `bonus2 bWeaponComaEle2,n,x;` | 对n属性以x机率发动濒死之术[HP=1]（x为万分率，可叠加）<br/>0-无、1-水、2-土、3-火、4-风、5-毒、6-圣、7-暗、8-念、9-不死
 　
-bonus2 bWeaponComaEle,n,x;	对n属性以x机率发动濒死之术[HP=1,SP=1]（x为万分率，可叠加）
-bonus2 bWeaponComaEle2,n,x;	对n属性以x机率发动濒死之术[HP=1]（x为万分率，可叠加）
-0-无、1-水、2-土、3-火、4-风、5-毒、6-圣、7-暗、8-念、9-不死
-　
-bonus2 bWeaponComaRace,n,x;	对n种族以x机率发动濒死之术[HP=1,SP=1]（x为万分率，可叠加）
-bonus2 bWeaponComaRace2,n,x;	对n种族以x机率发动濒死之术[HP=1]（x为万分率，可叠加）
-0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、8-天使、9-龙族、10-BOSS、11-BOSS以外[普通的怪物，包括玩家]
+| `bonus2 bWeaponComaRace,n,x;` | 对n种族以x机率发动濒死之术[HP=1,SP=1]（x为万分率，可叠加） |
+| `bonus2 bWeaponComaRace2,n,x;` | 对n种族以x机率发动濒死之术[HP=1]（x为万分率，可叠加）<br/>0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、8-天使、9-龙族、10-BOSS、11-BOSS以外（普通的怪物，包括玩家） |
 　
 
 　
