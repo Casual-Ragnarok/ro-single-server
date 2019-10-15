@@ -51,28 +51,27 @@
 | 脚本命令 | 效果 |
 |:--------|:-----|
 | `bonus2 bWeaponComaEle,n,x;` | 对n属性以x机率发动濒死之术[HP=1,SP=1]（x为万分率，可叠加） |
-| `bonus2 bWeaponComaEle2,n,x;` | 对n属性以x机率发动濒死之术[HP=1]（x为万分率，可叠加）<br/>0-无、1-水、2-土、3-火、4-风、5-毒、6-圣、7-暗、8-念、9-不死
-　
+| `bonus2 bWeaponComaEle2,n,x;` | 对n属性以x机率发动濒死之术[HP=1]（x为万分率，可叠加）<br/>0-无、1-水、2-土、3-火、4-风、5-毒、6-圣、7-暗、8-念、9-不死 |
 | `bonus2 bWeaponComaRace,n,x;` | 对n种族以x机率发动濒死之术[HP=1,SP=1]（x为万分率，可叠加） |
 | `bonus2 bWeaponComaRace2,n,x;` | 对n种族以x机率发动濒死之术[HP=1]（x为万分率，可叠加）<br/>0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、<br/>8-天使、9-龙族、10-BOSS、11-BOSS以外（普通的怪物，包括玩家） |
-　
 
-　
 
 ## Zeny获得
-　
-bonus bGetZenyNum,n;	物理攻击打倒怪物得到怪物Lv*10+rand()%n的Zeny
-bonus bAddGetZenyNum,n;	物理攻击打倒怪物得到怪物Lv*10+rand()%n的Zeny（可叠加）
-bonus bGetZenyNum2,n;	物理攻击打倒怪物时，n%的机率得到怪物Lv*10的Zeny
-bonus bAddGetZenyNum2,n;	物理攻击打倒怪物时，n%的机率得到怪物Lv*10的Zeny（可叠加）
-　
 
-　
+| 脚本命令 | 效果 |
+|:--------|:-----|
+| `bonus bGetZenyNum,n;` | 物理攻击打倒怪物得到怪物Lv*10+rand()%n的Zeny |
+| `bonus bAddGetZenyNum,n;` | 物理攻击打倒怪物得到怪物Lv*10+rand()%n的Zeny（可叠加） |
+| `bonus bGetZenyNum2,n;` | 物理攻击打倒怪物时，n%的机率得到怪物Lv*10的Zeny |
+| `bonus bAddGetZenyNum2,n;` | 物理攻击打倒怪物时，n%的机率得到怪物Lv*10的Zeny（可叠加） |
+
 
 ## 物品获得
-　
-bonus3 bAddMonsterDropItem,n,x,y;	物理攻击打倒x种族的怪物，有y机率掉落物品n（y为万分率，与怪物掉落物品无关系）
-0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、8-天使、9-龙族、10-BOSS、11-BOSS以外[普通的怪物，包括玩家]
+
+| 脚本命令 | 效果 |
+|:--------|:-----|
+| `bonus3 bAddMonsterDropItem,n,x,y;` | 物理攻击打倒x种族的怪物，有y机率掉落物品n<br/>（y为万分率，与怪物掉落物品无关系）<br/>
+0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、<br/>8-天使、9-龙族、10-BOSS、11-BOSS以外[普通的怪物，包括玩家] |
 　
 
 　
