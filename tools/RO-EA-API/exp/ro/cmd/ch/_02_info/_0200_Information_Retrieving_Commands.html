@@ -658,7 +658,7 @@ vip_time &lt;time&gt;,{"&lt;character name&gt;"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_strcharinfo</h4>
-<pre>public&nbsp;void&nbsp;_strcharinfo()</pre>
+
 <div class="block"><pre>
 <font color="red">
 strcharinfo(&lt;type&gt;{,&lt;char_id&gt;})
@@ -684,7 +684,7 @@ strcharinfo(&lt;type&gt;{,&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_strnpcinfo</h4>
-<pre>public&nbsp;void&nbsp;_strnpcinfo()</pre>
+
 <div class="block"><pre>
 <font color="red">
 strnpcinfo(&lt;type&gt;)
@@ -708,7 +708,7 @@ strnpcinfo(&lt;type&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_getarraysize</h4>
-<pre>public&nbsp;void&nbsp;_getarraysize()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getarraysize(&lt;array name&gt;)
@@ -736,7 +736,7 @@ getarraysize(&lt;array name&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_getelementofarray</h4>
-<pre>public&nbsp;void&nbsp;_getelementofarray()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getelementofarray(&lt;array name&gt;,&lt;index&gt;)
@@ -763,13 +763,13 @@ getelementofarray(&lt;array name&gt;,&lt;index&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_readparam</h4>
-<pre>public&nbsp;void&nbsp;_readparam()</pre>
+
 <div class="block"><pre>
 <font color="red">
-readparam(&lt;parameter number&gt;{,"&lt;character name&gt;"})
+readparam(&lt;parameter number&gt;{,"&lt;character name&gt;"});
+readparam(&lt;parameter number&gt;{,&lt;char_id&gt;});
 </font>
 
-readparam(&lt;parameter number&gt;{,&lt;char_id&gt;})
         
         This function will return the specified stat of the invoking character, or, if a
         character name or character id is specified, of that player. The stat can either
@@ -809,7 +809,7 @@ readparam(&lt;parameter number&gt;{,&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getcharid</h4>
-<pre>public&nbsp;void&nbsp;_getcharid()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getcharid(&lt;type&gt;{,"&lt;character name&gt;"})
@@ -851,7 +851,7 @@ getcharid(&lt;type&gt;{,"&lt;character name&gt;"})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getnpcid</h4>
-<pre>public&nbsp;void&nbsp;_getnpcid()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getnpcid(&lt;type&gt;{,"&lt;npc name&gt;"});
@@ -874,14 +874,14 @@ getnpcid(&lt;type&gt;{,"&lt;npc name&gt;"});
 <ul class="blockList">
 <li class="blockList">
 <h4>_getchildid</h4>
-<pre>public&nbsp;void&nbsp;_getchildid()</pre>
+
 <div class="block"><pre>
 <font color="red">
-getchildid({&lt;char_id&gt;})
+getchildid({&lt;char_id&gt;});
+getmotherid({&lt;char_id&gt;});
+getfatherid({&lt;char_id&gt;});
 </font>
 
-getmotherid({&lt;char_id&gt;})
-getfatherid({&lt;char_id&gt;})
         
         These functions return the character ID of the attached player's child,
         mother, mother, or father, respectively. It returns 0 if no ID is found.
@@ -896,7 +896,7 @@ getfatherid({&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_ispartneron</h4>
-<pre>public&nbsp;void&nbsp;_ispartneron()</pre>
+
 <div class="block"><pre>
 <font color="red">
 ispartneron({&lt;char_id&gt;})
@@ -914,7 +914,7 @@ ispartneron({&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getpartnerid</h4>
-<pre>public&nbsp;void&nbsp;_getpartnerid()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getpartnerid({&lt;char_id&gt;})
@@ -936,7 +936,7 @@ getpartnerid({&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getlook</h4>
-<pre>public&nbsp;void&nbsp;_getlook()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getlook(&lt;type&gt;{,&lt;char_id&gt;})
@@ -957,7 +957,7 @@ getlook(&lt;type&gt;{,&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getsavepoint</h4>
-<pre>public&nbsp;void&nbsp;_getsavepoint()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getsavepoint(&lt;information type&gt;{,&lt;char_id&gt;})
@@ -980,7 +980,7 @@ getsavepoint(&lt;information type&gt;{,&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getcharip</h4>
-<pre>public&nbsp;void&nbsp;_getcharip()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getcharip({"&lt;character name&gt;"|&lt;account id&gt;|&lt;char id&gt;})
@@ -1006,7 +1006,7 @@ getcharip({"&lt;character name&gt;"|&lt;account id&gt;|&lt;char id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_vip_status</h4>
-<pre>public&nbsp;void&nbsp;_vip_status()</pre>
+
 <div class="block"><pre>
 <font color="red">
 vip_status(&lt;type&gt;,{"&lt;character name&gt;"})
@@ -1030,7 +1030,7 @@ vip_status(&lt;type&gt;,{"&lt;character name&gt;"})
 <ul class="blockList">
 <li class="blockList">
 <h4>_vip_time</h4>
-<pre>public&nbsp;void&nbsp;_vip_time()</pre>
+
 <div class="block"><pre>
 <font color="red">
 vip_time &lt;time&gt;,{"&lt;character name&gt;"};
@@ -1050,7 +1050,7 @@ vip_time &lt;time&gt;,{"&lt;character name&gt;"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_addspiritball</h4>
-<pre>public&nbsp;void&nbsp;_addspiritball()</pre>
+
 <div class="block"><pre>
 <font color="red">
 addspiritball &lt;count&gt;,&lt;duration&gt;{,&lt;char_id&gt;};
@@ -1067,7 +1067,7 @@ addspiritball &lt;count&gt;,&lt;duration&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_delspiritball</h4>
-<pre>public&nbsp;void&nbsp;_delspiritball()</pre>
+
 <div class="block"><pre>
 <font color="red">
 delspiritball &lt;count&gt;{,&lt;char_id&gt;};
@@ -1084,7 +1084,7 @@ delspiritball &lt;count&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_countspiritball</h4>
-<pre>public&nbsp;void&nbsp;_countspiritball()</pre>
+
 <div class="block"><pre>
 <font color="red">
 countspiritball {&lt;char_id&gt;};
@@ -1101,7 +1101,7 @@ countspiritball {&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_ignoretimeout</h4>
-<pre>public&nbsp;void&nbsp;_ignoretimeout()</pre>
+
 <div class="block"><pre>
 <font color="red">
 ignoretimeout &lt;flag&gt;{,&lt;char_id&gt;};
@@ -1125,7 +1125,7 @@ ignoretimeout &lt;flag&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_getmapxy</h4>
-<pre>public&nbsp;void&nbsp;_getmapxy()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getmapxy("&lt;variable for map name&gt;",&lt;variable for x&gt;,&lt;variable for y&gt;{,&lt;type&gt;,"&lt;search value&gt;"})
@@ -1185,7 +1185,7 @@ getmapxy("&lt;variable for map name&gt;",&lt;variable for x&gt;,&lt;variable for
 <ul class="blockList">
 <li class="blockList">
 <h4>_mapid2name</h4>
-<pre>public&nbsp;void&nbsp;_mapid2name()</pre>
+
 <div class="block"><pre>
 <font color="red">
 mapid2name(&lt;map ID&gt;)
@@ -1203,7 +1203,7 @@ mapid2name(&lt;map ID&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_getgmlevel</h4>
-<pre>public&nbsp;void&nbsp;_getgmlevel()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getgmlevel({&lt;char_id&gt;})
@@ -1227,7 +1227,7 @@ getgmlevel({&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getgroupid</h4>
-<pre>public&nbsp;void&nbsp;_getgroupid()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getgroupid({&lt;char_id&gt;})
@@ -1244,7 +1244,7 @@ getgroupid({&lt;char_id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_gettimetick</h4>
-<pre>public&nbsp;void&nbsp;_gettimetick()</pre>
+
 <div class="block"><pre>
 <font color="red">
 gettimetick(&lt;tick type&gt;)
@@ -1266,7 +1266,7 @@ gettimetick(&lt;tick type&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_gettime</h4>
-<pre>public&nbsp;void&nbsp;_gettime()</pre>
+
 <div class="block"><pre>
 <font color="red">
 gettime(&lt;type&gt;)
@@ -1297,7 +1297,7 @@ gettime(&lt;type&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_gettimestr</h4>
-<pre>public&nbsp;void&nbsp;_gettimestr()</pre>
+
 <div class="block"><pre>
 <font color="red">
 gettimestr(&lt;"time format"&gt;,&lt;max length&gt;{,&lt;time_tick&gt;})
@@ -1331,7 +1331,7 @@ gettimestr(&lt;"time format"&gt;,&lt;max length&gt;{,&lt;time_tick&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getusers</h4>
-<pre>public&nbsp;void&nbsp;_getusers()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getusers(&lt;type&gt;)
@@ -1356,7 +1356,7 @@ getusers(&lt;type&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_getmapusers</h4>
-<pre>public&nbsp;void&nbsp;_getmapusers()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getmapusers("&lt;map name&gt;")
@@ -1376,7 +1376,7 @@ getmapusers("&lt;map name&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_getareausers</h4>
-<pre>public&nbsp;void&nbsp;_getareausers()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getareausers("&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;)
@@ -1397,7 +1397,7 @@ getareausers("&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_getunits</h4>
-<pre>public&nbsp;void&nbsp;_getunits()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getunits(&lt;type&gt;{,&lt;array_variable&gt;[&lt;first value&gt;]})
@@ -1472,13 +1472,13 @@ getareaunits(&lt;type&gt;,&lt;"map name"&gt;,&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&l
 <ul class="blockList">
 <li class="blockList">
 <h4>_getskilllv</h4>
-<pre>public&nbsp;void&nbsp;_getskilllv()</pre>
+
 <div class="block"><pre>
 <font color="red">
-getskilllv(&lt;skill id&gt;)
+getskilllv(&lt;skill id&gt;);
+getskilllv("&lt;skill name&gt;");
 </font>
 
-getskilllv("&lt;skill name&gt;")
         
         This function returns the level of the specified skill that the invoking
         character has. If they don't have the skill, 0 will be returned. The full list
@@ -1511,7 +1511,7 @@ getskilllv("&lt;skill name&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_getskilllist</h4>
-<pre>public&nbsp;void&nbsp;_getskilllist()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getskilllist({&lt;char_id&gt;});
@@ -1528,7 +1528,7 @@ getskilllist({&lt;char_id&gt;});
 <ul class="blockList">
 <li class="blockList">
 <h4>_getmonsterinfo</h4>
-<pre>public&nbsp;void&nbsp;_getmonsterinfo()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getmonsterinfo(&lt;mob ID&gt;,&lt;type&gt;)
@@ -1575,7 +1575,7 @@ getmonsterinfo(&lt;mob ID&gt;,&lt;type&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_getmobdrops</h4>
-<pre>public&nbsp;void&nbsp;_getmobdrops()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getmobdrops(&lt;mob id&gt;)
@@ -1636,7 +1636,7 @@ getmobdrops(&lt;mob id&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_skillpointcount</h4>
-<pre>public&nbsp;void&nbsp;_skillpointcount()</pre>
+
 <div class="block"><pre>
 <font color="red">
 skillpointcount({&lt;char_id&gt;})
@@ -1664,7 +1664,7 @@ skillpointcount({&lt;char_id&gt;})
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_getscrate</h4>
-<pre>public&nbsp;void&nbsp;_getscrate()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getscrate(&lt;effect type&gt;,&lt;base rate&gt;{,&lt;GID&gt;})

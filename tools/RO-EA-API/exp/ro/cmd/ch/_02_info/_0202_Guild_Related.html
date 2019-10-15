@@ -327,7 +327,6 @@ requestguildinfo &lt;guild id&gt;{,"&lt;event label&gt;"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_getguildname</h4>
-<pre>public&nbsp;void&nbsp;_getguildname()</pre>
 <div class="block"><pre>
 <font color="red">
 getguildname(&lt;guild id&gt;)
@@ -348,7 +347,6 @@ getguildname(&lt;guild id&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_getguildmember</h4>
-<pre>public&nbsp;void&nbsp;_getguildmember()</pre>
 <div class="block"><pre>
 <font color="red">
 getguildmember &lt;guild id&gt;{,&lt;type&gt;{,&lt;array_variable&gt;}};
@@ -394,7 +392,6 @@ getguildmember &lt;guild id&gt;{,&lt;type&gt;{,&lt;array_variable&gt;}};
 <ul class="blockList">
 <li class="blockList">
 <h4>_getguildmaster</h4>
-<pre>public&nbsp;void&nbsp;_getguildmaster()</pre>
 <div class="block"><pre>
 <font color="red">
 getguildmaster(&lt;guild id&gt;)
@@ -430,7 +427,6 @@ getguildmaster(&lt;guild id&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_getguildmasterid</h4>
-<pre>public&nbsp;void&nbsp;_getguildmasterid()</pre>
 <div class="block"><pre>
 <font color="red">
 getguildmasterid(&lt;guild id&gt;)
@@ -448,7 +444,6 @@ getguildmasterid(&lt;guild id&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_is_guild_leader</h4>
-<pre>public&nbsp;void&nbsp;_is_guild_leader()</pre>
 <div class="block"><pre>
 <font color="red">
 is_guild_leader({&lt;guild ID&gt;})
@@ -466,7 +461,6 @@ is_guild_leader({&lt;guild ID&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getcastlename</h4>
-<pre>public&nbsp;void&nbsp;_getcastlename()</pre>
 <div class="block"><pre>
 <font color="red">
 getcastlename("&lt;map name&gt;")
@@ -484,13 +478,12 @@ getcastlename("&lt;map name&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_getcastledata</h4>
-<pre>public&nbsp;void&nbsp;_getcastledata()</pre>
 <div class="block"><pre>
 <font color="red">
-getcastledata("&lt;map name&gt;",&lt;type of data&gt;)
+getcastledata("&lt;map name&gt;",&lt;type of data&gt;);
+setcastledata "&lt;map name&gt;",&lt;type of data&gt;,&lt;value&gt;;
 </font>
 
-setcastledata "&lt;map name&gt;",&lt;type of data&gt;,&lt;value&gt;;
         
         This function returns the castle ownership information for the castle referred
         to by its map name. Castle information is stored in `guild_castle` SQL table.
@@ -536,13 +529,12 @@ setcastledata "&lt;map name&gt;",&lt;type of data&gt;,&lt;value&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_getgdskilllv</h4>
-<pre>public&nbsp;void&nbsp;_getgdskilllv()</pre>
 <div class="block"><pre>
 <font color="red">
-getgdskilllv(&lt;guild id&gt;,&lt;skill id&gt;)
+getgdskilllv(&lt;guild id&gt;,&lt;skill id&gt;);
+getgdskilllv(&lt;guild id&gt;,"&lt;skill name&gt;");
 </font>
 
-getgdskilllv(&lt;guild id&gt;,"&lt;skill name&gt;")
         
         This function returns the level of the skill &lt;skill id&gt; of the guild &lt;guild id&gt;.
         If the guild does not have that skill, 0 is returned.
@@ -557,7 +549,6 @@ getgdskilllv(&lt;guild id&gt;,"&lt;skill name&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_requestguildinfo</h4>
-<pre>public&nbsp;void&nbsp;_requestguildinfo()</pre>
 <div class="block"><pre>
 <font color="red">
 requestguildinfo &lt;guild id&gt;{,"&lt;event label&gt;"};
@@ -578,7 +569,6 @@ requestguildinfo &lt;guild id&gt;{,"&lt;event label&gt;"};
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_getmapguildusers</h4>
-<pre>public&nbsp;void&nbsp;_getmapguildusers()</pre>
 <div class="block"><pre>
 <font color="red">
 getmapguildusers("&lt;map name&gt;",&lt;guild id&gt;)
