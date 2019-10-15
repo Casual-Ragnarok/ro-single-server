@@ -17,9 +17,9 @@
 | `bonus bLossEquipWhenAttack,n;` | 攻击时n机率装备消失（n为万分率） |
 | `bonus bLossEquipWhenHit,n;` | 受到攻击时n机率装备消失（n为万分率） |
 | `bonus bBreakMyEquipWhenAttack,n,x;` | 攻击时n机率装备损坏（n为万分率）
-| `bonus2 bBreakMyEquipWhenAttack,n,x;` | 攻击时x机率损坏n位置的装备（x为万分率）（456-头具、7-铠甲、8-左手、9-右手、其他位置-无意义） |
+| `bonus2 bBreakMyEquipWhenAttack,n,x;` | 攻击时x机率损坏n位置的装备（x为万分率）<br/>（456-头具、7-铠甲、8-左手、9-右手、其他位置-无意义） |
 | `bonus bBreakMyEquipWhenHit,n;` | 受到攻击时n机率装备损坏（n为万分率） |
-| `bonus2 bBreakMyEquipWhenHit,n,x;` | 受到攻击时x机率损坏n位置的装备（x为万分率）（456-头具、7-铠甲、8-左手、9-右手、其他位置-无意义） |
+| `bonus2 bBreakMyEquipWhenHit,n,x;` | 受到攻击时x机率损坏n位置的装备（x为万分率）<br/>（456-头具、7-铠甲、8-左手、9-右手、其他位置-无意义） |
 
 
 ## 状态异常
