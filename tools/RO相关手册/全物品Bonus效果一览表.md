@@ -70,46 +70,37 @@
 
 | 脚本命令 | 效果 |
 |:--------|:-----|
-| `bonus3 bAddMonsterDropItem,n,x,y;` | 物理攻击打倒x种族的怪物，有y机率掉落物品n<br/>（y为万分率，与怪物掉落物品无关系）<br/>
-0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、<br/>8-天使、9-龙族、10-BOSS、11-BOSS以外[普通的怪物，包括玩家] |
-　
+| `bonus3 bAddMonsterDropItem,n,x,y;` | 物理攻击打倒x种族的怪物，有y机率掉落物品n<br/>（y为万分率，与怪物掉落物品无关系）<br/>0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、<br/>8-天使、9-龙族、10-BOSS、11-BOSS以外（普通的怪物，包括玩家） |
 
-　
 
 ## 追加经验值
-　
-bonus2 bExpRate,n,x;	杀死n种族怪物时，增加x%的Base经验（可叠加）
-bonus2 bJobRate,n,x;	杀死n种族怪物时，增加x%的Job经验（可叠加）
-bonus2 bExpRate,n,x;	杀死n种族怪物时，增加x%的Base经验（可叠加）
-bonus2 bJobRate,n,x;	杀死n种族怪物时，增加x%的Job经验（可叠加）
-0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、8-天使、9-龙族、10-全种族
-　
 
-　
+| 脚本命令 | 效果 |
+|:--------|:-----|
+| `bonus2 bExpRate,n,x;` | 杀死n种族怪物时，增加x%的Base经验（可叠加） |
+| `bonus2 bJobRate,n,x;` | 杀死n种族怪物时，增加x%的Job经验（可叠加） |
+| `bonus2 bExpRate,n,x;` | 杀死n种族怪物时，增加x%的Base经验（可叠加） |
+| `bonus2 bJobRate,n,x;` | 杀死n种族怪物时，增加x%的Job经验（可叠加）<br/>0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、8-天使、9-龙族、10-全种族 |
+
 
 ## 其他
-　
-bonus bNoSizeFix,n;	不受到怪物体型的伤害修正（n无意义）
-bonus bMobClassChange,n;	攻击时以n机率把当前怪物变为其他怪物（n为万分率）
-bonus bInfiniteEndure,n;	无限霸体（n无意义）
-bonus bTigereye,n;	可以看到隐匿或伪装的怪物和玩家（n无意义）
-bonus bItemNoUse,n;	无法使用物品（n无意义）
-bonus bFixDamage,n;	物理攻击时打出n的固定伤害
-bonus bNoKnockback,n;	无法被吹飞或击退（n无意义）
-　
 
-　
+| 脚本命令 | 效果 |
+|:--------|:-----|
+| `bonus bNoSizeFix,n;` | 不受到怪物体型的伤害修正（n无意义） |
+| `bonus bMobClassChange,n;` | 攻击时以n机率把当前怪物变为其他怪物（n为万分率） |
+| `bonus bInfiniteEndure,n;` | 无限霸体（n无意义） |
+| `bonus bTigereye,n;` | 可以看到隐匿或伪装的怪物和玩家（n无意义） |
+| `bonus bItemNoUse,n;` | 无法使用物品（n无意义） |
+| `bonus bFixDamage,n;` | 物理攻击时打出n的固定伤害 |
+| `bonus bNoKnockback,n;` | 无法被吹飞或击退（n无意义） |
+
 
 ## 特殊
-　
-bonus bAutoStatusCalcPc,n;	强制设置状态n
-        例：装备其间处于圣母的祈福状态
-        ,{},{ bonus bAutoStatusCalcPc,110; sc_start 110,1000,0; }
-        ※bAutoStatusCalcPc和bEternalStatusChange的不同：bEternalStatusChange能实现永久的效果。
 
-bonus2 bEternalStatusChange,n,x;	强制设置状态n持续x毫秒（x的范围是1-30000，超出范围时自动初始化为1000）
-        例：装备其间处于圣母的祈福状态
-        ,{},{ bonus2 bEternalStatusChange,110,1000; sc_start 110,1000,0; }
-        ※bAutoStatusCalcPc和bEternalStatusChange的不同：bEternalStatusChange能实现永久的效果。
+| 脚本命令 | 效果 |
+|:--------|:-----|
+| `bonus bAutoStatusCalcPc,n;` | 强制设置状态n<br/>例：装备其间处于圣母的祈福状态<br/>,{},{ bonus bAutoStatusCalcPc,110; sc_start 110,1000,0; }<br/>※bAutoStatusCalcPc和bEternalStatusChange的不同：bEternalStatusChange能实现永久的效果 |
+| `bonus2 bEternalStatusChange,n,x;` | 强制设置状态n持续x毫秒（x的范围是1-30000，超出范围时自动初始化为1000）<br/>例：装备其间处于圣母的祈福状态<br/>,{},{ bonus2 bEternalStatusChange,110,1000; sc_start 110,1000,0; }<br/>※bAutoStatusCalcPc和bEternalStatusChange的不同：bEternalStatusChange能实现永久的效果 |
 
 ------
