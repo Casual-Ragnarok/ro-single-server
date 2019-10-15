@@ -807,13 +807,13 @@ unequip &lt;equipment slot&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_getitem</h4>
-<pre>public&nbsp;void&nbsp;_getitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getitem &lt;item id&gt;,&lt;amount&gt;{,&lt;account ID&gt;};
+getitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
 </font>
 
-getitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
         
         This command will give an amount of specified items to the invoking character.
         If an optional account ID is specified, and the target character is currently
@@ -848,15 +848,15 @@ getitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_getitem2</h4>
-<pre>public&nbsp;void&nbsp;_getitem2()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getitem2 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
-</font>
-
 getitem2 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
 getitem3 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;{,&lt;account ID&gt;};
 getitem3 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;{,&lt;account ID&gt;};
+</font>
+
         
         This command will give an amount of specified items to the invoking character.
         If an optional account ID is specified, and the target character is currently
@@ -896,13 +896,13 @@ getitem3 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_getitembound</h4>
-<pre>public&nbsp;void&nbsp;_getitembound()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getitembound &lt;item id&gt;,&lt;amount&gt;,&lt;bound type&gt;{,&lt;account ID&gt;};
+getitembound "&lt;item name&gt;",&lt;amount&gt;,&lt;bound type&gt;{,&lt;account ID&gt;};
 </font>
 
-getitembound "&lt;item name&gt;",&lt;amount&gt;,&lt;bound type&gt;{,&lt;account ID&gt;};
         
         This command behaves identically to 'getitem', but the items created will be
         bound to the target character as specified by the bound type. All items created
@@ -923,15 +923,15 @@ getitembound "&lt;item name&gt;",&lt;amount&gt;,&lt;bound type&gt;{,&lt;account 
 <ul class="blockList">
 <li class="blockList">
 <h4>_getitembound2</h4>
-<pre>public&nbsp;void&nbsp;_getitembound2()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getitembound2 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;bound type&gt;{,&lt;account ID&gt;};
-</font>
-
 getitembound2 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;bound type&gt;{,&lt;account ID&gt;};
 getitembound3 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;bound type&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;{,&lt;account ID&gt;};
 getitembound3 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;bound type&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;{,&lt;account ID&gt;};
+</font>
+
         
         This command behaves identically to 'getitem2', but the items created will be
         bound to the target character as specified by the bound type. All items created
@@ -960,13 +960,13 @@ getitembound3 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_getnameditem</h4>
-<pre>public&nbsp;void&nbsp;_getnameditem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getnameditem &lt;item id&gt;,&lt;character name|character ID&gt;;
+getnameditem "&lt;item name&gt;",&lt;character name|character ID&gt;;
 </font>
 
-getnameditem "&lt;item name&gt;",&lt;character name|character ID&gt;;
         
         Create an item signed with the given character's name.
         
@@ -994,13 +994,13 @@ getnameditem "&lt;item name&gt;",&lt;character name|character ID&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_rentitem</h4>
-<pre>public&nbsp;void&nbsp;_rentitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 rentitem &lt;item id&gt;,&lt;time&gt;{,&lt;account_id&gt;};
+rentitem "&lt;item name&gt;",&lt;time&gt;{,&lt;account_id&gt;};
 </font>
 
-rentitem "&lt;item name&gt;",&lt;time&gt;{,&lt;account_id&gt;};
         
         Creates a rental item in the attached character's inventory. The item will expire
         in &lt;time&gt; seconds and be automatically deleted. When receiving a rental item,
@@ -1023,15 +1023,15 @@ rentitem "&lt;item name&gt;",&lt;time&gt;{,&lt;account_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_rentitem2</h4>
-<pre>public&nbsp;void&nbsp;_rentitem2()</pre>
+
 <div class="block"><pre>
 <font color="red">
 rentitem2 &lt;item id&gt;,&lt;time&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account_id&gt;};
-</font>
-
 rentitem2 "&lt;item name&gt;",&lt;time&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account_id&gt;};
 rentitem3 &lt;item id&gt;,&lt;time&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;{,&lt;account_id&gt;};
 rentitem3 "&lt;item name&gt;",&lt;time&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;{,&lt;account_id&gt;};
+</font>
+
         
         Creates a rental item in the attached character's inventory. The item will expire
         in &lt;time&gt; seconds and be automatically deleted. See 'rentitem' for further details.
@@ -1058,13 +1058,13 @@ rentitem3 "&lt;item name&gt;",&lt;time&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;a
 <ul class="blockList">
 <li class="blockList">
 <h4>_makeitem</h4>
-<pre>public&nbsp;void&nbsp;_makeitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 makeitem &lt;item id&gt;,&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&gt;;
+makeitem "&lt;item name&gt;",&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&gt;;
 </font>
 
-makeitem "&lt;item name&gt;",&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&gt;;
         
         This command will create an item on the specified cell of a map.
         
@@ -1084,15 +1084,15 @@ makeitem "&lt;item name&gt;",&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&g
 <ul class="blockList">
 <li class="blockList">
 <h4>_makeitem2</h4>
-<pre>public&nbsp;void&nbsp;_makeitem2()</pre>
+
 <div class="block"><pre>
 <font color="red">
 makeitem2 &lt;item id&gt;,&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;;
-</font>
-
 makeitem2 "&lt;item name&gt;",&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;;
 makeitem3 &lt;item id&gt;,&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;;
 makeitem3 "&lt;item name&gt;",&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;;
+</font>
+
         
         This command will create an item on the specified cell of a map. See 'makeitem' for
         further details.
@@ -1126,13 +1126,13 @@ makeitem3 "&lt;item name&gt;",&lt;amount&gt;,"&lt;map name&gt;",&lt;X&gt;,&lt;Y&
 <ul class="blockList">
 <li class="blockList">
 <h4>_cleanarea</h4>
-<pre>public&nbsp;void&nbsp;_cleanarea()</pre>
+
 <div class="block"><pre>
 <font color="red">
 cleanarea "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;;
+cleanmap "&lt;map name&gt;";
 </font>
 
-cleanmap "&lt;map name&gt;";
         
         These commands will clear all items lying on the ground on the specified map, either
         within the x1/y1-x2/y2 rectangle or across the entire map.
@@ -1145,7 +1145,7 @@ cleanmap "&lt;map name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_searchitem</h4>
-<pre>public&nbsp;void&nbsp;_searchitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 searchitem &lt;array name&gt;,"&lt;item name&gt;";
@@ -1172,13 +1172,13 @@ searchitem &lt;array name&gt;,"&lt;item name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_delitem</h4>
-<pre>public&nbsp;void&nbsp;_delitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 delitem &lt;item id&gt;,&lt;amount&gt;{,&lt;account ID&gt;};
+delitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
 </font>
 
-delitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
         
         This command will remove a specified amount of items from the invoking/target character.
         Like all the item commands, it uses the item ID found inside 'db/(pre-)re/item_db.txt'.
@@ -1201,17 +1201,17 @@ delitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_cartdelitem</h4>
-<pre>public&nbsp;void&nbsp;_cartdelitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 cartdelitem &lt;item id&gt;,&lt;amount&gt;{,&lt;account ID&gt;};
-</font>
-
 cartdelitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
 storagedelitem &lt;item id&gt;,&lt;amount&gt;{,&lt;account ID&gt;};
 storagedelitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
 guildstoragedelitem &lt;item id&gt;,&lt;amount&gt;{,&lt;account ID&gt;};
 guildstoragedelitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
+</font>
+
         
         This command behaves identically to 'delitem', but deletes items from the player's
         cart, storage, or guild storage.
@@ -1227,15 +1227,15 @@ guildstoragedelitem "&lt;item name&gt;",&lt;amount&gt;{,&lt;account ID&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_delitem2</h4>
-<pre>public&nbsp;void&nbsp;_delitem2()</pre>
+
 <div class="block"><pre>
 <font color="red">
 delitem2 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
-</font>
-
 delitem2 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
 delitem3 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;{,&lt;account ID&gt;};
 delitem3 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;{,&lt;account ID&gt;};
+</font>
+
         
         This command will remove a specified amount of items from the invoking/target character.
         See 'getitem2' for an explanation of the expanded parameters.
@@ -1253,17 +1253,17 @@ delitem3 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_cartdelitem2</h4>
-<pre>public&nbsp;void&nbsp;_cartdelitem2()</pre>
+
 <div class="block"><pre>
 <font color="red">
 cartdelitem2 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
-</font>
-
 cartdelitem2 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
 storagedelitem2 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
 storagedelitem2 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
 guildstoragedelitem2 &lt;item id&gt;,&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
 guildstoragedelitem2 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;account ID&gt;};
+</font>
+
         
         This command behaves identically to 'delitem2', but deletes items from the player's
         cart, storage, or guild storage.
@@ -1279,13 +1279,13 @@ guildstoragedelitem2 "&lt;item name&gt;",&lt;amount&gt;,&lt;identify&gt;,&lt;ref
 <ul class="blockList">
 <li class="blockList">
 <h4>_countitem</h4>
-<pre>public&nbsp;void&nbsp;_countitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
-countitem(&lt;item id&gt;)
+countitem(&lt;item id&gt;);
+countitem("&lt;item name&gt;");
 </font>
 
-countitem("&lt;item name&gt;")
         
         This function will return the number of items for the specified item ID that the
         invoking character has in the inventory.
@@ -1312,17 +1312,17 @@ countitem("&lt;item name&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_cartcountitem</h4>
-<pre>public&nbsp;void&nbsp;_cartcountitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
-cartcountitem(&lt;item id&gt;{,&lt;accountID&gt;})
+cartcountitem(&lt;item id&gt;{,&lt;accountID&gt;});
+cartcountitem("&lt;item name&gt;"{,&lt;accountID&gt;});
+storagecountitem(&lt;item id&gt;{,&lt;accountID&gt;});
+storagecountitem("&lt;item name&gt;"{,&lt;accountID&gt;});
+guildstoragecountitem(&lt;nameID&gt;{,&lt;accountID&gt;});
+guildstoragecountitem("&lt;item name&gt;"{,&lt;accountID&gt;});
 </font>
 
-cartcountitem("&lt;item name&gt;"{,&lt;accountID&gt;})
-storagecountitem(&lt;item id&gt;{,&lt;accountID&gt;})
-storagecountitem("&lt;item name&gt;"{,&lt;accountID&gt;})
-guildstoragecountitem(&lt;nameID&gt;{,&lt;accountID&gt;})
-guildstoragecountitem("&lt;item name&gt;"{,&lt;accountID&gt;})
         
         This command behaves identically to 'countitem', but counts items from the player's
         cart, storage, or guild storage.
@@ -1338,15 +1338,15 @@ guildstoragecountitem("&lt;item name&gt;"{,&lt;accountID&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_countitem2</h4>
-<pre>public&nbsp;void&nbsp;_countitem2()</pre>
+
 <div class="block"><pre>
 <font color="red">
-countitem2(&lt;item id&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;)
+countitem2(&lt;item id&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;);
+countitem2("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;);
+countitem3(&lt;item id&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;);
+countitem3("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;);
 </font>
 
-countitem2("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;)
-countitem3(&lt;item id&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;)
-countitem3("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;,&lt;RandomIDArray&gt;,&lt;RandomValueArray&gt;,&lt;RandomParamArray&gt;)
         
         Expanded version of 'countitem' function, used for created/carded/forged items.
         
@@ -1367,17 +1367,17 @@ countitem3("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_cartcountitem2</h4>
-<pre>public&nbsp;void&nbsp;_cartcountitem2()</pre>
+
 <div class="block"><pre>
 <font color="red">
-cartcountitem2(&lt;item id&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;accountID&gt;})
+cartcountitem2(&lt;item id&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;accountID&gt;});
+cartcountitem2("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;accountID&gt;});
+storagecountitem2(&lt;item id&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;accountID&gt;});
+storagecountitem2("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;accountID&gt;});
+guildstoragecountitem2(&lt;nameID&gt;,&lt;Identified&gt;,&lt;Refine&gt;,&lt;Attribute&gt;,&lt;Card0&gt;,&lt;Card1&gt;,&lt;Card2&gt;,&lt;Card3&gt;{,&lt;accountID&gt;});
+guildstoragecountitem2("&lt;item name&gt;",&lt;Identified&gt;,&lt;Refine&gt;,&lt;Attribute&gt;,&lt;Card0&gt;,&lt;Card1&gt;,&lt;Card2&gt;,&lt;Card3&gt;{,&lt;accountID&gt;});
 </font>
 
-cartcountitem2("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;accountID&gt;})
-storagecountitem2(&lt;item id&gt;,&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;accountID&gt;})
-storagecountitem2("&lt;item name&gt;",&lt;identify&gt;,&lt;refine&gt;,&lt;attribute&gt;,&lt;card1&gt;,&lt;card2&gt;,&lt;card3&gt;,&lt;card4&gt;{,&lt;accountID&gt;})
-guildstoragecountitem2(&lt;nameID&gt;,&lt;Identified&gt;,&lt;Refine&gt;,&lt;Attribute&gt;,&lt;Card0&gt;,&lt;Card1&gt;,&lt;Card2&gt;,&lt;Card3&gt;{,&lt;accountID&gt;})
-guildstoragecountitem2("&lt;item name&gt;",&lt;Identified&gt;,&lt;Refine&gt;,&lt;Attribute&gt;,&lt;Card0&gt;,&lt;Card1&gt;,&lt;Card2&gt;,&lt;Card3&gt;{,&lt;accountID&gt;})
         
         This command behaves identically to 'countitem2', but counts items from the player's
         cart, storage, or guild storage.
@@ -1393,10 +1393,10 @@ guildstoragecountitem2("&lt;item name&gt;",&lt;Identified&gt;,&lt;Refine&gt;,&lt
 <ul class="blockList">
 <li class="blockList">
 <h4>_countbound</h4>
-<pre>public&nbsp;void&nbsp;_countbound()</pre>
+
 <div class="block"><pre>
 <font color="red">
-countbound({&lt;bound type&gt;{,&lt;char_id&gt;}})
+countbound({&lt;bound type&gt;{,&lt;char_id&gt;}});
 </font>
 
         
@@ -1422,7 +1422,7 @@ countbound({&lt;bound type&gt;{,&lt;char_id&gt;}})
 <ul class="blockList">
 <li class="blockList">
 <h4>_groupranditem</h4>
-<pre>public&nbsp;void&nbsp;_groupranditem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 groupranditem &lt;group id&gt;{,&lt;sub_group&gt;};
@@ -1450,7 +1450,7 @@ groupranditem &lt;group id&gt;{,&lt;sub_group&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_getrandgroupitem</h4>
-<pre>public&nbsp;void&nbsp;_getrandgroupitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getrandgroupitem &lt;group_id&gt;{,&lt;quantity&gt;{,&lt;sub_group&gt;{,&lt;identify&gt;{,&lt;char_id&gt;}}}};
@@ -1480,7 +1480,7 @@ getrandgroupitem &lt;group_id&gt;{,&lt;quantity&gt;{,&lt;sub_group&gt;{,&lt;iden
 <ul class="blockList">
 <li class="blockList">
 <h4>_getgroupitem</h4>
-<pre>public&nbsp;void&nbsp;_getgroupitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getgroupitem &lt;group_id&gt;{,&lt;identify&gt;{,&lt;char_id&gt;}};
@@ -1505,7 +1505,7 @@ getgroupitem &lt;group_id&gt;{,&lt;identify&gt;{,&lt;char_id&gt;}};
 <ul class="blockList">
 <li class="blockList">
 <h4>_enable_items</h4>
-<pre>public&nbsp;void&nbsp;_enable_items()</pre>
+
 <div class="block"><pre>
 <font color="red">
 enable_items;
@@ -1529,7 +1529,7 @@ disable_items;
 <ul class="blockList">
 <li class="blockList">
 <h4>_itemskill</h4>
-<pre>public&nbsp;void&nbsp;_itemskill()</pre>
+
 <div class="block"><pre>
 <font color="red">
 itemskill &lt;skill id&gt;,&lt;skill level&gt;{,&lt;keep requirement&gt;};
@@ -1560,7 +1560,7 @@ itemskill "&lt;skill name&gt;",&lt;skill level&gt;{,&lt;keep requirement&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_consumeitem</h4>
-<pre>public&nbsp;void&nbsp;_consumeitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 consumeitem &lt;item id&gt;{,&lt;char_id&gt;};
@@ -1583,7 +1583,7 @@ consumeitem "&lt;item name&gt;"{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_produce</h4>
-<pre>public&nbsp;void&nbsp;_produce()</pre>
+
 <div class="block"><pre>
 <font color="red">
 produce &lt;item level&gt;;
@@ -1619,7 +1619,7 @@ produce &lt;item level&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_cooking</h4>
-<pre>public&nbsp;void&nbsp;_cooking()</pre>
+
 <div class="block"><pre>
 <font color="red">
 cooking &lt;dish level&gt;;
@@ -1659,7 +1659,7 @@ cooking &lt;dish level&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_makerune</h4>
-<pre>public&nbsp;void&nbsp;_makerune()</pre>
+
 <div class="block"><pre>
 <font color="red">
 makerune &lt;% success bonus&gt;{,&lt;char_id&gt;};
@@ -1682,7 +1682,7 @@ makerune &lt;% success bonus&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_successremovecards</h4>
-<pre>public&nbsp;void&nbsp;_successremovecards()</pre>
+
 <div class="block"><pre>
 <font color="red">
 successremovecards &lt;equipment slot&gt;;
@@ -1702,7 +1702,7 @@ successremovecards &lt;equipment slot&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_failedremovecards</h4>
-<pre>public&nbsp;void&nbsp;_failedremovecards()</pre>
+
 <div class="block"><pre>
 <font color="red">
 failedremovecards &lt;equipment slot&gt;,&lt;type&gt;;
@@ -1727,7 +1727,7 @@ failedremovecards &lt;equipment slot&gt;,&lt;type&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_repair</h4>
-<pre>public&nbsp;void&nbsp;_repair()</pre>
+
 <div class="block"><pre>
 <font color="red">
 repair &lt;broken item number&gt;{,&lt;char_id&gt;};
@@ -1745,7 +1745,7 @@ repair &lt;broken item number&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_repairall</h4>
-<pre>public&nbsp;void&nbsp;_repairall()</pre>
+
 <div class="block"><pre>
 <font color="red">
 repairall {&lt;char_id&gt;};
@@ -1764,7 +1764,7 @@ repairall {&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_successrefitem</h4>
-<pre>public&nbsp;void&nbsp;_successrefitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 successrefitem &lt;equipment slot&gt;{,&lt;count&gt;{,&lt;char_id&gt;}};
@@ -1786,7 +1786,7 @@ successrefitem &lt;equipment slot&gt;{,&lt;count&gt;{,&lt;char_id&gt;}};
 <ul class="blockList">
 <li class="blockList">
 <h4>_failedrefitem</h4>
-<pre>public&nbsp;void&nbsp;_failedrefitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 failedrefitem &lt;equipment slot&gt;{,&lt;char_id&gt;};
@@ -1806,7 +1806,7 @@ failedrefitem &lt;equipment slot&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_downrefitem</h4>
-<pre>public&nbsp;void&nbsp;_downrefitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 downrefitem &lt;equipment slot&gt;{,&lt;count&gt;{,&lt;char_id&gt;}};
@@ -1826,7 +1826,7 @@ downrefitem &lt;equipment slot&gt;{,&lt;count&gt;{,&lt;char_id&gt;}};
 <ul class="blockList">
 <li class="blockList">
 <h4>_unequip</h4>
-<pre>public&nbsp;void&nbsp;_unequip()</pre>
+
 <div class="block"><pre>
 <font color="red">
 unequip &lt;equipment slot&gt;{,&lt;char_id&gt;};
@@ -1848,7 +1848,7 @@ unequip &lt;equipment slot&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_delequip</h4>
-<pre>public&nbsp;void&nbsp;_delequip()</pre>
+
 <div class="block"><pre>
 <font color="red">
 delequip &lt;equipment slot&gt;{,&lt;char_id&gt;};
@@ -1869,7 +1869,7 @@ delequip &lt;equipment slot&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_breakequip</h4>
-<pre>public&nbsp;void&nbsp;_breakequip()</pre>
+
 <div class="block"><pre>
 <font color="red">
 breakequip &lt;equipment slot&gt;{,&lt;char_id&gt;};
@@ -1890,7 +1890,7 @@ breakequip &lt;equipment slot&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_clearitem</h4>
-<pre>public&nbsp;void&nbsp;_clearitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 clearitem {&lt;char_id&gt;};
@@ -1909,7 +1909,7 @@ clearitem {&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_equip</h4>
-<pre>public&nbsp;void&nbsp;_equip()</pre>
+
 <div class="block"><pre>
 <font color="red">
 equip &lt;item id&gt;{,&lt;char_id&gt;};
@@ -1942,7 +1942,7 @@ autoequip &lt;item id&gt;,&lt;option&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_buyingstore</h4>
-<pre>public&nbsp;void&nbsp;_buyingstore()</pre>
+
 <div class="block"><pre>
 <font color="red">
 buyingstore &lt;slots&gt;;
@@ -1965,7 +1965,7 @@ buyingstore &lt;slots&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_searchstores</h4>
-<pre>public&nbsp;void&nbsp;_searchstores()</pre>
+
 <div class="block"><pre>
 <font color="red">
 searchstores &lt;uses&gt;,&lt;effect&gt;;
@@ -1995,7 +1995,7 @@ searchstores &lt;uses&gt;,&lt;effect&gt;;
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_enable_command</h4>
-<pre>public&nbsp;void&nbsp;_enable_command()</pre>
+
 <div class="block"><pre>
 <font color="red">
 enable_command;

@@ -301,7 +301,6 @@ guildopenstorage()
 <ul class="blockList">
 <li class="blockList">
 <h4>_guildopenstorage_log</h4>
-<pre>public&nbsp;void&nbsp;_guildopenstorage_log()</pre>
 <div class="block"><pre>
 <font color="red">
 guildopenstorage_log({&lt;char id&gt;})
@@ -323,7 +322,6 @@ guildopenstorage_log({&lt;char id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_guild_has_permission</h4>
-<pre>public&nbsp;void&nbsp;_guild_has_permission()</pre>
 <div class="block"><pre>
 <font color="red">
 guild_has_permission(&lt;permission&gt;{,&lt;char id&gt;})
@@ -349,7 +347,6 @@ guild_has_permission(&lt;permission&gt;{,&lt;char id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_guildchangegm</h4>
-<pre>public&nbsp;void&nbsp;_guildchangegm()</pre>
 <div class="block"><pre>
 <font color="red">
 guildchangegm(&lt;guild id&gt;,&lt;new master's name&gt;)
@@ -369,7 +366,6 @@ guildchangegm(&lt;guild id&gt;,&lt;new master's name&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_guildgetexp</h4>
-<pre>public&nbsp;void&nbsp;_guildgetexp()</pre>
 <div class="block"><pre>
 <font color="red">
 guildgetexp &lt;amount&gt;;
@@ -388,13 +384,12 @@ guildgetexp &lt;amount&gt;;
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_guildskill</h4>
-<pre>public&nbsp;void&nbsp;_guildskill()</pre>
 <div class="block"><pre>
 <font color="red">
 guildskill &lt;skill id&gt;,&lt;level&gt;
+guildskill "&lt;skill name&gt;",&lt;level&gt;
 </font>
 
-guildskill "&lt;skill name&gt;",&lt;level&gt;
         
         This command will bump up the specified guild skill by the specified number of
         levels. This refers to the invoking character and will only work if the invoking
