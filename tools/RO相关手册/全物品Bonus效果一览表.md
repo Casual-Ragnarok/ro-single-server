@@ -1,6 +1,6 @@
+# 全物品 Bonus 效果一览表
 
-
-http://blog.sina.com.cn/s/blog_47e7706201000ae3.html
+------
 
 
 ·装备相关
