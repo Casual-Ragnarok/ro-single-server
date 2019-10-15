@@ -251,7 +251,6 @@ wedding;
 <ul class="blockList">
 <li class="blockList">
 <h4>_marriage</h4>
-<pre>public&nbsp;void&nbsp;_marriage()</pre>
 <div class="block"><pre>
 <font color="red">
 marriage("&lt;spouse name&gt;");
@@ -276,7 +275,6 @@ marriage("&lt;spouse name&gt;");
 <ul class="blockList">
 <li class="blockList">
 <h4>_wedding</h4>
-<pre>public&nbsp;void&nbsp;_wedding()</pre>
 <div class="block"><pre>
 <font color="red">
 wedding;
@@ -294,7 +292,6 @@ wedding;
 <ul class="blockList">
 <li class="blockList">
 <h4>_divorce</h4>
-<pre>public&nbsp;void&nbsp;_divorce()</pre>
 <div class="block"><pre>
 <font color="red">
 divorce({&lt;char_id&gt;})
@@ -317,13 +314,12 @@ divorce({&lt;char_id&gt;})
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_adopt</h4>
-<pre>public&nbsp;void&nbsp;_adopt()</pre>
 <div class="block"><pre>
 <font color="red">
 adopt("&lt;parent_name&gt;","&lt;baby_name&gt;");
+adopt(&lt;parent_id&gt;,&lt;baby_id&gt;);
 </font>
 
-adopt(&lt;parent_id&gt;,&lt;baby_id&gt;);
         
         This function will send the client adoption request to the specified baby
         character. The parent value can be either parent. Both parents and the baby

@@ -621,7 +621,7 @@ while (&lt;condition&gt;) &lt;statement&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_mes</h4>
-<pre>public&nbsp;void&nbsp;_mes()</pre>
+
 <div class="block"><pre>
 <font color="red">
 mes "&lt;string&gt;"{,"&lt;string&gt;"{,...}};
@@ -719,7 +719,7 @@ mes "&lt;string&gt;"{,"&lt;string&gt;"{,...}};
 <ul class="blockList">
 <li class="blockList">
 <h4>_next</h4>
-<pre>public&nbsp;void&nbsp;_next()</pre>
+
 <div class="block"><pre>
 <font color="red">
 next;
@@ -750,7 +750,7 @@ next;
 <ul class="blockList">
 <li class="blockList">
 <h4>_clear</h4>
-<pre>public&nbsp;void&nbsp;_clear()</pre>
+
 <div class="block"><pre>
 <font color="red">
 clear;
@@ -777,7 +777,7 @@ clear;
 <ul class="blockList">
 <li class="blockList">
 <h4>_close</h4>
-<pre>public&nbsp;void&nbsp;_close()</pre>
+
 <div class="block"><pre>
 <font color="red">
 close;
@@ -802,7 +802,7 @@ close;
 <ul class="blockList">
 <li class="blockList">
 <h4>_close2</h4>
-<pre>public&nbsp;void&nbsp;_close2()</pre>
+
 <div class="block"><pre>
 <font color="red">
 close2;
@@ -832,7 +832,7 @@ close2;
 <ul class="blockList">
 <li class="blockList">
 <h4>_end</h4>
-<pre>public&nbsp;void&nbsp;_end()</pre>
+
 <div class="block"><pre>
 <font color="red">
 end;
@@ -865,13 +865,13 @@ end;
 <ul class="blockList">
 <li class="blockList">
 <h4>_set</h4>
-<pre>public&nbsp;void&nbsp;_set()</pre>
+
 <div class="block"><pre>
 <font color="red">
 set &lt;variable&gt;,&lt;expression&gt;{,&lt;char_id&gt;};
+set(&lt;variable&gt;,&lt;expression&gt;{,&lt;char id&gt;});
 </font>
 
-set(&lt;variable&gt;,&lt;expression&gt;{,&lt;char id&gt;})
         
         This command will set a variable to the value that the expression results in.
         Variables may either be set through this command or directly, much like any
@@ -899,7 +899,7 @@ set(&lt;variable&gt;,&lt;expression&gt;{,&lt;char id&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_setd</h4>
-<pre>public&nbsp;void&nbsp;_setd()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setd "&lt;variable name&gt;",&lt;value&gt;{,&lt;char_id&gt;};
@@ -932,7 +932,7 @@ setd "&lt;variable name&gt;",&lt;value&gt;{,&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_getd</h4>
-<pre>public&nbsp;void&nbsp;_getd()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getd("&lt;variable name&gt;")
@@ -958,7 +958,7 @@ getd("&lt;variable name&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_getvariableofnpc</h4>
-<pre>public&nbsp;void&nbsp;_getvariableofnpc()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getvariableofnpc(&lt;variable&gt;,"&lt;npc name&gt;")
@@ -990,7 +990,7 @@ getvariableofnpc(&lt;variable&gt;,"&lt;npc name&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_getvar</h4>
-<pre>public&nbsp;void&nbsp;_getvar()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getvar &lt;variable&gt;,&lt;char_id&gt;;
@@ -1009,7 +1009,7 @@ getvar &lt;variable&gt;,&lt;char_id&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_goto</h4>
-<pre>public&nbsp;void&nbsp;_goto()</pre>
+
 <div class="block"><pre>
 <font color="red">
 goto &lt;label&gt;;
@@ -1038,7 +1038,7 @@ goto &lt;label&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_menu</h4>
-<pre>public&nbsp;void&nbsp;_menu()</pre>
+
 <div class="block"><pre>
 <font color="red">
 menu "&lt;option_text&gt;",&lt;target_label&gt;{,"&lt;option_text&gt;",&lt;target_label&gt;,...};
@@ -1110,14 +1110,14 @@ menu "&lt;option_text&gt;",&lt;target_label&gt;{,"&lt;option_text&gt;",&lt;targe
 <ul class="blockList">
 <li class="blockList">
 <h4>_select</h4>
-<pre>public&nbsp;void&nbsp;_select()</pre>
+
 <div class="block"><pre>
 <font color="red">
-select("&lt;option&gt;"{,"&lt;option&gt;",...})
+select("&lt;option&gt;"{,"&lt;option&gt;",...});
+prompt("&lt;option&gt;"{,"&lt;option&gt;",...});
 </font>
-
-prompt("&lt;option&gt;"{,"&lt;option&gt;",...})
         
+
         This function is a handy replacement for 'menu' for some specific cases where
         you don't want a complex label structure - like, for example, asking simple yes-
         no questions. It will return the number of menu option picked, starting with 1.
@@ -1141,7 +1141,7 @@ prompt("&lt;option&gt;"{,"&lt;option&gt;",...})
 <ul class="blockList">
 <li class="blockList">
 <h4>_input</h4>
-<pre>public&nbsp;void&nbsp;_input()</pre>
+
 <div class="block"><pre>
 <font color="red">
 input(&lt;variable&gt;{,&lt;min&gt;{,&lt;max&gt;}})
@@ -1207,14 +1207,14 @@ input(&lt;variable&gt;{,&lt;min&gt;{,&lt;max&gt;}})
 <ul class="blockList">
 <li class="blockList">
 <h4>_callfunc</h4>
-<pre>public&nbsp;void&nbsp;_callfunc()</pre>
+
 <div class="block"><pre>
 <font color="red">
 callfunc "&lt;function&gt;"{,&lt;argument&gt;,...&lt;argument&gt;};
+callfunc("&lt;function&gt;"{,&lt;argument&gt;,...&lt;argument&gt;});
 </font>
-
-callfunc("&lt;function&gt;"{,&lt;argument&gt;,...&lt;argument&gt;})
         
+
         This command lets you call up a function NPC. A function NPC can be called from
         any script on any map server. Using the 'return' command it will come back to
         the place that called it.
@@ -1284,14 +1284,14 @@ callfunc("&lt;function&gt;"{,&lt;argument&gt;,...&lt;argument&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_callsub</h4>
-<pre>public&nbsp;void&nbsp;_callsub()</pre>
+
 <div class="block"><pre>
 <font color="red">
 callsub &lt;label&gt;{,&lt;argument&gt;,...&lt;argument&gt;};
+callsub(&lt;label&gt;{,&lt;argument&gt;,...&lt;argument&gt;});
 </font>
 
-callsub(&lt;label&gt;{,&lt;argument&gt;,...&lt;argument&gt;})
-        
+
         This command will go to a specified label within the current script (do NOT use
         quotes around it) coming in as if it were a 'callfunc' call, and pass it
         arguments given, if any, which can be recovered there with 'getarg'. When done
@@ -1353,7 +1353,7 @@ callsub(&lt;label&gt;{,&lt;argument&gt;,...&lt;argument&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getarg</h4>
-<pre>public&nbsp;void&nbsp;_getarg()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getarg(&lt;index&gt;{,&lt;default_value&gt;})
@@ -1419,7 +1419,7 @@ getarg(&lt;index&gt;{,&lt;default_value&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_getargcount</h4>
-<pre>public&nbsp;void&nbsp;_getargcount()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getargcount()
@@ -1446,7 +1446,7 @@ getargcount()
 <ul class="blockList">
 <li class="blockList">
 <h4>_return</h4>
-<pre>public&nbsp;void&nbsp;_return()</pre>
+
 <div class="block"><pre>
 <font color="red">
 return {&lt;value&gt;};
@@ -1472,16 +1472,16 @@ return {&lt;value&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_function</h4>
-<pre>public&nbsp;void&nbsp;_function()</pre>
+
 <div class="block"><pre>
 <font color="red">
 function &lt;function name&gt;;
-</font>
-
 &lt;function name&gt;{(&lt;argument&gt;,...&lt;argument&gt;)};
 function &lt;function name&gt; {
-        &lt;code&gt;
-        }
+    &lt;code&gt;
+}
+</font>
+
         
         This works like callfunc, and is used for cleaner and faster scripting. The function
         must be defined and used within a script, and works like a label with arguments.
@@ -1552,7 +1552,7 @@ function &lt;function name&gt; {
 <ul class="blockList">
 <li class="blockList">
 <h4>_is_function</h4>
-<pre>public&nbsp;void&nbsp;_is_function()</pre>
+
 <div class="block"><pre>
 <font color="red">
 is_function("&lt;function name&gt;")
@@ -1581,7 +1581,7 @@ is_function("&lt;function name&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_if</h4>
-<pre>public&nbsp;void&nbsp;_if()</pre>
+
 <div class="block"><pre>
 <font color="red">
 if (&lt;condition&gt;) &lt;statement&gt;;
@@ -1639,7 +1639,7 @@ if (&lt;condition&gt;) &lt;statement&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_jump_zero</h4>
-<pre>public&nbsp;void&nbsp;_jump_zero()</pre>
+
 <div class="block"><pre>
 <font color="red">
 jump_zero (&lt;condition&gt;),&lt;label&gt;;
@@ -1663,7 +1663,7 @@ jump_zero (&lt;condition&gt;),&lt;label&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_switch</h4>
-<pre>public&nbsp;void&nbsp;_switch()</pre>
+
 <div class="block"><pre>
 <font color="red">
 switch (expression);
@@ -1732,7 +1732,7 @@ switch (expression);
 <ul class="blockList">
 <li class="blockList">
 <h4>_while</h4>
-<pre>public&nbsp;void&nbsp;_while()</pre>
+
 <div class="block"><pre>
 <font color="red">
 while (&lt;condition&gt;) &lt;statement&gt;;
@@ -1786,7 +1786,7 @@ while (&lt;condition&gt;) &lt;statement&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_for</h4>
-<pre>public&nbsp;void&nbsp;_for()</pre>
+
 <div class="block"><pre>
 <font color="red">
 for (&lt;variable initialization&gt;; &lt;condition&gt;; &lt;variable update&gt;) &lt;statement&gt;;
@@ -1819,7 +1819,7 @@ for (&lt;variable initialization&gt;; &lt;condition&gt;; &lt;variable update&gt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_do</h4>
-<pre>public&nbsp;void&nbsp;_do()</pre>
+
 <div class="block"><pre>
 <font color="red">
 do { &lt;statement&gt;; } while (&lt;condition&gt;);
@@ -1854,7 +1854,7 @@ do { &lt;statement&gt;; } while (&lt;condition&gt;);
 <ul class="blockList">
 <li class="blockList">
 <h4>_freeloop</h4>
-<pre>public&nbsp;void&nbsp;_freeloop()</pre>
+
 <div class="block"><pre>
 <font color="red">
 freeloop({&lt;toggle&gt;})
@@ -1893,7 +1893,7 @@ freeloop({&lt;toggle&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_setarray</h4>
-<pre>public&nbsp;void&nbsp;_setarray()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setarray &lt;array name&gt;[&lt;first value&gt;],&lt;value&gt;{,&lt;value&gt;...&lt;value&gt;};
@@ -1920,7 +1920,7 @@ setarray &lt;array name&gt;[&lt;first value&gt;],&lt;value&gt;{,&lt;value&gt;...
 <ul class="blockList">
 <li class="blockList">
 <h4>_cleararray</h4>
-<pre>public&nbsp;void&nbsp;_cleararray()</pre>
+
 <div class="block"><pre>
 <font color="red">
 cleararray &lt;array name&gt;[&lt;first value to alter&gt;],&lt;value&gt;,&lt;number of values to set&gt;;
@@ -1947,7 +1947,7 @@ cleararray &lt;array name&gt;[&lt;first value to alter&gt;],&lt;value&gt;,&lt;nu
 <ul class="blockList">
 <li class="blockList">
 <h4>_copyarray</h4>
-<pre>public&nbsp;void&nbsp;_copyarray()</pre>
+
 <div class="block"><pre>
 <font color="red">
 copyarray &lt;destination array&gt;[&lt;first value&gt;],&lt;source array&gt;[&lt;first value&gt;],&lt;amount of data to copy&gt;;
@@ -1973,7 +1973,7 @@ copyarray &lt;destination array&gt;[&lt;first value&gt;],&lt;source array&gt;[&l
 <ul class="blockList">
 <li class="blockList">
 <h4>_deletearray</h4>
-<pre>public&nbsp;void&nbsp;_deletearray()</pre>
+
 <div class="block"><pre>
 <font color="red">
 deletearray &lt;array name&gt;[&lt;first value&gt;],&lt;how much to delete&gt;;
@@ -2000,7 +2000,7 @@ deletearray &lt;array name&gt;[&lt;first value&gt;],&lt;how much to delete&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_inarray</h4>
-<pre>public&nbsp;void&nbsp;_inarray()</pre>
+
 <div class="block"><pre>
 <font color="red">
 inarray &lt;array name&gt;,&lt;value&gt;;
@@ -2036,7 +2036,7 @@ inarray &lt;array name&gt;,&lt;value&gt;;
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_countinarray</h4>
-<pre>public&nbsp;void&nbsp;_countinarray()</pre>
+
 <div class="block"><pre>
 <font color="red">
 countinarray &lt;array name&gt;{[&lt;start index&gt;]},&lt;array name&gt;{[&lt;start index&gt;]};
@@ -2089,11 +2089,11 @@ countinarray &lt;array name&gt;{[&lt;start index&gt;]},&lt;array name&gt;{[&lt;s
 </a>
 <ul class="navList" title="导航">
 <li><a href="../../../../../overview-summary.html">概览</a></li>
-<li><a href="package-summary.html">程序包</a></li>
-<li class="navBarCell1Rev">类</li>
+<li><a href="package-summary.html">程序?</a></li>
+<li class="navBarCell1Rev">?</li>
 <li><a href="class-use/_0100_Basic_Commands.html">使用</a></li>
-<li><a href="package-tree.html">树</a></li>
-<li><a href="../../../../../deprecated-list.html">已过时</a></li>
+<li><a href="package-tree.html">?</a></li>
+<li><a href="../../../../../deprecated-list.html">已过?</a></li>
 <li><a href="../../../../../index-all.html">索引</a></li>
 <li><a href="../../../../../help-doc.html">帮助</a></li>
 </ul>
@@ -2105,7 +2105,7 @@ countinarray &lt;array name&gt;{[&lt;start index&gt;]},&lt;array name&gt;{[&lt;s
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?exp/ro/cmd/en/_01_basic/_0100_Basic_Commands.html" target="_top">框架</a></li>
-<li><a href="_0100_Basic_Commands.html" target="_top">无框架</a></li>
+<li><a href="_0100_Basic_Commands.html" target="_top">无框?</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_bottom">
 <li><a href="../../../../../allclasses-noframe.html">所有类</a></li>
@@ -2141,6 +2141,6 @@ countinarray &lt;array name&gt;{[&lt;start index&gt;]},&lt;array name&gt;{[&lt;s
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 工程的初始时间(可选)&#x2013;2019. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 工程的初始时?(可?)&#x2013;2019. All rights reserved.</small></p>
 </body>
 </html>

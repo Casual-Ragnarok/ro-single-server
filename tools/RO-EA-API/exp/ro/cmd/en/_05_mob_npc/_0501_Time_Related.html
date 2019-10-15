@@ -274,14 +274,13 @@ awake "&lt;NPC name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_addtimer</h4>
-<pre>public&nbsp;void&nbsp;_addtimer()</pre>
 <div class="block"><pre>
 <font color="red">
 addtimer &lt;ticks&gt;,"NPC::OnLabel";
-</font>
-
 deltimer "NPC::OnLabel";
 addtimercount &lt;ticks&gt;,"NPC::OnLabel";
+</font>
+
         
         These commands will create, destroy, and delay a countdown timer - 'addtimer' to
         create, 'deltimer' to destroy and 'addtimercount' to delay it by the specified
@@ -317,21 +316,20 @@ addtimercount &lt;ticks&gt;,"NPC::OnLabel";
 <ul class="blockList">
 <li class="blockList">
 <h4>_initnpctimer</h4>
-<pre>public&nbsp;void&nbsp;_initnpctimer()</pre>
 <div class="block"><pre>
 <font color="red">
 initnpctimer{ "&lt;NPC name&gt;" {, &lt;Attach Flag&gt;} } |
-</font>
-
-                     { "&lt;NPC name&gt;" | &lt;Attach Flag&gt; };
+             { "&lt;NPC name&gt;" | &lt;Attach Flag&gt; };
 stopnpctimer{ "&lt;NPC name&gt;" {, &lt;Detach Flag&gt;}  } |
-                     { "&lt;NPC name&gt;" | &lt;Detach Flag&gt; };
+             { "&lt;NPC name&gt;" | &lt;Detach Flag&gt; };
 startnpctimer{ "&lt;NPC name&gt;" {, &lt;Attach Flag&gt;} } |
-                      { "&lt;NPC name&gt;" | &lt;Attach Flag&gt; };
+              { "&lt;NPC name&gt;" | &lt;Attach Flag&gt; };
 setnpctimer &lt;tick&gt;{,"&lt;NPC name&gt;"};
 getnpctimer(&lt;type of information&gt;{,"&lt;NPC name&gt;"})
 attachnpctimer {"&lt;character name&gt;"};
 detachnpctimer {"&lt;NPC name&gt;"};
+</font>
+
         
         This set of commands and functions will create and manage an NPC-based timer.
         The NPC name may be omitted, in which case the calling NPC is used as target.
@@ -450,14 +448,13 @@ detachnpctimer {"&lt;NPC name&gt;"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_sleep</h4>
-<pre>public&nbsp;void&nbsp;_sleep()</pre>
 <div class="block"><pre>
 <font color="red">
 sleep {&lt;milliseconds&gt;};
-</font>
-
 sleep2 {&lt;milliseconds&gt;};
 awake "&lt;NPC name&gt;";
+</font>
+
         
         These commands are used to control the pause of a NPC.
         sleep and sleep2 will pause the script for the given amount of milliseconds.
@@ -479,7 +476,6 @@ awake "&lt;NPC name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_progressbar</h4>
-<pre>public&nbsp;void&nbsp;_progressbar()</pre>
 <div class="block"><pre>
 <font color="red">
 progressbar "&lt;color&gt;",&lt;seconds&gt;;
@@ -501,7 +497,6 @@ progressbar "&lt;color&gt;",&lt;seconds&gt;;
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_progressbar_npc</h4>
-<pre>public&nbsp;void&nbsp;_progressbar_npc()</pre>
 <div class="block"><pre>
 <font color="red">
 progressbar_npc "&lt;color&gt;",&lt;seconds&gt;{,&lt;"NPC Name"&gt;};

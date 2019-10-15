@@ -767,13 +767,13 @@ warpwaitingpc "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;number of people&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_monster</h4>
-<pre>public&nbsp;void&nbsp;_monster()</pre>
+
 <div class="block"><pre>
 <font color="red">
 monster     "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,"&lt;name to show&gt;",&lt;mob id&gt;,&lt;amount&gt;{,"&lt;event label&gt;",&lt;size&gt;,&lt;ai&gt;};
+areamonster "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,"&lt;name to show&gt;",&lt;mob id&gt;,&lt;amount&gt;{,"&lt;event label&gt;",&lt;size&gt;,&lt;ai&gt;};
 </font>
 
-areamonster "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,"&lt;name to show&gt;",&lt;mob id&gt;,&lt;amount&gt;{,"&lt;event label&gt;",&lt;size&gt;,&lt;ai&gt;};
         
         This command will spawn a monster on the specified coordinates on the specified
         map. If the script is invoked by a character, a special map name, "this", will
@@ -860,13 +860,13 @@ areamonster "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,"&lt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_areamobuseskill</h4>
-<pre>public&nbsp;void&nbsp;_areamobuseskill()</pre>
+
 <div class="block"><pre>
 <font color="red">
 areamobuseskill "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,&lt;range&gt;,&lt;mob id&gt;,&lt;skill id&gt;,&lt;skill level&gt;,&lt;cast time&gt;,&lt;cancelable&gt;,&lt;emotion&gt;,&lt;target type&gt;;
+areamobuseskill "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,&lt;range&gt;,&lt;mob id&gt;,"&lt;skill name&gt;",&lt;skill level&gt;,&lt;cast time&gt;,&lt;cancelable&gt;,&lt;emotion&gt;,&lt;target type&gt;;
 </font>
 
-areamobuseskill "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,&lt;range&gt;,&lt;mob id&gt;,"&lt;skill name&gt;",&lt;skill level&gt;,&lt;cast time&gt;,&lt;cancelable&gt;,&lt;emotion&gt;,&lt;target type&gt;;
         
         This command will make all monsters of the specified mob ID in the specified
         area use the specified skill. Map name, x, and y define the center of the area,
@@ -895,7 +895,7 @@ areamobuseskill "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,&lt;range&gt;,&lt;mob id&
 <ul class="blockList">
 <li class="blockList">
 <h4>_killmonster</h4>
-<pre>public&nbsp;void&nbsp;_killmonster()</pre>
+
 <div class="block"><pre>
 <font color="red">
 killmonster "&lt;map name&gt;","&lt;event label&gt;"{,&lt;type&gt;};
@@ -924,7 +924,7 @@ killmonster "&lt;map name&gt;","&lt;event label&gt;"{,&lt;type&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_killmonsterall</h4>
-<pre>public&nbsp;void&nbsp;_killmonsterall()</pre>
+
 <div class="block"><pre>
 <font color="red">
 killmonsterall "&lt;map name&gt;"{,&lt;type&gt;};
@@ -949,7 +949,7 @@ killmonsterall "&lt;map name&gt;"{,&lt;type&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_strmobinfo</h4>
-<pre>public&nbsp;void&nbsp;_strmobinfo()</pre>
+
 <div class="block"><pre>
 <font color="red">
 strmobinfo(&lt;type&gt;,&lt;monster id&gt;);
@@ -978,7 +978,7 @@ strmobinfo(&lt;type&gt;,&lt;monster id&gt;);
 <ul class="blockList">
 <li class="blockList">
 <h4>_mobcount</h4>
-<pre>public&nbsp;void&nbsp;_mobcount()</pre>
+
 <div class="block"><pre>
 <font color="red">
 mobcount("&lt;map name&gt;","&lt;event label&gt;")
@@ -1009,7 +1009,7 @@ mobcount("&lt;map name&gt;","&lt;event label&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_clone</h4>
-<pre>public&nbsp;void&nbsp;_clone()</pre>
+
 <div class="block"><pre>
 <font color="red">
 clone "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,"&lt;event&gt;",&lt;char id&gt;{,&lt;master_id&gt;{,&lt;mode&gt;{,&lt;flag&gt;,&lt;duration&gt;}}}
@@ -1044,7 +1044,7 @@ clone "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,"&lt;event&gt;",&lt;char id&gt;{,&l
 <ul class="blockList">
 <li class="blockList">
 <h4>_summon</h4>
-<pre>public&nbsp;void&nbsp;_summon()</pre>
+
 <div class="block"><pre>
 <font color="red">
 summon "monster name",&lt;monster id&gt;{,&lt;Time Out&gt;{,"event label"}};
@@ -1079,15 +1079,15 @@ summon "monster name",&lt;monster id&gt;{,&lt;Time Out&gt;{,"event label"}};
 <ul class="blockList">
 <li class="blockList">
 <h4>_addmonsterdrop</h4>
-<pre>public&nbsp;void&nbsp;_addmonsterdrop()</pre>
+
 <div class="block"><pre>
 <font color="red">
 addmonsterdrop &lt;monster id&gt;,&lt;item id&gt;,&lt;rate&gt;;
-</font>
-
 addmonsterdrop "&lt;monster name&gt;",&lt;item id&gt;,&lt;rate&gt;;
 delmonsterdrop &lt;monster id&gt;,&lt;item id&gt;;
 delmonsterdrop "&lt;monster name&gt;",&lt;item id&gt;;
+</font>
+
         
         These commands will temporarily add or delete a monster drop, which will be reset
         when the mob database reloads or the server shuts down. They return 1 upon success.
@@ -1110,13 +1110,13 @@ delmonsterdrop "&lt;monster name&gt;",&lt;item id&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_disablenpc</h4>
-<pre>public&nbsp;void&nbsp;_disablenpc()</pre>
+
 <div class="block"><pre>
 <font color="red">
 disablenpc "&lt;NPC object name&gt;";
+enablenpc "&lt;NPC object name&gt;";
 </font>
 
-enablenpc "&lt;NPC object name&gt;";
         
         These two commands will disable and enable, respectively, an NPC object
         specified by name. The disabled NPC will disappear from sight and will no longer
@@ -1139,13 +1139,13 @@ enablenpc "&lt;NPC object name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_hideonnpc</h4>
-<pre>public&nbsp;void&nbsp;_hideonnpc()</pre>
+
 <div class="block"><pre>
 <font color="red">
 hideonnpc "&lt;NPC object name&gt;";
+hideoffnpc "&lt;NPC object name&gt;";
 </font>
 
-hideoffnpc "&lt;NPC object name&gt;";
         
         These commands will make the NPC object specified display as hidden/visible,
         even though not actually disabled per se. Hidden as in thief Hide skill, but
@@ -1165,7 +1165,7 @@ hideoffnpc "&lt;NPC object name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_unloadnpc</h4>
-<pre>public&nbsp;void&nbsp;_unloadnpc()</pre>
+
 <div class="block"><pre>
 <font color="red">
 unloadnpc "&lt;NPC object name&gt;";
@@ -1182,7 +1182,7 @@ unloadnpc "&lt;NPC object name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_doevent</h4>
-<pre>public&nbsp;void&nbsp;_doevent()</pre>
+
 <div class="block"><pre>
 <font color="red">
 doevent "&lt;NPC object name&gt;::&lt;event label&gt;";
@@ -1218,7 +1218,7 @@ doevent "&lt;NPC object name&gt;::&lt;event label&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_donpcevent</h4>
-<pre>public&nbsp;void&nbsp;_donpcevent()</pre>
+
 <div class="block"><pre>
 <font color="red">
 donpcevent "&lt;NPC object name&gt;::&lt;event label&gt;";
@@ -1273,7 +1273,7 @@ donpcevent "&lt;NPC object name&gt;::&lt;event label&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_cmdothernpc</h4>
-<pre>public&nbsp;void&nbsp;_cmdothernpc()</pre>
+
 <div class="block"><pre>
 <font color="red">
 cmdothernpc "&lt;npc name&gt;","&lt;command&gt;";
@@ -1293,7 +1293,7 @@ cmdothernpc "&lt;npc name&gt;","&lt;command&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_npctalk</h4>
-<pre>public&nbsp;void&nbsp;_npctalk()</pre>
+
 <div class="block"><pre>
 <font color="red">
 npctalk "&lt;message&gt;"{,"&lt;NPC name&gt;","&lt;flag&gt;"};
@@ -1324,7 +1324,7 @@ npctalk "&lt;message&gt;"{,"&lt;NPC name&gt;","&lt;flag&gt;"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_chatmes</h4>
-<pre>public&nbsp;void&nbsp;_chatmes()</pre>
+
 <div class="block"><pre>
 <font color="red">
 chatmes "&lt;message&gt;"{,"&lt;NPC name&gt;"};
@@ -1347,16 +1347,16 @@ chatmes "&lt;message&gt;"{,"&lt;NPC name&gt;"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_setnpcdisplay</h4>
-<pre>public&nbsp;void&nbsp;_setnpcdisplay()</pre>
+
 <div class="block"><pre>
 <font color="red">
-setnpcdisplay("&lt;npc name&gt;", "&lt;display name&gt;", &lt;class id&gt;, &lt;size&gt;)
+setnpcdisplay("&lt;npc name&gt;", "&lt;display name&gt;", &lt;class id&gt;, &lt;size&gt;);
+setnpcdisplay("&lt;npc name&gt;", "&lt;display name&gt;", &lt;class id&gt;);
+setnpcdisplay("&lt;npc name&gt;", "&lt;display name&gt;");
+setnpcdisplay("&lt;npc name&gt;", &lt;class id&gt;);
 </font>
 
-setnpcdisplay("&lt;npc name&gt;", "&lt;display name&gt;", &lt;class id&gt;)
-setnpcdisplay("&lt;npc name&gt;", "&lt;display name&gt;")
-setnpcdisplay("&lt;npc name&gt;", &lt;class id&gt;)
-        
+
         Changes the display name and/or display class of the target NPC.
         Returns 0 is successful, 1 if the NPC does not exist.
         Size is 0 = normal 1 = small 2 = big.
@@ -1369,7 +1369,7 @@ setnpcdisplay("&lt;npc name&gt;", &lt;class id&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_announce</h4>
-<pre>public&nbsp;void&nbsp;_announce()</pre>
+
 <div class="block"><pre>
 <font color="red">
 announce "&lt;text&gt;",&lt;flag&gt;{,&lt;fontColor&gt;{,&lt;fontType&gt;{,&lt;fontSize&gt;{,&lt;fontAlign&gt;{,&lt;fontY&gt;}}}}};
@@ -1385,7 +1385,7 @@ announce "&lt;text&gt;",&lt;flag&gt;{,&lt;fontColor&gt;{,&lt;fontType&gt;{,&lt;f
 <ul class="blockList">
 <li class="blockList">
 <h4>_mapannounce</h4>
-<pre>public&nbsp;void&nbsp;_mapannounce()</pre>
+
 <div class="block"><pre>
 <font color="red">
 mapannounce "&lt;map name&gt;","&lt;text&gt;",&lt;flag&gt;{,&lt;fontColor&gt;{,&lt;fontType&gt;{,&lt;fontSize&gt;{,&lt;fontAlign&gt;{,&lt;fontY&gt;}}}}}};
@@ -1404,7 +1404,7 @@ mapannounce "&lt;map name&gt;","&lt;text&gt;",&lt;flag&gt;{,&lt;fontColor&gt;{,&
 <ul class="blockList">
 <li class="blockList">
 <h4>_areaannounce</h4>
-<pre>public&nbsp;void&nbsp;_areaannounce()</pre>
+
 <div class="block"><pre>
 <font color="red">
 areaannounce "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,"&lt;text&gt;",&lt;flag&gt;{,&lt;fontColor&gt;{,&lt;fontType&gt;{,&lt;fontSize&gt;{,&lt;fontAlign&gt;{,&lt;fontY&gt;}}}}}};
@@ -1425,7 +1425,7 @@ areaannounce "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,"&lt
 <ul class="blockList">
 <li class="blockList">
 <h4>_callshop</h4>
-<pre>public&nbsp;void&nbsp;_callshop()</pre>
+
 <div class="block"><pre>
 <font color="red">
 callshop "&lt;name&gt;",&lt;option&gt;;
@@ -1456,7 +1456,7 @@ callshop "&lt;name&gt;",&lt;option&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_npcshopitem</h4>
-<pre>public&nbsp;void&nbsp;_npcshopitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 npcshopitem "&lt;name&gt;",&lt;item id&gt;,&lt;price&gt;{,&lt;item id&gt;,&lt;price&gt;{,&lt;item id&gt;,&lt;price&gt;{,...}}};
@@ -1482,7 +1482,7 @@ npcshopitem "&lt;name&gt;",&lt;item id&gt;,&lt;price&gt;{,&lt;item id&gt;,&lt;pr
 <ul class="blockList">
 <li class="blockList">
 <h4>_npcshopadditem</h4>
-<pre>public&nbsp;void&nbsp;_npcshopadditem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 npcshopadditem "&lt;name&gt;",&lt;item id&gt;,&lt;price&gt;{,&lt;item id&gt;,&lt;price&gt;{,&lt;item id&gt;,&lt;price&gt;{,...}}};
@@ -1508,7 +1508,7 @@ npcshopadditem "&lt;name&gt;",&lt;item id&gt;,&lt;price&gt;{,&lt;item id&gt;,&lt
 <ul class="blockList">
 <li class="blockList">
 <h4>_npcshopdelitem</h4>
-<pre>public&nbsp;void&nbsp;_npcshopdelitem()</pre>
+
 <div class="block"><pre>
 <font color="red">
 npcshopdelitem "&lt;name&gt;",&lt;item id&gt;{,&lt;item id&gt;{,&lt;item id&gt;{,...}}};
@@ -1530,7 +1530,7 @@ npcshopdelitem "&lt;name&gt;",&lt;item id&gt;{,&lt;item id&gt;{,&lt;item id&gt;{
 <ul class="blockList">
 <li class="blockList">
 <h4>_npcshopattach</h4>
-<pre>public&nbsp;void&nbsp;_npcshopattach()</pre>
+
 <div class="block"><pre>
 <font color="red">
 npcshopattach "&lt;name&gt;"{,&lt;flag&gt;};
@@ -1562,7 +1562,7 @@ npcshopattach "&lt;name&gt;"{,&lt;flag&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_npcshopupdate</h4>
-<pre>public&nbsp;void&nbsp;_npcshopupdate()</pre>
+
 <div class="block"><pre>
 <font color="red">
 npcshopupdate "&lt;name&gt;",&lt;item_id&gt;,&lt;price&gt;{,&lt;stock&gt;}
@@ -1581,7 +1581,7 @@ npcshopupdate "&lt;name&gt;",&lt;item_id&gt;,&lt;price&gt;{,&lt;stock&gt;}
 <ul class="blockList">
 <li class="blockList">
 <h4>_waitingroom</h4>
-<pre>public&nbsp;void&nbsp;_waitingroom()</pre>
+
 <div class="block"><pre>
 <font color="red">
 waitingroom "&lt;chatroom name&gt;",&lt;limit&gt;{,"&lt;event label&gt;"{,&lt;trigger&gt;{,&lt;required zeny&gt;{,&lt;min lvl&gt;{,&lt;max lvl&gt;}}}}};
@@ -1631,7 +1631,7 @@ waitingroom "&lt;chatroom name&gt;",&lt;limit&gt;{,"&lt;event label&gt;"{,&lt;tr
 <ul class="blockList">
 <li class="blockList">
 <h4>_delwaitingroom</h4>
-<pre>public&nbsp;void&nbsp;_delwaitingroom()</pre>
+
 <div class="block"><pre>
 <font color="red">
 delwaitingroom {"&lt;NPC object name"};
@@ -1654,15 +1654,15 @@ delwaitingroom {"&lt;NPC object name"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_enablewaitingroomevent</h4>
-<pre>public&nbsp;void&nbsp;_enablewaitingroomevent()</pre>
+
 <div class="block"><pre>
 <font color="red">
 enablewaitingroomevent {"&lt;NPC object name&gt;"};
-</font>
-
 disablewaitingroomevent {"&lt;NPC object name&gt;"};
 enablearena;
 disablearena;
+</font>
+
         
         This will enable and disable triggering the waiting room event (see
         'waitingroom') respectively. Optionally giving an NPC object name will do that
@@ -1688,7 +1688,7 @@ disablearena;
 <ul class="blockList">
 <li class="blockList">
 <h4>_getwaitingroomstate</h4>
-<pre>public&nbsp;void&nbsp;_getwaitingroomstate()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getwaitingroomstate(&lt;information type&gt;{,"&lt;NPC object name&gt;"})
@@ -1723,7 +1723,7 @@ getwaitingroomstate(&lt;information type&gt;{,"&lt;NPC object name&gt;"})
 <ul class="blockList">
 <li class="blockList">
 <h4>_warpwaitingpc</h4>
-<pre>public&nbsp;void&nbsp;_warpwaitingpc()</pre>
+
 <div class="block"><pre>
 <font color="red">
 warpwaitingpc "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;number of people&gt;};
@@ -1762,7 +1762,7 @@ warpwaitingpc "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;number of people&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_waitingroomkick</h4>
-<pre>public&nbsp;void&nbsp;_waitingroomkick()</pre>
+
 <div class="block"><pre>
 <font color="red">
 waitingroomkick "&lt;NPC object name&gt;" , "&lt;character name&gt;";
@@ -1779,7 +1779,7 @@ waitingroomkick "&lt;NPC object name&gt;" , "&lt;character name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_getwaitingroomusers</h4>
-<pre>public&nbsp;void&nbsp;_getwaitingroomusers()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getwaitingroomusers "&lt;NPC object name&gt;";
@@ -1798,7 +1798,7 @@ getwaitingroomusers "&lt;NPC object name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_kickwaitingroomall</h4>
-<pre>public&nbsp;void&nbsp;_kickwaitingroomall()</pre>
+
 <div class="block"><pre>
 <font color="red">
 kickwaitingroomall {"&lt;NPC object name&gt;"};
@@ -1815,7 +1815,7 @@ kickwaitingroomall {"&lt;NPC object name&gt;"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_setmapflagnosave</h4>
-<pre>public&nbsp;void&nbsp;_setmapflagnosave()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setmapflagnosave "&lt;map name&gt;","&lt;alternate map name&gt;",&lt;x&gt;,&lt;y&gt;;
@@ -1838,7 +1838,7 @@ setmapflagnosave "&lt;map name&gt;","&lt;alternate map name&gt;",&lt;x&gt;,&lt;y
 <ul class="blockList">
 <li class="blockList">
 <h4>_setmapflag</h4>
-<pre>public&nbsp;void&nbsp;_setmapflag()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setmapflag "&lt;map name&gt;",&lt;flag&gt;{,&lt;zone&gt;{,&lt;type&gt;}};
@@ -1878,7 +1878,7 @@ setmapflag "&lt;map name&gt;",&lt;flag&gt;{,&lt;zone&gt;{,&lt;type&gt;}};
 <ul class="blockList">
 <li class="blockList">
 <h4>_removemapflag</h4>
-<pre>public&nbsp;void&nbsp;_removemapflag()</pre>
+
 <div class="block"><pre>
 <font color="red">
 removemapflag "&lt;map name&gt;",&lt;flag&gt;{,&lt;zone&gt;};
@@ -1898,7 +1898,7 @@ removemapflag "&lt;map name&gt;",&lt;flag&gt;{,&lt;zone&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_getmapflag</h4>
-<pre>public&nbsp;void&nbsp;_getmapflag()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getmapflag("&lt;map name&gt;",&lt;flag&gt;{,&lt;type&gt;})
@@ -1926,13 +1926,13 @@ getmapflag("&lt;map name&gt;",&lt;flag&gt;{,&lt;type&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_setbattleflag</h4>
-<pre>public&nbsp;void&nbsp;_setbattleflag()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setbattleflag "&lt;battle flag&gt;",&lt;value&gt;{,&lt;reload&gt;};
+getbattleflag("&lt;battle flag&gt;");
 </font>
 
-getbattleflag("&lt;battle flag&gt;")
         
         Sets or gets the value of the given battle flag.
         Battle flags are the flags found in the battle / *.conf files and is also used in Lupus' variable rates script.
@@ -1959,7 +1959,7 @@ getbattleflag("&lt;battle flag&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_warpportal</h4>
-<pre>public&nbsp;void&nbsp;_warpportal()</pre>
+
 <div class="block"><pre>
 <font color="red">
 warpportal &lt;source x&gt;,&lt;source y&gt;,"&lt;map name&gt;",&lt;target x&gt;,&lt;target y&gt;;
@@ -1983,7 +1983,7 @@ warpportal &lt;source x&gt;,&lt;source y&gt;,"&lt;map name&gt;",&lt;target x&gt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_mapwarp</h4>
-<pre>public&nbsp;void&nbsp;_mapwarp()</pre>
+
 <div class="block"><pre>
 <font color="red">
 mapwarp "&lt;from map&gt;","&lt;to map&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;type&gt;,&lt;ID&gt;};
@@ -2014,14 +2014,14 @@ mapwarp "&lt;from map&gt;","&lt;to map&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;type&gt;,&l
 <ul class="blockList">
 <li class="blockList">
 <h4>_npcspeed</h4>
-<pre>public&nbsp;void&nbsp;_npcspeed()</pre>
+
 <div class="block"><pre>
 <font color="red">
 npcspeed &lt;speed value&gt;;
-</font>
-
 npcwalkto &lt;x&gt;,&lt;y&gt;;
 npcstop;
+</font>
+
         
         These commands will make the NPC object in question move around the map. As they
         currently are, they are a bit buggy and are not useful for much more than making
@@ -2036,7 +2036,7 @@ npcstop;
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_movenpc</h4>
-<pre>public&nbsp;void&nbsp;_movenpc()</pre>
+
 <div class="block"><pre>
 <font color="red">
 movenpc "&lt;NPC name&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;dir&gt;};
@@ -2074,11 +2074,11 @@ movenpc "&lt;NPC name&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;dir&gt;};
 </a>
 <ul class="navList" title="导航">
 <li><a href="../../../../../overview-summary.html">概览</a></li>
-<li><a href="package-summary.html">程序包</a></li>
-<li class="navBarCell1Rev">类</li>
+<li><a href="package-summary.html">程序?</a></li>
+<li class="navBarCell1Rev">?</li>
 <li><a href="class-use/_0500_MOB_or_NPC_Commands.html">使用</a></li>
-<li><a href="package-tree.html">树</a></li>
-<li><a href="../../../../../deprecated-list.html">已过时</a></li>
+<li><a href="package-tree.html">?</a></li>
+<li><a href="../../../../../deprecated-list.html">已过?</a></li>
 <li><a href="../../../../../index-all.html">索引</a></li>
 <li><a href="../../../../../help-doc.html">帮助</a></li>
 </ul>
@@ -2086,11 +2086,11 @@ movenpc "&lt;NPC name&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;dir&gt;};
 <div class="subNav">
 <ul class="navList">
 <li>上一个类</li>
-<li><a href="../../../../../exp/ro/cmd/en/_05_mob_npc/_0501_Time_Related.html" title="exp.ro.cmd.en._05_mob_npc中的类"><span class="typeNameLink">下一个类</span></a></li>
+<li><a href="../../../../../exp/ro/cmd/en/_05_mob_npc/_0501_Time_Related.html" title="exp.ro.cmd.en._05_mob_npc中的?"><span class="typeNameLink">下一个类</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?exp/ro/cmd/en/_05_mob_npc/_0500_MOB_or_NPC_Commands.html" target="_top">框架</a></li>
-<li><a href="_0500_MOB_or_NPC_Commands.html" target="_top">无框架</a></li>
+<li><a href="_0500_MOB_or_NPC_Commands.html" target="_top">无框?</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_bottom">
 <li><a href="../../../../../allclasses-noframe.html">所有类</a></li>
@@ -2126,6 +2126,6 @@ movenpc "&lt;NPC name&gt;",&lt;x&gt;,&lt;y&gt;{,&lt;dir&gt;};
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 工程的初始时间(可选)&#x2013;2019. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 工程的初始时?(可?)&#x2013;2019. All rights reserved.</small></p>
 </body>
 </html>

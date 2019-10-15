@@ -295,7 +295,6 @@ petskillsupport "&lt;skill name&gt;",&lt;skill level&gt;,&lt;delay&gt;,&lt;perce
 <ul class="blockList">
 <li class="blockList">
 <h4>_petskillbonus</h4>
-<pre>public&nbsp;void&nbsp;_petskillbonus()</pre>
 <div class="block"><pre>
 <font color="red">
 petskillbonus &lt;bonus type&gt;,&lt;value&gt;,&lt;duration&gt;,&lt;delay&gt;;
@@ -316,7 +315,6 @@ petskillbonus &lt;bonus type&gt;,&lt;value&gt;,&lt;duration&gt;,&lt;delay&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_petrecovery</h4>
-<pre>public&nbsp;void&nbsp;_petrecovery()</pre>
 <div class="block"><pre>
 <font color="red">
 petrecovery &lt;status type&gt;,&lt;delay&gt;;
@@ -336,7 +334,6 @@ petrecovery &lt;status type&gt;,&lt;delay&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_petloot</h4>
-<pre>public&nbsp;void&nbsp;_petloot()</pre>
 <div class="block"><pre>
 <font color="red">
 petloot &lt;max items&gt;;
@@ -355,13 +352,12 @@ petloot &lt;max items&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_petskillsupport</h4>
-<pre>public&nbsp;void&nbsp;_petskillsupport()</pre>
 <div class="block"><pre>
 <font color="red">
 petskillsupport &lt;skill id&gt;,&lt;skill level&gt;,&lt;delay&gt;,&lt;percent hp&gt;,&lt;percent sp&gt;;
+petskillsupport "&lt;skill name&gt;",&lt;skill level&gt;,&lt;delay&gt;,&lt;percent hp&gt;,&lt;percent sp&gt;;
 </font>
 
-petskillsupport "&lt;skill name&gt;",&lt;skill level&gt;,&lt;delay&gt;,&lt;percent hp&gt;,&lt;percent sp&gt;;
         
         This will make the pet use a specified support skill on the owner whenever the
         HP and SP are below the given percent values, with a specified delay time
@@ -378,15 +374,14 @@ petskillsupport "&lt;skill name&gt;",&lt;skill level&gt;,&lt;delay&gt;,&lt;perce
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_petskillattack</h4>
-<pre>public&nbsp;void&nbsp;_petskillattack()</pre>
 <div class="block"><pre>
 <font color="red">
 petskillattack &lt;skill id&gt;,&lt;skill level&gt;,&lt;rate&gt;,&lt;bonusrate&gt;;
-</font>
-
 petskillattack "&lt;skill name&gt;",&lt;skill level&gt;,&lt;rate&gt;,&lt;bonusrate&gt;;
 petskillattack2 &lt;skill id&gt;,&lt;damage&gt;,&lt;number of attacks&gt;,&lt;rate&gt;,&lt;bonusrate&gt;;
 petskillattack2 "&lt;skill name&gt;",&lt;damage&gt;,&lt;number of attacks&gt;,&lt;rate&gt;,&lt;bonusrate&gt;;
+</font>
+
         
         These two commands will make the pet cast an attack skill on the enemy the pet's
         owner is currently fighting. Skill IDs and levels are as per 'petskillsupport'.

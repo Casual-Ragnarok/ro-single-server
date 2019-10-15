@@ -276,7 +276,6 @@ mercenary_sc_start &lt;type&gt;,&lt;tick&gt;,&lt;val1&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_mercenary_create</h4>
-<pre>public&nbsp;void&nbsp;_mercenary_create()</pre>
 <div class="block"><pre>
 <font color="red">
 mercenary_create &lt;class&gt;,&lt;contract time&gt;;
@@ -296,7 +295,6 @@ mercenary_create &lt;class&gt;,&lt;contract time&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_mercenary_heal</h4>
-<pre>public&nbsp;void&nbsp;_mercenary_heal()</pre>
 <div class="block"><pre>
 <font color="red">
 mercenary_heal &lt;hp&gt;,&lt;sp&gt;;
@@ -314,7 +312,6 @@ mercenary_heal &lt;hp&gt;,&lt;sp&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_mercenary_sc_start</h4>
-<pre>public&nbsp;void&nbsp;_mercenary_sc_start()</pre>
 <div class="block"><pre>
 <font color="red">
 mercenary_sc_start &lt;type&gt;,&lt;tick&gt;,&lt;val1&gt;;
@@ -332,13 +329,12 @@ mercenary_sc_start &lt;type&gt;,&lt;tick&gt;,&lt;val1&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_mercenary_get_calls</h4>
-<pre>public&nbsp;void&nbsp;_mercenary_get_calls()</pre>
 <div class="block"><pre>
 <font color="red">
 mercenary_get_calls(&lt;guild&gt;);
+mercenary_set_calls &lt;guild&gt;,&lt;value&gt;;
 </font>
 
-mercenary_set_calls &lt;guild&gt;,&lt;value&gt;;
         
         Sets or gets the mercenary calls value for given guild for currently
         attached character. Guild can be one or the following constants:
@@ -355,13 +351,12 @@ mercenary_set_calls &lt;guild&gt;,&lt;value&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_mercenary_get_faith</h4>
-<pre>public&nbsp;void&nbsp;_mercenary_get_faith()</pre>
 <div class="block"><pre>
 <font color="red">
 mercenary_get_faith(&lt;guild&gt;);
+mercenary_set_faith &lt;guild&gt;,&lt;value&gt;;
 </font>
 
-mercenary_set_faith &lt;guild&gt;,&lt;value&gt;;
         
         Sets or gets the mercenary faith value for given guild for currently
         attached character. Guild can be one or the following constants:
@@ -378,7 +373,6 @@ mercenary_set_faith &lt;guild&gt;,&lt;value&gt;;
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_getmercinfo</h4>
-<pre>public&nbsp;void&nbsp;_getmercinfo()</pre>
 <div class="block"><pre>
 <font color="red">
 getmercinfo(&lt;type&gt;{,&lt;char id&gt;});
