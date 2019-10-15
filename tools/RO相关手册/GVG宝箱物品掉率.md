@@ -16,7 +16,7 @@
 | 5 | 空气雕像0.4%、斗篷(s1)0.22%、天使发圈0.22%、高尔夫球竿0.19% |
 
 
-------
+
 ## 【吉芬】 布立特利亚
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/GVG_02.png)
@@ -31,7 +31,7 @@
 | 5 | 石头的根0.4%、神秘紫箱1.25%、生鱼片刀0.94%、领导者头箍0.01% |
 
 
-------
+
 ## 【钟楼】 露依纳
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/GVG_03.png)
@@ -46,7 +46,7 @@
 | 5 | 怠饰品0.4%、圆盾(s1)2.5%、紧身便衣(s1)0.75%、体力戒指(s1)0.05% |
 
 
-------
+
 ## 【斐扬】 青林湖泊
 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/GVG_04.png)
