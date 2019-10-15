@@ -2,7 +2,6 @@
 
 ------
 
-
 ## 装备相关
 
 | 脚本命令 | 效果 |
@@ -23,30 +22,35 @@
 
 
 ## 状态异常
-　
-bonus2 bAddEff,e,n;	以n的机率造成攻击对象e状态（n为万分率）
-bonus2 bAddRevEff,e,n;	受到近身物理攻击时，n机率让攻击对象陷入e状态（n为万分率）
-bonus2 bAddEff2,e,n;	以n机率造成自己e状态（n为万分率）
-bonus2 bAddEffShort,e,n;	近距离物理攻击时，n机率造成攻击对象e状态（n为万分率）
-bonus2 bAddEffLong,e,n;	远距离物理攻击时，n机率造成攻击对象e状态（n为万分率）
-bonus2 bResEff,e,n;	e状态的耐久度+n（n为万分率）
-Eff_Blind     - 黑暗
-Eff_Sleep     - 睡眠
-Eff_Poison    - 中毒
-Eff_Freeze    - 冰冻
-Eff_Silence   - 沉默
-Eff_Stan      - 昏眩
-Eff_Curse     - 诅咒
-Eff_Confusion - 混乱
-Eff_Stone     - 石化
-Eff_Bleed     - 出血
-　
-bonus bCurseByMuramasa,n;	Lv>Luk时，n机率被诅咒（n为万分率）
+
+| 脚本命令 | 效果 |
+|:--------|:-----|
+| `bonus bCurseByMuramasa,n; | Lv>Luk时，n机率被诅咒（n为万分率） |
+| `bonus2 bAddEff,e,n; | 以n的机率造成攻击对象e状态（n为万分率） |
+| `bonus2 bAddRevEff,e,n; | 受到近身物理攻击时，n机率让攻击对象陷入e状态（n为万分率） |
+| `bonus2 bAddEff2,e,n; | 以n机率造成自己e状态（n为万分率） |
+| `bonus2 bAddEffShort,e,n; | 近距离物理攻击时，n机率造成攻击对象e状态（n为万分率） |
+| `bonus2 bAddEffLong,e,n; | 远距离物理攻击时，n机率造成攻击对象e状态（n为万分率） |
+| `bonus2 bResEff,e,n; | e状态的耐久度+n（n为万分率） |
+
+状态值 e 枚举：
+- Eff_Blind     - 黑暗
+- Eff_Sleep     - 睡眠
+- Eff_Poison    - 中毒
+- Eff_Freeze    - 冰冻
+- Eff_Silence   - 沉默
+- Eff_Stan      - 昏眩
+- Eff_Curse     - 诅咒
+- Eff_Confusion - 混乱
+- Eff_Stone     - 石化
+- Eff_Bleed     - 出血
 　
 
 　
 
-·即死/濒死
+　
+
+## 即死/濒死
 　
 bonus2 bWeaponComaEle,n,x;	对n属性以x机率发动濒死之术[HP=1,SP=1]（x为万分率，可叠加）
 bonus2 bWeaponComaEle2,n,x;	对n属性以x机率发动濒死之术[HP=1]（x为万分率，可叠加）
@@ -59,7 +63,7 @@ bonus2 bWeaponComaRace2,n,x;	对n种族以x机率发动濒死之术[HP=1]（x为
 
 　
 
-·Zeny获得
+## Zeny获得
 　
 bonus bGetZenyNum,n;	物理攻击打倒怪物得到怪物Lv*10+rand()%n的Zeny
 bonus bAddGetZenyNum,n;	物理攻击打倒怪物得到怪物Lv*10+rand()%n的Zeny（可叠加）
@@ -69,7 +73,7 @@ bonus bAddGetZenyNum2,n;	物理攻击打倒怪物时，n%的机率得到怪物Lv
 
 　
 
-·物品获得
+## 物品获得
 　
 bonus3 bAddMonsterDropItem,n,x,y;	物理攻击打倒x种族的怪物，有y机率掉落物品n（y为万分率，与怪物掉落物品无关系）
 0-无形、1-不死、2-动物、3-植物、4-昆虫、5-鱼贝、6-恶魔、7-人形、8-天使、9-龙族、10-BOSS、11-BOSS以外[普通的怪物，包括玩家]
@@ -77,7 +81,7 @@ bonus3 bAddMonsterDropItem,n,x,y;	物理攻击打倒x种族的怪物，有y机�
 
 　
 
-·追加经验值
+## 追加经验值
 　
 bonus2 bExpRate,n,x;	杀死n种族怪物时，增加x%的Base经验（可叠加）
 bonus2 bJobRate,n,x;	杀死n种族怪物时，增加x%的Job经验（可叠加）
@@ -88,7 +92,7 @@ bonus2 bJobRate,n,x;	杀死n种族怪物时，增加x%的Job经验（可叠加�
 
 　
 
-·其他
+## 其他
 　
 bonus bNoSizeFix,n;	不受到怪物体型的伤害修正（n无意义）
 bonus bMobClassChange,n;	攻击时以n机率把当前怪物变为其他怪物（n为万分率）
@@ -101,7 +105,7 @@ bonus bNoKnockback,n;	无法被吹飞或击退（n无意义）
 
 　
 
-·特殊
+## 特殊
 　
 bonus bAutoStatusCalcPc,n;	强制设置状态n
         例：装备其间处于圣母的祈福状态
@@ -112,3 +116,5 @@ bonus2 bEternalStatusChange,n,x;	强制设置状态n持续x毫秒（x的范围�
         例：装备其间处于圣母的祈福状态
         ,{},{ bonus2 bEternalStatusChange,110,1000; sc_start 110,1000,0; }
         ※bAutoStatusCalcPc和bEternalStatusChange的不同：bEternalStatusChange能实现永久的效果。
+
+------
