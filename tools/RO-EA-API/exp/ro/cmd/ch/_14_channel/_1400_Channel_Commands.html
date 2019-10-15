@@ -314,7 +314,6 @@ channel_unban "&lt;chname&gt;",&lt;char_id&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_create</h4>
-<pre>public&nbsp;void&nbsp;_channel_create()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_create "&lt;chname&gt;","&lt;alias&gt;"{,"&lt;password&gt;"{&lt;option&gt;{,&lt;delay&gt;{,&lt;color&gt;{,&lt;char_id&gt;}}}}};
@@ -366,7 +365,6 @@ channel_create "&lt;chname&gt;","&lt;alias&gt;"{,"&lt;password&gt;"{&lt;option&g
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_setopt</h4>
-<pre>public&nbsp;void&nbsp;_channel_setopt()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_setopt "&lt;chname&gt;",&lt;option&gt;,&lt;value&gt;;
@@ -394,7 +392,6 @@ channel_setopt "&lt;chname&gt;",&lt;option&gt;,&lt;value&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_setcolor</h4>
-<pre>public&nbsp;void&nbsp;_channel_setcolor()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_setcolor "&lt;chname&gt;",&lt;color&gt;;
@@ -414,7 +411,6 @@ channel_setcolor "&lt;chname&gt;",&lt;color&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_setpass</h4>
-<pre>public&nbsp;void&nbsp;_channel_setpass()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_setpass "&lt;chname&gt;","&lt;password&gt;";
@@ -435,13 +431,12 @@ channel_setpass "&lt;chname&gt;","&lt;password&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_setgroup</h4>
-<pre>public&nbsp;void&nbsp;_channel_setgroup()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_setgroup "&lt;chname&gt;",&lt;group_id&gt;{,...,&lt;group_id&gt;};
+channel_setgroup2 "&lt;chname&gt;",&lt;array_of_groups&gt;;
 </font>
 
-channel_setgroup2 "&lt;chname&gt;",&lt;array_of_groups&gt;;
         
         Set group restriction for a channel. Only player with matching &lt;group_id&gt;
         are allowed to to join the channel.
@@ -473,7 +468,6 @@ channel_setgroup2 "&lt;chname&gt;",&lt;array_of_groups&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_chat</h4>
-<pre>public&nbsp;void&nbsp;_channel_chat()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_chat "&lt;chname&gt;","&lt;message&gt;"{,&lt;color&gt;};
@@ -497,7 +491,6 @@ channel_chat "&lt;chname&gt;","&lt;message&gt;"{,&lt;color&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_ban</h4>
-<pre>public&nbsp;void&nbsp;_channel_ban()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_ban "&lt;chname&gt;",&lt;char_id&gt;;
@@ -516,7 +509,6 @@ channel_ban "&lt;chname&gt;",&lt;char_id&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_unban</h4>
-<pre>public&nbsp;void&nbsp;_channel_unban()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_unban "&lt;chname&gt;",&lt;char_id&gt;;
@@ -534,13 +526,12 @@ channel_unban "&lt;chname&gt;",&lt;char_id&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_channel_kick</h4>
-<pre>public&nbsp;void&nbsp;_channel_kick()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_kick "&lt;chname&gt;",&lt;char_id&gt;;
+channel_kick "&lt;chname&gt;","&lt;char_name&gt;";
 </font>
 
-channel_kick "&lt;chname&gt;","&lt;char_name&gt;";
         
         Kick player from a public or private channel.
         Channel's owner or group with PC_PERM_CHANNEL_ADMIN cannot be kicked.
@@ -554,7 +545,6 @@ channel_kick "&lt;chname&gt;","&lt;char_name&gt;";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_channel_delete</h4>
-<pre>public&nbsp;void&nbsp;_channel_delete()</pre>
 <div class="block"><pre>
 <font color="red">
 channel_delete "&lt;chname&gt;";

@@ -367,7 +367,6 @@ waitingroom2bg("&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,{"&lt;On Quit Event&gt;","
 <ul class="blockList">
 <li class="blockList">
 <h4>_waitingroom2bg_single</h4>
-<pre>public&nbsp;void&nbsp;_waitingroom2bg_single()</pre>
 <div class="block"><pre>
 <font color="red">
 waitingroom2bg_single(&lt;battle group&gt;,{"&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;{,"&lt;npc name&gt;"}});
@@ -385,7 +384,6 @@ waitingroom2bg_single(&lt;battle group&gt;,{"&lt;map name&gt;",&lt;x&gt;,&lt;y&g
 <ul class="blockList">
 <li class="blockList">
 <h4>_waitingroom2bg</h4>
-<pre>public&nbsp;void&nbsp;_waitingroom2bg()</pre>
 <div class="block"><pre>
 <font color="red">
 waitingroom2bg("&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,{"&lt;On Quit Event&gt;","&lt;On Death Event&gt;"{,"&lt;NPC Name&gt;"}});
@@ -418,7 +416,6 @@ waitingroom2bg("&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,{"&lt;On Quit Event&gt;","
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_create</h4>
-<pre>public&nbsp;void&nbsp;_bg_create()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_create("&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;{,"&lt;On Quit Event&gt;","&lt;On Death Event&gt;"});
@@ -445,7 +442,6 @@ bg_create("&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;{,"&lt;On Quit Event&gt;","&lt;O
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_join</h4>
-<pre>public&nbsp;void&nbsp;_bg_join()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_join(&lt;battle group&gt;,{"&lt;map name&gt;",{&lt;x&gt;,&lt;y&gt;{,&lt;char id&gt;}});
@@ -464,7 +460,6 @@ bg_join(&lt;battle group&gt;,{"&lt;map name&gt;",{&lt;x&gt;,&lt;y&gt;{,&lt;char 
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_team_setxy</h4>
-<pre>public&nbsp;void&nbsp;_bg_team_setxy()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_team_setxy &lt;Battle Group ID&gt;,&lt;x&gt;,&lt;y&gt;;
@@ -486,7 +481,6 @@ bg_team_setxy &lt;Battle Group ID&gt;,&lt;x&gt;,&lt;y&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_warp</h4>
-<pre>public&nbsp;void&nbsp;_bg_warp()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_warp &lt;Battle Group&gt;,"&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;;
@@ -509,13 +503,12 @@ bg_warp &lt;Battle Group&gt;,"&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_monster</h4>
-<pre>public&nbsp;void&nbsp;_bg_monster()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_monster &lt;Battle Group&gt;,"&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,"&lt;name to show&gt;",&lt;mob id&gt;,"&lt;event label&gt;";
+bg_monster(&lt;Battle Group&gt;,"&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,"&lt;name to show&gt;",&lt;mob id&gt;,"&lt;event label&gt;");
 </font>
 
-bg_monster(&lt;Battle Group&gt;,"&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,"&lt;name to show&gt;",&lt;mob id&gt;,"&lt;event label&gt;");
         
         Similar to the 'monster' command.
         Spawns a monster with allegiance to the given Battle Group.
@@ -540,7 +533,6 @@ bg_monster(&lt;Battle Group&gt;,"&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,"&lt;name
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_monster_set_team</h4>
-<pre>public&nbsp;void&nbsp;_bg_monster_set_team()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_monster_set_team &lt;GID&gt;,&lt;Battle Group&gt;;
@@ -574,7 +566,6 @@ bg_monster_set_team &lt;GID&gt;,&lt;Battle Group&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_leave</h4>
-<pre>public&nbsp;void&nbsp;_bg_leave()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_leave {&lt;char_id&gt;};
@@ -591,7 +582,6 @@ bg_leave {&lt;char_id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_destroy</h4>
-<pre>public&nbsp;void&nbsp;_bg_destroy()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_destroy &lt;Batte Group&gt;;
@@ -608,7 +598,6 @@ bg_destroy &lt;Batte Group&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_areapercentheal</h4>
-<pre>public&nbsp;void&nbsp;_areapercentheal()</pre>
 <div class="block"><pre>
 <font color="red">
 areapercentheal "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,&lt;hp&gt;,&lt;sp&gt;;
@@ -630,7 +619,6 @@ areapercentheal "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,&
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_get_data</h4>
-<pre>public&nbsp;void&nbsp;_bg_get_data()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_get_data(&lt;Battle Group&gt;,&lt;type&gt;);
@@ -651,7 +639,6 @@ bg_get_data(&lt;Battle Group&gt;,&lt;type&gt;);
 <ul class="blockList">
 <li class="blockList">
 <h4>_bg_getareausers</h4>
-<pre>public&nbsp;void&nbsp;_bg_getareausers()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_getareausers(&lt;Battle Group&gt;,"&lt;map name&gt;",&lt;x0&gt;,&lt;y0&gt;,&lt;x1&gt;,&lt;y1&gt;);
@@ -669,7 +656,6 @@ bg_getareausers(&lt;Battle Group&gt;,"&lt;map name&gt;",&lt;x0&gt;,&lt;y0&gt;,&l
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_bg_updatescore</h4>
-<pre>public&nbsp;void&nbsp;_bg_updatescore()</pre>
 <div class="block"><pre>
 <font color="red">
 bg_updatescore "&lt;map name&gt;",&lt;Guillaume Score&gt;,&lt;Croix Score&gt;;

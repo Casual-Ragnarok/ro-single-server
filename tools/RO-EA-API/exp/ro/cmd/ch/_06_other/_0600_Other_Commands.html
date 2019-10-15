@@ -944,7 +944,7 @@ viewpoint &lt;action&gt;,&lt;x&gt;,&lt;y&gt;,&lt;point number&gt;,&lt;color&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_debugmes</h4>
-<pre>public&nbsp;void&nbsp;_debugmes()</pre>
+
 <div class="block"><pre>
 <font color="red">
 debugmes "&lt;message&gt;";
@@ -965,7 +965,7 @@ debugmes "&lt;message&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_logmes</h4>
-<pre>public&nbsp;void&nbsp;_logmes()</pre>
+
 <div class="block"><pre>
 <font color="red">
 logmes "&lt;message&gt;";
@@ -988,7 +988,7 @@ logmes "&lt;message&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_globalmes</h4>
-<pre>public&nbsp;void&nbsp;_globalmes()</pre>
+
 <div class="block"><pre>
 <font color="red">
 globalmes "&lt;message&gt;"{,"&lt;NPC name&gt;"};
@@ -1010,7 +1010,7 @@ globalmes "&lt;message&gt;"{,"&lt;NPC name&gt;"};
 <ul class="blockList">
 <li class="blockList">
 <h4>_rand</h4>
-<pre>public&nbsp;void&nbsp;_rand()</pre>
+
 <div class="block"><pre>
 <font color="red">
 rand(&lt;number&gt;{,&lt;number&gt;});
@@ -1033,7 +1033,7 @@ rand(&lt;number&gt;{,&lt;number&gt;});
 <ul class="blockList">
 <li class="blockList">
 <h4>_viewpoint</h4>
-<pre>public&nbsp;void&nbsp;_viewpoint()</pre>
+
 <div class="block"><pre>
 <font color="red">
 viewpoint &lt;action&gt;,&lt;x&gt;,&lt;y&gt;,&lt;point number&gt;,&lt;color&gt;;
@@ -1080,7 +1080,7 @@ viewpoint &lt;action&gt;,&lt;x&gt;,&lt;y&gt;,&lt;point number&gt;,&lt;color&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_cutin</h4>
-<pre>public&nbsp;void&nbsp;_cutin()</pre>
+
 <div class="block"><pre>
 <font color="red">
 cutin "&lt;filename&gt;",&lt;position&gt;;
@@ -1129,7 +1129,7 @@ cutin "&lt;filename&gt;",&lt;position&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_emotion</h4>
-<pre>public&nbsp;void&nbsp;_emotion()</pre>
+
 <div class="block"><pre>
 <font color="red">
 emotion &lt;emotion number&gt;{,&lt;target&gt;};
@@ -1152,7 +1152,7 @@ emotion &lt;emotion number&gt;{,&lt;target&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_misceffect</h4>
-<pre>public&nbsp;void&nbsp;_misceffect()</pre>
+
 <div class="block"><pre>
 <font color="red">
 misceffect &lt;effect number&gt;;
@@ -1177,13 +1177,13 @@ misceffect &lt;effect number&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_soundeffect</h4>
-<pre>public&nbsp;void&nbsp;_soundeffect()</pre>
+
 <div class="block"><pre>
 <font color="red">
 soundeffect "&lt;effect filename&gt;",&lt;type&gt;;
+soundeffectall "&lt;effect filename&gt;",&lt;type&gt;{,"&lt;map name&gt;"}{,&lt;x0&gt;,&lt;y0&gt;,&lt;x1&gt;,&lt;y1&gt;};
 </font>
 
-soundeffectall "&lt;effect filename&gt;",&lt;type&gt;{,"&lt;map name&gt;"}{,&lt;x0&gt;,&lt;y0&gt;,&lt;x1&gt;,&lt;y1&gt;};
         
         These two commands will play a sound effect to either the invoking character
         only ('soundeffect') or multiple characters ('soundeffectall'). If the running
@@ -1215,13 +1215,13 @@ soundeffectall "&lt;effect filename&gt;",&lt;type&gt;{,"&lt;map name&gt;"}{,&lt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_playBGM</h4>
-<pre>public&nbsp;void&nbsp;_playBGM()</pre>
+
 <div class="block"><pre>
 <font color="red">
 playBGM "&lt;BGM filename&gt;";
+playBGMall "&lt;BGM filename&gt;"{,"&lt;map name&gt;"{,&lt;x0&gt;,&lt;y0&gt;,&lt;x1&gt;,&lt;y1&gt;}};
 </font>
 
-playBGMall "&lt;BGM filename&gt;"{,"&lt;map name&gt;"{,&lt;x0&gt;,&lt;y0&gt;,&lt;x1&gt;,&lt;y1&gt;}};
         
         These two commands will play a Background Music to either the invoking character
         only ('playBGM') or multiple characters ('playBGMall').
@@ -1242,13 +1242,13 @@ playBGMall "&lt;BGM filename&gt;"{,"&lt;map name&gt;"{,&lt;x0&gt;,&lt;y0&gt;,&lt
 <ul class="blockList">
 <li class="blockList">
 <h4>_pvpon</h4>
-<pre>public&nbsp;void&nbsp;_pvpon()</pre>
+
 <div class="block"><pre>
 <font color="red">
 pvpon "&lt;map name&gt;";
+pvpoff "&lt;map name&gt;";
 </font>
 
-pvpoff "&lt;map name&gt;";
         
         These commands will turn PVP mode for the specified maps on and off. Beside
         setting the flags referred to in 'setmapflag', 'pvpon' will also create a PVP
@@ -1262,7 +1262,7 @@ pvpoff "&lt;map name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_atcommand</h4>
-<pre>public&nbsp;void&nbsp;_atcommand()</pre>
+
 <div class="block"><pre>
 <font color="red">
 atcommand "&lt;command&gt;";
@@ -1289,7 +1289,7 @@ atcommand "&lt;command&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_charcommand</h4>
-<pre>public&nbsp;void&nbsp;_charcommand()</pre>
+
 <div class="block"><pre>
 <font color="red">
 charcommand "&lt;command&gt;";
@@ -1313,7 +1313,7 @@ charcommand "&lt;command&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_bindatcmd</h4>
-<pre>public&nbsp;void&nbsp;_bindatcmd()</pre>
+
 <div class="block"><pre>
 <font color="red">
 bindatcmd "&lt;command&gt;","&lt;NPC object name&gt;::&lt;event label&gt;"{,&lt;atcommand level&gt;,&lt;charcommand level&gt;};
@@ -1351,7 +1351,7 @@ bindatcmd "&lt;command&gt;","&lt;NPC object name&gt;::&lt;event label&gt;"{,&lt;
 <ul class="blockList">
 <li class="blockList">
 <h4>_unbindatcmd</h4>
-<pre>public&nbsp;void&nbsp;_unbindatcmd()</pre>
+
 <div class="block"><pre>
 <font color="red">
 unbindatcmd "&lt;command&gt;";
@@ -1368,7 +1368,7 @@ unbindatcmd "&lt;command&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_useatcmd</h4>
-<pre>public&nbsp;void&nbsp;_useatcmd()</pre>
+
 <div class="block"><pre>
 <font color="red">
 useatcmd "&lt;command&gt;";
@@ -1390,7 +1390,7 @@ useatcmd "&lt;command&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_camerainfo</h4>
-<pre>public&nbsp;void&nbsp;_camerainfo()</pre>
+
 <div class="block"><pre>
 <font color="red">
 camerainfo &lt;range&gt;,&lt;rotation&gt;,&lt;latitude&gt;{,&lt;char id&gt;};
@@ -1423,14 +1423,14 @@ camerainfo &lt;range&gt;,&lt;rotation&gt;,&lt;latitude&gt;{,&lt;char id&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_npcskill</h4>
-<pre>public&nbsp;void&nbsp;_npcskill()</pre>
+
 <div class="block"><pre>
 <font color="red">
 npcskill &lt;skill id&gt;,&lt;skill lvl&gt;,&lt;stat point&gt;,&lt;NPC level&gt;;
+npcskill "&lt;skill name&gt;",&lt;skill lvl&gt;,&lt;stat point&gt;,&lt;NPC level&gt;;
 </font>
 
-npcskill "&lt;skill name&gt;",&lt;skill lvl&gt;,&lt;stat point&gt;,&lt;NPC level&gt;;
-        
+
         This command causes the attached NPC object to cast a skill on the attached
         player. The skill will have no cast time or cooldown. The player must be
         within the default skill range or the command will fail silently.
@@ -1457,13 +1457,13 @@ npcskill "&lt;skill name&gt;",&lt;skill lvl&gt;,&lt;stat point&gt;,&lt;NPC level
 <ul class="blockList">
 <li class="blockList">
 <h4>_day</h4>
-<pre>public&nbsp;void&nbsp;_day()</pre>
+
 <div class="block"><pre>
 <font color="red">
 day;
+night;
 </font>
 
-night;
         
         These two commands will switch the entire server between day and night mode
         respectively. If your server is set to cycle between day and night by
@@ -1495,15 +1495,15 @@ night;
 <ul class="blockList">
 <li class="blockList">
 <h4>_defpattern</h4>
-<pre>public&nbsp;void&nbsp;_defpattern()</pre>
+
 <div class="block"><pre>
 <font color="red">
 defpattern &lt;set number&gt;,"&lt;regular expression pattern&gt;","&lt;event label&gt;";
-</font>
-
 activatepset &lt;set number&gt;;
 deactivatepset &lt;set number&gt;;
 deletepset &lt;set number&gt;;
+</font>
+
         
         This set of commands is only available if the server is compiled with regular
         expressions library enabled. Default compilation and most binary distributions
@@ -1552,7 +1552,7 @@ deletepset &lt;set number&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_pow</h4>
-<pre>public&nbsp;void&nbsp;_pow()</pre>
+
 <div class="block"><pre>
 <font color="red">
 pow(&lt;number&gt;,&lt;power&gt;)
@@ -1572,7 +1572,7 @@ pow(&lt;number&gt;,&lt;power&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_sqrt</h4>
-<pre>public&nbsp;void&nbsp;_sqrt()</pre>
+
 <div class="block"><pre>
 <font color="red">
 sqrt(&lt;number&gt;)
@@ -1592,7 +1592,7 @@ sqrt(&lt;number&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_distance</h4>
-<pre>public&nbsp;void&nbsp;_distance()</pre>
+
 <div class="block"><pre>
 <font color="red">
 distance(&lt;x0&gt;,&lt;y0&gt;,&lt;x1&gt;,&lt;y1&gt;)
@@ -1612,15 +1612,15 @@ distance(&lt;x0&gt;,&lt;y0&gt;,&lt;x1&gt;,&lt;y1&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_min</h4>
-<pre>public&nbsp;void&nbsp;_min()</pre>
+
 <div class="block"><pre>
 <font color="red">
-min(&lt;number or array&gt;{,&lt;number or array&gt;,...})
+min(&lt;number or array&gt;{,&lt;number or array&gt;,...});
+minimum(&lt;number or array&gt;{,&lt;number or array&gt;,...});
+max(&lt;number or array&gt;{,&lt;number or array&gt;,...});
+maximum(&lt;number or array&gt;{,&lt;number or array&gt;,...});
 </font>
 
-minimum(&lt;number or array&gt;{,&lt;number or array&gt;,...})
-max(&lt;number or array&gt;{,&lt;number or array&gt;,...})
-maximum(&lt;number or array&gt;{,&lt;number or array&gt;,...})
         
         Returns the smallest (or biggest) from the set of given parameters.
         These parameters have to be either numbers or number arrays.
@@ -1646,14 +1646,14 @@ maximum(&lt;number or array&gt;{,&lt;number or array&gt;,...})
 <ul class="blockList">
 <li class="blockList">
 <h4>_round</h4>
-<pre>public&nbsp;void&nbsp;_round()</pre>
+
 <div class="block"><pre>
 <font color="red">
 round(&lt;number&gt;,&lt;precision&gt;);
-</font>
-
 ceil(&lt;number&gt;,&lt;precision&gt;);
 floor(&lt;number&gt;,&lt;precision&gt;);
+</font>
+
         
         Returns &lt;number&gt; rounded to multiple of &lt;precision&gt;.
         
@@ -1670,7 +1670,7 @@ floor(&lt;number&gt;,&lt;precision&gt;);
 <ul class="blockList">
 <li class="blockList">
 <h4>_md5</h4>
-<pre>public&nbsp;void&nbsp;_md5()</pre>
+
 <div class="block"><pre>
 <font color="red">
 md5("&lt;string&gt;")
@@ -1692,13 +1692,13 @@ md5("&lt;string&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_query_sql</h4>
-<pre>public&nbsp;void&nbsp;_query_sql()</pre>
+
 <div class="block"><pre>
 <font color="red">
 query_sql("your MySQL query"{, &lt;array variable&gt;{, &lt;array variable&gt;{, ...}}});
+query_logsql("your MySQL query"{, &lt;array variable&gt;{, &lt;array variable&gt;{, ...}}});
 </font>
 
-query_logsql("your MySQL query"{, &lt;array variable&gt;{, &lt;array variable&gt;{, ...}}});
         
         Executes an SQL query. A 'select' query can fill array variables with up to 2 billion rows of
         values, and will return the number of rows (i.e. array size) or -1 on failure.
@@ -1722,7 +1722,7 @@ query_logsql("your MySQL query"{, &lt;array variable&gt;{, &lt;array variable&gt
 <ul class="blockList">
 <li class="blockList">
 <h4>_escape_sql</h4>
-<pre>public&nbsp;void&nbsp;_escape_sql()</pre>
+
 <div class="block"><pre>
 <font color="red">
 escape_sql(&lt;value&gt;)
@@ -1744,7 +1744,7 @@ escape_sql(&lt;value&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_setiteminfo</h4>
-<pre>public&nbsp;void&nbsp;_setiteminfo()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setiteminfo(&lt;item id&gt;,&lt;type&gt;,&lt;value&gt;)
@@ -1773,7 +1773,7 @@ setiteminfo(&lt;item id&gt;,&lt;type&gt;,&lt;value&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_setitemscript</h4>
-<pre>public&nbsp;void&nbsp;_setitemscript()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setitemscript(&lt;item id&gt;,&lt;"{ new item script }"&gt;{,&lt;type&gt;});
@@ -1800,14 +1800,14 @@ setitemscript(&lt;item id&gt;,&lt;"{ new item script }"&gt;{,&lt;type&gt;});
 <ul class="blockList">
 <li class="blockList">
 <h4>_atoi</h4>
-<pre>public&nbsp;void&nbsp;_atoi()</pre>
+
 <div class="block"><pre>
 <font color="red">
-atoi("&lt;string&gt;")
+atoi("&lt;string&gt;");
+axtoi("&lt;string&gt;");
+strtol("&lt;string&gt;", base);
 </font>
 
-axtoi("&lt;string&gt;")
-strtol("&lt;string&gt;", base)
         
         These commands are used to convert strings to numbers. 'atoi' will interpret
         given string as a decimal number (base 10), while 'axtoi' interprets strings as
@@ -1838,7 +1838,7 @@ strtol("&lt;string&gt;", base)
 <ul class="blockList">
 <li class="blockList">
 <h4>_compare</h4>
-<pre>public&nbsp;void&nbsp;_compare()</pre>
+
 <div class="block"><pre>
 <font color="red">
 compare("&lt;string&gt;","&lt;substring&gt;")
@@ -1865,7 +1865,7 @@ compare("&lt;string&gt;","&lt;substring&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_strcmp</h4>
-<pre>public&nbsp;void&nbsp;_strcmp()</pre>
+
 <div class="block"><pre>
 <font color="red">
 strcmp("&lt;string&gt;","&lt;string&gt;")
@@ -1885,7 +1885,7 @@ strcmp("&lt;string&gt;","&lt;string&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_getstrlen</h4>
-<pre>public&nbsp;void&nbsp;_getstrlen()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getstrlen("&lt;string&gt;")
@@ -1904,7 +1904,7 @@ getstrlen("&lt;string&gt;")
 <ul class="blockList">
 <li class="blockList">
 <h4>_charisalpha</h4>
-<pre>public&nbsp;void&nbsp;_charisalpha()</pre>
+
 <div class="block"><pre>
 <font color="red">
 charisalpha("&lt;string&gt;",&lt;position&gt;)
@@ -1923,7 +1923,7 @@ charisalpha("&lt;string&gt;",&lt;position&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_charat</h4>
-<pre>public&nbsp;void&nbsp;_charat()</pre>
+
 <div class="block"><pre>
 <font color="red">
 charat(&lt;string&gt;,&lt;index&gt;)
@@ -1944,7 +1944,7 @@ charat(&lt;string&gt;,&lt;index&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_setchar</h4>
-<pre>public&nbsp;void&nbsp;_setchar()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setchar(&lt;string&gt;,&lt;char&gt;,&lt;index&gt;)
@@ -1966,7 +1966,7 @@ setchar(&lt;string&gt;,&lt;char&gt;,&lt;index&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_insertchar</h4>
-<pre>public&nbsp;void&nbsp;_insertchar()</pre>
+
 <div class="block"><pre>
 <font color="red">
 insertchar(&lt;string&gt;,&lt;char&gt;,&lt;index&gt;)
@@ -1988,7 +1988,7 @@ insertchar(&lt;string&gt;,&lt;char&gt;,&lt;index&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_delchar</h4>
-<pre>public&nbsp;void&nbsp;_delchar()</pre>
+
 <div class="block"><pre>
 <font color="red">
 delchar(&lt;string&gt;,&lt;index&gt;)
@@ -2009,13 +2009,13 @@ delchar(&lt;string&gt;,&lt;index&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_strtoupper</h4>
-<pre>public&nbsp;void&nbsp;_strtoupper()</pre>
+
 <div class="block"><pre>
 <font color="red">
-strtoupper(&lt;string&gt;)
+strtoupper(&lt;string&gt;);
+strtolower(&lt;string&gt;);
 </font>
 
-strtolower(&lt;string&gt;)
         
         Returns the specified string in its uppercase/lowercase form.
         All non-alpha characters will be preserved.
@@ -2031,13 +2031,13 @@ strtolower(&lt;string&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_charisupper</h4>
-<pre>public&nbsp;void&nbsp;_charisupper()</pre>
+
 <div class="block"><pre>
 <font color="red">
-charisupper(&lt;string&gt;,&lt;index&gt;)
+charisupper(&lt;string&gt;,&lt;index&gt;);
+charislower(&lt;string&gt;,&lt;index&gt;);
 </font>
 
-charislower(&lt;string&gt;,&lt;index&gt;)
         
         Returns 1 if character at specified index of specified string is
         uppercase/lowercase. Otherwise, 0. Characters not of the alphabet will return 0.
@@ -2053,7 +2053,7 @@ charislower(&lt;string&gt;,&lt;index&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_substr</h4>
-<pre>public&nbsp;void&nbsp;_substr()</pre>
+
 <div class="block"><pre>
 <font color="red">
 substr(&lt;string&gt;,&lt;start_index&gt;,&lt;end_index&gt;)
@@ -2075,7 +2075,7 @@ substr(&lt;string&gt;,&lt;start_index&gt;,&lt;end_index&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_explode</h4>
-<pre>public&nbsp;void&nbsp;_explode()</pre>
+
 <div class="block"><pre>
 <font color="red">
 explode(&lt;dest_array&gt;,&lt;string&gt;,&lt;delimiter&gt;)
@@ -2104,7 +2104,7 @@ explode(&lt;dest_array&gt;,&lt;string&gt;,&lt;delimiter&gt;)
 <ul class="blockList">
 <li class="blockList">
 <h4>_implode</h4>
-<pre>public&nbsp;void&nbsp;_implode()</pre>
+
 <div class="block"><pre>
 <font color="red">
 implode(&lt;string_array&gt;{,&lt;glue&gt;})
@@ -2126,7 +2126,7 @@ implode(&lt;string_array&gt;{,&lt;glue&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_sprintf</h4>
-<pre>public&nbsp;void&nbsp;_sprintf()</pre>
+
 <div class="block"><pre>
 <font color="red">
 sprintf(&lt;format&gt;[,param[,param[,...]]])
@@ -2150,7 +2150,7 @@ sprintf(&lt;format&gt;[,param[,param[,...]]])
 <ul class="blockList">
 <li class="blockList">
 <h4>_sscanf</h4>
-<pre>public&nbsp;void&nbsp;_sscanf()</pre>
+
 <div class="block"><pre>
 <font color="red">
 sscanf(&lt;string&gt;,&lt;format&gt;[,param[,param[,...]]])
@@ -2173,7 +2173,7 @@ sscanf(&lt;string&gt;,&lt;format&gt;[,param[,param[,...]]])
 <ul class="blockList">
 <li class="blockList">
 <h4>_strpos</h4>
-<pre>public&nbsp;void&nbsp;_strpos()</pre>
+
 <div class="block"><pre>
 <font color="red">
 strpos(&lt;haystack&gt;,&lt;needle&gt;{,&lt;offset&gt;})
@@ -2198,7 +2198,7 @@ strpos(&lt;haystack&gt;,&lt;needle&gt;{,&lt;offset&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_replacestr</h4>
-<pre>public&nbsp;void&nbsp;_replacestr()</pre>
+
 <div class="block"><pre>
 <font color="red">
 replacestr(&lt;input&gt;, &lt;search&gt;, &lt;replace&gt;{, &lt;usecase&gt;{, &lt;count&gt;}})
@@ -2223,7 +2223,7 @@ replacestr(&lt;input&gt;, &lt;search&gt;, &lt;replace&gt;{, &lt;usecase&gt;{, &l
 <ul class="blockList">
 <li class="blockList">
 <h4>_countstr</h4>
-<pre>public&nbsp;void&nbsp;_countstr()</pre>
+
 <div class="block"><pre>
 <font color="red">
 countstr(&lt;input&gt;, &lt;search&gt;{, &lt;usecase&gt;})
@@ -2245,7 +2245,7 @@ countstr(&lt;input&gt;, &lt;search&gt;{, &lt;usecase&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_preg_match</h4>
-<pre>public&nbsp;void&nbsp;_preg_match()</pre>
+
 <div class="block"><pre>
 <font color="red">
 preg_match(&lt;regular expression pattern&gt;,&lt;string&gt;{,&lt;offset&gt;})
@@ -2267,7 +2267,7 @@ preg_match(&lt;regular expression pattern&gt;,&lt;string&gt;{,&lt;offset&gt;})
 <ul class="blockList">
 <li class="blockList">
 <h4>_setfont</h4>
-<pre>public&nbsp;void&nbsp;_setfont()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setfont &lt;font&gt;;
@@ -2298,7 +2298,7 @@ setfont &lt;font&gt;;
 <ul class="blockList">
 <li class="blockList">
 <h4>_showdigit</h4>
-<pre>public&nbsp;void&nbsp;_showdigit()</pre>
+
 <div class="block"><pre>
 <font color="red">
 showdigit &lt;value&gt;{,&lt;type&gt;};
@@ -2334,7 +2334,7 @@ showdigit &lt;value&gt;{,&lt;type&gt;};
 <ul class="blockList">
 <li class="blockList">
 <h4>_setcell</h4>
-<pre>public&nbsp;void&nbsp;_setcell()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setcell "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,&lt;type&gt;,&lt;flag&gt;;
@@ -2384,7 +2384,7 @@ setcell "&lt;map name&gt;",&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;,&lt;type&
 <ul class="blockList">
 <li class="blockList">
 <h4>_checkcell</h4>
-<pre>public&nbsp;void&nbsp;_checkcell()</pre>
+
 <div class="block"><pre>
 <font color="red">
 checkcell ("&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,&lt;type&gt;);
@@ -2427,7 +2427,7 @@ checkcell ("&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,&lt;type&gt;);
 <ul class="blockList">
 <li class="blockList">
 <h4>_getfreecell</h4>
-<pre>public&nbsp;void&nbsp;_getfreecell()</pre>
+
 <div class="block"><pre>
 <font color="red">
 getfreecell "&lt;map name&gt;",&lt;rX&gt;,&lt;rY&gt;{,&lt;x&gt;,&lt;y&gt;,&lt;rangeX&gt;,&lt;rangeY&gt;,&lt;flag&gt;};
@@ -2454,13 +2454,13 @@ getfreecell "&lt;map name&gt;",&lt;rX&gt;,&lt;rY&gt;{,&lt;x&gt;,&lt;y&gt;,&lt;ra
 <ul class="blockList">
 <li class="blockList">
 <h4>_setwall</h4>
-<pre>public&nbsp;void&nbsp;_setwall()</pre>
+
 <div class="block"><pre>
 <font color="red">
 setwall "&lt;map name&gt;",&lt;x&gt;,&lt;y&gt;,&lt;size&gt;,&lt;dir&gt;,&lt;shootable&gt;,"&lt;name&gt;";
+delwall "&lt;name&gt;";
 </font>
 
-delwall "&lt;name&gt;";
         
         Creates an invisible wall, an array of "setcell" starting from x,y and doing a
         line of the given size in the given direction. The difference with setcell is
@@ -2475,7 +2475,7 @@ delwall "&lt;name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_checkwall</h4>
-<pre>public&nbsp;void&nbsp;_checkwall()</pre>
+
 <div class="block"><pre>
 <font color="red">
 checkwall "&lt;name&gt;";
@@ -2492,7 +2492,7 @@ checkwall "&lt;name&gt;";
 <ul class="blockList">
 <li class="blockList">
 <h4>_readbook</h4>
-<pre>public&nbsp;void&nbsp;_readbook()</pre>
+
 <div class="block"><pre>
 <font color="red">
 readbook &lt;book id&gt;,&lt;page&gt;;
@@ -2509,7 +2509,7 @@ readbook &lt;book id&gt;,&lt;page&gt;;
 <ul class="blockListLast">
 <li class="blockList">
 <h4>_open_roulette</h4>
-<pre>public&nbsp;void&nbsp;_open_roulette()</pre>
+
 <div class="block"><pre>
 <font color="red">
 open_roulette( {char_id} )
@@ -2590,6 +2590,6 @@ open_roulette( {char_id} )
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 工程的初始时间(可选)&#x2013;2019. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 工程的初始时间(可先)&#x2013;2019. All rights reserved.</small></p>
 </body>
 </html>
