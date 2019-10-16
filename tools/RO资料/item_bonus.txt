@@ -4,7 +4,7 @@
 //= rAthena Dev Team
 //===== Last Updated: ========================================
 //= 20151029
-//= 20160725 ºº»¯ by ßäÍÃ½´
+//= 20160725 æ±‰åŒ– by å’ªå…”é…±
 //===== Description: =========================================
 //= List of script instructions used in item bonuses.
 //============================================================
@@ -13,97 +13,97 @@ Constants
 ---------
 This list contains all available constants referenced in the 'bonus' commands.
 
-* ×´Ì¬ (eff)
-	Eff_Bleeding	³öÑª
-	Eff_Blind	ºÚ°µ
-	Eff_Burning	×Å»ğ
-	Eff_Confusion	»ìÂÒ
-	Eff_Crystalize	¶³½á	//ÎŞ·¨ĞĞ¶¯+Ë®ÊôĞÔÉËº¦
-	Eff_Curse	×çÖä
-	Eff_DPoison	ÃÍ¶¾	//Ã¿Ãë2%¼õÉÙ
-	Eff_Fear	º¦ÅÂ	//ÑÓ³ÙÔö¼Ó
-	Eff_Freeze	±ù¶³
-	Eff_Poison	ÖĞ¶¾
-	Eff_Silence	³ÁÄ¬
-	Eff_Sleep	Ë¯Ãß
-	Eff_Stone	Ê¯»¯
-	Eff_Stun	ÔÎÑ£
+* çŠ¶æ€ (eff)
+	Eff_Bleeding	å‡ºè¡€
+	Eff_Blind	é»‘æš—
+	Eff_Burning	ç€ç«
+	Eff_Confusion	æ··ä¹±
+	Eff_Crystalize	å†»ç»“	//æ— æ³•è¡ŒåŠ¨+æ°´å±æ€§ä¼¤å®³
+	Eff_Curse	è¯…å’’
+	Eff_DPoison	çŒ›æ¯’	//æ¯ç§’2%å‡å°‘
+	Eff_Fear	å®³æ€•	//å»¶è¿Ÿå¢åŠ 
+	Eff_Freeze	å†°å†»
+	Eff_Poison	ä¸­æ¯’
+	Eff_Silence	æ²‰é»˜
+	Eff_Sleep	ç¡çœ 
+	Eff_Stone	çŸ³åŒ–
+	Eff_Stun	æ™•çœ©
 
 * Element (e)
-	Ele_Dark	°µÊôĞÔ
-	Ele_Earth	µØÊôĞÔ
-	Ele_Fire	»ğÊôĞÔ
-	Ele_Ghost	ÄîÊôĞÔ
-	Ele_Holy	Ê¥ÊôĞÔ
-	Ele_Neutral	ÎŞÊôĞÔ
-	Ele_Poison	¶¾ÊôĞÔ
-	Ele_Undead	²»ËÀÊôĞÔ
-	Ele_Water	Ë®ÊôĞÔ
-	Ele_Wind	·çÊôĞÔ
-	Ele_All		ËùÓĞÊôĞÔ
+	Ele_Dark	æš—å±æ€§
+	Ele_Earth	åœ°å±æ€§
+	Ele_Fire	ç«å±æ€§
+	Ele_Ghost	å¿µå±æ€§
+	Ele_Holy	åœ£å±æ€§
+	Ele_Neutral	æ— å±æ€§
+	Ele_Poison	æ¯’å±æ€§
+	Ele_Undead	ä¸æ­»å±æ€§
+	Ele_Water	æ°´å±æ€§
+	Ele_Wind	é£å±æ€§
+	Ele_All		æ‰€æœ‰å±æ€§
 
 * Race (r)
-	RC_Angel	ÌìÊ¹Ïµ
-	RC_Brute	¶¯ÎïÏµ
-	RC_DemiHuman	ÈËĞÎÏµ
-	RC_Demon	¶ñÄ§Ïµ
-	RC_Dragon	ÁúÏµ
-	RC_Fish		Óã±´Ïµ
-	RC_Formless	ÎŞĞÎÏµ
-	RC_Insect	À¥³æÏµ
-	RC_Plant	Ö²ÎïÏµ
-	RC_Player	Íæ¼Ò
-	RC_Undead	²»ËÀÏµ
-	RC_All		ËùÓĞÊôĞÔ
+	RC_Angel	å¤©ä½¿ç³»
+	RC_Brute	åŠ¨ç‰©ç³»
+	RC_DemiHuman	äººå½¢ç³»
+	RC_Demon	æ¶é­”ç³»
+	RC_Dragon	é¾™ç³»
+	RC_Fish		é±¼è´ç³»
+	RC_Formless	æ— å½¢ç³»
+	RC_Insect	æ˜†è™«ç³»
+	RC_Plant	æ¤ç‰©ç³»
+	RC_Player	ç©å®¶
+	RC_Undead	ä¸æ­»ç³»
+	RC_All		æ‰€æœ‰å±æ€§
 
 * Monster Race (mr)
-	RC2_Goblin	¸ç²¼ÁÖ
-	RC2_Kobold	È®ÑıÏµ
-	RC2_Orc		ÊŞÈËÏµ
-	RC2_Golem	ÑÒÊ¯Ïµ
-	RC2_Guardian	¼à»¤ÈËÄ§Îï
-	RC2_Ninja	ÈÌÕßÏµ
+	RC2_Goblin	å“¥å¸ƒæ—
+	RC2_Kobold	çŠ¬å¦–ç³»
+	RC2_Orc		å…½äººç³»
+	RC2_Golem	å²©çŸ³ç³»
+	RC2_Guardian	ç›‘æŠ¤äººé­”ç‰©
+	RC2_Ninja	å¿è€…ç³»
 	See 'db/(pre-)re/mob_race2_db.txt'
 
 * Class (c)
-	Class_Normal	Ò»°ãÄ§Îï
-	Class_Boss	BOSSÄ§Îï
-	Class_Guardian	¼à»¤ÈËÄ§Îï
-	Class_All	ËùÓĞÖÖ×å
+	Class_Normal	ä¸€èˆ¬é­”ç‰©
+	Class_Boss	BOSSé­”ç‰©
+	Class_Guardian	ç›‘æŠ¤äººé­”ç‰©
+	Class_All	æ‰€æœ‰ç§æ—
 
 * Size (s)
-	Size_Small	Ğ¡ĞÍ
-	Size_Medium	ÖĞĞÍ
-	Size_Large	´óĞÍ
-	Size_All	ËùÓĞ
+	Size_Small	å°å‹
+	Size_Medium	ä¸­å‹
+	Size_Large	å¤§å‹
+	Size_All	æ‰€æœ‰
 
 * Trigger criteria (bf)
-	µÚ1×é:	BF_SHORT:	½ü¾àÀë¹¥»÷	
-		BF_LONG:	Ô¶¾àÀë¹¥»÷
-		´Ë×éÈô²»¶¨Òå£¬ÔòÄ¬ÈÏBF_SHORT|BF_LONG
+	ç¬¬1ç»„:	BF_SHORT:	è¿‘è·ç¦»æ”»å‡»	
+		BF_LONG:	è¿œè·ç¦»æ”»å‡»
+		æ­¤ç»„è‹¥ä¸å®šä¹‰ï¼Œåˆ™é»˜è®¤BF_SHORT|BF_LONG
 						
-	µÚ2×é:	BF_WEAPON:	ÎïÀí¹¥»÷	
-		BF_MAGIC:	Ä§·¨¹¥»÷
-		BF_MISC:	ÌØÊâ¼¼ÄÜ
-		´Ë×éÈô²»¶¨Òå£¬ÔòÄ¬ÈÏBF_WEAPON
+	ç¬¬2ç»„:	BF_WEAPON:	ç‰©ç†æ”»å‡»	
+		BF_MAGIC:	é­”æ³•æ”»å‡»
+		BF_MISC:	ç‰¹æ®ŠæŠ€èƒ½
+		æ­¤ç»„è‹¥ä¸å®šä¹‰ï¼Œåˆ™é»˜è®¤BF_WEAPON
 
-	µÚ3×é:	BF_NORMAL:	ÆÕÍ¨¹¥»÷	
-		BF_SKILL:	¼¼ÄÜ¹¥»÷
-		´Ë×éÈô²»¶¨Òå£¬ÔòBF_WEAPONÊ±Ä¬ÈÏBF_NORMAL|BF_SKILL£¬·ñÔòBF_SKILL¡£
+	ç¬¬3ç»„:	BF_NORMAL:	æ™®é€šæ”»å‡»	
+		BF_SKILL:	æŠ€èƒ½æ”»å‡»
+		æ­¤ç»„è‹¥ä¸å®šä¹‰ï¼Œåˆ™BF_WEAPONæ—¶é»˜è®¤BF_NORMAL|BF_SKILLï¼Œå¦åˆ™BF_SKILLã€‚
 
 * Trigger criteria (atf)
-	Effect target: (²»Ö¸¶¨Ê±Ä¬ÈÏ×÷ÓÃÔÚ¶Ô·½)
-	ATF_SELF	×÷ÓÃÔÚ×Ô¼º
-	ATF_TARGET	×÷ÓÃÔÚ¶Ô·½
+	Effect target: (ä¸æŒ‡å®šæ—¶é»˜è®¤ä½œç”¨åœ¨å¯¹æ–¹)
+	ATF_SELF	ä½œç”¨åœ¨è‡ªå·±
+	ATF_TARGET	ä½œç”¨åœ¨å¯¹æ–¹
 	
-	Attack range criteria: (²»¶¨Òå£¬ÔòÄ¬ÈÏËùÓĞ)
-	BF_SHORT:	½ü¾àÀë¹¥»÷	
-	BF_LONG:	Ô¶¾àÀë¹¥»÷
+	Attack range criteria: (ä¸å®šä¹‰ï¼Œåˆ™é»˜è®¤æ‰€æœ‰)
+	BF_SHORT:	è¿‘è·ç¦»æ”»å‡»	
+	BF_LONG:	è¿œè·ç¦»æ”»å‡»
 	
-	Skill/attack type criteria: (²»¶¨Òå£¬ÔòÄ¬ÈÏÎïÀí¹¥»÷)
-	BF_WEAPON:	ÎïÀí¹¥»÷	
-	BF_MAGIC:	Ä§·¨¹¥»÷
-	BF_MISC:	ÌØÊâ¼¼ÄÜ
+	Skill/attack type criteria: (ä¸å®šä¹‰ï¼Œåˆ™é»˜è®¤ç‰©ç†æ”»å‡»)
+	BF_WEAPON:	ç‰©ç†æ”»å‡»	
+	BF_MAGIC:	é­”æ³•æ”»å‡»
+	BF_MISC:	ç‰¹æ®ŠæŠ€èƒ½
 
 * Other values:
 	Skill (sk): see 'db/(pre-)re/skill_db.txt' (NOTE: Both skill IDs and names, in quotes, are supported.)
@@ -124,10 +124,10 @@ The format of bonuses listed in this file is as follows:
 	6. Misc Bonuses
 
 ====================
-| 1. ÈËÎï»ù±¾ÊôĞÔ |
+| 1. äººç‰©åŸºæœ¬å±æ€§ |
 ====================
 
-»ù´¡ÊôĞÔ
+åŸºç¡€å±æ€§
 ----------
 bonus bStr,n;				STR +n
 bonus bAgi,n;				AGI +n
@@ -139,340 +139,340 @@ bonus bAgiVit,n;			AGI +n, VIT +n
 bonus bAgiDexStr,n;			AGI +n, DEX +n, STR +n
 bonus bAllStats,n;			STR +n, AGI + n, VIT + n, INT + n, DEX + n, LUK + n
 
-HP/SPÏà¹Ø
+HP/SPç›¸å…³
 -----
-bonus bMaxHP,n;    			HPÉÏÏŞ + n
-bonus bMaxHPrate,n;			HPÉÏÏŞ + n% 
-bonus bMaxSP,n;    			SPÉÏÏŞ + n
-bonus bMaxSPrate,n;			SPÉÏÏŞ + n%
+bonus bMaxHP,n;    			HPä¸Šé™ + n
+bonus bMaxHPrate,n;			HPä¸Šé™ + n% 
+bonus bMaxSP,n;    			SPä¸Šé™ + n
+bonus bMaxSPrate,n;			SPä¸Šé™ + n%
 
-¹¥»÷/·ÀÓùĞŞÕı
+æ”»å‡»/é˜²å¾¡ä¿®æ­£
 -------
-bonus bBaseAtk,n;  			»ù´¡¹¥»÷Á¦ + n
-bonus bAtk,n;      			ÎäÆ÷¹¥»÷Á¦ + n
-bonus bAtk2,n;     			ÎäÆ÷¹¥»÷Á¦ + n£¨Ê±×°£©
-bonus bAtkRate,n;  			ÎïÀí¹¥»÷Á¦ + n%
-bonus bWeaponAtkRate,n; 		ÎäÆ÷¹¥»÷Á¦ + n%
-bonus bMatk,n;     			Ä§·¨¹¥»÷Á¦ + n
-bonus bMatkRate,n; 			Ä§·¨¹¥»÷Á¦ + n%
-bonus bWeaponMatkRate,n;		ÎäÆ÷Ä§·¨¹¥»÷Á¦ + n% (½ö¸´ĞË°æÓĞĞ§)
-bonus bDef,n;      			×°±¸·ÀÓù + n
-bonus bDefRate,n;  			×°±¸·ÀÓù + n%
-bonus bDef2,n;     			VIT ·ÀÓù + n
-bonus bDef2Rate,n; 			VIT ·ÀÓù + n%
-bonus bMdef,n;     			×°±¸Ä§·¨·ÀÓù + n
-bonus bMdefRate,n; 			×°±¸Ä§·¨·ÀÓù + n%
-bonus bMdef2,n;    			INT Ä§·¨·ÀÓù + n
-bonus bMdef2Rate,n;			INT Ä§·¨·ÀÓù + n%
+bonus bBaseAtk,n;  			åŸºç¡€æ”»å‡»åŠ› + n
+bonus bAtk,n;      			æ­¦å™¨æ”»å‡»åŠ› + n
+bonus bAtk2,n;     			æ­¦å™¨æ”»å‡»åŠ› + nï¼ˆæ—¶è£…ï¼‰
+bonus bAtkRate,n;  			ç‰©ç†æ”»å‡»åŠ› + n%
+bonus bWeaponAtkRate,n; 		æ­¦å™¨æ”»å‡»åŠ› + n%
+bonus bMatk,n;     			é­”æ³•æ”»å‡»åŠ› + n
+bonus bMatkRate,n; 			é­”æ³•æ”»å‡»åŠ› + n%
+bonus bWeaponMatkRate,n;		æ­¦å™¨é­”æ³•æ”»å‡»åŠ› + n% (ä»…å¤å…´ç‰ˆæœ‰æ•ˆ)
+bonus bDef,n;      			è£…å¤‡é˜²å¾¡ + n
+bonus bDefRate,n;  			è£…å¤‡é˜²å¾¡ + n%
+bonus bDef2,n;     			VIT é˜²å¾¡ + n
+bonus bDef2Rate,n; 			VIT é˜²å¾¡ + n%
+bonus bMdef,n;     			è£…å¤‡é­”æ³•é˜²å¾¡ + n
+bonus bMdefRate,n; 			è£…å¤‡é­”æ³•é˜²å¾¡ + n%
+bonus bMdef2,n;    			INT é­”æ³•é˜²å¾¡ + n
+bonus bMdef2Rate,n;			INT é­”æ³•é˜²å¾¡ + n%
 
-ÈËÎïÆäËûÊôĞÔ
+äººç‰©å…¶ä»–å±æ€§
 ----------------
-bonus bHit,n;         			ÃüÖĞ + n
-bonus bHitRate,n;     			ÃüÖĞ + n%
-bonus bCritical,n;    			±©»÷ + n
-bonus bCriticalLong,n;			Ô¶³Ì¹¥»÷±©»÷ + n (ÈËÎïÃæ°åÖĞ²»»áÏÔÊ¾)
-bonus2 bCriticalAddRace,r,n;		¶ÔÖÖ×å r Ôö¼Ó n ±¬»÷ÂÊ
-bonus bCriticalRate,n;			±©»÷ + n%
-bonus bFlee,n;        			»Ø±Ü + n
-bonus bFleeRate,n;    			»Ø±Ü + n%
-bonus bFlee2,n;       			ÍêÈ«»Ø±Ü + n
-bonus bFlee2Rate,n;   			ÍêÈ«»Ø±Ü + n%
-bonus bPerfectHitRate,n;		±ØÖĞ¹¥»÷ÂÊ n% (×î´óÖµÓĞĞ§)
-bonus bPerfectHitAddRate,n;		±ØÖĞ¹¥»÷ÂÊ + n%
-bonus bSpeedRate,n;   			ÒÆ¶¯ËÙ¶È + n% (×î´óÖµÓĞĞ§)
-bonus bSpeedAddRate,n;			ÒÆ¶¯ËÙ¶È + n% 
-bonus bAspd,n;        			¹¥»÷ËÙ¶È + n
-bonus bAspdRate,n;    			¹¥»÷ËÙ¶È + n%
-bonus bAtkRange,n;    			¹¥»÷¾àÀë + n
-bonus bAddMaxWeight,n;			¸ºÖØ + n (1=0.1¸ºÖØ)
+bonus bHit,n;         			å‘½ä¸­ + n
+bonus bHitRate,n;     			å‘½ä¸­ + n%
+bonus bCritical,n;    			æš´å‡» + n
+bonus bCriticalLong,n;			è¿œç¨‹æ”»å‡»æš´å‡» + n (äººç‰©é¢æ¿ä¸­ä¸ä¼šæ˜¾ç¤º)
+bonus2 bCriticalAddRace,r,n;		å¯¹ç§æ— r å¢åŠ  n çˆ†å‡»ç‡
+bonus bCriticalRate,n;			æš´å‡» + n%
+bonus bFlee,n;        			å›é¿ + n
+bonus bFleeRate,n;    			å›é¿ + n%
+bonus bFlee2,n;       			å®Œå…¨å›é¿ + n
+bonus bFlee2Rate,n;   			å®Œå…¨å›é¿ + n%
+bonus bPerfectHitRate,n;		å¿…ä¸­æ”»å‡»ç‡ n% (æœ€å¤§å€¼æœ‰æ•ˆ)
+bonus bPerfectHitAddRate,n;		å¿…ä¸­æ”»å‡»ç‡ + n%
+bonus bSpeedRate,n;   			ç§»åŠ¨é€Ÿåº¦ + n% (æœ€å¤§å€¼æœ‰æ•ˆ)
+bonus bSpeedAddRate,n;			ç§»åŠ¨é€Ÿåº¦ + n% 
+bonus bAspd,n;        			æ”»å‡»é€Ÿåº¦ + n
+bonus bAspdRate,n;    			æ”»å‡»é€Ÿåº¦ + n%
+bonus bAtkRange,n;    			æ”»å‡»è·ç¦» + n
+bonus bAddMaxWeight,n;			è´Ÿé‡ + n (1=0.1è´Ÿé‡)
 
 =======================
-| 2. ÈËÎïÀ©Õ¹ÊôĞÔ |
+| 2. äººç‰©æ‰©å±•å±æ€§ |
 =======================
 
-HP/SPÏà¹Ø
+HP/SPç›¸å…³
 -----
-bonus bHPrecovRate,n;   		HP×ÔÈ»»Ö¸´ÂÊ + n%
-bonus bSPrecovRate,n;   		SP×ÔÈ»»Ö¸´ÂÊ + n%
-bonus2 bHPRegenRate,n,t;		Ã¿ t ºÁÃëµÃµ½ n HP
-bonus2 bHPLossRate,n,t; 		Ã¿ t ºÁÃëÊ§È¥ n HP
-bonus2 bSPRegenRate,n,t;		Ã¿ t ºÁÃëµÃµ½ n SP
-bonus2 bSPLossRate,n,t; 		Ã¿ t ºÁÃëÊ§È¥ n SP
-bonus2 bRegenPercentHP,n,t;		Ã¿ t ºÁÃëµÃµ½ n% HP
-bonus2 bRegenPercentSP,n,t;		Ã¿ t ºÁÃëµÃµ½ n% SP
-bonus bNoRegen,x;       		HP/SPÎŞ·¨×ÔÈ»»Ö¸´ (x: 1=HP, 2=SP)
+bonus bHPrecovRate,n;   		HPè‡ªç„¶æ¢å¤ç‡ + n%
+bonus bSPrecovRate,n;   		SPè‡ªç„¶æ¢å¤ç‡ + n%
+bonus2 bHPRegenRate,n,t;		æ¯ t æ¯«ç§’å¾—åˆ° n HP
+bonus2 bHPLossRate,n,t; 		æ¯ t æ¯«ç§’å¤±å» n HP
+bonus2 bSPRegenRate,n,t;		æ¯ t æ¯«ç§’å¾—åˆ° n SP
+bonus2 bSPLossRate,n,t; 		æ¯ t æ¯«ç§’å¤±å» n SP
+bonus2 bRegenPercentHP,n,t;		æ¯ t æ¯«ç§’å¾—åˆ° n% HP
+bonus2 bRegenPercentSP,n,t;		æ¯ t æ¯«ç§’å¾—åˆ° n% SP
+bonus bNoRegen,x;       		HP/SPæ— æ³•è‡ªç„¶æ¢å¤ (x: 1=HP, 2=SP)
 
-bonus bUseSPrate,n;         		SPÏûºÄ + n%
-bonus2 bSkillUseSP,sk,n;    		¼¼ÄÜ sk SPÏûºÄ - n	//SEA bonus2 bUseSPValue,x,n;
-bonus2 bSkillUseSPrate,sk,n;		¼¼ÄÜ sk SPÏûºÄ - n%	//SEA bonus2 bUseSPrate,x,n;
+bonus bUseSPrate,n;         		SPæ¶ˆè€— + n%
+bonus2 bSkillUseSP,sk,n;    		æŠ€èƒ½ sk SPæ¶ˆè€— - n	//SEA bonus2 bUseSPValue,x,n;
+bonus2 bSkillUseSPrate,sk,n;		æŠ€èƒ½ sk SPæ¶ˆè€— - n%	//SEA bonus2 bUseSPrate,x,n;
 
-¹¥»÷/·ÀÓùĞŞÕı
+æ”»å‡»/é˜²å¾¡ä¿®æ­£
 -------
-bonus2 bSkillAtk,sk,n;    		Ôö¼Ó¼¼ÄÜ sk ÉËº¦ n% (Ö§³Ö¼¼ÄÜÃû)
-bonus bLongAtkRate,n;     		Ôö¼Ó n% Ô¶¾àÀë¹¥»÷ÉËº¦
-bonus bCritAtkRate,n;     		Ôö¼Ó n% ±©»÷ÉËº¦
-bonus bCriticalDef,n;     		¼õÉÙ n% ±»±©»÷¼¸ÂÊ
-bonus2 bWeaponAtk,w,n;    		×°±¸ w ÀàĞÍÎäÆ÷Ôö¼Ó n ¹¥»÷Á¦
-bonus2 bWeaponDamageRate,w,n;		×°±¸ w ÀàĞÍÎäÆ÷Ôö¼Ó n% ¹¥»÷Á¦
+bonus2 bSkillAtk,sk,n;    		å¢åŠ æŠ€èƒ½ sk ä¼¤å®³ n% (æ”¯æŒæŠ€èƒ½å)
+bonus bLongAtkRate,n;     		å¢åŠ  n% è¿œè·ç¦»æ”»å‡»ä¼¤å®³
+bonus bCritAtkRate,n;     		å¢åŠ  n% æš´å‡»ä¼¤å®³
+bonus bCriticalDef,n;     		å‡å°‘ n% è¢«æš´å‡»å‡ ç‡
+bonus2 bWeaponAtk,w,n;    		è£…å¤‡ w ç±»å‹æ­¦å™¨å¢åŠ  n æ”»å‡»åŠ›
+bonus2 bWeaponDamageRate,w,n;		è£…å¤‡ w ç±»å‹æ­¦å™¨å¢åŠ  n% æ”»å‡»åŠ›
 
-bonus bNearAtkDef,n; 			¼õÉÙ n% ½ü¾àÀëÎïÀí¹¥»÷ÉËº¦
-bonus bLongAtkDef,n; 			¼õÉÙ n% Ô¶¾àÀë¹¥»÷ÉËº¦
-bonus bMagicAtkDef,n;			¼õÉÙ n% ½ü¾àÀëÄ§·¨¹¥»÷ÉËº¦
-bonus bMiscAtkDef,n; 			¼õÉÙ n% ÌØÊâ¹¥»÷ÉËº¦ (ÏİÚå, ÁÔÓ¥, ... µÈ)
+bonus bNearAtkDef,n; 			å‡å°‘ n% è¿‘è·ç¦»ç‰©ç†æ”»å‡»ä¼¤å®³
+bonus bLongAtkDef,n; 			å‡å°‘ n% è¿œè·ç¦»æ”»å‡»ä¼¤å®³
+bonus bMagicAtkDef,n;			å‡å°‘ n% è¿‘è·ç¦»é­”æ³•æ”»å‡»ä¼¤å®³
+bonus bMiscAtkDef,n; 			å‡å°‘ n% ç‰¹æ®Šæ”»å‡»ä¼¤å®³ (é™·é˜±, çŒé¹°, ... ç­‰)
 
-bonus bNoWeaponDamage,n;		ÎïÀíÉËº¦¼õÉÙn%
-bonus bNoMagicDamage,n; 		Ä§·¨ÉËº¦¼õÉÙn%£¨º¬ÖÎÓú£©
-bonus bNoMiscDamage,n;  		ÌØÊâÉËº¦¼õÉÙn%
+bonus bNoWeaponDamage,n;		ç‰©ç†ä¼¤å®³å‡å°‘n%
+bonus bNoMagicDamage,n; 		é­”æ³•ä¼¤å®³å‡å°‘n%ï¼ˆå«æ²»æ„ˆï¼‰
+bonus bNoMiscDamage,n;  		ç‰¹æ®Šä¼¤å®³å‡å°‘n%
 
-»Ö¸´Ïà¹Ø
+æ¢å¤ç›¸å…³
 -------
-bonus bHealPower,n;      			Ôö¼Ó n% ¼¼ÄÜÖÎÓúĞ§¹û
-bonus bHealPower2,n;     			Ôö¼Ó n% ±»¼¼ÄÜÖÎÓúĞ§¹û
-bonus2 bSkillHeal,sk,n;  			Ê¹ÓÃÊ±£¬Ôö¼ÓÖÎÓú¼¼ÄÜ sk Ğ§¹û n% (Ö§³Ö¼¼ÄÜÃû)
-bonus2 bSkillHeal2,sk,n; 			±»Ê¹ÓÃÊ±£¬Ôö¼ÓÖÎÓú¼¼ÄÜ sk Ğ§¹û n% (Ö§³Ö¼¼ÄÜÃû)
-bonus bAddItemHealRate,n;			»Ö¸´ÀàµÀ¾ßĞ§¹ûÉÏÉı n%
-bonus2 bAddItemHealRate,iid,n;			IDÎªiidµÄ»Ö¸´ÀàµÀ¾ßĞ§¹ûÉÏÉı n%
-bonus2 bAddItemGroupHealRate,ig,n;		×é±ğÎªigµÄ»Ö¸´ÀàµÀ¾ßĞ§¹ûÉÏÉı n%£¨IG_Fruit/IG_Meat/IG_Candy/IG_Juice/IG_Fish/IG_Food£©
+bonus bHealPower,n;      			å¢åŠ  n% æŠ€èƒ½æ²»æ„ˆæ•ˆæœ
+bonus bHealPower2,n;     			å¢åŠ  n% è¢«æŠ€èƒ½æ²»æ„ˆæ•ˆæœ
+bonus2 bSkillHeal,sk,n;  			ä½¿ç”¨æ—¶ï¼Œå¢åŠ æ²»æ„ˆæŠ€èƒ½ sk æ•ˆæœ n% (æ”¯æŒæŠ€èƒ½å)
+bonus2 bSkillHeal2,sk,n; 			è¢«ä½¿ç”¨æ—¶ï¼Œå¢åŠ æ²»æ„ˆæŠ€èƒ½ sk æ•ˆæœ n% (æ”¯æŒæŠ€èƒ½å)
+bonus bAddItemHealRate,n;			æ¢å¤ç±»é“å…·æ•ˆæœä¸Šå‡ n%
+bonus2 bAddItemHealRate,iid,n;			IDä¸ºiidçš„æ¢å¤ç±»é“å…·æ•ˆæœä¸Šå‡ n%
+bonus2 bAddItemGroupHealRate,ig,n;		ç»„åˆ«ä¸ºigçš„æ¢å¤ç±»é“å…·æ•ˆæœä¸Šå‡ n%ï¼ˆIG_Fruit/IG_Meat/IG_Candy/IG_Juice/IG_Fish/IG_Foodï¼‰
 
-Ó½³ª/ÑÓ³ÙÏà¹Ø
+å’å”±/å»¶è¿Ÿç›¸å…³
 ---------------
-bonus bCastrate,n;             		¿É±äÓ½³ªÊ±¼ä + n%
-bonus2 bCastrate,sk,n;         		Ôö¼Ó sk ¼¼ÄÜ n% µÄ¿É±äÓ½³ªÊ±¼ä (Ö§³Ö¼¼ÄÜÃû)
+bonus bCastrate,n;             		å¯å˜å’å”±æ—¶é—´ + n%
+bonus2 bCastrate,sk,n;         		å¢åŠ  sk æŠ€èƒ½ n% çš„å¯å˜å’å”±æ—¶é—´ (æ”¯æŒæŠ€èƒ½å)
 
-bonus bFixedCastrate,n;        		¹Ì¶¨Ó½³ªÊ±¼ä + n%£¨¸´ĞËºóÓĞĞ§£©
-bonus2 bFixedCastrate,sk,n;    		Ôö¼Ó sk¼¼ÄÜ n% µÄ¿É¹Ì¶¨³ªÊ±¼ä (Ö§³Ö¼¼ÄÜÃû)
+bonus bFixedCastrate,n;        		å›ºå®šå’å”±æ—¶é—´ + n%ï¼ˆå¤å…´åæœ‰æ•ˆï¼‰
+bonus2 bFixedCastrate,sk,n;    		å¢åŠ  skæŠ€èƒ½ n% çš„å¯å›ºå®šå”±æ—¶é—´ (æ”¯æŒæŠ€èƒ½å)
 
-bonus bVariableCastrate,n;     		¿É±äÓ½³ªÊ±¼ä + n%(¸´ĞËºóÃ»ÓĞ¶¨ÒåµÈÓÚbonus bCastrate,n; )
-bonus2 bVariableCastrate,sk,n; 		Ôö¼Ó sk ¼¼ÄÜ n% µÄ¿É±äÓ½³ªÊ±¼ä (Ö§³Ö¼¼ÄÜÃû)
+bonus bVariableCastrate,n;     		å¯å˜å’å”±æ—¶é—´ + n%(å¤å…´åæ²¡æœ‰å®šä¹‰ç­‰äºbonus bCastrate,n; )
+bonus2 bVariableCastrate,sk,n; 		å¢åŠ  sk æŠ€èƒ½ n% çš„å¯å˜å’å”±æ—¶é—´ (æ”¯æŒæŠ€èƒ½å)
 
-bonus bFixedCast,t;            		ËùÓĞ¼¼ÄÜ¹Ì¶¨Ó½³ªÊ±¼ä + t ºÁÃë£¨1000ºÁÃë=1Ãë|¸´ĞËºóÓĞĞ§£©
-bonus2 bSkillFixedCast,sk,t;   		sk ¼¼ÄÜ¹Ì¶¨Ó½³ªÊ±¼ä + t ºÁÃë£¨1000ºÁÃë=1Ãë|¸´ĞËºóÓĞĞ§£©
-bonus bVariableCast,t;         		ËùÓĞ¼¼ÄÜ¿É±äÓ½³ªÊ±¼ä + t ºÁÃë£¨1000ºÁÃë=1Ãë|¸´ĞËºóÓĞĞ§£©
-bonus2 bSkillVariableCast,sk,t;		sk ¼¼ÄÜ¿É±äÓ½³ªÊ±¼ä + t ºÁÃë£¨1000ºÁÃë=1Ãë|¸´ĞËºóÓĞĞ§£©
+bonus bFixedCast,t;            		æ‰€æœ‰æŠ€èƒ½å›ºå®šå’å”±æ—¶é—´ + t æ¯«ç§’ï¼ˆ1000æ¯«ç§’=1ç§’|å¤å…´åæœ‰æ•ˆï¼‰
+bonus2 bSkillFixedCast,sk,t;   		sk æŠ€èƒ½å›ºå®šå’å”±æ—¶é—´ + t æ¯«ç§’ï¼ˆ1000æ¯«ç§’=1ç§’|å¤å…´åæœ‰æ•ˆï¼‰
+bonus bVariableCast,t;         		æ‰€æœ‰æŠ€èƒ½å¯å˜å’å”±æ—¶é—´ + t æ¯«ç§’ï¼ˆ1000æ¯«ç§’=1ç§’|å¤å…´åæœ‰æ•ˆï¼‰
+bonus2 bSkillVariableCast,sk,t;		sk æŠ€èƒ½å¯å˜å’å”±æ—¶é—´ + t æ¯«ç§’ï¼ˆ1000æ¯«ç§’=1ç§’|å¤å…´åæœ‰æ•ˆï¼‰
 
-bonus bNoCastCancel,n; 			³ıGVG³¡µØÍâ£¬Ó½³ª²»»áÖĞ¶Ï¡£nÎŞÒâÒå
-bonus bNoCastCancel2,n;			Ó½³ª²»»áÖĞ¶Ï¡£nÎŞÒâÒå
+bonus bNoCastCancel,n; 			é™¤GVGåœºåœ°å¤–ï¼Œå’å”±ä¸ä¼šä¸­æ–­ã€‚næ— æ„ä¹‰
+bonus bNoCastCancel2,n;			å’å”±ä¸ä¼šä¸­æ–­ã€‚næ— æ„ä¹‰
 
-bonus bDelayrate,n;        		¼¼ÄÜÑÓ³ÙÊ±¼ä + n%
-bonus2 bSkillCooldown,sk,t;		sk ¼¼ÄÜÀäÈ´Ê±¼ä + t ºÁÃë£¨1000ºÁÃë=1Ãë|¸´ĞËºóÓĞĞ§£©
+bonus bDelayrate,n;        		æŠ€èƒ½å»¶è¿Ÿæ—¶é—´ + n%
+bonus2 bSkillCooldown,sk,t;		sk æŠ€èƒ½å†·å´æ—¶é—´ + t æ¯«ç§’ï¼ˆ1000æ¯«ç§’=1ç§’|å¤å…´åæœ‰æ•ˆï¼‰
 
 =============================
-| 3. ¸÷ÖÖÌØĞÔÊôĞÔĞŞÕı |
+| 3. å„ç§ç‰¹æ€§å±æ€§ä¿®æ­£ |
 =============================
 
-ÉËº¦ĞŞÕı
+ä¼¤å®³ä¿®æ­£
 ----------------
-bonus2 bAddEle,e,x;       		ÎïÀí¹¥»÷Ê±£¬¶ÔÊôĞÔ e Ôö¼Ó x% µÄÉËº¦
-bonus3 bAddEle,e,x,bf;    		ÎïÀí¹¥»÷Ê±£¬¶ÔÊôĞÔ e Ôö¼Ó x% µÄÉËº¦£¨ÔÚbfÌõ¼şÏÂ£©
-bonus2 bMagicAddEle,e,x;  		Ä§·¨¹¥»÷Ê±£¬¶ÔÊôĞÔ e Ôö¼Ó x% µÄÉËº¦
-bonus2 bSubEle,e,x;       		¼õÉÙÀ´×ÔÊôĞÔ e µÄÉËº¦ x%
-bonus3 bSubEle,e,x,bf;    		¼õÉÙÀ´×ÔÊôĞÔ e µÄÉËº¦ x%£¨ÔÚbfÌõ¼şÏÂ£©
-bonus2 bSubDefEle,e,x;    		¼õÉÙÀ´×ÔÊôĞÔ e Ä§ÎïÔì³ÉµÄÉËº¦ x%
+bonus2 bAddEle,e,x;       		ç‰©ç†æ”»å‡»æ—¶ï¼Œå¯¹å±æ€§ e å¢åŠ  x% çš„ä¼¤å®³
+bonus3 bAddEle,e,x,bf;    		ç‰©ç†æ”»å‡»æ—¶ï¼Œå¯¹å±æ€§ e å¢åŠ  x% çš„ä¼¤å®³ï¼ˆåœ¨bfæ¡ä»¶ä¸‹ï¼‰
+bonus2 bMagicAddEle,e,x;  		é­”æ³•æ”»å‡»æ—¶ï¼Œå¯¹å±æ€§ e å¢åŠ  x% çš„ä¼¤å®³
+bonus2 bSubEle,e,x;       		å‡å°‘æ¥è‡ªå±æ€§ e çš„ä¼¤å®³ x%
+bonus3 bSubEle,e,x,bf;    		å‡å°‘æ¥è‡ªå±æ€§ e çš„ä¼¤å®³ x%ï¼ˆåœ¨bfæ¡ä»¶ä¸‹ï¼‰
+bonus2 bSubDefEle,e,x;    		å‡å°‘æ¥è‡ªå±æ€§ e é­”ç‰©é€ æˆçš„ä¼¤å®³ x%
 
-bonus2 bAddRace,r,x;      		ÎïÀí¹¥»÷Ê±£¬¶ÔÖÖ×å r Ôö¼Ó x% µÄÉËº¦
-bonus2 bMagicAddRace,r,x; 		Ä§·¨¹¥»÷Ê±£¬¶ÔÖÖ×å r Ôö¼Ó x% µÄÉËº¦
-bonus2 bSubRace,r,x;      		¼õÉÙÀ´×ÔÖÖ×å r µÄÉËº¦ x%
+bonus2 bAddRace,r,x;      		ç‰©ç†æ”»å‡»æ—¶ï¼Œå¯¹ç§æ— r å¢åŠ  x% çš„ä¼¤å®³
+bonus2 bMagicAddRace,r,x; 		é­”æ³•æ”»å‡»æ—¶ï¼Œå¯¹ç§æ— r å¢åŠ  x% çš„ä¼¤å®³
+bonus2 bSubRace,r,x;      		å‡å°‘æ¥è‡ªç§æ— r çš„ä¼¤å®³ x%
 
-bonus2 bAddClass,c,x;     		ÎïÀí¹¥»÷Ê±£¬¶ÔÖÖ×å c Ôö¼Ó x% µÄÉËº¦
-bonus2 bMagicAddClass,c,x;		Ä§·¨¹¥»÷Ê±£¬¶ÔÖÖ×å c Ôö¼Ó x% µÄÉËº¦
-bonus2 bSubClass,c,x;     		¼õÉÙÀ´×ÔÖÖ×å c µÄÉËº¦ x%
+bonus2 bAddClass,c,x;     		ç‰©ç†æ”»å‡»æ—¶ï¼Œå¯¹ç§æ— c å¢åŠ  x% çš„ä¼¤å®³
+bonus2 bMagicAddClass,c,x;		é­”æ³•æ”»å‡»æ—¶ï¼Œå¯¹ç§æ— c å¢åŠ  x% çš„ä¼¤å®³
+bonus2 bSubClass,c,x;     		å‡å°‘æ¥è‡ªç§æ— c çš„ä¼¤å®³ x%
 
-bonus2 bAddSize,s,x;      		ÎïÀí¹¥»÷Ê±£¬¶ÔÌåĞÍ s Ôö¼Ó x% µÄÉËº¦
-bonus2 bMagicAddSize,s,x; 		Ä§·¨¹¥»÷Ê±£¬¶ÔÌåĞÍ s Ôö¼Ó x% µÄÉËº¦
-bonus2 bSubSize,s,x;      		¼õÉÙÀ´×ÔÌåĞÍ s µÄÉËº¦ x%
-bonus bNoSizeFix,n;       		¹¥»÷ÉËº¦ÎŞÊÓÌåĞÍ¡£nÎŞÒâÒå
+bonus2 bAddSize,s,x;      		ç‰©ç†æ”»å‡»æ—¶ï¼Œå¯¹ä½“å‹ s å¢åŠ  x% çš„ä¼¤å®³
+bonus2 bMagicAddSize,s,x; 		é­”æ³•æ”»å‡»æ—¶ï¼Œå¯¹ä½“å‹ s å¢åŠ  x% çš„ä¼¤å®³
+bonus2 bSubSize,s,x;      		å‡å°‘æ¥è‡ªä½“å‹ s çš„ä¼¤å®³ x%
+bonus bNoSizeFix,n;       		æ”»å‡»ä¼¤å®³æ— è§†ä½“å‹ã€‚næ— æ„ä¹‰
 
-bonus2 bAddDamageClass,mid,x;     	¶ÔidÎª mid µÄÄ§Îï/Ö°ÒµidÎª mid µÄÍæ¼ÒÔö¼Ó x% ÎïÀí¹¥»÷ÉËº¦
-bonus2 bAddMagicDamageClass,mid,x;	¶ÔidÎª mid µÄÄ§Îï/Ö°ÒµidÎª mid µÄÍæ¼ÒÔö¼Ó x% Ä§·¨¹¥»÷ÉËº¦
-                                  	£¨×î¶àÉèÖÃ10¸ö£¬³¬¹ı10¸ö×Ô¶¯ºöÂÔ£©
+bonus2 bAddDamageClass,mid,x;     	å¯¹idä¸º mid çš„é­”ç‰©/èŒä¸šidä¸º mid çš„ç©å®¶å¢åŠ  x% ç‰©ç†æ”»å‡»ä¼¤å®³
+bonus2 bAddMagicDamageClass,mid,x;	å¯¹idä¸º mid çš„é­”ç‰©/èŒä¸šidä¸º mid çš„ç©å®¶å¢åŠ  x% é­”æ³•æ”»å‡»ä¼¤å®³
+                                  	ï¼ˆæœ€å¤šè®¾ç½®10ä¸ªï¼Œè¶…è¿‡10ä¸ªè‡ªåŠ¨å¿½ç•¥ï¼‰
 
-bonus2 bAddDefMonster,mid,x;      	¼õÉÙidÎª mid µÄÄ§Îï/Ö°ÒµidÎª mid µÄÍæ¼Ò¸øÓëµÄÎïÀí¹¥»÷ÉËº¦ x%
-bonus2 bAddMDefMonster,mid,x;     	¼õÉÙidÎª mid µÄÄ§Îï/Ö°ÒµidÎª mid µÄÍæ¼Ò¸øÓëµÄÄ§·¨¹¥»÷ÉËº¦ x%
+bonus2 bAddDefMonster,mid,x;      	å‡å°‘idä¸º mid çš„é­”ç‰©/èŒä¸šidä¸º mid çš„ç©å®¶ç»™ä¸çš„ç‰©ç†æ”»å‡»ä¼¤å®³ x%
+bonus2 bAddMDefMonster,mid,x;     	å‡å°‘idä¸º mid çš„é­”ç‰©/èŒä¸šidä¸º mid çš„ç©å®¶ç»™ä¸çš„é­”æ³•æ”»å‡»ä¼¤å®³ x%
 
-bonus2 bAddRace2,mr,x;			¶ÔÖÖ×å mr µÄµĞÈËµÄÎïÀíÉËº¦Ôö¼Ó x%
-bonus2 bMagicAddRace2,mr,x;		¶ÔÖÖ×å mr µÄµĞÈËµÄÄ§·¨ÉËº¦Ôö¼Ó x%
-bonus2 bSubRace2,mr,x;			¶ÔÖÖ×å mr µÄµĞÈËµÄÉËº¦¼õÉÙ x%
+bonus2 bAddRace2,mr,x;			å¯¹ç§æ— mr çš„æ•Œäººçš„ç‰©ç†ä¼¤å®³å¢åŠ  x%
+bonus2 bMagicAddRace2,mr,x;		å¯¹ç§æ— mr çš„æ•Œäººçš„é­”æ³•ä¼¤å®³å¢åŠ  x%
+bonus2 bSubRace2,mr,x;			å¯¹ç§æ— mr çš„æ•Œäººçš„ä¼¤å®³å‡å°‘ x%
 
-bonus2 bSubSkill,sk,n;  		¼õÉÙÀ´×Ô sk ¼¼ÄÜ n% µÄÉËº¦
+bonus2 bSubSkill,sk,n;  		å‡å°‘æ¥è‡ª sk æŠ€èƒ½ n% çš„ä¼¤å®³
 
-bonus bAbsorbDmgMaxHP,n;		µ±ÊÜµ½µÄÉËº¦³¬¹ıMHPµÄ n%, ÄÇÃ´ÊÜµ½µÄÉËº¦Îª£¨×ÜÉËº¦-n%µÄMaxHP£© (Doesn't stack, will use the highest value)
+bonus bAbsorbDmgMaxHP,n;		å½“å—åˆ°çš„ä¼¤å®³è¶…è¿‡MHPçš„ n%, é‚£ä¹ˆå—åˆ°çš„ä¼¤å®³ä¸ºï¼ˆæ€»ä¼¤å®³-n%çš„MaxHPï¼‰ (Doesn't stack, will use the highest value)
 
-¹¥»÷/·ÀÓùÏà¹Ø
+æ”»å‡»/é˜²å¾¡ç›¸å…³
 -------
-bonus bAtkEle,e;          		ÎïÀí¹¥»÷¸½¼ÓÊôĞÔ e
-bonus bDefEle,e;          		·ÀÓù¸½¼ÓÊôĞÔ e
+bonus bAtkEle,e;          		ç‰©ç†æ”»å‡»é™„åŠ å±æ€§ e
+bonus bDefEle,e;          		é˜²å¾¡é™„åŠ å±æ€§ e
 
-bonus2 bMagicAtkEle,e,x;  		e ÊôĞÔÄ§·¨¹¥»÷Á¦Ôö¼Ó x%
+bonus2 bMagicAtkEle,e,x;  		e å±æ€§é­”æ³•æ”»å‡»åŠ›å¢åŠ  x%
 
-bonus bDefRatioAtkRace,r; 		´Ì´© r ÖÖ×åÎïÀí·ÀÓù£¨ÆÆ¼×Ğ§¹û£©
-bonus bDefRatioAtkEle,e;  		´Ì´© e ÊôĞÔÎïÀí·ÀÓù£¨ÆÆ¼×Ğ§¹û£©
-bonus bDefRatioAtkClass,c;		´Ì´© c ÖÖ×åÎïÀí·ÀÓù£¨ÆÆ¼×Ğ§¹û£©
+bonus bDefRatioAtkRace,r; 		åˆºç©¿ r ç§æ—ç‰©ç†é˜²å¾¡ï¼ˆç ´ç”²æ•ˆæœï¼‰
+bonus bDefRatioAtkEle,e;  		åˆºç©¿ e å±æ€§ç‰©ç†é˜²å¾¡ï¼ˆç ´ç”²æ•ˆæœï¼‰
+bonus bDefRatioAtkClass,c;		åˆºç©¿ c ç§æ—ç‰©ç†é˜²å¾¡ï¼ˆç ´ç”²æ•ˆæœï¼‰
 
-bonus4 bSetDefRace,r,n,t,y; 		ÎïÀí¹¥»÷Ê±£¬n %µÄÊ¹ÖÖ×å r µÄDEFÓÚ t ºÁÃëÄÚ¹Ì¶¨Îª y. 
-bonus4 bSetMDefRace,r,n,t,y;		Ä§·¨¹¥»÷Ê±£¬n %µÄÊ¹ÖÖ×å r µÄMDEFÓÚ t ºÁÃëÄÚ¹Ì¶¨Îª y. 
+bonus4 bSetDefRace,r,n,t,y; 		ç‰©ç†æ”»å‡»æ—¶ï¼Œn %çš„ä½¿ç§æ— r çš„DEFäº t æ¯«ç§’å†…å›ºå®šä¸º y. 
+bonus4 bSetMDefRace,r,n,t,y;		é­”æ³•æ”»å‡»æ—¶ï¼Œn %çš„ä½¿ç§æ— r çš„MDEFäº t æ¯«ç§’å†…å›ºå®šä¸º y. 
 
-ÎŞÊÓ·ÀÓù
+æ— è§†é˜²å¾¡
 ----------
-bonus bIgnoreDefEle,e;  		ÎŞÊÓ e ÊôĞÔÎïÀí·ÀÓù
-bonus bIgnoreDefRace,r; 		ÎŞÊÓ r ÖÖ×åÎïÀí·ÀÓù
-bonus2 bIgnoreDefRaceRate,r,n;  	ÎŞÊÓ r ÖÖ×å n% ÎïÀí·ÀÓù
-bonus bIgnoreDefClass,c;		ÎŞÊÓ c ÖÖ×åÎïÀí·ÀÓù
+bonus bIgnoreDefEle,e;  		æ— è§† e å±æ€§ç‰©ç†é˜²å¾¡
+bonus bIgnoreDefRace,r; 		æ— è§† r ç§æ—ç‰©ç†é˜²å¾¡
+bonus2 bIgnoreDefRaceRate,r,n;  	æ— è§† r ç§æ— n% ç‰©ç†é˜²å¾¡
+bonus bIgnoreDefClass,c;		æ— è§† c ç§æ—ç‰©ç†é˜²å¾¡
 
-bonus bIgnoreMDefRace,r;		ÎŞÊÓ r ÖÖ×åÄ§·¨·ÀÓù
-bonus2 bIgnoreMdefRaceRate,r,n; 	ÎŞÊÓ r ÖÖ×å n% Ä§·¨·ÀÓù
-bonus2 bIgnoreMdefRace2Rate,mr,n; 	ÎŞÊÓ mr ÖÖ×å n% Ä§·¨·ÀÓù
-bonus bIgnoreMDefEle,e; 		ÎŞÊÓ e ÊôĞÔÄ§·¨·ÀÓù
-bonus2 bIgnoreMdefClassRate,c,n;	ÎŞÊÓ c ÖÖ×å n% Ä§·¨·ÀÓù
+bonus bIgnoreMDefRace,r;		æ— è§† r ç§æ—é­”æ³•é˜²å¾¡
+bonus2 bIgnoreMdefRaceRate,r,n; 	æ— è§† r ç§æ— n% é­”æ³•é˜²å¾¡
+bonus2 bIgnoreMdefRace2Rate,mr,n; 	æ— è§† mr ç§æ— n% é­”æ³•é˜²å¾¡
+bonus bIgnoreMDefEle,e; 		æ— è§† e å±æ€§é­”æ³•é˜²å¾¡
+bonus2 bIgnoreMdefClassRate,c,n;	æ— è§† c ç§æ— n% é­”æ³•é˜²å¾¡
 
-¾­ÑéÏà¹Ø
+ç»éªŒç›¸å…³
 ----------
-bonus2 bExpAddRace,r,x; 		¶ÔÖÖ×å r Ôö¼Ó x% ¾­Ñé
-bonus2 bExpAddClass,c,x;		¶ÔÖÖ×å c Ôö¼Ó x% ¾­Ñé
+bonus2 bExpAddRace,r,x; 		å¯¹ç§æ— r å¢åŠ  x% ç»éªŒ
+bonus2 bExpAddClass,c,x;		å¯¹ç§æ— c å¢åŠ  x% ç»éªŒ
 
 =============================
-| 4. ×´Ì¬Ïà¹Ø |
+| 4. çŠ¶æ€ç›¸å…³ |
 =============================
-sc_start SC_FREEZE,10000,0,2500,0;	Ê¹ÓÃÊ±Ò»¶¨¼¸ÂÊ´¦ÓÚ´Ë×´Ì¬
-bonus2 bAddEff,eff,n;       		¹¥»÷Ê± n/100% Ê¹¶Ô·½²úÉú eff ×´Ì¬
-bonus2 bAddEff2,eff,n;      		¹¥»÷Ê± n/100% Ê¹×Ô¼º²úÉú eff ×´Ì¬
-bonus2 bAddEffWhenHit,eff,n;		ÊÜµ½¹¥»÷Ê± n/100% Ê¹¶Ô·½²úÉú eff ×´Ì¬
-bonus2 bResEff,eff,n;       		¼õÉÙ n/100% ²úÉú eff ×´Ì¬µÄ¼¸ÂÊ
+sc_start SC_FREEZE,10000,0,2500,0;	ä½¿ç”¨æ—¶ä¸€å®šå‡ ç‡å¤„äºæ­¤çŠ¶æ€
+bonus2 bAddEff,eff,n;       		æ”»å‡»æ—¶ n/100% ä½¿å¯¹æ–¹äº§ç”Ÿ eff çŠ¶æ€
+bonus2 bAddEff2,eff,n;      		æ”»å‡»æ—¶ n/100% ä½¿è‡ªå·±äº§ç”Ÿ eff çŠ¶æ€
+bonus2 bAddEffWhenHit,eff,n;		å—åˆ°æ”»å‡»æ—¶ n/100% ä½¿å¯¹æ–¹äº§ç”Ÿ eff çŠ¶æ€
+bonus2 bResEff,eff,n;       		å‡å°‘ n/100% äº§ç”Ÿ eff çŠ¶æ€çš„å‡ ç‡
 
-bonus3 bAddEff,eff,n,atf;       	¹¥»÷Ê± n/100% ¼¸ÂÊÔÚ atf Ìõ¼şÏÂ²úÉú eff ×´Ì¬
-bonus4 bAddEff,eff,n,atf,t;     	¹¥»÷Ê± n/100% ¼¸ÂÊÔÚ atf Ìõ¼şÏÂ²úÉú eff ×´Ì¬ t ºÁÃë
-bonus3 bAddEffWhenHit,eff,n,atf;	ÊÜµ½¹¥»÷Ê± n/100% ¼¸ÂÊÔÚ atf Ìõ¼şÏÂ²úÉú eff ×´Ì¬
-bonus4 bAddEffWhenHit,eff,n,atf,t;	ÊÜµ½¹¥»÷Ê± n/100% ¼¸ÂÊÔÚ atf Ìõ¼şÏÂ²úÉú eff ×´Ì¬ t ºÁÃë
+bonus3 bAddEff,eff,n,atf;       	æ”»å‡»æ—¶ n/100% å‡ ç‡åœ¨ atf æ¡ä»¶ä¸‹äº§ç”Ÿ eff çŠ¶æ€
+bonus4 bAddEff,eff,n,atf,t;     	æ”»å‡»æ—¶ n/100% å‡ ç‡åœ¨ atf æ¡ä»¶ä¸‹äº§ç”Ÿ eff çŠ¶æ€ t æ¯«ç§’
+bonus3 bAddEffWhenHit,eff,n,atf;	å—åˆ°æ”»å‡»æ—¶ n/100% å‡ ç‡åœ¨ atf æ¡ä»¶ä¸‹äº§ç”Ÿ eff çŠ¶æ€
+bonus4 bAddEffWhenHit,eff,n,atf,t;	å—åˆ°æ”»å‡»æ—¶ n/100% å‡ ç‡åœ¨ atf æ¡ä»¶ä¸‹äº§ç”Ÿ eff çŠ¶æ€ t æ¯«ç§’
 
-bonus3 bAddEffOnSkill,sk,eff,n;   	n/100% ¼¸ÂÊÔÚÊ¹ÓÃ sk ¼¼ÄÜÊ±¶Ô¼¼ÄÜ¶ÔÏó²úÉú eff ×´Ì¬
-bonus4 bAddEffOnSkill,sk,eff,n,atf;	n/100% ¼¸ÂÊÔÚÊ¹ÓÃ sk ¼¼ÄÜÊ±ÔÚ atf Ìõ¼şÏÂ²úÉú eff ×´Ì¬
-bonus5 bAddEffOnSkill,sk,eff,n,atf,t;	n/100% ¼¸ÂÊÔÚÊ¹ÓÃ sk ¼¼ÄÜÊ±ÔÚ atf Ìõ¼şÏÂ²úÉú eff ×´Ì¬ t ºÁÃë
+bonus3 bAddEffOnSkill,sk,eff,n;   	n/100% å‡ ç‡åœ¨ä½¿ç”¨ sk æŠ€èƒ½æ—¶å¯¹æŠ€èƒ½å¯¹è±¡äº§ç”Ÿ eff çŠ¶æ€
+bonus4 bAddEffOnSkill,sk,eff,n,atf;	n/100% å‡ ç‡åœ¨ä½¿ç”¨ sk æŠ€èƒ½æ—¶åœ¨ atf æ¡ä»¶ä¸‹äº§ç”Ÿ eff çŠ¶æ€
+bonus5 bAddEffOnSkill,sk,eff,n,atf,t;	n/100% å‡ ç‡åœ¨ä½¿ç”¨ sk æŠ€èƒ½æ—¶åœ¨ atf æ¡ä»¶ä¸‹äº§ç”Ÿ eff çŠ¶æ€ t æ¯«ç§’
 
-bonus2 bComaClass,c,n;			¹¥»÷Ê±£¬n/100% Ê¹ÖÖ×åÎª c µÄ¶Ô·½µÃµ½±ôËÀ×´Ì¬£¨ÎïÀí»òÄ§·¨£©
-bonus2 bComaRace,r,n;       		¹¥»÷Ê±£¬n/100% Ê¹ÖÖ×åÎª r µÄ¶Ô·½µÃµ½±ôËÀ×´Ì¬£¨ÎïÀí»òÄ§·¨£©
+bonus2 bComaClass,c,n;			æ”»å‡»æ—¶ï¼Œn/100% ä½¿ç§æ—ä¸º c çš„å¯¹æ–¹å¾—åˆ°æ¿’æ­»çŠ¶æ€ï¼ˆç‰©ç†æˆ–é­”æ³•ï¼‰
+bonus2 bComaRace,r,n;       		æ”»å‡»æ—¶ï¼Œn/100% ä½¿ç§æ—ä¸º r çš„å¯¹æ–¹å¾—åˆ°æ¿’æ­»çŠ¶æ€ï¼ˆç‰©ç†æˆ–é­”æ³•ï¼‰
 
-bonus2 bWeaponComaEle,e,n;  		ÎïÀí¹¥»÷Ê±£¬n/100% Ê¹ÊôĞÔÎª e µÄ¶Ô·½µÃµ½±ôËÀ×´Ì¬
-bonus2 bWeaponComaClass,c,n;		ÎïÀí¹¥»÷Ê±£¬n/100% Ê¹ÖÖ×åÎª c µÄ¶Ô·½µÃµ½±ôËÀ×´Ì¬
-bonus2 bWeaponComaRace,r,n; 		ÎïÀí¹¥»÷Ê±£¬n/100% Ê¹ÖÖ×åÎª r µÄ¶Ô·½µÃµ½±ôËÀ×´Ì¬
+bonus2 bWeaponComaEle,e,n;  		ç‰©ç†æ”»å‡»æ—¶ï¼Œn/100% ä½¿å±æ€§ä¸º e çš„å¯¹æ–¹å¾—åˆ°æ¿’æ­»çŠ¶æ€
+bonus2 bWeaponComaClass,c,n;		ç‰©ç†æ”»å‡»æ—¶ï¼Œn/100% ä½¿ç§æ—ä¸º c çš„å¯¹æ–¹å¾—åˆ°æ¿’æ­»çŠ¶æ€
+bonus2 bWeaponComaRace,r,n; 		ç‰©ç†æ”»å‡»æ—¶ï¼Œn/100% ä½¿ç§æ—ä¸º r çš„å¯¹æ–¹å¾—åˆ°æ¿’æ­»çŠ¶æ€
 
 ========================
-| 5. ×Ô¶¯Ó½³ª |
+| 5. è‡ªåŠ¨å’å”± |
 ========================
 NOTES:
   - For all AutoSpell bonuses, target must be within the spell's range to go off.
   - By default, AutoSpell skills are casted on target unless it is a self or support skill (inf = 4/16).
 
-bonus3 bAutoSpell,sk,y,n;       	¹¥»÷Ê± n/10% ¼¸ÂÊ×Ô¶¯Ó½³ªµÈ¼¶ y µÄ¼¼ÄÜ sk (Ö§³Ö¼¼ÄÜÃû)
-bonus3 bAutoSpellWhenHit,sk,y,n;	±»¹¥»÷Ê± n/10% ¼¸ÂÊ×Ô¶¯Ó½³ªµÈ¼¶ y µÄ¼¼ÄÜ sk (Ö§³Ö¼¼ÄÜÃû)
+bonus3 bAutoSpell,sk,y,n;       	æ”»å‡»æ—¶ n/10% å‡ ç‡è‡ªåŠ¨å’å”±ç­‰çº§ y çš„æŠ€èƒ½ sk (æ”¯æŒæŠ€èƒ½å)
+bonus3 bAutoSpellWhenHit,sk,y,n;	è¢«æ”»å‡»æ—¶ n/10% å‡ ç‡è‡ªåŠ¨å’å”±ç­‰çº§ y çš„æŠ€èƒ½ sk (æ”¯æŒæŠ€èƒ½å)
 
-bonus4 bAutoSpell,sk,y,n,i;          	¹¥»÷Ê± n/10% ¼¸ÂÊÔÚ i Ìõ¼şÏÂ×Ô¶¯Ó½³ªµÈ¼¶ y µÄ¼¼ÄÜ sk (Ö§³Ö¼¼ÄÜÃû)
-bonus5 bAutoSpell,sk,y,n,bf,i;       	¹¥»÷Ê± n/10% ¼¸ÂÊÔÚ i ºÍ bf Ìõ¼şÏÂ×Ô¶¯Ó½³ªµÈ¼¶ y µÄ¼¼ÄÜ sk (Ö§³Ö¼¼ÄÜÃû)
-bonus4 bAutoSpellWhenHit,sk,y,n,i;   	±»¹¥»÷Ê± n/10% ¼¸ÂÊÔÚ i Ìõ¼şÏÂ×Ô¶¯Ó½³ªµÈ¼¶ y µÄ¼¼ÄÜ sk
-bonus5 bAutoSpellWhenHit,sk,y,n,bf,i;	±»¹¥»÷Ê± n/10% ¼¸ÂÊÔÚ i ºÍ bf Ìõ¼şÏÂ×Ô¶¯Ó½³ªµÈ¼¶ y µÄ¼¼ÄÜ sk
-                                        i Ëù´ú±íµÄº¬Òå:
-					0=×÷ÓÃÔÚ×Ô¼º
-					1=×÷ÓÃÔÚ¶Ô·½
-					2=Ê¹ÓÃËæ»ú¼¼ÄÜµÈ¼¶[1~Ìõ¼şµÈ¼¶]
-					3=1+2 (Ëæ»úµÈ¼¶, ×÷ÓÃÔÚ¶Ô·½)
+bonus4 bAutoSpell,sk,y,n,i;          	æ”»å‡»æ—¶ n/10% å‡ ç‡åœ¨ i æ¡ä»¶ä¸‹è‡ªåŠ¨å’å”±ç­‰çº§ y çš„æŠ€èƒ½ sk (æ”¯æŒæŠ€èƒ½å)
+bonus5 bAutoSpell,sk,y,n,bf,i;       	æ”»å‡»æ—¶ n/10% å‡ ç‡åœ¨ i å’Œ bf æ¡ä»¶ä¸‹è‡ªåŠ¨å’å”±ç­‰çº§ y çš„æŠ€èƒ½ sk (æ”¯æŒæŠ€èƒ½å)
+bonus4 bAutoSpellWhenHit,sk,y,n,i;   	è¢«æ”»å‡»æ—¶ n/10% å‡ ç‡åœ¨ i æ¡ä»¶ä¸‹è‡ªåŠ¨å’å”±ç­‰çº§ y çš„æŠ€èƒ½ sk
+bonus5 bAutoSpellWhenHit,sk,y,n,bf,i;	è¢«æ”»å‡»æ—¶ n/10% å‡ ç‡åœ¨ i å’Œ bf æ¡ä»¶ä¸‹è‡ªåŠ¨å’å”±ç­‰çº§ y çš„æŠ€èƒ½ sk
+                                        i æ‰€ä»£è¡¨çš„å«ä¹‰:
+					0=ä½œç”¨åœ¨è‡ªå·±
+					1=ä½œç”¨åœ¨å¯¹æ–¹
+					2=ä½¿ç”¨éšæœºæŠ€èƒ½ç­‰çº§[1~æ¡ä»¶ç­‰çº§]
+					3=1+2 (éšæœºç­‰çº§, ä½œç”¨åœ¨å¯¹æ–¹)
 
-bonus4 bAutoSpellOnSkill,sk,x,y,n;  	n/10% ¼¸ÂÊÔÚÊ¹ÓÃ sk ¼¼ÄÜÊ±¶Ô¼¼ÄÜ¶ÔÏó×Ô¶¯Ó½³ª x ¼¼ÄÜ y ¼¶
-bonus5 bAutoSpellOnSkill,sk,x,y,n,i;	n/10% ¼¸ÂÊÔÚÊ¹ÓÃ sk ¼¼ÄÜÊ±ÔÚ i Ìõ¼şÏÂ×Ô¶¯Ó½³ª x ¼¼ÄÜ y ¼¶ (Ö§³Ö¼¼ÄÜÃû£¬¼¼ÄÜidÎª¸ºÊı¶Ô×Ô¼ºÊ¹ÓÃ)
-                                    	i Ëù´ú±íµÄº¬Òå:
-                                    	1=×÷ÓÃÔÚ¶Ô·½
-                                    	2=Ê¹ÓÃËæ»ú¼¼ÄÜµÈ¼¶
+bonus4 bAutoSpellOnSkill,sk,x,y,n;  	n/10% å‡ ç‡åœ¨ä½¿ç”¨ sk æŠ€èƒ½æ—¶å¯¹æŠ€èƒ½å¯¹è±¡è‡ªåŠ¨å’å”± x æŠ€èƒ½ y çº§
+bonus5 bAutoSpellOnSkill,sk,x,y,n,i;	n/10% å‡ ç‡åœ¨ä½¿ç”¨ sk æŠ€èƒ½æ—¶åœ¨ i æ¡ä»¶ä¸‹è‡ªåŠ¨å’å”± x æŠ€èƒ½ y çº§ (æ”¯æŒæŠ€èƒ½åï¼ŒæŠ€èƒ½idä¸ºè´Ÿæ•°å¯¹è‡ªå·±ä½¿ç”¨)
+                                    	i æ‰€ä»£è¡¨çš„å«ä¹‰:
+                                    	1=ä½œç”¨åœ¨å¯¹æ–¹
+                                    	2=ä½¿ç”¨éšæœºæŠ€èƒ½ç­‰çº§
 
 ===================
-| 6. ÆäËû |
+| 6. å…¶ä»– |
 ===================
 
-HP/SP ÎüÊÕ
+HP/SP å¸æ”¶
 -----------
-bonus bHPDrainValue,n;        		ÎïÀí¹¥»÷Ê±£¬HP ±ä»¯ n 
-bonus2 bHPDrainValueRace,r,n; 		ÎïÀí¹¥»÷ r ÖÖ×åÄ§ÎïÊ±£¬HP ±ä»¯ n 
-bonus2 bHpDrainValueClass,c,n;		ÎïÀí¹¥»÷ c ÖÖ×åÄ§ÎïÊ±£¬HP ±ä»¯ n 
+bonus bHPDrainValue,n;        		ç‰©ç†æ”»å‡»æ—¶ï¼ŒHP å˜åŒ– n 
+bonus2 bHPDrainValueRace,r,n; 		ç‰©ç†æ”»å‡» r ç§æ—é­”ç‰©æ—¶ï¼ŒHP å˜åŒ– n 
+bonus2 bHpDrainValueClass,c,n;		ç‰©ç†æ”»å‡» c ç§æ—é­”ç‰©æ—¶ï¼ŒHP å˜åŒ– n 
 
-bonus bSPDrainValue,n;        		ÎïÀí¹¥»÷Ê±£¬SP ±ä»¯ n 
-bonus2 bSPDrainValueRace,r,n; 		ÎïÀí¹¥»÷ r ÖÖ×åÄ§ÎïÊ±£¬SP ±ä»¯ n
-bonus2 bSpDrainValueClass,c,n;		ÎïÀí¹¥»÷ c ÖÖ×åÄ§ÎïÊ±£¬SP ±ä»¯ n 
+bonus bSPDrainValue,n;        		ç‰©ç†æ”»å‡»æ—¶ï¼ŒSP å˜åŒ– n 
+bonus2 bSPDrainValueRace,r,n; 		ç‰©ç†æ”»å‡» r ç§æ—é­”ç‰©æ—¶ï¼ŒSP å˜åŒ– n
+bonus2 bSpDrainValueClass,c,n;		ç‰©ç†æ”»å‡» c ç§æ—é­”ç‰©æ—¶ï¼ŒSP å˜åŒ– n 
 
-bonus2 bHPDrainRate,x,n;		µ¥ÌåÎïÀí¹¥»÷Ê± x/10 % ¼¸ÂÊ°ÑÉËº¦µÄ n% Ó¦ÓÃµ½HP
-bonus2 bSPDrainRate,x,n;		µ¥ÌåÎïÀí¹¥»÷Ê± x/10 % ¼¸ÂÊ°ÑÉËº¦µÄ n% Ó¦ÓÃµ½SP
+bonus2 bHPDrainRate,x,n;		å•ä½“ç‰©ç†æ”»å‡»æ—¶ x/10 % å‡ ç‡æŠŠä¼¤å®³çš„ n% åº”ç”¨åˆ°HP
+bonus2 bSPDrainRate,x,n;		å•ä½“ç‰©ç†æ”»å‡»æ—¶ x/10 % å‡ ç‡æŠŠä¼¤å®³çš„ n% åº”ç”¨åˆ°SP
 
-HP/SP ¼õÉÙ
+HP/SP å‡å°‘
 ------------
-bonus2 bHPVanishRate,x,n;		µ¥ÌåÎïÀí¹¥»÷Ê± x/10 % ¼¸ÂÊ¼õÉÙ n% ¶Ô·½HP
-bonus2 bSPVanishRate,x,n;		µ¥ÌåÎïÀí¹¥»÷Ê± x/10 % ¼¸ÂÊ¼õÉÙ n% ¶Ô·½SP
+bonus2 bHPVanishRate,x,n;		å•ä½“ç‰©ç†æ”»å‡»æ—¶ x/10 % å‡ ç‡å‡å°‘ n% å¯¹æ–¹HP
+bonus2 bSPVanishRate,x,n;		å•ä½“ç‰©ç†æ”»å‡»æ—¶ x/10 % å‡ ç‡å‡å°‘ n% å¯¹æ–¹SP
 
-bonus3 bHPVanishRaceRate,r,x,n;		µ¥ÌåÎïÀí¹¥»÷ r ÖÖ×åÊ± x/10 % ¼¸ÂÊ¼õÉÙ n% ¶Ô·½HP
-bonus3 bSPVanishRaceRate,r,x,n;		µ¥ÌåÎïÀí¹¥»÷ r ÖÖ×åÊ± x/10 % ¼¸ÂÊ¼õÉÙ n% ¶Ô·½SP
-bonus3 bStateNoRecoverRace,r,x,t;	µ¥ÌåÎïÀí¹¥»÷ÈÃ r ÖÖ×åÄ§Îï x/100% ¼¸ÂÊÏİÈëÎŞ·¨»Ö¸´×´Ì¬ t ºÁÃë
+bonus3 bHPVanishRaceRate,r,x,n;		å•ä½“ç‰©ç†æ”»å‡» r ç§æ—æ—¶ x/10 % å‡ ç‡å‡å°‘ n% å¯¹æ–¹HP
+bonus3 bSPVanishRaceRate,r,x,n;		å•ä½“ç‰©ç†æ”»å‡» r ç§æ—æ—¶ x/10 % å‡ ç‡å‡å°‘ n% å¯¹æ–¹SP
+bonus3 bStateNoRecoverRace,r,x,t;	å•ä½“ç‰©ç†æ”»å‡»è®© r ç§æ—é­”ç‰© x/100% å‡ ç‡é™·å…¥æ— æ³•æ¢å¤çŠ¶æ€ t æ¯«ç§’
 
-HP/SP »ñµÃ
+HP/SP è·å¾—
 ------------
-bonus bHPGainValue,n;     		ÒÔÎïÀí¹¥»÷É±ËÀÄ§ÎïÊ±µÃµ½ n HP
-bonus bSPGainValue,n;     		ÒÔÎïÀí¹¥»÷É±ËÀÄ§ÎïÊ±µÃµ½ n SP
-bonus2 bSPGainRace,r,n;   		ÎïÀí¹¥»÷É±ËÀ r ÖÖ×å¹ÖÎïÊ±£¬µÃµ½ n µãSP
-bonus bMagicHPGainValue,n;		ÒÔÄ§·¨¹¥»÷É±ËÀÄ§ÎïÊ±µÃµ½ n HP
-bonus bMagicSPGainValue,n;		ÒÔÄ§·¨¹¥»÷É±ËÀÄ§ÎïÊ±µÃµ½ n SP
+bonus bHPGainValue,n;     		ä»¥ç‰©ç†æ”»å‡»æ€æ­»é­”ç‰©æ—¶å¾—åˆ° n HP
+bonus bSPGainValue,n;     		ä»¥ç‰©ç†æ”»å‡»æ€æ­»é­”ç‰©æ—¶å¾—åˆ° n SP
+bonus2 bSPGainRace,r,n;   		ç‰©ç†æ”»å‡»æ€æ­» r ç§æ—æ€ªç‰©æ—¶ï¼Œå¾—åˆ° n ç‚¹SP
+bonus bMagicHPGainValue,n;		ä»¥é­”æ³•æ”»å‡»æ€æ­»é­”ç‰©æ—¶å¾—åˆ° n HP
+bonus bMagicSPGainValue,n;		ä»¥é­”æ³•æ”»å‡»æ€æ­»é­”ç‰©æ—¶å¾—åˆ° n SP
 
-ÉËº¦·´Éä
+ä¼¤å®³åå°„
 -------------
-bonus bShortWeaponDamageReturn,n;	·´Éä n% ½ü¾àÀëÎïÀíÉËº¦
-bonus bLongWeaponDamageReturn,n; 	·´Éä n% Ô¶¾àÀëÎïÀíÉËº¦
-bonus bMagicDamageReturn,n;      	n% ¼¸ÂÊ·´ÉäÈ«²¿Ä§·¨ÉËº¦
+bonus bShortWeaponDamageReturn,n;	åå°„ n% è¿‘è·ç¦»ç‰©ç†ä¼¤å®³
+bonus bLongWeaponDamageReturn,n; 	åå°„ n% è¿œè·ç¦»ç‰©ç†ä¼¤å®³
+bonus bMagicDamageReturn,n;      	n% å‡ ç‡åå°„å…¨éƒ¨é­”æ³•ä¼¤å®³
 
-ÍÑ×°/ ÆÆ»µ×°±¸
+è„±è£…/ ç ´åè£…å¤‡
 ---------------------
-bonus bUnstripableWeapon,n;		ÎäÆ÷ÎŞ·¨±»ÍÑ¡£nÎŞÒâÒå
-bonus bUnstripableArmor,n;		¿ø¼×ÎŞ·¨±»ÍÑ¡£nÎŞÒâÒå
-bonus bUnstripableHelm,n;		Í·¿øÎŞ·¨±»ÍÑ¡£nÎŞÒâÒå
-bonus bUnstripableShield,n;		¶ÜÅÆÎŞ·¨±»ÍÑ¡£nÎŞÒâÒå
-bonus bUnbreakable,n;			¼õÉÙÈ«²¿×°±¸Ëğ»µ¼¸ÂÊn%ÎŞ·¨Ëğ»µ¡£
+bonus bUnstripableWeapon,n;		æ­¦å™¨æ— æ³•è¢«è„±ã€‚næ— æ„ä¹‰
+bonus bUnstripableArmor,n;		ç›”ç”²æ— æ³•è¢«è„±ã€‚næ— æ„ä¹‰
+bonus bUnstripableHelm,n;		å¤´ç›”æ— æ³•è¢«è„±ã€‚næ— æ„ä¹‰
+bonus bUnstripableShield,n;		ç›¾ç‰Œæ— æ³•è¢«è„±ã€‚næ— æ„ä¹‰
+bonus bUnbreakable,n;			å‡å°‘å…¨éƒ¨è£…å¤‡æŸåå‡ ç‡n%æ— æ³•æŸåã€‚
 
-bonus bUnbreakableGarment,n;		Åû¼çÎŞ·¨Ëğ»µ¡£nÎŞÒâÒå
-bonus bUnbreakableWeapon,n;		ÎäÆ÷ÎŞ·¨Ëğ»µ¡£nÎŞÒâÒå
-bonus bUnbreakableArmor,n;		¿ø¼×ÎŞ·¨Ëğ»µ¡£nÎŞÒâÒå
-bonus bUnbreakableHelm,n;		Í·¿øÎŞ·¨Ëğ»µ¡£nÎŞÒâÒå
-bonus bUnbreakableShield,n;		¶ÜÅÆÎŞ·¨Ëğ»µ¡£nÎŞÒâÒå
-bonus bUnbreakableShoes,n;		Ğ¬×ÓÎŞ·¨Ëğ»µ¡£nÎŞÒâÒå
-bonus bUnbreakable,n;			¼õÉÙÈ«²¿×°±¸Ëğ»µ¼¸ÂÊn%ÎŞ·¨Ëğ»µ
+bonus bUnbreakableGarment,n;		æŠ«è‚©æ— æ³•æŸåã€‚næ— æ„ä¹‰
+bonus bUnbreakableWeapon,n;		æ­¦å™¨æ— æ³•æŸåã€‚næ— æ„ä¹‰
+bonus bUnbreakableArmor,n;		ç›”ç”²æ— æ³•æŸåã€‚næ— æ„ä¹‰
+bonus bUnbreakableHelm,n;		å¤´ç›”æ— æ³•æŸåã€‚næ— æ„ä¹‰
+bonus bUnbreakableShield,n;		ç›¾ç‰Œæ— æ³•æŸåã€‚næ— æ„ä¹‰
+bonus bUnbreakableShoes,n;		é‹å­æ— æ³•æŸåã€‚næ— æ„ä¹‰
+bonus bUnbreakable,n;			å‡å°‘å…¨éƒ¨è£…å¤‡æŸåå‡ ç‡n%æ— æ³•æŸå
 
-bonus bBreakWeaponRate,n;		n/100% ¼¸ÂÊÆÆ»µ¶Ô·½ÎäÆ÷
-bonus bBreakArmorRate,n;		n/100% ¼¸ÂÊÆÆ»µ¶Ô·½¿ø¼×
+bonus bBreakWeaponRate,n;		n/100% å‡ ç‡ç ´åå¯¹æ–¹æ­¦å™¨
+bonus bBreakArmorRate,n;		n/100% å‡ ç‡ç ´åå¯¹æ–¹ç›”ç”²
 
-Ä§ÎïËÀÍö½±Àø
+é­”ç‰©æ­»äº¡å¥–åŠ±
 -------------
-bonus2 bDropAddRace,r,x;		»÷É± r ÖÖ×åÄ§Îï, µôÂÊÔö¼Ó x%
-bonus2 bDropAddClass,c,x;		»÷É± c ÖÖ×åÄ§Îï, µôÂÊÔö¼Ó x%
+bonus2 bDropAddRace,r,x;		å‡»æ€ r ç§æ—é­”ç‰©, æ‰ç‡å¢åŠ  x%
+bonus2 bDropAddClass,c,x;		å‡»æ€ c ç§æ—é­”ç‰©, æ‰ç‡å¢åŠ  x%
 
-bonus3 bAddMonsterIdDropItem,iid,mid,n;	É±ËÀIDÎª mid Ä§ÎïÊ±, n/100% ¼¸ÂÊµôÂäÎïÆ· iid
-bonus2 bAddMonsterDropItem,iid,n;    	É±ËÀÄ§ÎïÊ±, n/100% ¼¸ÂÊµôÂäÎïÆ· iid 
-bonus3 bAddMonsterDropItem,iid,r,n;  	É±ËÀ r ÖÖ×åÄ§ÎïÊ±, n/100% ¼¸ÂÊµôÂäÎïÆ· iid 
-bonus3 bAddClassDropItem,iid,c,n;   	É±ËÀ c ÖÖ×åÄ§ÎïÊ±, n/100% ¼¸ÂÊµôÂäÎïÆ· iid 
-bonus2 bAddMonsterDropItemGroup,ig,n;	É±ËÀÄ§ÎïÊ±, n/100% ¼¸ÂÊµÃµ½ ig ×éµÀ¾ßÖĞµÄ1¸ö
-bonus3 bAddMonsterDropItemGroup,ig,r,n;	É±ËÀ r ÖÖ×åÄ§ÎïÊ±, n/100% ¼¸ÂÊµÃµ½ ig ×éµÀ¾ßÖĞµÄ1¸ö
-bonus3 bAddClassDropItemGroup,ig,c,n;	É±ËÀ c ÖÖ×åÄ§ÎïÊ±, n/100% ¼¸ÂÊµÃµ½ ig ×éµÀ¾ßÖĞµÄ1¸ö
-                                     	NOTE: Èç¹û 'n' Îª¸ºÊı, ÄÇÃ´¼¸ÂÊ¹«Ê½Îª:
-                                     	      ¼¸ÂÊ = -n*(Ä§ÎïµÈ¼¶/10)+1
-                                     	LIMIT: ×î¶àÉèÖÃ10¸öbonus£¬³¬¹ı×Ô¶¯ºöÂÔ
+bonus3 bAddMonsterIdDropItem,iid,mid,n;	æ€æ­»IDä¸º mid é­”ç‰©æ—¶, n/100% å‡ ç‡æ‰è½ç‰©å“ iid
+bonus2 bAddMonsterDropItem,iid,n;    	æ€æ­»é­”ç‰©æ—¶, n/100% å‡ ç‡æ‰è½ç‰©å“ iid 
+bonus3 bAddMonsterDropItem,iid,r,n;  	æ€æ­» r ç§æ—é­”ç‰©æ—¶, n/100% å‡ ç‡æ‰è½ç‰©å“ iid 
+bonus3 bAddClassDropItem,iid,c,n;   	æ€æ­» c ç§æ—é­”ç‰©æ—¶, n/100% å‡ ç‡æ‰è½ç‰©å“ iid 
+bonus2 bAddMonsterDropItemGroup,ig,n;	æ€æ­»é­”ç‰©æ—¶, n/100% å‡ ç‡å¾—åˆ° ig ç»„é“å…·ä¸­çš„1ä¸ª
+bonus3 bAddMonsterDropItemGroup,ig,r,n;	æ€æ­» r ç§æ—é­”ç‰©æ—¶, n/100% å‡ ç‡å¾—åˆ° ig ç»„é“å…·ä¸­çš„1ä¸ª
+bonus3 bAddClassDropItemGroup,ig,c,n;	æ€æ­» c ç§æ—é­”ç‰©æ—¶, n/100% å‡ ç‡å¾—åˆ° ig ç»„é“å…·ä¸­çš„1ä¸ª
+                                     	NOTE: å¦‚æœ 'n' ä¸ºè´Ÿæ•°, é‚£ä¹ˆå‡ ç‡å…¬å¼ä¸º:
+                                     	      å‡ ç‡ = -n*(é­”ç‰©ç­‰çº§/10)+1
+                                     	LIMIT: æœ€å¤šè®¾ç½®10ä¸ªbonusï¼Œè¶…è¿‡è‡ªåŠ¨å¿½ç•¥
 
-bonus2 bGetZenyNum,x,n;   		É±ËÀÄ§ÎïÊ±, n% ¼¸ÂÊµôÂä 1 ~ x zeny£¨xÒÔ×î´óÖµÎª×¼£©
-bonus2 bAddGetZenyNum,x,n;		É±ËÀÄ§ÎïÊ±, n% ¼¸ÂÊµôÂä 1 ~ x zeny£¨¿ÉÀÛ¼Ó£©
-                          		NOTE: Èç¹û n < 0, xÎª -x*Ä§ÎïµÈ¼¶.
+bonus2 bGetZenyNum,x,n;   		æ€æ­»é­”ç‰©æ—¶, n% å‡ ç‡æ‰è½ 1 ~ x zenyï¼ˆxä»¥æœ€å¤§å€¼ä¸ºå‡†ï¼‰
+bonus2 bAddGetZenyNum,x,n;		æ€æ­»é­”ç‰©æ—¶, n% å‡ ç‡æ‰è½ 1 ~ x zenyï¼ˆå¯ç´¯åŠ ï¼‰
+                          		NOTE: å¦‚æœ n < 0, xä¸º -x*é­”ç‰©ç­‰çº§.
 
-ÌØÊâĞ§¹û
+ç‰¹æ®Šæ•ˆæœ
 ------------
-bonus bDoubleRate,n;      		¶şµ¶Á¬»÷ÂÊ n% (ËùÓĞÎäÆ÷ÓĞĞ§ | ×î´óÖµÓĞĞ§)
-bonus bDoubleAddRate,n;   		¶şµ¶Á¬»÷ÂÊ + n% (ËùÓĞÎäÆ÷ÓĞĞ§)
-bonus bSplashRange,n;     		½¦ÉäÉËº¦·¶Î§ n (×î´óÖµÓĞĞ§)
-bonus bSplashAddRange,n;  		½¦ÉäÉËº¦·¶Î§ + n
-                          		NOTE: n ±íÊ¾ (2*n+1)*(2*n+1)¸öµ¥Ôª¸ñ·¶Î§
-bonus2 bAddSkillBlow,sk,n;		Ê¹ÓÃ¼¼ÄÜ sk Ê±»÷ÍË n ¸ñ (Ö§³Ö¼¼ÄÜÃû)
-bonus bNoKnockback,n;     		ÎŞ·¨±»»÷ÍË¡£nÎŞÒâÒå
-bonus bNoGemStone,n;      		³ıËæ»ú¼¼ÄÜĞèÒª1¸ö»ÆÉ«Ä§Á¦¿óÊ¯Íâ£¬¼¼ÄÜÎŞĞèÄ§Á¦¿óÊ¯¡£nÎŞÒâÒå
-bonus bIntravision,n;     		¿ÉÒÔ¿´¼ûÒşĞÎµ¥Î»¡£nÎŞÒâÒå
-bonus bPerfectHide,n;     		²»±»Ä§ÎïÖ÷¶¯¹¥»÷¡£nÎŞÒâÒå
-bonus bRestartFullRecover,n;		¸´»îÊ±, HP SPÈ«Âú¡£nÎŞÒâÒå
-bonus bClassChange,n;     		n/100% ¼¸ÂÊÊ¹Ä§Îï±äĞÎ
-bonus bAddStealRate,n;    		Ôö¼ÓÍµÇÔ³É¹¦ÂÊ n/100%
+bonus bDoubleRate,n;      		äºŒåˆ€è¿å‡»ç‡ n% (æ‰€æœ‰æ­¦å™¨æœ‰æ•ˆ | æœ€å¤§å€¼æœ‰æ•ˆ)
+bonus bDoubleAddRate,n;   		äºŒåˆ€è¿å‡»ç‡ + n% (æ‰€æœ‰æ­¦å™¨æœ‰æ•ˆ)
+bonus bSplashRange,n;     		æº…å°„ä¼¤å®³èŒƒå›´ n (æœ€å¤§å€¼æœ‰æ•ˆ)
+bonus bSplashAddRange,n;  		æº…å°„ä¼¤å®³èŒƒå›´ + n
+                          		NOTE: n è¡¨ç¤º (2*n+1)*(2*n+1)ä¸ªå•å…ƒæ ¼èŒƒå›´
+bonus2 bAddSkillBlow,sk,n;		ä½¿ç”¨æŠ€èƒ½ sk æ—¶å‡»é€€ n æ ¼ (æ”¯æŒæŠ€èƒ½å)
+bonus bNoKnockback,n;     		æ— æ³•è¢«å‡»é€€ã€‚næ— æ„ä¹‰
+bonus bNoGemStone,n;      		é™¤éšæœºæŠ€èƒ½éœ€è¦1ä¸ªé»„è‰²é­”åŠ›çŸ¿çŸ³å¤–ï¼ŒæŠ€èƒ½æ— éœ€é­”åŠ›çŸ¿çŸ³ã€‚næ— æ„ä¹‰
+bonus bIntravision,n;     		å¯ä»¥çœ‹è§éšå½¢å•ä½ã€‚næ— æ„ä¹‰
+bonus bPerfectHide,n;     		ä¸è¢«é­”ç‰©ä¸»åŠ¨æ”»å‡»ã€‚næ— æ„ä¹‰
+bonus bRestartFullRecover,n;		å¤æ´»æ—¶, HP SPå…¨æ»¡ã€‚næ— æ„ä¹‰
+bonus bClassChange,n;     		n/100% å‡ ç‡ä½¿é­”ç‰©å˜å½¢
+bonus bAddStealRate,n;    		å¢åŠ å·çªƒæˆåŠŸç‡ n/100%
 bonus bNoMadoFuel,n;			Nullify Magic Gear Fuel requirement for skills. (n is meaningless)
 
