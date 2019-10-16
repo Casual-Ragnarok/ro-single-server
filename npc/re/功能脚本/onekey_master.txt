@@ -99,6 +99,7 @@ TO_SUPER_STATUS:
 		sc_start SC_ASPDPOTION3,600000,10;									// 攻击加速状态3(比菠色克更快，例如刺客吃毒药)
 
 		skilleffect "SN_WINDWALK",0; sc_start SC_WINDWALK,600000,5;			// 风之步
+		sc_start SC_HALLUCINATIONWALK,600000,1;								// 幻影步
 		sc_start SC_ADRENALINE,600000,5;									// 速度激发
 		sc_start SC_WEAPONPERFECTION,600000,5;								// 无视体型
 		sc_start SC_MAXIMIZEPOWER,600000,5;									// 武器值最大化

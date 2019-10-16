@@ -47,7 +47,7 @@
 | 49 | SC_ENERGYCOAT | 能量外套 |
 | 50 | SC_BROKENARMOR | 防具破碎 |
 | 51 | SC_BROKENWEAPON | 武器破碎 |
-| 52 | SC_HALLUCINATION | 幻影步 |
+| 52 | SC_HALLUCINATION | 幻觉 |
 | 53 | SC_WEIGHT50 | 50趴负重 |
 | 54 | SC_WEIGHT90 | 90趴负重 |
 | 55 | SC_ASPDPOTION0 | 集中药水 |

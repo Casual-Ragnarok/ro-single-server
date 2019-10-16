@@ -1,13 +1,13 @@
-//===== rAthena Script ======================================= 
-//= God Item Quest - Mjolnir Seal
+//===== eAthena Script ======================================= 
+//= 雷神之锤封印任务
 //===== By: ================================================== 
 //= SinSloth
 //===== Current Version: ===================================== 
-//= 1.9
+//= 1.8
 //===== Compatible With: ===================================== 
-//= rAthena SVN
+//= eAthena
 //===== Description: ========================================= 
-//= Quest for breaking the seal of Mjolnir.
+//= 雷神之锤解除封印任务
 //===== Additional Comments: =================================
 //= 1.0 First version. Thanks to SinSloth for scripting it. [MasterOfMuppets]
 //= 1.1 Fixed wrong label names [Luups]
@@ -20,33 +20,30 @@
 //=     Corrected Sudi's and player's HP settings.
 //= 1.7 Fixed a copy/paste error in Nordri. [L0ne_W0lf]
 //= 1.8 Fixed item check for Oridecon. [L0ne_W0lf]
-//= 1.8a Added 'disable_items' command. [Euphy]
-//= 1.9 Renewal script update. [Euphy]
+//= +(c) 繁体中文化 [笨冰]
 //============================================================
 
-prontera,124,297,3	script	Tialfi	706,{
-	if (checkweight(1301,3) == 0) {
-		mes "- You are carrying too many items! -";
-		close;
-	}
-	if ($God3 < $@god_check1) {
+prontera,124,297,3	script	替尔匹	706,{
+	if ($God3 < 50) {
 		cutin "god_tialpi01",2;
-		mes "[Tialfi]";
-		mes "Hmmm...";
-		mes "I can feel a strange force growing stronger and stronger, somewhere in Rune-Midgard.";
-		next;
-		mes "[Tialfi]";
-		mes "Can you feel it?";
-		mes "Something must be";
-		mes "going on!";
+		mes "[替尔匹]";
+		mes "听听看吧...";
+		mes "现在在这块大陆某个地方上，";
+		mes "这巨大的力量，却以微弱的面貌";
+		mes "展露...";
+		mes "感觉到了吗? 无法预知的惊人事件";
+		mes "正扩展开来...!";
 	}
 	else {
-		if (god_mjo_0 == 11) {
+		if(god_mjo_0 == 11) {
 			cutin "god_tialpi01",2;
-			mes "[Tialfi]";
-			mes "I'm waiting for the day when I'll finally get to see Thor's thunder for myself. I believe that one of these days, my dream will become reality.";
+			mes "[替尔匹]";
+			mes "我将期待在世上的某个角落，";
+			mes "再次降临托尔先生天雷的那一刻，";
+			mes "因为我做的梦，我并不认为，";
+			mes "做为一个梦就结束了";
 		}
-		else if (god_mjo_1 == 2 && god_mjo_2 == 2 && god_mjo_3 == 2 && god_mjo_4 == 2) {
+		else if(god_mjo_1 == 2 && god_mjo_2 == 2 && god_mjo_3 == 2 && god_mjo_4 == 2) {
 			if (god_mjo_0 == 10) {
 				if ((countitem(756) > 49) && (countitem(757) > 49)) {
 					set .@gift,0;
@@ -68,7 +65,7 @@ prontera,124,297,3	script	Tialfi	706,{
 					else if (BaseJob == Job_Assassin){
 						set .@gift,6;
 					}
-					else if (BaseJob == Job_Crusader){
+					else if(BaseJob == Job_Crusader){
 						set .@gift,7;
 					}
 					else if (BaseJob == Job_Monk){
@@ -86,35 +83,39 @@ prontera,124,297,3	script	Tialfi	706,{
 					else if (BaseJob == Job_Bard){
 						set .@gift,12;
 					}
-					else if (BaseJob == Job_Hunter){
+					else if(BaseJob == Job_Hunter){
 						set .@gift,13;
 					}
 					else {
 						set .@gift,rand(1,13);
 					}
 					cutin "god_tialpi01",2;
-					mes "[Tialfi]";
-					mes "You came back!";
-					mes "In exchange for the ores that you have brought me, I will give you one of my family treasures.";
+					mes "[替尔匹]";
+					mes "你回来啦，本来要请你收下原石，";
+					mes "不过还不如给你，我们家族所传承下来的宝物，";
+					mes "我相信我们的祖先也认为，";
+					mes "把宝物发扬光大，";
+					mes "也是他们所乐意见到的";
 					next;
-					mes "[Tialfi]";
-					mes "You have two options in choosing a treasure. You can have a treasure that will be useful to yourself, or something that may suit one of your friends.";
+					mes "[替尔匹]";
+					mes "并且，可以让你们做选择，";
+					mes "请问你是需要自己要用的东西吗，或是对其它人更有用呢...";
+					mes "请问你需要哪一种?";
 					next;
-					mes "[Tialfi]";
-					mes "So which treasure";
-					mes "would you like to have?";
-					next;
-					switch(select("An item that I can use.:An item that my friend can use.")) {
+					switch(select("对自己所需要的东西:对别人所需要的东西")) {
 					case 1:
-						mes "[Tialfi]";
-						mes "I see...";
-						mes "Give me a moment";
-						mes "to find a suitable";
-						mes "item for you.";
+						mes "[替尔匹]";
+						mes "是的，我了解了，我会去找冒险者先生先生，";
+						mes "所需要的东西";
+						mes "我来看看... 什么东西会比较好呢...?";
+						mes "我明明就放在这地方的... 嗯...";
+						mes "对呀明明就是这附近啊...";
+						mes "应该要有啊，";
+						mes "对啦，在这里啊.... 很好";
 						break;
 					case 2:
 						set .@gift,rand(1,13);
-						mes "[Tialfi]";
+						mes "[替尔匹]";
 						mes "I see...";
 						mes "Give me a moment";
 						mes "to find a suitable";
@@ -122,52 +123,46 @@ prontera,124,297,3	script	Tialfi	706,{
 						break;
 					}
 					next;
-					mes "[Tialfi]";
-					mes "Okay, let's see...";
-					mes "I seem to recall that I put it somewhere around... Hmm.";
-					mes "It must be around--Ah!";
-					mes "Here we are~";
-					next;
-					delitem 756,50; //Oridecon_Stone
-					delitem 757,50; //Elunium_Stone
+					delitem 756,50;  //Oridecon_Stone
+					delitem 757,50;  //Elunium_Stone
 					set god_mjo_0,11;
 					if (.@gift == 1) {
 						getitem 1471,1; // Hell_Fire
 					}
-					else if (.@gift == 2) {
+					else if(.@gift == 2) {
 						getitem 1526,1; // Slash
 					}
-					else if (.@gift == 3) {
+					else if(.@gift == 3) {
 						getitem 1231,1; // Bazerald
 					}
-					else if (.@gift == 4) {
+					else if(.@gift == 4) {
 						getitem 1367,1; // Slaughter
 					}
-					else if (.@gift == 5) {
+					else if(.@gift == 5) {
 						getitem 1722,1; // Balistar
 					}
-					else if (.@gift == 6) {
+					else if(.@gift == 6) {
 						getitem 1230,1; // House_Auger
 					}
-					else if (.@gift == 7) {
+					else if(.@gift == 7) {
 						getitem 1141,1; // Immaterial_Sword
 					}
-					else if (.@gift == 8) {
+					else if(.@gift == 8) {
 						getitem 1813,1; // Kaiser_Knuckle
 					}
-					else if (.@gift == 9) {
+					else if(.@gift == 9) {
 						getitem 1557,1; // Book_Of_The_Apocalypse
 					}
-					else if (.@gift == 10) {
+					else if(.@gift == 10) {
 						getitem 1235,1; // Azoth
 					}
-					else if (.@gift == 11) {
+					else if(.@gift == 11) {
 						getitem 1227,1; // Weeder_Knife
 					}
-					else if (.@gift == 12) {
+					else if(.@gift == 12) {
 						getitem 1913,1; // Electronic_Guitar
 					}
-					else if (.@gift == 13) {
+					else if(.@gift == 13) {
 						getitem 1963,1; // Rapture_Rose
 					}
 					else {
@@ -177,78 +172,98 @@ prontera,124,297,3	script	Tialfi	706,{
 						end;
 					}
 					cutin "god_tialpi01",2;
-					mes "[Tialfi]";
-					mes "Once again, I thank you for the trouble you've gone through on my behalf. I'm unsure of how this works, but I hope it will be useful to you. From what I know, I believe this is a rare item.";
+					mes "[替尔匹]";
+					mes "真辛苦你了，虽然我也不太清楚，";
+					mes "那究竟是什么东西，但我相信，";
+					mes "这一定会有帮助的，听说这东西不论在哪里，";
+					mes "想要取得都是很不容易的";
 					next;
-					mes "[Tialfi]";
-					mes "I'll be waiting for the day when I'll see Thor's thunder for myself. I believe that the dream I've had will come true, one of these days.";
+					mes "[替尔匹]";
+					mes "我将期待在世上的某个角落，";
+					mes "再次降临托尔先生天雷的那一刻，";
+					mes "因为我做的梦，我并不认为，";
+					mes "做为一个梦境就结束了";
 				}
 				else {
 					cutin "god_tialpi01",2;
-					mes "[Tialfi]";
+					mes "[替尔匹]";
 					mes "I need";
 					mes "50 Rough Oridecon";
 					mes "and 50 Rough Elunium.";
 					next;
-					mes "[Tialfi]";
+					mes "[替尔匹]";
 					mes "I don't have much time, so go ahead and continue on your journeys if you can't bring those to me.";
 				}
 			}
 			else {
-				if ($God4 >= $@god_check2) {
-					mes "[Tialfi]";
+				if ($God4 > 99) {
+					mes "[替尔匹]";
 					mes "I sense a strange energy growing more powerful somewhere on this continent...";
 					next;
-					mes "[Tialfi]";
+					mes "[替尔匹]";
 					mes "Can you feel it?";
 					mes "Something must be going on!";
 					next;
-					mes "[Tialfi]";
+					mes "[替尔匹]";
 					mes "I think we'd better wait and see what's happening. Someone will deliver the news to us. Though, I am unsure of whether or not it will be good news or bad...";
 				}
 				else {
 					set $God4,$God4 +1;
-					if ($God4 == $@god_check1)
-						announce "The 4th seal of [Mjolnir] has appeared.",bc_all;
-					else if ($God4 == $@god_check2) {
-						if ($God4 == $@god_check2 && $God2 == $@god_check2 && $God3 == $@god_check2 && $God1 == $@god_check2)
-							announce "Four seals have been released at the same time with the seal of [Mjolnir].",bc_all;
-						else
-							announce "The 4th seal of [Mjolnir] has been released.",bc_all;
+					if($God4 == 50) {
+						announce ">> 大陆的第二个， [雷神腰带]封印已经出现了 <<",bc_all;
+					}
+					else if($God4 == 100 && $God2 == 100 && $God3 == 100 && $God1 == 100) {
+						announce ">> 所有的封印都同时被解开了 <<",bc_all;
+					}
+					else if($God4 == 100) {
+						announce ">> [雷神之锤] 的封印被解开了 <<",bc_all;
 					}
 					set god_mjo_0,10;
-					mes "[Tialfi]";
-					mes "You've met the four Dwarven Blacksmiths. I've heard that they rarely speak to humans. So you must be special if you were able to talk to them.";
+					mes "[替尔匹]";
+					mes "你见过四名得卧普铁匠，";
+					mes "才回来了呀，好像听说";
+					mes "他们是不太会理人的...";
+					mes "冒险者先生你可是一位伟大的人啊";
 					next;
-					mes "[Tialfi]";
-					mes "Do you think that my dream will come true? Do you believe Thor's Mjolnir will appear before the eyes of humans? I'm afraid great change will come to this world.";
+					mes "[替尔匹]";
+					mes "我所做的梦真的会实现吗?";
+					mes "难道真的是托尔先生的雷神之锤，";
+					mes "将出现在世上的征兆吗?";
+					mes "好像有什么东西，";
+					mes "将会在大陆上会有巨大的变化似的";
 					next;
-					mes "[Tialfi]";
-					mes "Thank you for going through such trouble on my behalf. I wish to give you one of my family treasures as a token of my gratitude.";
+					mes "[替尔匹]";
+					mes "谢谢你接受我的请求，";
+					mes "虽然是微不足道的报酬，";
+					mes "我将把我们家中所传承下来的众多宝物中，";
+					mes "挑选一样给你";
 					next;
-					mes "[Tialfi]";
-					mes "However, I hope you understand that my family would grow suspicious if one of the treasures were to just go missing.";
+					mes "[替尔匹]";
+					mes "只是这样给你的话，";
+					mes "我会对其它亲戚没有话可以交代的...";
+					mes "请冒险者先生带来，";
+					mes "有关冒险故事中所得到的东西吧，嗯...";
+					mes "对啦，";
+					mes "若可以的话请准备，";
+					mes "神之金属原石和铝原石50个就好了";
 					next;
-					mes "[Tialfi]";
-					mes "Hmm, however, I don't think they'll complain if I exchanged one of the treasures for something else. Let me think...";
-					next;
-					mes "[Tialfi]";
-					mes "I should be able to give you";
-					mes "one of our family heirlooms if you can bring be 50 Rough Oridecons and 50 Rough Eluniums.";
-					next;
-					mes "[Tialfi]";
-					mes "You don't have to do that if you don't want to. But it seems our family heirlooms would be more useful to an adventurer such as yourself...";
+					mes "[替尔匹]";
+					mes "当然这是我认定的报答范围，";
+					mes "若你不想帮我搜集这些东西也可以呀，";
+					mes "直接离开也可以呀，不过，";
+					mes "我认为宝物在世上绽放光芒，";
+					mes "是比较好一点呀";
 				}
 			}
 		}
-		else if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
-			mes "[Tialfi]";
+		else if(god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
+			mes "[替尔匹]";
 			mes "Hmm...";
 			mes "The Dwarven Blacksmiths";
 			mes "must be upset at you for";
 			mes "some reason.";
 			next;
-			mes "[Tialfi]";
+			mes "[替尔匹]";
 			mes "Remember my sister's";
 			mes "suggestion and speak to";
 			mes "them with great courtesy.";
@@ -260,106 +275,128 @@ prontera,124,297,3	script	Tialfi	706,{
 			set god_mjo_2,0;
 			set god_mjo_3,0;
 			set god_mjo_4,0;
-			mes "[Tialfi]";
+			mes "[替尔匹]";
 			mes "You should be okay now.";
 			mes "By this time, they've probably forgotten the insult. But make sure you speak to my sister for advice first.";
 		}
-		else if (god_mjo_0 == 2 || god_mjo_0 == 1) {
+		else if(god_mjo_0 == 2 || god_mjo_0 == 1) {
 			cutin "god_tialpi01",2;
-			mes "[Tialfi]";
+			mes "[替尔匹]";
 			mes "Sorry for the trouble.";
 			mes "I wish you good luck";
 			mes "in finding the Dwarves!";
 			mes "Just... Don't insult them!";
 		}
-		else if (god_mjo_0 == 0) {
-			if ($God4 >= $@god_check2) {
+		else if(god_mjo_0 == 0) {
+			if($God4 > 99) {
 				cutin "god_tialpi01",2;
-				mes "[Tialfi]";
+				mes "[替尔匹]";
 				mes "I sense a strange energy growing more powerful somewhere on this continent...";
 				next;
-				mes "[Tialfi]";
+				mes "[替尔匹]";
 				mes "Can you feel it?";
 				mes "Something must be going on!";
 				next;
-				mes "[Tialfi]";
+				mes "[替尔匹]";
 				mes "I think we'd better wait and see what's happening. Someone will deliver the news to us. Though, I am unsure of whether or not it will be good news or bad...";
 				close;
 			}
-			else if (BaseLevel < 70) {
+			else if(BaseLevel < 70) {
 				cutin "god_tialpi02",2;
-				mes "[Tialfi]";
+				mes "[替尔匹]";
 				mes "One of my ancestors supposedly was a servant of Thor. Still, I find it difficult to believe.";
 				next;
-				mes "[Tialfi]";
+				mes "[替尔匹]";
 				mes "If the gods have all these powers, how could a mere human be of any real assistance?";
 			}
 			else {
 				cutin "god_tialpi01",2;
-				mes "[Tialfi]";
-				mes "Last night, I had the most amazing dream where I was the servant of Thor, god of thunder.";
+				mes "[替尔匹]";
+				mes "冒险者先生，冒险者先生，请听我说的话吧，";
+				mes "昨天夜里做了神秘又惊奇的梦，";
+				mes "不管是谁，";
+				mes "听听我的话就好了";
 				next;
-				mes "[Tialfi]";
-				mes "In this dream, I traveled";
-				mes "with Thor to Jotunnheim, land of giants. During our journey, he told me many interesting stories about gods and heroes.";
+				mes "[替尔匹]";
+				mes "梦中我是伟大的神，是托尔先生的侍从，";
+				mes "我服侍着他，";
+				mes "往那巨人的大陆，优托菲姆出发，";
+				mes "准备展开冒险中";
 				next;
-				mes "[Tialfi]";
-				mes "Of course, I can't remember everything clearly, but it was truly fantastic.";
+				mes "[替尔匹]";
+				mes "然后也听了不少故事，";
+				mes "神的故事，大陆的传说，";
+				mes "像是伟大英雄们的一生之类的事情，";
+				mes "虽然我记得不太清楚了，";
+				mes "不过我真的真的很惊讶";
 				next;
-				mes "[Tialfi]";
-				mes "For some reason, I can vividly recall what Thor told me about his weapon, Mjolnir. Mjolnir is a Dwarven masterpiece.";
+				mes " [替尔匹]";
+				mes "在这么多的故事中托尔的";
+				mes "武器... 我只对雷神之锤的部分";
+				mes "印象最深刻啊，那惊人的能力，";
+				mes "被制作过程的故事，与雷神之锤";
+				mes "一起冒险的点滴.....";
 				next;
-				mes "[Tialfi]";
-				mes "Thor told me that Dwarves are extremely talented artisans, and their works are supreme. So as";
-				mes "I was thinking about my dream,";
-				mes "I remembered...";
+				mes "[替尔匹]";
+				mes "然后还讲给我听得卧普的故事，";
+				mes "你应该知道吧? 所有神秘的";
+				mes "拥有能力的物件，";
+				mes "大部分都是得卧普铁匠所制作出来的，";
+				mes "我是听到那故事之后想起来的";
 				next;
-				mes "[Tialfi]";
-				mes "There is a mountain that";
-				mes "has the same name as Thor's";
-				mes "weapon. Surely, the two have";
-				mes "some relation to each other.";
+				mes "[替尔匹]";
+				mes "山的名字与托尔先生的武器相同，";
+				mes "两者之间是不是应该有什么关系呢?";
+				mes "再者有消息指出妙勒尼山脉中，";
+				mes "住着有几位得卧普";
+				mes "的铁匠";
 				next;
-				mes "[Tialfi]";
-				mes "I've also recently heard a rumor that Dwarven Blacksmiths also reside on Mount Mjolnir.";
-				mes "I understand the mountain is dangerous, and that I'm in no position to ask such a thing...";
+				mes "[替尔匹]";
+				mes "若可以的话去妙勒尼山脉，";
+				mes "找一下得卧普铁匠";
+				mes "就好了，虽然知道这是";
+				mes "无理的要求... 而且还不知道";
+				mes "会有什么样的危险啊";
 				next;
-				mes "[Tialfi]";
-				mes "I can't help wanting to know for myself whether or not there is truth to my dream. Is it possible for Mjolnir to resurface?";
+				mes "[替尔匹]";
+				mes "当然做这件事，虽然不会有";
+				mes "什么样的帮助，不过，我所好奇的事情，";
+				mes "请帮我找出答案吧，冒险者先生，";
+				mes "请接受我的请求吧";
 				next;
-				mes "[Tialfi]";
-				mes "If you don't mind, I'd like to ask you to explore this mountain and search for these Dwarven Blacksmiths.";
-				next;
-				switch(select("No.:Okay.")) {
+				switch(select("拒绝你的请求:接受你的请求")) {
 				case 1:
 					cutin "god_tialpi02",2;
-					mes "[Tialfi]";
+					mes "[替尔匹]";
 					mes "I see. But I still appreciate that you took the time to listen to me.";
 					mes "Hopefully someday I'll learn the truth about my dreams and about Mjolnir itself.";
 					break;
 				case 2:
 					cutin "god_tialpi01",2;
-					mes "[Tialfi]";
-					mes "Thank you,";
-					mes "thank you so much!";
-					mes "Even though it won't be easy, I have faith that if the Dwarven Blacksmiths do exist, you'll be able to find them.";
+					mes "[替尔匹]";
+					mes "谢谢你! 真的太感谢了，虽是遥远";
+					mes "又危险的路程，我相信你会";
+					mes "帮我解决的，啊，真的真的，";
+					mes "能见到冒险者先生，真的是幸运啊";
 					next;
-					mes "[Tialfi]";
-					mes "Oh, and please speak to my sister Roskva first. She is outside the North Entrance of Prontera.";
-					next;
-					mes "[Tialfi]";
-					mes "I'm sure that she can";
-					mes "give you useful information if you're fortunate enough to encounter the Dwarves.";
+					mes "[替尔匹]";
+					mes "首先请到北边城外见我的弟弟，";
+					mes "罗斯克巴吧，";
+					mes "他啊，比我更知道得卧普的";
+					mes "事情呀";
 					next;
 					set god_mjo_0,rand(1,2);
-					mes "[Tialfi]";
-					mes "I'm truly lucky to meet such an adventurer like yourself. I wish you the best of luck.";
+					mes "[替尔匹]";
+					mes "去问那小孩的话，他会告诉你，";
+					mes "要用什么方式见得卧普铁匠们，";
+					mes "以及如何跟他说话的方式，";
+					mes "那么就，拜托你了";
 				}
 			}
 		}
 		else {
 			cutin "god_tialpi01",2;
-			mes "[Tialfi]";
+			mes "[替尔匹]";
 			mes "I believe in you.";
 			mes "Just be courageous!";
 		}
@@ -369,113 +406,116 @@ prontera,124,297,3	script	Tialfi	706,{
 	end;
 }
 
-prt_fild01,196,47,3	script	Roskva	703,{
-	if (god_mjo_0 == 1) {
-		mes "[Roskva]";
-		mes "You should know that Dwarven Blacksmiths are extremely offended if you do not speak to them with the utmost respect.";
+prt_fild01,196,47,3	script	罗斯克巴	703,{
+	if(god_mjo_0 == 1) {
+		mes "[罗斯克巴]";
+		mes "得卧普铁匠们... 最喜欢";
+		mes "遵守礼仪与规则了...";
+		mes "所以说，听清楚我所说的话...";
+		mes "尽量不要出错... 了解吗?";
 		next;
-		mes "[Roskva]";
-		mes "So it's really";
-		mes "important that you";
-		mes "speak to the Dwarves";
-		mes "as courteously as you can.";
-		mes "The first Dwarf you must visit";
-		mes "can be found to the East.";
-		next;
-		mes "[Roskva]";
-		mes "Travel in a clock wise direction around Rune-Midgard and seek out the other Dwarves in order. Your final destination will be to the North.";
-		next;
-		mes "[Roskva]";
-		mes "If you happen to speak to them in the wrong order, please go talk to my brother Tialfi again.";
+		mes "[罗斯克巴]";
+		mes "今天... 太阳升起往落下的地方";
+		mes "好了..先去东边吧...";
+		mes "最后才是北边喔...";
+		mes "顺序错的话就去找我哥哥吧...";
 		close;
 	}
-	else if (god_mjo_0 == 2) {
-		mes "[Roskva]";
-		mes "You should know that Dwarven Blacksmiths are extremely offended if you do not speak to them with the utmost respect.";
+	else if(god_mjo_0 == 2) {
+		mes "[罗斯克巴]";
+		mes "得卧普铁匠们... 最喜欢";
+		mes "遵守礼仪与规则了...";
+		mes "所以说，听清楚我所说的话...";
+		mes "尽量不要出错... 了解吗?";
 		next;
-		mes "[Roskva]";
+		mes "[罗斯克巴]";
 		mes "So it's really";
 		mes "important that you";
 		mes "speak to the Dwarves";
 		mes "as courteously as you can.";
 		mes "The first Dwarf you must visit";
 		mes "can be found to the North.";
-		next;
-		mes "[Roskva]";
-		mes "Travel in a counter clock wise direction around Rune-Midgard and seek out the other Dwarves in order. Your final destination will be to the East.";
-		next;
-		mes "[Roskva]";
-		mes "If you happen to speak to them in the wrong order, please go talk to my brother Tialfi again.";
+		mes "顺序错的话就去找我哥哥吧...";
 		close;
 	}
 	else {
-		mes "[Roskva]";
-		mes "A long time ago, many people used to frequent this area. Friends and families would live here, sharing happiness and sadness.";
+		mes "[罗斯克巴]";
+		mes "这里是有我父母们回忆的";
+		mes "地方... 很久以前，";
+		mes "这地方可是有很多人的...";
+		mes "快乐的事，伤心的事，愉快的事，";
+		mes "所有的人都一起分享了...";
 		next;
-		mes "[Roskva]";
-		mes "But they're all gone now. My parents and my friends have all gone to a place whose name I don't even know.";
+		mes "[罗斯巴克]";
+		mes "我们父母亲也常待在这里，";
+		mes "也时常与很多人见面，";
+		mes "但是，现在父母亲与朋友们，";
+		mes "全都远离此地了... 不知往哪里，";
+		mes "听说前往了我们不知道的地方";
 		next;
-		mes "[Roskva]";
-		mes "I can't help";
-		mes "but feel lonesome...";
+		mes "[罗斯巴克]";
+		mes "所以说... 这里的风景... 有点，";
+		mes "看起来似乎有点凄凉啊...";
 		close;
 	}
 }
 
-mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
-	if ($God3 < $@god_check1) {
-		mes "[Austri]";
-		mes "Something is happening somewhere on this continent. You might not believe me, but I keep getting visions of the Fenrir-Wolf.";
+mjolnir_11,149,247,5	script	得卧普 铁匠#东	826,{
+	if ($God3 < 50) {
+		mes "[阿乌斯特利]";
+		mes "现在这块大陆的某处，";
+		mes "已开始发生变化了... 虽然不能相信，";
+		mes "今天会在天空里看见野狼似的";
 		close;
 	}
 	else {
-		if ($God4 >= $@god_check2) {
-			mes "[Austri]";
+		if($God4 > 99) {
+			mes "[阿乌斯特利]";
 			mes "Something is happening somewhere on this continent. You might not believe me, but I keep getting visions of the Fenrir-Wolf.";
 			close;
 		}
-		else if (god_mjo_0 == 11) {
-			mes "[Austri]";
+		else if(god_mjo_0 == 11) {
+			mes "[阿乌斯特利]";
 			mes "When my people finally retrieve the memories of their past, we will be able to grant the power of the gods to humans.";
 			next;
-			mes "[Austri]";
+			mes "[阿乌斯特利]";
 			mes "I believe that";
 			mes "time is coming...";
 			close;
 		}
-		else if (god_mjo_0 == 10) {
-			mes "[Austri]";
+		else if(god_mjo_0 == 10) {
+			mes "[阿乌斯特利]";
 			mes "Hm? I sense that you were asked to do a favor for that human. If I were you, I'd finish that task as soon as I could. Somehow, that human's fate, as well as that of the Dwarves, are intertwined...";
 			close;
 		}
-		else if (god_mjo_0 == 1) {
+		else if(god_mjo_0 == 1) {
 			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
-				mes "[Austri]";
+				mes "[阿乌斯特利]";
 				mes "What is it?! I refuse to speak to human as rude and contemptible";
 				mes "as you! Now, get out of my sight!";
 				close;
 			}
-			else if (god_mjo_1 == 2) {
-				mes "[Austri]";
+			else if(god_mjo_1 == 2) {
+				mes "[阿乌斯特利]";
 				mes "What...?";
 				mes "I have nothing";
 				mes "to say to you.";
 				close;
 			}
 			else if (god_mjo_2 != 0 || god_mjo_3 != 0 || god_mjo_4 != 0) {
-				mes "[Austri]";
+				mes "[阿乌斯特利]";
 				mes "Hm...?";
 				mes "Why have you";
 				mes "come to me, human?";
 				next;
 				switch(select("Nothing.:Hey, 'sup!")) {
 				case 1:
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "...";
 					close;
 				case 2:
 					set god_mjo_1,3;
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "What...?!";
 					mes "Do not greet the";
 					mes "Dwarves lightly,";
@@ -483,29 +523,24 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 					close;
 				}
 			}
-			else if (god_mjo_1 == 1) {
-				mes "[Austri]";
-				mes "What has made";
-				mes "you come to me?";
+			else if(god_mjo_1 == 1) {
+				mes "[阿乌斯特利]";
+				mes "什么啊，找我有什么事嘛?";
 				next;
-				switch(select("Nothing.:Excuse me, sir.")) {
+				switch(select("没什么事:不好意思打扰一下")) {
 				case 1:
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "...";
 					close;
 				case 2:
 					if (countitem(1005) > 0) { //Hammer_Of_Blacksmith 
-						mes "[Austri]";
-						mes "Ah, I see that the entire human race is not worthy of scorn. Unlike many of your kind, I see that you respect your elders.";
-						next;
 						while(1) {
 							if (.@talk_to == 0) {
-								mes "[Austri]";
-								mes "So what did";
-								mes "want to ask";
-								mes "me about?";
+								mes "[阿乌斯特利]";
+								mes "好吧，你想要知道些什么呢?";
+								mes "说出来听听吧";
 								next;
-								switch(select("...:About Mjolnir.")) {
+								switch(select("...:有关雷神之锤")) {
 								case 1:
 									set .@talk_not,1;
 									break;
@@ -513,19 +548,20 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 									break;
 								}
 							}
-							else if (.@talk_to == 1) {
-								mes "[Austri]";
-								mes "Mjolnir...?";
-								mes "Thor's legendary weapon?";
-								mes "The hammer than can shake the earth and tear the sky asunder? Out of all of legendary weapons, Mjolnir is perhaps greatest.";
+							else if(.@talk_to == 1) {
+								mes "[阿乌斯特利]";
+								mes "雷神之锤呀，传说中出现的雷神之锤";
+								mes "是托尔先生用的一种很恐怖的武器，";
+								mes "传说，随便一挥会劈开天空，";
+								mes "震响大地的";
 								next;
-								mes "[Austri]";
-								mes "As a matter of fact, it was forged by my ancestor. Mjolnir was the perfect weapon, except for one minor flaw.";
+								mes "[阿乌斯特利]";
+								mes "事实上那个雷神之锤是我们得卧普";
+								mes "先祖铁匠所造的，";
+								mes "为什么雷神之锤的握柄变短了呢...";
+								mes "你有在听我说的话吗?";
 								next;
-								mes "[Austri]";
-								mes "The hilt of Mjolnir was forged shorter than intended. Are you still listening to me?";
-								next;
-								switch(select("...:Yes, sir!:Huh?")) {
+								switch(select("...:是!:有?")) {
 								default:
 									set .@talk_not,1;
 									break;
@@ -533,15 +569,21 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 									break;
 								}
 							}
-							else if (.@talk_to == 2) {
-								mes "[Austri]";
-								mes "One day, Loki came to our village and showed off his treasures. He boasted that we couldn't possibly create something to surpass their quality.";
+							else if(.@talk_to == 2) {
+								mes "[阿乌斯特利]";
+								mes "对呀，有一天洛奇";
+								mes "来找我们得卧普，";
+								mes "给我们看三样神奇的宝物之后，";
+								mes "还说不可能做出，";
+								mes "比自己的宝物更好的东西了.";
 								next;
-								mes "[Austri]";
-								mes "Frankly his treasures were";
-								mes "made by another Dwarf tribe, but we couldn't tolerate his insult. So my ancestors created three treasures of their own.";
+								mes "[阿乌斯特利]";
+								mes "事实上那些宝物们也是，";
+								mes "其它的卧普们所做的，我们也不能输他";
+								mes "所以先祖们也做了";
+								mes "三样宝物... 你有在听吗?";
 								next;
-								switch(select("...:Boooring!:Oh, wow.")) {
+								switch(select("...:有?:是!")) {
 								default:
 									set .@talk_not,1;
 									break;
@@ -549,17 +591,38 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 									break;
 								}
 							}
-							else if (.@talk_to == 3) {
-								mes "[Austri]";
-								mes "Of the three treasures my ancestors created, Mjolnir was the last and greatest.";
+							else if(.@talk_to == 3) {
+								mes "[阿乌斯特利]";
+								mes "对呀，在制作那宝物的过程中，";
+								mes "最后在制作雷神之锤时，";
+								mes "因为被奇怪的昆虫咬到手了，";
+								mes "不够拉风箱燃烧，所以说，";
+								mes "那握柄无法变长，";
+								mes "就这样变短短的了，是不是很可怜啊.";
 								next;
-								mes "[Austri]";
-								mes "However, while it was created, a strange fly bit my ancestor on the hand. Because of this interruption, Mjolnir's hilt is a little flawed.";
+								mes "[阿乌斯特利]";
+								mes "总之有这样的事情，但是我们的";
+								mes "祖先是何等人物呀，";
+								mes "结果所造的雷神之锤，赋予托尔先生";
+								mes "强大的力量，这就是会让";
+								mes "恐怖的晤特加尔特巨人，";
+								mes "颤抖着陷入恐惧的武器呢";
 								next;
-								mes "[Austri]";
-								mes "It's very sad. Although Mjolnir is the greatest weapon ever, it was very close to being the epitome of craftsmanship.";
+								mes "[阿乌斯特利]";
+								mes "相对的握柄很短，所以托尔先生";
+								mes "需要用铁手套才可以，";
+								mes "尽情挥舞雷神之锤，";
+								mes "所以说能让铁匠感受到成就感，";
+								mes "不就是这种事吗?";
 								next;
-								switch(select("...:Epito--what?:Yes sir, I agree.")) {
+								mes "[阿乌斯特利]";
+								mes "还有，这山脉之所以叫做妙勒尼山脉的";
+								mes "理由是... 千年前托尔先生，";
+								mes "和魔族的战役中，曾大大地将";
+								mes "雷神之锤往下猛打，当时";
+								mes "大地被挤压成山脉了";
+								next;
+								switch(select("...:有?:是!")) {
 								default:
 									set .@talk_not,1;
 									break;
@@ -567,14 +630,14 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 									break;
 								}
 							}
-							else if (.@talk_to == 4) {
-								mes "[Austri]";
+							else if(.@talk_to == 4) {
+								mes "[阿乌斯特利]";
 								mes "Despite this minor flaw, Mjolnir is still considered the greatest of legendary weapons.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Mjolnir was the trusted weapon Thor wielded on the battlefield, and every giant feared its power.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "I must say, a Blacksmith's greatest pride comes when he creates the weapon and armor that can be considered his life's work.";
 								next;
 								switch(select("...:I agree, sir!:Um, yeah.")) {
@@ -585,14 +648,14 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 									break;
 								}
 							}
-							else if (.@talk_to == 5) {
-								mes "[Austri]";
+							else if(.@talk_to == 5) {
+								mes "[阿乌斯特利]";
 								mes "The reason this mountain is called Mount Mjolnir is because it was actually created by the hammer.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "In a battle against demons a thousand years ago, Thor struck the earth with Mjolnir. The impact caused the ground to rise, creating this mountain.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "You can imagine just";
 								mes "how powerful Mjolnir is.";
 								mes "However, humans can never hope to see or even wield Mjolnir. Only a god can handle that kind of force.";
@@ -605,11 +668,11 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 									break;
 								}
 							}
-							else if (.@talk_to == 6) {
-								mes "[Austri]";
+							else if(.@talk_to == 6) {
+								mes "[阿乌斯特利]";
 								mes "Hmm... But perhaps an ambitious dwarf can forge something similar to Mjolnir so that it can actually be used by humans. It would have less power, but it'd be perfectly crafted.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Yes, it's possible to create";
 								mes "a Mjolnir suited to humans. Still, it wouldn't be very easy.";
 								next;
@@ -621,16 +684,16 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 									break;
 								}
 							}
-							else if (.@talk_to == 7) {
-								mes "[Austri]";
+							else if(.@talk_to == 7) {
+								mes "[阿乌斯特利]";
 								mes "Well, I happened to speak much longer than I intended. But I hope you learned what you wished to";
 								mes "know about Mjolnir.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "I feel that a great change is coming. I do not know what kind";
 								mes "of effect it will have on our world, but something important will happen...";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Perhaps only the gods can be";
 								mes "sure as to what the future will bring. In any case, we must prepare ourselves for what will happen.";
 								next;
@@ -642,9 +705,9 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 									break;
 								}
 							}
-							else if (.@talk_to == 8) {
+							else if(.@talk_to == 8) {
 								set god_mjo_1,2;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Alright then...";
 								mes "If you wish to learn more, you should speak to my brothers.";
 								mes "Take care, human.";
@@ -652,11 +715,11 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 							}
 							if (.@talk_not == 1) {
 								set god_mjo_1,3;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Grrr...!";
 								mes "You're not listening, are you?! What a waste of my time!";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "This is why I don't want to associate with humans. They always shut me out when I'm talking!";
 								close;
 							}
@@ -666,36 +729,46 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 						}
 					}
 					else {
-						mes "[Austri]";
-						mes "You don't seem to";
-						mes "understand. If you";
-						mes "wish to prove to me that you understand blacksmiths, you should bring something related to my work!";
+						mes "[阿乌斯特利]";
+						mes "所谓的铁匠必定很珍惜他的";
+						mes "锤子与铁砧...";
+						mes "假如你想跟我说话的话，";
+						mes "最起码也要稍微的了解一下，";
+						mes "铁匠的心吧!";
+						mes "假设锤子是伟大的铁匠的话，";
+						mes "那是虽都会要使用的";
+						mes "物品啊...";
+						next;
+						mes "[阿乌斯特利]";
+						mes "假如你稍微懂我在说什么话的话，";
+						mes "下次我就会理你，一起对话吧，";
+						mes "祝你有一个愉快的冒险啦";
 						close;
 					}
 				}
 			}
-			else if (god_mjo_1 == 0) {
-				mes "[Austri]";
+			else if(god_mjo_1 == 0) {
+				mes "[阿乌斯特利]";
 				mes "What has made";
 				mes "you come to me?";
 				next;
 				switch(select("Nothing.:Excuse me, sir.")) {
 				case 1:
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "...";
 					close;
 				case 2:
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "A respectable blacksmith cherishes his tools and crafts with diligence and care.";
 					next;
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "When it comes to humans, I believe the ones who can appreciate my line of work are the only ones worth talking to.";
 					next;
 					set god_mjo_1,1;
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "Every good blacksmith knows the value of a good hammer. If you can understand that, I shall consider speaking with you.";
 					next;
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "Now go, human.";
 					mes "I wish you safety";
 					mes "in your travels.";
@@ -703,60 +776,60 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 				}
 			}
 			else {
-				mes "[Austri]";
+				mes "[阿乌斯特利]";
 				mes "Zzzz Zzzz...";
 				close;
 			}
 		}
-		else if (god_mjo_0 == 2) {
-			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
-				mes "[Austri]";
+		else if(god_mjo_0 == 2) {
+			if(god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
+				mes "[阿乌斯特利]";
 				mes "What is it?! I refuse to speak to human as rude and contemptible";
 				mes "as you! Now, get out of my sight!";
 				close;
 			}
-			else if (god_mjo_4 == 2) {
-				mes "[Austri]";
+			else if(god_mjo_4 == 2) {
+				mes "[阿乌斯特利]";
 				mes "What is it...?";
 				mes "I have nothing";
 				mes "to say to you.";
 				close;
 			}
-			else if (god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_2 == 0 || god_mjo_2 == 1 || god_mjo_3 == 0 || god_mjo_3 == 1) {
-				mes "[Austri]";
+			else if(god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_2 == 0 || god_mjo_2 == 1 || god_mjo_3 == 0 || god_mjo_3 == 1) {
+				mes "[阿乌斯特利]";
 				mes "What made you come to me?";
 				next;
 				switch(select("Nothing.:Hey, sup!")) {
 				case 1:
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "...";
 					close;
 				case 2:
 					set god_mjo_4,3;
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "What?!";
 					mes "Leave immediately and go study your english properly!";
 					close;
 				}
 			}
-			else if (god_mjo_4 == 1) {
-				mes "[Austri]";
+			else if(god_mjo_4 == 1) {
+				mes "[阿乌斯特利]";
 				mes "What has made";
 				mes "you come to me?";
 				next;
 				switch(select("Nothing.:Excuse me, sir.")) {
 				case 1:
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "...";
 					close;
 				case 2:
 					if (countitem(1005) > 0) {
-						mes "[Austri]";
+						mes "[阿乌斯特利]";
 						mes "Ah, I see that the entire human race is not worthy of scorn. Unlike many of your kind, I see that you respect your elders.";
 						next;
 						while(1) {
 							if (.@talk_to == 0) {
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "So what did";
 								mes "want to ask";
 								mes "me about?";
@@ -770,15 +843,15 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 								}
 							}
 							else if (.@talk_to == 1) {
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Mjolnir...?";
 								mes "Thor's legendary weapon?";
 								mes "The hammer than can shake the earth and tear the sky asunder? Out of all of legendary weapons, Mjolnir is perhaps greatest.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "As a matter of fact, it was forged by my ancestor. Mjolnir was the perfect weapon, except for one minor flaw.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "The hilt of Mjolnir was forged shorter than intended. Are you still listening to me?";
 								next;
 								switch(select("...:Yes, sir!:Huh?")) {
@@ -790,10 +863,10 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 								}
 							}
 							else if (.@talk_to == 2) {
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "One day, Loki came to our village and showed off his treasures. He boasted that we couldn't possibly create something to surpass their quality.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Frankly his treasures were";
 								mes "made by another Dwarf tribe, but we couldn't tolerate his insult. So my ancestors created three treasures of their own.";
 								next;
@@ -809,13 +882,13 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 								}
 							}
 							else if (.@talk_to == 3) {
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Of the three treasures my ancestors created, Mjolnir was the last and greatest.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "However, while it was created, a strange fly bit my ancestor on the hand. Because of this interruption, Mjolnir's hilt is a little flawed.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "It's very sad. Although Mjolnir is the greatest weapon ever, it was very close to being the epitome of craftsmanship.";
 								next;
 								switch(select("...:Epito--what?:Yes sir, I agree.")) {
@@ -827,13 +900,13 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 								}
 							}
 							else if (.@talk_to == 4) {
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Despite this minor flaw, Mjolnir is still considered the greatest of legendary weapons.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Mjolnir was the trusted weapon Thor wielded on the battlefield, and every giant feared its power.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "I must say, a Blacksmith's greatest pride comes when he creates the weapon and armor that can be considered his life's work.";
 								next;
 								switch(select("...:I agree, sir!:Um, yeah.")) {
@@ -845,13 +918,13 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 								}
 							}
 							else if (.@talk_to == 5) {
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "The reason this mountain is called Mount Mjolnir is because it was actually created by the hammer.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "In a battle against demons a thousand years ago, Thor struck the earth with Mjolnir. The impact caused the ground to rise, creating this mountain.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "You can imagine just";
 								mes "how powerful Mjolnir is.";
 								mes "However, humans can never hope to see or even wield Mjolnir. Only a god can handle that kind of force.";
@@ -865,10 +938,10 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 								}
 							}
 							else if (.@talk_to == 6) {
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Hmm... But perhaps an ambitious dwarf can forge something similar to Mjolnir so that it can actually be used by humans. It would have less power, but it'd be perfectly crafted.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Yes, it's possible to create";
 								mes "a Mjolnir suited to humans. Still, it wouldn't be very easy.";
 								next;
@@ -881,15 +954,15 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 								}
 							}
 							else if (.@talk_to == 7) {
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Well, I happened to speak much longer than I intended. But I hope you learned what you wished to";
 								mes "know about Mjolnir.";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "I feel that a great change is coming. I do not know what kind";
 								mes "of effect it will have on our world, but something important will happen...";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Perhaps only the gods can be";
 								mes "sure as to what the future will bring. In any case, we must prepare ourselves for what will happen.";
 								next;
@@ -903,7 +976,7 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 							}
 							else if (.@talk_to == 8) {
 								set god_mjo_4,2;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Alright then...";
 								mes "Take care of";
 								mes "yourself, human.";
@@ -911,11 +984,11 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 							}
 							if (.@talk_not == 1) {
 								set god_mjo_4,3;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "Grrr...!";
 								mes "You're not listening, are you?! What a waste of my time!";
 								next;
-								mes "[Austri]";
+								mes "[阿乌斯特利]";
 								mes "This is why I don't want to associate with humans. They always shut me out when I'm talking!";
 								close;
 							} else {
@@ -924,7 +997,7 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 						}
 					}
 					else {
-						mes "[Austri]";
+						mes "[阿乌斯特利]";
 						mes "You don't seem to";
 						mes "understand. If you";
 						mes "wish to prove to me that you understand blacksmiths, you should bring something related to my work!";
@@ -932,27 +1005,27 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 					}
 				}
 			}
-			else if (god_mjo_4 == 0) {
-				mes "[Austri]";
+			else if(god_mjo_4 == 0) {
+				mes "[阿乌斯特利]";
 				mes "What made you come to me?";
 				next;
 				switch(select("Nothing.:Excuse me, sir.")) {
 				case 1:
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "...";
 					close;
 				case 2:
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "A respectable blacksmith cherishes his tools and crafts with diligence and care.";
 					next;
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "When it comes to humans, I believe the ones who can appreciate my line of work are the only ones worth talking to.";
 					next;
 					set god_mjo_4,1;
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "Every good blacksmith knows the value of a good hammer. If you can understand that, I shall consider speaking with you.";
 					next;
-					mes "[Austri]";
+					mes "[阿乌斯特利]";
 					mes "Now go, human.";
 					mes "I wish you safety";
 					mes "in your travels.";
@@ -960,51 +1033,51 @@ mjolnir_11,149,247,5	script	Dwarf Blacksmith#east	826,{
 				}
 			}
 			else {
-				mes "[Austri]";
+				mes "[阿乌斯特利]";
 				mes "Zzzz Zzzz...";
 				close;
 			}
 		}
-		else if (god_mjo_0 == 0) {
-			mes "[Austri]";
+		else if(god_mjo_0 == 0) {
+			mes "[阿乌斯特利]";
 			mes "Ah...";
 			mes "It feels like today's going to be a great day.";
 			next;
-			mes "[Austri]";
+			mes "[阿乌斯特利]";
 			mes "I've got the warm sun, fresh forest air, and my hammer and anvil are at the ready. It's a perfect day for smithing!";
 			close;
 		}
 		else {
-			mes "[Austri]";
+			mes "[阿乌斯特利]";
 			mes "Zzzz Zzzz...";
 			close;
 		}
 	}
 }
 
-mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
-	if ($God3 < $@god_check1) {
-		mes "[Sudri]";
+mjolnir_09,209,341,3	script	得卧普 铁匠#南	826,{
+	if ($God3 < 50) {
+		mes "[稣德力]";
 		mes "I want to compete";
 		mes "and fight with stronger and stronger opponents!";
 		next;
-		mes "[Sudri]";
+		mes "[稣德力]";
 		mes "One day, I'll return to Svartalfaheimr and defeat Ivaldi! Mwahahaha!";
 		close;
 	}
 	else {
-		if ($God4 >= $@god_check2) {
-			mes "[Sudri]";
+		if ($God4 > 99) {
+			mes "[稣德力]";
 			mes "Wait, this is";
 			mes "not the right time";
 			mes "for fighting...";
 			next;
-			mes "[Sudri]";
+			mes "[稣德力]";
 			mes "Something that has been hidden is about to be born out of the sweat of determination and tears of sacrifice. We must wait until then.";
 			close;
 		}
-		else if (god_mjo_0 == 11) {
-			mes "[Sudri]";
+		else if(god_mjo_0 == 11) {
+			mes "[稣德力]";
 			mes "I want to compete with a stronger one!";
 			mes "I will be stronger and stronger,";
 			mes "one day when I get back to Svartalfaheimr";
@@ -1012,27 +1085,27 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 			mes "Muhahahaha...!";
 			close;
 		}
-		else if (god_mjo_10 == 10) {
-			mes "[Sudri]";
+		else if(god_mjo_10 == 10) {
+			mes "[稣德力]";
 			mes "I must admit that you're a really strong human. Let us fight again when we have a chance. The next time, you may not be so lucky!";
 			close;
 		}
-		else if (god_mjo_0 == 1) {
+		else if(god_mjo_0 == 1) {
 			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
-				mes "[Sudri]";
+				mes "[稣德力]";
 				mes "Go back to where you belong before I beat you to death!";
 				next;
-				mes "[Sudri]";
+				mes "[稣德力]";
 				mes "All you can gain here are a few herbs.";
 				close;
 			}
-			else if (god_mjo_2 == 2) {
-				mes "[Sudri]";
+			else if(god_mjo_2 == 2) {
+				mes "[稣德力]";
 				mes "That was a great fight!";
 				mes "Mwahahaha! I'm satisfied with the results. I may have lost, but we fought honorably with everything we had.";
 				close;
 			}
-			else if (god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_3 != 0 || god_mjo_4 != 0) {
+			else if(god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_3 != 0 || god_mjo_4 != 0) {
 				mes "[Sudri]";
 				mes "So...";
 				mes "What brings";
@@ -1058,7 +1131,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 					close;
 				}
 			}
-			else if (god_mjo_2 == 1) {
+			else if(god_mjo_2 == 1) {
 				set .@n_vit,200;
 				set .@p_vit,100;
 				while(1) {
@@ -1092,15 +1165,15 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "" + strcharinfo(0) + "";
 						mes "attacks Sudri's head!";
 					}
-					else if (.@p_atk == 2) {
+					else if(.@p_atk == 2) {
 						mes "" + strcharinfo(0) + "";
 						mes "strikes Sudri's chest!";
 					}
-					else if (.@p_atk == 3) {
+					else if(.@p_atk == 3) {
 						mes "" + strcharinfo(0) + "";
 						mes "aims for Sudri's legs!";
 					}
-					else if (.@p_atk == 4) {
+					else if(.@p_atk == 4) {
 						mes "" + strcharinfo(0) + "";
 						mes "requests a break!";
 					}
@@ -1118,7 +1191,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "--------------------";
 							mes "" + strcharinfo(0) + " misses!";
 						}
-						else if (.@n_def == 2) {
+						else if(.@n_def == 2) {
 							mes "--------------------";
 							mes "Sudri blocks your";
 							mes "attack by crossing";
@@ -1126,7 +1199,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "--------------------";
 							mes "" + strcharinfo(0) + "'s attack is blocked!";
 						}
-						else if (.@n_def == 3) {
+						else if(.@n_def == 3) {
 							mes "--------------------";
 							mes "Sudri dodges your";
 							mes "attack with a graceful";
@@ -1135,14 +1208,14 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "" + strcharinfo(0) + " misses!";
 						}
 					}
-					else if (.@p_atk == 4) {
+					else if(.@p_atk == 4) {
 						specialeffect2 EF_HEAL;
 						set .@p_vit,.@p_vit + 10;
 						mes "--------------------";
 						mes "" + strcharinfo(0) + "";
 						mes "has gained 10 HP!";
 					}
-					else if (.@p_atk == 1) {
+					else if(.@p_atk == 1) {
 						specialeffect EF_HIT5;
 						set .@n_vit,.@n_vit - .@damage;
 						mes "--------------------";
@@ -1151,7 +1224,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "--------------------";
 						mes "Sudri has lost " + .@damage + " HP!";
 					}
-					else if (.@p_atk == 2) {
+					else if(.@p_atk == 2) {
 						specialeffect EF_HIT2;
 						set .@n_vit,.@n_vit - .@damage;
 						mes "--------------------";
@@ -1161,7 +1234,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "Sudri has";
 						mes "lost " + .@damage + " HP!";
 					}
-					else if (.@p_atk == 3) {
+					else if(.@p_atk == 3) {
 						specialeffect EF_HIT4;
 						set .@n_vit,.@n_vit - .@damage;
 						mes "--------------------";
@@ -1171,7 +1244,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "Sudri has";
 						mes "lost " + .@damage + " HP!";
 					}
-					else if (.@p_atk == 0) {
+					else if(.@p_atk == 0) {
 						specialeffect2 EF_HIT5;
 						set .@p_vit,.@p_vit - 10;
 						mes "--------------------";
@@ -1224,7 +1297,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 					if (.@n_atk == 1) {
 						mes "Sudri aims for the head!";
 					}
-					else if (.@n_atk == 2) {
+					else if(.@n_atk == 2) {
 						mes "Sudri strikes the chest!";
 					}
 					else {
@@ -1241,7 +1314,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "--------------------";
 							mes "Sudri has failed to attack.";
 						}
-						else if (.@p_def == 2) {
+						else if(.@p_def == 2) {
 							mes "--------------------";
 							mes "" + strcharinfo(0) + "";
 							mes "barely blocked";
@@ -1249,7 +1322,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "--------------------";
 							mes "Sudri has failed to attack.";
 						}
-						else if (.@p_def == 3) {
+						else if(.@p_def == 3) {
 							mes "--------------------";
 							mes "" + strcharinfo(0) + " jumped,";
 							mes "dodged Sudri's attack at ease.";
@@ -1257,7 +1330,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "Sudri has failed to attack.";
 						}
 					}
-					else if (.@p_def == 4) {
+					else if(.@p_def == 4) {
 						set .@count,rand(1,4);
 						mes "--------------------";
 						mes "" + strcharinfo(0) + "";
@@ -1280,13 +1353,13 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							specialeffect2 EF_CRASHEARTH;
 							set .@p_vit,.@p_vit - 30;
 							mes "You've taken";
-							mes "critical damage";
+							mes "critical .@damage";
 							mes "on your weak spot!";
 							mes "--------------------";
 							mes "" + strcharinfo(0) + " has lost 30 HP!";
 						}
 					}
-					else if (.@n_atk == 1) {
+					else if(.@n_atk == 1) {
 						specialeffect2 EF_HIT5;
 						set .@p_vit,.@p_vit - .@damage;
 						mes "--------------------";
@@ -1296,7 +1369,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "--------------------";
 						mes "" + strcharinfo(0) + " has lost " + .@damage + " HP!";
 					}
-					else if (.@n_atk == 2) {
+					else if(.@n_atk == 2) {
 						specialeffect2 EF_HIT2;
 						set .@p_vit,.@p_vit - .@damage;
 						mes "--------------------";
@@ -1306,7 +1379,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "--------------------";
 						mes "" + strcharinfo(0) + " has lost " + .@damage + " HP!";
 					}
-					else if (.@n_atk == 3) {
+					else if(.@n_atk == 3) {
 						specialeffect2 EF_HIT4;
 						set .@p_vit,.@p_vit - .@damage;
 						mes "--------------------";
@@ -1316,7 +1389,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "--------------------";
 						mes "" + strcharinfo(0) + " has lost " + .@damage + " HP!";
 					}
-					else if (.@n_atk == 0) {
+					else if(.@n_atk == 0) {
 						specialeffect2 EF_HIT5;
 						set .@p_vit,.@p_vit - .@damage;
 						mes "--------------------";
@@ -1341,51 +1414,51 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 					next;
 				}
 				if (.@p_vit < n_vit) {
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "Muhahahaha!";
 					mes "You're not strong enough to beat me! I want someone who can offer";
 					mes "me a challenge!";
 					next;
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "Go out, train some and get stronger before you even think about coming back!";
 					close;
 				}
-				else if (.@n_vit < p_vit) {
+				else if(.@n_vit < p_vit) {
 					set god_mjo_2,2;
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "You're stronger than me. I never thought I'd meet a human as strong as you.";
 					next;
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "I'm impressed! Alright, I'll tell my friends good things about you. Hopefully, my brothers will give you the help you're looking for.";
 					next;
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "Okay then,";
 					mes "be safe on";
 					mes "your travels!";
 					close;
 				}
 			}
-			else if (god_mjo_2 == 0) {
-				mes "[Sudri]";
+			else if(god_mjo_2 == 0) {
+				mes "[稣德力]";
 				mes "So...";
 				mes "What brings";
 				mes "you here, human?";
 				next;
 				switch(select("Nothing.:Excuse me, sir.")) {
 				case 1:
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "You have too much time on your hands. Why don't you log out and hang out with your buddies for a while?";
 					close;
 				case 2:
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "Huh. You're different than other humans. But still, trusting you because you know how to speak respectfully isn't very wise.";
 					next;
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "If there's anything I love,";
 					mes "it's bare knuckle brawling,";
 					mes "old school style.";
 					next;
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "Words can be deceptive,";
 					mes "but if you can beat me in";
 					mes "a fight, I think I might";
@@ -1395,67 +1468,64 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 					switch(select("...:Yes, I accept your challenge.:No, I'm scared!")) {
 					case 1:
 						set god_mjo_2,3;
-						mes "[Sudri]";
+						mes "[稣德力]";
 						mes "You didn't";
 						mes "even answer me!";
 						mes "Fine! Whatever!";
 						close;
 					case 2:
 						set god_mjo_2,1;
-						mes "[Sudri]";
+						mes "[稣德力]";
 						mes "Ah, I like you already, human! Now why don't you go do some warm ups, and we'll fight when you're ready.";
 						close;
 					case 3:
 						set god_mjo_2,1;
-						mes "[Sudri]";
+						mes "[稣德力]";
 						mes "Eh...?";
 						mes "Why are you being";
 						mes "such a coward?";
 						mes "Are you afraid of";
 						mes "this old and tiny Dwarf?";
 						next;
-						mes "[Sudri]";
+						mes "[稣德力]";
 						mes "Come on, I'll even let you have the first hit. Just come to me when you're ready to fight!";
 						close;
 					}
 				}
 			}
 			else {
-				mes "[Sudri]";
+				mes "[稣德力]";
 				mes "Zzzz Zzzz...";
 				close;
 			}
 		}
-		else if (god_mjo_0 == 2) {
+		else if(god_mjo_0 == 2) {
 			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
-				mes "[Sudri]";
-				mes "[Sudri]";
+				mes "[稣德力]";
+				mes "[稣德力]";
 				mes "Get out of here before I beat you to death! All you can gain over here is a few herbs, anyway!";
 				close;
 			}
-			else if (god_mjo_3 == 2) {
-				mes "[Sudri]";
-				mes "That was a great fight!";
-				mes "Hahahahahahahahahaah!";
-				mes "I regret nothing.";
-				mes "I may have lost, but";
-				mes "I gave it my all!";
+			else if(god_mjo_3 == 2) {
+				mes "[稣德力]";
+				mes "很棒的攻击喔... 喔呵呵呵呵...";
+				mes "心服口服的被你打败了，我不后悔...";
 				close;
 			}
 			else if (god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_2 == 0 || god_mjo_2 == 1 || god_mjo_4 != 0) {
-				mes "[Sudri]";
+				mes "[稣德力]";
 				mes "What made you come to me?";
 				next;
 				switch(select("Nothing.:Excuse me, sir.")) {
 				case 1:
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "You have too much";
 					mes "time on your hands.";
 					mes "Why don't you log out and go out with your friends instead?";
 					close;
 				case 2:
 					set god_mjo_3,3;
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "Why should";
 					mes "I excuse you?";
 					mes "Do you want to";
@@ -1463,21 +1533,19 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 					close;
 				}
 			}
-			else if (god_mjo_3 == 1) {
-				mes "[Sudri]";
-				mes "Cool, let's fight!";
+			else if(god_mjo_3 == 1) {
+				mes "[稣德力]";
+				mes "好吧，来比一场高下吧!! 开始吧!! ";
 				next;
 				set .@n_vit,200;
 				set .@p_vit,100;
 				while(1) {
-					mes "Sudri : " + .@n_vit + " HP";
-					mes "" + strcharinfo(0) + " : " + .@p_vit + " HP";
+					mes "稣德力 : "+ .@n_vit;
+					mes strcharinfo(0) +" : "+ .@p_vit;
 					mes "--------------------";
-					mes "" + strcharinfo(0) + "";
-					mes "initiated";
-					mes "an attack!";
+					mes strcharinfo(0) +"的攻击!!";
 					next;
-					switch(select("...?!:Strike Head!:Strike Chest!:Strike Legs!:Take a break.")) {
+					switch(select("...?!:头部攻击!!:身体攻击!!:腿部攻击!!:暂时休息一下")) {
 					case 1:
 						set .@p_atk,0;
 						break;
@@ -1497,18 +1565,16 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 					set .@n_def,rand(1,3);
 					set .@damage,rand(15,25);
 					if (.@p_atk == 1) {
-						mes "" + strcharinfo(0) + "";
-						mes "attacks Sudri's head!";
+						mes strcharinfo(0) +"的头部攻击!!";
 					}
-					else if (.@p_atk == 2) {
+					else if(.@p_atk == 2) {
 						mes "" + strcharinfo(0) + "";
 						mes "strikes Sudri's chest!";
 					}
-					else if (.@p_atk == 3) {
-						mes "" + strcharinfo(0) + "";
-						mes "aims for Sudri's legs!";
+					else if(.@p_atk == 3) {
+						mes strcharinfo(0) +"的腿部攻击!!";
 					}
-					else if (.@p_atk == 4) {
+					else if(.@p_atk == 4) {
 						mes "" + strcharinfo(0) + "";
 						mes "requests a break!";
 					}
@@ -1526,7 +1592,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "--------------------";
 							mes "" + strcharinfo(0) + " misses!";
 						}
-						else if (.@n_def == 2) {
+						else if(.@n_def == 2) {
 							mes "--------------------";
 							mes "Sudri blocks your";
 							mes "attack by crossing";
@@ -1534,7 +1600,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "--------------------";
 							mes "" + strcharinfo(0) + "'s attack is blocked!";
 						}
-						else if (.@n_def == 3) {
+						else if(.@n_def == 3) {
 							mes "--------------------";
 							mes "Sudri dodges your";
 							mes "attack with a graceful";
@@ -1543,23 +1609,23 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "" + strcharinfo(0) + " misses!";
 						}
 					}
-					else if (.@p_atk == 4) {
+					else if(.@p_atk == 4) {
 						specialeffect2 EF_HEAL;
 						set .@p_vit,.@p_vit + 10;
 						mes "--------------------";
 						mes "" + strcharinfo(0) + "";
 						mes "has gained 10 HP!";
 					}
-					else if (.@p_atk == 1) {
+					else if(.@p_atk == 1) {
 						specialeffect EF_HIT5;
 						set .@n_vit,.@n_vit - .@damage;
 						mes "--------------------";
-						mes "You successfully hit";
-						mes "Sudri on the head!";
+						mes "精确的头部攻击，往稣德力头部";
+						mes "准确的命中了!!";
 						mes "--------------------";
-						mes "Sudri has lost " + .@damage + " HP!";
+						mes "稣德力的体力 "+ .@damage +" 减弱了了!!";
 					}
-					else if (.@p_atk == 2) {
+					else if(.@p_atk == 2) {
 						specialeffect EF_HIT2;
 						set .@n_vit,.@n_vit - .@damage;
 						mes "--------------------";
@@ -1569,17 +1635,16 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "Sudri has";
 						mes "lost " + .@damage + " HP!";
 					}
-					else if (.@p_atk == 3) {
+					else if(.@p_atk == 3) {
 						specialeffect EF_HIT4;
 						set .@n_vit,.@n_vit - .@damage;
 						mes "--------------------";
-						mes "You successfully hit";
-						mes "Sudri on the legs!";
+						mes "敏捷的腿部攻击，让稣德力的下半身，";
+						mes "开始摇晃了!!";
 						mes "--------------------";
-						mes "Sudri has";
-						mes "lost " + .@damage + " HP!";
+						mes "稣德力的体力 "+ .@damage +" 减弱了!!";
 					}
-					else if (.@p_atk == 0) {
+					else if(.@p_atk == 0) {
 						specialeffect2 EF_HIT5;
 						set .@p_vit,.@p_vit - 10;
 						mes "--------------------";
@@ -1600,17 +1665,17 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						close;
 					}
 					if (.@n_vit < 1) {
-						mes "" + strcharinfo(0) + " wins!";
+						mes "击败了稣德力!!";
 						next;
 						break;
 					}
 					next;
-					mes "Sudri : " + .@n_vit + " HP";
-					mes "" + strcharinfo(0) + " : " + .@p_vit + " HP";
+					mes "稣德力 : "+ .@n_vit;
+					mes strcharinfo(0) +" : "+ .@p_vit;
 					mes "--------------------";
-					mes "Sudri attacks...!";
+					mes "稣德力的攻击!!";
 					next;
-					switch(select("...?!:Dodge!:Block!:Jump!:Counter back!")) {
+					switch(select("...?!:闪躲!!:阻挡!!:逃跑!!:反击!!")) {
 					case 1:
 						set .@p_def,0;
 						break;
@@ -1630,9 +1695,9 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 					set .@n_atk,rand(1,3);
 					set .@damage,rand(20,25);
 					if (.@n_atk == 1) {
-						mes "Sudri aims for the head!";
+						mes "稣德力的头部攻击!!";
 					}
-					else if (.@n_atk == 2) {
+					else if(.@n_atk == 2) {
 						mes "Sudri strikes the chest!";
 					}
 					else {
@@ -1648,7 +1713,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "--------------------";
 							mes "Sudri has failed to attack.";
 						}
-						else if (.@p_def == 2) {
+						else if(.@p_def == 2) {
 							mes "--------------------";
 							mes "" + strcharinfo(0) + "";
 							mes "barely blocked";
@@ -1656,7 +1721,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "--------------------";
 							mes "Sudri has failed to attack.";
 						}
-						else if (.@p_def == 3) {
+						else if(.@p_def == 3) {
 							mes "--------------------";
 							mes "" + strcharinfo(0) + " jumped,";
 							mes "dodged Sudri's attack at ease.";
@@ -1664,19 +1729,17 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							mes "Sudri has failed to attack.";
 						}
 					}
-					else if (.@p_def == 4) {
+					else if(.@p_def == 4) {
 						set .@count,rand(1,4);
 						mes "--------------------";
-						mes "" + strcharinfo(0) + "";
-						mes "counters!";
+						mes strcharinfo(0) +"的反击!!";
 						if (.@count == 1) {
 							specialeffect2 EF_AUTOCOUNTER;
 							specialeffect EF_MAGNUMBREAK;
 							set .@n_vit,.@n_vit - 20;
-							mes "You successfully";
-							mes "counter attacked!";
+							mes "交叉反击成功了!!";
 							mes "--------------------";
-							mes "Sudri has lost 20 HP!";
+							mes "稣德力的体力减弱了20!!";
 							if (.@n_vit < 1) {
 								mes "" + strcharinfo(0) + " won!";
 								next;
@@ -1687,13 +1750,13 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 							specialeffect2 EF_CRASHEARTH;
 							set .@p_vit,.@p_vit - 30;
 							mes "You've taken";
-							mes "critical damage";
+							mes "critical .@damage";
 							mes "on your weak spot!";
 							mes "--------------------";
 							mes "" + strcharinfo(0) + " has lost 30 HP!";
 						}
 					}
-					else if (.@n_atk == 1) {
+					else if(.@n_atk == 1) {
 						specialeffect2 EF_HIT5;
 						set .@p_vit,.@p_vit - .@damage;
 						mes "--------------------";
@@ -1703,7 +1766,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "--------------------";
 						mes "" + strcharinfo(0) + " has lost " + .@damage + " HP!";
 					}
-					else if (.@n_atk == 2) {
+					else if(.@n_atk == 2) {
 						specialeffect2 EF_HIT2;
 						set .@p_vit,.@p_vit - .@damage;
 						mes "--------------------";
@@ -1713,7 +1776,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "--------------------";
 						mes "" + strcharinfo(0) + " has lost " + .@damage + " HP!";
 					}
-					else if (.@n_atk == 3) {
+					else if(.@n_atk == 3) {
 						specialeffect2 EF_HIT4;
 						set .@p_vit,.@p_vit - .@damage;
 						mes "--------------------";
@@ -1723,7 +1786,7 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "--------------------";
 						mes "" + strcharinfo(0) + " has lost " + .@damage + " HP!";
 					}
-					else if (.@n_atk == 0) {
+					else if(.@n_atk == 0) {
 						specialeffect2 EF_HIT5;
 						set .@p_vit,.@p_vit - .@damage;
 						mes "--------------------";
@@ -1748,208 +1811,207 @@ mjolnir_09,209,341,3	script	Dwarf Blacksmith#south	826,{
 					next;
 				}
 				if (.@p_vit < .@n_vit) {
-					mes "[Sudri]";
-					mes "Muhahahaha!";
-					mes "You're not strong enough to beat me! I want someone who can offer";
-					mes "me a challenge!";
-					next;
-					mes "[Sudri]";
-					mes "Go out, train some and get stronger before you even think about coming back!";
+					mes "[稣德力]";
+					mes "哈哈哈，果然不够啊!!";
+					mes "真的没有能让我沸腾的血液，";
+					mes "冷静下来的家伙吗!!";
+					mes "累积点实力之后，下次再回来吧!!";
 					close;
 				}
-				else if (.@n_vit < .@p_vit) {
+				else if(.@n_vit < .@p_vit) {
 					set god_mjo_3,2;
-					mes "[Sudri]";
-					mes "You're stronger than me. I never thought I'd meet a human as strong as you.";
+					mes "[稣德力]";
+					mes "喔喔，很强嘛... 真的比我想像中，";
+					mes "还有更强的人类呀... 真是不简单，";
+					mes "真了不起呀，了不起，.";
+					mes "好吧，下次见到我朋友时，";
+					mes "我会好好告诉他们的...";
+					mes "不过，要记住，";
+					mes "千万不要搞错顺序了";
 					next;
-					mes "[Sudri]";
-					mes "I'm impressed! Alright, I'll tell my friends good things about you. Hopefully, my brothers will give you the help you're looking for.";
-					next;
-					mes "[Sudri]";
-					mes "Okay then,";
-					mes "be safe on";
-					mes "your travels!";
+					mes "[稣德力]";
+					mes "那么，继续你的冒险吧，";
+					mes "永远的流浪者，人类啊...";
 					close;
 				}
 			}
-			else if (god_mjo_3 == 0) {
-				mes "[Sudri]";
-				mes "What made you come to me?";
+			else if(god_mjo_3 == 0) {
+				mes "[稣德力]";
+				mes "什么啊，找我有什么事嘛?";
 				next;
-				switch(select("Nothing.:Excuse me, sir.")) {
+				switch(select("没什么事:不好意思打扰一下")) {
 				case 1:
-					mes "[Sudri]";
+					mes "[稣德力]";
 					mes "You have too much";
 					mes "time on your hands.";
 					mes "Why don't you log out and go out with your friends instead?";
 					close2;
 				case 2:
-					mes "[Sudri]";
-					mes "Huh. You're different than other humans. But still, trusting you because you know how to speak respectfully isn't very wise.";
+					mes "[稣德力]";
+					mes "喔喔，说是人类怎么眼神跟其它人不同呀?";
+					mes "想从我这瘦小又脆弱的老人身上，";
+					mes "想听到一些什么事情吗，";
+					mes "我不跟人类用语言说话的呀";
 					next;
-					mes "[Sudri]";
-					mes "If there's anything I love,";
-					mes "it's bare knuckle brawling,";
-					mes "old school style.";
+					mes "[稣德力]";
+					mes "放下武器，我最喜欢，";
+					mes "只以拳头来决胜负了!!";
+					mes "比起嘴上说的，";
+					mes "行动更具真实性不是吗?";
+					mes "怎么样，要跟我打一场吗? 嗯?";
 					next;
-					mes "[Sudri]";
-					mes "Words can be deceptive,";
-					mes "but if you can beat me in";
-					mes "a fight, I think I might";
-					mes "just talk to you.";
-					mes "How about it?";
-					next;
-					switch(select("...:Yes, I accept your challenge.:No, I'm scared!")) {
+					switch(select(".....:是的，拜托您了:不用啦，我很害怕呀")) {
 					case 1:
 						set god_mjo_3,3;
-						mes "[Sudri]";
+						mes "[稣德力]";
 						mes "You didn't";
 						mes "even answer me!";
 						mes "Fine! Whatever!";
 						close;
 					case 2:
 						set god_mjo_3,1;
-						mes "[Sudri]";
-						mes "Ah, I like you already, human! Now why don't you go do some warm ups, and we'll fight when you're ready.";
+						mes "[稣德力]";
+						mes "回答得很爽快呀，很好!! 很好，";
+						mes "先做一下暖身运动再来吧，准备好的话，";
+						mes "马上就来一场决斗吧...!!";
+						mes "先做好充分的准备会更好的";
 						close;
 					case 3:
 						set god_mjo_3,1;
-						mes "[Sudri]";
+						mes "[稣德力]";
 						mes "Eh...?";
 						mes "Why are you being";
 						mes "such a coward?";
 						mes "Are you afraid of";
 						mes "this old and tiny Dwarf?";
 						next;
-						mes "[Sudri]";
+						mes "[稣德力]";
 						mes "Come on, I'll even let you have the first hit. Just come to me when you're ready to fight!";
 						close;
 					}
 				}
 			}
 			else {
-				mes "[Sudri]";
+				mes "[稣德力]";
 				mes "Zzzz Zzzz...";
 				close;
 			}
 		}
-		else if (god_mjo_0 == 0) {
-			mes "[Sudri]";
+		else if(god_mjo_0 == 0) {
+			mes "[稣德力]";
 			mes "In a one on one fight, you put everything on the line to show your might to your opponent.";
 			next;
-			mes "[Sudri]";
+			mes "[稣德力]";
 			mes "Have you ever felt the same way I do, human? Win or lose, just giving your all is the most satisfying accomplishment.";
 			close;
 		}
 		else {
-			mes "[Sudri]";
+			mes "[稣德力]";
 			mes "Zzzz Zzzz...";
 			close;
 		}
 	}
 }
 
-mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
-	if ($God3 < $@god_check1) {
-		mes "[Vestri]";
+mjolnir_01,35,136,7	script	得卧普 铁匠#西	826,{
+	if($God3 < 50) {
+		mes "[贝斯特力]";
 		mes "If you want something, you should earn it through your own efforts.";
 		next;
-		mes "[Vestri]";
+		mes "[贝斯特力]";
 		mes "No matter what other people say, if you're confident and your will is unwavering, you'll always be satisfied with the results.";
 		next;
-		mes "[Vestri]";
+		mes "[贝斯特力]";
 		mes "What do you think?";
 		mes "Kids these days...";
 		close;
 	}
 	else {
-		if ($God4 >= $@god_check2) {
-			mes "[Vestri]";
+		if($God4 > 99) {
+			mes "[贝斯特力]";
 			mes "I don't feel";
 			mes "like doing anything";
 			mes "today. Anything at all...";
 			next;
-			mes "[Vestri]";
+			mes "[贝斯特力]";
 			mes "Someone must have forged something really monstrous, otherwise I wouldn't be feeling so worthless!";
 			next;
-			mes "[Vestri]";
+			mes "[贝斯特力]";
 			mes "Yeah, I think I need a break! Don't you think I need a break, human?";
 			close;
 		}
-		else if (god_mjo_0 == 11) {
-			mes "[Vestri]";
+		else if(god_mjo_0 == 11) {
+			mes "[贝斯特力]";
 			mes "There's nothing like taking a relaxing break after putting your heart into your work.";
 			next;
-			mes "[Vestri]";
+			mes "[贝斯特力]";
 			mes "What do you think,";
 			mes "human? Isn't that one";
 			mes "of life's simple pleasures?";
 			close;
 		}
-		else if (god_mjo_0 == 10) {
-			mes "[Vestri]";
+		else if(god_mjo_0 == 10) {
+			mes "[贝斯特力]";
 			mes "If you want something, you should earn it through your own efforts.";
 			next;
-			mes "[Vestri]";
+			mes "[贝斯特力]";
 			mes "No matter what other people say, if you're confident and your will is unwavering, you'll always be satisfied with the results.";
 			next;
-			mes "[Vestri]";
+			mes "[贝斯特力]";
 			mes "What do you think?";
 			mes "Kids these days...";
 			close;
 		}
-		else if (god_mjo_0 == 1) {
-			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
-				mes "[Vestri]";
+		else if(god_mjo_0 == 1) {
+			if(god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
+				mes "[贝斯特力]";
 				mes "I really hope I meet a decent human being next time. So far, I haven't met one useful human.";
 				close;
 			}
-			else if (god_mjo_3 == 2) {
-				mes "[Vestri]";
-				mes "Perfect preparation does not always result in success. There's a point when you've got to just go out and do it.";
-				next;
-				mes "[Vestri]";
-				mes "I don't know how";
-				mes "big your goals are,";
-				mes "but put your heart into";
-				mes "whatever it is that you";
-				mes "plan to accomplish in life.";
+			else if(god_mjo_3 == 2) {
+				mes "[贝斯特力]";
+				mes "不管什么时候东西都准备好了，";
+				mes "不一定都会成功的意思，";
+				mes "虽然不知道要走到哪里，";
+				mes "也得提起精神走到最后呀";
 				close;
 			}
-			else if (god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_2 == 0 || god_mjo_2 == 1 || god_mjo_4 != 0) {
-				mes "[Vestri]";
+			else if(god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_2 == 0 || god_mjo_2 == 1 || god_mjo_4 != 0) {
+				mes "[贝斯特力]";
 				mes "What do you want?";
 				next;
 				switch(select("Nothing.:Excuse me.")) {
 				case 1:
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "If you want something, you should earn it through your own efforts.";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "No matter what other people say, if you're confident and your will is unwavering, you'll always be satisfied with the results.";
 					close;
 				case 2:
 					set god_mjo_3,3;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "You didn't answer the question! Now, you've probably got the wrong Dwarf here...";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Get out of here, and go to your human Blacksmiths if you want equipment upgrades!";
 					close;
 				}
 			}
-			else if (god_mjo_3 == 1) {
-				disable_items;
-				mes "[Vestri]";
-				mes "Great...!";
-				mes "Which one should I upgrade first, huh? My heart is pounding with anticipation...";
+			else if(god_mjo_3 == 1) {
+				mes "[贝斯特力]";
+				mes "很好!! 那么要来做哪种冶炼呢? 嗯?";
+				mes "开始紧张的这种感觉...";
+				mes "真的不能忍受呀...!!";
 				next;
 
-				setarray .@position$[1], "Head","Body","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head 2","Head 3";
+				setarray .@position$[1], "头","全身","左手","右手","外袍","鞋子","装饰品1","装饰品2","头2","头3";
 				set .@menu$,"";
-				for(set .@i,1; .@i <= 10; set .@i,.@i+1) {
-					if (getequipisequiped(.@i))
+				for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+				{
+					if( getequipisequiped(.@i) )
 						set .@menu$, .@menu$ + .@position$[.@i] + "-" + "[" + getequipname(.@i) + "]";
+
 					set .@menu$, .@menu$ + ":";
 				}
 				set .@part,select(.@menu$);
@@ -1958,69 +2020,71 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 					close;
 
 				if (getequipisenableref(.@part) == 0) {
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "What...?!";
 					mes "This isn't upgradable!";
 					mes "What the hell do you want";
 					mes "me to do with this?";
 					close;
 				}
+//				if (getequipisidentify(.@part) == 0) {
+//					mes "[贝斯特力]";
+//					mes "You'd better identify this item first. If we don't know what it is, what's the point of upgrading it?";
+//					close;
+//				}
 				if (getequiprefinerycnt(.@part) >= 10) {
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Oh, this is excellent! This piece here has been perfectly refined! But this isn't what I want. I can't do any work on this at all.";
 					close;
 				}
 				if (GetEquipPercentRefinery(.@part) == 100) {
-					mes "[Vestri]";
-					mes "This item isn't even a challenge to upgrade. You can get humans to do this kind of beginner's stuff. Get them to refine it first.";
-					next;
-					mes "[Vestri]";
-					mes "Come on...";
-					mes "Bring me something";
-					mes "that presents an";
-					mes "element of risk!";
+					mes "[贝斯特力]";
+					mes "喔呵，这冶炼是";
+					mes "非常安全的冶炼喔，我说过的吧?";
+					mes "挑战!!";
+					mes "如果不服挑战资格是不行的!!";
 					close;
 				}
 				if ((getequipweaponlv(.@part) <= 1) && (getequipweaponlv(.@part) >= 3 )){
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Hey...";
 					mes "Don't insult me by expecting me to work on anything less than a Level 4 weapon.";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Bring me a Level 4 weapon for me to work on next time, got it?";
 					close;
 				}
 				if (getequipweaponlv(.@part) == 0){
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Armor?!";
 					mes "Didn't I tell";
 					mes "you that I only work";
 					mes "on Level 4 weapons?";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "You can have a human";
 					mes "Blacksmith work on that kind of stuff! Now, a Dwarf like me needs something that's more of a challenge!";
 					close;
 				}
 
-				mes "[Vestri]";
-				mes "Okay, let me give you the mandatory warning. If your weapon happens to be destroyed by chance during the upgrade, you'll never see the weapon again.";
+				mes "[贝斯特力]";
+				mes "好吧，来做最后一次的确认吧，";
+				mes "你应该知道冶炼后失败的话，";
+				mes "无法再使用的事实?";
+				mes "里面所插的卡片和属性这些东西，";
+				mes "^FF0000会全部不见^000000耶!";
+				mes "^FF0000武器本身就会^000000 消失不见了!!";
+				mes "很刺激呀，要不要挑战一下呢!!";
 				next;
-				mes "[Vestri]";
-				mes "That also means that if the weapon is destroyed, any ^FF0000Cards^000000 inserted into the weapon will also be gone.";
-				next;
-				mes "[Vestri]";
-				mes "If you understand,";
-				mes "then let's get on with it!";
-				next;
-				if(select("Sure, let's do it!:N-no, I changed my mind!") == 2) {
-					mes "[Vestri]";
+				if( select("好呀，我要挑战看看!!:...不用啊，算了") == 2 )
+				{
+					mes "[贝斯特力]";
 					mes "Bah...!";
 					mes "How do you survive";
 					mes "in this world with that";
 					mes "kind of cowardice?!";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Oh, forget it.";
 					mes "I know you're just being careful. Damn, I was just so eager to get";
 					mes "to work!";
@@ -2031,7 +2095,7 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 					delitem 984,1; //Oridecon
 				}
 				else {
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Huh...";
 					mes "You forgot to";
 					mes "bring an Oridecon.";
@@ -2042,8 +2106,8 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 					mes "^3355FF*Clang Clang!*^000000";
 					successrefitem .@part;
 					next;
-					emotion ET_SMILE;
-					mes "[Vestri]";
+					emotion e_heh;
+					mes "[贝斯特力]";
 					mes "Mwahahaha~";
 					mes "I've still got it!";
 					mes "So aren't you happy";
@@ -2052,80 +2116,80 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 					next;
 				}
 				else {
-					mes "[Vestri]";
-					mes "^3355FF*Clang Clang!*^000000";
+					mes "[贝斯特力]";
+					mes "铿! 铿! 铿! 铿! 铿!";
 					failedrefitem .@part;
 					next;
-					emotion ET_HUK;
-					mes "[Vestri]";
-					mes "Waaahhhhh!";
-					mes "Dear God, no!";
+					emotion e_omg;
+					mes "[贝斯特力]";
+					mes "呵啊啊啊啊啊啊啊啊啊!!!!";
 					next;
-					mes "[Vestri]";
-					mes "I-It's alright!";
-					mes "Bad things happen";
-					mes "sometimes. Let's just";
-					mes "think of it as both us";
-					mes "of us having a bad day.";
-					mes "Yeah, no regrets!";
+					mes "[贝斯特力]";
+					mes "呵，呵嗯，没关系呀，没... 什么呀，";
+					mes "我想今天运气不太好吧，";
+					mes "对呀! 就轻松的让他失败吧!!";
+					mes "我对冶炼人生这条路，";
+					mes "一点后悔都没有!!";
 					next;
 				}
 				set god_mjo_3,2;
-				mes "[Vestri]";
-				mes "Well, my friend,";
-				mes "if you ever visit my brothers, please give them my regards.";
-				mes "Take care.";
+				mes "[贝斯特力]";
+				mes "到这边我的帮忙到此为止就结束啦，";
+				mes "若剑道我的其它兄弟的话，";
+				mes "请帮我问一声好吗，依这件事情为教训，";
+				mes "希望可以对你未来的旅程，";
+				mes "有所帮助...";
 				close;
 			}
-			else if (god_mjo_3 == 0) {
-				mes "[Vestri]";
+			else if(god_mjo_3 == 0) {
+				mes "[贝斯特力]";
 				mes "What do you want?";
 				next;
 				switch(select("Nothing.:Excuse me.")) {
 				case 1:
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "If you want something, you should earn it through your own efforts.";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "No matter what other people say, if you're confident and your will is unwavering, you'll always be satisfied with the results.";
 					close;
 				case 2:
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Huh...";
 					mes "I don't know how I can be much help to an adventurer like you. Aside from being a Blacksmith...";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "There's nothing I enjoy more than upgrading high level weapons that are on the verge of breaking.";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Don't you like the idea of challenging the limit? To me, upgrading feels like climbing unconquered mountains!";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Alright. Perhaps I'm meant to help you out, so I'll upgrade a weapon for you. All you need to do is bring me the weapon and material.";
 					next;
 					set god_mjo_3,1;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Here's the condition: You've got to bring me a Level 4 Weapon that's been upgraded to the point where it might break. Oh, and bring an Oridecon!";
 					close;
 				}
 			}
 			else {
-				mes "[Vestri]";
+				mes "[贝斯特力]";
 				mes "Zzzz Zzzz Zzzz...";
 				close;
 			}
 		}
-		else if (god_mjo_0 == 2) {
+		else if(god_mjo_0 == 2) {
 			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
-				mes "[Vestri]";
+				mes "[贝斯特力]";
 				mes "I really hope I meet a decent human being next time. So far, I haven't met one useful human.";
 				close;
 			}
-			else if (god_mjo_2 == 2) {
-				mes "[Vestri]";
+			else if(god_mjo_2 == 2) {
+				mes "[贝斯特力]";
 				mes "Perfect preparation does not always result in success. There's a point when you've got to just go out and do it.";
 				next;
-				mes "[Vestri]";
+				mes "[贝斯特力]";
 				mes "I don't know how";
 				mes "big your goals are,";
 				mes "but put your heart into";
@@ -2134,40 +2198,43 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 				close;
 			}
 			else if (god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_3 != 0 || god_mjo_4 != 0) {
-				mes "[Vestri]";
+				mes "[贝斯特力]";
 				mes "What do you want?";
 				next;
 				switch(select("Nothing.:Excuse me.")) {
 				case 1:
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "If you want something, you should earn it through your own efforts.";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "No matter what other people say, if you're confident and your will is unwavering, you'll always be satisfied with the results.";
 					close;
 				
 				case 2:
 					set god_mjo_2,3;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "You didn't answer the question! Now, you've probably got the wrong Dwarf here...";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Get out of here, and go to your human Blacksmiths if you want equipment upgrades!";
 					close;
 				}
 			}
-			else if (god_mjo_2 == 1) {
+			else if(god_mjo_2 == 1) {
 				disable_items;
-				mes "[Vestri]";
-				mes "Great...!";
-				mes "Which one should I upgrade first, huh? My heart is pounding with anticipation...";
+				mes "[贝斯特力]";
+				mes "很好!! 那么要来做哪种冶炼呢? 嗯?";
+				mes "开始紧张的这种感觉...";
+				mes "真的不能忍受呀...!!";
 				next;
-				
-				setarray .@position$[1], "Head","Body","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head 2","Head 3";
+
+				setarray .@position$[1], "头","全身","左手","右手","外袍","鞋子","装饰品1","装饰品2","头2","头3";
 				set .@menu$,"";
-				for(set .@i,1; .@i <= 10; set .@i,.@i+1) {
-					if (getequipisequiped(.@i))
+				for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+				{
+					if( getequipisequiped(.@i) )
 						set .@menu$, .@menu$ + .@position$[.@i] + "-" + "[" + getequipname(.@i) + "]";
+
 					set .@menu$, .@menu$ + ":";
 				}
 				set .@part,select(.@menu$);
@@ -2176,64 +2243,66 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 					close;
 
 				if (getequipisenableref(.@part) == 0) {
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "What...?!";
 					mes "This isn't upgradable!";
 					mes "What the hell do you want";
 					mes "me to do with this?";
 					close;
 				}
+//				if (getequipisidentify(.@part) == 0) {
+//					mes "[贝斯特力]";
+//					mes "You'd better identify this item first. If we don't know what it is, what's the point of upgrading it?";
+//					close;
+//				}
 				if (getequiprefinerycnt(.@part) >= 10) {
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Oh, this is excellent! This piece here has been perfectly refined! But this isn't what I want. I can't do any work on this at all.";
 					close;
 				}
 				if (GetEquipPercentRefinery(.@part) == 100) {
-					mes "[Vestri]";
-					mes "This item isn't even a challenge to upgrade. You can get humans to do this kind of beginner's stuff. Get them to refine it first.";
-					next;
-					mes "[Vestri]";
-					mes "Come on...";
-					mes "Bring me something";
-					mes "that presents an";
-					mes "element of risk!";
+					mes "[贝斯特力]";
+					mes "喔呵，这冶炼是";
+					mes "非常安全的冶炼喔，我说过的吧?";
+					mes "挑战!!";
+					mes "如果不服挑战资格是不行的!!";
 					close;
 				}
 				if ((getequipweaponlv(.@part) <= 1) && (getequipweaponlv(.@part) >= 3 )){
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Hey...";
 					mes "Don't insult me by expecting me to work on anything less than a Level 4 weapon.";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Bring me a Level 4 weapon for me to work on next time, got it?";
 					close;
 				}
 				if (getequipweaponlv(.@part) == 0){
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Armor?!";
 					mes "Didn't I tell";
 					mes "you that I only work";
 					mes "on Level 4 weapons?";
 					close;
 				}
-				mes "[Vestri]";
-				mes "Okay, let me give you the mandatory warning. If your weapon happens to be destroyed by chance during the upgrade, you'll never see the weapon again.";
+				mes "[贝斯特力]";
+				mes "好吧，来做最后一次的确认吧，";
+				mes "你应该知道冶炼后失败的话，";
+				mes "无法再使用的事实?";
+				mes "里面所插的卡片和属性这些东西，";
+				mes "^FF0000会全部不见^000000耶!";
+				mes "^FF0000武器本身就会^000000 消失不见了!!";
+				mes "很刺激呀，要不要挑战一下呢!!";
 				next;
-				mes "[Vestri]";
-				mes "That also means that if the weapon is destroyed, any ^FF0000Cards^000000 inserted into the weapon will also be gone.";
-				next;
-				mes "[Vestri]";
-				mes "If you understand,";
-				mes "then let's get on with it!";
-				next;
-				if(select("Sure, let's do it!:...no, I am out.") == 2) {
-					mes "[Vestri]";
+				if( select("好呀，我要挑战看看!!:...不用啊，算了") == 2 )
+				{
+					mes "[贝斯特力]";
 					mes "Bah...!";
 					mes "How do you survive";
 					mes "in this world with that";
 					mes "kind of cowardice?!";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Oh, forget it.";
 					mes "I know you're just being careful. Damn, I was just so eager to get";
 					mes "to work!";
@@ -2243,7 +2312,7 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 					delitem 984,1; //Oridecon
 				}
 				else {
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "Huh...";
 					mes "You forgot to";
 					mes "bring an Oridecon.";
@@ -2254,8 +2323,8 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 					mes "^3355FF*Clang Clang!*^000000";
 					successrefitem .@part;
 					next;
-					emotion ET_SMILE;
-					mes "[Vestri]";
+					emotion e_heh;
+					mes "[贝斯特力]";
 					mes "Mwahahaha~";
 					mes "I've still got it!";
 					mes "So aren't you happy";
@@ -2264,155 +2333,175 @@ mjolnir_01,35,136,7	script	Dwarf Blacksmith#west	826,{
 					next;
 				}
 				else {
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "^3355FF*Clang Clang!*^000000";
 					failedrefitem .@part;
 					next;
-					emotion ET_HUK;
-					mes "[Vestri]";
-					mes "Waaahhhhh!";
-					mes "Dear God, no!";
+					emotion e_omg;
+					mes "[贝斯特力]";
+					mes "呵啊啊啊啊啊啊啊啊啊!!!!";
 					next;
-					mes "[Vestri]";
-					mes "I-It's alright!";
-					mes "Bad things happen";
-					mes "sometimes. Let's just";
-					mes "think of it as both us";
-					mes "of us having a bad day.";
-					mes "Yeah, no regrets!";
+					mes "[贝斯特力]";
+					mes "呵，呵嗯，没关系呀，没... 什么呀，";
+					mes "我想今天运气不太好吧，";
+					mes "对呀! 就轻松的让他失败吧!!";
+					mes "我对冶炼人生这条路，";
+					mes "一点后悔都没有!!";
 					next;
 				}
 				set god_mjo_2,2;
-				mes "[Vestri]";
-				mes "Well, my friend,";
-				mes "if you ever visit my brothers, please give them my regards.";
-				mes "Take care.";
+				mes "[贝斯特力]";
+				mes "到这边我的帮忙到此为止就结束啦，";
+				mes "若剑道我的其它兄弟的话，";
+				mes "请帮我问一声好吗，依这件事情为教训，";
+				mes "希望可以对你未来的旅程，";
+				mes "有所帮助...";
 				close;
 			}
-			else if (god_mjo_2 == 0) {
-				mes "[Vestri]";
-				mes "What do you want?";
+			else if(god_mjo_2 == 0) {
+				mes "[贝斯特力]";
+				mes "什么啊，找我有什么事嘛?";
 				next;
-				switch(select("Nothing.:Excuse me.")) {
+				switch(select("没什么事:不好意思打扰一下")) {
 				case 1:
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "If you want something, you should earn it through your own efforts.";
 					next;
-					mes "[Vestri]";
+					mes "[贝斯特力]";
 					mes "No matter what other people say, if you're confident and your will is unwavering, you'll always be satisfied with the results.";
 					close;
 				case 2:
-					mes "[Vestri]";
-					mes "Huh...";
-					mes "I don't know how I can be much help to an adventurer like you. Aside from being a Blacksmith...";
+					mes "[贝斯特力]";
+					mes "哼，虽然我不知道是什么事情...";
+					mes "我不知道我可以帮的上你什么忙耶，";
+					mes "虽然你看了就知道我是铁匠，";
+					mes "我比其它铁匠，";
+					mes "更喜欢做一件事情呀";
 					next;
-					mes "[Vestri]";
-					mes "There's nothing I enjoy more than upgrading high level weapons that are on the verge of breaking.";
+					mes "[贝斯特力]";
+					mes "那就是... 挑战令人不安的";
+					mes "事情呀，譬如说，";
+					mes "经过多次冶炼的武器，想再次冶炼呀，";
+					mes "或是经过多次冶炼的防具，";
+					mes "再次冶炼，或是经过多次冶炼的头盔.....";
 					next;
-					mes "[Vestri]";
-					mes "Don't you like the idea of challenging the limit? To me, upgrading feels like climbing unconquered mountains!";
+					mes "[贝斯特力]";
+					mes "我比其它铁匠更喜欢，";
+					mes "更好的冶炼!! 你不觉得挑战极限";
+					mes "是多么有趣的事情吗!? 越过";
+					mes "任谁都没有看过的地平线，找寻希望";
+					mes "这行动... 就是冶炼呀!";
 					next;
-					mes "[Vestri]";
-					mes "Alright. Perhaps I'm meant to help you out, so I'll upgrade a weapon for you. All you need to do is bring me the weapon and material.";
+					mes "[贝斯特力]";
+					mes "好吧，这样子相见也是缘份啊，";
+					mes "我特别用我的势力，";
+					mes "为你冶炼一样好武器吧!!";
+					mes "不收手续费，只要给我材料即可，";
+					mes "是个不错的提议吧?";
 					next;
 					set god_mjo_2,1;
-					mes "[Vestri]";
-					mes "Here's the condition: You've got to bring me a Level 4 Weapon that's been upgraded to the point where it might break. Oh, and bring an Oridecon!";
+					mes "[贝斯特力]";
+					mes "只是... 我不做没有危险性，";
+					mes "了无生趣的冶炼，你懂吧?";
+					mes "我要的是４等级的武器，";
+					mes "我只要那种很有经险的，";
+					mes "好不容易越过极限的物品来做!!";
+					mes "当然你不要忘记神之金属啊?";
 					close;
 				}
 			}
 			else {
-				mes "[Vestri]";
+				mes "[贝斯特力]";
 				mes "Zzzz Zzzz Zzzz...";
 				close;
 			}
 		}
-		else if (god_mjo_0 == 0) {
-			mes "[Vestri]";
+		else if(god_mjo_0 == 0) {
+			mes "[贝斯特力]";
 			mes "It's always a pleasure to engage myself in hard work, especially smithing.";
 			next;
-			mes "[Vestri]";
+			mes "[贝斯特力]";
 			mes "Upgrading is always enjoyable!";
 			mes "I have no regrets when failure, and I'm always pleased when I'm successful. I'll upgrade everyday to make the best of my life~";
 			close;
 		}
 		else {
-			mes "[Vestri]";
+			mes "[贝斯特力]";
 			mes "Zzzz Zzzz Zzzz...";
 			close;
 		}
 	}
 }
 
-mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
-	if ($God3 < $@god_check1) {
-		mes "[Nordri]";
+mjolnir_12,18,18,7	script	得卧普 铁匠#北	826,{
+	if ($God3 < 50) {
+		mes "[诺斯德力]";
 		mes "What...?";
 		mes "I don't have any";
 		mes "Eluniums or Oridecons!";
 		next;
-		mes "[Nordri]";
+		mes "[诺斯德力]";
 		mes "Vestri took them all. ^333333*Sigh*^000000 Those were my treasures, you know...";
 		close;
 	}
 	else {
-		if ($God4 >= $@god_check2) {
-			mes "[Nordri]";
+		if ($God4 > 99) {
+			mes "[诺斯德力]";
 			mes "What's happening?";
 			mes "I sense change in the winds, but what that change may be, I cannot tell.";
 			next;
-			mes "[Nordri]";
+			mes "[诺斯德力]";
 			mes "Should I go into the cave to figure it out? Huh. This is most peculiar.";
 			close;
 		}
 		else if (god_mjo_0 == 11) {
-			mes "[Nordri]";
+			mes "[诺斯德力]";
 			mes "Bwahahah!";
 			mes "Even the gods know that we Dwarves are the most talented of artisans! Maybe it doesn't seem that way now, but someday we shall return.";
 			close;
 		}
 		else if (god_mjo_0 == 10) {
-			mes "[Nordri]";
+			mes "[诺斯德力]";
 			mes "What...?";
 			mes "I don't have any";
 			mes "Eluniums or Oridecons!";
 			next;
-			mes "[Nordri]";
+			mes "[诺斯德力]";
 			mes "Vestri took them all.";
 			mes "Don't you understand?";
 			close;
 		}
 		else if (god_mjo_0 == 1) {
 			if ((god_mjo_1 == 3) || (god_mjo_2 == 3) || (god_mjo_3 == 3) || (god_mjo_4 == 3)){
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "Eh heh heh~";
 				mes "It's nice being in the Mjolnir Forest. To be surrounded by the quiet, peaceful air and not having to worry about anything...";
 				close;
 			}
 			else if (god_mjo_4 == 2) {
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "Shouldn't you be on your way by now? Eh, it's none of my business.";
 				next;
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "If you have the Zeny to spare, why don't you buy some snacks for your travels? Perhaps some delicious Bananas, or even some Pumpkins...";
 				close;
 			}
 			else if ((god_mjo_1 == 0) || (god_mjo_1 == 1) || (god_mjo_2 == 0) || (god_mjo_2 == 1) || (god_mjo_3 == 0) || (god_mjo_3 == 1)){
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "What business";
 				mes "do you have with";
 				mes "me, human?";
 				next;
 				switch(select("Nothing.:Excuse me.")) {
 				case 1:
-					mes "[Nordri]";
+					mes "[诺斯德力]";
 					mes "Huh.";
 					mes "If that's the case,";
 					mes "then leave me alone.";
 					close;
 				case 2:
 					set god_mjo_4,3;
-					mes "[Nordri]";
+					mes "[诺斯德力]";
 					mes "Huh.";
 					mes "That's fine. Still...";
 					mes "I'm surprised to see";
@@ -2423,32 +2512,34 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 			else if (god_mjo_4 == 1) {
 				if (countitem(501) > 0) {
 					delitem 501,1;  //Red_Potion
-					mes "[Nordri]";
-					mes "Ah, you've brought";
-					mes "me a Red Potion, just";
-					mes "like I asked. In return,";
-					mes "I will tell you an old story.";
-					mes "I'm sure you'll like it.";
+					mes "[诺斯德力]";
+					mes "喔喔，我会满怀感激地吃它，";
+					mes "我已经喝下珍贵的红色药水了，我来告诉你";
+					mes "一件很重要的故事吧，";
+					mes "你会很有兴趣听它的";
 					next;
 					while(1) {
 						if (.@talk_to == 0) {
-							mes "[Nordri]";
-							mes "This is a legend about one";
-							mes "of Thor's journeys into Utgard,";
-							mes "land of the giants.";
+							mes "[诺斯德力]";
+							mes "根据传说托尔先生有去";
+							mes "巨人之地，晤特加尔特冒险";
+							mes "这件事情，大家都知道";
+							mes "他在那边与巨人之王打赌...";
 							next;
-							mes "[Nordri]";
-							mes "There, he made a wager with their king in which he would challenge";
-							mes "the giants of their land in tests of skill and strength.";
+							mes "[诺斯德力]";
+							mes "第一次打赌是吃东西的，";
+							mes "听说吃了超级多东西的耶...";
+							mes "托尔先生虽然吃了所有的肉";
+							mes "对方一名叫做洛奇的男子，";
+							mes "却吃了肉和骨头，甚至连碗都吃掉了";
 							next;
-							mes "[Nordri]";
-							mes "The first was an eating contest. Thor ate all of the meat on his table, but his opponent, Utgardaloki, ate his meat, the bones and even the plates.";
+							mes "[诺斯德力]";
+							mes "事实上托尔先生被中了魔法，";
+							mes "是无法认出对方的实际";
+							mes "形体... 什么东西都不分辨";
+							mes "把所有东西都吃光光，那叫做什么呢...?";
 							next;
-							mes "[Nordri]";
-							mes "In truth, Thor was tricked, and the opponent that defeated him was not";
-							mes "actually a giant. Illusion was used to disguise Thor's opponent, but I forget was it was. Do you know?";
-							next;
-							switch(select("Greed:Sea:Blaze:Hog")) {
+							switch(select("贪婪:海洋:花火:猪")) {
 							default:
 								set .@talk_not,1;
 								break;
@@ -2456,19 +2547,21 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 								break;
 							}
 						}
-						else if (.@talk_to == 1) {
-							mes "[Nordri]";
-							mes "Yes, only a Blaze could have effortlessly consumed meat, bones and plates by burning. Of course!";
-							mes "I remember now!";
+						else if(.@talk_to == 1) {
+							mes "[诺斯德力]";
+							mes "对啊，是'火花'，";
+							mes "还有赛跑比赛，曾是下人的替尔匹";
+							mes "站了出来，对方则派出一名叫胡奇的少年，";
+							mes "当时可没有比替尔匹，";
+							mes "脚步更快的家伙耶";
 							next;
-							mes "[Nordri]";
-							mes "The next contest was a race. In that match, Thor's servant, Tialfi competed with the king's servant, Hugi. However, no matter how many matches they had, Hugi would win every time.";
+							mes "[诺斯德力]";
+							mes "可是不管跑了几次，";
+							mes "替尔匹就是赢不了胡奇，";
+							mes "那比什么都快的少年面貌";
+							mes "是什么... 那究竟是什么?";
 							next;
-							mes "[Nordri]";
-							mes "Once again, illusion magic was";
-							mes "used to disguise the competitor. Do you know what Tialfi was really racing against?";
-							next;
-							switch(select("Language:Thoughts:Turtle:Wolf")) {
+							switch(select("语言:思想:希望:野狼")) {
 							default:
 								set .@talk_not,1;
 								break;
@@ -2476,18 +2569,23 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 								break;
 							}
 						}
-						else if (.@talk_to == 2) {
-							mes "[Nordri]";
-							mes "Yes, right! Tialfi was racing 'thoughts!' Nothing can move faster than the speed of thought, so it's no wonder Tialfi would always lose.";
-							next;
-							mes "[Nordri]";
+						else if(.@talk_to == 2) {
+							mes "[诺斯德力]";
+							mes "对呀，对呀，'思想'...";
+							mes "气焰高张的巨人，";
+							mes "甚至耍弄托尔先生，要不要跟";
+							mes "老太婆来打一场架呢，称霸天下的托尔先生";
+							mes "难道无法打赢一位老人家吗?";
+							mes "对呀，对呀，'思想'...";
 							mes "For the final contest, Thor would challenge an old woman in a wrestling match. At first, Thor thought his victory was assured, but he learned that he could not defeat the old crone.";
 							next;
-							mes "[Nordri]";
-							mes "Once again, Thor was the victim";
-							mes "of illusion magic. He didn't realize he wasn't actually wrestling with an old woman. Do you know what his opponent really was?";
+							mes "[诺斯德力]";
+							mes "就是因为他被中了魔法，";
+							mes "不管什么都看做是一位老太婆，";
+							mes "不管是谁都赢不了的存在...";
+							mes "突然又想不起来了，那究竟是什么呢?";
 							next;
-							switch(select("Curse:Earth:Heart:Old Age")) {
+							switch(select("诅咒:大地:心:老化")) {
 							default:
 								set .@talk_not,1;
 								break;
@@ -2495,35 +2593,40 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 								break;
 							}
 						}
-						else if (.@talk_to == 3) {
-							mes "[Nordri]";
-							mes "Yes, Thor was wrestling with 'Old Age!' No matter how strong anybody is, you can't fight against aging.";
+						else if(.@talk_to == 3) {
+							mes "[诺斯德力]";
+							mes "对呀! 就是'老化'，不管是谁都赢不了老化这件事情，";
+							mes "结果输了所有打赌的托尔先生，";
+							mes "从巨人的王那里听到了真相，";
+							mes "大大地愤怒起来了，不过已经";
+							mes "不见巨人王和他们的痕迹了...";
 							next;
-							mes "[Nordri]";
-							mes "After Thor lost every match,";
-							mes "the king told him the truth about the contests. Thor grew furious, but it was too late. The king and the giants all vanished by then.";
+							mes "[诺斯德力]";
+							mes "这故事有两个结论，";
+							mes "第一个就是你所看到";
+							mes "并非不是全部... 还有，在这世界上";
+							mes "比自己强的人很多，不要忘记";
+							mes "要保持一直努力的状态... 明白了嘛?";
 							next;
-							mes "[Nordri]";
-							mes "There are two lessons";
-							mes "to be learned from this tale. First, don't believe everything you see. Second, never be overconfident of your own power.";
-							next;
-							mes "[Nordri]";
-							mes "There will always be someone or something more powerful than you. It is important to always do your best and have an attitude of humility.";
-							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
+							mes "顺着世界的顺理走下去";
+							mes "是最重要的，我们相信";
+							mes "有某种东西存在，但不可能会一直拥有他，";
+							mes "也许是因为被魔法所中，";
+							mes "看到的是可以拥有的幻想";
 							mes "Try to live as good a life as you can. Remember that you can't have everything that you want. Obssession and irrationality go hand in hand.";
 							next;
 							set god_mjo_4,2;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Thank you for listening to my long story. If you meet someone with a dangerous obsession, please tell this story of Thor and the illusions of the giant king.";
 							close;
 						}
 						if (.@talk_not == 1) {
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Huh...?";
 							mes "I don't think that's right. Let me think, maybe I can remember it. Hopefully, it'll come to me sooner or later...";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Shall we talk more of this once again after enjoying another Red Potion? Hahahahaha~";
 							close;
 						}
@@ -2533,75 +2636,74 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 					}
 				}
 				else {
-					mes "[Nordri]";
-					mes "Oooh...";
-					mes "I'm sooo thirsty!";
-					next;
-					mes "[Nordri]";
-					mes "Hm, didn't I ask you to bring a Red Potion? There's no way I can tell any stories with such a dry throat~";
+					mes "[诺斯德力]";
+					mes "就这样说的话，嘴巴是有点渴啦?";
+					mes "请拿给我一个红色药水好吗，";
+					mes "滋润一下喉咙再说好了，";
+					mes "换句话说我本人会告诉你重要的";
+					mes "事情... 嘿嘿嘿嘿嘿";
 					close;
 				}
 			}
-			else if (god_mjo_4 == 0) {
-				mes "[Nordri]";
-				mes "What business";
-				mes "do you have with";
-				mes "me, human?";
+			else if(god_mjo_4 == 0) {
+				mes "[诺斯德力]";
+				mes "什么啊，找我有什么事嘛?";
 				next;
-				switch(select("Nothing.:Excuse me.")) {
+				switch(select("没什么事:不好意思打扰一下")) {
 				case 1:
-					mes "[Nordri]";
+					mes "[诺斯德力]";
 					mes "Huh.";
 					mes "If that's the case,";
 					mes "then leave me alone.";
 					close;
 				case 2:
-					mes "[Nordri]";
-					mes "Odd. Recently, too many humans have been interested in meeting with me and my brothers. Still, I cannot say their visits have been unpleasant.";
-					next;
 					set god_mjo_4,1;
-					mes "[Nordri]";
-					mes "I'm a little thirsty. Would you bring me a Red Potion. If you do that for me, I will tell you an important story. Heh heh heh~";
+					mes "[诺斯德力]";
+					mes "就这样说的话，嘴巴是有点渴啦?";
+					mes "请拿给我一个红色药水好吗，";
+					mes "滋润一下喉咙再说好了，";
+					mes "换句话说我本人会告诉你重要的";
+					mes "事情... 嘿嘿嘿嘿嘿";
 					close;
 				}
 			}
 			else {
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "Zzzz Zzzz...";
 				close2;
 			}
 		}
-		else if (god_mjo_0 == 2) {
+		else if(god_mjo_0 == 2) {
 			if ((god_mjo_1 == 3) || (god_mjo_2 == 3) || (god_mjo_3 == 3) || (god_mjo_4 == 3)){
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "Eh heh heh~";
 				mes "It's nice being in the Mjolnir Forest. To be surrounded by the quiet, peaceful air and not having to worry about anything...";
 				close;
 			}
 			else if (god_mjo_1 == 2) {
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "Shouldn't you be on your way by now? Eh, it's none of my business.";
 				next;
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "If you have the Zeny to spare, why don't you buy some snacks for your travels? Perhaps some delicious Bananas, or even some Pumpkins...";
 				close;
 			}
 			else if ((god_mjo_2 != 0) || (god_mjo_3 != 0) || (god_mjo_4 != 0)) {
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "What business";
 				mes "do you have with";
 				mes "me, human?";
 				next;
 				switch(select("Nothing.:Excuse me.")) {
 				case 1:
-					mes "[Nordri]";
+					mes "[诺斯德力]";
 					mes "Huh.";
 					mes "If that's the case,";
 					mes "then leave me alone.";
 					close;
 				case 2:
 					set god_mjo_1,3;
-					mes "[Nordri]";
+					mes "[诺斯德力]";
 					mes "Huh.";
 					mes "That's fine. Still...";
 					mes "I'm surprised to see";
@@ -2609,11 +2711,11 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 					close;
 				}
 			}
-			else if (god_mjo_1 == 1) {
+			else if(god_mjo_1 == 1) {
 				if (countitem(501) > 0) {
 
 					delitem 501,1;  //Red_Potion
-					mes "[Nordri]";
+					mes "[诺斯德力]";
 					mes "Ah, you've brought";
 					mes "me a Red Potion...?";
 					mes "In return, I will";
@@ -2622,18 +2724,18 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 					next;
 					while(1) {
 						if (.@talk_to == 0) {
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "There is a story of a Dwarf named Alvis who contained more knowledge than a library and was braver than Siegfried the warrior.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Unfortunately...";
 							mes "He was too ambitious.";
 							mes "He fell in love with Thrud, Thor's first daughter, at first sight.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "He asked Thor for permission to marry Thrud, but as was expected, Thor refused. Alvis should have given up there, but he didn't.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "So Thor decided to test his knowledge by asking him some questions. The first question was, 'What is the name of the ground in human terms?' Do you know the answer?";
 							next;
 							switch(select("Ymir's body:Earth:Lane:Universe")) {
@@ -2645,10 +2747,10 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 							}
 						}
 						else if (.@talk_to == 1) {
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Yes, that's right, 'Earth.' Alvis was able to also answer Thor's question correctly.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Thor then gave Alvis another question. What is the giant's term for the round shell that covers the earth?";
 							next;
 							switch(select("Ymir's Head:Sky:Cloud Factory:High House")) {
@@ -2660,10 +2762,10 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 							}
 						}
 						else if (.@talk_to == 2) {
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "That's it, 'High House.' Since the giants are so huge, it might have looked that way to them.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "So Thor gave him another question. What is the term for the ball that rises in the sky at night, as used by the gods?";
 							next;
 							switch(select("Circling Wheel:Moon:False Sun:Fast Stranger")) {
@@ -2674,42 +2776,42 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 								break;
 							}
 						}
-						else if (.@talk_to == 3) {
-							mes "[Nordri]";
+						else if(.@talk_to == 3) {
+							mes "[诺斯德力]";
 							mes "Yes! Gods refer to the";
 							mes "moon as the 'false sun.'";
 							mes "Although Alvis answered all of Thor's questions, he didn't notice the sun was rising.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Yes...";
 							mes "Thor prolonged his test so that Alvis would be turned to stone";
 							mes "once the sun rose.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "There are two";
 							mes "things we can learn";
 							mes "from this story. First, do not covet something to the point of challenging fate or the gods.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Secondly, do not have too much pride in yourself. No matter how much ability or talent you may have, you cannot get everything";
 							mes "you want.";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "It's most";
 							mes "important to live a";
 							mes "good and virtuous life. It's great to achieve your desires, but be aware that some desires are not meant to be fulfilled.";
 							next;
 							set god_mjo_1,2;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Thank you for listening to my long story. If you meet anyone afflicted with an insatiable desire, please tell him this story of Thor and Alvis, a brave yet very defiant Dwarf.";
 							close;
 						}
 						if (.@talk_not == 1) {
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Huh...?";
 							mes "I don't think that's right. Let me think, maybe I can remember it. Hopefully, it'll come to me sooner or later...";
 							next;
-							mes "[Nordri]";
+							mes "[诺斯德力]";
 							mes "Shall we talk more of this once again after enjoying another Red Potion? Hahahahaha~";
 							close;
 						}
@@ -2719,51 +2821,51 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 					}
 				}
 				else {
-					mes "[Nordri]";
-					mes "Oooh...";
-					mes "I'm sooo thirsty!";
-					next;
-					mes "[Nordri]";
-					mes "Hm, didn't I ask you to bring a Red Potion? There's no way I can tell any stories with such a dry throat~";
+					mes "[诺斯德力]";
+					mes "就这样说的话，嘴巴是有点渴啦?";
+					mes "请拿给我一个红色药水好吗，";
+					mes "滋润一下喉咙再说好了，";
+					mes "换句话说我本人会告诉你重要的";
+					mes "事情... 嘿嘿嘿嘿嘿";
 					close;
 				}
 			}
 			else if (god_mjo_1 == 0) {
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "What business";
 				mes "do you have with";
 				mes "me, human?";
 				next;
-				switch(select("Nothing.:Excuse me.")) {
+				switch(select("没什么事:不好意思打扰一下")) {
 				case 1:
-					mes "[Nordri]";
+					mes "[诺斯德力]";
 					mes "You're funny, leave me alone.";
 					close;
 				case 2:
-					mes "[Nordri]";
-					mes "Odd. Recently, too many humans have been interested in meeting with me and my brothers. Still, I cannot say their visits have been unpleasant.";
-					next;
-					set god_mjo_1,1;
-					mes "[Nordri]";
-					mes "I'm a little thirsty. Would you bring me a Red Potion. If you do that for me, I will tell you an important story. Heh heh heh~";
+					mes "[诺斯德力]";
+					mes "就这样说的话，嘴巴是有点渴啦?";
+					mes "请拿给我一个红色药水好吗，";
+					mes "滋润一下喉咙再说好了，";
+					mes "换句话说我本人会告诉你重要的";
+					mes "事情... 嘿嘿嘿嘿嘿";
 					close;
 				}
 			}
 			else {
-				mes "[Nordri]";
+				mes "[诺斯德力]";
 				mes "Zzzz Zzzz Zzzz...";
 				close;
 			}
 		}
 		else if (god_mjo_0 == 0) {
-			mes "[Nordri]";
+			mes "[诺斯德力]";
 			mes "I am Nordri,";
 			mes "Dwarven Blacksmith.";
 			next;
-			mes "[Nordri]";
+			mes "[诺斯德力]";
 			mes "I am in charge of this Northern part of Mount Mjolnir. If you wish to pass, you must first secure my approval!";
 			next;
-			mes "[Nordri]";
+			mes "[诺斯德力]";
 			mes "Ho ho ho...";
 			mes "Calm down, it";
 			mes "was only a joke.";
@@ -2771,7 +2873,7 @@ mjolnir_12,18,18,7	script	Dwarf Blacksmith#north	826,{
 			close;
 		}
 		else {
-			mes "[Nordri]";
+			mes "[诺斯德力]";
 			mes "Zzzz Zzzz Zzzz...";
 			close;
 		}

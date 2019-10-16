@@ -331,7 +331,7 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 		mes "[Dwarf Grunburti]";
 		mes "Now hurry up! ^0000FFOnly one of each godly item^000000 will be given to the humans ^FF0000right after all the seals are released^000000!";
 		close2;
-		warp "quET_GOd01",214,63;
+		warp "que_god01",214,63;
 		end;
 	case 4:
 		mes "[Dwarf Grunburti]";
@@ -346,7 +346,7 @@ gld_dun02,85,84,0	duplicate(GodDwarf)	Grunburti#2	826
 gld_dun03,92,105,0	duplicate(GodDwarf)	Grunburti#3	826
 gld_dun04,268,230,0	duplicate(GodDwarf)	Grunburti#4	826
 
-quET_GOd01,215,127,0	script	#god_hopewarp1	111,{
+que_god01,215,127,0	script	#god_hopewarp1	111,{
 	end;
 
 OnInit:
@@ -355,7 +355,7 @@ OnInit:
 	end;
 
 OnStartArena:
-	warpwaitingpc "quET_GOd01",155,63;
+	warpwaitingpc "que_god01",155,63;
 	donpcevent "Grunburti#god::OnEnable";
 	disablewaitingroomevent;
 	end;
@@ -365,7 +365,7 @@ OnReset:
 	end;
 }
 
-quET_GOd01,214,128,0	script	 #quET_GOdnpc1::GodEntrance	111,{
+que_god01,214,128,0	script	 #que_godnpc1::GodEntrance	111,{
 	mes "[Entrance Notice]";
 	mes "Only the most";
 	mes "worthy of humans";
@@ -373,10 +373,10 @@ quET_GOd01,214,128,0	script	 #quET_GOdnpc1::GodEntrance	111,{
 	mes "power of the gods.";
 	close;
 }
-quET_GOd01,215,128,0	duplicate(GodEntrance)	 #quET_GOdnpc2	111
-quET_GOd01,213,128,0	duplicate(GodEntrance)	 #quET_GOdnpc3	111
+que_god01,215,128,0	duplicate(GodEntrance)	 #que_godnpc2	111
+que_god01,213,128,0	duplicate(GodEntrance)	 #que_godnpc3	111
 
-quET_GOd01,154,112,4	script	Grunburti#god	826,{
+que_god01,154,112,4	script	Grunburti#god	826,{
 	if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
 		mes "[Dwarf Grunburti]";
 		mes "One of the godly";
@@ -780,11 +780,11 @@ OnEnable:
 	end;
 
 OnTimer10000:
-	mapannounce "quET_GOd01","Remember that you only have 10 minutes for this! Hurry up!",bc_map;
+	mapannounce "que_god01","Remember that you only have 10 minutes for this! Hurry up!",bc_map;
 	end;
 
 OnTimer610000:
-	mapannounce "quET_GOd01","You're too slow! I'm going to give another human a chance! Next!",bc_map;
+	mapannounce "que_god01","You're too slow! I'm going to give another human a chance! Next!",bc_map;
 	end;
 
 OnTimer612000:
@@ -798,7 +798,7 @@ OnTimer615000:
 	end;
 }
 
-quET_GOd01,169,82,0	script	god_wep_warpmaster	-1,{
+que_god01,169,82,0	script	god_wep_warpmaster	-1,{
 OnEnable:
 	for(set .@i,1; .@i<=6; set .@i,.@i+1)
 		enablenpc "god_failwarp#"+.@i;
@@ -809,7 +809,7 @@ OnDisable:
 	end;
 }
 
-quET_GOd01,154,67,0	script	god_failwarp#1	-1,4,7,{
+que_god01,154,67,0	script	god_failwarp#1	-1,4,7,{
 OnInit:
 	disablenpc strnpcinfo(0);
 	end;
@@ -817,14 +817,14 @@ OnTouch:
 	warp "prontera",156,324;
 	end;
 }
-quET_GOd01,154,82,0	duplicate(god_failwarp#1)	god_failwarp#2	-1,4,7
-quET_GOd01,145,99,0	duplicate(god_failwarp#1)	god_failwarp#3	-1,9,9
-quET_GOd01,164,99,0	duplicate(god_failwarp#1)	god_failwarp#4	-1,9,9
-quET_GOd01,145,118,0	duplicate(god_failwarp#1)	god_failwarp#5	-1,9,9
-quET_GOd01,164,118,0	duplicate(god_failwarp#1)	god_failwarp#6	-1,9,9
+que_god01,154,82,0	duplicate(god_failwarp#1)	god_failwarp#2	-1,4,7
+que_god01,145,99,0	duplicate(god_failwarp#1)	god_failwarp#3	-1,9,9
+que_god01,164,99,0	duplicate(god_failwarp#1)	god_failwarp#4	-1,9,9
+que_god01,145,118,0	duplicate(god_failwarp#1)	god_failwarp#5	-1,9,9
+que_god01,164,118,0	duplicate(god_failwarp#1)	god_failwarp#6	-1,9,9
 
 // Original name: "Godly Item Quests Related#god"
-quET_GOd01,293,3,0	script	Godly Item Quests#god	90,{
+que_god01,293,3,0	script	Godly Item Quests#god	90,{
 	callfunc "F_GM_NPC";
 	mes "[Use in case of emergency]";
 	mes "Please enter password.";
@@ -864,7 +864,7 @@ quET_GOd01,293,3,0	script	Godly Item Quests#god	90,{
 			close;
 		case 3:
 			mes "[Use in case of emergency]";
-			mes "Please press the 'Next' button to reset the arena chat room in quET_GOd01.";
+			mes "Please press the 'Next' button to reset the arena chat room in que_god01.";
 			next;
 			donpcevent "#god_hopewarp1::OnReset";
 			mes "[Use in case of emergency]";

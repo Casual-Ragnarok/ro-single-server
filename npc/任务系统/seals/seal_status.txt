@@ -33,20 +33,20 @@ prontera,113,294,3	script	Sign Post#god	837,{
 	mes " ";
 	mes "======= Your Seal Status ========";
 	if (god_sl_1 < 51)
-		mes "^ff0000Sleipnir Seal: Not Completed^000000";
+		mes "^ff0000史雷普尼尔之靴: 未完成^000000";
 	else
-		mes "^00ff00Sleipnir Seal: Completed^000000";
+		mes "^00ff00史雷普尼尔之靴: 已完成^000000";
 	if (god_eremes < 28)
-		mes "^ff0000Megingjard Seal: Not Completed^000000";
+		mes "^ff0000雷神腰带: 未完成^000000";
 	else
-		mes "^00ff00Megingjard Seal: Completed^000000";
+		mes "^00ff00雷神腰带: 已完成^000000";
 	if (god_brising < 50)
-		mes "^ff0000Brisingamen Seal: Not Completed^000000";
+		mes "^ff0000女神项链: 未完成^000000";
 	else
-		mes "^00ff00Brisingamen Seal: Completed^000000";
+		mes "^00ff00女神项链: 已完成^000000";
 	if (god_mjo_0 < 11)
-		mes "^ff0000Mjolnir Seal: Not Completed^000000";
+		mes "^ff0000雷神之锤: 未完成^000000";
 	else
-		mes "^00ff00Mjolnir Seal: Completed^000000";
+		mes "^00ff00雷神之锤: 已完成^000000";
 	close;
 }
