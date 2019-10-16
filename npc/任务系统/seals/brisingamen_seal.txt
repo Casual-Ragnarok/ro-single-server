@@ -1,11 +1,11 @@
-//===== rAthena Script ======================================= 
-//= God Item Quest - Brisingamen Seal
+//===== eAthena Script ======================================= 
+//= 女神项链封印任务
 //===== By: ================================================== 
 //= SinSloth
 //===== Current Version: ===================================== 
-//= 1.7
+//= 1.5
 //===== Compatible With: ===================================== 
-//= rAthena SVN
+//= eAthena
 //===== Description: ========================================= 
 //= Quest for breaking the seal of Brisingamen.
 //===== Additional Comments: =================================
@@ -17,26 +17,24 @@
 //= 1.3a Changed some " + name +" to strcharinfo(0) [Samuray22]
 //= 1.4 Replaced effect numerics with constants. [Samuray22]
 //= 1.5 Corrected serverwide announcement. [L0ne_W0lf]
-//= 1.6 Updated RE/Pre-RE EXP. [Euphy]
-//= 1.7 Renewal script update. [Euphy]
 //============================================================
 
-prt_fild08,175,374,3	script	Bard#brising	51,{
+prt_fild08,175,374,3	script	吟游诗人#女神颈链	51,{
 	cutin "god_nelluad01",2;
-	if ($God2 >= $@god_check1 && $God3 < $@god_check2) {
-		if (god_brising > 49) {
-			mes "[Nelliorde]";
+	if (($God2 > 49) && ($God3 < 100)){
+		if (god_brising > 49){
+			mes "[那留奥德]";
 			mes "Oh, I guess all is going well for you. So how has everything else been?";
 			next;
-			mes "[Nelliorde]";
+			mes "[那留奥德]";
 			mes "I may be being overly sensitive, but it feels like something might happen soon. Aaah, don't mind me. It's no big deal. Maybe I'm just being weird.";
 			next;
-			mes "[Nelliorde]";
+			mes "[那留奥德]";
 			mes "Right, right, let me play a song for you. Would you care to listen?";
 			next;
 			switch(select("Sure, why not~:How about some news?:No thanks.")) {
 			case 1:
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "So, which song";
 				mes "would you like to hear?";
 				mes "Go ahead, pick one~";
@@ -44,7 +42,7 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 				switch(select("Bragi's Poem:Eternal Chaos:Assassin in the Sunset:Der Ring des Nibelungen")) {
 				case 1:
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Bragi's Poem!";
 					mes "What a good choice!";
 					mes "I must say this song";
@@ -55,7 +53,7 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 					break;
 				case 2:
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Eternal Chaos...";
 					mes "Sounds too chaotic.";
 					mes "By the way, I wonder";
@@ -67,7 +65,7 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 					break;
 				case 3:
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Assassin in the Sunset!";
 					mes "Yes, no one looks cooler than an Assassin, the bringer of death, standing alone in the sunset! Heh heh~";
 					soundeffect "assassin_of_sunset.wav",1;
@@ -75,7 +73,7 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 					break;
 				case 4:
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Der Ring des Nibelungen.....";
 					mes "Okay, are you ready to listen?";
 					mes "Hum hum hum....";
@@ -121,81 +119,81 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 				}
 				break;
 			case 2:
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Some news you say..";
 				mes "What kind of news do";
 				mes "you wish to hear about?";
 				next;
 				switch(select("About Prontera!:About coastal areas.:Is the desert still hot?:How about the borderlands?")) {
 				case 1:
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "What?! Prontera?!";
 					mes "Can you not see that the front";
 					mes "gate of Prontera is right before you? You should at least know where you are, adventurer.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Anyways, I have one interesting news about Prontera. But, it's a secret. Shh! Are you... Single?";
 					next;
 					cutin "god_nelluad04",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "If so, go visit the tavern. I met a guy there who took to me a nice place. Oh yes. He took me to 'the place' where singles are forbidden~!";
 					close2;
 					break;
 				case 2:
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Coastal areas?";
 					mes "That's a funny question. I mean, there's Alberta and a few other places where you can see the sea.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "To the southwest there's";
 					mes "Kokomo Beach. But, I suppose it's too dangerous just to go there to take a stroll.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					cutin "god_nelluad03",2;
 					mes "Kokomo Beach is a large";
 					mes "expanse of sand. The nearby water is filled with sea animals, so you can enjoy catching Shellfishes.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "However, there are always bullies in that kind of place. Once, I met a threatening looking hoodlum with red spiky hair.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					cutin "god_nelluad04",2;
 					mes "He was chewing on something and spat it on the ground. The big buffoon managed to intimidate me into giving him all of my Zeny!";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "^333333*Sigh...*^000000";
 					mes "This world is too";
 					mes "dangerous for a young";
 					mes "and fragile Bard.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "By the way, Alberta doesn't seem to have changed. The Sunken Ship looks the same as well, with all of its Skeleton Pirates and whatnot. You know how it is.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					cutin "god_nelluad01",2;
 					mes "The event agency in charge of expeditions into the Sunken Ship is still making tons of money. If you have nothing to do, why don't you hunt for monsters down there?";
 					close2;
 					break;
 				case 3:
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Oh, hell yes!";
 					mes "When is it not?";
 					mes "The desert is hot, has";
 					mes "been hot and probably";
 					mes "always will be...!";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Giant worms still jump out of nowhere, freaking out innocent travellers like myself, and the Sandmen still kick people in the, well... You know where.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Even if the desert is filled with hideous monsters, the view of the ocean there is so magnificent. Hah, it makes me want to play a song.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "I must say there is";
 					mes "one place you may wish";
 					mes "to see in the desert.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					cutin "god_nelluad02",2;
 					mes "I'm talking about the Assassin Guild. Supposedly, it's hidden behind a sandstorm in the Morroc Desert!";
 					if (Class == Job_Assassin || Class == Job_Assassin_Cross) {
@@ -207,49 +205,49 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 					close2;
 					break;
 				case 4:
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Well, to the north is the Schwaltzwald Republic.";
 					mes "There, you'll find Juno,";
 					mes "the 'City of Sages.'";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					cutin "god_nelluad03",2;
 					mes "The people there say that there is one major nuisance, a man known as";
 					mes "the 'Mad Scientist.' He's antisocial and creates a lot of public disturbances with his experiments.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "It seems everyone in Juno";
 					mes "hates him with a passion. Even one of the Tool Shop owners begged a passing adventurer to stop this Mad Scientist's research!";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "But I have a different opinion about him. I believe it's not a good idea to interrupt the work of any scientist.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "After all, he might just discover something important, even if his experiments are a little hazardous.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Speaking of discoveries, you know how Juno floats in the air, right?";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					cutin "god_nelluad01",2;
 					mes "It's said that a piece of Ymir's Heart generates enough power";
 					mes "to keep the entire city aloft in the sky. Isn't that amazing?";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Even more recent is the news about the discovery of Ymir's Book. You can read it in Juno's Sage Castle. I hear that it contains the secret to meeting Valkyrie...";
 					close2;
 					break;
 				}
 				break;
 			case 3:
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Huh? Okay then, talk to you later. May Bragi bless you on your journeys.";
 				close2;
 				break;
 			}
 		}
-		else if ((god_brising > 0) && (god_brising < 50)){
-			mes "[Nelliorde]";
+		else if((god_brising > 0) && (god_brising < 50)){
+			mes "[那留奥德]";
 			mes "So, have you";
 			mes "met Mr. Kaili?";
 			mes "Please do your best.";
@@ -259,67 +257,67 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 			switch(select("Tell me a story.:Sing a song for me.")) {
 			case 1:
 				cutin "god_nelluad02",2;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Hmm. What would";
 				mes "be a good story for";
 				mes "you this time...? Ah yes, I've got it. Let me tell you about one of my own adventures. It was a pretty amazing experience.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "I went to Morroc, the city of the desert. On my way there, I became exhausted from the heat. Luckily, I found a hole beneath the shadows and climbed in to rest.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Oh my God...";
 				mes "If I had known";
 				mes "better, I would have";
 				mes "never gone inside that place...";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "I actually crawled into the infamous ^FF0000Ant Hell^000000! I don't sound like a coward to you, do I?";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Well, the ants aren't the only ones living there. I wasn't afraid of them at all. Except, of course, when they attacked in groups.";
 				next;
 				cutin "god_nelluad03",2;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "What I was really afraid of was this type of strawberry colored... tongue thing. Phreeoni!";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Fortunately, I survived the whole incident, although I still have nightmares of that man-sized tongue.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Once I got out of there, I craved human companionship to restore my sense of normalcy. The closest place that I knew was Paros Lighthouse.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Yet again, I decided to traverse the desert, despite the fact that the Kafra Ladies provide a very convenient teleport service there.";
 				next;
 				cutin "god_nelluad01",2;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Anyway, the fortress of Sandaruman is on the way to Paros Lighthouse. I remember Serutero, a guy I met in south Morroc, telling me about its scenic beauty.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "I was so excited";
 				mes "about seeing it";
 				mes "for myself. After all, doesn't 'Sandaruman' sound like the";
 				mes "name of a beautiful place?";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "But I immediately regretted my decision once I arrived. Of course, the view was breathtaking: the sandy hills near the ocean, as";
 				mes "well as the ruins.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "And of course I forgot Serutero's warning about all the monsters. Argh! It was a nightmare! Instead of enjoying the scenary, I ended up running for my life.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "I was still trying to escape those monsters when I stumbled upon";
 				mes "an old house, West of Sandaruman, that seemed to be in a state of decay.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "I recalled that Serutero said that no one was living in that area, so I began to worry a bit. Still, I was desperate and needed refuge.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "In my panic, I violently knocked on the door and screamed for someone to let me inside. Then do you know what I heard?";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				cutin "god_nelluad03",2;
 				mes "^FF0000Who's there?!";
 				mes "Who would dare to intrude";
@@ -327,16 +325,16 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 				mes "I was freaked out! Whoever owned that house must have been some";
 				mes "kind of lunatic!";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Th-then, with the specter of Death nipping at my heels, he told me to get lost! Luckily, I was saved by a mysterious, wandering SuperNovice, but that's another story.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "In any case, I finally arrived at Paros Lighthouse. There, I learned that the old house was a secret camp for the Rogue Guild. ";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "It's amazing, how they can live in such dangerous areas. Only Rogues would be able to survive there, you know?";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				cutin "god_nelluad01",2;
 				mes "Ah...";
 				mes "I'm so tired from talking so much. But if I happen to have another adventure, I shall share that tale with you.";
@@ -344,19 +342,19 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 				break;
 			case 2:
 				cutin "god_nelluad02",2;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Ah, you wish";
 				mes "to hear a song?";
 				mes "Okay! I shall then";
 				mes "perform my favorite.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "I chased after fame.";
 				mes "It eluded me.";
 				mes "I ran after happiness";
 				mes "But never caught it.";
 				next;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "But tomorrow will still";
 				mes "Be there, I'm sure.";
 				mes "Like the Water Mill";
@@ -365,7 +363,7 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 				mes "Life goes on.";
 				next;
 				cutin "god_nelluad04",2;
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Cheer up! Life goes on.";
 				mes "As surely as the Water";
 				mes "Mill turns, tomorrow";
@@ -375,24 +373,24 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 			}
 		}
 		else {
-			mes "[Nelliorde]";
+			mes "[那留奥德]";
 			mes "Say...";
 			mes "Have we met before?";
 			mes "Hmm? Never? Well...";
 			mes "That's rather odd.";
 			next;
-			mes "[Nelliorde]";
+			mes "[那留奥德]";
 			mes "I seem to recall that you've asked me to give you some information if I ever have any. Well, now I have and shall share it with you~";
 			next;
-			mes "[Nelliorde]";
+			mes "[那留奥德]";
 			mes "The usefulness of this information all depends on you. Now, have you heard of the ^3333CCMonster Research Organization^000000?";
 			next;
-			mes "[Nelliorde]";
+			mes "[那留奥德]";
 			mes "I happened to get this information from its headquarters in Juno. So how does that sound?";
 			next;
 			switch(select("Wee~ I want to hear!:Booooring~")) {
 			case 1:
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Well...!";
 				mes "You seem to be";
 				mes "very excited about";
@@ -401,53 +399,53 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 				next;
 				if (BaseLevel < 70) {
 					cutin "god_nelluad03",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Alas, this information doesn't seem to be very valuable to someone such as yourself.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "I'm so very sorry to have excited you, but only people that are strong enough to handle grueling work can benefit from this.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Why don't you travel around and gain more experiences? I will let you know when you're ready, you know~";
 					close2;
 				}
 				else {
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Ooh...";
 					mes "And you look";
 					mes "like you can handle";
 					mes "this kind of information.";
 					mes "I'll share everything I know!";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "One day, an adventurer discovered a strange, mysterious object. Unable to figure out what it could do, he visited the Monster Organization.";
 					next;
 					cutin "god_nelluad01",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "There, it was entrusted to a scholar by the name of Mr. Kaili. He still hasn't uncovered the truth about that item and wishes for assistance in his investigation.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Mr. Kaili suspects that the item might be part of an undiscovered ancient relic. Fortunately, he is also researching ancient relics as a project assigned by the royal court.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "So what do you think? Isn't that interesting? Of course, you'd better speak to Mr. Kaili if you wish to learn more. If you'd like, I shall write you a letter or recommendation.";
 					next;
 					switch(select("Sure! Sounds good.:Sorry, I am not that interested.")) {
 					case 1:
-						mes "[Nelliorde]";
+						mes "[那留奥德]";
 						mes "Excellent...!";
 						mes "So your name is...";
 						mes "" + strcharinfo(0) + "?";
 						next;
-						mes "[Nelliorde]";
+						mes "[那留奥德]";
 						mes "Alright, I shall contact him right away! Oh, and you can find the Monster Organization west of Juno's central plaza. It shouldn't be hard to find. Good luck!";
 						set god_brising,1;
 						close2;
 						break;
 					case 2:
 						cutin "god_nelluad02",2;
-						mes "[Nelliorde]";
+						mes "[那留奥德]";
 						mes "Ah, it's disappointing to hear that. I thought that you'd be perfect to help out Mr. Kaili. Oh well, talk to you later~";
 						close2;
 						break;
@@ -455,7 +453,7 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 				}
 				break;
 			case 2:
-				mes "[Nelliorde]";
+				mes "[那留奥德]";
 				mes "Boring, you say?";
 				mes "Perhaps, but not as";
 				mes "boring as an adventurer";
@@ -465,105 +463,105 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 				switch(select("Tell me a story.:Sing a song for me.")) {
 				case 1:
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Hmm. What would";
 					mes "be a good story for";
 					mes "you this time...? Ah yes, I've got it. Let me tell you about one of my own adventures. It was a pretty amazing experience.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "I went to Morroc, the city of the desert. On my way there, I became exhausted from the heat. Luckily, I found a hole beneath the shadows and climbed in to rest.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Oh my God...";
 					mes "If I had known";
 					mes "better, I never";
 					mes "would have gone";
 					mes "inside that place...";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "I actually crawled into the infamous ^FF0000Ant Hell^000000! I don't sound like a coward to you, do I?";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Well, the ants aren't the only ones living there. I wasn't afraid of them at all. Except, of course, when they attacked in groups.";
 					next;
 					cutin "god_nelluad03",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "What I was really afraid of was this type of strawberry colored... tongue thing. Phreeoni!";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Fortunately, I survived the whole incident, although I still have nightmares of that man-sized tongue.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Once I got out of there, I craved human companionship to restore my sense of normalcy. The closest place that I knew was Paros Lighthouse.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Yet again, I decided to traverse the desert, despite the fact that the Kafra Ladies provide a very convenient teleport service there.";
 					next;
 					cutin "god_nelluad01",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Anyway, the fortress of Sandaruman is on the way to Paros Lighthouse. I remember Serutero, a guy I met in south Morroc, telling me about its scenic beauty.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "I was so excited";
 					mes "about seeing it";
 					mes "for myself. After all, doesn't 'Sandaruman' sound like the";
 					mes "name of a beautiful place?";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "But I immediately regretted my decision once I arrived. Of course, the view was breathtaking: the sandy hills near the ocean, as";
 					mes "well as the ruins.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "And of course I forgot Serutero's warning about all the monsters. Argh! It was a nightmare! Instead of enjoying the scenary, I ended up running for my life.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "I was still trying to escape those monsters when I stumbled upon";
 					mes "an old house, West of Sandaruman, that seemed to be in a state of decay.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "I recalled that Serutero said that no one was living in that area, so I began to worry a bit. Still, I was desperate and needed refuge.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "In my panic, I violently knocked on the door and screamed for someone to let me inside. Then do you know what I heard?";
 					next;
 					cutin "god_nelluad04",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "^FF0000Who's there?!";
 					mes "Who would dare to intrude";
 					mes "upon my territory?^000000";
 					mes "I was freaked out! Whoever owned that house must have been some";
 					mes "kind of lunatic!";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Th-then, with the specter of Death nipping at my heels, he told me to get lost! Luckily, I was saved by a mysterious, wandering SuperNovice, but that's another story.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "In any case, I finally arrived at Paros Lighthouse. There, I learned that the old house was a secret camp for the Rogue Guild. ";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "It's amazing, how they can live in such dangerous areas. Only Rogues would be able to survive there, you know?";
 					next;
 					cutin "god_nelluad01",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Ah...";
 					mes "I'm so tired from talking so much. But if I happen to have another adventure, I shall share that tale with you.";
 					close2;
 					break;
 				case 2:
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Ah, you wish";
 					mes "to hear a song?";
 					mes "Okay! I shall then";
 					mes "perform my favorite.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "I chased after fame.";
 					mes "It eluded me.";
 					mes "I ran after happiness";
 					mes "But never caught it.";
 					next;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "But tomorrow will still";
 					mes "Be there, I'm sure.";
 					mes "Like the Water Mill";
@@ -572,7 +570,7 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 					mes "Life goes on.";
 					next;
 					cutin "god_nelluad04",2;
-					mes "[Nelliorde]";
+					mes "[那留奥德]";
 					mes "Cheer up! Life goes on.";
 					mes "As surely as the Water";
 					mes "Mill turns, tomorrow";
@@ -585,252 +583,262 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 		}
 	}
 	else {
-		mes "[Nelliorde]";
-		mes "Hello there!";
-		mes "Isn't it such";
-		mes "a glorious day?";
-		mes "You know of me,";
-		mes "do you not?";
+		mes "[那留奥德]";
+		mes "啊哈 你好? 天气不错吧?";
+		mes "嗯? 啊啊， 你知道我吗";
 		next;
-		mes "[Nelliorde]";
+		mes "[那留奥德]";
 		if (Sex) {
-			mes "Hahahaha, forgive my rudeness,";
-			mes "but I fail to remember your name, although your face does seem rather familiar.";
+			mes "啊哈哈哈.. 很抱歉，";
+			mes "我也无法记得男性的面孔";
 		}
 		else {
-			mes "Oh well well...";
-			mes "How could I ever";
-			mes "forget the lovely";
-			mes ""+ strcharinfo(0) +"?";
+			mes "真是糟糕，没有记忆啊，";
+			mes "像你这样美貌的人，";
+			mes "我，那留奥德怎么会忘记呢..";
 		}
+		mes "那又如何啊， 哈哈哈哈哈哈!";
 		next;
 		cutin "god_nelluad01",2;
-		mes "[Nelliorde]";
-		mes "So, aren't you curious about me? Feel free to ask me whatever you like! I'm the vagabond that will wander the earth till the end of his days, your friend who loves to sing under the moonlight~";
+		mes "[那留奥德]";
+		mes "你对我有兴趣吗?";
+		mes "不管什么都可以问啊!";
+		mes "只要是脚步引导我的地方，无论是哪里";
+		mes "我都会去流浪的流浪者!";
+		mes "将夜空里的星星当作朋友，";
+		mes "是唱着歌的，你的朋友!";
 		next;
-		switch(select("Who are you?:What's new?:Can you sing?")) {
+		switch(select("所以你的身份是?:没有什么好玩的谣言吗?:可以唱歌吗?")) {
 		case 1:
-			mes "[Nelliorde]";
-			mes "Why, I am Nelliorde, the Bard.";
-			mes "In truth, my real name is Elliorde.";
+			mes "[那留奥德]";
+			mes "我，是无目的到处流浪的";
+			mes "流浪乐师， 那留奥德，";
+			mes "不对其实本名是艾留奥德，";
+			mes "可是不知是什么时候，那天也悠闲的在";
+			mes "某村落的旅馆里";
+			mes "唱歌时";
 			next;
 			cutin "god_nelluad03",2;
-			mes "[Nelliorde]";
-			mes "However, while I was singing at a Tavern, as per usual, a man with long blonde hair angrily demanded that I change my name!";
+			mes "[那留奥德]";
+			mes "有一个留着金色乱发的家伙，";
+			mes "走过来不管三七二十一叫人换名字";
+			mes "的乱搞，哈啊...";
+			mes "活到这把年纪第一次看到有人因同名，";
+			mes "而发那么大的脾气";
 			next;
-			mes "[Nelliorde]";
-			mes "Never before have I seen such a flailing and a fuss over someone coincidentally sharing the same name!";
-			next;
-			mes "[Nelliorde]";
-			mes "And so, that little altercation";
-			mes "was settled with me being named Nelliorde.";
+			mes "[那留奥德]";
+			mes "真是的，托他的福在当下";
+			mes "就被改名了，叫做 那留奥德.";
+			mes "... ....";
 			next;
 			cutin "god_nelluad04",2;
-			mes "[Nelliorde]";
-			mes "I don't sound like a coward to you, do I? Do you believe I should have fought for the right to keep my original name?";
+			mes "[那留奥德]";
+			mes "....你现在心里想着是因为我懦弱，";
+			mes "无胆所以才被更名吧?";
+			mes "绝对不是!!!!!!!!!!!";
+			mes "我只是讨厌暴力热爱和平，";
+			mes "在这土地上优美的吟游诗..";
 			next;
-			mes "[Nelliorde]";
-			mes "If so, you're wrong! I just don't believe that violence can solve anything, as the romantic Bard";
-			mes "that cherishes peace...";
-			next;
-			mes "^3355FFSeeing as it's not worth";
-			mes "listening to Nelliorde's lies, you decide to simply tune him out.^000000";
-			next;
-			mes "^3355FF...";
-			mes "......^000000";
-			next;
-			mes "^3355FF...";
-			mes "......";
-			mes ".........^000000";
+			mes "[那留奥德]";
+			mes "- 若继续听下去恐怕会变成笨蛋 -";
+			mes "- 不理他吧 -";
 			next;
 			cutin "god_nelluad03",2;
-			mes "[Nelliorde]";
-			mes "And that's how I convinced wise";
-			mes "and benevolent King Tristram III to build a paradise where married lovers could enjo--Hm? Are you even listening?!";
+			mes "[那留奥德]";
+			mes "..哦? 哦? 喂你-!";
+			mes "那有就这样无视于我的存在啊!!";
 			close2;
 			break;
 		case 2:
-			mes "[Nelliorde]";
-			mes "You wish to";
-			mes "hear of some news?";
-			mes "What kind of news do";
-			mes "you wish to know about?";
+			mes "[那留奥德]";
+			mes "嗯? 是谣言嘛，谣言..";
+			mes "想知道哪里的消息呢?";
+			mes "只要是我路经的地方知道多少，";
+			mes "我都告诉你!";
 			next;
-			switch(select("About Prontera!:About seaside areas.:Is the desert still hot?:How about the borderlands?")) {
+			switch(select("果然还是首都，普隆德拉!:好奇海边的消息:沙漠依然是很热?:国境边界如何啊?")) {
 			case 1:
-				mes "[Nelliorde]";
-				mes "What?! Prontera?!";
-				mes "Can you not see that the front";
-				mes "gate of Prontera is right before you? You should at least know where you are, adventurer.";
+				mes "[那留奥德]";
+				mes "普隆德拉? 望着眼前的普隆德拉，";
+				mes "你在说什么?";
+				mes "所谓冒险家，在问别人之前，";
+				mes "是不是要自己先挑战看看呢?";
 				next;
-				mes "[Nelliorde]";
-				mes "Anyways, I know one interesting bit of news about Prontera. But it's a secret. Shh! Are you... Single?";
+				mes "[那留奥德]";
+				mes "啊 什么，与那个无关在普隆德拉，";
+				mes "有一个好玩的东西，";
+				mes "请问你未婚吗? 还是单身吗?";
+				mes "那就到普隆德拉的，";
+				mes "酒店去吧";
 				next;
-				mes "[Nelliorde]";
-				mes "If so, go visit the tavern. I met a guy there who took me a nice place. Oh yes. He took me the place where singles are forbidden~!";
+				mes "[那留奥德]";
+				mes "噗哈，在酒店遇到的某个家伙，";
+				mes "说送我到好的地方，所以去了..";
+				mes "啊....真的，是在'那地方'的";
+				mes "秘密酒店，";
+				mes "'真有那种地方'了吗!";
+				mes "单身者绝对去不了的'那地方'!";
 				close2;
 				break;
 			case 2:
-				mes "[Nelliorde]";
-				mes "Seaside areas?";
-				mes "That's a funny question. I mean, there's Alberta and a few other places where you can see the sea.";
+				mes "[那留奥德]";
+				mes "讲到海的话，还是艾尔贝塔吗?";
+				mes "不是艾尔贝塔可以看海的";
+				mes "地方也有很多耶，";
+				mes "如西南方的克克魔海边，";
+				mes "呵嗯.. 克克魔海边很危险啊，";
 				next;
-				mes "[Nelliorde]";
-				mes "To the southwest there's";
-				mes "Kokomo Beach. But, I suppose it's too dangerous just to go there to take a stroll.";
-				next;
-				mes "[Nelliorde]";
-				mes "Kokomo Beach is a large";
-				mes "expanse of sand. The nearby water is filled with sea animals, so you can enjoy catching Shellfishes.";
-				next;
-				mes "[Nelliorde]";
-				mes "However, there are always bullies in that kind of place. Once, I met a threatening looking hoodlum with red spiky hair.";
+				mes "[那留奥德]";
+				mes "克克魔海边的沙滩";
+				mes "宽广，海产很多，";
+				mes "抓贝壳类很好玩的，";
+				mes "可是那地区一定会有..";
+				mes "奇怪的家伙会出现的";
 				next;
 				cutin "god_nelluad04",2;
-				mes "[Nelliorde]";
-				mes "He was chewing on something and spat on the ground. The big buffoon managed to intimidate me into giving him all of my Zeny!";
+				mes "[那留奥德]";
+				mes "梳起鲜红色的头发，";
+				mes "面相险恶，";
+				mes "嚼着不知什么样的东西，";
+				mes "边吐痰边靠过来，";
+				mes "我所拥有的金币全被抢走了";
 				next;
-				mes "[Nelliorde]";
-				mes "^333333*Sigh...*^000000";
-				mes "This world is too";
-				mes "dangerous for a young";
-				mes "and fragile Bard.";
-				next;
-				mes "[Nelliorde]";
-				mes "By the way, Alberta doesn't seem to have changed. The Sunken Ship looks the same as well, with all of its Skeleton Pirates and whatnot. You know how it is.";
+				mes "[那留奥德]";
+				mes "呼，像我这样柔弱的诗人要活下去，";
+				mes "这世界太过危险了，";
+				mes "不过.. 艾尔贝塔还是老样子啊，";
+				mes "虽然看不到很久以前海盗波尔克";
+				mes "捣乱的痕迹，";
+				mes "沉船的水手们都还健在啊";
 				next;
 				cutin "god_nelluad01",2;
-				mes "[Nelliorde]";
-				mes "The event agency in charge of expeditions into the Sunken Ship is still making tons of money. If you have nothing to do, why don't you hunt for monsters down there?";
+				mes "[那留奥德]";
+				mes "准它还是准达的，想睡觉名称的，";
+				mes "某个活动公司，以那个为噱头";
+				mes "想赚钱..";
+				mes "若你觉得很无聊的话，";
+				mes "去打败魔物吧";
 				close2;
 				break;
 			case 3:
-				mes "[Nelliorde]";
-				mes "Oh yes!";
-				mes "When is it not?";
-				mes "The desert is hot, has";
-				mes "been hot and probably";
-				mes "always will be...!";
+				mes "[那留奥德]";
+				mes "很热很热吧!!!!!! 是沙漠啊!";
+				mes "巨大的蚯蚓依然会突然出现";
+				mes "来吓人，";
+				mes "像沙丘的泥人，";
+				mes "也被摆一道的地方，就是沙漠!";
 				next;
-				mes "[Nelliorde]";
-				mes "Giant worms still jump out of nowhere, freaking out innocent travellers like myself, and the Sandmen still kick people in the, well... You know where.";
+				mes "[那留奥德]";
+				mes "不过..";
+				mes "从沙漠往下看的海，";
+				mes "还是很壮观啊.. 哈啊.. 会不由自主的想唱歌，";
+				mes "所谓沙漠是..";
+				mes "还是那地方最有名气的?";
 				next;
 				cutin "god_nelluad02",2;
-				mes "[Nelliorde]";
-				mes "Even if the desert is filled with hideous monsters, the view of the ocean there is so magnificent. Hah, it makes me want to play a song.";
-				next;
-				mes "[Nelliorde]";
-				mes "I must say there is";
-				mes "one place you may wish";
-				mes "to see in the desert.";
-				next;
-				mes "[Nelliorde]";
-				mes "I'm talking about the Assassin Guild. Supposedly, it's hidden behind a sandstorm in the Morroc";
+				mes "[那留奥德]";
+				mes "藏在沙漠风暴里的，";
+				mes "传说中的刺客 公会!";
 				if ((Class == Job_Assassin) || (Class == Job_Assassin_Cross)) {
-					mes "Desert! But you should know what I am talking about! So when are you gonna take me to the guild, eh?";
+					mes "哈啊，假如是刺客贵族的话，就可以轻易的来去!什么时候带我去一次啊~";
 				}
 				else {
-					mes "Desert! Have you ever been there before?";
+					mes "你有去过吗?";
 				}
 				close2;
 				break;
 			case 4:
-				mes "[Nelliorde]";
-				mes "Well, to the north is the Schwaltzwald Republic.";
-				mes "There, you'll find Juno,";
-				mes "the 'City of Sages.'";
+				mes "[那留奥德]";
+				mes "嗯.. 越过国界，会出现朱诺，";
+				mes "是秀发兹巴特的首都，也是贤者的都市...";
+				mes "这朱诺听说现在有一个伤脑筋的问题?";
 				next;
-				mes "[Nelliorde]";
-				mes "The people there say that there is one major nuisance, a man known";
-				mes "as the 'Mad Scientist.' He's antisocial and creates a lot of public disturbances with his experiments.";
+				mes "[那留奥德]";
+				mes "好像是统称为，狂热科学家的科学家..";
+				mes "说是进行实验或研究，器物破损是基本.. 噪音也不是开玩笑的，";
+				mes "个性又很坏..";
 				next;
 				cutin "god_nelluad03",2;
-				mes "[Nelliorde]";
-				mes "It seems everyone in Juno hates";
-				mes "him with a passion. Even one of the Tool Shop owners begged a passing adventurer to stop this Mad Scientist's research!";
+				mes "[那留奥德]";
+				mes "受到人们的厌恶，";
+				mes "甚至于，道具店的老板，";
+				mes "抓着路过的冒险家，";
+				mes "拜托他去妨碍他，研究的地步了";
 				next;
-				mes "[Nelliorde]";
-				mes "But I have a different opinion about him. I believe it's not a good idea to interrupt the work of any scientist.";
+				mes "[那留奥德]";
+				mes "不过话说回来...";
+				mes "我想将一位科学家的研究全部破坏，";
+				mes "也不是一个好方法，我觉得啦";
 				next;
-				mes "[Nelliorde]";
-				mes "After all, he might just discover something important, even if his experiments are a little hazardous.";
-				next;
-				mes "[Nelliorde]";
-				mes "Speaking of discoveries, you know how Juno floats in the air, right?";
+				mes "[那留奥德]";
+				mes "还有那朱诺漂在空中的事，你也知道吧?";
+				mes "那是因为太初的巨人，伊美乐心脏的碎片，";
+				mes "关系的说法";
 				next;
 				cutin "god_nelluad01",2;
-				mes "[Nelliorde]";
-				mes "It's said that a piece of Ymir's Heart generates enough power";
-				mes "to keep the entire city aloft in the sky. Isn't that amazing?";
-				next;
-				mes "[Nelliorde]";
-				mes "Even more recent is the news about the discovery of Ymir's Book. You can read it in Juno's Sage Castle. I hear that it contains the secret to meeting Valkyrie...";
+				mes "[那留奥德]";
+				mes "贤者城堡有伊美乐之书，";
+				mes "假如你也想见巴基力的话，";
+				mes "你一定要阅读 '伊美乐之书' ";
 				close2;
 				break;
 			}
 			break;
 		case 3:
-			mes "[Nelliorde]";
-			mes "Can I sing, you ask?";
-			mes "Certainly, and if I may say so, pleasureably. Which song would";
-			mes "you care to hear?";
+			mes "[那留奥德]";
+			mes "歌? 歌很好啊!";
+			mes "想听什么???";
 			next;
-			switch(select("Bragi's Poem:Eternal Chaos:Assassin in the Sunset")) {
+			switch(select("布莱奇之诗:永远的浑沌:刺客的黄昏")) {
 			case 1:
 				if (Zeny > 499) {
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
-					mes "Bragi's Poem!";
-					mes "What a good choice!";
-					mes "I must say this song";
-					mes "represents the";
-					mes "heart of a poet!";
+					mes "[那留奥德]";
+					mes "哟~ 你很 了解诗人的心情!";
+					mes "布莱奇， 是我们的神!";
 					soundeffect "bragis_poem.wav",1;
 					set Zeny,Zeny-500;
 					close2;
 				}
 				else {
-					mes "[Nelliorde]";
-					mes "Please forgive me, but I cannot play a song for free. The world is harsh, and a frail Bard such as myself must have some means";
-					mes "to survive~";
+					mes "[那留奥德]";
+					mes "喂，世界上没有免费这回事~";
+					mes "很抱歉我不要演奏了";
 					close2;
 				}
 				break;
 			case 2:
 				if (Zeny > 499) {
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
-					mes "You must like robust";
-					mes "and energetic music, eh?";
-					mes "As you wish~";
+					mes "[那留奥德]";
+					mes "你好像蛮喜欢高格调的?";
+					mes "来了，永远的混沌!";
 					soundeffect "chaos_of_eternity.wav",1;
 					set Zeny,Zeny-500;
 					close2;
 				}
 				else {
-					mes "[Nelliorde]";
-					mes "Please forgive me, but I cannot play a song for free. The world is harsh, and a frail Bard such as myself must have some means";
-					mes "to survive~";
+					mes "[那留奥德]";
+					mes "喂，世界上没有免费这回事~";
+					mes "很抱歉我不要演奏了";
 					close2;
 				}
 				break;
 			case 3:
 				if (Zeny > 499) {
 					cutin "god_nelluad02",2;
-					mes "[Nelliorde]";
-					mes "Excellent choice!";
-					mes "Somehow, the image of";
-					mes "the setting sun fits";
-					mes "well with Assassins.";
-					mes "Don't you agree?";
+					mes "[那留奥德]";
+					mes "选的曲子很卓越啊?!";
+					mes "与火红的黄昏相配的果然就是，";
+					mes "死亡的影子吧?";
 					soundeffect "assassin_of_sunset.wav",1;
 					set Zeny,Zeny-500;
 					close2;
 				}
 				else {
-					mes "[Nelliorde]";
-					mes "Please forgive me, but I cannot play a song for free. The world is harsh, and a frail Bard such as myself must have some means";
-					mes "to survive~";
+					mes "[那留奥德]";
+					mes "喂，世界上没有免费这回事~";
+					mes "很抱歉我不要演奏了";
 					close2;
 				}
 				break;
@@ -842,21 +850,21 @@ prt_fild08,175,374,3	script	Bard#brising	51,{
 	end;
 }
 
-yuno_in04,47,113,1	script	Studying Scholar#1	749,{
+yuno_in04,47,113,1	script	研究中的学者#1	749,{
 	if (checkweight(908,200) == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
 	}
-	if ($God3 == $@god_check2) {
-		mes "[Studying Scholar]";
+	if ($God3 == 100) {
+		mes "[研究中的学者]";
 		mes "Hmmm...";
 		mes "The highest quality Red Potion ever...";
 		next;
-		mes "[Studying Scholar]";
+		mes "[研究中的学者]";
 		mes "If only I could figure a way to balance the consistency of the ground Red Herbs mixed with the water. That part is most crucial...";
 		close;
 	}
-	if ($God2 >= $@god_check1) {
+	if ($God2 > 49) {
 		if (god_brising == 50) {
 			mes "[Enrico Kaili]";
 			mes "Ah, " + strcharinfo(0) + ",";
@@ -878,43 +886,47 @@ yuno_in04,47,113,1	script	Studying Scholar#1	749,{
 			mes "[Enrico Kaili]";
 			mes "Oh! I'm so excited! I don't know what to do first! Should I report to His Majesty or publish my findings or...";
 			next;
-			select("^333333*Ahem!*^000000 My reward!");
-			mes "[Enrico Kaili]";
-			mes "Oh, right.";
-			mes "Thank you for all the trouble you have endured for my sake. You are truly one of the best researchers I've ever met.";
-			next;
-			mes "[Enrico Kaili]";
-			mes "Then as promised...";
-			mes "I will give you something from my precious collection! Now, let me see what we have here...";
-			next;
-			mes "[Enrico Kaili]";
-			mes "Please...";
-			mes "Take this.";
-			set god_brising,50;
-			getitem 616,1; // Old_Card_Album
-			getexp (checkre(3))?60000:600000,0;
-			next;
-			mes "[Enrico Kaili]";
-			mes "Please accept this as my way of thanking you for assisting in my";
-			mes "research. If the opportunity arises, I would like to ask you for your help once again. Now please, take care.";
-			if ($God3 < $@god_check2)
-				set $God3,$God3 +1;
-			if ($God3 == $@god_check1)
-				announce "The 3rd Seal of [Brisingamen] has appeared.",bc_all;
-			else if ($God3 == $@god_check2) {
-				if ($God1 == $@god_check2 && $God2 == $@god_check2 && $God3 == $@god_check2 && $God4 == $@god_check2)
-					announce "Four seals have been released at the same time with the seal of [Brisingamen].",bc_all;
-				else
-					announce "The 3rd seal of [Brisingamen] has been released.",bc_all;
-			}
-			close;
+			switch(select("^333333*Ahem!*^000000 My reward!")) {
+			case 1:
+				mes "[Enrico Kaili]";
+				mes "Oh, right.";
+				mes "Thank you for all the trouble you have endured for my sake. You are truly one of the best researchers I've ever met.";
+				next;
+				mes "[Enrico Kaili]";
+				mes "Then as promised...";
+				mes "I will give you something from my precious collection! Now, let me see what we have here...";
+				next;
+				mes "[Enrico Kaili]";
+				mes "Please...";
+				mes "Take this";
+				set god_brising,50;
+				getitem 616,1; // Old_Card_Album
+				getexp 600000,0;
+				next;
+				mes "[Enrico Kaili]";
+				mes "Please accept this as my way of thanking you for assisting in my";
+				mes "research. If the opportunity arises, I would like to ask you for your help once again. Now please, take care.";
+				if ($God3 < 100) set $God3,$God3 +1;
+					if ($God3 == 50) {
+						announce ">> 大陆的第三个， [女神颈链]封印已经登场了 <<",bc_all;
+					}
+					else if ($God3 == 100) {				
+						if ($God1 == 100 && $God2 == 100 && $God3 == 100 && $God4 == 100) {
+							announce ">> 和[女神颈链] 封印一起，第四种封印也都全部开了 <<",bc_all;
+						}
+						else {
+							announce ">> [女神颈链] 的封印终于开了 <<",bc_all;
+						}
+					}
+				}
+				close;
 		}
 		else if (god_brising == 48) {
 			mes "[Enrico Kaili]";
 			mes "Why are you still here?";
 			mes "I asked you to go find Alfrik.";
 			mes "Ah~ I cannot wait...";
-			emotion ET_SPARK;
+			emotion e_flash;
 			close;
 		}
 		else if (god_brising == 47) {
@@ -954,7 +966,7 @@ yuno_in04,47,113,1	script	Studying Scholar#1	749,{
 				mes "Of course!";
 				mes "That's a great idea! I'll wait here while you go and ask Alfrik. You're my only hope in completing this research!";
 				next;
-				emotion ET_SCRATCH,1;
+				emotion e_hmm,1;
 				mes "[" + strcharinfo(0) + "]";
 				mes "(^333333I shouldn't have said anything...^000000)";
 				next;
@@ -1259,7 +1271,7 @@ yuno_in04,47,113,1	script	Studying Scholar#1	749,{
 			mes "If she'll let you look at her records, you can probably find out where he lives. Now why don't you talk to that lady towards the left part of this room?";
 			close;
 		}
-		else if (god_brising == 2) {
+		else if(god_brising == 2) {
 			mes "[Enrico Kaili]";
 			mes "So, have you";
 			mes "considered my proposal?";
@@ -1383,21 +1395,16 @@ yuno_in04,47,113,1	script	Studying Scholar#1	749,{
 		}
 	}
 	else {
-		mes "[Studying Scholar]";
-		mes "Do you know how";
-		mes "to make Red Potions?";
-		mes "You grind a lot of Red Herbs and carefully shake the liquid until you achieve the desire consistency.";
-		next;
-		mes "[Studying Scholar]";
-		mes "If I could find a way";
-		mes "to produce them much faster,";
-		mes "I'd become rich in no time...";
+		mes "[研究中的学者]";
+		mes "在调制红色药水的过程中....";
+		mes "红色药草和水的浓度调节是相当重要的";
+		mes "根据这个微妙的调节，做出最棒回复量的药水才能满足";
 		close;
 	}
 }
 
 prt_church,113,103,1	script	Praying Man	798,{
- 	if ($God2 < $@god_check1) {
+ 	if ($God2 < 50) {
 		mes "[Praying Man]";
 		mes "Let everyone live a life";
 		mes "of happiness. Let there be";
@@ -1409,7 +1416,7 @@ prt_church,113,103,1	script	Praying Man	798,{
 		mes "month's paycheck on...";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if ($God3 > 99) {
 		mes "[Praying Man]";
 		mes "Now is the time to reflect upon the past to prepare for the future.";
 		next;
@@ -1541,8 +1548,9 @@ prt_church,113,103,1	script	Praying Man	798,{
 		mes "to Lowen.";
 		close;
 	}
-	else if (god_brising == 5) {
-		if (rand(1,4) == 1) {
+	else if(god_brising == 5) {
+		set @brising_try,rand(1,4);
+		if(@brising_try == 1) {
 			mes "[Hermite Charles]";
 			mes "You're still here.";
 			mes "Does that mean you";
@@ -2083,13 +2091,13 @@ prt_church,113,103,1	script	Praying Man	798,{
 }
 
 prt_castle,80,52,0	script	Personnel Record#book1	111,{
-	if ($God2 < $@god_check1) {
+	if ($God2 < 50) {
 		mes "[Librarian]";
 		mes "What are you doing?";
 		mes "Don't touch anything!";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if ($God3 > 99) {
 		mes "[Librarian]";
 		mes "What are you doing?";
 		mes "Don't touch anything!";
@@ -2266,13 +2274,13 @@ prt_castle,80,52,0	script	Personnel Record#book1	111,{
 
 //-----------librarian----------------------------------------------------------
 prt_castle,84,51,5	script	Librarian#2	105,{
-	if ($God2 < $@god_check1) {
+	if ($God2 < 50) {
 		mes "[Librarian]";
 		mes "What are you doing here?";
 		mes "Don't touch anything!";
 		close;
 	}
- 	if ($God3 >= $@god_check2) {
+ 	if ($God3 > 99) {
 		mes "[Librarian]";
 		mes "What are you doing here?";
 		mes "Don't touch anything!";
@@ -2440,7 +2448,7 @@ prt_castle,84,51,5	script	Librarian#2	105,{
 }
 
 prontera,260,354,4	script	Woman#Rosa Ellenen	101,{
-	if ($God2 < $@god_check1){ 
+	if ($God2 < 50){ 
 		mes "[Woman]";
 		mes "Hm?";
 		mes "What brings";
@@ -2450,7 +2458,7 @@ prontera,260,354,4	script	Woman#Rosa Ellenen	101,{
 		mes "take a walk.";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if ($God3 > 99) {
 		mes "[Woman]";
 		mes "Hm?";
 		mes "What brings";
@@ -2460,7 +2468,7 @@ prontera,260,354,4	script	Woman#Rosa Ellenen	101,{
 		mes "take a walk.";
 		close;
 	}
-	if (god_brising > 33) {
+	if(god_brising > 33) {
 		mes "[Rosa Ellenen]";
 		mes "Are you the one";
 		mes "who visited me before?";
@@ -2566,7 +2574,7 @@ prontera,260,354,4	script	Woman#Rosa Ellenen	101,{
 }
 
 prontera,262,353,0	script	Gravestone	111,{
-	if ($God2 > $@god_check1) {
+	if($God2 > 49) {
 		if (god_brising > 33) {
 			mes "Lowen Ellenen";
 			mes " ";
@@ -2582,7 +2590,7 @@ prontera,262,353,0	script	Gravestone	111,{
 			close;
 		}
 	}
-	else {
+	else	{
 		mes "^3355FFIt's just an";
 		mes "ordinary gravestone.^000000";
 		next;
@@ -2593,12 +2601,12 @@ prontera,262,353,0	script	Gravestone	111,{
 }
  
 gef_dun01,89,192,0	script	#lowentrace	111,3,3,{
-	if ($God2 < $@god_check1) {
+	if($God2 < 50) {
 		mes "^3355FFIt's just an old,";
 		mes "dry piece of wood.^000000";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if($God3 > 99) {
 		mes "^3355FFIt's just an old,";
 		mes "dry piece of wood.^000000";
 		close;
@@ -2610,7 +2618,7 @@ gef_dun01,89,192,0	script	#lowentrace	111,3,3,{
 		switch(select("Yes:No")) {
 		case 1:
 			input @lowenstring$;
-			if (@lowenstring$ == "Lowen") {
+			if(@lowenstring$ == "Lowen") {
 				if (god_brising == 30) {
 					mes "[Lowen Ellenen]";
 					mes "^6E7B8B...Y-you're...";
@@ -2709,19 +2717,21 @@ gef_dun01,89,192,0	script	#lowentrace	111,3,3,{
 	}
 
 OnTouch:
-	if ((god_brising > 9) && (god_brising < 34)) {
-		emotion ET_SURPRISE;
+	if((god_brising > 9) && (god_brising < 34)) {
+		emotion e_gasp;
 	}
 	end;
 }
 
 gef_dun01,203,48,0	script	#lowentrace1	111,3,3,{
-	if ($God2 < $@god_check1) {
+
+	if ($God2 < 50) {
 		mes "^3355FFIt's just an old,";
 		mes "dry piece of wood.^000000";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+
+	if( $God3 > 99) {
 		mes "^3355FFIt's just an old,";
 		mes "dry piece of wood.^000000";
 		close;
@@ -2733,8 +2743,8 @@ gef_dun01,203,48,0	script	#lowentrace1	111,3,3,{
 		switch(select("Yes:No")) {
 		case 1:
 			input @lowenstring$;
-				if (@lowenstring$ == "Lowen") {
-					if (god_brising == 31) {
+				if(@lowenstring$ == "Lowen") {
+					if(god_brising == 31) {
 					mes "[Lowen Ellenen]";
 					mes "^6E7B8BYou came back!";
 					mes "You'll be with me";
@@ -2746,7 +2756,7 @@ gef_dun01,203,48,0	script	#lowentrace1	111,3,3,{
 						mes "^6E7B8BThank you,";
 						mes "thank you so much...^000000";
 						close2;
-						warp "quET_GOd02",47,53;
+						warp "que_god02",47,53;
 						end;
 					case 2:
 						mes "[Lowen Ellenen]";
@@ -2755,12 +2765,12 @@ gef_dun01,203,48,0	script	#lowentrace1	111,3,3,{
 						mes "care of yourself...^000000";
 						close;
 					}
-				} else if (god_brising == 30) {
+				} else if(god_brising == 30) {
 					mes "[Lowen Ellenen]";
 					mes "^6E7B8BAh yes. This is it.";
 					mes "You look very curious about me, yet I am amazed that you can hear my voice. Please let me tell you an old story.^000000";
 					close2;
-					warp "quET_GOd02",47,53;
+					warp "que_god02",47,53;
 					end;
 				}
 				else if (god_brising == 25) {
@@ -2841,13 +2851,13 @@ gef_dun01,203,48,0	script	#lowentrace1	111,3,3,{
 	}
 
 OnTouch:
-	if ((god_brising > 9) && (god_brising < 34)) {
-		emotion ET_SURPRISE;
+	if((god_brising > 9) && (god_brising < 34)) {
+		emotion e_gasp;
 	}
 	end;
 }
 
-quET_GOd02,48,55,3	script	Lowen Ellenen	745,{
+que_god02,48,55,3	script	Lowen Ellenen	745,{
 	if (god_brising == 30) {
 		mes "[Lowen Ellenen]";
 		mes "Can you see me now?";
@@ -2955,7 +2965,7 @@ quET_GOd02,48,55,3	script	Lowen Ellenen	745,{
 	}
 }
 
-quET_GOd02,54,64,4	script	Soldier#1_brising	105,1,1,{
+que_god02,54,64,4	script	Soldier#1_brising	105,1,1,{
  	if (god_brising == 31) {
 		mes "[Soldier]";
 		mes "Have you volunteered for monster subjugation? Would you like to start the mission now?";
@@ -2983,7 +2993,7 @@ quET_GOd02,54,64,4	script	Soldier#1_brising	105,1,1,{
 
 OnTouch:
 	if (god_brising == 31) {
-		warp "quET_GOd02",174,49;
+		warp "que_god02",174,49;
 		donpcevent "#brisinsold::OnSold1Off";
 		donpcevent "#brisinsold2::OnSold2On";
 		end;
@@ -2994,13 +3004,13 @@ OnTouch:
 		mes "You are not permitted";
 		mes "to enter!";
 		close2;
-		warp "quET_GOd02",51,59;
+		warp "que_god02",51,59;
 		end;
 	}
 	end;
 }
 
-quET_GOd02,55,64,4	script	Soldier#2_brising	105,1,1,{
+que_god02,55,64,4	script	Soldier#2_brising	105,1,1,{
 	mes "[Soldier]";
 	mes "Please back away.";
 	mes "You are not permitted";
@@ -3008,10 +3018,10 @@ quET_GOd02,55,64,4	script	Soldier#2_brising	105,1,1,{
 	close;
 }
 
-quET_GOd02,1,1,1	script	#brisinsold2	-1,{
+que_god02,1,1,1	script	#brisinsold2	-1,{
 OnInit:
 	hideonnpc "Soldier#2_brising";
-	areawarp "quET_GOd02",15,125,185,131,"geffen",120,100;
+	areawarp "que_god02",100,128,85,3,"geffen",120,100;
 	end;
 
 OnSold2On:
@@ -3020,19 +3030,19 @@ OnSold2On:
 	end;
 
 OnTimer420000:
-	mapannounce "quET_GOd02","Lowen's spirit is beginning to weaken...",0,0x70DBDB;
+	mapannounce "que_god02","Lowen's spirit is beginning to weaken...",0,0x70DBDB;
 	end;
 
 OnTimer480000:
-	mapannounce "quET_GOd02","Your presense in her past can't be maintained for much longer...",0,0x70DBDB;
+	mapannounce "que_god02","Your presense in her past can't be maintained for much longer...",0,0x70DBDB;
 	end;
 
 OnTimer540000:
-	mapannounce "quET_GOd02","Lowen's spirit can't keep you in the past any longer.",0,0x70DBDB;
+	mapannounce "que_god02","Lowen's spirit can't keep you in the past any longer.",0,0x70DBDB;
 	end;
 
 OnTimer542000:
-	areawarp "quET_GOd02",15,125,185,131,"geffen",120,100;
+	areawarp "que_god02",1,1,400,400,"geffen",120,100;
 	end;
 
 OnTimer550000:
@@ -3045,7 +3055,7 @@ OnTimer550500:
 
 }
 	
-quET_GOd02,1,1,1	script	#brisinsummon	-1,{
+que_god02,1,1,1	script	#brisinsummon	-1,{
 
 OnInit:
 	hideonnpc "#doppelganger1";
@@ -3116,20 +3126,20 @@ OnLowen2Off:
 
 OnSummon:
 	set .brisinmobdead,9;
-	monster "quET_GOd02",34,128,"",1015,1,"#brisinsummon::OnMobDeath";
-	monster "quET_GOd02",34,127,"",1015,1,"#brisinsummon::OnMobDeath";
-	monster "quET_GOd02",80,127,"",1015,1,"#brisinsummon::OnMobDeath";
-	monster "quET_GOd02",102,128,"",1036,1,"#brisinsummon::OnMobDeath";
-	monster "quET_GOd02",130,128,"",1036,1,"#brisinsummon::OnMobDeath";
-	monster "quET_GOd02",62,128,"",1041,1,"#brisinsummon::OnMobDeath";
-	monster "quET_GOd02",64,127,"",1041,1,"#brisinsummon::OnMobDeath";
-	monster "quET_GOd02",150,127,"",1041,1,"#brisinsummon::OnMobDeath";
-	monster "quET_GOd02",176,127,"",1041,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",34,128,"",1015,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",34,127,"",1015,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",80,127,"",1015,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",102,128,"",1036,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",130,128,"",1036,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",62,128,"",1041,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",64,127,"",1041,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",150,127,"",1041,1,"#brisinsummon::OnMobDeath";
+	monster "que_god02",176,127,"",1041,1,"#brisinsummon::OnMobDeath";
 	end;
 
 OnMobDeath:
 	set .brisinmobdead,.brisinmobdead -1;
-	if (.brisinmobdead > 0) end;
+	if(.brisinmobdead > 0) end;
 	set god_brising,31;
 	hideoffnpc "Valkyrie#1";
 	end;
@@ -3146,18 +3156,63 @@ OnReset:
 	hideoffnpc "#hermite";
 	hideoffnpc "Lowen Ellenen#2";
 	hideonnpc "Valkyrie#1";
-	killmonster "quET_GOd02","#brisinsummon::OnMobDeath";
+	killmonster "que_god02","#brisinsummon::OnMobDeath";
 	end;
 }
 
-quET_GOd02,173,58,4	script	#doppelganger1	739,{ end; }
-quET_GOd02,175,55,4	script	#doppelganger2	739,{ end; }
-quET_GOd02,175,54,1	script	#lowen	745,{ end; }
-quET_GOd02,178,49,1	script	#knight1	751,{ end; }
-quET_GOd02,168,53,7	script	#knight2	734,{ end; }
-quET_GOd02,167,58,4	script	#knight3	752,{ end; }
+que_god02,173,58,4	script	#doppelganger1	739,{
+	end;
+}
 
-quET_GOd02,174,49,0	script	#lowenone	139,0,0,{
+que_god02,175,55,4	script	#doppelganger2	739,{
+	end;
+}
+
+que_god02,175,54,1	script	#lowen	745,{
+
+OnEmoGasp:
+	emotion e_gasp;
+	end;
+
+OnCast:
+	specialeffect EF_BEGINSPELL7;
+	end;
+}
+
+que_god02,178,49,1	script	#knight1	751,{
+
+OnEmoGasp:
+	emotion e_gasp;
+	end;
+
+OnEmoGo:
+	emotion e_go;
+	end;
+}
+
+que_god02,168,53,7	script	#knight2	734,{
+
+OnEmoGasp:
+	emotion e_gasp;
+	end;
+
+OnEmoGo:
+	emotion e_go;
+	end;
+}
+
+que_god02,167,58,4	script	#knight3	752,{
+
+OnEmoGasp:
+	emotion e_gasp;
+	end;
+
+OnEmoGo:
+	emotion e_go;
+	end;
+}
+
+que_god02,174,49,0	script	#lowenone	139,0,0,{
 
 OnTouch:
 	donpcevent "brisinsold2::OnSold2On";
@@ -3178,7 +3233,7 @@ OnTouch:
 	mes "getting down here. But...";
 	mes "We've got problems now.";
 	next;
-	mapannounce "quET_GOd02","D...Doppelganger!!!",0,0x9CFF00;
+	mapannounce "que_god02","D...Doppelganger!!!",0,0x9CFF00;
 	mes "[" + strcharinfo(0) + "]";
 	mes "What...?!";
 	mes "Doppelganger?!";
@@ -3197,13 +3252,13 @@ OnTouch:
 	mes "The commander gave orders";
 	mes "and then... What happened?";
 	next;
-	mapannounce "quET_GOd02","Everyone, stay calm! Get into your positions!",0,0x9CFF00;
+	mapannounce "que_god02","Everyone, stay calm! Get into your positions!",0,0x9CFF00;
 	mes "^4E2F2F[Crusader Commander]";
 	mes "Everyone, get into your positions! Front line, block its movement! Rear line, support the defense!^000000";
-	emotion ET_GO,0,"#knight1";
-	emotion ET_GO,0,"#knight2";
-	emotion ET_GO,0,"#knight3";
-	emotion ET_SURPRISE,0,"#doppelganger1";
+	donpcevent "#knight1::OnEmoGo";
+	donpcevent "#knight2::OnEmoGo";
+	donpcevent "#knight3::OnEmoGo";
+	donpcevent "#doppelganger1::OnEmoGasp";
 	next;
 	mes "[Lowen Ellenen]";
 	mes "N-no!";
@@ -3216,13 +3271,13 @@ OnTouch:
 	mes "Cast Grand Cross, now!^000000";
 	next;
 	specialeffect EF_BEGINSPELL7,AREA,"#lowen";
-	mapannounce "quET_GOd02","Mwahaha! Mortals are such fools...",0,0xA8A8A8;
+	mapannounce "que_god02","Mwahaha! Mortals are such fools...",0,0xA8A8A8;
 	donpcevent "#brisinsummon::OnDoppel1Off";
 	donpcevent "#brisinsummon::OnDoppel2On";
-	emotion ET_SURPRISE,0,"#knight1";
-	emotion ET_SURPRISE,0,"#knight2";
-	emotion ET_SURPRISE,0,"#knight3";
-	emotion ET_SURPRISE,0,"#lowen";
+	donpcevent "#knight1::OnEmoGasp";
+	donpcevent "#knight2::OnEmoGasp";
+	donpcevent "#knight3::OnEmoGasp";
+	donpcevent "#lowen::OnEmoGasp";
 	mes "[" + strcharinfo(0) + "]";
 	mes " ??!!!";
 	next;
@@ -3231,7 +3286,7 @@ OnTouch:
 	mes "Lowen!";
 	mes "Noooooooooo!!!";
 	close2;
-	warp "quET_GOd02",120,52;
+	warp "que_god02",120,52;
 	donpcevent "#brisinsummon::OnDoppel2Off";
 	donpcevent "#brisinsummon::OnKnight1Off";
 	donpcevent "#brisinsummon::OnKnight2Off";
@@ -3240,9 +3295,9 @@ OnTouch:
 	end;
 }
 
-quET_GOd02,124,59,7	script	#hermite	798,{ end; }
+que_god02,124,59,7	script	#hermite	798,{ end; }
  
-quET_GOd02,120,52,0	script	#monologue	139,0,0,{
+que_god02,120,52,0	script	#monologue	139,0,0,{
 
 OnTouch:
 	mes "[" + strcharinfo(0) + "]";
@@ -3263,7 +3318,7 @@ OnTouch:
 	mes "Lowen, don't do it!";
 	mes "Don't do that, Lowen!";
 	next;
-	mapannounce "quET_GOd02","Mwahaha! Mortals are such fools...",0,0xA8A8A8;
+	mapannounce "que_god02","Mwahaha! Mortals are such fools...",0,0xA8A8A8;
 	mes "[Hermite Charles]";
 	mes "Lowen!";
 	mes "Noooooooooo!!!";
@@ -3273,7 +3328,7 @@ OnTouch:
 	mes "Where did he go?";
 	mes "Was... Was that";
 	mes "from his mind?";
-	mapannounce "quET_GOd02","What happened?! L-Lowen's gone!!",0,0xA8A8A8;
+	mapannounce "que_god02","What happened?! L-Lowen's gone!!",0,0xA8A8A8;
 	next;
 	mes "[Lowen Ellenen]";
 	mes "...";
@@ -3281,12 +3336,12 @@ OnTouch:
 	mes "I know...";
 	mes "What happened...";
 	close2;
-	warp "quET_GOd02",18,127;
+	warp "que_god02",18,127;
 	end;
 
 }
 
-quET_GOd02,21,127,3	script	Lowen Ellenen#2	745,{
+que_god02,21,127,3	script	Lowen Ellenen#2	745,{
 	mes "[Lowen Ellenen]";
 	mes "I was a fool.";
 	mes "Now I remember Hermite. He must have been the one who rescued me. But when I came to my senses, no one was there.";
@@ -3319,7 +3374,7 @@ quET_GOd02,21,127,3	script	Lowen Ellenen#2	745,{
 	mes "I fought and I fought, trying to make penance for what I had";
 	mes "done wrong...";
 	next;
-	mapannounce "quET_GOd02","If you wish, continue your battle. I promise you the winner will become an Einherjar...",0,0x70DB93;
+	mapannounce "que_god02","If you wish, continue your battle. I promise you the winner will become an Einherjar...",0,0x70DB93;
 	mes "[Lowen Ellenen]";
 	mes "That voice...";
 	mes "Isn't that...?";
@@ -3337,7 +3392,7 @@ quET_GOd02,21,127,3	script	Lowen Ellenen#2	745,{
 	end;
 }
 
-quET_GOd02,178,127,3	script	Valkyrie#1	811,{
+que_god02,178,127,3	script	Valkyrie#1	811,{
 
 	if (god_brising == 31) {
 		mes "[Valkyrie]";
@@ -3511,13 +3566,13 @@ quET_GOd02,178,127,3	script	Valkyrie#1	811,{
 }
 
 xmas,38,105,0	script	#brisindwarf1	111,3,3,{
-	if ($God2 < $@god_check1) {
+	if ($God2 < 50) {
 		mes "^3355FFA lot of snow";
 		mes "is heavily piled";
 		mes "here on the ground.^000000";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if ($God3 > 99) {
 		mes "^3355FFA lot of snow";
 		mes "is heavily piled";
 		mes "here on the ground.^000000";
@@ -3660,10 +3715,10 @@ xmas,38,105,0	script	#brisindwarf1	111,3,3,{
 			mes "be just some regular";
 			mes "puzzle cube that someone";
 			mes "just dropped in the snow!";
-			close;
+			close;	
 		case 3:
 			mes "^3355FFYou use your finger to poke the pile of snow. However, you hurt your finger a little bit after hitting something really solid.^000000";
-			emotion ET_ANGER,1;
+			emotion e_ag,1;
 			percentheal -20,0;
 			close;
 		case 4:
@@ -3678,8 +3733,8 @@ xmas,38,105,0	script	#brisindwarf1	111,3,3,{
 	}
 
 OnTouch:
-	if (god_brising > 39) {
-		emotion ET_SURPRISE,1;
+	if(god_brising > 39) {
+		emotion e_gasp,1;
 	}
 	end;
 }
@@ -3978,12 +4033,12 @@ OnInit:
 }
 
 prt_fild02,185,269,0	script	#brisindwarf2	111,3,3,{
-	if ($God2 < $@god_check1) {
+	if ($God2 < 50) {
 		mes "^3355FFIt's just an";
 		mes "ordinary rock.^000000";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if ($God3 > 99) {
 		mes "^3355FFIt's just an";
 		mes "ordinary rock.^000000";
 		close;
@@ -4001,7 +4056,7 @@ prt_fild02,185,269,0	script	#brisindwarf2	111,3,3,{
 			end;
 		case 2:
 			mes "^3355FFAs you sweep away the moss with your hand, you scratch your palm from the sharp edges of the rock.^000000";
-			emotion ET_SURPRISE,1;
+			emotion e_gasp,1;
 			next;
 			mes "[" + strcharinfo(0) + "]";
 			mes "Damn...!";
@@ -4145,8 +4200,8 @@ prt_fild02,185,269,0	script	#brisindwarf2	111,3,3,{
 	}
 
 OnTouch:
-	if (god_brising > 41) {
-		emotion ET_SURPRISE,1;
+	if(god_brising > 41) {
+		emotion e_gasp,1;
 	}
 	end;
 }
@@ -4170,7 +4225,7 @@ prt_fild02,185,270,3	script	Dvalin#1	826,{
 		hideonnpc "Dvalin#1";
 		end;
 	}
-	else if (god_brising == 42) {
+	else if(god_brising == 42) {
 		mes "[Dvalin]";
 		mes "Wah, it's not Alfrik?";
 		mes "Who are you to wake Dvalin?";
@@ -4255,7 +4310,7 @@ prt_fild02,185,270,3	script	Dvalin#1	826,{
 			end;
 		}
 	}
-	else if (god_brising == 43) {
+	else if(god_brising == 43) {
 		mes "[Dvalin]";
 		mes "Why do you keep calling me? I did everything I can do for you. I even gave you the key to the question.";
 		next;
@@ -4275,11 +4330,11 @@ OnInit:
 }
 
 mjolnir_09,85,129,0	script	#brisindwarf3	111,3,3,{
-	if ($God2 < $@god_check1) {
+	if ($God2 < 50) {
 		mes "^3355FFThe sight of this bubbling stream refreshes you just by looking at it.^000000";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if ($God3 > 99) {
 		mes "^3355FFThe sight of this bubbling stream refreshes you just by looking at it.^000000";
 		close;
 	}
@@ -4339,14 +4394,14 @@ mjolnir_09,85,129,0	script	#brisindwarf3	111,3,3,{
 	}
 
 OnTouch:
-	if (god_brising > 42) {
-		emotion ET_SURPRISE,1;
+	if(god_brising > 42) {
+		emotion e_gasp,1;
 	}
 	end;
 }
 
 mjolnir_09,87,129,3	script	Berling#1	826,{
-	if (god_brising > 44) {
+	if(god_brising > 44) {
 		mes "[Berling]";
 		mes "You're the one that's awakened us? Hahaha, perhaps that's a sign we may see Freya again! Hahahaha!";
 		next;
@@ -4356,7 +4411,7 @@ mjolnir_09,87,129,3	script	Berling#1	826,{
 		hideonnpc "OnBerling#1";
 		end;
 	}
-	else if (god_brising == 43) {
+	else if(god_brising == 43) {
 		mes "[Berling]";
 		mes "What the...?";
 		mes "It's a human?!";
@@ -4461,7 +4516,7 @@ mjolnir_09,87,129,3	script	Berling#1	826,{
 			end;
 		}
 	}
-	else if (god_brising == 44) {
+	else if(god_brising == 44) {
 		mes "[Berling]";
 		mes "Did you already forget the lyrics? Let me tell them to you again, so don't forget this time.";
 		next;
@@ -4490,12 +4545,12 @@ OnInit:
 }
 
 mjo_dun02,126,36,0	script	#brisindwarf4	111,3,3,{
-	if ($God2 < $@god_check1) {
+	if ($God2 < 50) {
 		mes "[" + strcharinfo(0) + "]";
 		mes "Bah, no way out.";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if ($God3 > 99) {
 		mes "[" + strcharinfo(0) + "]";
 		mes "Bah, no way out.";
 		close;
@@ -4513,35 +4568,35 @@ mjo_dun02,126,36,0	script	#brisindwarf4	111,3,3,{
 		mes "What was the first line...?";
 		next;
 		input @dwarfsong1$;
-		if (@dwarfsong1$ == "No jewel in the world can compare.") set @point,@point +1;
-		mes "[" + strcharinfo(0) + "]";
+		if(@dwarfsong1$ == "No jewel in the world can compare.") set @point,@point +1;
+		mes	"[" + strcharinfo(0) + "]";
 		mes " " + @dwarfsong1$ + "";
 		mes "Then...ummm..";
 		mes "The second line?";
 		next;
 		input @dwarfsong2$;
-		if (@dwarfsong2$ == "Our masterpiece made from love.") set @point,@point +1;
+		if(@dwarfsong2$ == "Our masterpiece made from love.") set @point,@point +1;
 		mes "[" + strcharinfo(0) + "]";
 		mes " " + @dwarfsong2$ + "";
 		mes "Now, what was";
 		mes "the third line...?";
 		next;
 		input @dwarfsong3$;
-		if (@dwarfsong3$ == "She wanted the dazzling necklace.") set @point,@point +1;
+		if(@dwarfsong3$ == "She wanted the dazzling necklace.") set @point,@point +1;
 		mes "[" + strcharinfo(0) + "]";
 		mes " " + @dwarfsong3$ + "";
 		mes "Now, the fourth";
 		mes "line after that...";
 		next;
 		input @dwarfsong4$;
-		if (@dwarfsong4$ == "We wanted the goddess of beauty.") set @point,@point +1;
+		if(@dwarfsong4$ == "We wanted the goddess of beauty.") set @point,@point +1;
 		mes "[" + strcharinfo(0) + "]";
 		mes " " + @dwarfsong4$ + "";
 		mes "Alright, now";
 		mes "for the last line...";
 		next;
 		input @dwarfsong5$;
-		if (@dwarfsong5$ == "Our happiest times were with her.") set @point,@point +1;
+		if(@dwarfsong5$ == "Our happiest times were with her.") set @point,@point +1;
 		mes "[" + strcharinfo(0) + "]";
 		mes " " + @dwarfsong5$ + "";
 		mes "Alright, let's give it a try.";
@@ -4579,18 +4634,18 @@ mjo_dun02,126,36,0	script	#brisindwarf4	111,3,3,{
 	}
 
 OnTouch:
-	if ($God2 < $@god_check1) {
+	if ($God2 < 50) {
 		mes "[" + strcharinfo(0) + "]";
 		mes "Beh, no way out.";
 		close;
 	}
-	if ($God3 >= $@god_check2) {
+	if ($God3 > 99) {
 		mes "[" + strcharinfo(0) + "]";
 		mes "Beh, no way out.";
 		close;
 	}
 	if (god_brising == 44) {
-		emotion ET_SURPRISE,1;
+		emotion e_gasp,1;
 		mes "[Male Voice]";
 		mes "Don't come any closer!";
 		mes "How the hell do I feel";
@@ -4656,7 +4711,7 @@ mjo_dun02,126,34,1	script	Grer#1	826,{
 		hideonnpc "Grer#1";
 		end;
 	}
-	else if (god_brising == 46) {
+	else if(god_brising == 46) {
 		mes "[Grer]";
 		mes "My name is Grer.";
 		mes "I should have been";

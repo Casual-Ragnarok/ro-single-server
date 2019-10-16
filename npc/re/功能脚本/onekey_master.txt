@@ -11,6 +11,7 @@ UPGRADEROOT:
 	mes "确认即扣钱，没有回头路！";
 	next;
 	menu "一键满状态（-1W）",TO_ALL_STATUS,
+		 "一键超强状态（-10W）",TO_SUPER_STATUS,
 		 "一键全身鉴定（-1W）",TO_IDENTITY,
 		 "一键全身修复（-10W）",TO_REPAIRE,
 		 "一键精炼+10（-1000W）",TO_REFINE_10,
@@ -56,25 +57,67 @@ TO_ALL_STATUS:
 		percentheal 100,100;												// 满 HP/SP
 		skilleffect "AL_BLESSING",0; sc_start SC_BLESSING,600000,10;		// 天使之赐福
 		skilleffect "AL_INCAGI",0; sc_start SC_INCREASEAGI,600000,10;		// 加速术
+		skilleffect "AL_ANGELUS",0; sc_start SC_ANGELUS,600000,10;			// 天使之障壁
+		skilleffect "SC_IMPOSITIO",0; sc_start SC_IMPOSITIO,600000,5;		// 神威祈福
 		skilleffect "HP_ASSUMPTIO",0; sc_start SC_ASSUMPTIO,600000,5;		// 圣母之祈福
-		skilleffect "SN_WINDWALK",0; sc_start SC_WINDWALK,600000,5;			// 风之步
-
-		getitem 7139,4;
-		unitskilluseid getcharid(3),"AM_CP_HELM",5;							// 护贝药化学头盔保护
-		sleep2 2100;
-		unitskilluseid getcharid(3),"AM_CP_ARMOR",5;						// 护贝药化学铠甲保护
-		sleep2 2100;
-		unitskilluseid getcharid(3),"AM_CP_WEAPON",5;						// 护贝药化学武器保护
-		sleep2 2100;
-		unitskilluseid getcharid(3),"AM_CP_SHIELD",5;						// 护贝药化学盾牌保护
-		sleep2 2100;
+		skilleffect "PR_MAGNIFICAT",0; sc_start SC_MAGNIFICAT,600000,3;		// 圣母之颂歌
+		skilleffect "AM_CP_WEAPON",0; sc_start SC_CP_WEAPON,600000,10;		// 化学武器保护
+		skilleffect "AM_CP_SHIELD",0; sc_start SC_CP_SHIELD,600000,10;		// 化学盾牌保护
+		skilleffect "AM_CP_ARMOR",0; sc_start SC_CP_ARMOR,600000,10;		// 化学盔甲保护
+		skilleffect "AM_CP_HELM",0; sc_start SC_CP_HELM,600000,10;			// 化学头盔保护
+		sc_start SC_SUFFRAGIUM,600000,3;									// 牺牲祈福
+		sc_start SC_KYRIE,600000,10;										// 霸邪之阵
+		sc_start SC_GLORIA,600000,5;										// 幸运之颂歌
+		sc_start SC_ASPDPOTION2,600000,10;									// 菠色克药水
 
 		goto TO_CLOSE;
 
 	} else {
 		goto NO_ZENY;
 	}
-	
+
+
+TO_SUPER_STATUS:
+	set @money,100000;
+	if(zeny >= @money) {
+		set zeny,(zeny - @money);
+
+		percentheal 100,100;												// 满 HP/SP
+		skilleffect "AL_BLESSING",0; sc_start SC_BLESSING,600000,10;		// 天使之赐福
+		skilleffect "AL_INCAGI",0; sc_start SC_SPEEDUP1,600000,10;			// 移动速度提升状态1(比加速术更快)
+		skilleffect "AL_ANGELUS",0; sc_start SC_ANGELUS,600000,10;			// 天使之障壁
+		skilleffect "SC_IMPOSITIO",0; sc_start SC_IMPOSITIO,600000,5;		// 神威祈福
+		skilleffect "HP_ASSUMPTIO",0; sc_start SC_ASSUMPTIO,600000,5;		// 圣母之祈福
+		skilleffect "PR_MAGNIFICAT",0; sc_start SC_MAGNIFICAT,600000,3;		// 圣母之颂歌
+		skilleffect "AM_CP_WEAPON",0; sc_start SC_CP_WEAPON,600000,10;		// 化学武器保护
+		skilleffect "AM_CP_SHIELD",0; sc_start SC_CP_SHIELD,600000,10;		// 化学盾牌保护
+		skilleffect "AM_CP_ARMOR",0; sc_start SC_CP_ARMOR,600000,10;		// 化学盔甲保护
+		skilleffect "AM_CP_HELM",0; sc_start SC_CP_HELM,600000,10;			// 化学头盔保护
+		sc_start SC_SUFFRAGIUM,600000,3;									// 牺牲祈福
+		sc_start SC_KYRIE,600000,10;										// 霸邪之阵
+		sc_start SC_GLORIA,600000,5;										// 幸运之颂歌
+		sc_start SC_ASPDPOTION3,600000,10;									// 攻击加速状态3(比菠色克更快，例如刺客吃毒药)
+
+		skilleffect "SN_WINDWALK",0; sc_start SC_WINDWALK,600000,5;			// 风之步
+		sc_start SC_HALLUCINATIONWALK,600000,1;								// 幻影步
+		sc_start SC_ADRENALINE,600000,5;									// 速度激发
+		sc_start SC_WEAPONPERFECTION,600000,5;								// 无视体型
+		sc_start SC_MAXIMIZEPOWER,600000,5;									// 武器值最大化
+		sc_start SC_ENDURE,600000,10;										// 霸体
+		sc_start SC_LOUD,600000,1;											// 大声呐喊
+		sc_start SC_ENERGYCOAT,600000,1;									// 能量外套
+		sc_start SC_AUTOGUARD,600000,10;									// 自动防御
+		sc_start SC_RUWACH,600000,1;										// 光猎
+		sc_start SC_KAUPE,600000,3;											// 物理攻击回避一次(凯诬仆)
+		sc_start SC_KAIZEL,600000,7;										// 可立即复活(凯易哲)
+		
+		goto TO_CLOSE;
+
+	} else {
+		goto NO_ZENY;
+	}
+
+
 TO_REFINE_10:
 	set @money,10000000;
 	if(zeny >= @money) {

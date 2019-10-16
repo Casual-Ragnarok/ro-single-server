@@ -1,1076 +1,928 @@
-//===== rAthena Script ======================================= 
-//= God Item Quest - Megingjard Seal
+//===== eAthena Script ======================================= 
+//= 雷神腰带封印任务
 //===== By: ================================================== 
 //= SinSloth
 //===== Current Version: ===================================== 
-//= 2.2
+//= 1.9
 //===== Compatible With: ===================================== 
-//= rAthena SVN
+//= eAthena
 //===== Description: ========================================= 
-//= Quest for breaking the seal of Megingjard.
+//= 雷神腰带解除封印任务
 //===== Additional Comments: =================================
 //= 1.0 First version. Thanks to SinSloth for scripting it. [MasterOfMuppets]
 //= 1.1 fixed exploit [Lupus]
 //= 1.2 Fixed experience gains to match upcoming rate adjustments. [SinSloth]
 //= 1.3 Updated several aspects of the script. [L0ne_W0lf]
 //= 1.4 Minor Touchups to quest. [L0ne_W0lf]
-//= 1.5 Fixed missing close2 in Rebarev Doug. [L0ne_w0lf]
+//= 1.5 Fixed missing close2 in 雷贝依勒布 多. [L0ne_w0lf]
 //= 1.6 Corrected mismatched variables. [L0ne_W0lf]
 //= 1.7 Replaced effect numerics with constants. [Samuray22]
 //= 1.8 Corrected how exp reward is applied. [L0ne_W0lf]
-//= 1.9 Fixed some input checks and variable types. [brianluau]
-//= 2.0 Updated RE/Pre-RE EXP. [Euphy]
-//= 2.1 Fixed minor bug with the Librarian Jekan
-//= 2.2 Renewal script update. [Euphy]
+//= +(0.1) 修正与 库阿克 多伦 对话时，拿巴风特娃娃没有反应的问题
+//=        变更语言，繁体中文-台湾 [笨冰]
+//= +(0.2) 中文化史靴任务低于50人时，雷贝依勒布 多的对话 [笨冰]
+//= +(0.3) 雷贝依勒布 多的剩余对话，魔法铁炼制作为自翻本 [笨冰]
+//= 1.9 修正文件管理人杰干，对话卡住的情况 [笨冰]
 //============================================================
 
-prt_castle,44,151,0	script	Rebarev Doug	56,{
-	if (checkweight(1301,3) == 0) {
-		mes "- You are carrying too many items! -";
-		close;
-	}
+prt_castle,44,151,0	script	雷贝依勒布 多	56,{
 	cutin "god_rebeireb",2;
 	if ((countitem(7080) > 3) && (countitem(7081) > 4) && (countitem(7082) > 3) && (countitem(7084) > 2) && (countitem(7085) > 2)) {
-		mes "[Rebarev Doug]";
-		mes "What's this?";
-		mes "You...! You have";
-		mes "everything I need to";
-		mes "create Gleipnir!";
+		mes "[雷贝依勒布 多]";
+		mes "喔喔! 这个是!!";
+		mes "你!!";
+		mes "原来你拥有，制作魔法铁链的材料啊!!";
 		next;
-		switch(select("Make Gleipnir.:Cancel.")) {
+		switch(select("制作魔法铁链:取消")) {
 		case 1:
-			mes "[Rebarev Doug]";
-			mes "I'm the only human on earth";
-			mes "blessed with the ability to create Gleipnir. Aside from the Dwarves, I'm the only person that can make this item!";
+			mes "[雷贝依勒布 多]";
+			mes "可以被祝福制作神级物品的，除了得卧普族之外，";
+			mes "就是和神最接近的人，";
+			mes "也就是赐给我的祝福!!";
 			next;
-			delitem 7080,4;  //Foot_Step_Of_Cat
-			delitem 7081,5;  //Beard_Of_Women
-			delitem 7082,4;  //Root_Of_Stone
-			delitem 7084,3;  //Saliva_Of_Bird
-			delitem 7085,3;  //Tendon_Of_Bear
-			getitem 7058,1; // Gullraifnir
-			mes "[Rebarev Doug]";
-			mes "There you go!";
+			delitem 7080,4;	//Foot_Step_Of_Cat
+			delitem 7081,5;	//Beard_Of_Women
+			delitem 7082,4;	//Root_Of_Stone
+			delitem 7084,3;	//Saliva_Of_Bird
+			delitem 7085,3;	//Tendon_Of_Bear
+			getitem 7058,1;	//魔法铁链
+			mes "[雷贝依勒布 多]";
+			mes "来，在这里!!";
 			next;
-			mes "[Rebarev Doug]";
-			mes "Gleipnir is said to be so strong that not even the Fenrir Wolf could break it! I take great pride in being able to create this!";
+			mes "[雷贝依勒布 多]";
+			mes "用不属于这个世界的材料制造的，";
+			mes "连最有名的野狼，芬力勒也咬不断的，";
+			mes "传说中的魔法铁链出现了!!";
 			break;
 		case 2:
 			break;
 		}
 	}
-	if ($God1 < $@god_check1) {
-		mes "[Rebarev Doug]";
-		mes "We are Crusaders that have";
-		mes "been training in preparation";
-		mes "for the Holy War that is to come.";
+	if ($God1 < 50) {
+		mes "[雷贝依勒布 多]";
+		mes "我们是十字军，是追随奥丁的旨意为圣战做准备的人，";
+		mes "就像千年前也是那样，总有一天魔族们会重新来讨伐的，";
 		next;
-		mes "[Rebarev Doug]";
-		mes "As our forefathers have";
-		mes "done a thousand years ago, we shall vanquish the hordes of Demons when the day comes.";
+		mes "[雷贝依勒布 多]";
+		mes "你，对于正在准备圣战的我们有什么疑问，";
+		mes "就尽管开口问我吧";
 		next;
-		mes "[Rebarev Doug]";
-		mes "If you have any questions about Crusaders, feel free to ask me.";
-		mes "I may be too old and weak for fighting, but I will spread our message as much as I can.";
+		mes "[雷贝依勒布 多]";
+		mes "我，雷贝依勒布，已上了年级虽然是个微弱的存在，";
+		mes "但是一直到我死的那一刻为止，我会不停地宣导世人为圣战做神圣的准备的";
 		next;
-		switch(select("What is Holy Cross?:What is Grand Cross?:What is Sacrifice?:What is Gleipnir?")) {
+		switch(select("有关圣十字攻击?:有关圣十字审判?:有关牺牲?:有关魔法铁链?")) {
 		case 1:
-			mes "[Rebarev Doug]";
-			mes "Holy Cross is the first manifestation of a Crusader's faith. By making the sign of the cross, Crusader's can inflict a holy attack on their enemies.";
+			mes "[雷贝依勒布 多]";
+			mes "有关圣十字攻击是，发挥自己具体信任的第一个阶段，";
+			mes "用武器神圣的十字架，画向敌人，增加对神的信任，";
+			mes "很自然地我们的信任会实现，所做的攻击具有圣属性，";
 			next;
-			mes "[Rebarev Doug]";
-			mes "Monsters that are weak against holiness, particularly the Undead, will be blinded by the light of the Holy Cross. All they can do is wait for holy judgment.";
+			mes "[雷贝依勒布 多]";
+			mes "对于圣属性没有免疫力者，以及违抗神的旨意者，像是不死系";
+			mes "会限入黑暗状态，看不见任何东西，只能等待神的审判来临";
 			next;
-			mes "[Rebarev Doug]";
-			mes "Based on our latest research,";
-			mes "the Holy Cross can inflict 4.5 times more damage than a normal attack once it is mastered.";
+			mes "[雷贝依勒布 多]";
+			mes "根据前辈们十字军，使用圣十字攻击的结果，依据一般的统计，";
+			mes "最终攻击效率比普通一般攻击效率，有4.5 倍的效果";
 			break;
 		case 2:
-			mes "[Rebarev Doug]";
-			mes "Grand Cross...!";
-			mes "The righteous fury of God is";
-			mes "given form in this destructive skill.";
+			mes "[雷贝依勒布 多]";
+			mes "圣十字审判! 那是神的震怒!";
+			mes "神的审判!";
+			mes "对于违反神的旨意的人，神足以以震怒的心来吞没他们，";
 			next;
-			mes "[Rebarev Doug]";
-			mes "God grants us his power so that";
-			mes "we may punish the forces of evil, and one's rage is embodied in a giant crucifix of power.";
+			mes "[雷贝依勒布 多]";
+			mes "我们看到了神的旨意，这足以抓取我们微弱的身体，";
+			mes "对于违反神的旨意的人，会给予审判的力量";
 			next;
-			mes "[Rebarev Doug]";
-			mes "The power of the crucifix of light can damage the enemy three times. Each strike will have five times the strength of your normal attacks.";
+			mes "[雷贝依勒布 多]";
+			mes "只要是把违抗神的旨意的人，消灭的心极度增加的话，";
+			mes "神的震怒可用我们微弱的身体来承受";
 			next;
-			mes "[Rebarev Doug]";
-			mes "However, when Crusaders use Grand Cross, they must exercise extreme caution. The human body is too weak to fully embrace the will of God.";
+			mes "[雷贝依勒布 多]";
+			mes "十字军身体居放的神的震怒，以巨大的十字架具体化形成，";
+			mes "并且将神的旨意告诉所有接触到十字架的人";
 			next;
-			mes "[Rebarev Doug]";
-			mes "Therefore, using this skill, will cause the Crusader to suffer from damage. However, this damage can";
-			mes "be reduced to half with Faith.";
+			mes "[雷贝依勒布 多]";
+			mes "'居放在微弱身体的我的震怒，会把周边所有的东西全灭，那十字架的力量等于把你混合成5次的力量一样，重复3次以上也不会有不足的地方'";
+			next;
+			mes "[雷贝依勒布 多]";
+			mes "这句话的意思是，5倍的攻击力可做3次的攻击，";
+			mes "不过，有一点要注意，就是承受神的震怒。要实现的话，对我们的身体来说太微弱了";
+			next;
+			mes "[雷贝依勒布 多]";
+			mes "所以说，对使用圣十字审判的施展者，对自己的肉体也同样的会受到伤害力，";
+			mes "我们把这个是对神的一片忠诚的信任，把他化为最小，可把伤害力减低一半";
+			next;
+			mes "[雷贝依勒布 多]";
+			mes "即使是这样，在巨大神的震怒面前，我们的肉体是太微弱了...";
 			break;
 		case 3:
-			mes "[Rebarev Doug]";
-			mes "In practicing what we preach, Crusaders choose to protect";
-			mes "others by bearing the suffering of their fellow man.";
+			mes "[雷贝依勒布 多]";
+			mes "以牺牲，信任为基石，做圣战的准备，这些就是我们十字军最重要的信念";
 			next;
-			mes "[Rebarev Doug]";
-			mes "The Sacrifice skill allows Crusaders to keep their comrades safe from harm by receiving the damage that was intended for them.";
+			mes "[雷贝依勒布 多]";
+			mes "而其中，牺牲可以说是十字军最能表现出为他人奉献，实践对神的旨意所表现出的行动";
 			next;
-			mes "[Rebarev Doug]";
-			mes "It is the greatest demonstration of faith,";
-			mes "as well as of love for your comrades. Such an attitude is essential for a servant of God!";
+			mes "[雷贝依勒布 多]";
+			mes "对十字军来说，在牺牲里放上自己的心，为了要保护的人，把他的心增幅的话，";
+			mes "将倍保护的人所遭遇的所有痛苦，转移到自己的身上";
 			next;
-			mes "[Rebarev Doug]";
-			mes "However, if the people you want to protect stray away from you, you cannot use the Sacrifice skill for them unless they are close to you again.";
+			mes "[雷贝依勒布 多]";
+			mes "这就是牺牲，这才是追随神的旨意者，应该要拥有的情操!";
 			next;
-			mes "[Rebarev Doug]";
-			mes "As you visualize the suffering of those you want to protect, you'll never hesitate to sacrifice yourself.";
+			mes "[雷贝依勒布 多]";
+			mes "不过...距离太遥远，想要被保护的人看不见的话，";
+			mes "强烈的回想被保护的人图像，若不能把心增幅的话...";
+			mes "缺点就是不能使用把痛苦转移到自己身上的牺牲技能";
 			next;
-			mes "[Rebarev Doug]";
-			mes "Thank you, God, for granting me with the power to protect my people.";
+			mes "[雷贝依勒布 多]";
+			mes "牺牲!!就是感觉附近想要保护者的气息与体温，那温暖的感觉并且强烈的想像其所受的痛苦，";
+			mes "再将其痛苦转移到自己身上的技能，这就是准备圣战者最真诚的情操!";
+			next;
+			mes "[雷贝依勒布 多]";
+			mes "真是太感谢您赐与我们，保护我所爱的人，以及爱我保护所有人的能力，";
+			mes "啊啊...我敬爱的神啊!!";
 			break;
 		case 4:
-			mes "[Rebarev Doug]";
-			mes "Gleipnir is the essence of Megingjard which I have been researching.";
+			mes "[雷贝依勒布 多]";
+			mes "所谓魔法铁链是，本人正在研究制造雷神腰带的必要要素，";
 			next;
-			mes "[Rebarev Doug]";
-			mes "It's the only binding strong enough that will allow a human to wear Megingjard around his waist.";
+			mes "[雷贝依勒布 多]";
+			mes "为了要配带雷神腰带这个神级物品，这是一定要需要的材料";
 			next;
-			mes "[Rebarev Doug]";
-			mes "Although I can no longer fight, I've been studying how to create Gleipnir for years. I will be more than willing to create it for you if you can bring me...";
+			mes "[雷贝依勒布 多]";
+			mes "假如你带来，";
 			next;
-			mes "[Rebarev Doug]";
-			mes "^0000FF4 Cat Tread^000000,";
-			mes "^0000FF5 Woman's Moustache^000000,";
-			mes "^0000FF4 Root of Stone^000000,";
-			mes "^0000FF3 Sputum of Bird^000000 and";
-			mes "^0000FF3 Sinew of Bear^000000.";
+			mes "[雷贝依勒布 多]";
+			mes "^0000FF猫脚步声音 4个^000000和";
+			mes "^0000FF女人的胡须 5个^000000，";
+			mes "^0000FF石头的根 4个^000000，";
+			mes "^0000FF鸟的口水 3个^000000，";
+			mes "^0000FF熊的筋 3个^000000";
+			next;
+			mes "[雷贝依勒布 多]";
+			mes "的话，不管什么时候我都可以帮你制作的";
 			break;
 		}
 	}
-	else if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
-		if (BaseLevel > 59) {
-			if (god_eremes == 0) {
-				mes "[Rebarev Doug]";
+	else if($God1 > 49 && $God2 < 100) {
+		if(BaseLevel > 59) {
+			if(god_eremes == 0) {
+				mes "[雷贝依勒布 多]";
 				mes "...";
 				next;
-				mes "[Rebarev Doug]";
-				mes "Why are you wandering";
-				mes "around this sacred place?";
-				mes "Do you not understand that";
-				mes "we must prepare for";
-				mes "the Holy War?";
+				mes "[雷贝依勒布 多]";
+				mes "...有关圣战不管我多么用心的说，还是不知反省的人们，为什么一直在准备圣战的这个神圣之地徘回呢?";
 				next;
-				mes "[Rebarev Doug]";
-				mes "No matter how much I explain, the ignorant never fully understand the importance of our task. The balance of power will shift when we least expect it!";
+				mes "[雷贝依勒布 多]";
+				mes "不管我怎么回答，无知的人们都无法明白为什么要准备圣战，圣战的时机，就像不知何时会突然到达的事实，你们这些人是不了解的...";
 				next;
-				mes "[Rebarev Doug]";
-				mes "I wish I could go back";
-				mes "to those times when I would";
-				mes "train Crusaders, rather than";
-				mes "preach to the ignorant.";
+				mes "[雷贝依勒布 多]";
+				mes "比起说破了嘴告诫一般人，还是希望能回到以前指挥精锐的十字军的时光啊..";
 				next;
-				mes "[Rebarev Doug]";
-				mes "I miss my Crusaders who";
-				mes "were enthusiastic to listen to what I had to say, and carried out their orders with loyalty.";
+				mes "[雷贝依勒布 多]";
+				mes "被拥有教化过的一惯的信仰，用炫目的眼光直视我，好像掉落在木屑上的硝化甘油一样，";
+				mes "真的想念那些家伙，把我的话吸收之后忠诚的去执行的人";
 				next;
-				mes "[Rebarev Doug]";
-				mes "I am wonder";
-				mes "where they have";
-				mes "all gone now...";
+				mes "[雷贝依勒布 多]";
+				mes "不知道他们现在在哪里，在做什么啊...";
 				next;
-				mes "[Rebarev Doug]";
+				mes "[雷贝依勒布 多]";
 				mes "...";
 				mes "......";
 				mes ".........";
 				next;
-				mes "[Rebarev Doug]";
-				mes "Adventurer, if you have the time to listen to me speak to myself, why don't you perform a task for me?";
+				mes "[雷贝依勒布 多]";
+				mes "这位冒险家呀，比起在这里听我一个人说着听不懂的独白，晃来晃去，还不如接受我的请求，去消遣日子怎么样呢?";
 				next;
-				mes "[Rebarev Doug]";
-				mes "It may be an enriching";
-				mes "experience for you. It's possible that you'll even have a greater appreciation for Crusaders.";
+				mes "[雷贝依勒布 多]";
+				mes "说不定在接受了我的请求冒险途中，产生了信仰的心，然后会加入十字军也不一定吧...怎么样啊?";
 				next;
-				switch(select("What is it?:I'm sick and tired of doin' favors.")) {
+				switch(select("请问什么样的请求?:每次请求请求! 真的很烦啊")) {
 				case 1:
-					mes "[Rebarev Doug]";
-					mes "I want you to find the members of the 1st Squad in the 3rd Platoon of the 3rd Company. If you happen to encounter them in your travels, please ask them how they are doing.";
+					mes "[雷贝依勒布 多]";
+					mes "不是什么难事，只是希望你能帮我找到散居各地的，前十字军3中队第1小队第3分队的队员";
+					mes "你只要绕一圈帮我打听他们的消息，然后跟他们问好就可以了";
 					next;
-					mes "[Rebarev Doug]";
-					mes "It shouldn't be that difficult to do and won't be a waste of your time if you are already planning";
-					mes "to explore the world.";
+					mes "[雷贝依勒布 多]";
+					mes "怎么样，很简单吧?";
+					mes "我想并不会浪费你多少时间的";
 					next;
-					switch(select("Sure, why not.:I'm sorry, but no.")) {
+					switch(select("好的，我答应你的请求:对不起，我办不到")) {
 					case 1:
-						mes "[Rebarev Doug]";
-						mes "Excellent!";
-						mes "All I want you to do is find my old comrades, and inform me of how";
-						mes "they are doing.";
+						mes "[雷贝依勒布 多]";
+						mes "呵呵! 好啊 好啊，只要简单的打听他们的消息，很简单的事情应该不会让你犹豫的，";
 						next;
-						mes "[Rebarev Doug]";
-						mes "However...";
-						mes "There is one problem.";
-						mes "I don't where they are.";
+						mes "[雷贝依勒布 多]";
+						mes "不过，有一个难题就是，不知道队员们都分散到哪里去了，这`才是问题";
 						next;
-						mes "[Rebarev Doug]";
-						mes "You could try to find a record of residency changes by citizens of the Rune-Midgarts Kingdom in";
-						mes "the Prontera Library...";
+						mes "[雷贝依勒布 多]";
+						mes "虽然在图书馆里，找到放在某个地方的文件上，有转入/转出的资料是可查询的...";
+						mes "该资料连十字军部队内要阅览都很难的，不知道会不会给你看";
 						next;
-						mes "[Rebarev Doug]";
-						mes "However, the records of";
-						mes "Crusader personnel is considered confidential, so I am not sure of whether or not you can view them.";
+						mes "[雷贝依勒布 多]";
+						mes "那就，拜托你了.........";
 						next;
-						mes "[Rebarev Doug]";
-						mes "You must understand, my position requires me to remain in this area 24 hours, 7 days a week. I cannot leave without the consent of the upper hierarchy.";
+						mes "[雷贝依勒布 多]";
+						mes "你现在心里是不是在想 `这个人还真是会要人帮他做事' 啊?或是，`哼...x的，又要委托我做事情? 这个混蛋... ' 等之类的吧?";
 						next;
-						mes "[Rebarev Doug]";
-						mes "However, I know you have the freedom and the time to go wherever you please. I'd appreciate if you would do this for me.";
+						mes "[雷贝依勒布 多]";
+						mes "其实我也很想离开这里，到别的地方去看看，你知道冒险家们，多么常来这里找我吗?";
 						next;
-						mes "[Rebarev Doug]";
-						mes "My old comrades in arms.";
-						mes "You have no idea how much";
-						mes "I miss them...";
+						mes "[雷贝依勒布 多]";
+						mes "每次都要讲重复的事情，嘴巴都很酸耶?再加上我的任务就是驻守在这个地方，哪儿也去不了";
+						next;
+						mes "[雷贝依勒布 多]";
+						mes "你可以用你的双脚走到任何你想去的地方，但是我只能守在这里，就算是想去也去不了啊!";
+						next;
+						mes "[雷贝依勒布 多]";
+						mes "来，听懂我的意思就快点出发去打听所有分队员的消息吧，我可是很想知道他们在做什么";
 						set god_eremes,1;
 						break;
 					case 2:
-						mes "[Rebarev Doug]";
-						mes "^333333*Sigh...*^000000";
-						mes "Please understand that";
-						mes "I would not be asking this";
-						mes "of you if it were not for";
-						mes "the restraints of";
-						mes "my position.";
+						mes "[雷贝依勒布 多]";
+						mes "我什么时候又委托你帮忙了呢，居然这么尖酸刻薄啊?";
 						next;
-						mes "[Rebarev Doug]";
-						mes "I have an obligation to this Kingdom to keep my post and";
-						mes "inform adventurers about the";
-						mes "Crusader class. Because of this";
-						mes "awesome responsibility, I must";
-						mes "remain here, ever vigilant.";
+						mes "[雷贝依勒布 多]";
+						mes "并且你看起来是一位冒险家之身，自由之身";
 						next;
-						mes "[Rebarev Doug]";
-						mes "If you can't understand, then you must be taking your freedom for granted...";
+						mes "[雷贝依勒布 多]";
+						mes "你可以用你的双脚走到任何你想去的地方，但是我只能守在这里，就算是想去也去不了啊!";
+						next;
+						mes "[雷贝依勒布 多]";
+						mes "若不愿意的话也没有办法啊，";
+						mes "你这个人做人也不能这么太无情啊...呵呵...";
 						break;
 					}
 					break;
 				case 2:
-					mes "[Rebarev Doug]";
-					mes "As far as I remember, this is the first time I have asked you to do me a favor.";
+					mes "[雷贝依勒布 多]";
+					mes "我什么时候又委托你帮忙了呢，居然这么尖酸刻薄啊?";
 					next;
-					mes "[Rebarev Doug]";
-					mes "Unlike you, I know the meaning";
-					mes "of responsibility. I remain here, helping inquisitive adventurers for the sake of King and country.";
+					mes "[雷贝依勒布 多]";
+					mes "并且你看起来是一位冒险家之身，自由之身";
 					next;
-					mes "[Rebarev Doug]";
-					mes "Still...";
-					mes "Know this.";
-					mes "Although the results may not be immediate, you will always be rewarded when you help others.";
+					mes "[雷贝依勒布 多]";
+					mes "你可以用你的双脚走到任何你想去的地方，但是我只能守在这里，就算是想去也去不了啊!";
 					next;
-					mes "[Rebarev Doug]";
-					mes "Please reconsider";
-					mes "when you get the chance.";
+					mes "[雷贝依勒布 多]";
+					mes "若不愿意的话也没有办法啊，";
+					mes "你这个人做人也不能这么太无情啊...呵呵...";
 					break;
 				}
 			}
-			else if (god_eremes > 0 && god_eremes < 4) {
-				if (rand(1,10) > 6 && god_eremes == 2) {
-					mes "[Rebarev Doug]";
-					mes "I wonder how my old";
-					mes "comrades are doing now.";
-					mes "I can't even remember";
-					mes "the last time I saw them...";
+			else if(god_eremes > 0 && god_eremes < 4) {
+				if(rand(1,10) > 6 && god_eremes == 2) {
+					mes "[雷贝依勒布 多]";
+					mes "现在我们以前的分队员们在做什么呢...已经多久没有见到他们了..";
 					next;
-					mes "[Rebarev Doug]";
-					mes "Hmm...?";
-					mes "Haven't you left";
-					mes "to search for them yet?";
+					mes "[雷贝依勒布 多]";
+					mes "嗯? 他们都在做什么呢?";
 					next;
-					switch(select("Where should I go?:I am about to leave.:What do you mean by final mission?")) {
+					switch(select("请问我...要去哪里找呢?:我正要出发呢:你说是，最后的任务?")) {
 					case 1:
-						mes "[Rebarev Doug]";
-						mes "Well...";
-						mes "You should be able";
-						mes "find some clue as to";
-						mes "where to find them through";
-						mes "^0000FFThe Platoon Records^000000 in";
-						mes "the Prontera Library.";
+						mes "[雷贝依勒布 多]";
+						mes "怎么说呢...他们在哪里也很模糊啊，";
+						mes "最有可能的地方就是，刚刚提到的";
+						mes "去看图书馆文件中的资料也许会比较快吧?";
 						break;
 					case 2:
-						mes "[Rebarev Doug]";
-						mes "Oh, you are...";
-						mes "I wonder what they";
-						mes "have been doing since";
-						mes "our ^0000FFfinal mission^000000...";
+						mes "[雷贝依勒布 多]";
+						mes "是吗? 我知道了...真的拜托你了，真想知道在^0000FF最后的任务^000000之后，分队被解散后大家都在做什么呢...";
 						break;
 					case 3:
-						mes "[Rebarev Doug]";
-						mes "Final mission...?";
-						mes "Well, I can't recall";
-						mes "everything at the moment,";
-						mes "but it was the reason why";
-						mes "our squad broke up.";
+						mes "[雷贝依勒布 多]";
+						mes "嗯，那是...我们十字军 1小队 3分队被解散的原因...果然，只要一想到以前的时光就没有办法不回想起这件事...唉..";
 						next;
-						mes "[Rebarev Doug]";
-						mes "We were a great team.";
-						mes "But in the military system,";
-						mes "you need to follow the orders";
-						mes "of your superiors...";
+						mes "[雷贝依勒布 多]";
+						mes "该怎么说呢，再怎么说我们也是个十字军...基本上军人就是要绝对服从上级命令的立场";
 						next;
-						mes "[Rebarev Doug]";
-						mes "If only...";
-						mes "^660000He^000000 hadn't interfered...";
+						mes "[雷贝依勒布 多]";
+						mes "...............那时......如果没有被发现的话...";
 						next;
-						mes "[Rebarev Doug]";
-						mes "...";
+						mes "[雷贝依勒布 多]";
+						mes ".........";
 						next;
-						mes "[Rebarev Doug]";
-						mes "...";
-						mes "......";
+						mes "- 过了一会，他以生气的语气对我说 -";
 						next;
-						mes "[Rebarev Doug]";
-						mes "Let's not talk about that. What's important that our squad was disbanded because of we failed our final mission. Now, will you please go find ^0000FFThe 3rd Platoon Records^000000 in the Prontera Library for me?";
+						mes "[雷贝依勒布 多]";
+						mes "不要再说这件事了，你只要知道我们分队被解散就行了";
 						set god_eremes,3;
 						next;
-						mes "[Rebarev Doug]";
-						mes "Remember, it might be helpful to ask the librarian for the file with a record on ^660000the 1st squad's final mission^000000.";
+						mes "[雷贝依勒布 多]";
+						mes "来，你还不快点去图书馆找 ^6600003中队转入/转出的资料^000000，然后去打听我们分队员的下落呢? 嗯?";
 						break;
 					}
 				}
 				else {
-					mes "[Rebarev Doug]";
-					mes "I wonder how my old";
-					mes "comrades are doing now.";
-					mes "I can't even remember";
-					mes "the last time I saw them...";
+					mes "[雷贝依勒布 多]";
+					mes "现在我们的分队员们在做什么呢...已经多久没有见到他们了..";
 					next;
-					mes "[Rebarev Doug]";
-					mes "Hmm...?";
-					mes "Haven't you left";
-					mes "to search for them yet?";
+					mes "[雷贝依勒布 多]";
+					mes "嗯? 你在这做什么啊?";
 					next;
-					switch(select("Where should I go?:I am about to leave.")) {
+					switch(select("请问我...要去哪里找呢?:我正要出发呢")) {
 					case 1:
-						mes "[Rebarev Doug]";
-						mes "Well...";
-						mes "You should be able";
-						mes "find some clue as to";
-						mes "where to find them through";
-						mes "^0000FFThe 3rd Platoon Records^000000 in";
-						mes "the Prontera Library.";
+						mes "[雷贝依勒布 多]";
+						mes "怎么说呢...他们在哪里也很模糊啊，最有可能的地方就是，刚刚提到的";
+						mes "去看图书馆文件中的资料也许会比较快吧?";
 						break;
 					case 2:
-						mes "[Rebarev Doug]";
-						mes "Oh, you are...";
-						mes "I wonder what they";
-						mes "have been doing since";
-						mes "our ^0000FFfinal mission^000000...";
+						mes "[雷贝依勒布 多]";
+						mes "是吗? 我知道了...真的拜托你了，真想知道在^0000FF最后的任务^000000之后，分队被解散后大家都在做什么呢...";
 						set god_eremes,2;
 						break;
 					}
 				}
 			}
-			else if (god_eremes > 3 && god_eremes < 18) {
-				mes "[Rebarev Doug]";
-				mes "Huh...?";
-				mes "The librarian";
-				mes "didn't let you";
-				mes "read the records?";
+			else if(god_eremes > 3 && god_eremes < 18) {
+				mes "[雷贝依勒布 多]";
+				mes "咦? 已经和文件管理人见过面了，但是他却不让你看资料是吗?";
+				mes "哼...不过你有诚意一点拜托他的话，也许他会让你看资料也不一定啊?";
 				next;
-				mes "[Rebarev Doug]";
-				mes "He may have responsibility,";
-				mes "but at the end of the day, he's just like you and me. You can find some way to convince him to help you, I'm sure.";
+				mes "[雷贝依勒布 多]";
+				mes "在怎么刻薄，也是人活的世界啊...";
 				next;
-				mes "[Rebarev Doug]";
-				mes "Please, I beg you,";
-				mes "would you find out";
-				mes "what happened to the";
-				mes "rest of the 1st Squad?";
-				next;
-				mes "[Rebarev Doug]";
-				mes "Oh...";
-				mes "It might be helpful to know that we were the ^660000Crusader Third Company, Third Platoon, First Squad^000000.";
+				mes "[雷贝依勒布 多]";
+				mes "不管怎样那就拜托你了，帮我打听以前的分队员们，";
+				mes "现在过着什么样的生活好吗...";
 			}
-			else if (god_eremes > 17 && god_eremes < 20) {
-				if (god_megin_1 > 0 || god_megin_2 > 0 || god_megin_3 > 0 || god_megin_4 > 0 || god_megin_5 > 0 || god_megin_6 > 0) {
-					mes "[Rebarev Doug]";
-					mes "Oh...";
-					mes "So did you meet them?";
-					mes "Are they all okay?";
+			else if(god_eremes > 17 && god_eremes < 20) {
+				if(god_megin_1 > 0 || god_megin_2 > 0 || god_megin_3 > 0 || god_megin_4 > 0 || god_megin_5 > 0 || god_megin_6 > 0) {
+					mes "[雷贝依勒布 多]";
+					mes "哦呼...见过面了吗?怎么样，还很健康吧?";
 					next;
-					mes "^3355FFYou tell Rebarev Doug";
-					mes "that although they are";
-					mes "suffering from migraines";
-					mes "and memory loss, the rest";
-					mes "of the 1st Squad is fine.";
+					mes "-传述过了，除了头痛以及丧失记忆之外一切都还好-";
 				}
 				else {
-					mes "^3355FFYou tell Rebarev Doug";
-					mes "that you have read the";
-					mes "3rd Platoon records and";
-					mes "explain what you have";
-					mes "managed to learn.^000000";
+					mes "- 你把文件阅读过后的结果，说给他听了 -";
 					next;
-					mes "[Rebarev Doug]";
-					mes "Oh, I'm glad to hear that";
-					mes "you were able to read the";
-					mes "records! But I don't trust";
-					mes "what's written on paper.";
-					mes "After all, it may be";
-					mes "out of date...";
+					mes "- 也诉说了分队员们在哪里，在做什么等等 -";
 					next;
-					mes "[Rebarev Doug]";
-					mes "If it's possible, I hope you can meet the rest of the 1st Squad face to face, so I can know for sure that they're all alright.";
+					mes "[雷贝依勒布 多]";
+					mes "喔喔! 你看过文件了吗? 那么你现在知道大家都在哪里了吧!但是，这文件时间过太久又太破旧了";
 					next;
-					mes "[Rebarev Doug]";
-					mes "A man's life is too";
-					mes "short and his friends";
-					mes "are too few. Please find";
-					mes "out how my old comrades";
-					mes "are doing for me.";
+					mes "[雷贝依勒布 多]";
+					mes "我是希望你直接见到分队员后，把近况的消息告诉他们...透过你的 ^0000FF双眼直接^000000 告诉他们";
+					next;
+					mes "[雷贝依勒布 多]";
+					mes "那就拜托你了...我这样的求你";
+					next;
+					mes "[雷贝依勒布 多]";
+					mes "我真心的拜托你了...那些资料已经太旧了所以不能相信...再加上我年纪也大了也很好奇";
 				}
 			}
-			else if (god_eremes > 19 && god_eremes < 23) {
-				mes "[Rebarev Doug]";
-				mes "Welcome back~";
-				mes "It's been a while since I've last seen you. Have you met the rest";
-				mes "of the 1st Squad?";
+			else if(god_eremes > 19 && god_eremes < 23) {
+				mes "[雷贝依勒布 多]";
+				mes "喔喔~ 来的正是时候，你见到所有的分队员了吗?";
+				mes "很久没有听到他们的消息了，嗯? 你是...怎么了? 那种眼神";
 				next;
-				mes "[Rebarev Doug]";
-				mes "Hm...?";
-				mes "What's that";
-				mes "strange look for?";
-				next;
-				switch(select("Confront Rebarev Doug.:Act unsuspicious.")) {
+				switch(select("说出其间所怀疑的事情:现在还不是时机，再忍一下吧")) {
 				case 1:
-					mes "^3355FFYou confront Rebarev Doug about the memory problems and migraines of the 1st Squad...^000000";
+					mes "-你虽然想把你所怀疑的事情做整理然后说出来-";
 					next;
-					mes "^3355FFThinking about Royal Myst's story and the mentions of Egnigem begin to jumble your thoughts...^000000";
+					mes "-以前的分队员中没有任何一个人是正常的-";
 					next;
-					mes "[Rebarev Doug]";
-					mes "What are you talking about? I don't understand, you're talking about lots of different things at once!";
+					mes "-所有的分队员都丧失了部份的记忆-";
 					next;
-					mes "[Rebarev Doug]";
-					mes "Don't look at me like that. If you're done speaking, please";
-					mes "excuse me and tell me your news some other time.";
+					mes "-这是洛耶密斯特所说的话-";
 					next;
-					mes "[Rebarev Doug]";
-					mes "I appreciate that you've delivered news of my old comrades to me.";
-					mes "Now, I need to continue my research under the command of his Majesty.";
+					mes "-各自发言中的伊格尼建是谁呢-";
+					next;
+					mes "-所有的事情还没有办法整理出头序来，所以只说了分队员们的一些生活情况与杂事-";
+					next;
+					mes "[雷贝依勒布 多]";
+					mes "呵呵...你先整理一下再告诉我吧? 这真是的! 你真是个有趣的人啊!";
+					next;
+					mes "[雷贝依勒布 多]";
+					mes "唉呦，不要在瞪我了，讲讲话好吗!! 哈哈!如果没有其他的事要说的话，我还有事情要忙，我们的谈话就到这里为止吧";
+					next;
+					mes "[雷贝依勒布 多]";
+					mes "真的很感谢你，帮我打听分队员们的消息- 那么...我还有国王命令的研究要做，先告退了，愿神能继续加护你! 哈哈哈!";
 					set god_eremes,21;
 					break;
 				case 2:
-					mes "^3355FFYou keep your suspicions to yourself and tell Rebarev Doug about the members of";
-					mes "the 1st Squad.^000000";
+					mes "-你呢先假装收起你怀疑的眼神-";
 					next;
-					mes "^3355FFOf course, you withhold some details and only tell him what he seems to want to hear.^000000.";
+					mes "-转述了旅程中打听到的十字军 3中队 1小队 3分队员的消息-";
 					next;
-					mes "[Rebarev Doug]";
-					mes "Great!";
-					mes "I'm glad to hear";
-					mes "they're doing so well!";
-					mes "Ha ha! Hahahahahahaahah!";
+					mes "-当然，以文件中记载的事项为基础，再加上一点现实的事实-";
 					next;
-					mes "[Rebarev Doug]";
-					mes "I appreciate that you've delivered news of my old comrades to me.";
-					mes "Now, I need to continue my research under the command of his Majesty. Once again, thank you for your help.";
+					mes "-把该隐藏的东西隐藏之后，把消息传给它了-";
+					next;
+					mes "[雷贝依勒布 多]";
+					mes "哼嗯- 是这个样子吗? 看来大家都过得很好! 哈哈...";
+					next;
+					mes "-觉得他蹬我的眼神突然变了，好像变的开始对我有警戒心了?-";
+					next;
+					mes "[雷贝依勒布 多]";
+					mes "真的很感谢你帮我打听到分队员们的消息- 那么...我还有国王命令的研究要做先告退了，愿神能继续加护你! 哈哈哈!";
+					next;
+					mes "-他的笑容里带着冷讽的笑声-";
 					set god_eremes,22;
 					break;
 				}
 			}
-			else if (god_eremes > 22 && god_eremes < 25) {
-				mes "^3355FFYou confront";
-				mes "Rebarev Doug with the";
-				mes "information you learned";
-				mes "from Egnigem.^000000";
+			else if(god_eremes > 22 && god_eremes < 25) {
+				mes "-你说出关于伊格尼建的事情，以及从旅行中得到的结论-";
 				next;
-				mes "^3355FFHowever, he didn't";
-				mes "seem the least bit agitated. In fact, he exuded a calmness that makes you feel nervous.^000000";
+				mes "-他呢...好像心里面早有答案似的...并没有太大的动摇-";
 				next;
-				mes "[Rebarev Doug]";
-				mes "It's far too late to talk about that, though I feel sorry for you for knowing too much. At this point, there's nothing you can prove.";
+				mes "[雷贝依勒布 多]";
+				mes "现在才跟我说这些以前的事情...看来你已经都知道了吧...?可是...已经没有任何证据了，哈哈哈....";
 				next;
-				mes "[Rebarev Doug]";
-				mes "Don't you get it?";
-				mes "The elite and powerful rule this world. I am untouchable! And the weak and the lowly can rot in hell! Heh heh!";
+				mes "[雷贝依勒布 多]";
+				mes "不管你再怎么努力，最后的结果是，这个世界还是会由我这种优秀的人来统治的，呵呵...就让你们随心所欲的，";
+				mes "以冰冷的尸体在地上滚动吧! 你们这些连神都不相信的，可怜的家伙!!";
 				next;
-				mes "[Rebarev Doug]";
-				mes "Do you hate me?";
-				mes "Do you really hate me?";
-				mes "Take a look at this face.";
+				mes "[雷贝依勒布 多]";
+				mes "讨厌我吗? 真的讨厌我吗?那就，教你一个简单方法好了";
 				next;
-				mes "[Rebarev Doug]";
-				mes "This is the";
-				mes "face of authority!";
-				mes "Go ahead and report me to the judge in charge of all military crimes! He's right behind me!";
+				mes "[雷贝依勒布 多]";
+				mes "在那后面的军事审判官是，负责调查十字军内部贪污，以及具有执行军法权力的人";
 				next;
-				mes "[Rebarev Doug]";
-				mes "If at least 100 people report the same crime, then maybe he'll hold";
-				mes "a trial. But do you really want to reveal this to the public?";
+				mes "[雷贝依勒布 多]";
+				mes "如果聚集像你这种100名的话，就有可能进行审判了...你就试看看以卵击石，看能得到什么样成果吧...嘿嘿?哈哈哈...!!";
 			}
-			else if (god_eremes > 23 && god_eremes < 26) {
-				mes "[Rebarev Doug]";
-				mes "I didn't think";
-				mes "you'd actually do it.";
-				mes "But you'll be sorry later...";
+			else if(god_eremes > 23 && god_eremes < 26) {
+				mes "[雷贝依勒布 多]";
+				mes "呵...你说你真的做了，喂，等着吧..你一定会后悔的...结果这个世界是由我这种优秀的人，和神亲近的人所统治的";
 			}
 			else {
-				mes "[Rebarev Doug]";
-				mes "Don't you get it?";
-				mes "The elite and powerful rule this world. I am untouchable! And the weak and the lowly can rot in hell! Heh heh!";
+				mes "[雷贝依勒布 多]";
+				mes "不管你再怎么努力，最后的结果是，";
+				mes "这个世界还是会由我这种优秀的人来统治的，";
+				mes "呵呵...就让你们随心所欲的，";
+				mes "以冰冷的尸体在地上滚动吧!";
+				mes "你们这些连神都不相信的，可怜的家伙!!";
 			}
 		}
 		else {
-			mes "[Rebarev Doug]";
-			mes "You're not fit";
-			mes "to even speak to me.";
-			mes "Even if you are an adventurer...";
+			mes "[雷贝依勒布 多]";
+			mes "以你现在的水准，跟本就还不配和我说话呀，";
+			mes "就算你是一位冒险家，也要有一定的经验和知识，";
+			mes "才会和我有相同的话题，不是吗?";
 		}
 	}
 	else {
-		mes "[Rebarev Doug]";
-		mes "We are Crusaders that have";
-		mes "been training in preparation";
-		mes "for the Holy War that is to come.";
-		next;
-		mes "[Rebarev Doug]";
-		mes "As our forefathers have";
-		mes "done a thousand years ago, we shall vanquish the hordes of Demons when the day comes.";
+		mes "[雷贝依勒布 多]";
+		mes "我们是十字军，是追随奥丁的旨意为圣战做准备的人，";
+		mes "就像千年前也是那样，总有一天魔族们会重新来讨伐的，";
 	}
 	close2;
 	cutin "god_rebeireb",255;
 	end;
 }
 
-prt_castle,48,164,0	script	Crusader#God	734,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
-		if (god_eremes > 22 && god_eremes < 25) {
-			mes "[Max Von Shedough]";
-			mes "Welcome, friend!";
-			mes "Here in the Prontera Castle, we Crusaders are busily preparing for the Holy War that is to come.";
+prt_castle,48,164,0	script	十字军#God	734,{
+	if($God1 > 49 && $God2 < 100) {
+		if(god_eremes > 22 && god_eremes < 25) {
+			mes "[麦司 本 诗导呜]";
+			mes "欢迎光临! 这里是准备圣战的地方，想要一起准备参加圣战的人，不论什么时候我们都会欢迎的!";
+			mes "而我呢，我是负责十字军军法审判的，麦司 本 诗导呜!";
 			next;
-			mes "[Max Von Shedough]";
-			mes "Let me introduce myself.";
-			mes "My name is Max Von Shedough, the military judge! Do you have any business with me?";
+			mes "[麦司 本 诗导呜]";
+			mes "...请问，你有什么话要跟我说吗?";
 			next;
-			mes "^3355FFYou handed";
-			mes "Max Von Shedough";
-			mes "your petition against";
-			mes "Rebarev Doug based on";
-			mes "your investigation";
-			mes "with Egnigem.^000000";
+			mes "-你只是默默无言的，只交出了一份文件-";
 			next;
-			mes "[Max Von Shedough]";
-			mes "Hm? This is serious.";
-			mes "Alright, I will investigate your claim to the best of my ability.";
+			mes "-在文件中，有雷贝依勒布 多 的请愿书，以及井然有序的记录着和伊格尼建，讨论的结果文件-";
 			next;
-			mes "[Max Von Shedough]";
-			mes "However, as of now, the petition you've just given me is considered classified information. Please keep this a military secret.";
+			mes "[麦司 本 诗导呜]";
+			mes "我收到你的心意了，我相信这些心意聚集之后，是会改变这个世界的，该文件档是以军事机密来处理掉了，";
+			mes "这些文件会引导我们走向正确方向的基石的!";
 			set $God2,$God2+1;
-			if ($God2 == $@god_check1) {
-				announce "The 2nd seal of [Megingjard] has appeared.",bc_all;
+			if($God2 == 50) {
+				announce ">> 大陆的第二个， [雷神腰带]封印已经出现了 <<",bc_all;
 			}
-			else if ($God2 == $@god_check2) {
-				if ($God1 == $@god_check2 && $God2 == $@god_check2 && $God3 == $@god_check2 && $God4 == $@god_check2)
-					announce "Four seals have been released at the same time with the seal of [Megingjard].",bc_all;
-				else
-					announce "The 2nd seal of [Megingjard] has been released.",bc_all;
+			else if($God1 > 99 && $God2 > 99 && $God3 > 99 && $God4 > 99) {
+				announce ">> [雷神腰带]的封印以及其他四个封印都同时被解开了 <<",bc_all;
 			}
-			if (god_eremes == 23) {
+			else if($God2 > 99) {
+				announce ">> [雷神腰带]的封印被解开了 <<",bc_all;
+			}
+			if(god_eremes == 23) {
 				set god_eremes,25;
 			}
-			else if (god_eremes == 24) {
+			else if(god_eremes == 24) {
 				set god_eremes,26;
 			}
 			close;
 		}
-		else if (god_eremes > 26) {
-			mes "[Max Von Shedough]";
-			mes "Unfortunately, I'm not sure if it's possible to hold a trial against Rebarev Doug.";
+		else if(god_eremes > 26) {
+			mes "[麦司 本 诗导呜]";
+			mes "传给你不好的消息，我也感到很遗憾...";
+			mes "关于你所提供的资料...被采纳还是不被采纳，";
+			mes "仍是一个不确定的判决...";
 			next;
-			mes "[Max Von Shedough]";
-			mes "Regrettably, it seems that he still has too much influence. Still, let me assure you that I'll do everything I can...";
-			next;
-			mes "[Max Von Shedough]";
-			mes "But count on me,";
-			mes "I'll be doing my";
-			mes "best to get him indicted.";
+			mes "[麦司 本 诗导呜]";
+			mes "不知道会变成怎么样...不过我会尽力去做的...";
 			close;
 		}
 		else {
-			mes "[Max Von Shedough]";
-			mes "Welcome, friend!";
-			mes "Here in the Prontera Castle, we Crusaders are busily preparing for the Holy War that is to come.";
-			next;
-			mes "[Max Von Shedough]";
-			mes "Let me introduce myself.";
-			mes "My name is Max Von Shedough, the military judge! Sadly, even we Crusaders are not immune to corruption...";
+			mes "[麦司 本 诗导呜]";
+			mes "欢迎光临! 这里是准备圣战的地方，十字军公会公会长的房间，想要一起准备参加圣战大业的人，不论什么时候我们都很欢迎他们的!!";
 			close;
 		}
 	}
 	else {
-		mes "[Max Von Shedough]";
-		mes "Welcome, friend!";
-		mes "Here in the Prontera Castle, we Crusaders are busily preparing for the Holy War that is to come.";
-		next;
-		mes "[Max Von Shedough]";
-		mes "Let me introduce myself.";
-		mes "My name is Max Von Shedough,";
-		mes "the military judge! Sadly, even we Crusaders are not immune to corruption...";
+		mes "[麦司 本 诗导呜]";
+		mes "欢迎光临! 这里是准备圣战的地方，";
+		mes "十字军公会公会长的房间，";
+		mes "想要一起准备参加圣战大业的人，";
+		mes "不论什么时候我们都很欢迎他们的!!";
 		close;
 	}
 }
 
-prt_in,172,109,0	script	A File#megin1	111,{
-	if (god_eremes == 12) {
-		mes "^3355FFYou have found";
-		mes "^660000The 3rd Platoon Records^3355FF!^000000";
+prt_in,172,109,0	script	文件簿#megin1	111,{
+	if(god_eremes == 12) {
+		mes "终于发现到了!!!!!";
+		mes "^660000- 十字军 3中队 转入/转出的资料 -^000000了";
 		close;
 	}
-	else if (god_eremes > 6 && god_eremes < 12) {
-		if (rand(1,10) > 6 && god_eremes > 6) {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+	else if(god_eremes > 6 && god_eremes < 12) {
+		if(rand(1,10) > 6 && god_eremes > 6) {
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			set god_eremes,god_eremes+1;
 			close;
 		}
 		else {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			close2;
 		}
 	}
-	else if (god_eremes < 7) {
-		mes "[Librarian Jekan]";
-		mes "I'm sorry "+((Sex)?"sir":"ma'am")+",";
-		mes "but special authorization is required to browse that section. Otherwise, it's off limits.";
+	else if(god_eremes < 7) {
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 	else {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 }
 
-prt_in,170,109,0	script	A File#megin2	111,{
-	if (god_eremes == 12) {
-		mes "You have found ^0000FFThe 3rd Platoon Records^000000!";
+prt_in,170,109,0	script	文件簿#megin2	111,{
+	if(god_eremes == 12) {
+		mes "终于发现到了!!!!!";
+		mes "^660000- 十字军 3中队 转入/转出的资料 -^000000了";
 		close;
 	}
-	else if (god_eremes > 6 && god_eremes < 12) {
+	else if(god_eremes > 6 && god_eremes < 12) {
 		if (rand(1,10) > 6 && god_eremes > 6) {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			set god_eremes,god_eremes+1;
 			close;
 		}
 		else {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			close;
 		}
 	}
-	else if (god_eremes < 7) {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+	else if(god_eremes < 7) {
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 	else {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 }
 
-prt_in,168,109,0	script	A File#megin3	111,{
-	if (god_eremes == 12) {
-		mes "You have found";
-		mes "^0000FFThe 3rd Platoon Records^000000!";
+prt_in,168,109,0	script	文件簿#megin3	111,{
+	if(god_eremes == 12) {
+		mes "终于发现到了!!!!!";
+		mes "^660000- 十字军 3中队 转入/转出的资料 -^000000了";
 		close;
 	}
-	else if (god_eremes > 6 && god_eremes < 12) {
+	else if(god_eremes > 6 && god_eremes < 12) {
 		if (rand(1,10) > 6 && god_eremes > 6) {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			set god_eremes,god_eremes+1;
 			close;
 		}
 		else {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			close;
 		}
 	}
-	else if (god_eremes < 7) {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+	else if(god_eremes < 7) {
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 	else {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 }
 
-prt_in,169,109,0	script	A File#megin4	111,{
-	if (god_eremes == 12) {
-		mes "You have found ^0000FFThe 3rd Platoon Records^000000!";
+prt_in,169,109,0	script	文件簿#megin4	111,{
+	if(god_eremes == 12) {
+		mes "终于发现到了!!!!!";
+		mes "^660000- 十字军 3中队 转入/转出的资料 -^000000了";
 		close;
 	}
-	else if (god_eremes > 6 && god_eremes < 12) {
+	else if(god_eremes > 6 && god_eremes < 12) {
 		if (rand(1,10) > 6 && god_eremes > 6) {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			set god_eremes,god_eremes+1;
 			close;
 		}
 		else {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			close;
 		}
 	}
-	else if (god_eremes < 7) {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+	else if(god_eremes < 7) {
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 	else {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 }
 
-prt_in,166,109,0	script	A File#megin5	111,{
-	if (god_eremes == 12) {
-		mes "You have found";
-		mes "^0000FFThe 3rd Platoon Records^000000!";
+prt_in,166,109,0	script	文件簿#megin5	111,{
+	if(god_eremes == 12) {
+		mes "终于发现到了!!!!!";
+		mes "^660000- 十字军 3中队 转入/转出的资料 -^000000了";
 		close;
 	}
-	else if (god_eremes > 6 && god_eremes < 12) {
+	else if(god_eremes > 6 && god_eremes < 12) {
 		if (rand(1,10) > 6 && god_eremes > 6) {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			set god_eremes,god_eremes+1;
 			close;
 		}
 		else {
-			mes "^3355FFYou see a shelf filled with many files. You begin searching through them, one by one.^000000";
+			mes "看到眼前有各式各样的书籍资料，开始慢慢的寻找吧";
 			close;
 		}
 	}
-	else if (god_eremes < 7) {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+	else if(god_eremes < 7) {
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 	else {
-		mes "[Librarian Jekan]";
-		mes "W-wait...!";
-		mes "That section";
-		mes "is off limits!";
+		mes "[文件管理人 杰干]";
+		mes "你不可以动那边的书籍";
+		next;
+		mes "-你安静的退后了一步-";
 		close;
 	}
 }
 
-prt_in,172,106,0	script	Librarian#megin	833,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
-		if (god_eremes > 2 && god_eremes < 7) {
-			mes "[Librarian Jekan]";
-			mes "Ah, please do";
-			mes "not touch the files";
-			mes "in this section.";
+prt_in,172,106,0	script	文件管理人#megin	833,{
+	if($God1 > 49 && $God2 < 100) {
+		if(god_eremes > 2 && god_eremes < 7) {
+			mes "[文件管理人 杰干]";
+			mes "啊，拜托你不要动到这边的书籍资料，据我所知这边有几本，是关于普隆德拉军的书籍";
 			next;
-			mes "[Librarian Jekan]";
-			mes "Some of the information";
-			mes "here is classified, and it is therefore prohibited by the Prontera Military to browse";
-			mes "through them.";
+			mes "[文件管理人 杰干]";
+			mes "你要知道这边是不开放阅览的，要快点把那几本文件找出来，放到普隆德拉军那边去...";
 			next;
-			mes "[Librarian Jekan]";
-			mes "I'm currently in the process of searching for the classified files in that section, so that I can separate it from the information that is public domain.";
+			mes "[文件管理人 杰干]";
+			mes "真是的! 要去那里找那些文件啊?照明也这么暗，眼睛又看不清楚，真是的...";
 			next;
-			mes "[Librarian Jekan]";
-			mes "I'd highly";
-			mes "appreciate it";
-			mes "if you ^660000didn't^000000";
-			mes "interfere with my work.";
+			mes "[文件管理人 杰干]";
+			mes "你是谁? 从刚才就站在这边?有什么要找的东西请到前面那边去找，找到后赶快回家吧!";
 			next;
-			mes "[Librarian Jekan]";
-			mes "Darn it...!";
-			mes "I can't read anything when the light is this dim! It's bad enough my eyes have gone bad...";
 			while(1) {
-				next;
-				switch(select("You have bad eyes?:I want to read some documents.:Let me help you find those files...:What kind of files are you looking for?")) {
+				switch(select("你的视力很差吗?:想要看文件资料:我想帮你找文件资料:请问是哪种文件资料?")) {
 				case 1:
-					mes "[Librarian Jekan]";
-					mes "I've worked";
-					mes "under dim light";
-					mes "for so long, my eyes have";
-					mes "gone bad. They should get me ^0000FFa new light^000000, otherwise I'll go blind sooner or later...";
-					if (god_eremes == 5 && (countitem(2203) > 0 || countitem(1041) > 0)) {
+					mes "[文件管理人 杰干]";
+					mes "在这么暗的地方找文件，最近近期内视力快速的变坏了，最起码也要^0000FF先架设好照明设备之类的^000000再叫人工作吧...";
+					mes "真是受不了...";
+					mes "再继续这样子下去的话，会不会变成盲人呢";
+					if(god_eremes == 5 && ( countitem(2203) > 0 || countitem(1041) > 0 ) ) {
 						next;
-						mes "[Librarian Jekan]";
-						mes "Hey, that's some pretty useful stuff that you've got with you. Do you mind letting me borrow it for a while? It'll help me in finding those files...";
+						mes "[文件管理人 杰干]";
+						mes "喔喔，原来你有这么好的东西啊!可以借我用一下吗?有这个东西找资料的话，会比较方便一点";
 						next;
-						switch(select("Yes, I mind!:No, I don't mind.")) {
+						switch(select("不想借给你:好的，借给你用")) {
 						case 1:
-							mes "[Librarian Jekan]";
-							mes "^333333*Sniff*^000000";
-							mes "N-never mind...";
+							mes "[文件管理人 杰干]";
+							mes "...哼，算了吧，我自己慢慢找吧";
 							close;
 						case 2:
-							mes "[Librarian Jekan]";
-							mes "Oh, you are so kind!";
-							mes "Y-you really do want";
-							mes "to help me, don't you?";
-							if (countitem(2203) && countitem(1041)) {
-								delitem 1041,countitem(1041); //Lantern
-								delitem 2203,1; //Spectacles
+							mes "[文件管理人 杰干]";
+							mes "呵呵! 真的谢谢你啊刚才你说要帮我找资料，不是随便说说的啊!";
+							if(countitem(2203) && countitem(1041)) {
+								delitem 1041,countitem(1041);  //Lantern
+								delitem 2203,1;  //Spectacles
 							}
-							else if (countitem(2203)) {
+							else if(countitem(2203)) {
 								delitem 2203,1;
 							}
-							else if (countitem(1041)) {
+							else if(countitem(1041)) {
 								delitem 1041,countitem(1041);
 							}
 							set god_eremes,6;
-							next;
-							mes "[Librarian Jekan]";
-							mes "Thank you...";
-							mes "Now I won't have to";
-							mes "worry so much about";
-							mes "finding that file.";
-							next;
-							mes "[Librarian Jekan]";
-							mes "If it's alright,";
-							mes "would you help me";
-							mes "look for it...?";
 							close;
 						}
 					}
-					else if (god_eremes > 5) {
+					else if(god_eremes > 5) {
 						next;
-						mes "[Librarian Jekan]";
-						mes "Thank you...";
-						mes "The stuff you let";
-						mes "me borrow will really";
-						mes "help me in looking for";
-						mes "all of those files...";
+						mes "[文件管理人 杰干]";
+						mes "呵，谢谢你的帮忙";
+						mes "找起来方便多了";
 					}
 					break;
 				case 2:
-					if (god_eremes == 6) {
-						mes "[Librarian Jekan]";
-						mes "Read some documents?";
-						mes "Well, you've come here";
-						mes "to the Library. That's";
-						mes "a good start.";
-						next;
-						mes "[Librarian Jekan]";
-						mes "Well, as long as";
-						mes "you know what kind";
-						mes "of document you're";
-						mes "looking for, you might";
-						mes "be able to find it.";
-						next;
-						mes "[Librarian Jekin]";
-						mes "I've got to find that";
-						mes "classified file as soon";
-						mes "as I can!";
+					if(god_eremes == 6) {
+						mes "[文件管理人 杰干]";
+						mes "什么都没找到，你在说什么呀?请你到前面的书柜上，夹在一起的文件里好好的找找看，我真的想看那些资料，真的";
 						close2;
 						set god_eremes,7;
 						end;
 					}
 					else {
-						mes "[Librarian Jekan]";
-						mes "Hmm...?";
-						mes "Hey, haven't";
-						mes "I told you already?";
+						mes "[文件管理人 杰干]";
+						mes "刚刚不是说过了嘛!! 嘻嘻嘻嘻嘻!!";
 						next;
-						mes "[Librarian Jekan]";
-						mes "The public is prohibited from browsing the files in this section! How many times do I need to repeat myself?";
+						mes "[文件管理人 杰干]";
+						mes "这边的文件是禁止阅览的!真是讲话听不懂啊，嘴巴也很酸，到底要我说多少次你才听得懂?";
 						close;
 					}
 				case 3:
-					if (god_eremes == 4) {
-						mes "[Librarian Jekan]";
-						mes "I'd gladly accept your";
-						mes "help if it weren't for the fact that I cannot allow classified information to be released to the public.";
+					if(god_eremes == 4) {
+						mes "[文件管理人 杰干]";
+						mes "哼...假如知道是什么文件的话，那你也知道他的重要性了，你应该知道，一般人是不能阅览的吧?";
 						next;
-						mes "[Librarian Jekan]";
-						mes "I have no idea how something so important was shuffled into the files here in Prontera Library, but we can't allow the public to access it.";
+						mes "[文件管理人 杰干]";
+						mes "虽然我不太清楚为什么这文件会在这里，为什么很重要也不是很清楚，反正是禁止阅览的，甚至是十字军本人也很难阅览到";
 						next;
-						mes "[Librarian Jekan]";
-						mes "Still, that file doesn't seem to be that important, but I still have to waste my time on finding it...";
-						next;
-						mes "[Librarian Jekan]";
-						mes "Damn, my eyes are sore.";
-						mes "Working as a government official is easy except for the times when the beaucrats make you do stuff like this.";
+						mes "[文件管理人 杰干]";
+						mes "这样听起来...好像也没有那么的重要，到底我为什么要在这阴暗的地方，把眼睛点亮着，还拼命的找那个家伙呢!";
+						mes "真是的，眼睛好痛..反正做公务员也很闲，偶尔会叫我们做这种浪费国家预算的事!";
 						set god_eremes,5;
 					}
-					else if (god_eremes > 4) {
-						mes "[Librarian Jekan]";
-						mes "I think I'm going to go";
-						mes "insane looking for this file...!";
-						next;
-						mes "[Librarian Jekan]";
-						mes "Huh...?";
-						mes "Did you just say";
-						mes "that you wanted to";
-						mes "help me? I-I'd appreciate it.";
+					else if(god_eremes > 4) {
+						mes "[文件管理人 杰干]";
+						mes "眼睛好痛...快烦死了，嗯? 有人要帮忙的话最好了~";
 					}
 					else {
-						mes "[Librarian Jekan]";
-						mes "Um, you're not even";
-						mes "supposed to know what";
-						mes "kind of file I'm looking for. Even if you did, I'm not allowed to show you what's inside!";
+						mes "[文件管理人 杰干]";
+						mes "咦?你说你知道我想要找的文件长什么样子，而且你想帮我呀?";
+						mes "你知道文件里的内容吗? 根本就不知道嘛!";
+						mes "所以说你跟本就帮不上忙，闪到一边去吧，走啦走啦~";
 						close;
 					}
 					break;
 				case 4:
-					mes "[Librarian Jekan]";
-					mes "Hmm. I'm not really allowed to disclose any information related to that file. I'm sorry about that.";
+					mes "[文件管理人 杰干]";
+					mes "哼，听说是不可以告诉别人的";
 					next;
 					mes "[" + strcharinfo(0) + "]";
-					mes "But isn't";
-					mes "the file about...";
+					mes "请问那文件是不是...";
 					input @str$;
-					mes "^0000FF" + @str$ + "?";
+					mes "^0000FF" + @str$ + "相关的文件吗?";
 					next;
-					if (@str$ == "the 1st squad's final mission") {
-						mes "[Librarian Jekan]";
-						mes "Hmm...?";
-						mes "How did you";
-						mes "know about that?";
+					if (@str$ == "十字军3中队转入/转出的资料") {
+						mes "[文件管理人 杰干]";
+						mes "对啊!? 你怎么会知道这些?";
 						set god_eremes,4;
 					}
 					else {
-						mes "[Librarian Jekan]";
-						mes "Errmmm...";
-						mes "I don't think so....?";
+						mes "[文件管理人 杰干]";
+						mes "不是啊....?";
 					}
 				}
 			}
 		}
-		else if (god_eremes == 2) {
-			mes "[Librarian Jekan]";
-			mes "Ah, please do not touch the files in this section. Usually, it's public domain but it seems that a classified file managed to get misplaced there.";
+		else if(god_eremes == 2) {
+			mes "[文件管理人 杰干]";
+			mes "啊，拜托你不要动到这边的书籍资料，据我所知这边有几本，是关于普隆德拉军的书籍";
 			next;
-			mes "[Librarian Jekan]";
-			mes "For now, I cannot let anyone without special authorization to look through that section. I must find that file and send it to the Prontera military as soon as I can.";
+			mes "[文件管理人 杰干]";
+			mes "你要知道这边是不开放阅览的，要快点把那几本文件找出来，放到普隆德拉军那边去...";
 			next;
-			mes "[Librarian Jekan]";
-			mes "Ergh! This light isn't bright enough for my eyes. They're starting to get sore again...";
+			mes "[文件管理人 杰干]";
+			mes "真是的! 要去那里找那些文件啊?照明也这么暗，眼睛又看不清楚，真是的...";
 			next;
-			mes "[Librarian Jekan]";
-			mes "So what brings you here? If you're looking for something in particular, you should try another section.";
+			mes "[文件管理人 杰干]";
+			mes "你是谁? 从刚才就站在这边?有什么要找的东西请到前面那边去找，找到后赶快回家吧!";
 			next;
-			switch(select("I want to read some documents.:Do you have bad eyes?:Let me help you to find the files.:What kind of files are you looking for?")) {
+			switch(select("想要看文件资料:你的视力很差吗?:我想帮你找文件资料:请问是哪种文件资料?")) {
 			case 1:
-				mes "[Librarian Jekan]";
-				mes "I told you already! The files in this section aren't open to the public right now! Don't make me repeat myself!";
+				mes "[文件管理人 杰干]";
+				mes "刚刚不是说过了嘛!!";
+				mes "企嘻嘻嘻嘻嘻!!";
+				mes "这边的文件是禁止阅览的!";
+				mes "真是讲话听不懂啊，嘴巴也很酸，到底要我说多少次你才听得懂?";
 				close;
 			case 2:
-				mes "[Librarian Jekan]";
-				mes "Since I have worked under a dim light for a long time, my eyes have gone bad.";
-				mes "They should get me a new light, otherwise I will be gone blind sooner or later...";
+				mes "[文件管理人 杰干]";
+				mes "在这么暗的地方找文件，最近近期内视力快速的变坏了，最起码也要先架设好，照明设备之类的再叫人工作吧...";
+				mes "真是受不了...";
+				mes "再继续这样子下去的话，会不会变成盲人呢";
 				close;
 			case 3:
-				mes "[Librarian Jekan]";
-				mes "Um? How do you know what file I am looking for?";
-				mes "You don't even know what is written inside?";
-				mes "Stop interrupting me, leave!";
+				mes "[文件管理人 杰干]";
+				mes "咦?你说你知道我想要找的文件长什么样子，而且你想帮我呀?";
+				mes "你知道文件里的内容吗?";
+				mes "根本就不知道嘛!所以说你跟本就帮不上忙，闪到一边去吧，走啦走啦~";
 				close;
 			case 4:
-				mes "[Librarian Jekan]";
-				mes "Hmm... I am not supposed to reveal anything related to the file.";
+				mes "[文件管理人 杰干]";
+				mes "哼，听说是不可以告诉别人的";
 				next;
 				mes "[" + strcharinfo(0) + "]";
-				mes "Isn't the file...";
+				mes "请问那文件是不是...";
 				input @str$;
 				mes "[" + strcharinfo(0) + "]";
-				mes "^0000FF" + @str$ + "?";
+				mes "^0000FF" + @str$ + "相关的文件吗?";
 				next;
-				mes "[Librarian Jekan]";
-				mes "Maybe...";
-				mes "Maybe not~";
+				mes "[文件管理人 杰干]";
+				mes "这个嘛...?";
 				close;
 			}
 		}
-		else if (god_eremes > 6 && god_eremes < 12) {
-			if (rand(1,10) > 4) {
-				mes "[Librarian Jekan]";
-				mes "Hmm? So did you find it? I've been searching for that file for a long time, but I haven't been able to find it.";
-				next;
-				mes "[Librarian Jekan]";
-				mes "I'll go ahead and search the right side, so do you think you could search the left?";
+		else if(god_eremes > 6 && god_eremes < 12) {
+			if(rand(1,10) > 4) {
+				mes "[文件管理人 杰干]";
+				mes "喔? 找到文件了吗? 我也在这边一直找啊，可是好像不太好找啊，我找右边，你再去找左边看看吧";
+				close;
 			}
 			else {
-				mes "[Librarian Jekan]";
-				mes "Did you find it yet? All this time, and I still haven't been able to dig up that file.";
-				next;
-				mes "[Librarian Jekan]";
-				mes "I'll go ahead and check the left side, so would you look for it in the middle or the right side?";
+				mes "[文件管理人 杰干]";
+				mes "喔? 找到文件了吗? 我也在这边一直找啊，可是好像不太好找啊，我找左边，你再去找右边看看吧";
+				close;
 			}
 		}
-		else if (god_eremes == 12) {
-			mes "[Librarian Jekan]";
-			mes "Ah! There it is!";
-			mes "Thank you so much!";
-			mes "I'm glad to see that there are still kind and thoughtful people like you in the world.";
+		else if(god_eremes == 12) {
+			mes "[文件管理人 杰干]";
+			if(Sex) {
+				mes "喔喔! 找到了，终于找到了!辛苦你了，原来现在还有像你这么善良的青年啊!";
+			}
+			else {
+				mes "喔喔! 找到了，终于找到了!辛苦你了，原来现在还有像你这么善良的少女啊!";
+			}
+			mes "虽然想要送你什么做为报答，不过我现在就要报告这些文件所以";
 			next;
-			mes "[Librarian Jekan]";
-			mes "I really want to give you something to show you my gratitude, but I've got to send this back to the Prontera Military right away.";
+			select("想要看文件");
+			mes "[文件管理人 杰干]";
+			mes "嗯...反正你刚刚也说过，你也想看这个文件，而且看起来也不是什么重要的文件...应该没有关系吧...";
 			next;
-			select("I want to read the document.");
-			mes "[Librarian Jekan]";
-			mes "Oh, right, you mentioned that, didn't you? It doesn't seem seem";
-			mes "so important, but I'm not really quite sure...";
+			mes "[文件管理人 杰干]";
+			mes "嗯，你也辛苦了，阅览应该没有关系吧，不过，正本我需要带走，所以做一个复本给你";
 			next;
-			mes "[Librarian Jekan]";
-			mes "Well, it couldn't hurt if I made a copy of this first for you to read, but I'll need some materials.";
+			mes "[文件管理人 杰干]";
+			mes "我会告诉你复本需要的材料，复印好之后让你看个够，我特别地在文件上，把可搜寻的搜寻魔法和原件一样，一起施法上去";
 			next;
-			mes "[Librarian Jekan]";
-			mes "I'll even cast the";
-			mes "Search Magic on it, so that it'll be just like the original. All right, I need the following things to make a copy...";
+			mes "[文件管理人 杰干]";
+			mes "复印文件所需要的材料是";
 			next;
-			mes "[Librarian Jekan]";
-			mes "2 Slick Paper,";
-			mes "1 Oil Paper,";
-			mes "3 Squid Ink,";
-			mes "3 Feather of Birds and";
-			mes "20 Blue Gemstones.";
+			mes "[文件管理人 杰干]";
+			mes "以份量来算，光滑的纸 2张，油纸1张，墨汁 3个，羽毛 3个，最后是可搜寻的搜寻魔法，为了施展时所需要的蓝色魔力矿石20个";
 			next;
-			mes "[Librarian Jekan]";
-			mes "Please get those as soon as possible, and I'll be here making the other preparations to make a copy.";
+			mes "[文件管理人 杰干]";
+			mes "你快点找到这些材料的话，我真的愿意帮你制作复本，依我看来这也不是很重要的文件...这样子还好吧，不过，文件保管一定要放在这边保管，你想看的话就要来这边看才可以";
 			next;
-			mes "[Librarian Jekan]";
-			mes "Also, I'll keep this copy in the Library for you to read, and to prevent it from being leaked to the public. So you'll have to come visit each time you wish to read it, okay?";
-			next;
-			mes "[Librarian Jekan]";
-			mes "Okay, now...";
-			mes "Come back here";
-			mes "as soon as you can.";
+			mes "[文件管理人 杰干]";
+			mes "那么...尽快把这些材料找来吧";
 			set god_eremes,13;
 			close;
 		}
-		else if (god_eremes == 13) {
-			if (countitem(7111) > 1 && countitem(7151) && countitem(1024) > 2 && countitem(916) > 2 && countitem(717) > 19) {
-				mes "[Librarian Jekan]";
-				mes "Oh, you came back.";
-				mes "I didn't expect you to return here so quickly. Whatever's inside must be really important for you to know.";
+		else if(god_eremes == 13) {
+			if(countitem(7111) > 1 && countitem(7151) && countitem(1024) > 2 && countitem(916) > 2 && countitem(717) > 19) {
+				mes "[文件管理人 杰干]";
+				mes "哦...材料都带来了吗，看来你真的很想看这些资料啊...";
+				mes "到底里面是什么内容...请稍后";
 				next;
-				mes "[Librarian Jekan]";
-				mes "Anyway, please";
-				mes "give me a moment";
-				mes "while I make that";
-				mes "copy for you.";
+				mes "[文件管理人 杰干]";
+				mes "啊，你先把带来的材料放着，";
+				mes "等你看完之后我会帮你复印的";
 				delitem 7111,2;  //Smooth_Paper
 				delitem 7151,1;  //Oil_Paper
 				delitem 1024,3;  //Chinese_Ink
@@ -1078,125 +930,83 @@ prt_in,172,106,0	script	Librarian#megin	833,{
 				delitem 717,20;  //Blue_Gemstone
 				set god_eremes,14;
 				next;
-				mes "[Librarian Jekan]";
-				mes "Alright then...";
-				mes "I'll see you in a bit.";
+				mes "[文件管理人 杰干]";
+				mes "好...待会见吧";
 				close;
 			}
 			else {
-				mes "[Librarian Jekan]";
-				mes "Have you forgotten";
-				mes "what you need to make";
-				mes "a copy? Alright, let me";
-				mes "tell you again...";
-				next;
-				mes "[Librarian Jekan]";
-				mes "2 Slick Paper,";
-				mes "1 Oil Paper,";
-				mes "3 Squid Ink,";
-				mes "3 Feather of Birds and";
-				mes "20 Blue Gemstones.";
-				next;
-				mes "[Librarian Jekan]";
-				mes "Please come";
-				mes "back with those items";
-				mes "as soon as you can.";
+				mes "[文件管理人 杰干]";
+				mes "看来你忘了需要哪些材料吧?";
+				mes "光滑的纸 2 张，油纸 1 张，墨汁 3 个，羽毛 3 个，蓝色魔力矿石 20 个，带这些材料来吧";
 				close;
 			}
 		}
-		else if (god_eremes > 13 && god_eremes < 16) {
-			if (rand(1,10) > 4) {
-				mes "[Librarian Jekan]";
-				mes "Let me go over and review the document before I make a copy...";
+		else if(god_eremes > 13 && god_eremes < 16) {
+			if(rand(1,10) > 4) {
+				mes "[文件管理人 杰干]";
+				mes "我不是说叫你等我一下的吗? 你先读完之后我会复印给你的";
 			}
 			else {
-				mes "[Librarian Jekan]";
-				mes "Let me go over and review the document before I make a copy...";
+				mes "[文件管理人 杰干]";
+				mes "我不是说叫你等我一下的吗? 你先读完之后我会复印给你的";
 				set god_eremes,god_eremes+1;
 			}
 			close;
 		}
-		else if (god_eremes == 16) {
-			mes "[Librarian Jekan]";
-			mes "There you go. As I thought, the document didn't seem to contain any crucially important data.";
-			next;
-			mes "[Librarian Jekan]";
-			mes "Just remember, this copy needs to stay in the Prontera Library. That means you have to come back if you need to read the document again.";
+		else if(god_eremes == 16) {
+			mes "[文件管理人 杰干]";
+			mes "复本做好了，果然没有什么重要的内容，不过文件保管会放在这里保管的，你想看的时候你一定要来到这边才能看，搜寻魔法也和原件一样，一起施法上去了，以后想要看文件的话随时可以来";
 			set god_eremes,17;
 			close;
 		}
-		else if (god_eremes > 16) {
-			mes "[Librarian Jekan]";
-			mes "Welcome, my friend!";
-			mes "So, what do you need today?";
+		else if(god_eremes > 16) {
+			mes "[文件管理人 杰干]";
+			mes "欢迎光临! 这一次需要什么?";
 			next;
 			while(1) {
-				switch(select("Record Search.:Quit searching.:Search Help:Converse.")) {
+				switch(select("搜寻文件里的内容:停止搜寻文件里的内容:对话")) {
 				case 1:
-					mes "^663300- Search Magic Initiated -";
-					mes "- Please enter a keyword. -";
-					mes " ";
-					mes "*Search Magic is";
-					mes " case sensitive.";
-					mes "Please do not use";
-					mes "capital letters.^000000";
+					mes "- 执行文件搜寻小帮手魔法 -";
+					mes "- 关于想搜寻的内容 -";
+					mes "- 请输入关键字 - ";
 					next;
 					input .@input$;
-					if (compare(.@input$,"crusader") == 1) {
-						mes "^663300[Keyword: ^996633Crusader^663300]";
-						mes "Crusaders are warriors preparing for the upcoming Holy War against Evil. Experienced swordsmen, usually with remarkable spiritual prowess.^000000";
+					if (compare(.@input$,"十字军") == 1) {
+						mes "^663300[关键字: ^996633十字军^663300]";
+						mes "^000000为圣战准备的人们，剑士在达到一定水准后，从信仰贯彻的人们中做选拔，现在总兵力数为一级机密，没有记载在本文件上，本文件上只记录着，十字军第3中队转入/转出的资料";
 						close2;
-						if (compare(.@input$,"3rd_company") == 1) {
-							mes "^663300[Keyword: ^9966333rd Company^663300]";
-							mes "Only the best Crusaders are selected to form the ranks of all squads in the 3rd Company. Most transfer records for 3rd Company Squads are unavailable.^000000";
-							next;
-							mes "^663300[Keyword: ^9966333rd Company^663300]";
-							mes "The 1st Squad of the 3rd Platoon is an exception, as all members retired or were transferred to other forces. More specific information can be found by searching ^9966333rd Platoon^663300.";
+						if (compare(.@input$,"3中队") == 1) {
+							mes "^663300[关键字: ^9966333中队^663300]";
+							mes "^000000十字军3中队，是挑选现存十字军中最精锐的战力所组成的，自从创立以来，目前还没有转入/转出的记录报告，不过，十字军3中队 1小队 3分队是例外，现在该分队员有些人员转出，回到了一般人的生活也有，有关更详细的内容，会在十字军3中队1小队的部份做详述";
 							close2;
-							if (compare(.@input$,"3rd_platoon") == 1) {
-								mes "^663300[Keyword: ^9966333rd Platoon^663300]";
-								mes "The 3rd Platoon is considered the elite force in the 3rd Company. Only records for the 1st Squad in the 3rd Platoon currently exist due to special circumstances.^000000";
-								next;
-								mes "^663300[Keyword: ^9966333rd Platoon^663300]";
-								mes "More specific information can be found by searching ^9966331st Squad^663300.";
+							if (compare(.@input$,"1小队") == 1) {
+								mes "^663300[关键字: ^9966331小队^663300]";
+								mes "^000000十字军 3中队 1小队，各中队由4个小队所组成，这里所指的就是第1小队十字军3中队1小队，本文件中除了1小队3分队的资料外，没有其它记录的资料";
 								close2;
-								if (compare(.@input$,"1st_squad") == 1) {
-									mes "^663300[Keyword: ^9966331st Squad^663300]";
-									mes "1st Squad.";
-									mes "Complete";
-									mes "Member Roster";
-									mes "...^000000";
-									next;
-									mes "^663300[Keyword: ^9966331st Squad^663300]";
-									mes "^0000FF : Rebarev Doug";
-									mes " : Jack O";
-									mes " : Zan.Huadoku";
-									mes " : Cuaque Donon";
-									mes " : Emma Searth";
-									mes " : Royal Myst";
-									mes " : The Nineball^000000";
+								if (compare(.@input$,"3分队") == 1) {
+									mes "^663300[关键字: ^9966333分队^663300]";
+									mes "^000000十字军3分队，^0000FF最后的任务^000000是当时的，十字军3中队1小队3分队员的名字";
+									mes "^0000FF : 雷贝依勒布 多";
+									mes " : 杰 欧";
+									mes " : 詹 花多酷";
+									mes " : 库阿克 多伦";
+									mes " : 艾麻 西奥司";
+									mes " : 洛耶 密斯特";
+									mes " : 德 纳英柏^000000";
 									if (god_eremes == 17) {
 										set god_eremes,18;
 									}
 									close2;
-									if (compare(.@input$,"record") == 1) {
-										mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-										mes "The 1st Squad was famous as the most skilled search party within the Crusaders. However, it was disbanded as a result of its final mission.^000000";
-										next;
-										mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-										mes "The 1st Squad was secretly";
-										mes "assigned by the royal court to find and acquire ^996633godly artifacts^663300.";
-										mes "However, the mission failed due to a factional dispute caused by one member's act of insubordination.^000000";
-										next;
-										mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-										mes "The member guilty of insubordination was dropped from the squad during this mission. However, his actions were enough to result in the failure of the 1st Squad's final mission.^000000";
-										next;
-										mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-										mes "Due to this disgraceful incident, the 1st Squad was disbanded and";
-										mes "its members have been sent to disciplinary retraining for 3 months.";
-										next;
-										mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-										mes "Most of the members of the 1st Squad were transferred to other squads or retired. Their former leader, Rebarev Doug, is currently in charge of researching godly artifacts under royal edict.^000000";
+									if (compare(.@input$,"最后的任务") == 1) {
+										mes "^663300[关键字: ^9966331st Squad Record^663300]";
+										mes "^000000上级下达了执行最后的任务之后，就解散最精锐的搜索队第3分队的命令该任务是国王秘密的命令，任务的内容是找寻现世的^0000FF神的痕迹^000000的任务不过3分队在执行任务中，却发生了不幸的事件，";
+										mes "其中1名分队员不满分队长的作战指挥，做出了^0000FF不服从分队长指挥的单独行动^000000结果，在口头争吵之后终于爆发了武力的冲突，";
+										mes "把`单独行动的分队员'除外之后，与其它分队员们讨论的结果是，以 ^0000FF不服从命令^000000做为处分的结论，对该1人做武力制裁，";
+										mes "该人员因当时受伤，报告中显示住院中，在不幸的事件结束后，关于神的痕迹寻找的结果，仅记录着`有限的'成功，";
+										mes "做为报告而已，因有限的成功，结果造成了3分队开始怀疑3中队1小队长的领导能力，于是要负起失职的责任，";
+										mes "1小队长在与3分队长面谈之后，为了表示负责而建议解散3分队， 之后呢，3分队就解散了，解散后，分队长以下的分队员，";
+										mes "被强制进入军纪教育队，接受3个月的军纪训练后，被强制的转出到其它地方了 现在找3分队搜寻的结果，";
+										mes "以当时分队长雷贝依勒布 多 的记载，正在积极的进行研究当中，做为报告的补充，本研究是由普隆德拉国王下令进行的，请你认知，以上";
 										close2;
 										if (god_eremes == 18) {
 											set god_eremes,19;
@@ -1204,91 +1014,72 @@ prt_in,172,106,0	script	Librarian#megin	833,{
 									}
 								}
 								else {
-									mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-									mes "- No result has been found.-";
+									mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+									mes "- 没有搜寻到相关内容 -";
 									close2;
 								}
 							}
 						}
-						else if (compare(.@input$,"3rd_platoon") == 1) {
-							mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
+						else if(compare(.@input$,"1小队") == 1) {
+							mes "^663300[关键字: ^996633"+.@input$+"^663300]";
 							mes "Each Company consists";
 							mes "of 4 Platoons. Please";
 							mes "specify Company.^000000";
 							next;
 							close2;
 						}
-						else if (compare(.@input$,"1st_squad") == 1) {
-							mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-							mes "The 1st Squad : Crusaders.";
+						else if(compare(.@input$,"3分队") == 1) {
+							mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+							mes "3分队 : 十字军";
 							mes "Each platoon consists of 4 squads. Please specify Company and Platoon for information on a specific squad.^000000";
 							close2;
 						}
-						else if (compare(.@input$,"record") == 1) {
-							mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-							mes "- No result has been found.-";
+						else if(compare(.@input$,"最后的任务") == 1) {
+							mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+							mes "- 没有搜寻到相关内容 -";
 							close2;
 						}
 						else {
-							mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-							mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-							mes "-search with a keyword : "+.@input$+" -";
-							mes "- No result has been found.-";
+							mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+							mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+							mes "- 搜寻关键字 : "+.@input$+" -";
+							mes "- 没有搜寻到相关内容 -";
 							close2;
 						}
 					}
-					else if (compare(.@input$,"3rd_company") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "^663300[Keyword: ^9966333rd Company^663300]";
-						mes "Only the best Crusaders are selected to form the ranks of all squads in the 3rd Company. Most transfer records for 3rd Company Squads are unavailable.^000000";
-						next;
-						mes "^663300[Keyword: ^9966333rd Company^663300]";
-						mes "The 1st Squad of the 3rd Platoon is an exception, as all members retired or were transferred to other forces. More specific information can be found by searching ^9966333rd Platoon^663300.";
+					else if (compare(.@input$,"3中队") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^663300[关键字: ^9966333中队^663300]";
+						mes "^000000十字军3中队，是挑选现存十字军中最精锐的战力所组成的，自从创立以来，目前还没有转入/转出的记录报告，不过，十字军3中队 1小队 3分队是例外，现在该分队员有些人员转出，回到了一般人的生活也有，有关更详细的内容，会在十字军3中队1小队的部份做详述";
 						close2;
-						if (compare(.@input$,"3rd_platoon") == 1) {
-							mes "^663300[Keyword: ^9966333rd Platoon^663300]";
-							mes "The 3rd Platoon is considered the elite force in the 3rd Company. Only records for the 1st Squad in the 3rd Platoon currently exist due to special circumstances.^000000";
-							next;
-							mes "^663300[Keyword: ^9966333rd Platoon^663300]";
-							mes "More specific information can be found by searching ^9966331st Squad^663300.";
+						if (compare(.@input$,"1小队") == 1) {
+							mes "^663300[关键字: ^9966331小队^663300]";
+							mes "^000000十字军 3中队 1小队，各中队由4个小队所组成，这里所指的就是第1小队十字军3中队1小队，本文件中除了1小队3分队的资料外，没有其它记录的资料";
 							close2;
-							if (compare(.@input$,"1st_squad") == 1) {
-								mes "^663300[Keyword: ^9966331st Squad^663300]";
-								mes "1st Squad.";
-								mes "Complete";
-								mes "Member Roster";
-								mes "...^000000";
-								next;
-								mes "^663300[Keyword: ^9966331st Squad^663300]";
-								mes "^0000FF : Rebarev Doug";
-								mes " : Jack O";
-								mes " : Zan.Huadoku";
-								mes " : Cuaque Donon";
-								mes " : Emma Searth";
-								mes " : Royal Myst";
-								mes " : The Nineball^000000";
+							if (compare(.@input$,"3分队") == 1) {
+								mes "^663300[关键字: ^9966333分队^663300]";
+								mes "^000000十字军3分队，^0000FF最后的任务^000000是当时的，十字军3中队1小队3分队员的名字";
+								mes "^0000FF : 雷贝依勒布 多";
+								mes " : 杰 欧";
+								mes " : 詹 花多酷";
+								mes " : 库阿克 多伦";
+								mes " : 艾麻 西奥司";
+								mes " : 洛耶 密斯特";
+								mes " : 德 纳英柏^000000";
 								close2;
 								if (god_eremes == 17) {
 									set god_eremes,18;
 								}
-								if (compare(.@input$,"record") == 1) {
-									mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-									mes "The 1st Squad was famous as the most skilled search party within the Crusaders. However, it was disbanded as a result of its final mission.^000000";
-									next;
-									mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-									mes "The 1st Squad was secretly";
-									mes "assigned by the royal court to find and acquire ^996633godly artifacts^663300.";
-									mes "However, the mission failed due to a factional dispute caused by one member's act of insubordination.^000000";
-									next;
-									mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-									mes "The member guilty of insubordination was dropped from the squad during this mission. However, his actions were enough to result in the failure of the 1st Squad's final mission.^000000";
-									next;
-									mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-									mes "Due to this disgraceful incident, the 1st Squad was disbanded and";
-									mes "its members have been sent to disciplinary retraining for 3 months.";
-									next;
-									mes "^663300[Keyword: ^9966331st Squad Record^663300]";
-									mes "Most of the members of the 1st Squad were transferred to other squads or retired. Their former leader, Rebarev Doug, is currently in charge of researching godly artifacts under royal edict.^000000";
+								if (compare(.@input$,"最后的任务") == 1) {
+									mes "^663300[关键字: ^996633最后的任务^663300]";
+									mes "^000000上级下达了执行最后的任务之后，就解散最精锐的搜索队第3分队的命令该任务是国王秘密的命令，任务的内容是找寻现世的^0000FF神的痕迹^000000的任务不过3分队在执行任务中，却发生了不幸的事件，";
+									mes "其中1名分队员不满分队长的作战指挥，做出了^0000FF不服从分队长指挥的单独行动^000000结果，在口头争吵之后终于爆发了武力的冲突，";
+									mes "把`单独行动的分队员'除外之后，与其它分队员们讨论的结果是，以 ^0000FF不服从命令^000000做为处分的结论，对该1人做武力制裁，";
+									mes "该人员因当时受伤，报告中显示住院中，在不幸的事件结束后，关于神的痕迹寻找的结果，仅记录着`有限的'成功，";
+									mes "做为报告而已，因有限的成功，结果造成了3分队开始怀疑3中队1小队长的领导能力，于是要负起失职的责任，";
+									mes "1小队长在与3分队长面谈之后，为了表示负责而建议解散3分队， 之后呢，3分队就解散了，解散后，分队长以下的分队员，";
+									mes "被强制进入军纪教育队，接受3个月的军纪训练后，被强制的转出到其它地方了 现在找3分队搜寻的结果，";
+									mes "以当时分队长雷贝依勒布 多 的记载，正在积极的进行研究当中，做为报告的补充，本研究是由普隆德拉国王下令进行的，请你认知，以上";
 									close2;
 									if (god_eremes == 18) {
 										set god_eremes,19;
@@ -1296,653 +1087,498 @@ prt_in,172,106,0	script	Librarian#megin	833,{
 								}
 							}
 							else {
-								mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-								mes "- No result has been found.-";
+								mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+								mes "- 没有搜寻到相关内容 -";
 								close2;
 							}
 						}
 					}
-					else if (compare(.@input$,"3rd_platoon") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "The 3rd Platoon : ";
-						mes "- No result has been found.-";
-						mes "- Suggested to enter a more specific keyword.-";
+					else if(compare(.@input$,"1小队") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "1小队 : ";
+						mes "- 没有搜寻到相关内容 -";
+						mes "- Suggested to enter a more specific keyword -";
 						close2;
 					}
-					else if (compare(.@input$,"1st_squad") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "The 3rd Company : ";
-						mes "- No result has been found.-";
-						mes "- Suggested to enter a more specific keyword.-";
+					else if(compare(.@input$,"3分队") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "3分队 : ";
+						mes "- 没有搜寻到相关内容 -";
+						mes "- Suggested to enter a more specific keyword -";
 						close2;
 					}
-					else if ((compare(.@input$,"record") == 1) && (god_eremes > 17)) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "- No result has been found.-";
-						mes "- Suggested to enter a specific name of the force for a better research.-";
+					else if((compare(.@input$,"最后的任务 ") == 1) && (god_eremes > 17)) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "- 没有搜寻到相关内容 -";
+						mes "- Suggested to enter a specific name of the force for a better research -";
 						next;
 						close2;
 					}
-					else if (compare(.@input$,"rebarev_doug") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Former leader of";
-						mes "3rd Company, 3rd Platoon,";
-						mes "1st Squad. Serves as instructor of Crusader Boot Camp and is currently";
-						mes "conducting research by royal edict.^000000";
-						next;
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Current location:";
-						mes "^996633Prontera Castle, Prontera^663300.^000000";
+					else if(compare(.@input$,"雷贝依勒布 多 ") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^000000以前十字军 3中队 1小队 3分队分队长，现任十字军新兵教育大队教官乙职，正在活动中，做教官的同时，因国王的命令也正在从事研究的工作，工作地点是普隆德拉城内";
 						close2;
 					}
-					else if (compare(.@input$,"egnigem") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "^FF0000Prohibited Search Term!^000000";
+					else if(compare(.@input$,"伊格尼建") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^000000无搜寻结果 无搜寻结果 无搜寻结果 无搜寻结果 无搜寻结果 无搜寻结果";
+						mes "^FF0000禁止使用的关键字^000000";
 						close2;
 					}
-					else if (compare(.@input$,"zan.huadoku") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Former member of";
-						mes "3rd Company, 3rd Platoon";
-						mes "1st Squad. Serving as weapon quartermaster since disbanding";
-						mes "of 1st Squad.";
-						next;
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Current location:";
-						mes "^996633Blacksmith Guild, Geffen^663300.^000000";
+					else if(compare(.@input$,"詹 花多酷") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^000000以前十字军3中队1小队3分队分队员，3分队解散之后，现在在吉芬区域工作，该职务工作为确保武器补给，位置在铁匠公会内部";
 						close2;
 					}
-					else if (compare(.@input$,"cuaque_donon") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Former member of";
-						mes "3rd Company, 3rd Platoon";
-						mes "1st Squad. Retired from service";
-						mes "and now works at an Inn.";
-						next;
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Current location:";
-						mes "^996633Inn, Morroc^663300.^000000";
+					else if(compare(.@input$,"库阿克 多伦") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^000000以前十字军3中队1小队3分队分队员，3分队解散后，现役退休，退休后回到故乡梦罗克，在旅馆里打杂维特生计，有报告所闻";
 						close2;
 					}
-					else if (compare(.@input$,"jack_o") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Former member of";
-						mes "3rd Company, 3rd Platoon";
-						mes "1st Squad. Serving as recruiting officer since disbanding of 1st Squad.";
-						next;
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Current location:";
-						mes "^996633Alberta Port^663300.^000000";
+					else if(compare(.@input$,"杰 欧") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^000000以前十字军3中队1小队3分队分队员，3分队解散之后，现在在艾尔贝塔工作，该职务为艾尔贝塔区域募兵官，位置在艾尔贝塔港口附近";
 						close2;
 					}
-					else if (compare(.@input$,"emma_searth") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Former member of";
-						mes "3rd Company, 3rd Platoon";
-						mes "1st Squad. Retired since";
-						mes "disbanding of 1st Squad.";
-						next;
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Current location:";
-						mes "^996633Al De Baran^663300.^000000";
+					else if(compare(.@input$,"艾麻 西奥司") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^000000以前十字军3中队1小队3分队分队员，3分队解散后，现役退休，退休后为了实现梦想前往艾尔帕兰，有寄履历表向卡普拉中心求职，有报告所闻";
 						close2;
 					}
-					else if (compare(.@input$,"royal_myst") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Former member of";
-						mes "3rd Company, 3rd Platoon";
-						mes "1st Squad. Current duty is unknown.";
-						next;
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Current location:";
-						mes "^996633Casino, Comodo^663300.^000000";
+					else if(compare(.@input$,"洛耶 密斯特") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^000000以前十字军3中队1小队3分队分队员，3分队解散后，被派遣到克魔岛，该职务不太清楚，位置在克魔岛赌博场工作中";
 						close2;
 					}
-					else if (compare(.@input$,"the_nineball") == 1) {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Former member of";
-						mes "3rd Company, 3rd Platoon";
-						mes "1st Squad. Serves as security officer since disbanding of 1st Squad.";
-						next;
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "Current location:";
-						mes "^996633Tavern, Jawaii^663300.^000000";
+					else if(compare(.@input$,"德 纳英柏") == 1) {
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^000000以前十字军3中队1小队3分队分队员，3分队解散后，被派遣到蜜月岛爪哇咿，该职务为维持爪哇咿治安工作，位置在爪哇咿酒店之内";
 						close2;
 					}
 					else {
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
-						mes "^663300[Keyword: ^996633"+.@input$+"^663300]";
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
+						mes "^663300[关键字: ^996633"+.@input$+"^663300]";
 						mes "No result has been found.";
 						close2;
 					}
 					break;
 				case 2:
-					mes "^663300- Search Magic -";
-					mes "- is being shut down. -^000000";
-					next;
-					mes "^663300- ... -^000000";
-					next;
-					mes "^663300- ... -^000000";
-					mes "^663300- ... -^000000";
-					next;
-					mes "^663300- Search Magic -";
-					mes "- Deactivated. -^000000";
+					mes "- 正在关闭搜寻文件小帮手魔法中-";
+					mes "- 从搜寻文件小帮手魔法中，没有得到回应-";
+					mes "- 请问要关闭吗?-";
+					mes "- 若现在要关闭的话 -";
+					mes "- 您未储存的资料 -";
+					mes "- 有受损的危险 -";
+					mes "- ... -";
+					mes "- ...... -";
+					mes "- ........那就关闭了-";
 					close;
 				case 3:
-					mes "[Librarian Jekan]";
-					mes "Well...";
-					mes "This is a pretty";
-					mes "obsolete version";
-					mes "of Search Magic,";
-					mes "so I understand if";
-					mes "it's giving you trouble.";
-					next;
-					mes "[Librarian Jekan]";
-					mes "Now...";
-					mes "First, if you're going to enter a single search term, like someone's name, you would enter '^660000lee_hester^000000' if you were looking up 'Lee Hester.'";
-					next;
-					mes "[Librarian Jekan]";
-					mes "Don't use any";
-					mes "capital letters!";
-					mes "And use underscores to";
-					mes "indicate spaces between first and last names and within military unit names.";
-					next;
-					mes "[Librarian Jekan]";
-					mes "For example, the Fourth Company would be entered as ^6600004th_company^000000. Now... bear with me.";
-					next;
-					mes "[Librarian Jekan]";
-					mes "If you're looking for information on a specific squad, you need to know the Platoon and Company it falls under.";
-					next;
-					mes "[Librarian Jekan]";
-					mes "For example, if you wanted to look up the Crusader 4th Squad of the 4th Platoon of the 4th Company, you would input...";
-					next;
-					mes "[Librarian Jekan]";
-					mes "'^660000crusader 4th_company 4th_platoon 4th_squad record^000000' all in one line exactly like that. I hope this helps you in your search...";
-					next;
-					break;
-				case 4:
-					mes "[Librarian Jekan]";
-					mes "You can tell our";
-					mes "government doesn't";
-					mes "really know how to";
-					mes "allocate its funds";
-					mes "and resources.";
-					next;
-					mes "[Librarian Jekan]";
-					mes "First, there's Jawaii.";
-					mes "Do newlyweds really need";
-					mes "an entire island for themselves? Then again, I am single so I'm probably biased.";
-					next;
-					mes "[Librarian Jekan]";
-					mes "And look at me.";
-					mes "Geniuses aren't supposed to waste their precious time doing useless things for libraries!";
+					mes "[文件管理人 杰干]";
+					mes "所谓的公务人员是，多么的浪费国家预算的一种职务呢..";
+					mes "像我这种优秀的人材埋没在这种地方，就是在浪费国家的预算啊，唉唉";
 					close;
 				}
 			}
 		}
 		else {
-			mes "[Librarian Jekan]";
-			mes "Ah, please do not touch any books in that section. ...I'm sure there's nothing there that could be useful to you.";
+			mes "[管理人 杰干]";
+			mes "啊，请你不要碰那边的文件簿， ....那边不会有什么重要的资料";
 			next;
-			switch(select("Ignore him and check books.:Step back.")) {
+			switch(select("继续看文件簿:不看文件簿退出")) {
 			case 1:
-				mes "[Librarian Jekan]";
-				mes "Hey...!";
-				mes "I thought I said";
-				mes "not to touch those!";
+				mes "[管理人 杰干]";
+				mes "不是跟你说过不可以碰吗!!!!";
 				close2;
 				warp "prontera",120,264;
 				end;
 			case 2:
-				mes "[Librarian Jekan]";
-				mes "Thank you. Feel";
-				mes "free to browse through";
-				mes "the other sections.";
-				next;
-				mes "[Librarian Jekan]";
-				mes "It's really nice to have visitors in the Library, especially when so many people don't read books nowadays.";
+				mes "[管理人 杰干]";
+				mes "好的，这边可以了，我们到别的地方去找资料吧，";
+				mes "现在已经很少有人喜欢看书了，你竟然还会来到图书馆，看来你真是个好人啊";
 				close;
 			}
 		}
 	}
 	else {
-		mes "[Librarian Jekan]";
-		mes "Ah, please do not";
-		mes "touch any books in";
-		mes "that section. There's";
-		mes "nothing useful over in";
-		mes "that section anyway.";
+		mes "[管理人 杰干]";
+		mes "啊，请你不要碰那边的文件簿， ....那边不会有什么重要的资料";
 		next;
-		switch(select("Ignore him and check books.:Step back.")) {
+		switch(select("继续看文件簿:不看文件簿退出")) {
 		case 1:
-			mes "[Librarian Jekan]";
-			mes "I told you...!";
-			mes "Don't touch";
-			mes "the books here!";
+			mes "[管理人 杰干]";
+			mes "不是跟你说过不可以碰吗!!!!";
 			close2;
 			warp "prontera",120,264;
 			end;
 		case 2:
-			mes "[Librarian Jekan]";
-			mes "Thank you. Feel";
-			mes "free to browse through";
-			mes "the other sections.";
-			next;
-			mes "[Librarian Jekan]";
-			mes "It's really nice to have visitors in the Library, especially when so many people don't read books nowadays.";
+			mes "[管理人 杰干]";
+			mes "好的，这边可以了，我们到别的地方去找资料吧，";
+			mes "现在已经很少有人喜欢看书了，你竟然还会来到图书馆，看来你真是个好人啊";
 			close;
 		}
 	}
 	close;
 }
 
-geffen_in,109,161,3	script	Crusader#God1	751,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
-		if (god_eremes > 17 && god_megin_1 < 2) {
-			mes "[Zan.Huadoku]";
-			mes "^333333*Phew...*^000000";
-			mes "This work is really getting to me. Going on a mission with my war buddies sounds a lot better than this.";
+geffen_in,109,161,3	script	十字军#God1	751,{
+	if($God1 > 49 && $God2 < 100) {
+		if(god_eremes > 17 && god_megin_1 < 2) {
+			mes "[詹 花多酷]";
+			mes "....呼，在这边做久了还真累呢，比起这种打杂的事，还是以前和伙伴们一起出任务时轻松多了，那个时候就算是累的半死，心里还是觉得很满足啊...";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "At least in those days, I felt like I was actually doing something useful!";
+			mes "[詹 花多酷]";
+			mes "嗯? 有什么事吗?";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "Hey...";
-			mes "Can I help you";
-			mes "with anything?";
-			next;
-			switch(select("Ask him about the 1st Squad.:Ask him how he's been doing.:Ask him about the 1st Squad's last mission.")) {
+			switch(select("询问有关3分队的事情:询问近况的事情:询问有关3分队最后的任务事情")) {
 			case 1:
-				if (god_eremes == 18) {
-					mes "[Zan.Huadoku]";
-					mes "Yeah, I was a member of the 1st Squad in the 3rd Platoon a long time ago. How did you know that?";
+				if(god_eremes == 18) {
+					mes "[詹 花多酷]";
+					mes "3分队?啊，您是在说以前的部队啊";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "I miss the guys back in the squad. I wonder how our leader's been doing recently...";
+					mes "[詹 花多酷]";
+					mes "真是有很多好人的部队，这样说起来，真想知道分队长现在的消息呢";
 					next;
-					mes "^3355FFYou tell Zan about Rebarev Doug, and about how he is now an instructor for Crusader Boot Camp. He seems to be absorbed in his thoughts of the past.^000000";
+					mes "- 你将雷贝依勒布 多 现在的位置以及 -";
+					mes "- 在新兵教育大队任职的事情说给他听了-";
+					mes "- 他暂时出了魂似的，好像回想起过去的往事 -";
 					close;
 				}
-				else if (god_eremes > 18) {
-					mes "[Zan.Huadoku]";
-					mes "Yeah, I was a member of the 1st Squad in the 3rd Platoon a long time ago. How did you know that?";
+				else if(god_eremes > 18) {
+					mes "[詹 花多酷]";
+					mes "3分队?啊，您是在说以前的部队啊";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "I miss the guys back in the squad. I wonder how our leader's been doing recently...";
+					mes "[詹 花多酷]";
+					mes "真是有很多好人的部队，这样说起来，真想知道分队长现在的消息呢";
 					next;
-					mes "^3355FFYou tell Zan about Rebarev Doug, and about how he is now an instructor for Crusader Boot Camp. He seems to be absorbed in his thoughts of the past.^000000";
+					mes "- 你将雷贝依勒布 多 现在的位置以及 -";
+					mes "- 在新兵教育大队任职的事情说给他听了-";
+					mes "- 他暂时出了魂似的，好像回想起过去的往事 -";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "...";
-					mes "......";
+					mes "[詹 花多酷]";
+					mes "这样子说起来，一直到我们执行最后的任务之前，";
+					mes "我们7名分队员的感情都很好，";
+					mes "假如到最后不是那个家伙^0000FF违反命令的话^000000，";
+					mes "到现在大家的感情都很好的";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "Before we went out on our last mission, the seven of us were like brothers and sisters. If ^FF0000he^000000 didn't disobey the order, we'd still be together today.";
+					mes "[詹 花多酷]";
+					mes "但是我怎么会记不起来那个家伙的名字呢...";
+					mes "哈哈哈...我真是笨蛋...";
+					mes "....等等... 记不起来名字真的没关系吗...?";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "Wait...";
-					mes "What was his name...?";
-					mes "There's no way I could forget something like that...";
+					mes "[詹 花多酷]";
+					mes "...记不起来名字，可以算是没有关系吗?";
+					mes "还是记不起来名字没关系呢?";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "H-how can I not";
-					mes "remember his name!";
-					mes "He's the reason";
-					mes "my life is...!";
+					mes "[詹 花多酷]";
+					mes ".................头好痛啊..";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "^333333*Groan...*^000000";
-					mes "I.... My head...";
-					mes "My head hurts...";
-					next;
-					mes "[Zan.Huadoku]";
-					mes "^3355FFZan looks very confused and his eyes begin to glaze with a dazed look. You try speaking to him again, but he doesn't respond at all.^000000";
-					if (!god_megin_1) {
+					mes "[詹 花多酷]";
+					mes "- 以呆呆的表情凝视着正前方 -";
+					mes "- 就算是跟他对话，也没有任何反应 -";
+					if(!god_megin_1) {
 						set god_megin_1,1;
 					}
 					close;
 				}
 			case 2:
-				mes "[Zan.Huadoku]";
-				mes "How am I been doing?";
-				mes "Well, I work for the Blacksmith Guild, picking out good weapons";
-				mes "to supply the Crusaders.";
+				mes "[詹 花多酷]";
+				mes "最近近况啊?";
+				mes "若平时知道我的工作内容的话，";
+				mes "应该会知道我的近况";
 				next;
-				mes "[Zan.Huadoku]";
-				mes "Sometimes, I get really";
-				mes "bored with what I'm doing. I keep trying to convince myself that my job's important to future Crusaders, but...";
+				mes "[詹 花多酷]";
+				mes "我的工作就是负责挑选吉芬铁匠公会所生产的优良武器，然后将这些补给物资寄给十字军分队";
 				next;
-				mes "[Zan.Huadoku]";
-				mes "You know what?";
-				mes "A lot of people have been asking me weird questions about me recently. I feel like I'm getting spied on, but maybe I'm just getting paranoid.";
+				mes "[詹 花多酷]";
+				mes "虽然有的时候会觉得这些事情很无聊，但是只要想到我可以帮助，后辈十字军们的训练，也还马马虎虎啦";
+				next;
+				mes "[詹 花多酷]";
+				mes "可是，好像最近有越来越多的人在问我的近况啊...";
+				next;
+				mes "[詹 花多酷]";
+				mes "应该不是神行太保在跟随着我吧?";
+				mes "最近总觉得，总是有人在监视我的一举一动似的...";
 				close;
 			case 3:
-				if (god_eremes == 18) {
-					mes "[Zan.Huadoku]";
-					mes "Yeah, on our";
-					mes "final mission...";
+				if(god_eremes == 18) {
+					mes "[詹 花多酷]";
+					mes "最后的任务...";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "Final...? What the? I know it happened, but for some reason, all I can envision is a complete blank when I try to think about it.";
+					mes "[詹 花多酷]";
+					mes "怎么说呢，记忆很模糊，若有点头绪的话也许，啊，真的想不起来";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "I...";
-					mes "I guess I need something to remind me? I know it happened, but... I'm so confused.";
-					next;
-					mes "^3355FFZan seems to be having a very difficult time recalling that specific memory of his past.^000000";
+					mes "- 他一脸茫然的站着，却又像在努力的回想起什么事情似的表情-";
 					close;
 				}
-				else if (god_eremes > 18 && god_megin_1 > 0) {
-					mes "[Zan.Huadoku]";
-					mes "The last mission...";
+				else if(god_eremes > 18 && god_megin_1 > 0) {
+					mes "[詹 花多酷]";
+					mes "最后的任务...";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "Umm...";
-					mes "Huh. I don't";
-					mes "remember anything.";
-					mes "That's weird. Maybe";
-					mes "I need a bit of a clue?";
+					mes "[詹 花多酷]";
+					mes "怎么说呢，记忆很模糊，若有点头绪的话也许，啊，真的想不起来";
 					next;
-					mes "^3355FFZan.Huadoku seemed to";
-					mes "have a hard time remembering what had happened in the past. You begin to share with him what you had read in the library about the 1st Squad...^000000";
+					mes "- 他一脸茫然的站着，却又像在努力的回想起什么事情似的表情-";
 					next;
-					mes "...";
-					next;
-					mes "...";
-					mes "......";
+					mes "- 你开始将资料中所记录的事情告诉他了 -";
 					next;
 					mes ".....";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "Y-yeah that's right! And then three days after we started the mission, we found some kind of...";
+					mes "最后的任务 : 3分队的 ^0000FF最后的任务^000000上级下达了执行最后的任务之后，就解散最精锐的搜索队第3分队的命令该任务是国王秘密的命令，";
+					mes "任务的内容是找寻现世的^0000FF神的痕迹^000000的任务不过3分队在执行任务中，却发生了不幸的事件，其中1名分队员不满分队长的作战指挥，";
+					mes "做出了^0000FF不服从分队长指挥的单独行动^000000结果，在口头争吵之后终于爆发了武力的冲突，把`单独行动的分队员'除外之后，";
+					mes "与其它分队员们讨论的结果是，以 ^0000FF不服从命令^000000做为处分的结论，对该1人做武力制裁，该人员因当时受伤，报告中显示住院中，";
+					mes "在不幸的事件结束后，关于神的痕迹寻找的结果，仅记录着`有限的'成功，做为报告而已，因有限的成功，";
+					mes "结果造成了3分队开始怀疑3中队1小队长的领导能力，于是要负起失职的责任，1小队长在与3分队长面谈之后，";
+					mes "为了表示负责而建议解散3分队，之后呢，3分队就解散了，解散后，分队长以下的分队员，被强制进入军纪教育队，";
+					mes "接受3个月的军纪训练后，被强制的转出到其它地方了现在找3分队搜寻的结果物，以当时分队长雷贝依勒布 多 的记载，";
+					mes "正在积极的进行研究当中，做为报告的补充，本研究是由普隆德拉国王下令进行的，请你认知，以上";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "Well, I'm not sure what it was. But we found an ^0000FFunknown fragment^000000 that was a sign from God! And then...!";
+					mes ".....................";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "And then...";
-					mes "Oh. Oh God.";
-					mes "I can't remember...";
+					mes "............";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "I can't think about anything further than that. I can't even remember what we found. But I'm sure it was damned important.";
+					mes ".....";
+					mes "[詹 花多酷]";
+					mes "我想起来了....那天，在我们展开搜索行动第3天的时候，我们找到了神的痕迹...也就是^0000FF未知的碎片^000000!!!然后...然后......然后.........";
 					next;
-					mes "^3355FFZan stood still in silence, with a pained look on his face.^000000";
-					if (god_megin_1 == 1) {
+					mes "[詹 花多酷]";
+					mes "对不起... 发现那个东西之后的事，我就记不起来了...连我们发现的是什么，我也记不起来了";
+					next;
+					mes "[詹 花多酷]";
+					mes "- 他以痛苦的表情站在原地 -";
+					if(god_megin_1 == 1) {
 						set god_megin_1,2;
 					}
 					close;
 				}
 				else {
-					mes "[Zan.Huadoku]";
-					mes "The last mission...";
+					mes "[詹 花多酷]";
+					mes "最后的任务...";
 					next;
-					mes "[Zan.Huadoku]";
-					mes "Umm...";
-					mes "Huh. I don't";
-					mes "remember anything.";
-					mes "That's weird. Maybe";
-					mes "I need a bit of a clue?";
+					mes "[詹 花多酷]";
+					mes "怎么说呢，记忆很模糊，若有点头绪的话也许，啊，真的想不起来";
 					close;
 				}
 			}
 		}
-		else if (god_megin_1 > 1 && god_megin_1 < 3) {
-			mes "...";
+		else if(god_megin_1 > 1 && god_megin_1 < 3) {
+			mes ".....................";
 			next;
-			mes "...";
+			mes "............";
+			next;
 			mes ".....";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "Y-yeah that's right! And then three days after we started the mission, we found some kind of...";
+			mes "[詹 花多酷]";
+			mes "我想起来了....那天，在我们展开搜索行动第3天的时候，我们找到了神的痕迹...也就是^0000FF未知的碎片^000000!!!然后...然后......然后.........";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "Well, I'm not sure what it was. But we found an ^0000FFunknown fragment^000000 that was a sign from God! And then...!";
+			mes "[詹 花多酷]";
+			mes "对不起... 发现那个东西之后的事，我就记不起来了...连我们发现的是什么，我也记不起来了...这所有的事情都是从 ^0000FF那 3个月^000000 以后开始的...";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "And then...";
-			mes "Oh. Oh God.";
-			mes "I can't remember...";
-			next;
-			mes "[Zan.Huadoku]";
-			mes "I can't think about anything further than that. I can't even remember what we found. Three months after that all happened, I've had these head problems...";
-			next;
-			mes "^3355FFZan stood still in silence, with a pained look on his face.^000000";
+			mes "[詹 花多酷]";
+			mes "- 他以痛苦的表情站在原地 -";
 			set god_megin_1,3;
 			close;
 		}
-		else if (god_megin_1 > 2) {
-			mes "^3355FFGrabbing his head,";
-			mes "tearing his hair and writhing in Agony, Zan kept repeating the same words over and over again...^000000";
+		else if(god_megin_1 > 2) {
+			mes "- 好像头很痛似的，抓着头一直重复说着同样的话 -";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "3 days later!";
-			mes "We f-found some ^0000FFfragment^000000!";
-			mes "It was G-God's sign! But why";
-			mes "can't I remember?! Why?!";
+			mes "[詹 花多酷]";
+			mes "第3天时我们就发现他了...神的痕迹 ^0000FF未知的碎片^000000..3个月...到底发生了什么事情呢，我也不知道，记不起来了，不对，是我根本不想记起来...";
 			close;
 		}
 		else {
-			mes "[Zan.Huadoku]";
-			mes "Hey yo.";
-			mes "Can I help you?";
+			mes "[詹 花多酷]";
+			mes "嗯? 找我有什么事吗?";
 			close;
 		}
 	}
 	else {
-		mes "[Zan.Huadoku]";
-		mes "Good day!";
-		mes "Do you know the";
-		mes "importance of supply?";
+		mes "[詹 花多酷]";
+		mes "您好!!";
+		mes "请问你知道补给物品的重要性吗?";
 		next;
-		switch(select("No.:Yes!")) {
+		switch(select("不知道:知道!")) {
 		case 1:
-			mes "[Zan.Huadoku]";
-			mes "Any military force or party needs their supplies to be replenished if they are to continue battling for a prolonged period of time.";
+			mes "[詹 花多酷]";
+			mes "所谓补给物品，就是将某种武器或是消耗品，";
+			mes "当军队或是组队员需要此物品的地方时，以迅速正确的送达";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "For instance, let's say your group go on hunting without a healer. In this case, everyone would consume health restoration items, like potions.";
+			mes "[詹 花多酷]";
+			mes "举例来说，你的组队员要去打猎时，没有带负责恢复体力的人去打猎了，";
+			mes "这个时后通常会利用恢复物品来恢复体力的，";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "Since you can only carry so many items at once, you'll eventually run out of potions.";
+			mes "[詹 花多酷]";
+			mes "因为是有负重的关系，所以说要有一个人，";
+			mes "往来于猎场和村落之间，进行补给是比较好的";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "But if one of your party members traveled between town and the hunting area, he could supply your party with new healing items.";
+			mes "[詹 花多酷]";
+			mes "在这里最有用的职业是商人系列，";
+			mes "利用便利的手推车物品，把需要的物资大量的安全的送到，目的地的能力，";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "Supplying your party in this way would let you hunt with less worry. For that duty, the Merchant class would be the best by using their Carts.";
+			mes "[詹 花多酷]";
+			mes "可以说是只有商人系列的特权吧，";
+			mes "即使我身为十字军，但我现在在这边的角色就和商人一样";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "I suppose that's why I'm working here in the Blacksmith Guild. As weapon quartermaster, I'm obligated to provide supplies for the Crusader forces.";
+			mes "[詹 花多酷]";
+			mes "迅速地将十字军们所需要的消耗物资，铠甲，武器等，";
+			mes "正确传送到各个需要的分队去，所以这就是我在这边工作的理由，嘿嘿";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "The Blacksmiths in this guild also help me provide high quality weapons for the Crusades as well.";
+			mes "[詹 花多酷]";
+			mes "来，难到你没有可利用的知识吗?";
+			mes "打猎时需要恢复体力，请找商人系列吧";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "If you happen to run out of health items while hunting, why don't you ask a Merchant for help?";
+			mes "[詹 花多酷]";
+			mes "因为他们平常都会带着充足的物品到处走动呢，";
+			mes "啊，当然!";
+			mes "不要忘了要对商人要有礼貌的询问呀";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "Most likely, they will have some spare items and would be willing to share with you if you ask nicely enough.";
-			next;
-			mes "[Zan.Huadoku]";
-			mes "I hope to see you later again! May Odin protect you on your journeys.";
+			mes "[詹 花多酷]";
+			mes "那么希望到下一次见面之前，";
+			mes "愿奥丁的加护与你同在~!";
 			close;
 		case 2:
-			mes "[Zan.Huadoku]";
-			mes "Oh...";
-			mes "Well then.";
-			mes "In that case.";
+			mes "[詹 花多酷]";
+			mes "若你知道的话...就没什么了";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "Let me tell you about some useful knowledge I learned while working with the Blacksmiths.";
+			mes "[詹 花多酷]";
+			mes "那么，我就把我在这边学到的知识告诉你好了";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "A Blacksmith character's forging skills are affected by the DEX and LUK stats. DEX and LUK also affect the item creation skills for Alchemists.";
+			mes "[詹 花多酷]";
+			mes "铁匠的制造技能，会随着灵巧和幸运越高而机率会越高，";
+			mes "而炼金术师的制造技能，会随着灵巧和智力越高而机率也会变得越高";
 			next;
-			mes "[Zan.Huadoku]";
-			mes "Since I've been staying here in the Blacksmith guild, I'm trying to better understand Blacksmiths and develop a deeper appreciation of their work.";
-			next;
-			mes "[Zan.Huadoku]";
-			mes "Alright then...";
-			mes "Take it easy.";
+			mes "[詹 花多酷]";
+			mes "我虽然是十字军，";
+			mes "因为在铁匠公会里工作，所以很努力的了解他们，";
+			mes "大概，就是这样了，祝你愉快";
 			close;
 		}
 	}
 }
 
-morocc_in,146,179,0	script	Employee#megin1	66,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
-		if (god_eremes > 17 && god_megin_2 < 1) {
-			mes "^3355FFThe Inn Employee";
-			mes "eyes you suspiciously.^000000";
+morocc_in,146,179,0	script	旅馆 服务生#megin1	66,{
+	if($God1 > 49 && $God2 < 100) {
+		if(god_eremes > 17 && god_megin_2 < 1) {
+			mes "[旅馆 服务生]";
+			mes "客人，请问有什么事吗?";
+			mes "-招呼客人的服务生眼神中充满着怀疑 -";
 			next;
-			mes "[Inn Employee]";
-			mes "Excuse me.";
-			mes "How can I help you?";
-			mes "Are you looking for";
-			mes "someone...?";
+			mes "[旅馆 服务生]";
+			mes "请问你有什么事吗~";
 			next;
 			input @str$;
-			if (@str$ == "Cuaque Donon" || @str$ == "Cuaque" || @str$ == "Donon") {
+			if (@str$ == "库阿克 多伦") {
 				mes "[" + strcharinfo(0) + "]";
-				mes "Do you happen to know a person named " + @str$ + " ...?";
+				mes @str$ +"... 你认识吗?";
 				if (god_eremes == 18) {
-					mes "[Inn Employee]";
-					mes "I don't think";
-					mes "I know that person.";
-					mes "I guess that guy left";
-					mes "before I started working";
-					mes "here, maybe?";
+					mes "[旅馆 服务生]";
+					mes "......?我一点都听不懂你在说什么呀";
 					close;
 				}
-				else if (god_eremes > 18) {
+				else if(god_eremes > 18) {
 					next;
-					mes "^3355FFOnce you said that name, she immediately drew closer to you";
-					mes "and began speaking in a low, threatening tone.^000000";
+					mes "-女服务生听到我说出名字就警张的环顾四周，然后靠近我身边小声的说 -";
 					next;
-					mes "[Scary Inn Employee]";
-					mes "Who the hell are you?";
-					mes "If you try anything funny,";
-					mes "I'll rip your heart out!";
-					mes "Why are you so curious?!";
-					mes "Are you one of them?!";
+					mes "[旅馆 服务生]";
+					mes "你，你是谁呀，";
 					next;
-					switch(select("Rebarev Doug sent me!:Wait, is he in hiding?:Just... curious.")) {
+					mes "-心中感到一股冰凉的杀气!!-";
+					next;
+					mes "[恐怖的旅馆 服务生]";
+					mes "你敢乱来的话，我会把你的心脏挖出来看是什么颜色的";
+					next;
+					mes "[恐怖的旅馆 服务生]";
+					mes "你是要来终结谣言的人吗? 不是的话，只是因为好奇来的吗? 为什么你会找到这里来呢?你知道最近来这边的人，为什么会暴增的原因吗?";
+					next;
+					switch(select("因为想知道雷贝依勒布 多 的消息...:想知道他为什么要躲起来的理由:只是单纯的好奇心..")) {
 					case 1:
-						if (rand(1,10) > 3) {
-							mes "[Ms. Scary Inn Employee]";
-							mes "Rebarev Doug...?!";
-							mes "That old coot must be afraid";
-							mes "of the rumors we're spreading around. Is already deperate enough to send his men?!";
+						if(rand(1,10) > 3) {
+							mes "[恐怖的旅馆 服务生]";
+							mes "哼...这些话我已经听过好几次了，";
+							mes "那个老头，好像很害怕这个谣言的样子...";
+							mes "...看来能找到这个地方，你势力不错啊";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "But...";
-							mes "I'm not in the mood";
-							mes "to guide you over to";
-							mes "Cuaque Donon...";
+							mes "[恐怖的旅馆 服务生]";
+							mes "不过!今天我心情不好，我是不会让你和那个人见面的!";
 							next;
-							mes "^3355FFThe Inn Employee";
-							mes "knocks you out~^000000";
+							mes "- 那女服务生手握着刀用力的同时 -";
+							mes "- 朝着我的后脑用力的打下去了 -";
 							close2;
 							percentheal -100,0;
 							end;
 						}
 						else {
-							mes "[Ms. Scary Inn Employee]";
-							mes "Rebarev Doug...?!";
-							mes "That old coot must be afraid";
-							mes "of the rumors we're spreading around. Is already deperate enough to send his men?!";
+							mes "[恐怖的旅馆 服务生]";
+							mes "哼...这些话我已经听过好几次了，";
+							mes "那个老头，好像很害怕这个谣言的样子...";
+							mes "...看来能找到这个地方，你势力不错啊";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "Hmm...";
-							mes "It might not be a bad idea to let someone like you talk to Cuaque Donon. You don't seem like the bad sort...";
+							mes "[恐怖的旅馆 服务生]";
+							mes "呵，给猎犬一点提示也没有关系吧，不过只有一次而已，把耳朵洗好仔细听好了";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "But you only get a hint,";
-							mes "and I'm saying it just once...";
-							mes "^0000FFAragham never hoarded";
-							mes "upgrade items.^000000";
+							mes "- 那女人底声细语的在我耳边说了 -";
+							mes "^0000FF阿拉甘并没有把精炼物品转移到别处^000000";
 							set god_megin_2,1;
 							close;
 						}
 					case 2:
-						if (rand(1,10) > 4) {
-							mes "[Ms. Scary Inn Employee]";
-							mes "Right.";
-							mes "If you're here";
-							mes "looking for him,";
-							mes "you definitely know";
-							mes "why he's hiding.";
+						if(rand(1,10) > 4) {
+							mes "[恐怖的旅馆 服务生]";
+							mes "哼...";
+							mes "看来你有办法找到这里来的话，那你也应该知道把他藏起来的原因吧，";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "How dare you...";
-							mes "How dare you play";
-							mes "dumb with me?!";
+							mes "听你胡说八道害我心情又变差了";
+							mes "[恐怖的旅馆 服务生]";
+							mes "喂! 你先睡一下吧!今天我心情不好，";
+							mes "我是不会让你和那个人见面的!";
 							next;
-							mes "^3355FFThe Inn Employee";
-							mes "knocks you out~^000000";
+							mes "- 那女服务生手握着刀用力的同时 -";
+							mes "- 朝着我的后脑用力的打下去了 -";
 							close2;
 							percentheal -100,0;
 						}
 						else {
-							mes "[Ms. Scary Inn Employee]";
-							mes "Right.";
-							mes "If you're here";
-							mes "looking for him,";
-							mes "you definitely know";
-							mes "why he's hiding.";
+							mes "[恐怖的旅馆 服务生]";
+							mes "哼...";
+							mes "看来你有办法找到这里来的话，那你也应该知道把他藏起来的原因吧，";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "Well, maybe not.";
-							mes "Who knows what kind";
-							mes "of friends Cuaque made";
-							mes "when he was a Crusader.";
-							mes "Alright, but listen...";
+							mes "听你胡说八道，你也满会耍嘴皮的";
+							mes "[恐怖的旅馆 服务生]";
+							mes "呵，就算是给你一点提示也没有关系吧，";
+							mes "看你不会是一个伟人的材料";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "I'm only giving";
-							mes "you this hint once...";
-							mes "^0000FFAragham never hoarded";
-							mes "upgrade items.^000000";
+							mes "- 那女人底声细语的在我耳边说了 -";
+							mes "^0000FF阿拉甘并没有把精炼物品转移到别处^000000";
 							set god_megin_2,1;
 							close;
 						}
 					case 3:
 						if (rand(1,10) > 3) {
-							mes "[Ms. Scary Inn Employee]";
-							mes "Just curious?";
-							mes "Huh. You've got a lot of nerve, don't you? I'm sorry to tell you this but...";
+							mes "[恐怖的旅馆 服务生]";
+							mes "只是因为好奇就把头探入虎口?";
+							mes "还真的有胆量啊，而且有话直说的个性";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "I'm not in the mood";
-							mes "to guide you over to";
-							mes "Cuaque Donon...";
-							mes "Heh heh heh...";
+							mes "[恐怖的旅馆 服务生]";
+							mes "那就是!!!我最讨厌的类型!!!";
 							next;
-							mes "^3355FFThe Inn Employee";
-							mes "knocks you out~^000000";
+							mes "- 那女服务生手握着刀用力的同时 -";
+							mes "- 朝着我的后脑用力的打下去了 -";
 							close2;
 							percentheal -100,0;
 							end;
 						}
 						else {
-							mes "[Ms. Scary Inn Employee]";
-							mes "Just curious?";
-							mes "Huh. You've got a lot of nerve, don't you? I'm sorry to tell you this but...";
+							mes "[恐怖的旅馆 服务生]";
+							mes "只是因为好奇就把头探入虎口?";
+							mes "还真的有胆量啊，而且有话直说的个性";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "I can't really tell";
-							mes "you exactly where he";
-							mes "is. The most I can do";
-							mes "is give you a small hint.";
-							mes "Listen carefully now...";
-							mes "I'll only say it once.";
+							mes "[恐怖的旅馆 服务生]";
+							mes "呵，有时候也觉得满帅的啊，把耳朵洗干净后仔细听好吧，我只说一次";
 							next;
-							mes "[Ms. Scary Inn Employee]";
-							mes "^0000FFAragham never";
-							mes "hoarded upgrade items.^000000";
-							mes "Now, don't forget!";
+							mes "- 那女人底声细语的在我耳边说了 -";
+							mes "^0000FF阿拉甘并没有把精炼物品转移到别处^000000";
 							set god_megin_2,1;
 							close;
 						}
@@ -1950,272 +1586,226 @@ morocc_in,146,179,0	script	Employee#megin1	66,{
 				}
 			}
 			else {
-				mes "[Inn Employee]";
-				mes "What...?";
-				mes "I don't know";
-				mes "anyone named that.";
-				mes "If that's even a name...";
+				mes "[旅馆 服务生]";
+				mes "......?我一点都听不懂你在说什么呀";
 				close2;
 			}
 		}
-		else if (god_megin_2 > 0) {
-			mes "[Inn Employee]";
-			mes "Welcome to the Inn.";
-			mes "When you move to the entrance, you can also enter a PvP zone though a PvP doorman.";
+		else if(god_megin_2 > 0) {
+			mes "[旅馆 服务生]";
+			mes "客人，请问有什么事吗?";
 			next;
-			mes "[Inn Employee]";
-			mes "Usually, you can visit inns in big towns. If you want to take a rest or compete with others, an Inn is the place to go.";
+			mes "[旅馆 服务生]";
+			mes "这里是旅馆，到旅馆入口可以透过PVP守门人，就可以进到PVP场了";
 			next;
-			mes "^3355FFShe welcomed you";
-			mes "very professionally,";
-			mes "as if nothing";
-			mes "had happened.^000000";
+			mes "[旅馆 服务生]";
+			mes "较大的村落一般都会有一座旅馆，余兴之余，或是想证明自己比别人强的时候，可以到旅馆去";
+			next;
+			mes "-好像什么事情都没发生过一样的微笑着-";
 			close;
 		}
 		else {
-			mes "[Inn Employee]";
-			mes "Welcome to the Inn.";
-			mes "When you move to the entrance, you can also enter a PvP zone though a PvP doorman.";
+			mes "[旅馆 服务生]";
+			mes "客人，请问有什么事吗?";
 			next;
-			mes "[Inn Employee]";
-			mes "Usually, you can visit inns in big towns. If you want to take a rest or compete with others, an Inn is the place to go.";
+			mes "[旅馆 服务生]";
+			mes "这里是旅馆，到旅馆入口可以透过PVP守门人，就可以进到PVP场了";
+			next;
+			mes "[旅馆 服务生]";
+			mes "较大的村落一般都会有一座旅馆，余兴之余，或是想证明自己比别人强的时候，可以到旅馆去";
 			close2;
 		}
 	}
 	else {
-		mes "[Inn Employee]";
-		mes "Welcome to the Inn.";
-		mes "When you move to the entrance, you can also enter a PvP zone though a PvP doorman.";
+		mes "[旅馆 服务生]";
+		mes "客人，请问有什么事吗?";
 		next;
-		mes "[Inn Employee]";
-		mes "Usually, you can visit inns in big towns. If you want to take a rest or compete with others, an Inn is the place to go.";
+		mes "[旅馆 服务生]";
+		mes "这里是旅馆，到旅馆入口可以透过PVP守门人，就可以进到PVP场了";
 		next;
-		mes "[Inn Employee]";
-		mes "Oh, and I have a bit of a secret...! I hear the Inn's owner is planning some kind of shady business. It's some sort of major project, but don't let anyone know I told you!";
+		mes "[旅馆 服务生]";
+		mes "较大的村落一般都会有一座旅馆，余兴之余，或是想证明自己比别人强的时候，可以到旅馆去";
 		close;
 	}
 }
 
-in_rogue,243,61,0	script	Suspicious Man#megin	748,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
-		if (god_eremes == 18) {
-			mes "[Cuaque Donon]";
-			mes "Wh-who are you?!";
-			mes "How the hell did";
-			mes "you get in here?!";
-			mes "Get away from me!";
-			mes "Geeeet awwwway!";
+in_rogue,243,61,0	script	诡异的 男子#megin	748,{
+	if($God1 > 49 && $God2 < 100) {
+		if(god_eremes == 18) {
+			mes "[库阿克 多伦]";
+			mes "喂...你在干嘛! 你是怎么进来的!!出去! 我叫你快出去啦!快出去 啊啊啊啊啊啊啊!";
 			close;
 		}
-		else if (god_eremes > 18) {
-			if (god_megin_2 > 0 && god_megin_2 < 4) {
-				mes "[Cuaque Donon]";
-				mes "Wh-who are you?!";
-				mes "How the hell did";
-				mes "you get in here?!";
-				mes "Get away from me!";
-				mes "Geeeet awwwway!";
+		else if(god_eremes > 18) {
+			if(god_megin_2 > 0 && god_megin_2 < 4) {
+				mes "[库阿克 多伦]";
+				mes "喂...你在干嘛! 你是怎么进来的!!出去! 我叫你快出去啦!快出去 啊啊啊啊啊啊啊!";
 				next;
-				mes "^3355FFYou try your best to calm him down and to tell him what you've found in the document.^000000";
+				mes "- 你尽力的安抚库他的情绪，并且开始将所有的文件内容一一地念给他听 -";
 				next;
 				if ((countitem(740) > 0) || (countitem(741) > 0) || (countitem(742) > 0) || (countitem(743) > 0) || (countitem(750) > 0) || (countitem(751) > 0) || (countitem(752) > 0) || (countitem(753) > 0) || (countitem(754) > 0) || (countitem(7206) > 0) || (countitem(7212) > 0)){
 					if (countitem(740) > 0) {
-						set .@toy$,"Puppet";
+						set .@toy$,"疯兔娃娃";
 					}
-					else if (countitem(741) > 0) {
-						set .@toy$,"Poring Doll";
+					else if(countitem(741) > 0) {
+						set .@toy$,"波利娃娃";
 					}
-					else if (countitem(742) > 0) {
-						set .@toy$,"Chonchon Doll";
+					else if(countitem(742) > 0) {
+						set .@toy$,"苍蝇娃娃";
 					}
-					else if (countitem(743) > 0) {
-						set .@toy$,"Spore Doll";
+					else if(countitem(743) > 0) {
+						set .@toy$,"魔菇娃娃";
 					}
-					else if (countitem(744) > 0) {
-						set .@toy$,"Baphomet Doll";
+					else if (countitem(750) > 0) {
+						set .@toy$,"巴风特娃娃";
 					}
-					else if (countitem(751) > 0) {
-						set .@toy$,"Osiris Doll";
+					else if(countitem(751) > 0) {
+						set .@toy$,"俄塞里斯娃娃";
 					}
-					else if (countitem(752) > 0) {
-						set .@toy$,"Rocker Doll";
+					else if(countitem(752) > 0) {
+						set .@toy$,"摇滚蝗虫娃娃";
 					}
-					else if (countitem(753) > 0) {
-						set .@toy$,"Yoyo Doll";
+					else if(countitem(753) > 0) {
+						set .@toy$,"溜溜猴娃娃";
 					}
-					else if (countitem(754) > 0) {
-						set .@toy$,"Racoon Doll";
+					else if(countitem(754) > 0) {
+						set .@toy$,"狸猫娃娃";
 					}
-					else if (countitem(7206) > 0) {
-						set .@toy$,"Black Cat Doll";
+					else if(countitem(7206) > 0) {
+						set .@toy$,"黑猫娃娃";
 					}
 					else {
-						set .@toy$,"Hung Doll";
+						set .@toy$,"吊颈娃娃";
 					}
-					mes "^3355FFYou pulled out a "+ .@toy$ +"";
-					mes "to cover your face, and wiggled its arms as if it were talking.^000000";
+					mes "-你拿出"+ .@toy$ +"后，像玩偶般开始将文件的内容念给他听了-";
 				}
 				else {
-					mes "^3355FFYou must find something";
-					mes "that can calm Cuaque Donon.^000000";
-					next;
-					mes "^3355FFSadly, Chaque Donon seems";
-					mes "to have regressed to a very childish mentality. Perhaps if you brought something that children like. Something that would offer them comfort...^000000";
+					mes "-你必须找到玩偶类的道具来安抚他的情绪-";
 					close;
 				}
 				next;
-				mes "^3355FFChaque Donon nodded his head";
-				mes "and happily sucked his thumb. It saddens you to see a former Crusader reduced to this state.^000000";
+				mes "-他像个小孩一样一边点头，嘴里含着手指头，一边安静地听文件的内容-";
+				mes "-现在情绪平静下来了，应该可以问他几个问题了-";
 				next;
-				switch(select("Ask him about the Inn Maid.:Ask him how he's been doing.:Ask about 1st Squad's Final Mission.")) {
+				switch(select("询问有关旅馆女服务员的事情:询问近况的事情:询问有关3分队最后的任务事情")) {
 				case 1:
-					mes "[Cuaque Donon]";
-					mes "S-she's my sister.";
-					mes "And she's also a Rogue.";
-					mes "When I was retired from service....";
+					mes "[库阿克 多伦]";
+					mes "那...那个人...是我姐姐啦，在流氓公会活动中，当我离开3分队来这里时....";
 					next;
-					mes "[Cuaque Donon]";
-					mes "...";
-					mes "......";
+					mes "[库阿克 多伦]";
+					mes ".........";
 					next;
-					mes "[Cuaque Donon]";
-					mes "My family always expected";
-					mes "too much of me. That's why I used to be a Crusader. I mean, they're paid well and respected.";
+					mes "[库阿克 多伦]";
+					mes "我们家族的每个人都要出人头地才可以，所以我从小就在这种家族压力下长大，因为这样年薪也很高，";
+					mes "我才会志愿去参加退伍之后待遇不错的十字军...但是我却中途离开3分队了";
 					next;
-					mes "[Cuaque Donon]";
-					mes "When I retired, my sister was so mad. She's the only one I can depend upon, but now that I've messed up my life like this...";
+					mes "[库阿克 多伦]";
+					mes "姐姐看到我中途而废所以很生气，我现在只剩姐姐一个人，可是我又惹姐姐生气了，姐姐觉得我没出息所以很生气...";
 					next;
-					mes "[Cuaque Donon]";
-					mes "But even after yelling at me, and saying I was worthless, she got ";
-					mes "me a job at her Inn anyway.";
+					mes "[库阿克 多伦]";
+					mes "然后他把我应征到旅馆工作了，还骂我是一个什么都不会的笨蛋，然后帮我应征了";
 					next;
-					mes "[Cuaque Donon]";
-					mes "I've been working there,";
-					mes "living a quiet life. But now, for some reason, a lot of people want to talk to me about something important.";
+					mes "[库阿克 多伦]";
+					mes "之后，渐渐地来找我的人越来越多了，常常来问东问西的，我的头都痛死了";
 					next;
-					mes "[Cuaque Donon]";
-					mes "I don't know what I said or did, but I think when I gave them the right answer, after I could finally remember something, they tried to hurt me.";
+					mes "[库阿克 多伦]";
+					mes "而且我根本都不知道我自已跟他们说了什么，可是人们只要听过我说的话，就会变得很兴奋甚至还掐住脖子，";
 					next;
-					mes "[Cuaque Donon]";
-					mes "So now my sister's been hiding";
-					mes "me here. It's boring and lonely, and the guy downstairs is always yelling at me to leave.";
+					mes "[库阿克 多伦]";
+					mes "所以姐姐才把我藏在这里，可是好无聊啊，下面的人每天看到我也只是大声的吼叫，走开啦";
 					next;
-					mes "[Cuaque Donon]";
-					mes "Even the Rogue Guild that";
-					mes "my sister's a part of comes in sometimes to yell at me. They all want me to tell them something I'm supposed to know!";
+					mes "[库阿克 多伦]";
+					mes "连姐姐在的流氓公会，听到我讲的话就开始生气，要我把我知道的事情通通说出来";
 					next;
-					mes "[Cuaque Donon]";
-					mes "But I can't remember anything!";
-					mes "This place is safe from dangerous people, but I don't know for how long.";
+					mes "[库阿克 多伦]";
+					mes "可是我真的什么都想不起来啊，不过还是这里比较安全，没有人来比较好";
 					next;
-					mes "[Cuaque Donon]";
-					mes "Even my sister says I have to tell the Rogue Guild what I should know, or they won't protect us anymore.";
+					mes "[库阿克 多伦]";
+					mes "可是现在我只剩姐姐一个亲人了，希望姐姐不在生我的气就好了";
 					next;
-					mes "[Cuaque Donon]";
-					mes "She looked really sad when she";
-					mes "said that. I don't want to let her down or make her upset. She's";
-					mes "all I have left...";
+					mes "[库阿克 多伦]";
+					mes "有时候偶尔会来到流氓公会来找我，只要是好好的回答的话，就会安全的保护我，姐姐总是以悲伤表情对我说着";
 					if (god_megin_2 == 2) {
 						next;
-						mes "[Cuaque Donon]";
-						mes "Oh, I do remember something!";
-						mes "My sister told me not to tell anyone, but I'm gonna tell you...";
+						mes "[库阿克 多伦]";
+						mes "啊，对了，姐姐有告诉我说，有一件事不能说...";
 						next;
-						mes "^3355FFCuaque Donon";
-						mes "whispers into your ears.^000000";
+						mes "-他把嘴对着我的耳朵上-";
+						mes "-低声细语的对我说-";
 						next;
-						mes "[Cuaque Donon]";
-						mes "^666666She said the Rogue Guild wants something from me. So she's gonna send to me to good people that we can trust and can help me.^000000";
+						mes "[库阿克 多伦]";
+						mes "姐姐说...流氓公会也好想知道我说话，所以说会派遣一位好人过去，请向他求助吧";
 						next;
-						mes "[Cuaque Donon]";
-						mes "^666666Still, this is the safest place for me for a while. But I'm always ready to run away if I have to.^000000";
+						mes "[库阿克 多伦]";
+						mes "可是，到目前为止还是觉得这里最安全，所以她叫我一边躲在这里，一边准备逃亡...";
 						set god_megin_2,3;
 					}
 					close;
 				case 2:
-					mes "[Cuaque Donon]";
-					mes "How have I been doing?";
-					mes "Lots of people have been coming";
-					mes "to see me. They all want me to tell them something I don't even know!";
+					mes "[库阿克 多伦]";
+					mes "最近?最近来的人变多了，我好害怕";
 					next;
-					mes "[Cuaque Donon]";
-					mes "The Rogue Guild promised to";
-					mes "protect me, but they scare the hell out of me sometimes by coming out of the floor all of a sudden.";
+					mes "[库阿克 多伦]";
+					mes "本来流氓公会说要保护我的，可是他们也常常突然从地里冒出来，吓死人了，啊，对了，听说姐姐有去找我的上司理论过";
 					next;
-					mes "[Cuaque Donon]";
-					mes "Oh, and my sister said she's";
-					mes "gonna complain to my old boss about something. She said I used to be fine, but now that I've retired, I'm not the same anymore.";
+					mes "[库阿克 多伦]";
+					mes "以前还满正常的，可是从十字军回来之后就变笨了，";
+					mes "所以想去找我以前的上司发脾气吧，我也不太清楚...";
 					next;
-					mes "[Cuaque Donon]";
-					mes "But my old boss from when I was a Crusader doesn't wanna meet my sister. So she's gonna ask help from other Rogues to spread some rumors...";
+					mes "[库阿克 多伦]";
+					mes "可是好像连姐姐的面也不肯见，所以姐姐利用流氓公会的力量开始散怖谣言...说只要去募集支援我以前上司的人，都会变成笨蛋回来....";
 					next;
-					mes "[Cuaque Donon]";
-					mes "Like anyone who works as a Crusader under my old boss will end up like me. You know... broken.";
+					mes "[库阿克 多伦]";
+					mes "最近就只发生这些事情而已";
 					if (god_megin_2 == 1) {
 						set god_megin_2,2;
 					}
 					close;
 				case 3:
-					mes "[Cuaque Donon]";
-					mes "I don't know...";
-					mes "I can't even remember.";
+					mes "[库阿克 多伦]";
+					mes "不知道...我真的想不起来...";
 					if (god_megin_2 == 3) {
 						next;
-						mes "[Cuaque Donon]";
-						mes "Wait, that's right!";
-						mes "^0000FFMegingjard^000000! Right.";
-						mes "We found it, and";
-						mes "we knew what it was";
-						mes "just by looking at it!";
+						mes "[库阿克 多伦]";
+						mes "啊...我想到一个了...我看到^0000FFMegingjard^000000了，";
+						mes "看起来就像是个奇怪的碎片，";
+						mes "很奇怪地我就是知道那是雷神腰带";
 						next;
 						if (rand(1,10) > 4) {
-							switch(select("^FF0000Megingjard^000000!:^FFFFFFListen to him quietly^000000.")) {
+							switch(select("^FF0000雷神腰带^000000!!!!:^FFFFFF安静地听^000000.")) {
 							case 1:
-								mes "[Cuaque Donon]";
-								mes "Waaaaaaaah~!";
-								mes "You're the same";
-								mes "as all the others!";
-								mes "Go away from me!";
+								mes "[库阿克 多伦]";
+								mes "嘻嘻嘻嘻嘻!!你也很害怕呀!!!!";
 								set god_megin_2,0;
 								close;
 							case 2:
-								mes "[Cuaque Donon]";
-								mes "I remember after we found it. One of us in the squad had a argument with our old leader. I was keeping night watch and happened to hear it. I think our leader was out of line...";
+								mes "[库阿克 多伦]";
+								mes "对了...那天晚上，分队长和^0000FF那个人^000000大吵了一架，因为我那天站的是晚上的哨，所以听到远方吵架的声音";
 								next;
-								mes "[Cuaque Donon]";
-								mes "Ergh...";
-								mes "I can't remember";
-								mes "more than that...";
+								mes "[库阿克 多伦]";
+								mes "然后....又想不起来了";
 								set god_megin_2,4;
 								close;
 							}
 						}
 						else {
-							switch( select( "^FF0000Megingjard^000000!", "^FFFFFFMegingjard!^000000.", "^FFFFFFListen to him quitely^000000" ) ) {
+							switch( select( "^FF0000雷神腰带^000000!!!!:^FFFFFF雷神腰带!!!!^000000.:^FFFFFF安静地听^000000" ) ) {
 							case 1:
-								mes "[Cuaque Donon]";
-								mes "Waaaaaaaah~!";
-								mes "You're the same";
-								mes "as all the others!";
-								mes "Go away from me!";
+								mes "[库阿克 多伦]";
+								mes "嘻嘻嘻嘻嘻!!你也很害怕呀!!!!";
 								set god_megin_2,0;
 								close;
 							case 2:
-								mes "[Cuaque Donon]";
-								mes "Waaaaaaaah~!";
-								mes "You're the same";
-								mes "as all the others!";
-								mes "Go away from me!";
+								mes "[库阿克 多伦]";
+								mes "嘻嘻嘻嘻嘻!!你也很害怕呀!!!!";
 								set god_megin_2,0;
 								close;
 							case 3:
-								mes "[Cuaque Donon]";
-								mes "I remember after we found it. One of us in the squad had a argument with our old leader. I was keeping night watch and happened to hear it. I think our leader was out of line...";
+								mes "[库阿克 多伦]";
+								mes "对了...那天晚上，分队长和^0000FF那个人^000000大吵了一架，因为我那天站的是晚上的哨，所以听到远方吵架的声音";
 								next;
-								mes "[Cuaque Donon]";
-								mes "Ergh...";
-								mes "I can't remember";
-								mes "more than that...";
+								mes "[库阿克 多伦]";
+								mes "然后....又想不起来了";
 								set god_megin_2,4;
 								close;
 							}
@@ -2225,155 +1815,128 @@ in_rogue,243,61,0	script	Suspicious Man#megin	748,{
 				}
 			}
 			else if (god_megin_2 == 4) {
-				mes "[Cuaque Donon]";
-				mes "I remember after we found Megingjard. One of us in the squad had a argument with our old leader. I was keeping night watch and happened to hear it. I think our leader was out of line...";
+				mes "[库阿克 多伦]";
+				mes "找到^0000FF雷神腰带^000000的那个晚上，分队长和^0000FF那个人^000000大吵了一架，因为我那天站的是晚上的哨，所以听到远方吵架的声音";
 				next;
-				mes "[Cuaque Donon]";
-				mes "Ergh...";
-				mes "I can't remember";
-				mes "more than that...";
+				mes "[库阿克 多伦]";
+				mes "然后....又想不起来了";
 				next;
-				mes "[Cuaque Donon]";
-				mes "I'm getting sleepy";
-				mes "and my head hurts.";
-				mes "Let me rest now...";
+				mes "[库阿克 多伦]";
+				mes "想睡觉...头好痛喔，我可以休息一下吗?";
 				close2;
 			}
 			else {
-				mes "[Cuaque Donon]";
-				mes "Wh-who are you?!";
-				mes "How the hell did";
-				mes "you get in here?!";
-				mes "Get away from me!";
-				mes "Geeeet awwwway!";
+				mes "[库阿克 多伦]";
+				mes "喂...你在干嘛! 你是怎么进来的!!出去! 我叫你快出去啦!快出去 啊啊啊啊啊啊啊!";
 				close2;
 			}
 		}
 	}
 	else {
-		mes "[Cuaque Donon]";
-		mes "Wh-who are you?!";
-		mes "How the hell did";
-		mes "you get in here?!";
-		next;
-		mes "[Cuaque Donon]";
-		mes "Wahhhhh...!";
-		mes "My head!";
-		mes "It's hurting so bad!";
-		mes "I'm so s-scared!";
+		mes "[库阿克 多伦]";
+		mes "喂...你在干嘛! 你是怎么进来的!!出去! 我叫你快出去啦!快出去 啊啊啊啊啊啊啊!";
 		close;
 	}
 }
 
-alberta,196,146,0	script	Crusader#megin2	751,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
-		if (god_eremes == 18) {
-			mes "[Jack O]";
-			mes "^333333*Yawn...*^000000";
-			mes "It's quiet and boring, as per usual. Let's see if there's any Swordmen I can recruit today.";
+alberta,196,146,0	script	十字军#megin2	751,{
+	if ($God1 > 49 && $God2 < 100) {
+		if(god_eremes == 18) {
+			mes "[杰 欧]";
+			mes "呼啊...艾尔贝塔是个很闲的地方，害我工作得都快睡着了...这附近...";
+			mes "应该不会有闲着没事的剑士，在闲晃吧...?";
 			next;
-			mes "[Jack O]";
-			mes "Eh...?";
+			mes "[杰 欧]";
+			mes "嗯? 你是...?";
 			next;
-			switch(select("Ask him about Rebarev Doug.:Ask him how he's been doing.:Ask him about the last mission of the 1st Squad.")) {
+			switch(select("询问有关雷贝依勒布 多 的事情:询问近况的事情:询问有关3分队最后的任务事情")) {
 			case 1:
-				mes "[Jack O]";
-				mes "Ah! Yeah, our old leader back in the 1st Squad. Heh. I haven't seen him since we were disbanded.";
+				mes "[杰 欧]";
+				mes "啊啊! 你说以前分队长那个人吗?哼，这个嘛，自从3分队解散之后再也没见过他";
 				close;
 			case 2:
-				mes "[Jack O]";
-				mes "Me? Yeah, I'm always busy recruiting future Crusaders.";
-				mes "We always welcome Swordmen";
-				mes "of great ability!";
-				next;
-				mes "[Jack O]";
-				mes "How does it sound? Why don't you volunteer to become a Crusader?";
+				mes "[杰 欧]";
+				mes "嗯? 最近嘛，忙着募兵啊，听说军中总是人力不足啊，怎么样? 你要不要支援啊!";
 				close;
 			case 3:
-				mes "[Jack O]";
-				mes "Last mission?";
-				mes "Eh, I don't really remember it.";
+				mes "[杰 欧]";
+				mes "嗯? 你知道那些要干嘛?";
 				close;
 			}
 		}
 		else if (god_eremes > 18) {
 			if (god_megin_3 == 0 || god_megin_3 == 1) {
-				mes "[Jack O]";
-				mes "^333333*Yawn...*^000000";
-				mes "It's quiet and boring, as per usual. Let's see if there's any Swordmen I can recruit today.";
+				mes "[杰 欧]";
+				mes "呼啊...艾尔贝塔是个很闲的地方，害我工作得都快睡着了...这附近...";
+				mes "应该不会有闲着没事的剑士，在闲晃吧...?";
 				next;
-				mes "[Jack O]";
-				mes "Eh...?";
+				mes "[杰 欧]";
+				mes "嗯? 你是...?";
 				next;
-				switch(select("Ask him about Rebarev Doug.:Ask him how he's been doing.:Ask about 1st Squad's final mission.")) {
+				switch(select("询问有关雷贝依勒布 多 的事情:询问近况的事情:询问有关3分队最后的任务事情")) {
 				case 1:
 					if (god_megin_3 == 1) {
-						mes "[Jack O]";
-						mes "Ah right. Our old leader.";
-						mes "Now I remember: He was";
-						mes "a pretty self righteous jerk";
-						mes "now that I think about it!";
+						mes "[杰 欧]";
+						mes "嗯，那个分队长的信仰心确实很强，不过，就因为他常跟我们说^0000FF'世界上没有人会比他的信仰心更强'^000000所以才会让人觉得不舒服啊";
 						next;
-						mes "[Jack O]";
-						mes "Can you believe he used to say that ^0000FFno one is more religious than him in this world^000000?! That's egoism right there. And maybe insanity.";
+						mes "[杰 欧]";
+						mes "虽然不是很清楚，当时我和分队员们都觉得，我们的信仰心是不会输给任何一个人的，怎么说呢，如果没有这么强的信仰心的话，是没有办法完成坚难的任务的";
 						next;
-						mes "[Jack O]";
-						mes "Anyway, everyone in the squad";
-						mes "took pride in their faith. When";
-						mes "you're having a rough time in the";
-						mes "real world, you depend on religion, you know?";
+						mes "[杰 欧]";
+						mes "不管怎样，当时`和所有其他分队员交换意见，所得到的结论^0000FF不服从命令^000000' 处分这件事呢，是有问题的";
 						next;
-						mes "[Jack O]";
-						mes "Anyways, in the records about";
-						mes "our squad, it says that one of us was punished for insubordination, rebelling or something. That's";
-						mes "a complete lie.";
+						mes "[杰 欧]";
+						mes "其它的我不知道，不过在第4天，好像我们部队舍获到某个东西............好像有人开始搬弄是非吵架了?";
 						next;
-						mes "[Jack O]";
-						mes "During our final mission,";
-						mes "our old leader had a huge argument with one us over something we found. I remember it being some kind of godly artifact, but I can't clearly remember what it was.";
+						mes "[杰 欧]";
+						mes "不管怎样，就算有人吵架好了，^0000FF处罚的方式是分队长独自定的^000000!";
 						next;
-						mes "[Jack O]";
-						mes "Although there was an obvious dispute, I think it was our squad leader who was out of line.";
-						mes "I... I can't really say...";
+						mes "[杰 欧]";
+						mes "长相嘛............果然连长相也忘了";
 						next;
-						mes "[Jack O]";
-						mes "I can't for the life of me";
-						mes "remember how the guy who";
-						mes "argued with the squad leader";
-						mes "looked like. The higher-ups";
-						mes "musta did something to me...";
+						mes "[杰 欧]";
+						mes "在军队待久了头脑就会变差了吧，反正，和那个家伙大吵了一架，";
 						next;
-						mes "[Jack O]";
-						mes "Anyway, I know for sure that whatever that guy did, it wasn't insubordination. In fact, I think he might've been right!";
+						mes "[杰 欧]";
+						mes "但是还不至于到^0000FF不服从命令^000000的地步吧~!怎么说呢，之后的事我就记不得了，来，我要说的话到此为止了..";
 						next;
-						mes "[Jack O]";
-						mes "That's all I can remember.";
-						mes "I better take some Green Herbs now. My head throbs like crazy whenever I think about that time.";
+						mes "[杰 欧]";
+						mes "该吃点绿色药草了，最近只要一想起以前的事就会头痛";
 						set god_megin_3,2;
 						close;
 					}
 					else {
-						mes "[Jack O]";
-						mes "Ah! Yeah, our old leader back in the 1st Squad. Heh. I haven't seen him since we were disbanded.";
+						mes "[杰 欧]";
+						mes "啊啊! 你说以前分队长那个人吗?哼，这个嘛，自从3分队解散之后再也没见过他";
 						close;
 					}
 				case 2:
-					mes "[Jack O]";
-					mes "Me? Yeah, I'm not doing so bad. Keeping busy recruiting future Crusaders. We welcome all";
-					mes "Swordmen if they show potential~";
+					mes "[杰 欧]";
+					mes "嗯? 最近嘛，忙着募兵啊，听说军中总是人力不足啊，怎么样? 你要不要支援啊!";
 					close;
 				case 3:
-					mes "[Jack O]";
-					mes "Huh...?";
-					mes "Why would";
-					mes "you want to know?";
+					mes "[杰 欧]";
+					mes "嗯? 你知道那些要干嘛?";
 					next;
-					mes "^3355FFYou tell him what you've read in the records for the 1st Squad. Afterwards, Jack O looks a little confused.^000000";
+					mes "- 你将资料中所记录的事情讲给他听了 -";
 					next;
-					mes "[Jack O]";
-					mes "Huh...?";
-					mes "I might not be able to remember";
-					mes "a whole lot from back then, but the part about ^0000FFinsubordination^000000 can't be right. I'm sure of that.";
+					mes "最后的任务 : 3分队的 ^0000FF最后的任务^000000上级下达了执行最后的任务之后，就解散最精锐的搜索队第3分队的命令该任务是国王秘密的命令，";
+					mes "任务的内容是找寻现世的^0000FF神的痕迹^000000的任务不过3分队在执行任务中，却发生了不幸的事件，其中1名分队员不满分队长的作战指挥，";
+					mes "做出了^0000FF不服从分队长指挥的单独行动^000000结果，在口头争吵之后终于爆发了武力的冲突，把`单独行动的分队员'除外之后，";
+					mes "与其它分队员们讨论的结果是，以 ^0000FF不服从命令^000000做为处分的结论，对该1人做武力制裁，该人员因当时受伤，报告中显示住院中，";
+					mes "在不幸的事件结束后，关于神的痕迹寻找的结果，仅记录着`有限的'成功，做为报告而已，因有限的成功，";
+					mes "结果造成了3分队开始怀疑3中队1小队长的领导能力，于是要负起失职的责任，1小队长在与3分队长面谈之后，";
+					mes "为了表示负责而建议解散3分队，之后呢，3分队就解散了，解散后，分队长以下的分队员，被强制进入军纪教育队，";
+					mes "接受3个月的军纪训练后，被强制的转出到其它地方了现在找3分队搜寻的结果物，以当时分队长雷贝依勒布 多 的记载，";
+					mes "正在积极的进行研究当中，做为报告的补充，本研究是由普隆德拉国王下令进行的，请你认知，以上";
+					next;
+					mes "^0000FF-听完之后一脸慌张的样子-^000000";
+					next;
+					mes "[杰 欧]";
+					mes "嗯...虽然已经过了很久，但是有的事情记不起来了，这个文件中写着^FF0000'把`单独行动的分队员'除外之后，与其它分队员们讨论的结果是，以 ^0000FF不服从命令^FF0000做为处分的结论'^000000";
+					next;
+					mes "[杰 欧]";
+					mes "这个部分是不对的，以我片刻的记忆是这样的";
 					if (god_megin_3 == 0) {
 						set god_megin_3,1;
 					}
@@ -2381,772 +1944,634 @@ alberta,196,146,0	script	Crusader#megin2	751,{
 				}
 			}
 			else if (god_megin_3 == 2) {
-				mes "[Jack O]";
-				mes "Our old leader was";
-				mes "so arrogant to the point";
-				mes "of being a little off his rocker.";
+				mes "[杰 欧]";
+				mes "'^0000FF世界上没有人会比他的信仰心更强^000000' 这句话是吵架的起因";
 				next;
-				mes "[Jack O]";
-				mes "I mean, normal people";
-				mes "don't say things like '^0000FFI am the most religious man in the universe! Kneel before me!^000000' Yeah. Not a normal thing to say.";
+				mes "[杰 欧]";
+				mes "反正，'和`与其它分队员们讨论的结果是，以 ^0000FF不服从命令^000000做为处分的结论'确实是有问题的";
 				next;
-				mes "[Jack O]";
-				mes "Anyway, if the squad";
-				mes "leader punished anyone for insubordination, I'm sure that it was unwarranted. I don't remember too much, but I'm sure of that.";
+				mes "[杰 欧]";
+				mes "我先吃一下绿色药草...不过...可不是每个人都可以把这个绿色药草拿来当镇痛剂的，呵呵，";
 				next;
-				mes "[Jack O]";
-				mes "Excuse me, I need to take some Green Herbs. Taking these seems";
-				mes "to be the only thing that works for my headache.";
-				next;
-				mes "^3355FFJack O busily chewed";
-				mes "on some Green Herbs.";
-				mes "It seemed to greatly relieve him from the pain of his headaches.^000000";
+				mes "- 他拿出绿色药草开始吃了起来 -";
+				mes "- 似乎是头痛时，他用来镇痛的方法 -";
 				close;
 			}
 			else {
-				mes "[Jack O]";
-				mes "^333333*Yawn...*^000000";
-				mes "It's quiet and boring, as per usual. Let's see if there's any Swordmen I can recruit today.";
+				mes "[杰 欧]";
+				mes "呼啊...艾尔贝塔是个很闲的地方，害我工作得都快睡着了...";
+				mes "这附近...应该不会有闲着没事的剑士，在闲晃吧...?";
 				close;
 			}
 		}
 		else {
-			mes "[Jack O]";
-			mes "Hey kid!";
-			mes "Ever think about";
-			mes "bein' a Crusader?";
+			mes "[杰 欧]";
+			mes "嗨! 年经人! 想不想成为十字军啊?";
 			close2;
 		}
 	}
 	else {
 		if (BaseClass == Job_Swordman){
-			mes "[Jack O]";
-			mes "Hey kid!";
-			mes "Ever think about";
-			mes "bein' a Crusader?";
+			mes "[杰 欧]";
+			mes "嗨! 年经人! 想不想成为十字军啊?";
 			next;
-			mes "[Jack O]";
-			mes "Basically, you'd be volunteering to be part of our military, as well as train for the Holy War.";
+			mes "[杰 欧]";
+			mes "基本上，你可以加入我们十字军，参予圣战";
 			next;
-			mes "[Jack O]";
-			mes "If you have some faith and know how to wield a sword, you'll be more than welcome here.";
+			mes "[杰 欧]";
+			mes "如果你拥有一把信心之剑，那么我们将会更加的欢迎你";
 			next;
-			mes "[Jack O]";
-			mes "Just think about my suggestion";
-			mes "and come back if you're interested. Alright then, see you later~";
+			mes "[杰 欧]";
+			mes "考虑一下我的建议吧";
+			mes "如果有兴趣的话欢迎随时回来，那么，再见~";
 			close;
 		}
 		else {
-			mes "[Jack O]";
-			mes "^333333*Yawn...*^000000";
-			mes "It's quiet and boring, as per usual. Let's see if there's any Swordmen I can recruit today.";
+			mes "[杰 欧]";
+			mes "呼啊...艾尔贝塔是个很闲的地方，害我工作得都快睡着了...";
+			mes "这附近...应该不会有闲着没事的剑士，在闲晃吧...?";
 			next;
-			mes "[Jack O]";
-			mes "Huh...?";
-			mes "Are you interested in knowing more about Crusaders? Hahaha, I guess that must be the case.";
+			mes "[杰 欧]";
+			mes "喔? 这位路人甲!";
+			mes "要不要想转个其它职业啊?";
 			next;
-			mes "[Jack O]";
-			mes "By the way, bring a doll to";
-			mes "the kid in front of me. If you're lucky, she'll give you something neat in return. What it is, I don't know. I've got no dolls.";
+			mes "[杰 欧]";
+			mes "啊....走掉了";
 			next;
-			mes "[Jack O]";
-			mes "In accordance with the Crusader code, I'm not supposed to lie. So yeah, you can trust me!";
+			mes "[杰 欧]";
+			mes "哼，别人在跟你说话的时候，最起码也要看着对方吧";
+			next;
+			mes "[杰 欧]";
+			mes "喔? 你一直看着我要干嘛...";
+			mes "对这边有一点关心吗?";
+			next;
+			mes "[杰 欧]";
+			mes "嗯，先不管你对这边有没有兴趣...";
+			mes "请先给前面这位小孩娃娃的话，会有什么好玩的事情发生的~";
+			mes "相信我这个，相信神的人说的话吧!";
 			close2;
 		}
 	}
 }
 
-aldebaran,66,213,0	script	Lady#megin	69,{
-	if (checkweight(1301,3) == 0) {
-		mes "- You are carrying too many items!";
-		close;
-	}
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
-		if (god_eremes == 18) {
-			mes "[Emma Searth]";
-			mes "^333333*Sigh...*^000000 I haven't gotten any response from them. I don't know";
-			mes "if I can wait much longer to join the Kafra Corporation.";
+aldebaran,66,213,0	script	小姐#megin	69,{
+	if ($God1 > 49 && $God2 < 100) {
+		if(god_eremes == 18) {
+			mes "[艾麻 西奥斯]";
+			mes "呼...已经来过好几次了...到现在都还没有消息...";
+			mes "看来要实现当卡普拉职员的梦还遥远啊...";
 			close;
 		}
-		else if (god_eremes > 18 && god_eremes < 26) {
+		else if(god_eremes > 18 && god_eremes < 26) {
 			if (god_megin_4 < 2) {
-				mes "[Emma Searth]";
-				mes "^333333*Sigh...*^000000 I haven't gotten any response from them. I don't know";
-				mes "if I can wait much longer to join the Kafra Corporation.";
+				mes "[艾麻 西奥斯]";
+				mes "呼...已经来过好几次了...到现在都还没有消息...看来要实现当卡普拉职员的梦还遥远啊...";
 				next;
-				mes "[Emma Searth]";
-				mes "Oh, an adventurer! I actually used to work in the same field that you do. More specifically, I used to be a Crusader.";
+				mes "[艾麻 西奥斯]";
+				mes "要不要听听我说的话呀...?实在是太闷了...";
 				next;
-				mes "[Emma Searth]";
-				mes "My name is Emma Searth. Right now, I'm following my dream and applying to be a Kafra Lady. So my days of wielding a sword are over.";
+				mes "[艾麻 西奥斯]";
+				mes "我的名字叫做艾麻 西奥斯，将来想成为卡普拉职员的人，曾经也走过十字军这条路的人...";
 				next;
-				mes "[Emma Searth]";
-				mes "Sadly, I haven't succeeded yet because I was diagnosed with";
-				mes "some weird ^0000FFamnesia^000000.";
+				mes "[艾麻 西奥斯]";
+				mes "现在放下了剑，为了憧憬已久的世界，带着期许的心来到了这里...";
+				mes "因为^0000FF部份记忆丧失症^000000而导致没有办法充分证明过去事迹的理由，才会这样一直被退回...";
 				next;
-				mes "[Emma Searth]";
-				mes "Of course, I understand that";
-				mes "Kafra Corporation is a large, professional company, but";
-				mes "if I can work for them even if it's just part-time...";
+				mes "[艾麻 西奥斯]";
+				mes "当然我也知道卡普拉中心是个，不太充裕的超大型的多国性服务业，但是...就算不是正式职员，我也希望可以当个约聘人员...";
 				next;
-				mes "[Emma Searth]";
-				mes "Is it that big of a problem?";
-				mes "I suppose they're worried";
-				mes "that I'd forget important customer information once I'm hired.";
+				mes "[艾麻 西奥斯]";
+				mes "部份记忆丧失症，有这么严重吗...?可是他们一直说我可能会忘记顾客的道具目录，而不录用我...";
 				next;
-				mes "[Emma Searth]";
-				mes "It's strange. When I was";
-				mes "a Crusader, I remembered";
-				mes "everything lucidly, and I never had any problems recalling the past.";
+				mes "[艾麻 西奥斯]";
+				mes "我活到这么大，除了某些时段的记忆之外，其他的事情我可是记得一清二楚的，虽然有时候会突然想起什么，但是拼命想的话总是头会痛";
 				next;
-				mes "[Emma Searth]";
-				mes "But now I get these migraines whenever I try to focus on my memories from those times";
-				mes "when I used to fight in the Prontera Military.";
+				mes "[艾麻 西奥斯]";
+				mes "哈哈.....";
 				next;
-				mes "[Emma Searth]";
-				mes "^333333*Sigh...*^000000";
-				next;
-				switch(select("About her past.:Why be a Kafra Lady?:About memories she can remember.")) {
+				switch(select("询问那女人的过去:询问那女人想成为卡普拉职员的理由:询问有关部份记忆丧失中没有忘记的记忆")) {
 				case 1:
-					if (countitem(7015) > 0) {
-						mes "^3355FFThe scent of your";
-						mes "Memory Bookmark";
-						mes "seems to bring clarity";
-						mes "to her thoughts.^000000";
+					if (countitem(7015) > 0) {	//身上带有物品-回忆书签，可触发
+						mes "^0000FF回忆书签的香味开始引导她的记忆^000000";
 						next;
-						mes "[Emma Searth]";
-						mes "I was born in a wealthy family where I was raised to learn etiquette, fencing, Peco riding, and music lessons since I was";
-						mes "born. I suppose you can say I'm pretty well educated.";
+						mes "[艾麻 西奥斯]";
+						mes "我出生在一个很富裕的家庭";
+						mes "从小就培养礼仪、剑技、骑马、音乐";
 						next;
-						mes "[Emma Searth]";
-						mes "However, my parents weren't";
-						mes "pleased when they learned that I wanted to become a Kafra Lady.";
+						mes "[艾麻 西奥斯]";
+						mes "我的梦想，是成为卡普拉职员";
+						mes "但是我的父母非常反对";
 						next;
-						mes "[Emma Searth]";
-						mes "My parents insisted that";
-						mes "I become a Sage or a Scholar.";
-						mes "In the end, I ended up running";
-						mes "away from them by joining the Crusaders.";
+						mes "[艾麻 西奥斯]";
+						mes "我的父母希望我可以成为贤者或是圣职者";
+						mes "但最后我还是照着父母的期望，而加入了十字军";
 						next;
-						mes "[Emma Searth]";
-						mes "Luckily, the Crusaders were advertising their recruitment at the time, so I took that chance. Plus, having military experience might even help me join Kafra!";
+						mes "[艾麻 西奥斯]";
+						mes "很幸运的，在十字军招聘时告诉了我，若是有军事经验，有可能可以入取卡普拉职员";
 						next;
-						mes "[Emma Searth]";
-						mes "Since I did so well in Boot Camp,";
-						mes "I got the chance to join an elite squad. My squad was often assigned difficult missions, and we never failed to complete those.";
+						mes "[艾麻 西奥斯]";
+						mes "因为我表现的很优秀，有机会可以加入先锋队伍，我们常常被指派困难度高的任务";
+						mes "但是不管多困难我们都会完成";
 						next;
-						mes "[Emma Searth]";
-						mes "Eventually, my reputation as a female Crusader, and being in a respectable military position, was enough to satisfy my family.";
+						mes "[艾麻 西奥斯]";
+						mes "最后，我身为一个女性十字军，得到了名誉及地位，也满足了我的家人";
 						next;
-						mes "[Emma Searth]";
-						mes "But after that day,";
-						mes "everything went wrong.";
-						mes "I only remember that it";
-						mes "was very sad and depressing.";
-						mes "Somehow, I feel like we were";
-						mes "even betrayed...";
+						mes "[艾麻 西奥斯]";
+						mes "但自从那天之后，";
+						mes "一切都变的错误，";
+						mes "我只记得那相当令人难过...";
+						mes "不知道为什么，甚至觉得我们被人出卖";
 						next;
-						mes "[Emma Searth]";
-						mes "I think I can";
-						mes "try to remember";
-						mes "my comrades...";
+						mes "[艾麻 西奥斯]";
+						mes "我想我可以去试着记住我的同伴们";
 						set god_megin_4,1;
 						close;
 					}
 					else {
-						mes "[Emma Searth]";
-						mes "Ah, let's not talk about it. It's too depressing. Maybe if you had some sort of ^0000FFmemory^000000 aid, I might be able to recall my forgotten past. Anything, like a reminder, a scheduler, a bookmark, a string...";
+						mes "[艾麻 西奥斯]";
+						mes "真是的...怎么会突然提到过去...但是...偶尔回想起值得的^0000FF回忆^000000偶尔回想一下也不错啊";
 						close;
 					}
 				case 2:
-					mes "[Emma Searth]";
-					mes "One day, I happened to see Ms. Leilah at work here in Al De Baran. She was shining with confidence and commanded respect, even from her customers!";
+					mes "[艾麻 西奥斯]";
+					mes "我在远地方看见克拉丽丝时就领悟到了...";
 					next;
-					mes "[Emma Searth]";
-					mes "She carried herself like a professional, no matter what the situation. Even though I knew she was tired from working in the summer heat, she made everything look effortless!";
+					mes "[艾麻 西奥斯]";
+					mes "不管做什么事情...都要像她一样充满自信的表情，就像是散发着光芒一样";
 					next;
-					mes "[Emma Searth]";
-					mes "When the male customers try to flirt with her, she never loses her poise. She just adjusts her glasses and does what she needs to do.";
+					mes "[艾麻 西奥斯]";
+					mes "看起来又热又辛苦，可是她的脸上丝毫没有半点的不满，多么有自信的眼神啊...";
 					next;
-					mes "[Emma Searth]";
-					mes "To me, she's like a lone, guardian angel. At that moment, it seemed the world existed just to be mocked by Ms. Leila.";
+					mes "[艾麻 西奥斯]";
+					mes "就算身边有烦人的男生脸上的表情也不会改变，只会一边摸着她的眼镜，类似一把锋刀砍竹子一样，把自己的事情处理完完美美的";
 					next;
-					mes "[Emma Searth]";
-					mes "I've also heard that Kafra Ladies are always traveling around the world, which is something I've always dreamed of doing.";
+					mes "[艾麻 西奥斯]";
+					mes "看起来像是一个人独自地嘲笑着世界，独自地在和世界搏斗一样，瞬间甚至会让人觉得，世界是为了接受克拉丽丝的嘲笑而?生的";
 					next;
-					mes "[Emma Searth]";
-					mes "Ms. Leilah is my idol,";
-					mes "and she's the reason why";
-					mes "I want to become a Kafra Lady.";
+					mes "[艾麻 西奥斯]";
+					mes "而且...据说克拉丽丝独自一个人，已经做过了无数次想像的大陆的旅行了..也因为这个原因大家才会常常聚集在他的身边，所以我也想和她一样";
+					next;
+					mes "[艾麻 西奥斯]";
+					mes "啊，真是的...我怎么会...无论如何...我一定要成为卡普拉职员...不对，现在应该要说我曾经一度想成为卡普拉的职员才对吧";
 					close;
 				case 3:
 					if (countitem(511) > 0 && god_megin_3 > 1) {
-						mes "^3355FFEmma Searth clutches her head and winces as she suffers from another migraine.^000000";
+						mes "-一问问题她就开始头痛的样子-";
 						next;
-						mes "^3355FFRemembering that a Green Herb was able to relieve Jack O, you gave a Green Herb to Emma. She takes it, and looks a little more relaxed.^000000";
+						mes "-我想到杰 欧的行动，而把绿色药草拿给她了-";
 						next;
-						mes "[Emma Searth]";
-						mes "I'm not even sure";
-						mes "how much I can remember";
-						mes "and how much I've actually";
-						mes "forgotten.";
+						mes "-艾麻在闻过绿色药草之后，以比较平静的表情说话了-";
 						next;
-						mes "[Emma Searth]";
-						mes "Let me...";
-						mes "Try to remember every one in our squad. Let's see, there was Jack O, The Nineball. Z-Zan. Zan.H-Huadoku. C-Cuaque Donon. Myself. Um, E... Eni... Egni... Um...";
+						mes "[艾麻 西奥斯]";
+						mes "这个...我不知道耶...";
+						mes "到哪个部份开始是有记忆的，";
+						mes "到哪个部份为止是没有记忆的..";
 						next;
-						mes "[Emma Searth]";
-						mes "Egni...";
-						mes "Egnigem?^000000";
-						mes "Who was that?";
-						mes "Oh no. I'm sure he might";
-						mes "have, no, was there someone";
-						mes "named that with us?";
+						mes "[艾麻 西奥斯]";
+						mes "到哪个部份为止是没有记忆的..";
+						mes "只有分队员的名字而已...";
+						next;
+						mes "[艾麻 西奥斯]";
+						mes "^0000FF杰 欧、德 纳英伯、詹 花多酷、库阿克 多伦、伊格尼建^000000";
 						close2;
 						set god_megin_4,2;
 						end;
 					}
 					else {
-						mes "^3355FFEmma Searth clutches her head and winces as she suffers from another migraine.^000000";
+						mes "-一问问题她就开始头痛的样子-";
 						next;
-						mes "[Emma Searth]";
-						mes "I'm not even sure";
-						mes "how much I can remember";
-						mes "and how much I've actually";
-						mes "forgotten.";
+						mes "[艾麻 西奥斯]";
+						mes "这个...我不知道耶...";
+						mes "到哪个部份开始是有记忆的，";
+						mes "到哪个部份为止是没有记忆的..";
 						close;
 					}
 				}
 			}
-			else if (god_megin_4 > 1) {
-				mes "[Emma Searth]";
-				mes "^0000FFJack O, The Nineball, Zan.Huadoku, Cuaque Donon, Egnigem.^000000 Oh, I really miss those guys...";
+			else if(god_megin_4 > 1) {
+				mes "[艾麻 西奥斯]";
+				mes "^0000FF杰 欧、德 纳英伯、詹 花多酷、库阿克 多伦、伊格尼建^000000令人怀念的名字啊...";
 				close;
 			}
 			else {
-				mes "[Emma Searth]";
-				mes "^333333*Sigh...*^000000 I haven't gotten any response from them. I don't know";
-				mes "if I can wait much longer to join the Kafra Corporation.";
+				mes "[艾麻 西奥斯]";
+				mes "呼...已经来过好几次了...到现在都还没有消息...";
+				mes "看来要实现当卡普拉职员的梦还遥远啊...";
 				close;
 			}
 		}
 		else if (god_eremes == 25) {
-			mes "[Emma Searth]";
-			mes "Egnigem...";
-			mes "That name makes";
-			mes "me so sad. I'm not";
-			mes "quite sure why, but...";
+			mes "[艾麻 西奥斯]";
+			mes "伊格尼建...好像是个很悲伤的单字...可是又什么都想不起来";
 			close;
 		}
 		else if (god_eremes == 26 || god_eremes == 27) {
-			mes "[Emma Searth]";
-			mes "Egnigem...";
-			mes "That name makes";
-			mes "me so sad. I'm not";
-			mes "quite sure why, but...";
+			mes "[艾麻 西奥斯]";
+			mes "伊格尼建...好像是个很悲伤的单字...可是又什么都想不起来";
 			next;
-			mes "^3355FFEmma turns away before you can see her cry. Still, her shoulders heave with each sob as you imagine the hardship she's had to endure.^000000";
+			mes "-一道眼泪从艾麻的脸上滑落-";
 			next;
-			mes "[Emma Searth]";
-			mes "I wish I knew what that name really means. I'm sure it's linked to an important memory from my past.";
+			mes "[艾麻 西奥斯]";
+			mes "虽然不确定...但是这个单字好像是可以^0000FF唤醒我部份丧失的记忆的单字^000000...";
 			next;
-			mes "[Emma Searth]";
-			mes "I really appreciate you coming here to talk to me about the old days. I, I want you to have this.";
+			mes "[艾麻 西奥斯]";
+			mes "谢谢你来到这个地方找我，并且还告诉我这个事情...这是我一点小小的心意...请你收下...";
 			set god_eremes,28;
 			getitem 603,1; // Old_Blue_Box
-			if (checkre(3)) {
-				if (BaseLevel < 56) getexp 2700,0;
-				else if ((BaseLevel > 55) && (BaseLevel < 61)) getexp 3000,0;
-				else if ((BaseLevel > 60) && (BaseLevel < 66)) getexp 5605,0;
-				else if ((BaseLevel > 65) && (BaseLevel < 71)) getexp 8223,0;
-				else if ((BaseLevel > 70) && (BaseLevel < 76)) getexp 21227,0;
-				else if ((BaseLevel > 75) && (BaseLevel < 81)) getexp 39073,0;
-				else if ((BaseLevel > 80) && (BaseLevel < 86)) getexp 45102,0;
-				else if ((BaseLevel > 85) && (BaseLevel < 91)) getexp 54615,0;
-				else getexp 122035,0;
-			} else {
-				if (BaseLevel < 56) getexp 27000,0;
-				else if ((BaseLevel > 55) && (BaseLevel < 61)) getexp 30000,0;
-				else if ((BaseLevel > 60) && (BaseLevel < 66)) getexp 56052,0;
-				else if ((BaseLevel > 65) && (BaseLevel < 71)) getexp 82233,0;
-				else if ((BaseLevel > 70) && (BaseLevel < 76)) getexp 212271,0;
-				else if ((BaseLevel > 75) && (BaseLevel < 81)) getexp 390738,0;
-				else if ((BaseLevel > 80) && (BaseLevel < 86)) getexp 451020,0;
-				else if ((BaseLevel > 85) && (BaseLevel < 91)) getexp 546156,0;
-				else getexp 1220358,0;
-			}
+			getexp 1220358,0;
 			close;
 		}
 		else if (god_eremes == 28) {
-			mes "[Emma Searth]";
-			mes "Egnigem...";
-			mes "That name makes";
-			mes "me so sad. I'm not";
-			mes "quite sure why, but...";
+			mes "[艾麻 西奥斯]";
+			mes "伊格尼建...好像是个很悲伤的单字...可是又什么都想不起来";
 			next;
-			mes "^3355FFEmma turns away before you can see her cry. Still, her shoulders heave with each sob as you imagine the hardship she's had to endure.^000000";
+			mes "-一道眼泪从艾麻的脸上滑落-";
 			close;
 		}
 		else {
-			mes "[Emma Searth]";
-			mes "^333333*Sigh...*^000000 I haven't gotten any response from them. I don't know";
-			mes "if I can wait much longer to join the Kafra Corporation.";
+			mes "[艾麻 西奥斯]";
+			mes "呼...已经来过好几次了...到现在都还没有消息...";
+			mes "看来要实现当卡普拉职员的梦还遥远啊...";
 			close;
 		}
 	}
 	else {
-		mes "[Emma Searth]";
-		mes "I hear the Kafra Ladies always travel around the world, something I've always dreamed of doing! Hopefully, one of these days, I'll be able to work for the Kafra Corporation too.";
-		next;
-		mes "[Emma Searth]";
-		mes "^333333*Sigh...*^000000";
-		mes "Still, it's discouraging. I haven't heard anything from them...";
+		mes "[艾麻 西奥斯]";
+		mes "呼...已经来过好几次了...到现在都还没有消息...";
+		mes "看来要实现当卡普拉职员的梦还遥远啊...";
 		close;
 	}
 }
 
-cmd_in02,190,94,3	script	Man#megin	828,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
+cmd_in02,190,94,3	script	青年#megin	828,{
+	if ($God1 > 49 && $God2 < 100) {
 		if (god_eremes == 18) {
-			mes "[Royal Myst]";
-			mes "Wha...?";
-			mes "You wanna talk?";
+			mes "[洛耶 密斯特]";
+			mes "喂? 你是谁?我很忙没空跟你哈啦!";
+			mes "这次要往哪个方向走呢....嗯...唉....还真伤脑筋啊...";
 			next;
-			mes "[Royal Myst]";
-			mes "What am I, your personal psychiatrist?! Lemme alone,";
-			mes "I'm busy here! Awright, now";
-			mes "which one do I bet on...?";
-			next;
-			switch(select("Speak of Rebarev Doug.:Speak of the 1st Squad.:Talk about gambling.:Discuss hobbies.")) {
+			switch(select("告诉他有关雷贝依勒布 多 的事:告诉他有关3分队的事:告诉他有关赌搏的事:告诉他有关兴趣的事")) {
 			case 1:
-				mes "[Royal Myst]";
-				mes "Wha--? Him again?! Tell him I'm fine! Dandy, even! Why's he gotta send all these people just to ask";
-				mes "a silly question?";
+				mes "[洛耶 密斯特]";
+				mes "咳哈! 什么，你是那个老头派你来的吧?回去告诉他，我活的很好，真是的....干嘛一直派人来啊...";
 				close;
 			case 2:
-				mes "[Royal Myst]";
-				mes "1st Squad? Yeah, I used to be in that. All of us in the squad used to be real good buddies too.";
+				mes "[洛耶 密斯特]";
+				mes "什么? 3分队? 我当然知道啊，曾经一起出过任务的同袍，我怎么可能会不知道";
 				next;
-				mes "[Royal Myst]";
-				mes "Zan.Huadoku, Cuaque Donon,";
-				mes "Jack O, Emma Searth and The Nineball. Yeah... I wonder what they're all up to?";
+				mes "[洛耶 密斯特]";
+				mes "连队员们的名字也都还记得呀....詹 花多酷、库阿克 多伦、杰 欧、艾麻 西奥斯、洛耶 密斯特、德 纳英伯";
+				mes "不知道他们现在在做什么....?";
 				close;
 			case 3:
-				mes "[Royal Myst]";
-				mes "Gambling? I love it, you";
-				mes "know? Eh, I don't win all the time, but I love it the most when I leave with more Zeny than I came in with! Hahaha!";
+				mes "[洛耶 密斯特]";
+				mes "什么! 赌博! 赌博!吗!?我最爱赌博了!虽然没几个钱我都输光了，嘻嘻...";
 				close;
 			case 4:
-				mes "[Royal Myst]";
-				mes "Hobbies?";
-				mes "What, you comin'";
-				mes "on to me?";
-				next;
-				mes "[Royal Myst]";
-				mes "A man's hobby is drinking, or didn't you know that? I happen to be real good at it too! Mwahahaha!";
+				mes "[洛耶 密斯特]";
+				mes "嗯? 我的兴趣吗? 就是摄取酒精啊!!哈哈哈!!";
 				close;
 			}
 		}
 		else if (god_eremes > 18 && god_eremes < 21) {
 			if (god_megin_6 == 0 && god_megin_5 > 4 && god_megin_4 > 1 && god_megin_3 > 1 && god_megin_2 > 3 && god_megin_1 > 2) {
-				mes "[Royal Myst]";
-				mes "Wha...?";
-				mes "You wanna talk?";
-				next;
-				mes "[Royal Myst]";
-				mes "What am I, your personal psychiatrist?! Lemme alone,";
-				mes "I'm busy here! Awright, now";
-				mes "which one do I bet on...?";
+				mes "[洛耶 密斯特]";
+				mes "喂? 你是谁?我很忙没空跟你哈啦!";
+				mes "这次要往哪个方向走呢....嗯...唉....还真伤脑筋啊...";
 				next;
 			}
-			else if (god_megin_6 > 0) {
-				mes "[Royal Myst]";
-				mes "Hmm?";
-				mes "What's up?";
+			else if(god_megin_6 > 0) {
+				mes "[洛耶 密斯特]";
+				mes "咦? 请问有什么事嘛?";
 				next;
 			}
 			else {
-				mes "[Royal Myst]";
-				mes "Wha...?";
-				mes "You wanna talk?";
-				next;
-				mes "[Royal Myst]";
-				mes "What am I, your personal psychiatrist?! Lemme alone,";
-				mes "I'm busy here! Awright, now";
-				mes "which one do I bet on...?";
+				mes "[洛耶 密斯特]";
+				mes "喂? 你是谁?我很忙没空跟你哈啦!";
+				mes "这次要往哪个方向走呢....嗯...唉....还真伤脑筋啊...";
 				close;
 			}
 			if (god_megin_6 < 16) {
-				switch( select("Speak of Rebarev Doug.", "Speak of the 3rd squad.", "Talk about gambling.", "Discuss hobbies.") ) {
+				switch( select("告诉他有关雷贝依勒布 多 的事:告诉他有关3分队的事:告诉他有关赌搏的事:告诉他有关兴趣的事") ) {
 				case 1:
 					if (god_megin_6 == 0) {
-						mes "[Royal Myst]";
-						mes "Huh? What's that old geezer want this time? Tell 'em I'm fine, dandy even! Why the hell does he keep sending people...";
+						mes "[洛耶 密斯特]";
+						mes "咳哈! 什么，你是那个老头派你来的吧?回去告诉他，我活的很好，真是的....干嘛一直派人来啊...";
 						set god_megin_6,1;
 						close;
 					}
 					else if (god_megin_6 > 0 && god_megin_6 < 15) {
-						mes "[Royal Myst]";
-						mes "What the hell!? Stop talking about him! I never wanna see his face again! Tell him to leave me the hell alone!";
+						mes "[洛耶 密斯特]";
+						mes "干嘛一直跟我说那个老头的事啊!我不想再见到那个人啊!快回去告诉他，我活的好好的!";
 						close;
 					}
 					else if (god_megin_6 > 14) {
-						mes "[Royal Myst]";
-						mes "Damn geezer...";
-						mes "How much is he being paid for studying what we all found?! Eh, somehow, I don't care as long as";
-						mes "he pays me...";
-						next;
-						mes "[Royal Myst]";
-						mes "Yeah...";
-						mes "I just don't";
-						mes "care anymore.";
+						mes "[洛耶 密斯特]";
+						mes "那老游子死老头...到底研究那个东西可以得多少钱啊?连我这个游手好闲的人，每个月都有薪水可以领多好啊...嘻嘻嘻... ";
 						close;
 					}
 				case 2:
 					if (god_megin_6 < 15) {
-						mes "[Royal Myst]";
-						mes "1st Squad? Yeah, I used to be in that. All of us in the squad used to be real good buddies too.";
+						mes "[洛耶 密斯特]";
+						mes "什么? 3分队? 我当然知道啊，曾经一起出过任务的同袍，我怎么可能会不知道";
 						next;
-						mes "[Royal Myst]";
-						mes "Zan.Huadoku, Cuaque Donon,";
-						mes "Jack O, Emma Searth and The Nineball. Yeah... I wonder what they're all up to?";
+						mes "[洛耶 密斯特]";
+						mes "连队员们的名字也都还记得呀....詹 花多酷、库阿克 多伦、杰 欧、艾麻 西奥斯、洛耶 密斯特、德 纳英伯";
+						mes "不知道他们现在在做什么....?";
 					}
 					else if (god_megin_6 > 14) {
-						mes "[Royal Myst]";
-						mes "1st Squad?";
-						mes "Don't know, don't care~";
-						mes "Do I look like a stupid Crusader?";
+						mes "[洛耶 密斯特]";
+						mes "什么? 3分队? 那种东西我怎么可能知道~";
+						mes "呵呵呵...我怎么可能当过十字军呢...我只是...每个月拿那个老头的薪水，过生活而已呀~";
 					}
 					close;
 				case 3:
 					if (god_megin_6 < 15) {
-						mes "[Royal Myst]";
-						mes "Gambling? ! Oh man...";
-						mes "I love gambling, you know!";
-						mes "Heh, but I haven't been lucky enough to win yet. Hahaha~!";
+						mes "[洛耶 密斯特]";
+						mes "什么! 赌博! 赌博!吗!?我最爱赌博了!虽然没几个钱我都输光了，嘻嘻...";
 						close;
 					}
 					else if (god_megin_6 > 14) {
-						mes "[Royal Myst]";
-						mes "Gambling...!";
-						mes "Heh heh! Some risks you take,";
-						mes "and others you really shouldn't.";
-						mes "I can't help but feel sorry for that guy, E--";
+						mes "[洛耶 密斯特]";
+						mes "哈哈...不管怎么说人生最大的赌博，成功的是我...只有那个家伙最可怜...呵呵...";
 						next;
-						mes "[Royal Myst]";
-						mes "Ergh...?";
-						mes "Damn, I can never remember his name. You'd think I wouldn't forget the guy whose rap I'm taking but... Eh, I'll remember once I sober up.";
-						next;
-						mes "[Royal Myst]";
-						mes "Hey, what do you think happens to Crusaders when they're framed and killed, huh? Where exactly do they go? Niflheim, Vahalla...?";
+						mes "[洛耶 密斯特]";
+						mes "现在应该已经被怨死了吧...或是一个人独自地在^0000FF尼芙菲姆^000000哭泣吧?";
+						mes "还是已经进到巴哈拉重回战士的行列了呢? 嘻嘻...哈...说不定连灵魂都会被^0000FF老狐狸^000000给吃掉了吧... 嘻嘻嘻...";
 						set god_eremes,20;
 						close;
 					}
 				case 4:
 					if (god_megin_6 == 0) {
-						mes "Hobbies?";
-						mes "What, you comin'";
-						mes "on to me?";
-						next;
-						mes "[Royal Myst]";
-						mes "A man's hobby is drinking, or didn't you know that? I happen to be real good at it too! Mwahahaha!";
+						mes "[洛耶 密斯特]";
+						mes "嗯? 我的兴趣吗? 就是摄取酒精啊!!哈哈哈!!";
 						close;
 					}
 					else if (god_megin_6 > 0 && god_megin_6 < 15) {
 						if (countitem(970) > 0) {
-							mes "[Royal Myst]";
-							mes "Speaking of which,";
-							mes "I haven't had a drink";
-							mes "for a looong time. Almost";
-							mes "a couple hours now.";
+							mes "[洛耶 密斯特]";
+							mes "喔!? 那个酒精...拿给我吧!";
+							mes "快点! 我好想喝那个东西啊..!!";
 							next;
-							mes "[Royal Myst]";
-							mes "Oooh, looks like you've got a tasty beverage I can enjoy. Bwahahaha! Gimmie~!";
-							next;
-							mes "^3355FFBefore you can even think,";
-							mes "Royal Myst dips his hand into your inventory and helps himself to an Alcohol.^000000";
+							mes "-我还来不及阻止他，酒精就被他抢走了-";
 							delitem 970,1;
 							set god_megin_6,god_megin_6 +2;
 							close;
 						}
 						else {
-							mes "[Royal Myst]";
-							mes "Why mention it? You gonna bring me something I'll like? Cuz I'm more than willing to take it! Bwahahaha!";
+							mes "[洛耶 密斯特]";
+							mes "喔!? 那个酒精...拿给我吧!";
+							mes "快点! 我好想喝那个东西啊..!!";
 							close;
 						}
 					}
 					else if (god_megin_6 > 14) {
-						mes "[Royal Myst]";
-						mes "^333333*Hiccup*^000000 Oh yeah, this is the stuff. Not like that imitation junk they've been serving at the Bars nowadays...";
-						next;
-						mes "[Royal Myst]";
-						mes "Hey! There anything you wanna";
-						mes "know about me? You did me a favor, so I'll tell you anything! Eeeeeverythiiing~~!!";
+						mes "[洛耶 密斯特]";
+						mes "嘻嘻...好呀，好呀-";
+						mes "我说你呀~?";
+						mes "你想不想知道我的秘密呀?";
+						mes "我，全------部，通~ 通都告诉你，全部喔~~~!!";
 						close;
 					}
 				}
 			}
 		}
 		else {
-			mes "[Royal Myst]";
-			mes "Eh heh heh~";
-			mes "I just know";
-			mes "I'm gonna win";
-			mes "this time!";
+			mes "[洛耶 密斯特]";
+			mes "呵呵......我说这一次....";
 			close;
 		}
 	}
 	else {
-		mes "[Royal Myst]";
-		mes "Wha...?";
-		mes "You wanna talk?";
-		next;
-		mes "[Royal Myst]";
-		mes "What am I, your personal psychiatrist?! Lemme alone,";
-		mes "I'm busy here! Awright, now";
-		mes "which one do I bet on...?";
+		mes "[洛耶 密斯特]";
+		mes "喂? 你是谁?我很忙没空跟你哈啦!";
+		mes "这次要往哪个方向走呢....嗯...唉....还真伤脑筋啊...";
 		close;
 	}
 }
 
-jawaii_in,44,110,0	script	Security Officer#megin	734,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
+jawaii_in,44,110,0	script	治安负责人#megin	734,{
+	if ($God1 > 49 && $God2 < 100) {
 		if (god_eremes == 18) {
-			mes "[The Nineball]";
-			mes "Welcome to Jawaii,";
-			mes "the paradise resort!";
-			next;
-			mes "[The Nineball]";
-			mes "I'm the 'The Nineball', the security officer of Jawaii! If you encounter any trouble, or find any Singles, please don't hesitate to report to me as soon as you can~";
-			next;
-			mes "[The Nineball]";
-			mes "I've been told that there have";
-			mes "been many unruly drunkards here";
-			mes "lately, but it is in our best interest to make your experience here as enjoyable as possible.";
+			mes "[德 纳英伯]";
+			mes "欢迎来到幻想的休养圣地爪哇咿岛!我是负责管理这个地方治安的`德 纳英伯' !如果有发生什么事的话，请来找我!据报显示最近这附近的酒鬼变多了";
 			close;
 		}
 		else if (god_eremes > 18) {
 			if (god_megin_5 < 5) {
-				mes "[The Nineball]";
-				mes "Welcome to Jawaii,";
-				mes "the paradise resort!";
-				next;
-				mes "[The Nineball]";
-				mes "I'm the 'The Nineball, the security officer of Jawaii! If you encounter any trouble, or find any Singles, please don't hesitate to report to me as soon as you can~";
-				next;
-				mes "[The Nineball]";
-				mes "I've been told that there have";
-				mes "been many unruly drunkards here lately, but it is in our best interest to make your experience here as enjoyable as possible.";
+				mes "[德 纳英伯]";
+				mes "欢迎来到幻想的休养圣地爪哇咿岛!我是负责管理这个地方治安的`德 纳英伯' !如果有发生什么事的话，请来找我!据报显示最近这附近的酒鬼变多了";
 				set god_megin_5,god_megin_5 +1;
 				close;
 			}
 			else if (god_megin_5 == 5) {
-				mes "^3355FFHe acted very bright and friendly, but for a fleeting moment, you were able to glimpse a hint of sadness in his eyes.^000000";
-				next;
-				mes "^3355FFIt doesn't seem that";
-				mes "you'll be able to get him";
-				mes "to talk about what exactly";
-				mes "happened in the 1st Squad...^000000";
+				mes "-他以善良悲伤的表情，反覆的说着同样的话-";
+				mes "-在这个人身上，应该再得不到什么东西了吧-";
 				close;
 			}
 		}
 	}
 	else {
-		mes "[The Nineball]";
-		mes "Welcome to Jawaii,";
-		mes "the paradise resort!";
-		next;
-		mes "[The Nineball]";
-		mes "I'm the 'The Nineball, the security officer of Jawaii! If you encounter any trouble, or find any Singles, please don't hesitate to report to me as soon as you can~";
-		next;
-		mes "[The Nineball]";
-		mes "I've been told that there have";
-		mes "been many unruly drunkards here lately, but it is in our best interest to make your experience here as enjoyable as possible.";
+		mes "[德 纳英伯]";
+		mes "欢迎来到幻想的休养圣地爪哇咿岛!我是负责管理这个地方治安的`德 纳英伯' !如果有发生什么事的话，请来找我!据报显示最近这附近的酒鬼变多了";
 		close;
 	}
 
 }
 
-niflheim,109,254,0	script	Egnigem	796,{
-	if ($God1 >= $@god_check1 && $God2 < $@god_check2) {
+niflheim,109,254,0	script	伊格尼建	796,{
+	if ($God1 > 49 && $God2 < 100) {
 		if (god_eremes > 19 && god_eremes < 25) {
 			if (god_eremes > 22) {
-				mes "[Egnigem]";
-				mes "Why have you returned to";
-				mes "this lonely place of darkness?";
-				next;
-				mes "[Egnigem]";
-				mes "Please go back to the world";
-				mes "of the living. To be here is to suffer, such is the nature of Niflheim.";
+				mes "[伊格尼建]";
+				mes "又来了吗...又来到这个寒冷的地方...";
 				close;
 			}
 			else {
-				mes "[Egnigem]";
-				mes "Greetings...";
-				mes ""+ strcharinfo(0) +".";
-				mes "I've been watching you in the";
-				mes "world of the living. I see you've been busy looking for the truth about the 1st Squad, haven't you?";
+				mes "[伊格尼建]";
+				mes "...终于见面了...你需要有人帮你整理所有的事情?对吧?";
 				next;
-				mes "[Egnigem]";
-				mes "I can provide you with the answers. After all, I'm the only member of the 1st Squad to retain all of my memories...";
-				next;
-				mes "[Egnigem]";
-				mes "Heh heh...";
-				mes "Let me tell you everything";
-				mes "about the 1st Squad that's";
-				mes "been forgotten...";
+				mes "-将旅行中打听到的事情，-";
+				mes "-以及自己好奇的部份，也都告诉了伊格尼建-";
 				while(1) {
 					next;
-					switch(select("The Mission:Fate of the 1st Squad:Why are you in Niflheim?:Thanks, I've heard enough.")) {
+					switch(select("询问有关事实的事情:询问有关爱")) {
 					case 1:
-						mes "[Egnigem]";
-						mes "First of all, the official record of our mission is misleading.";
-						mes "It contains some truth, based";
-						mes "on verbal evidence, but the most important details have been left out or changed.";
+						mes "[伊格尼建]";
+						mes "你终于来了...现在开始...我就把所有的人都已经忘记的真像告诉你吧...";
 						next;
-						mes "[Egnigem]";
-						mes "Now, we were secretly assigned";
-						mes "to find ^0000FFgodly artifacts^000000 by royal decree. In only three days, we succeeded and found Megingjard!";
+						mes "[伊格尼建]";
+						mes "你所整理出来的疑点以及，你无法理解的部分，应该可以归纳成下例8点";
 						next;
-						mes "[Egnigem]";
-						mes "Now, the records say the mission was unsatisfactory, correct? That would be because of me.";
+						mes "[伊格尼建]";
+						mes "1. 开始搜索后的第3天所发现的^0000FF神的痕迹-未知的碎片^000000";
+						mes "2. 看到^0000FF雷神腰带^000000，虽然是碎片却能认出那是雷神腰带，";
+						mes "3. 当天晚上^0000FF队长和那个人大吵了一架^000000";
+						mes "4. 对于那个人的处罚，是由^0000FF队长一个人独自决定^000000的";
 						next;
-						mes "[Egnigem]";
-						mes "Are you aware that Megingjard";
-						mes "was a belt worn by gods? It was actually one of the keys to Thor's great strength. Another name for it is the 'Girdle of Might.'";
+						mes "[伊格尼建]";
+						mes "5.'^0000FF在这个世界上没有人比我的信仰心还强^000000'这句话的意义，";
+						mes "6. 和文件中不同的队员名子杰 欧、德 纳英伯、詹 花多酷、库阿克 多伦、^0000FF伊格尼建^000000";
+						mes "7. 每个人的共同点-^0000FF部份记忆丧失症和头痛^000000以及异常现象";
+						mes "8. 文件中有部份隐藏的文件";
 						next;
-						mes "[Egnigem]";
-						mes "Now, if a human were to wear";
-						mes "that, there's a possibility that Megingjard would give him strength comparable to a god. Naturally, you'd be afraid of such a thing falling into the wrong hands.";
+						mes "[伊格尼建]";
+						mes ".......";
 						next;
-						mes "[Egnigem]";
-						mes "In Rebarev Doug's mind, he";
-						mes "was the only person worthy of the belt since he considered himself the most religious person alive, and thus, closest to the gods.";
+						mes "[伊格尼建]";
+						mes "整理之后应该可以猜到什么了吧...?你再重新参考文件的资料看看...";
 						next;
-						mes "[Egnigem]";
-						mes "He made it clear to us that only he would wear Megingjard. Although he was our leader, some of us felt uneasy about him wearing the belt and not giving it to his superiors, our mission objective.";
+						mes "[伊格尼建]";
+						mes "-我又重新回想文件里的资料-";
 						next;
-						mes "[Egnigem]";
-						mes "Naturally, I opposed him. He was clearly unbalanced, and it would be dangerous to give him control of such power. It led to something of a fist fight between us.";
+						mes "最后的任务 : 3分队的 ^0000FF最后的任务^000000上级下达了执行最后的任务之后，就解散最精锐的搜索队第3分队的命令该任务是国王秘密的命令，";
+						mes "任务的内容是找寻现世的^0000FF神的痕迹^000000的任务不过3分队在执行任务中，却发生了不幸的事件，其中1名分队员不满分队长的作战指挥，";
+						mes "做出了^0000FF不服从分队长指挥的单独行动^000000结果，在口头争吵之后终于爆发了武力的冲突，把`单独行动的分队员'除外之后，";
+						mes "与其它分队员们讨论的结果是，以 ^0000FF不服从命令^000000做为处分的结论，对该1人做武力制裁，该人员因当时受伤，报告中显示住院中，";
+						mes "在不幸的事件结束后，关于神的痕迹寻找的结果，仅记录着`有限的'成功，做为报告而已，因有限的成功，";
+						mes "结果造成了3分队开始怀疑3中队1小队长的领导能力，于是要负起失职的责任，1小队长在与3分队长面谈之后，";
+						mes "为了表示负责而建议解散3分队，之后呢，3分队就解散了，解散后，分队长以下的分队员，被强制进入军纪教育队，";
+						mes "接受3个月的军纪训练后，被强制的转出到其它地方了现在找3分队搜寻的结果物，以当时分队长雷贝依勒布 多 的记载，";
+						mes "正在积极的进行研究当中，做为报告的补充，本研究是由普隆德拉国王下令进行的，请你认知，以上";
 						next;
-						mes "[Egnigem]";
-						mes "The rest of the squad couldn't";
-						mes "agree on whether or not we should simply obey our leader and let him have the belt. Some just wanted to complete the mission, while others were afraid of what might happen.";
+						mes "[伊格尼建]";
+						mes "这个文件中混杂着真像与谎言，你所怀疑的第1，2，3，4，6点呢，由大家的证词来看都是事实，所以第8点也可以成立";
 						next;
-						mes "[Egnigem]";
-						mes "But Rebarev didn't wait for us to decide. He destroyed Megingjard into pieces, intending to keep most of it and somehow reconstruct it later, and only bring one piece to the Prontera Military.";
+						mes "[伊格尼建]";
+						mes "1. 开始搜索后的第3天所发现的神的痕迹-未知的碎片";
+						mes "2. 看到雷神腰带，虽然是碎片却能认出那是雷神腰带，";
+						mes "3. 当天晚上队长和那个人大吵了一架";
+						mes "4. 对于那个人的处罚，是由队长一个人独自决定的";
+						mes "6. 和文件中不同的队员名子杰 欧、德 纳英伯、詹 花多酷、库阿克 多伦、伊格尼建";
 						next;
-						mes "[Egnigem]";
-						mes "He knew that he couldn't get";
-						mes "away with keeping all of Megingjard to himself, as the entire squad could easily discredit him.";
+						mes "[伊格尼建]";
+						mes "假设第8点为真实的情况下，把该部份的文件重新做比对...另外，为了最后再来思考上部的处份，以及意见所以先排除这一点...";
 						next;
-						mes "[Egnigem]";
-						mes "But Rebarev knew";
-						mes "that he could deceive his";
-						mes "superiors by giving them just a fragment of the artifact, and say that the rest of it was destroyed.";
+						mes "[伊格尼建]";
+						mes "该任务是国王秘密的命令，任务的内容是找寻现世的^0000FF神的痕迹^000000的任务开始搜索后的第3天，找到了^0000FF雷神腰带的碎片^000000";
 						next;
-						mes "[Egnigem]";
-						mes "I discovered his intention when";
-						mes "I found him taking Megingjard apart. Before I could stop him,";
-						mes "I was killed. That bastard had";
-						mes "a trap ready for me...";
+						mes "[伊格尼建]";
+						mes "当晚因为不满队长的指挥所以^0000FF伊格尼建和分队长^000000大吵了一架，结果，在口头争吵之后暴发了武力的冲突，";
+						mes "^0000FF以分队长独自决定^000000对伊格尼建进行`^0000FF武力制裁^000000'的处罚";
 						next;
-						mes "[Egnigem]";
-						mes "After the mission, Rebarev Doug only gave a piece of the belt back to the higher-ups, and gave them";
-						mes "a different account than what had actually happened...";
+						mes "[伊格尼建]";
+						mes "因为受到处罚所以^0000FF伊格尼建的名字出现在伤兵名单的记录^000000中，即使找到了^0000FF雷神腰带的碎片^000000对神的痕迹搜索结果，";
+						mes "只写着`^0000FF有限的成功^000000'做为报告";
+						next;
+						mes "[伊格尼建]";
+						mes "之后，3分队因^0000FF成果不起眼^000000而解散了，解散后，分队长以下的分队员，被强制进入军纪教育队，接受3个月的军纪训练后，";
+						mes "被强制的转出到其它地方了";
+						next;
+						mes "[伊格尼建]";
+						mes "分队员被转出之后，伤兵^0000FF伊格尼建的记录被删除了^000000现在找3分队搜寻的结果物，以当时分队长雷贝依勒布 多 的记载，";
+						mes "正在积极的进行研究当中，做为报告的补充，";
+						next;
+						mes "[伊格尼建]";
+						mes "本研究是由普隆德拉国王下令进行的，请你认知，以上";
+						next;
+						mes "[伊格尼建]";
+						mes "现在开始可以看到可疑的部份了，我是什么时候死的，为什么会死在这里?";
+						next;
+						mes "[伊格尼建]";
+						mes "死亡的时间呢...是在成为伤兵被移送到后方的途中...雷贝依勒布 多 从那个时候就开始暗中算计我了...";
+						next;
+						mes "[伊格尼建]";
+						mes "现在...我们把第5、第7个疑点也加进来吧...如果你见过雷贝依勒布 多 的话，就会知道...他是个具有比别人强的信仰心的人";
+						next;
+						mes "[伊格尼建]";
+						mes "5. '世界上没有人的信仰心比我强'，这句话的意思是....因为雷神腰带是神所配带的腰带...而且雷贝依勒布 多 不容许别人，比他自己跟神还要接近";
+						next;
+						mes "[伊格尼建]";
+						mes "即使是普隆德拉国王也不例外";
+						next;
+						mes "[伊格尼建]";
+						mes "而且...他认为独占雷神腰带是，让他自己更接近神的方法，这就是我跟他发生争吵的原因...";
+						next;
+						mes "[伊格尼建]";
+						mes "因为我看到他把大部份的雷神腰带藏起来，只打算拿一小部份的碎片回去向国王报告，我为了要阻止他的行为才会...";
+						next;
+						mes "[伊格尼建]";
+						mes "7. 每个人的共同点-部份记忆丧失症和头痛，以及异常的现象，从时间上来看，应该是在那3个月间的军纪训练时发生了什么不可告人的事情";
+						next;
+						mes "[伊格尼建]";
+						mes "虽然我也不清楚到底发生了什么事情...不过从所有分队员都失去部份的记忆来看...他们一定是用了什么不正当的方法，消除了他们部份的记忆";
+						next;
+						mes "[伊格尼建]";
+						mes "我再帮你做一次整理吧";
+						next;
+						mes "[伊格尼建]";
+						mes "最后的任务是国王的命令，任务的内容是寻找被遗留在现世的神的痕迹，在开始搜索后的第3天，找到了雷神腰带的碎片";
+						next;
+						mes "[伊格尼建]";
+						mes "当晚因为分队长发现伊格尼建想要独占雷神腰带，所以和分队长展开争吵，结果，在口头争吵之后暴发了武力的冲突，";
+						mes "之后受到分队长独自决定的`武力制裁'的处罚";
+						next;
+						mes "[伊格尼建]";
+						mes "而伊格尼建在受伤后送的途中被暗杀，资料中任务的结果虽然记录着`有限的'成果，但是分队长却成功的偷走大部份雷神腰带的碎片";
+						next;
+						mes "[伊格尼建]";
+						mes "之后，3分队被黑锅而解散，解散之后3个月中，所有分队员的相关记忆被强制消除并且强制转出";
+						next;
+						mes "[伊格尼建]";
+						mes "分队员被转出后，伊格尼建的记录被删除，并且那个位子用洛耶 密斯特代替显示，现在找3分队搜寻的结果物，";
+						mes "以当时分队长雷贝依勒布 多 的记载，正在积极的进行研究当中，做为报告的补充，";
+						next;
+						mes "[伊格尼建]";
+						mes "本研究是由普隆德拉国王下令进行的，请你认知，以上";
+						next;
+						mes "[伊格尼建]";
+						mes "你现在头痛吗..?不过，还是有些地方很可疑啊...";
+						next;
+						mes "[伊格尼建]";
+						mes "1. 为什么雷贝依勒布 多 会重新回到雷神腰带研究小组呢";
+						mes "2. 为什么雷神腰带的研究会变成国王命令的研究呢";
+						next;
+						mes "[伊格尼建]";
+						mes ".......";
+						next;
+						mes "[伊格尼建]";
+						mes "这两个问题就由你来找出答案吧...我已经厌倦了...这个地方很寒冷的...";
+						next;
+						mes "[伊格尼建]";
+						mes "而且，我现在变成了不被任何人记忆的存在，这样的存在...在这里太孤单了...在这种地方也是...";
 						break;
 					case 2:
-						mes "[Egnigem]";
-						mes "Once the mission was completed, Rebarev Doug reported back to the Prontera Military with the intent of keeping most of Megingjard for himself.";
+						mes "[伊格尼建]";
+						mes "虽然不太可能...但是...如果艾麻 西奥斯能记得我的话就好了...";
 						next;
-						mes "[Egnigem]";
-						mes "For some reason, he has a very strong influence in the military hierarchy. Now, by this time, I'm sure the squad pretty much figured out that he killed me.";
+						mes "-从已经变尸体的双眼中，流出了滴滴的泪水... -";
+						mes "-腐烂的尸体和腐烂的眼泪中，还是有眼泪存在吗...-";
 						next;
-						mes "[Egnigem]";
-						mes "But Rebarev Doug expected this, and explained to his superiors that the squad was tempted by Megingjard's power and that I led some of us in a mutiny against him.";
+						mes "[伊格尼建]";
+						mes "...我现在慢慢地说也可以了吧...?跟你说完这些话之后，";
+						mes "我心中的恨意大部份都已经消失了...";
 						next;
-						mes "[Egnigem]";
-						mes "He told his superiors that Megingjard was damaged as we";
-						mes "fought amongst each other, and that the fragment he gave them was all that remained.";
+						mes "[伊格尼建]";
+						mes "大老远来到这里来找我的事实...而且还告诉我艾麻 西奥斯，";
+						mes "又开始重新追求他的梦想这件事，真是太感谢你了";
 						next;
-						mes "[Egnigem]";
-						mes "Because of the confidential nature of our mission, the 1st Squad was disbanded and we weren't given the story Rebarev fed the beaureaucrats until it was too late.";
+						mes "[伊格尼建]";
+						mes "其实我从很久以前就注意她了...从我见到她的那一瞬间开始...";
+						mes "我鼓足了勇气才敢请我的父母向他们家提亲...";
+						mes "我们家族也算是很有名气的家族啊...";
 						next;
-						mes "[Egnigem]";
-						mes "The squad was punished and";
-						mes "sent for disciplinary retraining for three months. During this time, specific memories were unnaturally erased from the squad members.";
+						mes "[伊格尼建]";
+						mes "可是我错了，她居然为了逃避和我结婚而成了十字军...当时我失望了";
 						next;
-						mes "[Egnigem]";
-						mes "In the end, everyone was transferred to other squads and positions. My name had to be removed from all the records since hearing or reading my name might undo the brain washing.";
+						mes "[伊格尼建]";
+						mes "可是你是给我最后勇气的人也是你呀...再加上她也没见过我的面孔，";
+						mes "我也感到安慰，所以我也选择了十字军这条路";
 						next;
-						mes "[Egnigem]";
-						mes "However, they still needed an official scapegoat, so they used Royal Myst's name in the records. That's probably why he's been going through hard times right now.";
+						mes "[伊格尼建]";
+						mes "但是，现在她却连曾经有过我这个人记忆都不见了...不过，";
+						mes "听到你说的她的消息，还是觉得很高兴啊";
 						next;
-						mes "[Egnigem]";
-						mes "And now Rebarev Doug has been studying godly artifacts based on the pieces of Megingjard that we found on that mission using kingdom research funds. Someday, he might be able to reconstruct the belt.";
+						mes "[伊格尼建]";
+						mes "来...走吧";
 						next;
-						mes "[Egnigem]";
-						mes "There are also";
-						mes "a few questions that";
-						mes "I've never been able";
-						mes "to answer.";
-						next;
-						mes "[Egnigem]";
-						mes "I've never known why the King Tristram III ordered the research of godly artifacts. It also bothers me that Rebarev Doug is in charge of Megingjard's research. There must be some reason.";
-						next;
-						mes "[Egnigem]";
-						mes "In any case, for the sake of Rune-Midgard, it will be your responsibility to find the answers.";
-						next;
-						mes "[Egnigem]";
-						mes "There's not much a dead man";
-						mes "can do. But what's worse is that no one remembers me any more. I died alone and I'm still lonely in this place for the dead.";
-						break;
-					case 3:
-						mes "[Egnigem]";
-						mes "The worst part of the squad";
-						mes "having their memories erased is";
-						mes "that Emma Searth has absolutely";
-						mes "no recollection of me.";
-						next;
-						mes "[Egnigem]";
-						mes "Do you mind listening";
-						mes "to me for a while? You're";
-						mes "the only person with whom";
-						mes "I can talk about this...";
-						next;
-						mes "[Egnigem]";
-						mes "From here, I've seen that Emma";
-						mes "is chasing her dream again, and";
-						mes "I'm happy for her. But it's still";
-						mes "not easy, knowing the woman you";
-						mes "love has totally forgotten you.";
-						next;
-						mes "[Egnigem]";
-						mes "I remember the first time I met her. I guess it was love at first sight. But I was too cowardly to confess my love, so I despaired when she joined the Crusaders.";
-						next;
-						mes "[Egnigem]";
-						mes "It took me a while, but I made up my mind to enlist as a Crusader";
-						mes "as well. I wanted to be closer to her so much.";
-						next;
-						mes "[Egnigem]";
-						mes "Now, after all our adventures and good times together, I'm in the worst possible scenario.";
-						next;
-						mes "[Egnigem]";
-						mes "I'm dead...";
-						mes "But I don't even have the consolation that she is";
-						mes "mourning my loss.";
-						next;
-						mes "[Egnigem]";
-						mes "I suppose that's why I'm here";
-						mes "in Niflheim. I can't quite move on to heaven, Valhalla or anywhere else without her.";
-						next;
-						mes "[Egnigem]";
-						mes "Anyway, go and visit the Crusader Headquarters. You might be able to learn more about Rebarev Doug and stop any new shadiness he might be plotting. Good luck, my friend.";
-						break;
-					case 4:
-						mes "[Egnigem]";
-						mes "Thank you for";
-						mes "listening to me...";
+						mes "[伊格尼建]";
+						mes "不如去十字军本部...刚刚说的那些疑点，也许有可能知道也不一定...";
+						mes "你走活人的路吧";
 						if (god_eremes == 21) {
 							set god_eremes,23;
 						}
@@ -3159,171 +2584,86 @@ niflheim,109,254,0	script	Egnigem	796,{
 			}
 		}
 		else if (god_eremes == 25) {
-			mes "[Egnigem]";
-			mes "As a Crusader...";
-			mes "This is the best thing";
-			mes "I can do in return for";
-			mes "what you have done for me.";
-			next;
-			mes "[Egnigem]";
-			mes "Listen...";
-			mes "I'm going to";
-			mes "imbue you with the";
-			mes "^666666last vestiges of my strength^000000...";
+			mes "[伊格尼建]";
+			mes "谢谢你...收集这些小变化...希望可以成为改变世界打开封印的钥匙...";
 			specialeffect EF_BEGINSPELL5;
 			specialeffect2 EF_HOLYHIT;
 			next;
-			mes "[Egnigem]";
-			mes "May the heavens";
-			mes "answer me as I call upon the";
-			mes "light of justice that empowers the defenders of truth, and threaten the enemies of peace.";
+			mes "[伊格尼建]";
+			mes "这个...把我剩下的一点^0000FF生命力，转换成你的经验值^000000吧....";
 			specialeffect EF_BEGINSPELL6;
 			specialeffect2 EF_HOLYHIT;
 			next;
-			mes "[Egnigem]";
-			mes "May you always shine with";
-			mes "the light of truth. Let the light within you eradicate the shadows";
-			mes "of deception, fear and malice.";
-			specialeffect EF_BEGINSPELL6;
-			specialeffect2 EF_HOLYHIT;
-			next;
-			mes "[Egnigem]";
-			mes "By the holy power";
-			mes "invested in me, I humbly bestow upon you my remaining strength. Fight honorably, and do not lose sight of righteousness.";
+			mes "[伊格尼建]";
+			mes "只有这样，用我的微乎其微的力量报答你...";
 			specialeffect EF_LOCKON;
 			specialeffect2 EF_HOLYCROSS;
 			set god_eremes,27;
-			if (checkre(3)) {
-				if (BaseLevel < 56) getexp 2700,0;
-				else if ((BaseLevel > 55) && (BaseLevel < 61)) getexp 3000,0;
-				else if ((BaseLevel > 60) && (BaseLevel < 66)) getexp 5605,0;
-				else if ((BaseLevel > 65) && (BaseLevel < 71)) getexp 8223,0;
-				else if ((BaseLevel > 70) && (BaseLevel < 76)) getexp 21227,0;
-				else if ((BaseLevel > 75) && (BaseLevel < 81)) getexp 39073,0;
-				else if ((BaseLevel > 80) && (BaseLevel < 86)) getexp 45102,0;
-				else if ((BaseLevel > 85) && (BaseLevel < 91)) getexp 54615,0;
-				else getexp 122035,0;
-			} else {
-				if (BaseLevel < 56) getexp 27000,0;
-				else if ((BaseLevel > 55) && (BaseLevel < 61)) getexp 30000,0;
-				else if ((BaseLevel > 60) && (BaseLevel < 66)) getexp 56052,0;
-				else if ((BaseLevel > 65) && (BaseLevel < 71)) getexp 82233,0;
-				else if ((BaseLevel > 70) && (BaseLevel < 76)) getexp 212271,0;
-				else if ((BaseLevel > 75) && (BaseLevel < 81)) getexp 390738,0;
-				else if ((BaseLevel > 80) && (BaseLevel < 86)) getexp 451020,0;
-				else if ((BaseLevel > 85) && (BaseLevel < 91)) getexp 546156,0;
-				else getexp 1220358,0;
-			}
+			set BaseExp,BaseExp+1220358;
 			close;
 		}
 		else if (god_eremes == 26) {
-			mes "[Egnigem]";
-			mes "As a Crusader...";
-			mes "This is the best thing";
-			mes "I can do in return for";
-			mes "what you have done for me.";
-			next;
-			mes "[Egnigem]";
-			mes "Listen...";
-			mes "I'm going to";
-			mes "imbue you with the";
-			mes "^666666last vestiges of my strength^000000...";
+			mes "[伊格尼建]";
+			mes "谢谢你...收集这些小变化...希望可以成为改变世界打开封印的钥匙...";
 			specialeffect EF_BEGINSPELL5;
 			specialeffect2 EF_HOLYHIT;
 			next;
-			mes "[Egnigem]";
-			mes "May the heavens";
-			mes "answer me as I call upon the";
-			mes "light of justice that empowers the defenders of truth, and threaten the enemies of peace.";
+			mes "[伊格尼建]";
+			mes "这个...把我剩下的一点^0000FF生命力，转换成你的经验值^000000吧....";
 			specialeffect EF_BEGINSPELL6;
 			specialeffect2 EF_HOLYHIT;
 			next;
-			mes "[Egnigem]";
-			mes "May you always shine with";
-			mes "the light of truth. Let the light within you eradicate the shadows";
-			mes "of deception, fear and malice.";
-			specialeffect EF_BEGINSPELL6;
-			specialeffect2 EF_HOLYHIT;
-			next;
-			mes "[Egnigem]";
-			mes "By the holy power";
-			mes "invested in me, I humbly bestow upon you my remaining strength. Fight honorably, and do not lose sight of righteousness.";
+			mes "[伊格尼建]";
+			mes "只有这样，用我的微乎其微的力量报答你...";
 			specialeffect EF_LOCKON;
 			specialeffect2 EF_HOLYCROSS;
 			set god_eremes,27;
-			if (checkre(3)) {
-				if (BaseLevel < 56) getexp 2700,0;
-				else if ((BaseLevel > 55) && (BaseLevel < 61)) getexp 3000,0;
-				else if ((BaseLevel > 60) && (BaseLevel < 66)) getexp 5605,0;
-				else if ((BaseLevel > 65) && (BaseLevel < 71)) getexp 8223,0;
-				else if ((BaseLevel > 70) && (BaseLevel < 76)) getexp 21227,0;
-				else if ((BaseLevel > 75) && (BaseLevel < 81)) getexp 39073,0;
-				else if ((BaseLevel > 80) && (BaseLevel < 86)) getexp 45102,0;
-				else if ((BaseLevel > 85) && (BaseLevel < 91)) getexp 54615,0;
-				else getexp 122035,0;
-			} else {
-				if (BaseLevel < 56) getexp 27000,0;
-				else if ((BaseLevel > 55) && (BaseLevel < 61)) getexp 30000,0;
-				else if ((BaseLevel > 60) && (BaseLevel < 66)) getexp 56052,0;
-				else if ((BaseLevel > 65) && (BaseLevel < 71)) getexp 82233,0;
-				else if ((BaseLevel > 70) && (BaseLevel < 76)) getexp 212271,0;
-				else if ((BaseLevel > 75) && (BaseLevel < 81)) getexp 390738,0;
-				else if ((BaseLevel > 80) && (BaseLevel < 86)) getexp 451020,0;
-				else if ((BaseLevel > 85) && (BaseLevel < 91)) getexp 546156,0;
-				else getexp 1220358,0;
-			}
+			getexp 1220358,0;
 			close;
 		}
 		else if (god_eremes < 20) {
-			mes "[Egnigem]";
-			mes "Were you betrayed by fate as well, or are you simply a wanderer that's stumbled into this land of darkness?";
+			mes "[伊格尼建]";
+			mes "呵呵...你也是谜惑的人吗? 还是你也是被神，不，是被命运背叛的人呢?";
+			mes "或者...你想从我这里想得到什么呢?";
 			next;
-			mes "[Egnigem]";
-			mes "Hmm, the living don't deserve";
-			mes "to be in this realm of cold and suffering. But I can only help you escape by telling you what little";
-			mes "I know.";
-			next;
-			switch(select("Ask him about buildings.:Remove marks on mini-map.:Cancel.")) {
+			switch(select("询问村落的位置:删除迷你地图上的所有标示:结束")) {
 			case 1:
-				mes "[Egnigem]";
-				mes "I see. If you better understand Niflheim's layout, you have a greater chance of surviving and escaping.";
+				mes "[伊格尼建]";
+				mes "呵呵...原来是村落的地理位置，来!";
+				mes "我告诉你吧! 把这村落所有的东西!";
 				next;
-				switch(select("Witch's Castle:Tool Shop:Weapon Shop:Tavern:Cancel")) {
+				switch(select("魔女之城:道具店:武器店:酒店:取消")) {
 				case 1:
-					mes "[Egnigem]";
-					mes "The witch of Niflheim...";
-					mes "You can find her castle at the ^FF3355+^000000 mark I've made on your mini-map.";
-					next;
-					mes "[Egnigem]";
-					mes "Hrrrm...";
-					mes "It seems that the living who wind up in Niflheim are seeking out the witch. But I don't quite understand what's so important about her.";
+					mes "[伊格尼建]";
+					mes "活在尼芙菲姆的魔女...";
+					mes "到^FF3355+^000000去的话就可以看到魔女之城";
+					mes "呵呵...虽然我认为一点也不可怕，";
+					mes "但是大家都很害怕那个女的..";
 					viewpoint 1,253,191,2,0xFFFF33;
 					break;
 				case 2:
-					mes "[Egnigem]";
-					mes "The Tool shop? Here in Niflheim, they sell some unique items that";
-					mes "you can't buy anywhere else.";
-					next;
-					mes "[Egnigem]";
-					mes "You might want to see their";
-					mes "wares for yourself. I've drawn";
-					mes "a ^CE6300+^000000 on your mini-map to mark";
-					mes "its location.";
+					mes "[伊格尼建]";
+					mes "道具店? 就在^CE6300+^000000这里，";
+					mes "因为有几样东西，只有在尼芙菲姆才有卖，去那里一下也不错啊";
 					viewpoint 1,217,196,3,0xFFCE63;
 					break;
 				case 3:
-					mes "[Egnigem]";
-					mes "I've marked the location of the Weapon Shop at ^55FF33+^000000. There's nothing too special over there, though.";
+					mes "[伊格尼建]";
+					mes "武器店的位在^55FF33+^000000这里，";
+					mes "我是觉得没有什么特别的...";
 					viewpoint 1,216,171,4,0xFF55FF;
 					break;
 				case 4:
-					mes "[Egnigem]";
-					mes "Tavern is at ^3355FF+^000000. They only sell drinks to the dead, though...";
+					mes "[伊格尼建]";
+					mes "酒店在^3355FF+^000000这里，";
+					mes "就只有一些烂酒而已..";
 					viewpoint 1,189,207,5,0xFF3355;
 					break;
 				case 5:
-					mes "[Egnigem]";
-					mes "Choose 'Remove marks on mini-map' from the menu to remove all the building location marks I've made.";
+					mes "[伊格尼建]";
+					mes "想要删除位置标示的话，";
+					mes "'请选择把迷你地图上的标示，";
+					mes "全部删除'吧...呵呵..";
 					close;
 				}
 				close;
@@ -3332,78 +2672,71 @@ niflheim,109,254,0	script	Egnigem	796,{
 				viewpoint 2,217,196,3,0xFF00FF;
 				viewpoint 2,216,171,4,0xFF00FF;
 				viewpoint 2,189,207,5,0xFF00FF;
-				mes "[Egnigem]";
-				mes "Alright, all the marks I've made have been removed from your mini-map. If you want to check the locations in Niflheim again, go ahead and ask me.";
+				mes "[伊格尼建]";
+				mes "迷你地图上的标示已全部删除了，";
+				mes "想要重新标示的话，就再问我一次吧..呵呵..";
 				close;
 			case 3:
-				mes "[Egnigem]";
-				mes "You're gonna explore this place on your own? Pretty brave, aren't you? Just be careful: here in Niflheim, darkness reigns supreme.";
+				mes "[伊格尼建]";
+				mes "看来你是想要自己走一遍吧?";
+				mes "呵...果然，没有什么比经验还重要啊";
+				mes "不过...要小心啊，呵呵..这里可是和其";
+				mes "它地方不一样，是由黑暗所统治的地区啊!";
 				close;
 			}
 		}
 		else {
-			mes "[Egnigem]";
-			mes "I really wish that";
-			mes "Emma Searth could";
-			mes "remember me...";
+			mes "[伊格尼建]";
+			mes "虽然不太可能...但是...如果艾麻 西奥斯能记得我的话就好了...";
 			next;
-			mes "^3355FFHis eyes seemed";
-			mes "to moisten with sadness.";
-			mes "Is it really possible for the";
-			mes "dead to shed tears?^000000";
+			mes "-从已经变尸体的双眼中，流出了滴滴的泪水... -";
+			mes "-腐烂的尸体和腐烂的眼泪中，还是有眼泪存在吗...-";
 			close;
 		}
 	}
 	else {
-		mes "[Egnigem]";
-		mes "Were you betrayed by fate as well, or are you simply a wanderer that's stumbled into this land of darkness?";
+		mes "[伊格尼建]";
+		mes "呵呵...你也是谜惑的人吗? 还是你也是被神，不，是被命运背叛的人呢?";
+		mes "或者...你想从我这里想得到什么呢?";
 		next;
-		mes "[Egnigem]";
-		mes "Hmm, the living don't deserve";
-		mes "to be in this realm of cold and suffering. But I can only help you escape by telling you what little";
-		mes "I know.";
-		next;
-		switch(select("Ask him about buildings.:Remove marks on mini-map.:Cancel.")) {
+		switch(select("询问村落的位置:删除迷你地图上的所有标示:结束")) {
 		case 1:
-			mes "[Egnigem]";
-			mes "...I see. Now, let me introduce you all buildings in Niflheim!";
+			mes "[伊格尼建]";
+			mes "呵呵...原来是村落的地理位置，来!";
+			mes "我告诉你吧! 把这村落所有的东西!";
 			next;
-			switch(select("Witch's Castle:Tool Shop:Weapon Shop:Tavern:Cancel")) {
+			switch(select("魔女之城:道具店:武器店:酒店:取消")) {
 			case 1:
-				mes "[Egnigem]";
-				mes "The witch of Niflheim...";
-				mes "You can find her castle at the ^FF3355+^000000 mark I've made on your mini-map.";
-				next;
-				mes "[Egnigem]";
-				mes "Hrrrm...";
-				mes "It seems that the living who wind up in Niflheim are seeking out the witch. But I don't quite understand what's so important about her.";
+				mes "[伊格尼建]";
+				mes "活在尼芙菲姆的魔女...";
+				mes "到^FF3355+^000000去的话就可以看到魔女之城";
+				mes "呵呵...虽然我认为一点也不可怕，";
+				mes "但是大家都很害怕那个女的..";
 				viewpoint 1,253,191,6,0xFFFF33;
 				break;
 			case 2:
-				mes "[Egnigem]";
-				mes "The Tool shop? Here in Niflheim, they sell some unique items that";
-				mes "you can't buy anywhere else.";
-				next;
-				mes "[Egnigem]";
-				mes "You might want to see their";
-				mes "wares for yourself. I've drawn";
-				mes "a ^CE6300+^000000 on your mini-map to mark";
-				mes "its location.";
+				mes "[伊格尼建]";
+				mes "道具店? 就在^CE6300+^000000这里，";
+				mes "因为有几样东西，只有在尼芙菲姆才有卖，去那里一下也不错啊";
 				viewpoint 1,217,196,7,0xFFCE63;
 				break;
 			case 3:
-				mes "[Egnigem]";
-				mes "I've marked the location of the Weapon Shop at ^55FF33+^000000. There's nothing too special over there, though.";
+				mes "[伊格尼建]";
+				mes "武器店的位在^55FF33+^000000这里，";
+				mes "我是觉得没有什么特别的...";
 				viewpoint 1,216,171,8,0xFF55FF;
 				break;
 			case 4:
-				mes "[Egnigem]";
-				mes "Tavern is at ^3355FF+^000000. They only sell drinks to the dead, though...";
+				mes "[伊格尼建]";
+				mes "酒店在^3355FF+^000000这里，";
+				mes "就只有一些烂酒而已..";
 				viewpoint 1,189,207,9,0xFF3355;
 				break;
 			case 5:
-				mes "[Egnigem]";
-				mes "Choose 'Remove marks on mini-map' from the menu to remove all the building location marks I've made.";
+				mes "[伊格尼建]";
+				mes "想要删除位置标示的话，";
+				mes "'请选择把迷你地图上的标示，";
+				mes "全部删除'吧...呵呵..";
 				close;
 				break;
 			}
@@ -3413,12 +2746,16 @@ niflheim,109,254,0	script	Egnigem	796,{
 			viewpoint 2,217,196,7,0xFF00FF;
 			viewpoint 2,216,171,8,0xFF00FF;
 			viewpoint 2,189,207,9,0xFF00FF;
-			mes "[Egnigem]";
-			mes "Alright, all the marks I've made have been removed from your mini-map. If you want to check the locations in Niflheim again, go ahead and ask me.";
+			mes "[伊格尼建]";
+			mes "迷你地图上的标示已全部删除了，";
+			mes "想要重新标示的话，就再问我一次吧..呵呵..";
 			close;
 		case 3:
-			mes "[Egnigem]";
-			mes "You're gonna explore this place on your own? Pretty brave, aren't you? Just be careful: here in Niflheim, darkness reigns supreme.";
+			mes "[伊格尼建]";
+			mes "看来你是想要自己走一遍吧?";
+			mes "呵...果然，没有什么比经验还重要啊";
+			mes "不过...要小心啊，呵呵..这里可是和其";
+			mes "它地方不一样，是由黑暗所统治的地区啊!";
 			close;
 		}
 		close2;
