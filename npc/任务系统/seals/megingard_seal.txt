@@ -40,11 +40,11 @@ prt_castle,44,151,0	script	雷贝依勒布 多	56,{
 			mes "就是和神最接近的人，";
 			mes "也就是赐给我的祝福!!";
 			next;
-			delitem 7080,4;	//Foot_Step_Of_Cat
-			delitem 7081,5;	//Beard_Of_Women
-			delitem 7082,4;	//Root_Of_Stone
-			delitem 7084,3;	//Saliva_Of_Bird
-			delitem 7085,3;	//Tendon_Of_Bear
+			delitem 7080,4;	//猫的脚步声
+			delitem 7081,5;	//女人的胡须
+			delitem 7082,4;	//石头的根
+			delitem 7084,3;	//鸟的口水
+			delitem 7085,3;	//熊的筋
 			getitem 7058,1;	//魔法铁链
 			mes "[雷贝依勒布 多]";
 			mes "来，在这里!!";
