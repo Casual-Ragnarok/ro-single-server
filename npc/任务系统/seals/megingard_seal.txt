@@ -1637,7 +1637,7 @@ cmd_fild09,106,195,0	script	god_megin_2_door	45,1,1,{
 OnTouch:
 	mes "暗号?";
 	input @str$;
-	if ((god_megin_2 == 1) && (@str$ == "阿拉甘并没有把精炼物品转移到别处")) {
+	if ((god_megin_2 > 0) && (@str$ == "阿拉甘并没有把精炼物品转移到别处")) {
 		mes "暗号正确";
 		mes "门自动打开了";
 		next;
