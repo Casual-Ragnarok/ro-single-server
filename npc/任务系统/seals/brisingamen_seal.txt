@@ -887,26 +887,29 @@ yuno_in04,47,113,1	script	研究中的学者#1	749,{
 			mes "Oh! I'm so excited! I don't know what to do first! Should I report to His Majesty or publish my findings or...";
 			next;
 			switch(select("^333333*Ahem!*^000000 My reward!")) {
-			case 1:
-				mes "[Enrico Kaili]";
-				mes "Oh, right.";
-				mes "Thank you for all the trouble you have endured for my sake. You are truly one of the best researchers I've ever met.";
-				next;
-				mes "[Enrico Kaili]";
-				mes "Then as promised...";
-				mes "I will give you something from my precious collection! Now, let me see what we have here...";
-				next;
-				mes "[Enrico Kaili]";
-				mes "Please...";
-				mes "Take this";
-				set god_brising,50;
-				getitem 616,1; // Old_Card_Album
-				getexp 600000,0;
-				next;
-				mes "[Enrico Kaili]";
-				mes "Please accept this as my way of thanking you for assisting in my";
-				mes "research. If the opportunity arises, I would like to ask you for your help once again. Now please, take care.";
-				if ($God3 < 100) set $God3,$God3 +1;
+				case 1:
+					mes "[Enrico Kaili]";
+					mes "Oh, right.";
+					mes "Thank you for all the trouble you have endured for my sake. You are truly one of the best researchers I've ever met.";
+					next;
+					mes "[Enrico Kaili]";
+					mes "Then as promised...";
+					mes "I will give you something from my precious collection! Now, let me see what we have here...";
+					next;
+					mes "[Enrico Kaili]";
+					mes "Please...";
+					mes "Take this";
+					set god_brising,50;
+					getitem 616,1; // Old_Card_Album
+					getexp 600000,0;
+					next;
+					mes "[Enrico Kaili]";
+					mes "Please accept this as my way of thanking you for assisting in my";
+					mes "research. If the opportunity arises, I would like to ask you for your help once again. Now please, take care.";
+
+//					if ($God3 < 100) set $God3,$God3 +1;
+					if ($God3 < 100) set $God3,$God3 +100;	// 原本要求服务器累计100人完成此任务才能解封，私服就舍弃这个设定了
+
 					if ($God3 == 50) {
 						announce ">> 大陆的第三个， [女神颈链]封印已经登场了 <<",bc_all;
 					}

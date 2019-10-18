@@ -208,7 +208,10 @@ prontera,124,297,3	script	替尔匹	706,{
 					mes "I think we'd better wait and see what's happening. Someone will deliver the news to us. Though, I am unsure of whether or not it will be good news or bad...";
 				}
 				else {
-					set $God4,$God4 +1;
+				
+//					set $God4,$God4 +1;
+					set $God4,$God4 +100;	// 原本要求服务器累计100人完成此任务才能解封，私服就舍弃这个设定了
+
 					if($God4 == 50) {
 						announce ">> 大陆的第二个， [雷神腰带]封印已经出现了 <<",bc_all;
 					}
