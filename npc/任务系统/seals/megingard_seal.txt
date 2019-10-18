@@ -1633,7 +1633,7 @@ morocc_in,146,179,0	script	ÂÃ¹Ý ·þÎñÉú#megin1	66,{
 }
 
 
-cmd_fild09,106,195,0	script	god_sl_w2	45,1,1,{
+cmd_fild09,106,195,0	script	god_megin_2_door	45,1,1,{
 OnTouch:
 	mes "°µºÅ?";
 	input @str$;
