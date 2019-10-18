@@ -15,23 +15,25 @@
 //= 1.3 Renewal script update. [Euphy]
 //============================================================ 
 
-prontera,113,294,3	script	Sign Post#god	837,{
-	mes "======== God Seal Status ========";
-	setarray .@seal$[1], "Sleipnir","Megingjard","Brisingamen","Mjolnir";
+//prontera,113,294,3	script	神器默示录#god	837,{
+prontera,156,305,3	script	神器默示录#god	837,{
+	mes "======== 神器封印状态 ========";
+//	setarray .@seal$[1], "Sleipnir","Megingjard","Brisingamen","Mjolnir";
+	setarray .@seal$[1], "史雷普尼尔之靴","雷神腰带","女神颈链","雷神之锤";
 	for(set .@i,1; .@i<=4; set .@i,.@i+1) {
 		set .@val, getd("$God"+.@i);
 		if (.@val == 0)
-			set .@status$,"Unseen";
+			set .@status$,"未解封";		// Unseen
 		else if (.@val < $@god_check1)
-			set .@status$,"Active";
+			set .@status$,"解封中";		// Active
 		else if (.@val < $@god_check2)
-			set .@status$,"Appeared";
+			set .@status$,"已现世";		// Appeared
 		else
-			set .@status$,"Released";
+			set .@status$,"已解封";		// Released
 		mes .@seal$[.@i]+" Seal: "+.@status$;
 	}
 	mes " ";
-	mes "======= Your Seal Status ========";
+	mes "==== 你的神器解封任务进度 ====";
 	if (god_sl_1 < 51)
 		mes "^ff0000史雷普尼尔之靴: 未完成^000000";
 	else
