@@ -439,7 +439,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 	mes "you wish for me";
 	mes "to create!";
 	next;
-	switch(select("Brisingamen:Megingjard:Sleipnir:Mjolnir")) {
+	switch(select("女神颈链:雷神腰带:史雷普尼尔之靴:雷神之锤")) {
 	case 1:
 		mes "[Dwarf Grunburti]";
 		mes "B-Brisingamen?!";

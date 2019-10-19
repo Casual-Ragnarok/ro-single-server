@@ -24,16 +24,19 @@ prontera,156,305,3	script	神器默示录#god	837,{
 	setarray .@seal$[1], "史雷普尼尔之靴","雷神腰带","女神颈链","雷神之锤";
 	for(set .@i,1; .@i<=4; set .@i,.@i+1) {
 		set .@val, getd("$God"+.@i);
-		if (.@val == 0)
+		if (.@val == 0) {
 			set .@status$,"未解封";		// 1:Unseen
-		else if (.@val < $@god_check1)
+
+		} else if (.@val < $@god_check1) {
 			set .@status$,"可制作";		// 3:Active
-		else if (.@val < $@god_check2)
+
+		} else if (.@val < $@god_check2) {
 			set .@status$,"已现世";		// 4:Appeared
-		else
+
+		} else {
 			set .@status$,"已解封";		// 2:Released
 			set .@tmp,.@tmp+1;
-
+		}
 		mes .@seal$[.@i]+" Seal: "+.@status$;
 	}
 
@@ -65,6 +68,22 @@ prontera,156,305,3	script	神器默示录#god	837,{
 	} else {
 		mes "^00ff00雷神之锤: 已完成^000000";
 		set .@tmp,.@tmp+1;
+	}
+
+
+
+
+	set .@plv,callfunc("F_PLAYER_GMLV");
+	if (.@plv >= 99) {
+		next;
+		mes "您好, GM 大大";
+		mes "是否进入神器任务控制间?";
+
+		if (select("当然，我要摆弄蚁民的命运:算了，放任这些罪民") == 1) {
+			close2;
+			warp "sec_in02",15,170;
+			end;
+		}
 	}
 
 	if (.@tmp >= 8) {
