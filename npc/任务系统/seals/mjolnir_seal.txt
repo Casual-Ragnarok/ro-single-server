@@ -262,25 +262,22 @@ prontera,124,297,3	script	替尔匹	706,{
 		else if(god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
 			mes "[替尔匹]";
 			mes "Hmm...";
-			mes "The Dwarven Blacksmiths";
-			mes "must be upset at you for";
-			mes "some reason.";
+			mes "矮人铁匠们因为某些原因生气了";
 			next;
 			mes "[替尔匹]";
-			mes "Remember my sister's";
-			mes "suggestion and speak to";
-			mes "them with great courtesy.";
-			mes "Carefully choose words";
-			mes "of respect lest they";
-			mes "be insulted.";
+			mes "记住我妹妹的建议";
+			mes "跟他们交谈必须很有礼貌";
+			mes "注意你的言辞";
+			mes "注意跟他们交谈的顺序";
 			next;
 			set god_mjo_1,0;
 			set god_mjo_2,0;
 			set god_mjo_3,0;
 			set god_mjo_4,0;
 			mes "[替尔匹]";
-			mes "You should be okay now.";
-			mes "By this time, they've probably forgotten the insult. But make sure you speak to my sister for advice first.";
+			mes "现在已经没问题了";
+			mes "我已经让矮人们忘记了一切，现在你重新去找我妹妹吧.";
+			mes "（任务进度已重置）";
 		}
 		else if(god_mjo_0 == 2 || god_mjo_0 == 1) {
 			cutin "god_tialpi01",2;
@@ -1009,7 +1006,7 @@ mjolnir_11,149,247,5	script	得卧普 铁匠#东	826,{
 			}
 			else if(god_mjo_4 == 0) {
 				mes "[阿乌斯特利]";
-				mes "What made you come to me?";
+				mes "是什么让你来找我?";
 				next;
 				switch(select("Nothing.:Excuse me, sir.")) {
 				case 1:
@@ -1018,14 +1015,14 @@ mjolnir_11,149,247,5	script	得卧普 铁匠#东	826,{
 					close;
 				case 2:
 					mes "[阿乌斯特利]";
-					mes "A respectable blacksmith cherishes his tools and crafts with diligence and care.";
+					mes "一位受人尊敬的铁匠认真勤奋地珍惜自己的工具和手工艺品.";
 					next;
 					mes "[阿乌斯特利]";
-					mes "When it comes to humans, I believe the ones who can appreciate my line of work are the only ones worth talking to.";
+					mes "在人类方面，我相信那些能够欣赏我的工作的人是唯一值得与之交谈的人.";
 					next;
 					set god_mjo_4,1;
 					mes "[阿乌斯特利]";
-					mes "Every good blacksmith knows the value of a good hammer. If you can understand that, I shall consider speaking with you.";
+					mes "每个好的铁匠都知道一把好锤子的价值。 如果您能理解，我会考虑与您交谈.";
 					next;
 					mes "[阿乌斯特利]";
 					mes "Now go, human.";
@@ -1505,7 +1502,7 @@ mjolnir_09,209,341,3	script	得卧普 铁匠#南	826,{
 			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
 				mes "[稣德力]";
 				mes "[稣德力]";
-				mes "Get out of here before I beat you to death! All you can gain over here is a few herbs, anyway!";
+				mes "在我打死你之前离开这里！ 无论如何，您可以在这里获得的只有一些草药!";
 				close;
 			}
 			else if(god_mjo_3 == 2) {
@@ -1516,7 +1513,7 @@ mjolnir_09,209,341,3	script	得卧普 铁匠#南	826,{
 			}
 			else if (god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_2 == 0 || god_mjo_2 == 1 || god_mjo_4 != 0) {
 				mes "[稣德力]";
-				mes "What made you come to me?";
+				mes "是什么原因让你来找我?";
 				next;
 				switch(select("Nothing.:Excuse me, sir.")) {
 				case 1:
@@ -2184,19 +2181,16 @@ mjolnir_01,35,136,7	script	得卧普 铁匠#西	826,{
 		else if(god_mjo_0 == 2) {
 			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3) {
 				mes "[贝斯特力]";
-				mes "I really hope I meet a decent human being next time. So far, I haven't met one useful human.";
+				mes "我真的希望我下次见到一个像样的人。 到目前为止，我还没有遇到一个有用的人.";
 				close;
 			}
 			else if(god_mjo_2 == 2) {
 				mes "[贝斯特力]";
-				mes "Perfect preparation does not always result in success. There's a point when you've got to just go out and do it.";
+				mes "完善的准备并不总是会成功。 有时候你必须付诸行动.";
 				next;
 				mes "[贝斯特力]";
-				mes "I don't know how";
-				mes "big your goals are,";
-				mes "but put your heart into";
-				mes "whatever it is that you";
-				mes "plan to accomplish in life.";
+				mes "我不知道您的目标有多大，";
+				mes "但是请全心全意地计划要实现的人生.";
 				close;
 			}
 			else if (god_mjo_1 == 0 || god_mjo_1 == 1 || god_mjo_3 != 0 || god_mjo_4 != 0) {
@@ -2679,7 +2673,7 @@ mjolnir_12,18,18,7	script	得卧普 铁匠#北	826,{
 			if ((god_mjo_1 == 3) || (god_mjo_2 == 3) || (god_mjo_3 == 3) || (god_mjo_4 == 3)){
 				mes "[诺斯德力]";
 				mes "Eh heh heh~";
-				mes "It's nice being in the Mjolnir Forest. To be surrounded by the quiet, peaceful air and not having to worry about anything...";
+				mes "很高兴在迷藏森林中。 被安静，和平的空气包围，不必担心任何事情...";
 				close;
 			}
 			else if (god_mjo_1 == 2) {
@@ -2844,6 +2838,7 @@ mjolnir_12,18,18,7	script	得卧普 铁匠#北	826,{
 					mes "You're funny, leave me alone.";
 					close;
 				case 2:
+					set god_mjo_1,1;
 					mes "[诺斯德力]";
 					mes "就这样说的话，嘴巴是有点渴啦?";
 					mes "请拿给我一个红色药水好吗，";
