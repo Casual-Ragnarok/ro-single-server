@@ -1735,10 +1735,11 @@ mjolnir_09,209,341,3	script	得卧普 铁匠#南	826,{
 						if (.@count == 1) {
 							specialeffect2 EF_AUTOCOUNTER;
 							specialeffect EF_MAGNUMBREAK;
-							set .@n_vit,.@n_vit - 20;
+							set .@r_atk,rand(100,200);
+							set .@n_vit,.@n_vit - .@r_atk;
 							mes "交叉反击成功了!!";
 							mes "--------------------";
-							mes "稣德力的体力减弱了20!!";
+							mes "稣德力的体力减弱了" + .@r_atk + "!!";
 							if (.@n_vit < 1) {
 								mes "" + strcharinfo(0) + " won!";
 								next;
@@ -2678,10 +2679,10 @@ mjolnir_12,18,18,7	script	得卧普 铁匠#北	826,{
 			}
 			else if (god_mjo_1 == 2) {
 				mes "[诺斯德力]";
-				mes "Shouldn't you be on your way by now? Eh, it's none of my business.";
+				mes "您现在不应该在路上吗？ 嗯，这不关我的事。";
 				next;
 				mes "[诺斯德力]";
-				mes "If you have the Zeny to spare, why don't you buy some snacks for your travels? Perhaps some delicious Bananas, or even some Pumpkins...";
+				mes "如果您有足够的Zeny，为什么不旅行时购买一些零食？ 也许是一些美味的香蕉，甚至是一些南瓜...";
 				close;
 			}
 			else if ((god_mjo_2 != 0) || (god_mjo_3 != 0) || (god_mjo_4 != 0)) {
