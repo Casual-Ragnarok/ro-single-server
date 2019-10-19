@@ -40,7 +40,7 @@ prt_castle,44,151,0	script	雷贝依勒布 多	56,{
 			mes "就是和神最接近的人，";
 			mes "也就是赐给我的祝福!!";
 			next;
-			delitem 7080,4;	//猫的脚步声
+			delitem 7080,4;	//猫脚步声音
 			delitem 7081,5;	//女人的胡须
 			delitem 7082,4;	//石头的根
 			delitem 7084,3;	//鸟的口水

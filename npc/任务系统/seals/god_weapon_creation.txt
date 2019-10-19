@@ -1,5 +1,5 @@
 //===== rAthena Script ======================================= 
-//= God Item Quest - Item Creation
+//= 神器制作任务
 //===== By: ================================================== 
 //= SinSloth
 //===== Current Version: ===================================== 
@@ -16,70 +16,84 @@
 //=     Added GM management function.
 //============================================================
 
-gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
-	mes "[Dwarf Grunburti]";
-	mes "A human?!";
-	mes "This land is full";
-	mes "of your kind. What";
-	mes "brings you here?";
+
+gld_dun01,28,85,0	script	神之执行者#1::GodDwarf	826,{
+	mes "[矮人 格伦伯蒂]";
+	mes "人类?!";
+	mes "这片土地都是你这种生物";
+	mes "什么风把你吹到这里来了?";
 	next;
-	mes "[Dwarf Grunburti]";
-	mes "Living in Midgard and away from";
-	mes "my home town is painful enough, let alone facing a whiny human. Leave me alone!";
+	mes "[矮人 格伦伯蒂]";
+	mes "仅仅因为被 神 选中而要在这种地方工作";
+	mes "不但住在地下、还远离家乡已经很痛苦，";
+	mes "更不用说面对一个你这样的呆子。 ";
+	mes "所以没事就别打扰我~";
 	next;
-	switch(select("询问矮人的情况:问他在这里做什么:请求制作神器:取消")) {
+	switch(select("询问矮人的情况:问他在这里做什么:问他和神有什么关系:请求制作神器:取消")) {
 	case 1:
-		mes "[Dwarf Grunburti]";
-		mes "What's to know about Dwarves?";
-		mes "We're the toughest race. After all, we can live anywhere, no matter";
-		mes "how harsh the environment may be.";
+		mes "[矮人 格伦伯蒂]";
+		mes "矮人的情况?";
+		mes "我们可以在任何恶劣的环境下生活.";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "I doubt your feeble mind can comprehend the how unendurable";
-		mes "it must be for you to live in my homeland, but you can try.";
-		mes "Try to imagine.";
+		mes "[矮人 格伦伯蒂]";
+		mes "我怀疑你狭隘的思维能否理解";
+		mes "我生活在你的国度有多难受";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Most of the knowledge and skills that you humans are so proud of were probably handed down from Dwarves.";
+		mes "[矮人 格伦伯蒂]";
+		mes "人类最引以为傲的生活知识和技能";
+		mes "很可能是矮人传下来的.";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "This is especially true in the";
-		mes "case of smithing. Even the tools and weapons of the gods were made by my ancestors. You know that?";
+		mes "[矮人 格伦伯蒂]";
+		mes "在锻造的情况下尤其如此";
+		mes "甚至神的工具和武器也是我祖先制作的";
+		mes "你懂的吗?";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "We have the greatest knowlege and skills, but have accepted our fate to live in the cold, barren lands of the Giants.";
+		mes "[矮人 格伦伯蒂]";
+		mes "我们拥有最丰富的知识和技能!!!";
 		close;
 	case 2:
 		mes "[Dwarf Grunburti]";
-		mes "Did you just ask what I am doing here? Mwahahaha! Waiting for any humans stupid enough to come";
-		mes "here so I can kick their ass!";
+		mes "你只是问我在这里做什么？ ";
+		mes "哇哈哈哈！ 等待任何愚蠢的人来到这里";
+		mes "然后我踢他们的屁股！";
 		next;
 		mes "[Dwarf Grunburti]";
-		mes "Oh don't worry. I'd only humiliate myself by fighting with a weakling like you. Humans are so fragile, but they stubbornly cling to their arrogance and fight amongst";
-		mes "each other.";
+		mes "哦，不用担心。 ";
+		mes "我不会与像你这样的弱者战斗来羞辱自己";
+		mes "人类太脆弱了，但是他们依然固执地明争暗斗";
 		next;
 		mes "[Dwarf Grunburti]";
-		mes "As a race, your people are just hopeless. I wouldn't even share the same continent with a human! But alas, I have no choice.";
+		mes "作为种族，你们是绝望的。";
+		mes "我甚至不想和你们生活在同一片土地！ ";
+		mes "但是，我别无选择。";
 		next;
 		mes "[Dwarf Grunburti]";
-		mes "The path to my hometown";
-		mes "disappeared after the war 1,000 years ago. Somehow, I can no longer find the way through the Yggdrasil Tree that will take me back...";
-		next;
-		mes "[Dwarf Grunburti]";
-		mes "I'm stuck here in Rune-Midgard.";
-		mes "At least I was fortunate enough to find this cave. We Dwarves are most cozy living underground, after all.";
-		close;
+		mes "因为一千年前的战争，我的家乡消失了";
+		mes "我再也找不到回家的路...";
 	case 3:
+		mes "[矮人 格伦伯蒂]";
+		mes "我是四大正神的代言人";
+		mes "可以授予这片大陆的人使用四神器的权限";
+		next;
+		mes "当然，，";
+		mes "除此之外的邪神跟我完全没关系...";
+		mes "嗯?";
+		mes "小子，你想打听邪神的消息?!!";
+		mes "滚吧! 我不想跟你扯上关系! ";
+
+		hideoffnpc "神之放逐者";
+		close;
+	case 4:
 		set .@GID,getcharid(2);
 		if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
 			if (($God1 >= $@god_check1) && ($God2 >= $@god_check1) && ($God3 >= $@god_check1) && ($God4 >= $@god_check1) && (strcharinfo(0) == getguildmaster(.@GID))) {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hmm...";
 				mes "我需要一些东西来为您制造武器。 您到底对什么感兴趣？";
 				next;
 				switch(select("女神颈链:雷神腰带:史雷普尼尔之靴:雷神之锤")) {
 				case 1:
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "我需要这些材料制作";
 					mes "[^FF0000女神颈链^000000]";
 					mes "^0000FF菲力亚宝石 * 4";
@@ -94,11 +108,11 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 					mes "黄金 * 20";
 					mes "体力项链 * 1^000000";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "不过，现在还不是制作 女神颈链 的时机。 您必须等到神器封印被解开。 哇哈哈哈！";
 					close;
 				case 2:
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "我需要这些材料制作";
 					mes "[^FF0000雷神腰带^000000]";
 					mes "^0000FF魔法铁链 * 1";
@@ -107,18 +121,18 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 					mes "神之金属 * 10";
 					mes "皮带[1] * 1^000000";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "注意 魔法铁链 是合成素材";
 					mes "我不能帮你制作";
 					mes "你可以去 prt_castle,44,151";
 					mes "找到 雷贝依勒布·多";
 					mes "他会给与你帮助";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "不过，现在还不是制作 雷神腰带 的时机。 您必须等到神器封印被解开。 哇哈哈哈！";
 					close;
 				case 3:
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "我需要这些材料制作";
 					mes "[^FF0000史雷普尼尔之靴^000000]";
 					mes "^0000FF未知的锯齿轮子 * 3";
@@ -130,16 +144,16 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 					mes "铝 * 10";
 					mes "战士长靴[1] * 1^000000";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "不过，现在还不是制作 史雷普尼尔之靴 的时机。 您必须等到神器封印被解开。 哇哈哈哈！";
 					close;
 				case 4:
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "我需要这些材料制作";
 					mes "[^FF0000雷神之锤^000000]";
-					mes "^0000FF拖尔的铁手套 * 2";
+					mes "^0000FF托尔的铁手套 * 2";
 					mes "拷问器具 * 4";
-					mes "巴吉利的愤怒 * 5";
+					mes "巴基力的愤怒 * 5";
 					mes "爆风雨的征兆 * 5";
 					mes "海浪雕像 * 5";
 					mes "神之金属 * 20";
@@ -147,94 +161,95 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 					mes "黄金 * 40";
 					mes "昏迷之锤 * 1^000000";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "不过，现在还不是制作 雷神之锤 的时机。 您必须等到神器封印被解开。 哇哈哈哈！";
 					close;
 				}
 			} 
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "We Dwarves have too much pride to demonstrate our skills in front of a lowly human!";
 			next;
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Stop bothering me and get out of here! Go play with some monsters, you simple minded fool!";
 			close;
 		}
 		if (strcharinfo(0) != getguildmaster(.@GID)) {
-			mes "[Dwarf Grunburti]";
-			mes "I'll only present";
-			mes "my magnificent skills";
-			mes "to a human of incredibly";
-			mes "high standing!";
+			mes "[矮人 格伦伯蒂]";
+			mes "我只会将我的高超技巧";
+			mes "展示给一个地位很高的人";
 			next;
-			mes "[Dwarf Grunburti]";
-			mes "Although I hate";
-			mes "most humans, I have";
-			mes "no choice but to respect the ones chosen by destiny. Go and bring your ^0000FFguildmaster^000000!";
+			mes "[矮人 格伦伯蒂]";
+			mes "尽管我讨厌大多数人";
+			mes "但我别无选择";
+			mes "只能尊重命运选择的人";
+			mes "去带我见你的^0000FF公会会长^000000!";
 			close;
 		}
-		mes "[Dwarf Grunburti]";
-		mes "Although it is very humiliating to present my valuable skills to a human being...";
+		mes "[矮人 格伦伯蒂]";
+		mes "尽管向人类展示我的宝贵技能是很丢脸的...";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "All the seals have been released, and he who holds the Emperium is chosen by destiny. I have no choice but to respect you.";
+		mes "[矮人 格伦伯蒂]";
+		mes "但所有神器的封印都被释放了，说明你被命运选中了";
+		mes "除了尊重你，我别无选择。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "First of all, I shall confirm whether or not you have brought all the necessary materials to forge a godly item! I hate it when humans come here without any purpose!";
+		mes "[矮人 格伦伯蒂]";
+		mes "首先，我将确认您是否已携带所有必要的材料来！";
+		mes "这是锻造神器必要的敬虔！";
 		next;
 		if ((countitem(7073) > 3) && (countitem(7077) > 3) && (countitem(7088) > 2) && (countitem(7090) > 2) && (countitem(7092) > 2) && (countitem(726) > 1) && (countitem(722) > 2) && (countitem(727) > 9) && (countitem(724) > 4) && (countitem(969) > 19) && (countitem(2603) > 0)) {
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Hmm...";
-			mes "I guess you";
-			mes "want to have";
-			mes "^0000FFBrisingamen^000000!";
+			mes "我猜你";
+			mes "想要拥有";
+			mes "^0000FF女神颈链^000000!";
 			next;
 		}
 		else if ((countitem(7058) > 0) && (countitem(969) > 19) && (countitem(726) > 9) && (countitem(984) > 9) && (countitem(2627) > 0)){ //Gullraifnir Gold Blue_Jewel Oridecon Belt 
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Hmm...";
-			mes "I guess you";
-			mes "want to have";
-			mes "^0000FFMegingjard^000000!";
+			mes "我猜你";
+			mes "想要拥有";
+			mes "^0000FF雷神腰带^000000!";
 			next;
 		}
 		else if ((countitem(7076) > 2) && (countitem(7079) > 4) && (countitem(7083) > 2) && (countitem(7086) > 3) && (countitem(7087) > 2) && (countitem(969) > 19) && (countitem(985) > 9) && (countitem(2406) > 0)) {
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Hmm...";
-			mes "I guess you";
-			mes "want to have";
-			mes "^0000FFSleipnir^000000!";
+			mes "我猜你";
+			mes "想要拥有";
+			mes "^0000FF史雷普尼尔之靴^000000!";
 			next;
 		}
 		else if ((countitem(7074) > 1) && (countitem(7075) > 3) && (countitem(7078) > 4) && (countitem(7089) > 4) && (countitem(7091) > 4) && (countitem(984) > 19) && (countitem(985) > 4) && (countitem(969) > 39) && (countitem(1522) > 0)) {
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Hmm...";
-			mes "I guess you";
-			mes "want to have";
-			mes "^0000FFMjolnir^000000!";
+			mes "我猜你";
+			mes "想要拥有";
+			mes "^0000FF雷神之锤^000000!";
 			next;
 		}
 		else {
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "...";
 			mes "......";
 			next;
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "...";
 			mes "......";
 			mes ".........";
 			next;
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "...";
 			mes "......";
 			mes ".........";
 			mes ".............";
 			next;
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "你怎么还没做好准备就来这里？ 你忘了带什么东西吗？ 这次仔细听！";
 			next;
 			switch(select("女神颈链:雷神腰带:史雷普尼尔之靴:雷神之锤")) {
 			case 1:
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "我需要这些材料制作";
 				mes "[^FF0000女神颈链^000000]";
 				mes "^0000FF菲力亚宝石 * 4";
@@ -249,18 +264,18 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 				mes "黄金 * 20";
 				mes "体力项链 * 1^000000";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hmmm, 在此之前";
 				mes "你需要争分夺秒了";
 				mes "因为一旦有其他人抢先找我制作了神器";
 				mes "你必须重新做一次解封任务...";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hurry...!";
 				mes "奔跑吧！骚年！";
 				close;
 			case 2:
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "我需要这些材料制作";
 				mes "[^FF0000雷神腰带^000000]";
 				mes "^0000FF魔法铁链 * 1";
@@ -269,25 +284,25 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 				mes "神之金属 * 10";
 				mes "皮带[1] * 1^000000";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "注意 魔法铁链 是合成素材";
 				mes "我不能帮你制作";
 				mes "你可以去 prt_castle,44,151";
 				mes "找到 雷贝依勒布·多";
 				mes "他会给与你帮助";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hmmm, 在此之前";
 				mes "你需要争分夺秒了";
 				mes "因为一旦有其他人抢先找我制作了神器";
 				mes "你必须重新做一次解封任务...";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hurry...!";
 				mes "奔跑吧！骚年！";
 				close;
 			case 3:
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "我需要这些材料制作";
 				mes "[^FF0000史雷普尼尔之靴^000000]";
 				mes "^0000FF未知的锯齿轮子 * 3";
@@ -299,23 +314,23 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 				mes "铝 * 10";
 				mes "战士长靴[1] * 1^000000";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hmmm, 在此之前";
 				mes "你需要争分夺秒了";
 				mes "因为一旦有其他人抢先找我制作了神器";
 				mes "你必须重新做一次解封任务...";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hurry...!";
 				mes "奔跑吧！骚年！";
 				close;
 			case 4:
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "我需要这些材料制作";
 				mes "[^FF0000雷神之锤^000000]";
-				mes "^0000FF拖尔的铁手套 * 2";
+				mes "^0000FF托尔的铁手套 * 2";
 				mes "拷问器具 * 4";
-				mes "巴吉利的愤怒 * 5";
+				mes "巴基力的愤怒 * 5";
 				mes "爆风雨的征兆 * 5";
 				mes "海浪雕像 * 5";
 				mes "神之金属 * 20";
@@ -323,33 +338,34 @@ gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
 				mes "黄金 * 40";
 				mes "昏迷之锤 * 1^000000";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hmmm, 在此之前";
 				mes "你需要争分夺秒了";
 				mes "因为一旦有其他人抢先找我制作了神器";
 				mes "你必须重新做一次解封任务...";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Hurry...!";
 				mes "奔跑吧！骚年！";
 				close;
 			}
 		}
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "Hmpf.";
-		mes "I can't get any work done in here. Come with me to the ^0000FFunderground laboratory^000000 as my guest, human.";
+		mes "我无法在这里完成任何工作。";
+		mes "跟我一起去 ^0000FF地下实验室^000000";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Now hurry up! ^0000FFOnly one of each godly item^000000 will be given to the humans ^FF0000right after all the seals are released^000000!";
+		mes "[矮人 格伦伯蒂]";
+		mes "快点! ^0000FF每个神器只有一个^000000 会被送给人类";
+		mes "^FF0000神器制作完成后已解开的封印会重新启动^000000!";
 		close2;
 		warp "que_god01",214,63;
 		end;
-	case 4:
-		mes "[Dwarf Grunburti]";
+	case 5:
+		mes "[矮人 格伦伯蒂]";
 		mes "Muhahahahahaha!";
-		mes "Out of my sight,";
-		mes "you dirty, filthy";
-		mes "human...!";
+		mes "离开我的视线！！";
+		mes "您是肮脏，肮脏的人类……！";
 		close;
 	}
 }
@@ -389,7 +405,7 @@ que_god01,213,128,0	duplicate(GodEntrance)	 #que_godnpc3	111
 
 que_god01,154,112,4	script	Grunburti#god	826,{
 	if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "One of the godly";
 		mes "items has been created,";
 		mes "and the seals have been";
@@ -397,7 +413,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 		mes "wait until they're all";
 		mes "released again...!";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "Bwahahahahahahaa!";
 		mes "Even though you're";
 		mes "just a human, I feel";
@@ -406,11 +422,11 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 	}
 	set .@GID,getcharid(2);
 	if (strcharinfo(0) != getguildmaster(.@GID)) {
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "How in the...";
 		mes "Get out of here!";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "How did one of you";
 		mes "stupid humans get in";
 		mes "here?! Only those who";
@@ -419,21 +435,21 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 		mes "this place...!";
 		close;
 	}
-	mes "[Dwarf Grunburti]";
+	mes "[矮人 格伦伯蒂]";
 	mes "It's incredibly";
 	mes "humiliating to do work for a human. But since destiny has chosen you as the bearer of an Emperium, I have no choice but to oblige your requests.";
 	next;
-	mes "[Dwarf Grunburti]";
+	mes "[矮人 格伦伯蒂]";
 	mes "We only have";
 	mes "^FF000010 minutes^000000 to recreate one godly treasure. After that, the seals will restore themselves and I won't be able to create anything until they're released again...";
 	next;
-	mes "[Dwarf Grunburti]";
+	mes "[矮人 格伦伯蒂]";
 	mes "^FF0000Don't be too slow^000000,";
 	mes "otherwise ^FF0000I will give";
 	mes "the chance to another";
 	mes "human^000000 right away!";
 	next;
-	mes "[Dwarf Grunburti]";
+	mes "[矮人 格伦伯蒂]";
 	mes "Now...!";
 	mes "Choose the item";
 	mes "you wish for me";
@@ -441,42 +457,44 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 	next;
 	switch(select("女神颈链:雷神腰带:史雷普尼尔之靴:雷神之锤")) {
 	case 1:
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "B-Brisingamen?!";
 		mes "I've never expected";
 		mes "such insolence...!";
 		mes "This necklace will never have any meaning in my eyes unless it's worn by the goddess Freya.";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "But who am I to judge your worthiness? These treasures";
 		mes "select their owners with their own will. Let's see if Brisingamen will find you worthy!";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "Once again, I need following materials in order to reproduce";
 		mes "this godly treasure...";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "^0000FF4 Freya's Jewel";
-		mes "4 Silver Ornament";
-		mes "3 Snow Crystal";
-		mes "3 Ripple";
-		mes "3 Drifting Air";
-		mes "2 Sapphire";
-		mes "3 Pearl";
-		mes "10 Opal";
-		mes "5 Cursed Ruby";
-		mes "20 Gold";
-		mes "1 Necklace^000000";
+		mes "[矮人 格伦伯蒂]";
+		mes "我需要这些材料制作";
+		mes "[^FF0000女神颈链^000000]";
+		mes "^0000FF菲力亚宝石 * 4";
+		mes "银饰品 * 4";
+		mes "雪的结晶 * 3";
+		mes "安静的水波 * 3";
+		mes "空气雕像 * 3";
+		mes "蓝宝石 * 2";
+		mes "珍珠 * 3";
+		mes "白宝石 * 10";
+		mes "诅咒红宝石 * 5";
+		mes "黄金 * 20";
+		mes "体力项链 * 1^000000";
 		next;
-		switch(select("Make Brisingamen.:Cancel.")) {
+		switch(select("制作 女神颈链:取消")) {
 		case 1:
 			if ((countitem(7073) > 3) && (countitem(7077) > 3) && (countitem(7088) > 2) && (countitem(7090) > 2) && (countitem(7092) > 2) && (countitem(726) > 1) && (countitem(722) > 2) && (countitem(727) > 9) && (countitem(724) > 4) && (countitem(969) > 19) && (countitem(2603) > 0)){ //Jewel_Of_Prayer Silver_Fancy Crystal_Of_Snow Slilince_Wave Air_Stream Blue_Jewel Scarlet_Jewel White_Jewel Cardinal_Jewel_ Gold Necklace 
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Never in my wildest";
 				mes "imaginings have I thought that I'd be crafting this masterpiece for a mere human. Give me a moment.";
 				next;
 				if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "But...";
 					mes "The seals";
 					mes "have just been";
@@ -484,7 +502,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 					mes "wait until they're all";
 					mes "released again...!";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "Bwahahahahahahaa!";
 					mes "Even though you're";
 					mes "just a human, I feel";
@@ -508,12 +526,12 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				set $God3,0;
 				set $God4,0;
 				announce "[Brisingamen] has come into the hands of [" + strcharinfo(0) + "], master of the [" + getguildname(.@GID) + "] guild.",bc_all;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Ah, just look at this dazzling beauty. No other piece of jewelry complemented Freya as well as Brisingamen.";
 				close;
 			}
 			else {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Idiot human!";
 				mes "You didn't bring";
 				mes "everything I need to";
@@ -522,41 +540,43 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				close;
 			}
 		case 2:
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Muhahahaha~";
 			mes "Somehow, I figured";
 			mes "you'd back out, human!";
 			close;
 		}
 	case 2:
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "M- Megingjard?!";
 		mes "The girdle of might?!";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "This belt was worn long ago by Thor, the mightest warrior ever. But since these treasures select their owners, we'll see whether or not it recognizes you as worthy!";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "Once again, I need following materials in order to reproduce";
 		mes "this godly treasure...";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "^0000FF1 Gleipnir";
-		mes "20 Gold";
-		mes "10 Sapphire";
-		mes "10 Oridecon";
-		mes "1 Belt^000000...";
+		mes "[矮人 格伦伯蒂]";
+		mes "我需要这些材料制作";
+		mes "[^FF0000雷神腰带^000000]";
+		mes "^0000FF魔法铁链 * 1";
+		mes "黄金 * 20";
+		mes "蓝宝石 * 10";
+		mes "神之金属 * 10";
+		mes "皮带[1] * 1^000000";
 		next;
-		switch(select("Make Megingjard.:Cancel.")) {
+		switch(select("制作 雷神腰带:取消")) {
 		case 1:
 			if ((countitem(7058) > 0) && (countitem(969) > 19) && (countitem(726) > 9) && (countitem(984) > 9) && (countitem(2627) > 0)) {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Twenty years ago,";
 				mes "I'd never believe that";
 				mes "something so powerful and dangerous as Megingjard would end up in the hands of a human...";
 				next;
 				if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "But...";
 					mes "The seals";
 					mes "have just been";
@@ -564,7 +584,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 					mes "wait until they're all";
 					mes "released again...!";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "Bwahahahahahahaa!";
 					mes "Even though you're";
 					mes "just a human, I feel";
@@ -582,7 +602,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				set $God3,0;
 				set $God4,0;
 				announce "[Megingjard] the godly item has been given to [" + strcharinfo(0) + "], the master of the guild [" + getguildname(.@GID) + "].",bc_all;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Here...";
 				mes "Be careful with how";
 				mes "you use the strength";
@@ -591,7 +611,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				close;
 			}
 			else {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Idiot human!";
 				mes "You didn't bring";
 				mes "everything I need to";
@@ -600,42 +620,44 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				close;
 			}
 		case 2:
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Muhahahaha~";
 			mes "Somehow, I figured";
 			mes "you'd back out, human!";
 			close;
 		}
 	case 3:
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "Sleipnir...";
 		mes "Now, understand";
 		mes "that I can't create";
 		mes "the eight-legged stallion";
 		mes "of legend. However...";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "I can create a pair";
 		mes "of shoes that will possess the power of Sleipnir. It's a strange, but feasible process...";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "Once again, I need following materials in order to reproduce";
 		mes "this godly treasure...";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "^0000FF3 Wheel of the Unknown";
-		mes "5 Feather of Angel Wing";
-		mes "3 Sprit of Fish";
-		mes "4 Amblem of the Sun God";
-		mes "3 Breath of Spirit";
-		mes "20 Gold";
-		mes "10 Elunium";
-		mes "1 Slotted Boots^000000...";
+		mes "[矮人 格伦伯蒂]";
+		mes "我需要这些材料制作";
+		mes "[^FF0000史雷普尼尔之靴^000000]";
+		mes "^0000FF未知的锯齿轮子 * 3";
+		mes "天使翅膀羽毛 * 5";
+		mes "鱼的灵魂 * 3";
+		mes "太阳神的象征 * 4";
+		mes "灵魂的呼吸声音 * 3";
+		mes "黄金 * 20";
+		mes "铝 * 10";
+		mes "战士长靴[1] * 1^000000";
 		next;
-		switch(select("Make Sleipnir.:Cancel.")) {
+		switch(select("制作 史雷普尼尔之靴:取消")) {
 		case 1:
 			if ((countitem(7076) > 2) && (countitem(7079) > 4) && (countitem(7083) > 2) && (countitem(7086) > 3) && (countitem(7087) > 2) && (countitem(969) > 19) && (countitem(985) > 9) && (countitem(2406) > 0)) {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "I never believed";
 				mes "that the speed of";
 				mes "Sleipnir would be";
@@ -643,7 +665,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				mes "Give me a moment...";
 				next;
 				if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "But...";
 					mes "The seals";
 					mes "have just been";
@@ -651,7 +673,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 					mes "wait until they're all";
 					mes "released again...!";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "Bwahahahahahahaa!";
 					mes "Even though you're";
 					mes "just a human, I feel";
@@ -672,7 +694,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				set $God3,0;
 				set $God4,0;
 				announce "[Sleipnir] the godly item has been given to [" + strcharinfo(0) + "], the master of the guild [" + getguildname(.@GID) + "].",bc_all;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "There...";
 				mes "Wear these, and";
 				mes "move with the speed of";
@@ -680,7 +702,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				close;
 			}
 			else {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Idiot human!";
 				mes "You didn't bring";
 				mes "everything I need to";
@@ -689,49 +711,51 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				close;
 			}
 		case 2:
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Muhahahaha~";
 			mes "Somehow, I figured";
 			mes "you'd back out, human!";
 			close;
 		}
 	case 4:
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "M-M-Mjolnir!?";
 		mes "Even though the";
 		mes "moment is at hand,";
 		mes "I can scarcely believe...";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "^333333*Sigh...*^000000";
 		mes "This is almost a disgrace to gods and the Dwarf race. But perhaps, wielding Mjolnir may be your destiny...";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "Once again, I need following materials in order to reproduce";
 		mes "this godly treasure...";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "^0000FF2 Thor's Gauntlets";
-		mes "4 Iron Maiden";
-		mes "5 Wrath of Valkyrie";
-		mes "5 Omen of Tempest";
-		mes "5 Billow";
-		mes "20 Oridecon";
-		mes "5 Elunium";
-		mes "40 Gold";
-		mes "1 Stunner^000000...";
+		mes "[矮人 格伦伯蒂]";
+		mes "我需要这些材料制作";
+		mes "[^FF0000雷神之锤^000000]";
+		mes "^0000FF托尔的铁手套 * 2";
+		mes "拷问器具 * 4";
+		mes "巴基力的愤怒 * 5";
+		mes "爆风雨的征兆 * 5";
+		mes "海浪雕像 * 5";
+		mes "神之金属 * 20";
+		mes "铝 * 5";
+		mes "黄金 * 40";
+		mes "昏迷之锤 * 1^000000";
 		next;
-		switch(select("Make Mjolnir.:Cancel.")) {
+		switch(select("制作 雷神之锤:取消")) {
 		case 1:
 			if ((countitem(7074) > 1) && (countitem(7075) > 3) && (countitem(7078) > 4) && (countitem(7089) > 4) && (countitem(7091) > 4) && (countitem(984) > 19) && (countitem(985) > 4) && (countitem(969) > 39) && (countitem(1522) > 0)) {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Do not disgrace";
 				mes "Thor, lord of Thunder,";
 				mes "or you will regret it.";
 				mes "Mark my words...";
 				next;
 				if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "But...";
 					mes "The seals";
 					mes "have just been";
@@ -739,7 +763,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 					mes "wait until they're all";
 					mes "released again...!";
 					next;
-					mes "[Dwarf Grunburti]";
+					mes "[矮人 格伦伯蒂]";
 					mes "Bwahahahahahahaa!";
 					mes "Even though you're";
 					mes "just a human, I feel";
@@ -761,14 +785,14 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				set $God3,0;
 				set $God4,0;
 				announce "[Mjolnir] has been bestowed to [" + strcharinfo(0) + "], the master of the [" + getguildname(.@GID) + "] guild.",bc_all;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "It's done.";
 				mes "Take it. How does";
 				mes "it feel to hold the world's most powerful weapon in your grasp?";
 				close;
 			}
 			else {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人 格伦伯蒂]";
 				mes "Idiot human!";
 				mes "You didn't bring";
 				mes "everything I need";
@@ -777,7 +801,7 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				close;
 			}
 		case 2:
-			mes "[Dwarf Grunburti]";
+			mes "[矮人 格伦伯蒂]";
 			mes "Muhahahaha~";
 			mes "Somehow, I figured";
 			mes "you'd back out, human!";
@@ -884,3 +908,465 @@ que_god01,293,3,0	script	Godly Item Quests#god	90,{
 		}
 	}
 }
+
+
+
+gld_dun01,20,99,5	script	神之放逐者	811,{
+
+	mes "[堕天 被遗弃的神]";
+	mes "哼~ 那个矮呆子";
+	mes "竟然敢说我坏话";
+	mes "要不是我被禁锢在这里...!!";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "言归正传~ 贪心的人";
+	mes "你会来找我";
+	mes "是想拥有更多神器吧！";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "但我不同";
+	mes "虽然被天界巴基力放逐";
+	mes "但是我是货真价实的";
+	mes "^FF0000神^000000 !!!";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "你真的以为";
+	mes "每制造 1 件神器";
+	mes "都需要在这片土地完成 4 次解封任务?";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "别白痴了";
+	mes "那是出卖你的灵魂给 4 个神的契约！";
+	mes "没有契约你根本不可能发挥神器的神力";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "直接入正题吧";
+	mes "在我这里，你不需要和 四神 订立契约";
+	mes "就是说你不需要再做所谓的";
+	mes "神器解封任务";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "^FF0000神头: 女神颈链";
+	mes "神腰: 雷神腰带";
+	mes "神鞋: 史雷普尼尔之靴";
+	mes "神器: 雷神之锤^000000";
+	mes "我都可以以 100% 投影！";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "使用投影不需要契约之力";
+	mes "但能发挥投影神器多少能力";
+	mes "全凭你的意志！！";
+	mes "只要你意志足够强大";
+	mes "投影甚至可以超越真品！";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "再告诉你一件事";
+	mes "这个世界除了远古流传的四神器之外";
+	mes "还有两件不出世的神器";
+	mes "寄宿在它们身上的神力";
+	mes "远大于任何一件四神器";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "我为什么会知道?";
+	mes "因为那是我们一族保管的神器";
+	mes "而我会被禁锢在这里";
+	mes "就是因为四神对其的恐惧！！";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "那两件神器，名为";
+	mes "^FF0000神甲: 布伦希尔德";
+	mes "神披: 阿斯普利卡^000000";
+	mes "只要你愿意付出对应的代价";
+	mes "同时承诺为我举起神界的反旗";
+	mes "我甚至可以帮你投影这两件神器！！";
+	next;
+
+	mes "[堕天 被遗弃的神]";
+	mes "考虑清楚了吗！！凡人?!";
+	next;
+
+	if(select("我不相信你，你是邪派吧?:我不需要这种力量:我愿意，帮我投影神器吧！") == 3) {
+
+		mes "[堕天 被遗弃的神]";
+		mes "明智的决定";
+		mes "那么, 你想投影哪件神器?";
+		next;
+		switch(select("女神颈链:雷神腰带:史雷普尼尔之靴:雷神之锤:布伦希尔德:阿斯普利卡:取消")) {
+			default:
+				break;
+
+			case 1:
+				mes "[堕天 被遗弃的神]";
+				mes "我需要这些材料投影";
+				mes "[^FF0000女神颈链^000000]";
+				mes "^0000FFZeny * 1E";
+				mes "菲力亚宝石 * 4";
+				mes "银饰品 * 4";
+				mes "雪的结晶 * 3";
+				mes "安静的水波 * 3";
+				mes "空气雕像 * 3";
+				mes "蓝宝石 * 2";
+				mes "珍珠 * 3";
+				mes "白宝石 * 10";
+				mes "诅咒红宝石 * 5";
+				mes "黄金 * 20";
+				mes "体力项链 * 1^000000";
+				next;
+
+				mes "[堕天 被遗弃的神]";
+
+				if ((zeny >= 100000000) && (countitem(7073) > 3) && (countitem(7077) > 3) && (countitem(7088) > 2) && (countitem(7090) > 2) && (countitem(7092) > 2) && (countitem(726) > 1) && (countitem(722) > 2) && (countitem(727) > 9) && (countitem(724) > 4) && (countitem(969) > 19) && (countitem(2603) > 0)) { 
+
+					mes "很好, 材料齐了";
+					mes "我现在就帮你投影!!!";
+					next;
+
+					set zeny,zeny - 100000000;
+					delitem 7073,4;  // 菲力亚宝石
+					delitem 7077,4;  // 银饰品
+					delitem 7088,3;  // 雪的结晶
+					delitem 7090,3;  // 安静的水波
+					delitem 7092,3;  // 空气雕像
+					delitem 726,2;   // 蓝宝石
+					delitem 722,3;   // 珍珠
+					delitem 727,10;  // 白宝石
+					delitem 724,5;   // 诅咒红宝石
+					delitem 969,20;  // 黄金
+					delitem 2603,1;  // 体力项链
+					
+					skilleffect "AL_ANGELUS",0;
+					mes "完成了! 拿着吧~";
+					getitem 2630,1;  // 女神颈链
+
+				} else {
+					mes "凑够材料再来吧~";
+				}
+				break;
+
+			case 2:
+				mes "[堕天 被遗弃的神]";
+				mes "我需要这些材料投影";
+				mes "[^FF0000雷神腰带^000000]";
+				mes "^0000FFZeny * 1E";
+//				mes "魔法铁链 * 1";
+				mes "猫脚步声音 * 4";
+				mes "女人的胡须 * 5";
+				mes "石头的根 * 4";
+				mes "鸟的口水 * 3";
+				mes "熊的筋 * 3";
+				mes "黄金 * 20";
+				mes "蓝宝石 * 10";
+				mes "神之金属 * 10";
+				mes "眼镜 * 1";
+				mes "手提灯 * 1";
+				mes "光滑的纸 * 2";
+				mes "油纸 * 1";
+				mes "墨汁 * 3";
+				mes "羽毛 * 3";
+				mes "蓝色魔力矿石 * 20";
+				mes "吊颈娃娃 * 1";
+				mes "绿色药草 * 1";
+				mes "酒精 * 7";
+				mes "皮带[1] * 1^000000";
+				next;
+
+				mes "[堕天 被遗弃的神]";
+
+				if ((zeny >= 100000000) && (countitem(7080) > 3) && (countitem(7081) > 4) && (countitem(7082) > 3) && (countitem(7084) > 2) && (countitem(7085) > 2) && (countitem(969) > 19) && (countitem(726) > 9) && (countitem(984) > 9) && (countitem(2203) > 0) && (countitem(1041) > 0) && (countitem(7111) > 1) && (countitem(7151) > 0) && (countitem(1024) > 2) && (countitem(916) > 2) && (countitem(717) > 19) && (countitem(7212) > 0) && (countitem(511) > 0) && (countitem(970) > 6) && (countitem(2627) > 0)) { 
+
+					mes "很好, 材料齐了";
+					mes "我现在就帮你投影!!!";
+					next;
+
+					set zeny,zeny - 100000000;
+//					delitem 7058,1;  // 魔法铁链
+					delitem 7080,4;	 // 猫脚步声音
+					delitem 7081,5;	 // 女人的胡须
+					delitem 7082,4;	 // 石头的根
+					delitem 7084,3;	 // 鸟的口水
+					delitem 7085,3;	 // 熊的筋
+					delitem 969,20;  // 黄金
+					delitem 726,10;  // 蓝宝石
+					delitem 984,10;  // 神之金属
+					delitem 2203,1;  // 眼镜
+					delitem 1041,1;  // 手提灯
+					delitem 7111,2;  // 光滑的纸
+					delitem 7151,1;  // 油纸
+					delitem 1024,3;  // 墨汁
+					delitem 916,3;   // 羽毛
+					delitem 717,20;  // 蓝色魔力矿石
+					delitem 7212,1;  // 吊颈娃娃
+					delitem 511,1;   // 绿色药草
+					delitem 970,7;   // 酒精
+					delitem 2627,1;  // 皮带[1]
+					
+					skilleffect "AL_ANGELUS",0;
+					mes "完成了! 拿着吧~";
+					getitem 2629,1;  // 雷神腰带
+
+				} else {
+					mes "凑够材料再来吧~";
+				}
+				break;
+
+			case 3:
+				mes "[堕天 被遗弃的神]";
+				mes "我需要这些材料投影";
+				mes "[^FF0000史雷普尼尔之靴^000000]";
+				mes "^0000FFZeny * 1E";
+				mes "未知的锯齿轮子 * 3";
+				mes "天使翅膀羽毛 * 5";
+				mes "鱼的灵魂 * 3";
+				mes "太阳神的象征 * 4";
+				mes "灵魂的呼吸声音 * 3";
+				mes "黄金 * 20";
+				mes "铝 * 10";
+				mes "粘糊的蹼 * 9";
+				mes "人鱼之心 * 9";
+				mes "背鳍 * 9";
+				mes "鳃刺 * 9";
+				mes "腐烂鳞片 * 9";
+				mes "钳子 * 9";
+				mes "海螺 * 9";
+				mes "触须 * 9";
+				mes "锐利麟片 * 9";
+				mes "螃蟹外壳 * 9";
+				mes "蛤蜊外壳 * 9";
+				mes "蛤蜊肉 * 9";
+				mes "鱼尾 * 9";
+				mes "墨汁 * 9";
+				mes "血管 * 9";
+				mes "脑管 * 9";
+				mes "单细胞 * 9";
+				mes "人鱼之牙 * 9";
+				mes "人鱼嘴巴 * 9";
+				mes "珊瑚 * 9";
+				mes "战士长靴[1] * 1^000000";
+				next;
+
+				mes "[堕天 被遗弃的神]";
+
+				if ((zeny >= 100000000) && (countitem(7076) > 2) && (countitem(7079) > 4) && (countitem(7083) > 2) && (countitem(7086) > 3) && (countitem(7087) > 2) && (countitem(969) > 19) && (countitem(985) > 9) && (countitem(918) > 8) && (countitem(950) > 8) && (countitem(951) > 8) && (countitem(956) > 8) && (countitem(959) > 8) && (countitem(960) > 8) && (countitem(961) > 8) && (countitem(962) > 8) && (countitem(963) > 8) && (countitem(964) > 8) && (countitem(965) > 8) && (countitem(966) > 8) && (countitem(1023) > 8) && (countitem(1024) > 8) && (countitem(1050) > 8) && (countitem(1051) > 8) && (countitem(1052) > 8) && (countitem(1053) > 8) && (countitem(1054) > 8) && (countitem(7013) > 8) && (countitem(2406) > 0)) { 
+
+					mes "很好, 材料齐了";
+					mes "我现在就帮你投影!!!";
+					next;
+
+					set zeny,zeny - 100000000;
+					delitem 7076,3;  // 未知的锯齿轮子
+					delitem 7079,5;  // 天使翅膀羽毛
+					delitem 7083,3;  // 鱼的灵魂
+					delitem 7086,4;  // 太阳神的象征
+					delitem 7087,3;  // 灵魂的呼吸声音
+					delitem 969,20;  // 黄金
+					delitem 985,10;  // 铝
+					delitem 918,9;   // 粘糊的蹼
+					delitem 950,9;   // 人鱼之心
+					delitem 951,9;   // 背鳍
+					delitem 956,9;   // 鳃刺
+					delitem 959,9;   // 腐烂鳞片
+					delitem 960,9;   // 钳子
+					delitem 961,9;   // 海螺
+					delitem 962,9;   // 触须
+					delitem 963,9;   // 锐利麟片
+					delitem 964,9;   // 螃蟹外壳
+					delitem 965,9;   // 蛤蜊外壳
+					delitem 966,9;   // 蛤蜊肉
+					delitem 1023,9;  // 鱼尾
+					delitem 1024,9;  // 墨汁
+					delitem 1050,9;  // 血管
+					delitem 1051,9;  // 脑管
+					delitem 1052,9;  // 单细胞
+					delitem 1053,9;  // 人鱼之牙
+					delitem 1054,9;  // 人鱼嘴巴
+					delitem 7013,9;  // 珊瑚
+					delitem 2406,1;  // 战士长靴[1]
+					
+					skilleffect "AL_ANGELUS",0;
+					mes "完成了! 拿着吧~";
+					getitem 2410,1;  // 史雷普尼尔之靴
+
+				} else {
+					mes "凑够材料再来吧~";
+				}
+				break;
+			
+			case 4:
+				mes "[堕天 被遗弃的神]";
+				mes "我需要这些材料投影";
+				mes "[^FF0000雷神之锤^000000]";
+				mes "^0000FFZeny * 1E";
+				mes "托尔的铁手套 * 2";
+				mes "拷问器具 * 4";
+				mes "巴基力的愤怒 * 5";
+				mes "爆风雨的征兆 * 5";
+				mes "海浪雕像 * 5";
+				mes "神之金属 * 21";
+				mes "铝 * 5";
+				mes "黄金 * 40";
+				mes "神之金属原石 * 50";
+				mes "铝原石 * 50";
+				mes "高级铁砧 * 1";
+				mes "红色药水 * 1";
+				mes "昏迷之锤 * 1^000000";
+				next;
+
+				mes "[堕天 被遗弃的神]";
+
+				if ((zeny >= 100000000) && (countitem(7074) > 1) && (countitem(7075) > 3) && (countitem(7078) > 4) && (countitem(7089) > 4) && (countitem(7091) > 4) && (countitem(984) > 20) && (countitem(985) > 4) && (countitem(969) > 39) && (countitem(756) > 49) && (countitem(757) > 49) && (countitem(1005) > 0) && (countitem(501) > 0) && (countitem(1522) > 0)) { 
+
+					mes "很好, 材料齐了";
+					mes "我现在就帮你投影!!!";
+					next;
+
+					set zeny,zeny - 100000000;
+					delitem 7074,2;  // 托尔的铁手套
+					delitem 7075,4;  // 拷问器具
+					delitem 7078,5;  // 巴基力的愤怒
+					delitem 7089,5;  // 爆风雨的征兆
+					delitem 7091,5;  // 海浪雕像
+					delitem 984,21;  // 神之金属
+					delitem 985,5;   // 铝
+					delitem 969,40;  // 黄金
+					delitem 756,50;  // 神之金属原石
+					delitem 757,50;  // 铝原石
+					delitem 1005,1;  // 高级铁砧
+					delitem 501,1;   // 红色药水
+					delitem 1522,1;  // 昏迷之锤
+					
+					skilleffect "AL_ANGELUS",0;
+					mes "完成了! 拿着吧~";
+					getitem 1530,1;  // 雷神之锤
+
+				} else {
+					mes "凑够材料再来吧~";
+				}
+				break;
+
+			case 5:
+				mes "[堕天 被遗弃的神]";
+				mes "我需要这些材料投影";
+				mes "[^FF0000布伦希尔德^000000]";
+				mes "^0000FFZeny * 1E";
+				mes "巴基力的盔甲 * 1";
+				mes "巴哈拉的花 * 100";
+				mes "女神的眼泪 * 1";
+				mes "巴基力的象征 * 1";
+				mes "布伦希尔德的铠甲碎片 * 1";
+				mes "英雄的遗骸 * 1";
+				mes "安德巴里的戒指 * 1";
+				mes "铝 * 20";
+				mes "黄金 * 10";
+				mes "华丽金属 * 30^000000";
+				next;
+
+				mes "[堕天 被遗弃的神]";
+
+				if ((zeny >= 100000000) && (countitem(2357) > 0) && (countitem(7510) > 99) && (countitem(7830) > 0) && (countitem(7831) > 0) && (countitem(7832) > 0) && (countitem(7833) > 0) && (countitem(7834) > 0) && (countitem(985) > 19) && (countitem(969) > 9) && (countitem(714) > 29)) { 
+
+					mes "很好, 材料齐了";
+					mes "我现在就帮你投影!!!";
+					next;
+
+					set zeny,zeny - 100000000;
+					delitem 2357,1;    // 巴基力的盔甲
+					delitem 7510,100;  // 巴哈拉的花
+					delitem 7830,1;    // 女神的眼泪
+					delitem 7831,1;    // 巴基力的象征
+					delitem 7832,1;    // 布伦希尔德的铠甲碎片
+					delitem 7833,1;    // 英雄的遗骸
+					delitem 7834,1;    // 安德巴里的戒指
+					delitem 985,20;    // 铝
+					delitem 969,10;    // 黄金
+					delitem 714,30;    // 华丽金属
+					
+					skilleffect "AL_ANGELUS",0;
+					mes "完成了! 拿着吧~";
+					getitem 2383,1;    // 布伦希尔德
+
+				} else {
+					mes "凑够材料再来吧~";
+				}
+				break;
+
+			case 6:
+				mes "[堕天 被遗弃的神]";
+				mes "我需要这些材料投影";
+				mes "[^FF0000阿斯普利卡^000000]";
+				mes "^0000FFZeny * 1E";
+				mes "薄纱围巾 * 1";
+				mes "柔软的羽毛 * 100";
+				mes "玛瑙 * 10";
+				mes "玫瑰石英 * 10";
+				mes "黄昏的光芒 * 1";
+				mes "黎明的露珠 * 1";
+				mes "冰冷的月光 * 1";
+				mes "阴暗的星光 * 1";
+				mes "铝 * 20";
+				mes "华丽金属 * 50^000000";
+				next;
+
+				mes "[堕天 被遗弃的神]";
+
+				if ((zeny >= 100000000) && (countitem(2513) > 0) && (countitem(7063) > 99) && (countitem(7291) > 9) && (countitem(7293) > 9) && (countitem(7835) > 0) && (countitem(7836) > 0) && (countitem(7837) > 0) && (countitem(7838) > 0) && (countitem(985) > 19) && (countitem(714) > 29)) { 
+
+					mes "很好, 材料齐了";
+					mes "我现在就帮你投影!!!";
+					next;
+
+					set zeny,zeny - 100000000;
+					delitem 2513,1;    // 薄纱围巾
+					delitem 7063,100;  // 柔软的羽毛
+					delitem 7291,10;   // 玛瑙
+					delitem 7293,10;   // 玫瑰石英
+					delitem 7835,1;    // 黄昏的光芒
+					delitem 7836,1;    // 黎明的露珠
+					delitem 7837,1;    // 冰冷的月光
+					delitem 7838,1;    // 阴暗的星光
+					delitem 985,20;    // 铝
+					delitem 714,50;    // 华丽金属
+					
+					skilleffect "AL_ANGELUS",0;
+					mes "完成了! 拿着吧~";
+					getitem 2541,1;    // 阿斯普利卡
+
+				} else {
+					mes "凑够材料再来吧~";
+				}
+				break;
+		}
+
+	} else {
+		next;
+		mes "[堕天 被遗弃的神]";
+		mes "滚吧，懦夫！！";
+
+		hideonnpc "神之放逐者";
+		close;
+	}
+
+	next;
+	mes "[堕天 被遗弃的神]";
+	mes "好了，你先离开这里吧";
+	mes "随时可以回来这里召唤我";
+	mes "哼哈哈哈哈哈哈哈哈哈哈哈";
+
+	hideonnpc "神之放逐者";
+	close;
+
+
+OnInit:
+	hideonnpc "神之放逐者";
+	end;
+}
+

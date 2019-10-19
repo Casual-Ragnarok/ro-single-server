@@ -113,7 +113,7 @@
 //===================================================================
 // Usable Items
 //===================================================================
-601,Wing_Of_Fly,苍蝇翅膀,11,10,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; getitem 601,1; },{},{}
+601,Wing_Of_Fly,苍蝇翅膀,11,10,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; if(countitem(601) <= 1) getitem 601,1; },{},{}
 602,Wing_Of_Butterfly,蝴蝶翅膀,11,100,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",3; getitem 602,1; },{},{}
 603,Old_Blue_Box,神秘箱子,2,10000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ getrandgroupitem(IG_BlueBox,1); },{},{}
 604,Branch_Of_Dead_Tree,枯树枝,2,50,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ monster "this",-1,-1,"--ja--",-1-MOBG_Branch_Of_Dead_Tree,1,""; },{},{}
@@ -124,7 +124,7 @@
 609,Amulet,返魂符,2,100,,100,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 610,Leaf_Of_Yggdrasil,天地树叶子,11,250,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "ALL_RESURRECTION",1; },{},{}
 // 611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "MC_IDENTIFY",1; },{},{}
-611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "F_IDENTIFY_ALL"; },{},{}
+611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "F_IDENTIFY_ALL"; if(countitem(611) > 1) delitem 611,1; },{},{}
 612,Portable_Furnace,携带用熔矿炉,2,150,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 21; },{},{}
 613,Iron_Hammer,钢铁锤子,2,1000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 1; },{},{}
 614,Golden_Hammer,黄金锤子,2,3000,,300,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 2; },{},{}
@@ -5780,7 +5780,7 @@
 7832,Brynhild_Armor_Piece,布伦希尔德的铠甲碎片,3,1,,500,,,,,,,,,,,,,{},{},{}
 7833,Hero_Remains,英雄的遗骸,3,1,,500,,,,,,,,,,,,,{},{},{}
 7834,Andvari_Ring,安德巴里的戒指,3,1,,500,,,,,,,,,,,,,{},{},{}
-7835,Dusk_Glow,黄昏的光芒.,3,1,,500,,,,,,,,,,,,,{},{},{}
+7835,Dusk_Glow,黄昏的光芒,3,1,,500,,,,,,,,,,,,,{},{},{}
 7836,Dawn_Essence,黎明的露珠,3,1,,500,,,,,,,,,,,,,{},{},{}
 7837,Cold_Moonlight,冰冷的月光,3,1,,500,,,,,,,,,,,,,{},{},{}
 7838,Hazy_Starlight,阴暗的星光,3,1,,500,,,,,,,,,,,,,{},{},{}
