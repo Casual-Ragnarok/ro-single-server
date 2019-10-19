@@ -156,6 +156,7 @@ TO_SELECT:
 	mes "啊咧咧，你想精炼哪件装备?";
 	next;
 	menu "emmm, 算了...",TO_CLOSE,
+		 getequipname(0),SLOT00,
 	     getequipname(1),SLOT01,
 	     getequipname(2),SLOT02,
 	     getequipname(3),SLOT03,
@@ -164,48 +165,47 @@ TO_SELECT:
 	     getequipname(6),SLOT06,
 	     getequipname(7),SLOT07,
 	     getequipname(8),SLOT08,
-	     getequipname(9),SLOT09,
-	     getequipname(10),SLOT10;
+	     getequipname(9),SLOT09;
 
+
+SLOT00:
+	set @slot,0;	// 装饰品-右
+	goto TO_REFINE;
 
 SLOT01:
-	set @slot,1;
+	set @slot,1;	// 装饰品-左
 	goto TO_REFINE;
 
 SLOT02:
-	set @slot,2;
+	set @slot,2;	// 鞋子
 	goto TO_REFINE;
 
 SLOT03:
-	set @slot,3;
+	set @slot,3;	// 披风
 	goto TO_REFINE;
 
 SLOT04:
-	set @slot,4;
+	set @slot,4;	// 头-下
 	goto TO_REFINE;
 
 SLOT05:
-	set @slot,5;
+	set @slot,5;	// 头-中
 	goto TO_REFINE;
 
 SLOT06:
-	set @slot,6;
+	set @slot,6;	// 头-上
 	goto TO_REFINE;
 
 SLOT07:
-	set @slot,7;
+	set @slot,7;	// 衣服
 	goto TO_REFINE;
 
 SLOT08:
-	set @slot,8;
+	set @slot,8;	// 左手
 	goto TO_REFINE;
 
 SLOT09:
-	set @slot,9;
-	goto TO_REFINE;
-
-SLOT10:
-	set @slot,10;
+	set @slot,9;	// 右手
 	goto TO_REFINE;
 
 
