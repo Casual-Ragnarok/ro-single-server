@@ -374,72 +374,73 @@ prt_fild08,175,374,3	script	吟游诗人#女神颈链	51,{
 		}
 		else {
 			mes "[那留奥德]";
-			mes "Say...";
-			mes "Have we met before?";
-			mes "Hmm? Never? Well...";
-			mes "That's rather odd.";
+			mes "那个...";
+			mes "我们之前见过吗?";
+			mes "Hmm? 没有? 好吧...";
+			mes "那很奇怪.";
 			next;
 			mes "[那留奥德]";
-			mes "I seem to recall that you've asked me to give you some information if I ever have any. Well, now I have and shall share it with you~";
+			mes "我似乎记得您曾要求我给您一些信息，如果我有的话。 好吧，现在我把我知道的告诉你~";
 			next;
 			mes "[那留奥德]";
-			mes "The usefulness of this information all depends on you. Now, have you heard of the ^3333CCMonster Research Organization^000000?";
+			mes "这些信息的有用性完全取决于您。 你是否听说过 ^3333CC怪物研究组织^000000(Monster Research Organization)?";
 			next;
 			mes "[那留奥德]";
-			mes "I happened to get this information from its headquarters in Juno. So how does that sound?";
+			mes "我碰巧从朱诺总部获得了这些信息。 要听听吗?";
 			next;
-			switch(select("Wee~ I want to hear!:Booooring~")) {
+			switch(select("Wee~ 我想听听看!:无聊~")) {
 			case 1:
 				mes "[那留奥德]";
-				mes "Well...!";
-				mes "You seem to be";
-				mes "very excited about";
-				mes "this new tidbit of";
-				mes "knowledge I have~";
+				mes "很好...!";
+				mes "你似乎";
+				mes "对我知道的这些信息";
+				mes "很感兴趣~";
 				next;
 				if (BaseLevel < 70) {
 					cutin "god_nelluad03",2;
 					mes "[那留奥德]";
-					mes "Alas, this information doesn't seem to be very valuable to someone such as yourself.";
+					mes "不过, 这个信息对于像你这样的人似乎并不是很有价值.";
 					next;
 					mes "[那留奥德]";
-					mes "I'm so very sorry to have excited you, but only people that are strong enough to handle grueling work can benefit from this.";
+					mes "我很抱歉引起了你的好奇心，但是只有那些有能力的人才知道这些信息的价值";
 					next;
 					mes "[那留奥德]";
-					mes "Why don't you travel around and gain more experiences? I will let you know when you're ready, you know~";
+					mes "你为什么不四处旅行并获得更多经验？ 准备好后我会告诉你的~";
+					next;
+					mes "[那留奥德]";
+					mes "（心声：就是嫌你等级太低，让你打怪升级啊 SB，没有 70 级也跑来接神器任务，活得不耐烦了？）";
 					close2;
 				}
 				else {
 					cutin "god_nelluad02",2;
 					mes "[那留奥德]";
 					mes "Ooh...";
-					mes "And you look";
-					mes "like you can handle";
-					mes "this kind of information.";
-					mes "I'll share everything I know!";
+					mes "你看起来";
+					mes "有能力处理这些信息";
+					mes "我会把我知道的一切都告诉你!";
 					next;
 					mes "[那留奥德]";
-					mes "One day, an adventurer discovered a strange, mysterious object. Unable to figure out what it could do, he visited the Monster Organization.";
+					mes "一天，一位冒险家发现了一个奇怪的神秘物体。 无法弄清楚该怎么办，于是他访问了怪物研究组织.";
 					next;
 					cutin "god_nelluad01",2;
 					mes "[那留奥德]";
-					mes "There, it was entrusted to a scholar by the name of Mr. Kaili. He still hasn't uncovered the truth about that item and wishes for assistance in his investigation.";
+					mes "在组织里，这件事以 凯里先生(Mr. Kaili) 的名义托付给一位学者。 但他仍未发现有关该物品的真相，于是希望有人可以给他的调查提供帮助.";
 					next;
 					mes "[那留奥德]";
-					mes "Mr. Kaili suspects that the item might be part of an undiscovered ancient relic. Fortunately, he is also researching ancient relics as a project assigned by the royal court.";
+					mes "凯里先生(Mr. Kaili) 怀疑该物品可能是未发现的古代遗物的一部分。 幸运的是，作为皇家宫廷分配的项目，他还在研究古代文物。";
 					next;
 					mes "[那留奥德]";
-					mes "So what do you think? Isn't that interesting? Of course, you'd better speak to Mr. Kaili if you wish to learn more. If you'd like, I shall write you a letter or recommendation.";
+					mes "所以你怎么看？ 那不是很有趣吗？ 当然，如果您想了解更多，最好与 凯里先生(Mr. Kaili)  谈谈。 如果您愿意，我会给您写信或推荐。";
 					next;
-					switch(select("Sure! Sounds good.:Sorry, I am not that interested.")) {
+					switch(select("当然! 听起来很不错.:抱歉, 我没兴趣.")) {
 					case 1:
 						mes "[那留奥德]";
-						mes "Excellent...!";
-						mes "So your name is...";
+						mes "不错...!";
+						mes "你的名字是...";
 						mes "" + strcharinfo(0) + "?";
 						next;
 						mes "[那留奥德]";
-						mes "Alright, I shall contact him right away! Oh, and you can find the Monster Organization west of Juno's central plaza. It shouldn't be hard to find. Good luck!";
+						mes "好吧，我会马上联系他！ 对了，您可以在朱诺中央广场西侧找到怪物研究组织。 不难发现。 祝好运！";
 						set god_brising,1;
 						close2;
 						break;

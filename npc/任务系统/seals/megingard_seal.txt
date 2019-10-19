@@ -2037,7 +2037,7 @@ alberta,196,146,0	script	十字军#megin2	751,{
 }
 
 aldebaran,66,213,0	script	小姐#megin	69,{
-	if ($God1 > 49 && $God2 < 100) {
+	if ($God1 > 49 && $God2 <= 100) {
 		if(god_eremes == 18) {
 			mes "[艾麻 西奥斯]";
 			mes "呼...已经来过好几次了...到现在都还没有消息...";
@@ -2402,7 +2402,7 @@ jawaii_in,44,110,0	script	治安负责人#megin	734,{
 }
 
 niflheim,109,254,0	script	伊格尼建	796,{
-	if ($God1 > 49 && $God2 < 100) {
+	if ($God1 > 49 && $God2 <= 100) {
 		if (god_eremes > 19 && god_eremes < 25) {
 			if (god_eremes > 22) {
 				mes "[伊格尼建]";

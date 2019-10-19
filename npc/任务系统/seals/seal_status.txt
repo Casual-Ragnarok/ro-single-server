@@ -23,13 +23,13 @@ prontera,156,305,3	script	神器默示录#god	837,{
 	for(set .@i,1; .@i<=4; set .@i,.@i+1) {
 		set .@val, getd("$God"+.@i);
 		if (.@val == 0)
-			set .@status$,"未解封";		// Unseen
+			set .@status$,"未解封";		// 1:Unseen
 		else if (.@val < $@god_check1)
-			set .@status$,"解封中";		// Active
+			set .@status$,"可制作";		// 3:Active
 		else if (.@val < $@god_check2)
-			set .@status$,"已现世";		// Appeared
+			set .@status$,"已现世";		// 4:Appeared
 		else
-			set .@status$,"已解封";		// Released
+			set .@status$,"已解封";		// 2:Released
 		mes .@seal$[.@i]+" Seal: "+.@status$;
 	}
 	mes " ";
