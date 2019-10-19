@@ -421,6 +421,7 @@ prt_fild01,196,47,3	script	罗斯克巴	703,{
 		mes "今天... 太阳升起往落下的地方";
 		mes "好了..先去东边吧...";
 		mes "最后才是北边喔...";
+		mes "（东 -> 南 -> 西 -> 北）";
 		mes "顺序错的话就去找我哥哥吧...";
 		close;
 	}
@@ -432,12 +433,10 @@ prt_fild01,196,47,3	script	罗斯克巴	703,{
 		mes "尽量不要出错... 了解吗?";
 		next;
 		mes "[罗斯克巴]";
-		mes "So it's really";
-		mes "important that you";
-		mes "speak to the Dwarves";
-		mes "as courteously as you can.";
-		mes "The first Dwarf you must visit";
-		mes "can be found to the North.";
+		mes "尽可能礼貌地对矮人说话";
+		mes "您必须访问的第一个矮人";
+		mes "可以在北方找到.";
+		mes "（北 -> 西 -> 南 -> 东）";
 		mes "顺序错的话就去找我哥哥吧...";
 		close;
 	}

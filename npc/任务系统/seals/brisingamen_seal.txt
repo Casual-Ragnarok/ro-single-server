@@ -1858,7 +1858,7 @@ prt_church,113,103,1	script	Praying Man	798,{
 					mes "[Hermite Charles]";
 					mes "The last time";
 					mes "I saw her was deep";
-					mes "inside the Geffen Dungeon.";
+					mes "inside the Geffen Dungeon£¨¼ª·ÒµØÀÎ£©.";
 					next;
 					mes "[Hermite Charles]";
 					mes "Although it was created by humans, that dungeon is now cursed and inhabited with horrific monsters.";
