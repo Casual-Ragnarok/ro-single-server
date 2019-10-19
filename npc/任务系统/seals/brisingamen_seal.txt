@@ -37,7 +37,7 @@ prt_fild08,175,374,3	script	吟游诗人#女神颈链	51,{
 				mes "[那留奥德]";
 				mes "So, which song";
 				mes "would you like to hear?";
-				mes "Go ahead, pick one~";
+				mes "Go ahead, pick one.~";
 				next;
 				switch(select("Bragi's Poem:Eternal Chaos:Assassin in the Sunset:Der Ring des Nibelungen")) {
 				case 1:
