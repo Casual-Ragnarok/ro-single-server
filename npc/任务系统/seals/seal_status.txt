@@ -47,7 +47,7 @@ prontera,156,305,3	script	神器默示录#god	837,{
 	else
 		mes "^00ff00女神项链: 已完成^000000";
 	if (god_mjo_0 < 11)
-		mes "^ff0000雷神之锤: 未完成^000000 (" + god_mjo_0 + "/11):" + god_mjo_1 + ":" +  + god_mjo_2 + ":" + god_mjo_3 + ":" + god_mjo_4;
+		mes "^ff0000雷神之锤: 未完成^000000 (" + god_mjo_0 + "/11):" + god_mjo_1 + ":" + god_mjo_2 + ":" + god_mjo_3 + ":" + god_mjo_4;
 	else
 		mes "^00ff00雷神之锤: 已完成^000000";
 	close;
