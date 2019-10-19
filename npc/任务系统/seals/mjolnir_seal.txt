@@ -105,7 +105,7 @@ prontera,124,297,3	script	替尔匹	706,{
 					switch(select("对自己所需要的东西:对别人所需要的东西")) {
 					case 1:
 						mes "[替尔匹]";
-						mes "是的，我了解了，我会去找冒险者先生先生，";
+						mes "是的，我了解了，我会去找冒险者先生";
 						mes "所需要的东西";
 						mes "我来看看... 什么东西会比较好呢...?";
 						mes "我明明就放在这地方的... 嗯...";
@@ -856,7 +856,7 @@ mjolnir_11,149,247,5	script	得卧普 铁匠#东	826,{
 								switch(select("...:Yes, sir!:Huh?")) {
 								default:
 									set .@talk_not,1;
-								break;
+									break;
 								case 2:
 									break;
 								}
@@ -872,12 +872,12 @@ mjolnir_11,149,247,5	script	得卧普 铁匠#东	826,{
 								switch(select("...:Boooring!:Oh, wow.")) {
 								case 1:
 									set .@talk_not,1;
-								break;
+									break;
 								case 2:
 									set .@talk_not,1;
-								break;
+									break;
 								case 3:
-								break;
+									break;
 								}
 							}
 							else if (.@talk_to == 3) {
