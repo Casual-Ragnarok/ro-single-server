@@ -1,0 +1,94 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 微笑面具 制作脚本 - 
+//===================================
+// 版本：1.4
+//===================================
+
+prontera,157,187,4	script	微笑小姐#prt::SmileHelper	92,{
+	mes "[微笑小姐]";
+	mes "大家好~  大家好~";
+	mes "我是 微笑小姐";
+	mes "有什么我可以的帮上忙的地方吗?";
+	next;
+	switch (select("询问有关^0099FF笑脸面具^000000的事情:制作^0099FF笑脸面具^000000:终止对话")) {
+	case 1:
+		mes "[微笑小姐]";
+		mes "这是位了取悦^0099FF特力斯坦 3世 ^000000国王陛下";
+		mes "特别在仙境传说里的";
+		mes "所举行的活动";
+		mes "而本人就是执行^5555FF全国国民微笑运动^000000";
+		mes ".. 这项活动的代表";
+		mes "^5555FF' 微笑小姐 '^000000 ";
+		next;
+		mes "[微笑小姐]";
+		mes "利用简单的材料";
+		mes "为各位制作 ^5555FF'' 笑脸面具 '^000000 ";
+		mes "为大家说明一下";
+		mes "以下就是制作时所需要的材料";
+		next;
+		mes "[微笑小姐]";
+		mes "^5555FF杰勒比结晶 10 个^000000";
+		mes "^5555FF毛 10 个^000000";
+		mes "^5555FF三叶幸运草10 个^000000";
+		next;
+		mes "[微笑小姐]";
+		mes "希望能藉由这次的活动";
+		mes "让大家开始学习懂得去为别人着想";
+		mes "能够每天开开心心的过生活";
+		mes "使这个世界成为一个欢乐的世界";
+		close;
+	case 2:
+		if (countitem(909) > 9 && countitem(914) > 9 && countitem(705) > 9) {
+			mes "[微笑小姐]";
+			mes "哦~太棒了！你搜集好制作笑脸面具所有需物品了，我马上为你制作...";
+			next;
+			mes "~!咻!~!咻!~!喀啦!~!喀啦!~!叩!~!叩!~";
+			next;
+			delitem 909,10; //Jellopy
+			delitem 914,10; //Fluff
+			delitem 705,10; //Clover
+			getitem 2278,1; //Mr_Smile
+			mes "[微笑小姐]";
+			mes "这是你的笑脸面具!";
+			next;
+			mes "[微笑小姐]";
+			mes "我们的国王^5577FF特力斯坦 3世^000000允许了这次活动的举行，目的是为了更好的为在梦幻宝贝中生活的人民服务.";
+		}
+		else {
+			mes "[微笑小姐]";
+			mes "啊 - 真是可惜";
+			mes "您所拥有的物品";
+			mes "数量不足";
+			mes "^5555FF杰勒比结晶 10 个^000000,";
+			mes "^5555FF毛 10 个^000000,";
+			mes "^5555FF三叶幸运草10 个^000000,";
+			mes "请确定好数量再过来";
+		}
+		close;
+	case 3:
+		mes "[微笑小姐]";
+		mes "非常感谢您的使用";
+		mes "我们 ..";
+		mes "尘世大陆王国";
+		mes "为了仙境传说明朗开阔的未来";
+		mes "将会尽最大的努力";
+		next;
+		mes "[微笑小姐]";
+		mes "希望各位国民";
+		mes "也能够全力配合";
+		mes "以上为";
+		mes "尘世大陆公布栏处的公告内容";
+		close;
+	}
+}
+
+// 其它地方的微笑小姐
+moc_ruins,59,154,3	duplicate(SmileHelper)	微笑小姐#moc	92
+aldebaran,136,135,4	duplicate(SmileHelper)	微笑小姐#alde	92
+geffen,119,107,4	duplicate(SmileHelper)	微笑小姐#gef	92
+alberta,113,53,4	duplicate(SmileHelper)	微笑小姐#alb	92
+payon,186,104,5	duplicate(SmileHelper)	微笑小姐#pay	92
+izlude,129,118,4	duplicate(SmileHelper)	微笑小姐#iz	92

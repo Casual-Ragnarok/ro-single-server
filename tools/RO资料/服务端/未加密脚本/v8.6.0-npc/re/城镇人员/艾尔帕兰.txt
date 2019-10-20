@@ -1,0 +1,1653 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 艾尔帕兰 城镇脚本 -
+//========================
+//= 版本：2.3
+//========================
+aldebaran,113,70,4	script	精炼工人 曼斯特#alde	48,{
+	mes "[曼斯特]";
+	mes "我家原本住在吉芬";
+	mes "去年冬天才搬家搬到艾尔帕兰";
+	mes "这个地方来..";
+	next;
+	if (select("关于^3355FF' 精炼 '^000000..:结束对话") == 1) {
+		mes "[曼斯特]";
+		mes "我的父亲";
+		mes "在以铁匠闻名的吉芬";
+		mes "也是个相当有名气的名匠";
+		mes "后来才搬到母亲的故乡这来的";
+		next;
+		mes "[曼斯特]";
+		mes "我有时候也会帮帮父亲的忙";
+		mes "我最近在学习的是";
+		mes "辨别武器等级高低与";
+		mes "精炼的成功率大小之相关性";
+		next;
+		mes "[曼斯特]";
+		mes "等级1 的武器";
+		mes "可以成功的精炼到等级7";
+		mes "等级2 的武器可成功的精炼到等级6";
+		mes "等级3 的武器";
+		mes "则可成功的精炼到等级5";
+		mes "至于等级4 的武器";
+		next;
+		mes "[曼斯特]";
+		mes "大约可成功的精炼到等级4";
+		mes "防具之类的话";
+		mes "普通都到等级 4";
+		mes "失败精炼的话";
+		mes "武器受不了那强度就破坏了！！";
+		close;
+	}
+	mes "[曼斯特]";
+	mes "虽然还有许多人";
+	mes "不清楚甚至不知道";
+	mes "我父亲的精炼所在哪里，";
+	mes "但若是在艾尔帕兰也能打响父亲的名号";
+	mes "那就真的太棒了";
+	close;
+}
+
+aldebaran,64,104,4	script	奎特罗#alde	55,{
+	mes "[奎特罗]";
+	mes "听说最近艾尔帕兰";
+	mes "来了个在吉芬顶顶有名";
+	mes "的铁匠师父 ..";
+	next;
+	if (select("有关那位顶顶有名的铁匠师父:结束对话") == 1) {
+		mes "[奎特罗]";
+		mes "我听说";
+		mes "武器等级的高低与";
+		mes "可增加攻击力的大小";
+		mes "有相当程度的关系 ..";
+		next;
+		mes "[奎特罗]";
+		mes "等级1 的可以冶炼到等级 2";
+		mes "等级2 的可以冶炼到等级 3";
+		mes "等级3 的可以冶炼到等级 5 !";
+		mes "至于等级4 的则与等级3 一样";
+		close;
+	}
+	mes "[奎特罗]";
+	mes "因为我太太的身体状况不太好";
+	mes "所以必须要按时的服用";
+	mes "艾尔帕兰附近才有的特殊药草";
+	mes "我儿子也是个孝顺的好孩子";
+	mes "帮爸爸分担了不少工作..";
+	mes "将来应该也会是个不错的铁匠";
+	close;
+}
+
+aldebaran.gat,49,93,4	script	密雷亚	83,{
+	mes "[密雷亚]";
+	mes "你知道吗 ? 听说武器的等级";
+	mes "不只到3 而已 ..";
+	mes "还有等级4 的武器呢!!";
+	next;
+	mes "[密雷亚]";
+	mes "我还听说，这种得来不易的";
+	mes "等级 4 的武器，";
+	mes "只有在你打败魔物首领后，";
+	mes "才有极小的机率";
+	mes "可以得到这项武器";
+	close;
+}
+
+aldebaran,81,61,4	script	拾蛤蜊的女孩#ald	101,{
+	mes "[乔丝]";
+	mes "在海边等地方拾蛤蜊";
+	mes "真是一点趣味都没有";
+	next;
+	if (select("关于拾蛤蜊:结束对话") == 1) {
+		mes "[乔丝]";
+		mes "比起在沙滩.. 和水坑来说的话";
+		mes "海水啪搭啪搭的";
+		mes "不断涌起";
+		mes "在海边就只能拾到一些蛤蜊，";
+		mes "因为大部分的蛤蜊";
+		mes "都藏在底下呢!";
+		next;
+		mes "[乔丝]";
+		mes "还有啊!";
+		mes "有种外壳坚硬";
+		mes "习性很差";
+		mes "不可小觑的";
+		mes "家伙!";
+		next;
+		mes "[乔丝]";
+		mes "它们的名字叫做蜗牛，";
+		mes "在普隆德拉西部地区的";
+		mes "海边附近可以看到它们的踪迹..";
+		mes "要是不小心招惹到它们";
+		mes "那大概只能祈求老天能让你逃过一劫了";
+		next;
+		mes "[乔丝]";
+		mes "总之，它们很可怕就是了..";
+		close;
+	}
+	mes "[乔丝]";
+	mes "哪天我一定要去那个";
+	mes "有名的洞窟去拾蛤蜊 !";
+	mes "虽然有些危险..";
+	mes "但要是能去感受一下，应该也值得吧?";
+	close;
+}
+
+aldebaran,46,129,4	script	运河青年#alde	97,{
+	mes "[帕那马]";
+	mes "艾尔帕兰在尘世大陆上";
+	mes "算是个名满天下";
+	mes "为人所津津乐道";
+	mes "相当著名的运河之都";
+	next;
+	switch(select("关于运河之都:结束对话")) {
+	case 1:
+		mes "[帕那马]";
+		mes "运河就是..";
+		mes "为了可以在内陆地区船运";
+		mes "以及灌溉农地 ..";
+		mes "等用途而建造的";
+		mes "人工水路";
+		next;
+		mes "[帕那马]";
+		mes "一般来说，运河";
+		mes "属于交通工具的一部份";
+		mes "运河大部分是挖掘陆地或";
+		mes "水路填土后所留下的水路..";
+		next;
+		mes "[帕那马]";
+		mes "也有人将";
+		mes "为整修河川而建的人工水路";
+		mes "称为运河";
+		close;
+		break;
+	case 2:
+		mes "[帕那马]";
+		mes "水很清澈吧?";
+		mes "既然这里被称做是山谷村";
+		mes "当然就有山谷村应有的特色噜 ..";
+		mes ". . . . .";
+		mes "好好的休息完后再走吧!";
+		close;
+		break;
+	}
+}
+
+aldebaran,67,154,4	script	山路青年 艾杰伯克#alde	98,{
+	mes "[艾杰伯克]";
+	mes "妙勒尼山脉、斐扬的树林";
+	mes "都是以险峻的地形";
+	mes "而闻名的";
+	next;
+	switch(select("关于妙勒尼山脉:关于斐扬树林:结束对话")) {
+	case 1:
+		mes "[艾杰伯克]";
+		mes "若想从卢恩　米德加尔特王国的首都";
+		mes "普隆德拉以及魔法之都吉芬";
+		mes "到艾尔帕兰这个地方来的话";
+		mes "途中必经之路便是..";
+		mes "妙勒尼山脉!";
+		next;
+		mes "[艾杰伯克]";
+		mes "若想从骑士公会与卢恩　米德加尔特王国的";
+		mes "首都普隆德拉..";
+		mes "还有以魔法师与";
+		mes "铁匠闻名的";
+		mes "吉芬";
+		next;
+		mes "[艾杰伯克]";
+		mes "以及修道院";
+		mes "到艾尔帕兰这地方来的话";
+		mes "途中必定要经过";
+		mes "妙勒尼山脉 ..";
+		mes "妙勒尼山脉";
+		mes "山势相当险峻 ..";
+		next;
+		mes "[艾杰伯克]";
+		mes "外表狰狞且凶狠的";
+		mes "先攻魔物大多藏匿在这";
+		mes "要穿越这做山脉相当困难";
+		mes "得吃不少苦头";
+		close;
+	case 2:
+		mes "[艾杰伯克]";
+		mes "从梦罗克的山脉";
+		mes "要到艾尔贝塔以及";
+		mes "斐扬的话";
+		mes "途中必经之路便是";
+		mes "斐扬的树林";
+		next;
+		mes "[艾杰伯克]";
+		mes "因为位在艾尔贝塔与斐扬之间的";
+		mes "这座树林的地形";
+		mes "相当复杂，结构相似";
+		mes "像座迷宫";
+		mes "要是没有精神灌注专心一致的话，";
+		mes "很可能会在深林中迷路";
+		next;
+		mes "[艾杰伯克]";
+		mes "至于?什么这座树林";
+		mes "会被称为是斐扬树林";
+		mes "而不是艾尔贝塔树林";
+		mes "原因是因为 ..";
+		next;
+		mes "[艾杰伯克]";
+		mes "斐扬是个以弓箭手闻名的都市";
+		mes "为了防止外力入侵";
+		mes "他们选择高耸且险峻的山脉";
+		mes "作为天然屏障";
+		mes "用来抵御外侮";
+		next;
+		mes "[艾杰伯克]";
+		mes "我想这大概也就是为什么与外国往来密切的艾尔贝塔";
+		mes "在尘世大陆的名声";
+		mes "会比斐扬响亮的缘故吧!";
+		close;
+	case 3:
+		mes "[艾杰伯克]";
+		mes "这规模相当雄伟的山脉";
+		mes "阻隔了许多";
+		mes "从世界各地前来的旅客:";
+		mes "不过托运河以及炼金术的福，";
+		mes "使得这个地方一直充满着神秘感，";
+		mes "还是有不少人想前来一探究竟..";
+		close;
+	}
+}
+
+aldebaran,90,170,4	script	插槽青年#alde	47,{
+	mes "[艾迪尔]";
+	mes "听说在武器与防具中";
+	mes "有个叫做插槽的东西";
+	mes "它的用处就是可以将打败魔物后";
+	mes "从魔物身上得到的魔物卡片插入";
+	mes "使武器与防具拥有该效能:";
+	next;
+	switch(select("关于插槽:魔物卡片与插槽的相关性:结束对话")) {
+	case 1:
+		mes "[艾迪尔]";
+		mes "比起在一般商店中贩卖的";
+		mes "从魔物那得到的战利品";
+		mes "之插槽数较多:";
+		next;
+		mes "[艾迪尔]";
+		mes "拥有这项道具的话";
+		mes "可以同时使用两张以上的卡片:";
+		mes "可以使该物";
+		mes "发挥最大的效能:";
+		close;
+	case 2:
+		mes "[艾迪尔]";
+		mes "另外，卡片插入插槽中后，";
+		mes "便不能取出重复使用:";
+		mes "希望你使用时要特别注意这点:";
+		mes "在插入之前，";
+		mes "请仔细考虑清楚:";
+		close;
+	case 3:
+		mes "[Epithiel]";
+		mes "请问您有从魔物那";
+		mes "得到的卡片吗 ?";
+		close;
+	}
+}
+
+aldebaran,117,181,4	script	朱尔力#alde	48,{
+	mes "[朱尔力]";
+	mes "在装备道具中";
+	mes "最低等级 ( Level 1 ) ";
+	mes "的武器冶炼时";
+	mes "需要一种名称为";
+	mes "' 强化武器金属-级数一 '之金属";
+	next;
+	switch(select("关于强化武器金属-级数一:强化武器金属-级数一小帮手:结束对话")) {
+	case 1:
+		mes "[朱尔力]";
+		mes "强化武器金属-级数一就是.. 从很久以前";
+		mes "在尘世大陆里";
+		mes "使用相当广泛";
+		mes "最为普遍的制炼用";
+		mes "金属";
+		next;
+		mes "[朱尔力]";
+		mes "虽然它不比一般钢铁";
+		mes "或各式各样稀有的矿石";
+		mes "的强度";
+		mes "要来的坚硬..";
+		next;
+		mes "[朱尔力]";
+		mes "但是因为它可以说是";
+		mes "随手可及的资源";
+		mes "因此被民众广泛的使用，人气相当旺";
+		next;
+		mes "[朱尔力]";
+		mes "这种金属";
+		mes "可以从魔物身上获得或者向";
+		mes "在有专业技术的铁匠们所在的冶炼工厂里";
+		mes "制作并且贩卖金属的";
+		mes "铁匠购买";
+		next;
+		mes "[朱尔力]";
+		mes "您可以向冶炼工购买";
+		mes "并且使用";
+		mes "等到装备道具提高到某个等级..";
+		mes "原本的武器成为";
+		mes "高等级武器时";
+		next;
+		mes "[朱尔力]";
+		mes "即使有强化武器金属-级数一..";
+		mes "将不再具有任合作用-";
+		mes "这时您便不再需要它了..";
+		mes "那么请将它转卖出去!!";
+		mes "它大概可以卖到100金币";
+		mes "左右 ?";
+		close;
+	case 2:
+		mes "[朱尔力]";
+		mes "听说拥有强化武器金属-级数一的";
+		mes "魔物相当的多";
+		mes "可以说是随手可得的";
+		mes "金属";
+		mes "你要不要找找这种金属呢?";
+		next;
+		mes "[朱尔力]";
+		mes "不久前的假日";
+		mes "我和隔壁酒店主人";
+		mes "一起去打猎的时候 ..";
+		mes "还从野猪宝宝身上";
+		mes "找到这种金属呢!";
+		close;
+	case 3:
+		mes "[朱尔力]";
+		mes "请去寻找好的强化武器金属-级数一吧!";
+		close;
+	}
+}
+
+aldebaran,121,231,4	script	炼金术青年#alde	49,{
+	mes "[凯密尔]";
+	mes "炼金者就是古代在艾尔帕兰";
+	mes "以将劣质不值钱的金属以人工手法";
+	mes "制成优质值钱的珍贵金属为目标的";
+	mes "化学家也就是科学者";
+	mes "的另一个代名词";
+	next;
+	switch(select("关于斐扬炼金术:炼金者的意味:. . . . .:结束对话")) {
+	case 1:
+		mes "[凯密尔]";
+		mes "同样的道理，";
+		mes "斐扬的";
+		mes "道教中";
+		mes "有一种让人服用后可以长生不老且";
+		mes "升天成仙的";
+		mes "' 丹药 '";
+		next;
+		mes "[凯密尔]";
+		mes "就是由这种";
+		mes "提炼金属的方法而来的";
+		mes "斐扬炼金术的主张";
+		mes "正是这种结合化学思想与炼金术的主张";
+		next;
+		mes "[凯密尔]";
+		mes "但是斐扬地区";
+		mes "化学相当不发达";
+		mes "正好与艾尔帕兰完全相反";
+		mes "不只是因为自然环境的因素，";
+		mes "研究炼金术所需的材料";
+		mes "也相当的缺乏";
+		next;
+		mes "[凯密尔]";
+		mes "因此，现今";
+		mes "在尘世大陆上举世闻名的";
+		mes "'炼金术 '";
+		mes "除了艾尔帕兰以外";
+		mes "没有他处可以与之媲美了 ..";
+		close;
+	case 2:
+		mes "[凯密尔]";
+		mes "炼金者";
+		mes "能将化学方面的知识融会贯通";
+		mes "混合各式各样的物质";
+		mes "调和调配出";
+		mes "富有机能的道具";
+		close;
+	case 3:
+		mes "[凯密尔]";
+		mes "说这些好像有些乏味";
+		mes "那么我们现在就来说说";
+		mes "有关魔物卡片与插槽的相关性吧..";
+		mes "我想你应该已经知道";
+		mes "每张魔物卡片";
+		next;
+		mes "[凯密尔]";
+		mes "都有特定的装备位置";
+		mes "也就是特定的插槽..";
+		mes "一定要将该卡片装备在同种类的插槽上";
+		mes "才能使它发挥作用";
+		mes "举例来说，如果你得到的是波利卡片..";
+		next;
+		mes "[凯密尔]";
+		mes "波利卡片的正面上写着";
+		mes "LUK + 1 的效能";
+		mes "且标记的装备位置在";
+ 		mes "'铠甲'";
+		mes "的话";
+		next;
+		mes "[凯密尔]";
+		mes "即使你硬是将它插在";
+		mes "短剑类的插槽上";
+		mes "也是枉然-";
+		mes "它并不会有任何的作用";
+		next;
+		mes "[凯密尔]";
+		mes "还有，大部分商店中所";
+		mes "贩卖的铠甲类";
+		mes "也会有没有插槽";
+		mes "的情形存在";
+		mes "只有从魔物那";
+		mes "取得的战利品";
+		mes "才能与之发生作用";
+		next;
+		mes "[凯密尔]";
+		mes "啊，对了，将魔物卡片";
+		mes "插入装备的方法是";
+		mes "打开解除装备的";
+		mes "道具细目表";
+		mes "将滑鼠游标在所欲解除的卡片上";
+		mes "点两下";
+		next;
+		mes "[凯密尔]";
+		mes "则会出现标示";
+		mes "它与哪样装备可以配合使用的细目表";
+		mes "你可以很轻易的就装备完成";
+		close;
+	case 4:
+		mes "[凯密尔]";
+		mes "如果说在尘世大陆上最著名的炼金术-";
+		mes "非艾尔帕兰炼金者公会莫属!!";
+		mes "炼金者公会万岁万万岁!!";
+		close;
+	}
+}
+
+aldebaran,86,228,4	script	小朋友#alde	62,{
+	mes "[贝贝]";
+	mes "前几天我带着饲养的";
+	mes "小猪宝宝";
+	mes "' 贝贝猪 '";
+	mes "到妙勒尼山脉那";
+	mes "去散步..";
+	mes "贝贝猪是小山猪的一种";
+	mes "相当的可爱";
+	mes "身上有着粉红色的毛发";
+	next;
+	switch(select("贝贝猪的故事:关于妙勒尼山脉的气氛:结束对话")) {
+	case 1:
+		mes "[贝贝]";
+		mes "我们沿着山路";
+		mes "一路往上走去";
+		mes "有株有着美丽外表的花，";
+		mes "没想到它是个巨大的植物怪，";
+		mes "居然想吃掉我和贝贝猪";
+		next;
+		mes "[贝贝]";
+		mes "我害怕的赶紧躲开";
+		mes "然后拿起路上的石头";
+		mes "朝它丢去( 虽然当时我很害怕 )";
+		mes "那家伙居然丝毫没感觉的样子";
+		mes "真是个强悍的家伙啊!";
+		next;
+		mes "[贝贝]";
+		mes "更令人惊讶的是";
+		mes "它居然有着和人一般的脸";
+		mes "这是真的 !";
+		mes "走近一点";
+		mes "它就会张开血盆大口像要咬你似的!";
+		close;
+	case 2:
+		mes "[贝贝]";
+		mes "我原本以为妙勒尼山脉那有各式各样美丽的植物";
+		mes "没想到还有可怕的昆虫";
+		mes "和动物";
+		mes "花 . 虫 .. 特别是蜜蜂和蝴蝶";
+		mes "随意触碰它们的翅膀可是会惹祸上身的";
+		next;
+		mes "[贝贝]";
+		mes "虽然说大部分的野生动物. 昆虫等";
+		mes "不会主动攻击我们";
+		mes "但是一招惹上它们";
+		mes "那可不是开玩笑的 ..";
+		close;
+	case 3:
+		mes "[贝贝]";
+		mes "说到这，我家的贝贝猪到哪去了啊.. ?";
+		mes "贝贝猪 ! 快点过来 !";
+		close;
+	}
+}
+
+aldebaran,159,242,4	script	昆虫叔叔#alde	119,{
+	mes "[西特龙]";
+	mes "沿着妙勒尼山脉 ..";
+	mes "一路走上去的话";
+	mes "大家都知道 !";
+	mes "依照习性与谋生能力的高低";
+	mes "昆虫也可以被分为好多种 ..";
+	mes "这些你知道吗 ?";
+	next;
+	if (select("关于昆虫:结束对话") == 1) {
+		mes "[西特龙]";
+		mes "花虫或是. 蝴蝶 .. 等";
+		mes "在花丛之间穿梭飞舞";
+		mes "采集花蜜";
+		mes "脚上沾满花粉";
+		mes "飞来飞去";
+		mes "?花完成散布花粉的工作";
+		mes "真是可爱..";
+		next;
+		mes "[西特龙]";
+		mes "啊，话虽如此";
+		mes "但是也不能小看这些家伙";
+		mes "千万别忽略了";
+		mes "它们为了生存";
+		mes "也各有各的战斗能力";
+		mes "不断的使自己进化再进化";
+		next;
+		mes "[西特龙]";
+		mes "另外，有种以这类昆虫为食的";
+		mes "肉食性昆虫";
+		mes "像是螳螂或蜘蛛";
+		mes "以及蜈蚣等";
+		mes "代表性的昆虫";
+		next;
+		mes "[西特龙]";
+		mes "有些魔物以昆虫的型态出现";
+		mes "它们拥有着高等级力量";
+		mes "力量强大";
+		mes "像是蜈蚣或蜘蛛";
+		mes "或者是脐螬等未知的家伙!";
+		next;
+		mes "[西特龙]";
+		mes "要特别小心 !";
+		mes "你得离它们远一点 !";
+		mes "因为还好有一点可以庆幸的是";
+		mes "这些家伙";
+		mes "它们的视力并不好";
+		next;
+		mes "[西特龙]";
+		mes "你走远一点的话";
+		mes "它们就会看不到你..";
+		close;
+	}
+	mes "[西特龙]";
+	mes "再美看起来再柔弱的";
+	mes "昆虫";
+	mes "也千万不要掉以轻心";
+	mes "否则可是会惹上大麻烦喔 -";
+	mes "千万别小觑";
+	mes "妙勒尼山脉的大自然 ..";
+	close;
+}
+
+aldebaran,60,70,4	script	小姐#alde	69,{
+	mes "[塞尔维亚]";
+	mes "听说在这艾尔帕兰村落某个地方有卡普拉总公司";
+	mes "所以才远从普隆得拉到艾尔帕兰来";
+	mes "可是 .. 可是 .. 哎哟";
+	next;
+	mes "[塞尔维亚]";
+	mes "我找寻卡普拉服务中心总公司";
+	mes "已经五个小时，不，超过了...";
+	mes "到底它在哪里呢.. 真是~";
+	mes "我看起来虽然聪明，";
+	mes "但其实是个不折不扣的大路痴";
+	next;
+	mes "[塞尔维亚]";
+	mes "啊，不过我知道一个";
+	mes "应该还蛮有用的小道消息";
+	mes "想不想知道啊 ?";
+	next;
+	if (select("继续对话:取消") == 1) {
+		mes "[塞尔维亚]";
+		mes "购买装备道具或是";
+		mes "从魔物身上得到";
+		mes "战利品时";
+		next;
+		mes "[塞尔维亚]";
+		mes "虽然名称上它是装备道具";
+		mes "但是也有可能无法完成装备的动作";
+		mes "这个时候呢..  可以使用!!";
+		mes "那就是^3355FF放大镜!! ^000000";
+		next;
+		mes "[塞尔维亚]";
+		mes "使用特殊眼镜的话";
+		mes "即使身边没有铁匠";
+		mes "你也可以轻易的鉴识该道具喔!";
+		close;
+	}
+	mes "[塞尔维亚]";
+	mes "真是 .....";
+	close;
+}
+
+aldebaran.gat,93,80,4	script	长腿少年	48,{
+	mes "[裘卡缇]";
+	mes "艾尔帕兰都市里到处都有流着清澈的水的水道";
+	mes "水流潺潺，呈现一片秀丽的美好景观";
+	mes "但. 是 . 呢";
+	next;
+	mes "[裘卡缇]";
+	mes "昨天晚上，就在我偷偷要去会女友的途中";
+	mes "我的脚却不小心踩进了水沟里去";
+	mes "害我们原本应该是美丽浪漫的约会完全泡汤了";
+	next;
+	if (select("就只是这样啊？:结束对话.") == 1) {
+		mes "[裘卡缇]";
+		mes "这是我昨天听我女友";
+		mes "也就是防御道具店老板的小女儿说的";
+		mes "比起在武器店或是防御道具店";
+		mes "所贩卖的商品";
+		next;
+		mes "[裘卡缇]";
+		mes "有些从魔物身上取得的战利品";
+		mes "的性能";
+		mes "还比较高呢";
+		next;
+		mes "[裘卡缇]";
+		mes "换句话来说";
+		mes "应该就是' 功能多多 ' 的意思吧 ?";
+		mes "虽然我其实";
+		mes "不太确定这话的真实性..";
+		close;
+	}
+	mes "[裘卡缇]";
+	mes "呜呜呜 ..";
+	mes "你一定认为我是个头脑简单";
+	mes "四肢发达的蠢蛋是吗?";
+	close;
+}
+
+aldebaran,180,46,4	script	东方人#alde	88,{
+	mes "[河朱祚]";
+	mes "我是从叫做斐扬的森林之都来的观光客";
+	mes "这里.. 到处都有流水";
+	mes "让人感觉好清凉喔";
+	next;
+	mes "[河朱祚]";
+	mes "不过.. 这水 ..";
+	mes "可以生饮吗 ?";
+	mes "其实 ..... 我已经喝过了 ..";
+	next;
+	if (select("继续对话:结束对话.") == 1) {
+		mes "[河朱祚]";
+		mes "我现在正在旅游，打算踏遍整个尘世大陆";
+		mes "这是我到达艾尔帕兰前";
+		mes "一位高级魔法师告诉我的";
+		next;
+		mes "[河朱祚]";
+		mes "对付没有实体的 ^3355FF念属性^000000 魔物";
+		mes "使用无属性攻击或是魔法";
+		mes "是不容易对魔物产生伤害的";
+		next;
+		mes "[河朱祚]";
+		mes "希望这对你会有帮助";
+		mes "那么..";
+		close;
+	}
+	mes "[河朱祚]";
+	mes "不知道是不是因为艾尔帕兰这个地方";
+	mes "四周的环境相当的干净";
+	mes "所以水的味道尝起来也特别的甘甜";
+	mes "即使是喝有船在行走的的河里的水也没关系的样子";
+	close;
+}
+
+aldebaran,212,122,4	script	艾尔帕兰老百姓#alde	97,{
+	mes "[石林德]";
+	mes "欢迎光临 ! 这里是艾尔帕兰!";
+	mes "我们艾尔帕兰老百姓非常地欢迎你";
+	mes ". . . . .";
+	next;
+	mes "[石林德]";
+	mes "太隆重了是吗 ? 因为是市民代表嘛 ..";
+	mes "嗯，那么就我一个人.. 热烈地竭诚地 ..";
+	next;
+	mes "[石林德]";
+	mes "欢迎您的到来!";
+	next;
+	if (select("继续对话:结束对话.") == 1) {
+		mes "[石林德]";
+		mes "啊，这么说来你大概是遇上了";
+		mes "那些有趣的家伙了吧！";
+		mes "这是几天前的事";
+		mes "包围着艾尔帕兰的";
+		next;
+		mes "[石林德]";
+		mes "妙勒尼山脉树林附近";
+		mes "我看到了戴着天使般翅膀的波利 !";
+		mes "是真的!";
+		next;
+		mes "[石林德]";
+		mes "它混杂在其他普通的波利群中";
+		mes "蹦蹦跳跳的";
+		mes "听说它叫做天使波利 ..";
+		mes "不知道它到底是何方神圣?";
+		close;
+	}
+	mes "[石林德]";
+	mes "艾尔帕兰是个相当洁净，并且周围被美丽的妙勒尼山脉";
+	mes "所环绕着的迷人都市";
+	mes "诚挚的欢迎您来到";
+	mes "艾尔帕兰城市";
+	close;
+}
+
+aldebaran.gat,146,124,4	script	村落少女	101,{
+	mes "[坎夏普特]";
+	mes "听说这个世界上存在着一个叫做 ^3355FF' 刺客公会 '^000000 的地方";
+	mes "他们把人不知鬼不觉地杀人秘诀传授给人家";
+	mes "那个地方 ..";
+	next;
+	mes "[坎夏普特]";
+	mes "应该是非法的吧 ?";
+	mes ". . . . .";
+	mes "是非法的也要付学费啊?";
+	next;
+	if (select("继续对话:结束对话.") == 1) {
+		mes "[坎夏普特]";
+		mes "有翅膀的魔物的飞行能力";
+		mes "大部分";
+		mes "移动与攻击速度都很快";
+		mes "因此你要攻击对方";
+		mes "相当的困难";
+		next;
+		mes "[坎夏普特]";
+		mes "所以呢，要对付这些魔物的时候";
+		mes "就必须要有更灵活的灵巧度 (DEX) ";
+		mes "对吧?";
+		close;
+	}
+	mes "[坎夏普特]";
+	mes "这世上没有白吃的午餐";
+	mes "当然啦，也许可以免费接受教育";
+	mes "不过倒也不一定啦";
+	mes "嗯嗯嗯..";
+	close;
+}
+
+aldebaran,143,136,4	script	钟楼怪人#A	89,{
+	mes "[本佐民 豪]";
+	mes "我是'地乐会'所属艾尔帕兰钟塔管理人，大家都叫我'钟楼怪人'你看起来好像对钟塔很感兴趣的样子？要不要我告诉你一些有关钟塔的故事啊？";
+	next;
+	if (select("听取有关钟塔的故事:结束对话") == 1) {
+		mes "[本佐民 豪]";
+		mes "透过钟塔的母钟将好几个钟连成一个这就是所谓的'屋间连通传送门系统'装置";
+		next;
+		mes "[本佐民 豪]";
+		mes "在钟塔里的传送门虽然互相有连结，但是里头也有些'随机传送门'装置，这种装置会让你被送往不明的地方去，如果你和同伴打算一起进入钟塔内的话，可千万得小心随机传送门的装置喔.. ";
+		next;
+		mes "[本佐民 豪]";
+		mes "给你一些暗示吧！随机传送门在迷你地图上会以绿色的标记标示出来，只要看着迷你地图上的标示小心一点就可以避免了，希望你玩的愉快，哈哈哈...";
+		close;
+	}
+	close;
+}
+
+// Inside Al De Baran
+//============================================================
+aldeba_in,232,241,4	script	艾尔帕兰小市民#alde	48,{
+	mes "[RS125]";
+	mes "我的名字跟人家与众不同，我说的话也许无趣";
+	mes "但是请不要怕我，我其实是个好人..";
+	next;
+	mes "[RS125]";
+	mes "虽然我有着和一般人与众不同的心脏..";
+	mes "那是像机车一般低贱的二行程心脏";
+	mes "我不知道这样的心脏跳动的声音是不是很刺耳..";
+	mes "但为了艾尔帕兰的未来，我一定会坚持下去的";
+	next;
+	if (select("Listen to his story.:结束对话") == 1) {
+		mes "[RS125]";
+		mes "..已经过了三年了..";
+		mes "我哥哥九九六当选艾尔帕兰代表短距离赛跑选手至今已经三年了..";
+		mes "那时大家都尊称他为' 艾尔帕兰的大嘴鸟'";
+		mes "他可是个名符其实的长跑健将呢..";
+		next;
+		mes "[RS125]";
+		mes "艾尔帕兰隔四年举办一次的' 艾尔帕兰大会'";
+		mes "有许多为了看我哥哥一眼从世界各地来的疯狂赛跑迷..";
+		mes "害得作为哥哥经纪人的我都快要发疯了";
+		mes "那时他受喜爱的程度真是无远弗届..";
+		next;
+		mes "[RS125]";
+		mes "但是，毕竟这世界上没有什么是永恒的..";
+		mes "我哥竟然被有一个住在叫做斐扬森林里一个村落的少女给打败";
+		mes "输掉了那一场比赛";
+		next;
+		mes "[RS125]";
+		mes "我哥自从那次比赛之后太过热衷于训练而心脏病发";
+		mes "现在只能在病床上看着我";
+		next;
+		mes "[RS125]";
+		mes "我是艾尔帕兰的未来也是我哥哥的希望！";
+		mes "等着瞧！我一定会把斐扬的' 飞毛腿　河帕那' 给打败的！";
+		close;
+	}
+	mes "[RS125]";
+	mes "我有一天一定会去环游世界！";
+	mes "打从港口之都艾尔贝塔向远望去的大海会有多么好看呢..";
+	mes "等明年田径比赛结束之后我一定要跟我哥哥去环游世界！";
+	close;
+}
+
+aldeba_in.gat,223,121,2	script	凶悍的大叔	63,{
+	mes "[凶悍的大叔]";
+	mes "喂喂，你怎么可以随意闯进人家的家里来！";
+	mes "真是太莫名其妙了！ ";
+	mes "你凭什么闯进我家里来跟我说话啊?";
+	next;
+	mes "[凶悍的大叔]";
+	mes "嘿嘿嘿 … 我知道了，我知道了";
+	mes "我把虚拟世界和现实世界给搞混了..";
+	next;
+	if (select("Continue:Quit") == 1) {
+		mes "[凶悍的大叔]";
+		mes "年轻人，我不知道你是否知道";
+		mes "在这世界里存在着佣兵系统";
+		mes "而我也是属于佣兵中的其中一种 ..";
+		next;
+		mes "[凶悍的大叔]";
+		mes "佣兵的意义和佣兵系统其实很容易了解";
+		mes "其实就是花钱找个战争的伙伴..";
+		mes "越有实力身价也会越高..";
+		next;
+		mes "[凶悍的大叔]";
+		mes "不要再说这么无聊的话了！";
+		mes "我把可以挑选好佣兵的办法";
+		mes "简单的说给你听";
+		next;
+		mes "[凶悍的大叔]";
+		mes "首先要看一看鼻头干不干净";
+		mes "好佣兵的鼻头一向都";
+		mes "湿湿地，如果干干地";
+		mes "那就代表他感冒了  ..";
+		next;
+		mes "[凶悍的大叔]";
+		mes "还有脚腕是一定要细才";
+		mes "作为佣兵还是要有细脚腕和白净的脖子才可以!";
+		mes "再加上具有柔顺的长直头发或者花点钱烫头发就是最好不过的了?!";
+		next;
+		mes "[凶悍的大叔]";
+		mes "最后作为佣兵..其实就是一种服务..!";
+		mes "为了让消费者心花怒放";
+		mes "时时刻刻跟在你的身边，不吝给予批评指教的，这才是真正的佣兵!";
+		mes "当然也别忘了要适时贴心的递上湿的手巾!";
+		close;
+	}
+	mes "[凶悍的大叔]";
+	mes "还不赶快滚出去?";
+	mes "如果是员警就把搜索票拿出来..";
+	mes "如果你是我们家族的一份子的话，就给我看在你屁股上的斑点!";
+	close;
+}
+
+aldeba_in.gat,219,61,4	script	形象良好的大叔	109,{
+	mes "[形象良好的大叔]";
+	mes "别再听住在隔壁的凶悍大叔说的话了..";
+	mes "前年他为了要摘在私立佣兵训练内树上的果子";
+	mes "在从树上摔下来头撞到地上，才会变成现在这个样子..";
+	next;
+	mes "[形象良好的大叔]";
+	mes "再这样继续谈下去我也快要疯了..";
+	mes "唉呦，头痛啊!";
+	close;
+}
+
+aldeba_in.gat,152,47,4	script	大题小作的青年	97,{
+	mes "[小题大作的青年]";
+	mes "不不不..不好了!";
+	mes "我家养的宝贝小鸡";
+	mes "不见了!!";
+	next;
+	if (select("小鸡的名字叫做什么呢？:. . . . .") == 1) {
+		mes "[小题大作的青年]";
+		mes "叫做' 了不起的小鸡 ' ..";
+		mes "唉唷，这下子可怎么办才好~";
+		mes "求求你帮我找找我可爱的小鸡吧 ~";
+		next;
+		if (select("什么嘛！这名字太普通了不是吗？:. . . . .") == 1) {
+			mes "[小题大作的青年]";
+			mes "你说这是什么话啊!";
+			mes "我们家 ' 了不起的小鸡 ' 可是这世界上独一无二的耶";
+			mes "它超级无敌可爱的说!! 真是不懂欣赏 ?";
+			close;
+		}
+		mes "[小题大作的青年]";
+		mes "你说这是什么话啊!";
+		mes "我们家 ' 了不起的小鸡 ' 可是这世界上独一无二的耶";
+		mes "它超级无敌可爱的说!! 真是不懂欣赏 ?";
+		close;
+	}
+	mes "[小题大作的青年]";
+	mes "你不要把人看扁了!";
+	mes "我家没有兄弟姊妹，所以我一直把它当作我的弟弟一样看待!";
+	mes "呜哇哇哇哇 ; ; ; ; ;";
+	close;
+}
+
+aldeba_in.gat,156,179,4	script	酒店娱乐伙伴#02	61,{
+	mes "[娱乐伙伴]";
+	mes "在艾尔帕兰有间卡普拉总公司..";
+	mes "在那公司女上班族们偶尔会到我们酒店来玩";
+	mes "她们都非常地开朗活泼";
+	next;
+	mes "[娱乐伙伴]";
+	mes "那么现在就进入我们小小测验!";
+	mes "也就是测验你理想对象是谁的'感谢娱乐伙伴'的时间 !";
+	mes "哈…哈 …是男是女都无所谓";
+	next;
+	mes "[娱乐伙伴]";
+	mes "只要选出平时你觉得…觉得…";
+	mes "哇！她很亲切很有魅力的 ~";
+	mes "…卡普拉小姐就行了!";
+	next;
+	if (select("喔喔，一定很有趣！:唉呀，我才不要玩.") == 1) {
+		mes "[娱乐伙伴]";
+		mes "那么，要慎重的选择喔!";
+		mes "选选看哪个最合你的意吧!";
+		next;
+		mes "[娱乐伙伴]";
+		mes "我们的原先的卡普拉小姐古典的蓝色头发非常地优雅";
+		mes "号码 (1) ^3355FF' 狄波萝太 '^000000 !!";
+		mes "文静的形象吸引许多顽皮的高中男生 !";
+		mes "号码 (2)  ^5533FF' 泰依琳 '^000000 !!";
+		mes "重点是柔顺的长直头发，相当温柔! 打从斐扬来的";
+		mes "号码 (3)  ^555555' 绣灵 '^000000 !!";
+		next;
+		mes "[娱乐伙伴]";
+		mes "男性般的俏丽短头发让她显得更活泼更有活力..";
+		mes "号码 (4)  ^1133DD' 妣妮 '^000000 !!";
+		mes "又冷静又稳重的上班族形象 ! 很配高级的眼镜框的";
+		mes "号码 (5)  ^33FF55' 克拉丽丝 '^000000 !!";
+		mes "扎着辫子，嫩嫩地 ~ 看起来很年轻但其实是蛮成熟的 !";
+		mes "号码 (6)  ^AAAA00' 德帛硫 '^000000 !!";
+		next;
+		mes "[娱乐伙伴]";
+		mes "赞助 : 卡普拉服务中心";
+		mes "…琼达代理公司";
+		mes "解说完毕了 ~ ";
+		next;
+		switch(select("(1)狄波萝太:(2)泰依琳:(3)绣灵:(4)妣妮:(5)克拉丽丝:(6)德帛硫")) {
+		case 1:
+			mes "[娱乐伙伴]";
+			mes "喔喔，相当念旧的你";
+			mes "可真是个固执的人 !";
+			mes "要能接受新文物! 逃避现实是没有用的!";
+			close;
+		case 2:
+			mes "[娱乐伙伴]";
+			mes "你怎么一点都无法集中精神啊 !";
+			mes "如果你的伙伴也是跟你一样不能集中精神的话  ..";
+			mes "那可是会打扰到身边的人的耶 !";
+			close;
+		case 3:
+			mes "[娱乐伙伴]";
+			mes "一直过着糜烂的生活";
+			mes "会被人家说成没有活力";
+			mes "要为人生订定未来的目标，朝目标迈进才是啊 !";
+			close;
+		case 4:
+			mes "[娱乐伙伴]";
+			mes "你要作梦作到什么时候啊";
+			mes "难不成你打算这样一直寻找你梦寐以求的对象 ?";
+			mes "面对现实吧 !";
+			close;
+		case 5:
+			mes "[娱乐伙伴]";
+			mes "我跟诚心的对你说一句话";
+			mes "请你打开心胸好吗 !";
+			mes "别只是一个人孤单的玩乐!";
+			close;
+		case 6:
+			mes "[娱乐伙伴]";
+			mes "喔 …喔喔  !";
+			mes "渴望拥有幼小情人的你 !";
+			mes "这…这是犯罪的心理 ! ";
+			close;
+		}
+	}
+	mes "[娱乐伙伴]";
+	mes "哇哇 !! 昨天连夜作的";
+	mes "你看看喜不喜欢啊!!";
+	mes "讨厌啦～你";
+	close;
+}
+
+aldeba_in,84,166,4	script	卡普拉服务中心#alde	117,{
+	cutin "kafra_01",2;
+	mes "[卡普拉狄波萝太]";
+	mes "欢迎光临！";
+	mes "卡普拉服务中心第一代卡普拉";
+	mes "我是 ' 狄波萝太 ' ！请多多关照";
+	next;
+	mes "[卡普拉狄波萝太]";
+	mes "我们卡普拉服务中心为了时时刻刻满足客";
+	mes "人的要求";
+	mes "秉持诚实、信用、正直三大原则..";
+	mes "正确确实的服务训练和管理而全力以赴的";
+	next;
+	if (select("购买卡普拉使用券:请慢走！") == 1) {
+		if (countitem(1084) == 0) {
+			mes "[Kafra Pavianne]";
+			mes "I'm sorry,";
+			mes "but you don't";
+			mes "have any Kafra Passes.";
+			close2;
+			cutin "",255;
+			end;
+		}
+		else {
+			set .@kafrapassmoney,countitem(1084)*2000;
+			mes "[Kafra Pavianne]";
+			mes "Let's see...";
+			if (countitem(1084) == 1) {
+				mes "You have 1 Kafra Pass.";
+				mes "You can sell that pass to us for 2000 zeny. Would you like to sell this Kafra Pass back to the Kafra Corporation?";
+			}
+			else {
+				mes "You have "+ countitem(1084) +" Kafra Passes.";
+				mes "If you want to sell them to us, you will receive "+ .@kafrapassmoney +" zeny. Would you like to sell these back to the Kafra Corporation?";
+			}
+			next;
+			if (select("Yes:No") == 1) {
+				if (countitem(1084) == 0) {
+					mes "[Kafra Pavianne]";
+					mes "I'm sorry, but you don't have any Kafra Passes.";
+					close2;
+					cutin "",255;
+					end;
+				}
+				delitem 1084,countitem(1084); //Kapra's_Pass
+				set Zeny,Zeny+.@kafrapassmoney;
+				mes "[Kafra Pavianne]";
+				mes "Thank you.";
+			}
+			close2;
+			cutin "",255;
+			end;
+		}
+	}
+	mes "[Kafra Pavianne]";
+	mes "Thank you,";
+	mes "have a good day.";
+	close2;
+	cutin "",255;
+	end;
+}
+
+aldeba_in,83,245,4	script	卡普拉服务中心#2alde	116,{
+	cutin "kafra_02",2;
+	mes "[卡普拉泰依琳]";
+	mes "..... 大姐（普萝太）老是这样!";
+	mes "太挑剔了。";
+	mes "总公司应该跟分公司要有差别";
+	mes "应该要有自己的风格。";
+	next;
+	mes "[卡普拉泰依琳]";
+	mes "那！欢迎光临喔~ 我是泰依琳。";
+	mes "请你以后也要继续惠顾我们卡普拉服务中";
+	mes "心 ..";
+	mes "请你不要忘了我泰依琳。";
+	next;
+	switch(select("卡普拉小姐！我支持你喔！:嘿嘿嘿")) {
+	case 1:
+		mes "[卡普拉泰依琳]";
+		mes "哇塞！";
+		mes "真是太感谢你了 ~";
+		mes "麻烦你... 请在这边签名。";
+		next;
+		mes "[卡普拉泰依琳]";
+		mes "嘿嘿... 你不用确认物品的清单了...";
+		mes "没用的，";
+		mes "我已经在你心底做了记号了。";
+		emotion e_ok;
+		next;
+		break;
+	case 2:
+		mes "[卡普拉泰依琳]";
+		mes "什么?";
+		mes ". . . . .";
+		mes "就只会说这些台词啊？";
+		mes "你未免太无聊了吧..";
+		next;
+		break;
+	}
+	close2;
+	cutin "",255;
+	end;
+}
+
+aldeba_in,24,245,4	script	卡普拉服务中心#alde2	115,{
+	cutin "kafra_03",2;
+	mes "[卡普拉绣灵]";
+	mes "嗨-我是卡普拉No . 1绣灵。";
+	mes "欢迎你到这里艾尔帕兰的卡普拉总公司来 !";
+	next;
+	mes "[卡普拉绣灵]";
+	mes "我们卡普拉服务中心时时刻刻都陪伴在你们身边!";
+	mes "有着五千八百年的传统的卡普拉服务中心..";
+	mes "铛铛铛铛铛铛铛铛…";
+	next;
+	switch(select("五千八百年 ?!真不敢相信了 !:好姐姐别吵了:你有没有男朋友 ?")) {
+	case 1:
+		mes "[卡普拉绣灵]";
+		mes "你给我听清楚了 ! 我背这台词已经背了一个星期了!";
+		mes "我跟其他的卡普拉人员不一样，我记性不好 !";
+		mes ".....咦..我现在是在说什么啊..";
+		next;
+		mes "[卡普拉绣灵]";
+		mes "嘻嘻嘻，客人.. 这是在作秀..";
+		mes "是的.. 我们.. 这是我们这里卡普拉服务中心为客人.. 表演的~";
+		mes "梦幻秀! ( .. 不过一次只有一个人表演喔)";
+		break;
+	case 2:
+		mes "[卡普拉绣灵]";
+		mes ". . . . .";
+		mes "我加入卡普拉服务中心以前";
+		mes "是属于卡普拉警备队的一员..";
+		mes "我的专长是攻击!!";
+		mes "..可是我决心过宁静且优雅的日子..";
+		mes "顾客 .. 请你不要刺激我..";
+		break;
+	case 3:
+		mes "[卡普拉绣灵]";
+		mes "真是的，我们卡普拉服务人员不能有男朋友";
+		mes "这可真是~莫名其妙的规则啊！";
+		mes ". . . . .";
+		mes ". . . . . . . . . .";
+		next;
+		mes "骗你的啦！ 嘿嘿！";
+		break;
+	}
+	close2;
+	cutin "",255;
+	end;
+}
+
+aldeba_in,142,238,4	script	卡普拉服务中心#3alde	114,{
+	cutin "kafra_04",2;
+	mes "[卡普拉妣妮]";
+	mes "欢迎光临！我是卡普拉妣妮？";
+	mes "我告诉你一个别人不知道的卡普拉超级秘";
+	mes "密！";
+	next;
+	mes "[卡普拉妣妮]";
+	mes "其实啊..我们这里卡普拉服务中心";
+	mes "以前的招牌不是卡普拉服务中心。";
+	mes "那么，本来是什么呢？";
+	next;
+	mes "[卡普拉妣妮]";
+	mes "铛铛铛铛铛铛铛铛!";
+	mes "真是令人吃惊不是嘛！";
+	mes "卡! 普! ( 铃铃铃铃..)";
+	mes "啊，是我的手机.. 请等一下？";
+	next;
+	mes "[卡普拉妣妮]";
+	mes "是的，我是卡普拉妣妮？";
+	mes "啊，是本部部长啊！是！是！....";
+	mes "是！";
+	mes "什么？！";
+	next;
+	mes "[卡普拉妣妮]";
+	mes "啊，不是的！";
+	mes "啊.. 不是这样的！！";
+	mes "是！我知道了！！";
+	next;
+	mes "[卡普拉妣妮]";
+	mes "卡嚓！";
+	mes "嘿嘿嘿";
+	next;
+	mes "[卡普拉妣妮]";
+	mes "呃.... 请客人您";
+	mes "把刚才听到的对话内容";
+	mes "请.. 请你把它忘掉。嘿嘿";
+	emotion e_swt;
+	cutin "",255;
+	close;
+}
+aldeba_in,91,244,4	script	卡普拉服务中心#4alde	112,{
+	cutin "kafra_06",2;
+	mes "[卡普拉德帛硫]";
+	mes "因为我是新进人员，虽然和你们认识";
+	mes "不久，不过我一定会尽心尽力为你们服务";
+	mes "的!";
+	mes "往后还请多多指教 ~";
+	next;
+	if (select("几岁?:结束对话.") == 1) {
+		mes "[卡普拉德帛硫]";
+		mes ". . . . .";
+		mes "哎呦 !!";
+		mes "不要把人家当小孩子看嘛!!";
+		close2;
+		cutin "",255;
+		end;
+	}
+	mes "[卡普拉德帛硫]";
+	mes "我们卡普拉服务中心";
+	mes "将会提供大家一个最棒！最贴心！";
+	mes "的完善服务。";
+	mes "很感谢您的使用。";
+	close2;
+	cutin "",255;
+	end;
+}
+
+// Kafra Special Reserve Point NPCs
+//============================================================
+// Special Reserve ----------------------------------------------
+aldeba_in,79,161,6	script	Kafra#04	115,{
+	cutin "kafra_03",2;
+	mes "[卡普拉 职员]";
+	mes "Welcome, ^6666FF" + strcharinfo(0) + "^000000.  This is where you can trade in your special reserve points for useful items and cool prizes.";
+	next;
+	mes "[卡普拉 职员]";
+	mes "Each Kafra will allow you to trade in reserve points of varying amounts.  I can trade in reserve points starting from ^2222FF100 pts up to 3000 pts^000000.";
+	next;
+	mes "[卡普拉 职员]";
+	mes "The amount of special reserve points that you have is: ^FF0000"+RESRVPTS+"^000000 pts.  Please make a choice based on your point total.";
+M_Menu:
+	next;
+	menu 	"100- Sweet Potato 7 ea",M_1a, "200- Sweet Potato 15 ea",M_1b, "300- Sweet Potato 25 ea",M_1c, "400- Sweet Potato 35 ea",M_1d,
+		"500- Sweet Potato 50 ea",M_1e, "600- Sweet Potato 60 ea",M_1f, "700- Sweet Potato 75 ea",M_1g, "800- Sweet Potato 85 ea",M_1h,
+		"900- Sweet Potato 100 ea",M_1i, "1000- 1st Lottery Chance!",M_1j, "Next items",M_2, "Cancel",M_End;
+
+	M_1a:
+		if(RESRVPTS < 100) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 7;
+		set RESRVPTS, RESRVPTS - 100;
+		close;
+	M_1b:
+		if(RESRVPTS < 200) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 15;
+		set RESRVPTS, RESRVPTS - 200;
+		close;
+	M_1c:
+		if(RESRVPTS < 300) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 25;
+		set RESRVPTS, RESRVPTS - 300;
+		close;
+	M_1d:
+		if(RESRVPTS < 400) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 35;
+		set RESRVPTS, RESRVPTS - 400;
+		close;
+	M_1e:
+		if(RESRVPTS < 500) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 50;
+		set RESRVPTS, RESRVPTS - 500;
+		close;
+	M_1f:
+		if(RESRVPTS < 600) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 60;
+		set RESRVPTS, RESRVPTS - 600;
+		close;
+	M_1g:
+		if(RESRVPTS < 700) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 75;
+		set RESRVPTS, RESRVPTS - 700;
+		close;
+	M_1h:
+		if(RESRVPTS < 800) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 85;
+		set RESRVPTS, RESRVPTS - 800;
+		close;
+	M_1i:
+		if(RESRVPTS < 900) goto sL_LowPts1;
+		mes "[卡普拉 职员]";
+		mes "Here you are.";
+		getitem 516, 100;
+		set RESRVPTS, RESRVPTS - 900;
+		close;
+	M_1j:
+		if(RESRVPTS < 1000) goto sL_LowPts1;
+		set RESRVPTS, RESRVPTS - 1000;
+		mes "[卡普拉 职员]";
+		mes "^0000FF1st Lottery Opportunity!!^000000";
+		set @Lotto, 1;
+		next;
+		callfunc "F_Lottery";
+		goto M_End;
+
+	sL_LowPts1:
+		mes "[卡普拉 职员]";
+		mes "I'm sorry but you do not have enough reserve points for that selection.";
+		goto M_Menu;
+
+	M_2:
+		menu 	"1100- Red Potion 7 ea",M_2a, "1300- Red Potion 15 ea",M_2b, "1500- Red Potion 25 ea",M_2c,
+			"1700- Red Potion 35 ea",M_2d, "1900- Red Potion 50 ea",M_2e, "2100- Red Potion 60 ea",M_2f,
+			"2300- Red Potion 75 ea",M_2g, "2500- Red Potion 85 ea",M_2h, "2800- Red Potion 100 ea",M_2i,
+			"3000- 2nd Lotery Chance!",M_2j, "Previous List",M_Menu, "Cancel",M_End;
+		
+		M_2a:
+			if(RESRVPTS < 1100) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 7;
+			set RESRVPTS, RESRVPTS - 1100;
+			close;
+		M_2b:
+			if(RESRVPTS < 1300) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 15;
+			set RESRVPTS, RESRVPTS - 1300;
+			close;
+		M_2c:
+			if(RESRVPTS < 1500) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 25;
+			set RESRVPTS, RESRVPTS - 1500;
+			close;
+		M_2d:
+			if(RESRVPTS < 1700) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 35;
+			set RESRVPTS, RESRVPTS - 1700;
+			close;
+		M_2e:
+			if(RESRVPTS < 1900) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 50;
+			set RESRVPTS, RESRVPTS - 1900;
+			close;
+		M_2f:
+			if(RESRVPTS < 2100) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 60;
+			set RESRVPTS, RESRVPTS - 2100;
+			close;
+		M_2g:
+			if(RESRVPTS < 2300) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 75;
+			set RESRVPTS, RESRVPTS - 2300;
+			close;
+		M_2h:
+			if(RESRVPTS < 2500) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 85;
+			set RESRVPTS, RESRVPTS - 2500;
+			close;
+		M_2i:
+			if(RESRVPTS < 2800) goto sL_LowPts2;
+			mes "[卡普拉 职员]";
+			mes "Here you are.";
+			getitem 501, 100;
+			set RESRVPTS, RESRVPTS - 2800;
+			close;
+		M_2j:
+			if(RESRVPTS < 3000) goto sL_LowPts2;
+			set RESRVPTS, RESRVPTS - 3000;
+			mes "[卡普拉 职员]";
+			mes "^0000FF2nd Lottery Opportunity!!^000000";
+			set @Lotto, 2;
+			next;
+			callfunc "F_Lottery";
+			goto M_End;
+
+		sL_LowPts2:
+			mes "[卡普拉 职员]";
+			mes "I'm sorry but you do not have enough reserve points for that selection.";
+			next;
+			goto M_2;
+
+	M_End:
+		mes "[卡普拉 职员]";
+		mes "Please come back anytime when you have more reserve points.";
+		cutin "",255;
+		close;
+}
+
+// Special Reserve 2 ----------------------------------------------
+aldeba_in.gat,88,161,3	script	卡普拉服务中心#05	115,{
+	cutin "kafra_03",2;
+	mes "[卡普拉  职员]";
+	mes "欢迎光临~ "+strcharinfo(0)+" 顾客";
+	mes "现在我们卡普拉中心，为了顾客们特别举办感谢活动";
+	next;
+	mes "[卡普拉  职员]";
+	mes "可利用目前所搜集的卡普拉点数，来可抽奖品的^FF0000特别卡普拉 ^529DFF奖品嘉年华!^000000";
+	mes "我们卡普拉公司，这一次特地把奖品给加强了";
+	next;
+	mes "[卡普拉  职员]";
+	mes "请问你要参加吗?";
+	next;
+	if(select("我要参加:我不参加")==1) {
+		mes "[卡普拉  职员]";
+		mes "顾客你累计的点数是^FF0000"+RESRVPTS+"^000000 点~";
+		mes "在下列项目中，请你选择你想要的商品";
+		next;
+		switch(select("5000p = 第1阶段，机会机会!","7000p = 第2阶段，机会机会!","10000p = 第3阶段，机会机会!:取消")) {
+		case 1:
+			if(RESRVPTS < 5000) goto sL_NotEnuf;
+			set RESRVPTS, RESRVPTS - 5000;
+			set @Lotto, 3;
+			callfunc "F_Lottery";
+			break;
+		case 2:
+			if(RESRVPTS < 7000) goto sL_NotEnuf;
+			set RESRVPTS, RESRVPTS - 7000;
+			set @Lotto, 4;
+			callfunc "F_Lottery";
+			break;
+		case 3:
+			if(RESRVPTS < 10000) goto sL_NotEnuf;
+			set RESRVPTS, RESRVPTS - 10000;
+			set @Lotto, 5;
+			callfunc "F_Lottery";
+			break;
+		case 4:
+			break;
+		sL_NotEnuf:
+			mes "[卡普拉  职员]";
+			mes "对不起~ 顾客~";
+			mes "顾客你所选择的机会，因累计点数不够所以不能参与~";
+			mes "请顾客再确认一次累计点数之后，再做选择~";
+			cutin "",255;
+			close;
+		}
+	}
+	mes "[卡普拉  职员]";
+	mes "好~ 就这样了~ 顾客";
+	mes "下一次请累计更多~ 更多的~ 累计点数~";
+	mes "非常感谢每次使用我们卡普拉(有限公司) 的服务~~";
+	cutin "",255;
+	close;
+}
+
+// Function F_Lottery ------------------------------------------------------------------------------------------
+function	script	F_Lottery	{
+	mes "[卡普拉服务中心]";
+	mes "你有绝佳的好运抽到来自天堂的好礼!!";
+	next;
+	mes "[卡普拉服务中心]";
+	mes "别放弃这个好机会! 亲爱的! 你准备好了吗?";
+	next;
+	mes "[卡普拉服务中心]";
+	mes "你想转几次乐透箱呢? 最多可以转 5 次! 如果输入 1-5 以外的数字的话箱子就会自己乱转啦!";
+	next;
+	input @input;
+	if(@input < 1 || @input > 5) set @input, rand(1,5); //Lupus's fix
+	callsub sF_Spin;
+	mes "[卡普拉服务中心]";
+	mes "彩球掉出来了! 让我们来瞧瞧你得到了什么礼物?";
+	next;
+	mes "[卡普拉服务中心]";
+	mes "^FF0000我看看.... 这是...!!^000000";
+	next;
+	if(@temp <  1) goto sL_Prize1;
+	if(@temp <  2) goto sL_Prize2;
+	if(@temp <  3) goto sL_Prize3;
+	if(@temp <=  4) goto sL_Prize4;
+	goto sL_Prize5;
+
+	sL_Prize1:
+		mes "[卡普拉服务中心]";
+		mes "哇!!!!..... 真幸运!!! 头奖~! 恭喜~~ 你得到头奖~~";
+		if(@Lotto == 1) getitem 2328,1;//Items: Wooden_Mail,
+		if(@Lotto == 2) getitem 2307,1;//Items: Mantle,
+		if(@Lotto == 3) getitem 657,10;//Items: Berserk_Potion,
+		if(@Lotto == 4) {
+			getitem 607,2;//Items: Yggdrasilberry,
+			getitem 608,1;//Items: Yggdrasil_Seed,
+		}
+		if(@Lotto == 5) getitem 607,3;//Items: Yggdrasilberry,
+		return;
+	sL_Prize2:
+		mes "[卡普拉服务中心]";
+		mes "欧! 哇! 你得到二奖! 恭喜!!";
+		if(@Lotto == 1) getitem 2403,1;//Items: Shoes,
+		if(@Lotto == 2) getitem 2226,1;//Items: Cap,
+		if(@Lotto == 3) getitem 2201,1;//Items: Sunglasses,
+		if(@Lotto == 4) getitem 526,3;//Items: Royal_Jelly,
+		if(@Lotto == 5) {
+			getitem 608,1;//Items: Yggdrasil_Seed,
+			getitem 526,10;//Items: Royal_Jelly,
+		}
+		return;
+	sL_Prize3:
+		mes "[卡普拉服务中心]";
+		mes "恭喜! 你得到三奖";
+		if(@Lotto == 1) getitem 602,4;//Items: Butterfly_Wing,
+		if(@Lotto == 2) getitem 505,3;//Items: Blue_Potion,
+		if(@Lotto == 3) getitem 2203,1;//Items: Glasses,
+		if(@Lotto == 4) getitem 504,15;//Items: White_Potion,
+		if(@Lotto == 5) getitem 504,30;//Items: White_Potion,
+		return;
+	sL_Prize4:
+		mes "[卡普拉服务中心]";
+		mes "你得到四奖";
+		if(@Lotto == 1) getitem 516,100;//Items: Sweet_Potato,
+		if(@Lotto == 2) getitem 501,150;//Items: Red_Potion,
+		if(@Lotto == 3) getitem 502,150;//Items: Orange_Potion,
+		if(@Lotto == 4) getitem 505,5;//Items: Blue_Potion,
+		if(@Lotto == 5) getitem 505,10;//Items: Blue_Potion,
+		return;
+	sL_Prize5:
+		mes "[卡普拉服务中心]";
+		mes "你得到五奖";
+		if(@Lotto == 1) getitem 516,50;//Items: Sweet_Potato,
+		if(@Lotto == 2) getitem 501,100;//Items: Red_Potion,
+		if(@Lotto == 3) getitem 501,200;//Items: Red_Potion,
+		if(@Lotto == 4) getitem 501,250;//Items: Red_Potion,
+		if(@Lotto == 5) getitem 501,300;//Items: Red_Potion,
+		return;
+
+sF_Spin:
+	mes "[乐透箱]";
+	mes "噢噢噢! 箱子将会继续转 "+@input+" 次";
+	next;
+	mes "[乐透箱]";
+	mes "(笃~笃~笃~)...";
+	next;
+	set @temp, rand(10);
+	set @input, @input -1;
+	if(@input <= 0) return;
+	goto sF_Spin;
+}
+
+// Inside Clock Tower
+//============================================================
+c_tower3,10,249,4	script	看门人#ct	84,{
+	//Key_Of_Clock_Tower
+	callfunc "F_ClockTowerGate","第四层楼",7026,"c_tower4",185,44; 
+}
+
+alde_dun03,264,16,4	script	看门人#ct1	101,{
+	//Underground_Key
+	callfunc "F_ClockTowerGate","地下四楼",7027,"alde_dun04",79,267; 
+}
+
+function	script	F_ClockTowerGate	{
+	mes "[看门人]";
+	mes "你从哪来？冒险家，这里是艾尔帕兰钟塔，";
+	mes "我是艾尔帕兰最好的看门人，";
+	mes "看守这个钟楼的"+getarg(0)+"，";
+	mes "我不会让你进去，请回到你来的地方。";
+	next;
+	switch(select("关于钟楼:关于"+getarg(0)+":我要到"+getarg(0)+":结束")) {
+	case 1:
+		mes "[看门人]";
+		mes "艾尔帕兰是练金术士的出生地，很久以前，他们是3个传说的炼金术士布鲁克·萨莫尔，菲利浦·沃尔滋和..";
+		next;
+		mes "[看门人]";
+		mes "罗梅罗·斯拜索罗尔！这座钟楼就是他们的杰作。在这层钟楼里你会有一些相当奇异的感觉，这是钟楼的特征。";
+		next;
+		mes "[看门人]";
+		mes "这里被神秘古老的魔法所控制，你在这里随便转转就能感到这些东西。";
+		next;
+		mes "[看门人]";
+		mes "千万要小心，等待你的也许是无法预料的灾难甚至会出现看门人变的魔物。请你自己一定要小心...";
+		close;
+	case 2:
+		mes "[看门人]";
+		mes "古老的炼金术士使用炼金术士的魔法封住了第4层的入口，如果坚持要进的话就跨进这扇门，等待你的是魔鬼和强悍的敌人！";
+		next;
+		mes "[看门人]";
+		mes "进入里面需要一把钥匙，传说那把钥匙在变成魔物的钟塔看门人的身上，他经常会在这里附近游荡。";
+		next;
+		mes "[看门人]";
+		mes "钥匙是古老炼金术的精华，据说使用那把钥匙的时候要是就会释放出所有的能量，并且从这个世界上消失。";
+		next;
+		mes "[看门人]";
+		mes "勇敢的冒险家，如果你拥有了这把钥匙请把它交给我，只有拥有这把钥匙的人才能让这扇门将如你的愿望而开启！这样你就能进入这里。";
+		next;
+		mes "[看门人]";
+		mes "期待着你能成功的回来！";
+		mes ". . . . .";
+		close;
+	case 3:
+		if (countitem(getarg(1)) > 0) {
+			mes "[看门人]";
+			mes "唔……我已经感觉到你是一个不平常的人，你似乎已经通过了考验。那么现在，请你进来吧，诸神会保佑勇敢的战士的...";
+			close2;
+			delitem getarg(1),1; 
+			warp getarg(2),getarg(3),getarg(4);
+			end;
+		}
+		else {
+			mes "[看门人]";
+			mes "很不幸你没有通过考验，你不能进入这扇门 ..不要太遗憾，这是炼金术士之灵的意思！请再努力一些吧！";
+			close;
+		}
+	case 4:
+		mes "[看门人]";
+		mes "这个钟楼是3个古老的炼金术士的家，虽然他们的精神和肉体都离开了我们，但在里面胡作非为的人会受到神的诅咒的。";
+		close;
+	}
+}

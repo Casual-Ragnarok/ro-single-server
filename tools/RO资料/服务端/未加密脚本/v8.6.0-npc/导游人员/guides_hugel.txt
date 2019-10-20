@@ -1,0 +1,298 @@
+//===== rAthena Script ======================================= 
+//= Hugel Guides
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guides for the city of Hugel.
+//===== Additional Comments: ================================= 
+//= 1.0 First version, Renewal guide.
+//= 1.1 Optimized. [Euphy]
+//============================================================ 
+
+hugel,98,56,3	script	毁葛导游奶奶#hugel	863,{
+	mes "[毁葛导游奶奶]";
+	mes "噢, 你好~ 精力充沛的冒险家。";
+	mes "欢迎光临 ^8B4513毁葛^000000. 我很荣幸能给你当导游来解说这个美丽的村庄。";
+	mes "如果这是你第一次使用导游服务, 你应该会问很多问题。";
+	next;
+	set .@str$,"你想知道其他一些地方的位置吗？";
+	while (1) {
+		switch(select("[ 主要设施 ]:[ 商店 & 小帮手 ]:删除小地图的标记:结束对话")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 教堂 ]:[ 旅馆 ]:[ 酒店 ]:[ 机场 ]:[ 武器店 ]:[ 道具店 ]:[ 宾果游戏场 ]:[ ^3131FF猎人工会^000000 ]:[ 节庆用品店 ]:[ ^3131FF神殿发掘探险队^000000 ]:返回上一选单")) {
+				case 1:
+					mes "[毁葛导游奶奶]";
+					mes "'教堂'已成为老人们聚会的场所了...";
+					mes .@str$;
+					viewpoint 1,159,113,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					mes "[毁葛导游奶奶]";
+					mes "旅途劳顿是最好到旅馆休息一下,";
+					mes "'旅馆'就是右边那栋大楼";
+					mes .@str$;
+					viewpoint 1,101,77,1,0x8B4513;
+					next;
+					break;
+				case 3:
+					mes "[毁葛导游奶奶]";
+					mes "在酒店小酌一杯多惬意,";
+					mes "'酒店'就在右手边";
+					mes .@str$;
+					viewpoint 1,126,65,2,0xDAA520;
+					next;
+					break;
+				case 4:
+					mes "[毁葛导游奶奶]";
+					mes "不久前有陌生人来过之后,就出现了那巨大的'飞空艇'...";
+					mes .@str$;
+					viewpoint 1,178,146,3,0xD7567F;
+					next;
+					break;
+				case 5:
+					mes "[毁葛导游奶奶]";
+					mes "'武器店'位于村落中央..只是乡下地方能";
+					mes "卖什么好东西吗?";
+					mes .@str$;
+					viewpoint 1,88,167,4,0xCD5C5C;
+					next;
+					break;
+				case 6:
+					mes "[毁葛导游奶奶]";
+					mes "我喜欢毁葛商标的红色药水,";
+					mes "'道具店'位于村子中央";
+					mes .@str$;
+					viewpoint 1,92,163,5,0x000080;
+					next;
+					break;
+				case 7:
+					mes "[毁葛导游奶奶]";
+					mes "^800080宾果游戏场^000000";
+					mes "位置已经标记在";
+					mes "小地图上了,";
+					mes .@str$;
+					viewpoint 1,58,206,6,0x800080;
+					next;
+					break;
+				case 8:
+					mes "[毁葛导游奶奶]";
+					mes "若想转职为'猎人'";
+					mes "请往东北末端沿着海岸方向过去吧!";
+					mes .@str$;
+					viewpoint 1,209,224,7,0xFF1493;
+					next;
+					break;
+				case 9:
+					mes "[毁葛导游奶奶]";
+					mes "^483D8B节庆用品店^000000";
+					mes "位置已经标记在";
+					mes "小地图上了,";
+					mes .@str$;
+					viewpoint 1,95,103,8,0x483D8B;
+					next;
+					break;
+				case 10:
+					mes "[毁葛导游奶奶]";
+					mes "'神殿挖掘队'不久前落脚于村落西侧的房子,";
+					mes "村子中央有个牌子好像在征人的样子";
+					mes .@str$;
+					viewpoint 1,52,95,9,0x834683;
+					next;
+					break;
+				case 11:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 魔物赛跑竞技场 ]:[ 准它企划公司职员 ]:返回上一选单")) {
+				case 1:
+					mes "[毁葛导游奶奶]";
+					mes "我也偶尔参加'魔物赛跑'来打发时间,";
+					mes "很有意思呢!";
+					mes .@str$;
+					viewpoint 1,60,71,10,0xFF1493;
+					next;
+					break;
+				case 2:
+					mes "[毁葛导游奶奶]";
+					mes "^DA70D6准它企划公司职员^000000";
+					mes "位置已经标记在";
+					mes "小地图上了,";
+					mes .@str$;
+					viewpoint 1,88,168,11,0xDA70D6;
+					next;
+					break;
+				case 3:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[毁葛导游奶奶]";
+			mes "标记已删除,";
+			mes "还需要其它服务吗?";
+			viewpoint 2,159,113,0,0xFFFFFF;
+			viewpoint 2,101,77,1,0xFFFFFF;
+			viewpoint 2,126,65,2,0xFFFFFF;
+			viewpoint 2,178,146,3,0xFFFFFF;
+			viewpoint 2,88,167,4,0xFFFFFF;
+			viewpoint 2,92,163,5,0xFFFFFF;
+			viewpoint 2,58,206,6,0xFFFFFF;
+			viewpoint 2,209,224,7,0xFFFFFF;
+			viewpoint 2,95,103,8,0xFFFFFF;
+			viewpoint 2,52,95,9,0xFFFFFF;
+			viewpoint 2,60,71,10,0xFFFFFF;
+			viewpoint 2,88,168,11,0xFFFFFF;
+			next;
+			break;
+		case 4:
+			mes "[毁葛导游奶奶]";
+			mes "呵呵!";
+			mes "导览服务感觉还挺有趣的.";
+			close;
+		}
+	}
+}
+
+hugel,187,172,6	script	毁葛导游阿公#hugel	414,{
+	mes "[阿公]";
+	mes "你来这穷乡僻壤的";
+	mes "地方有什么事呢?";
+	next;
+	mes "[阿公]";
+	mes "这里是秀发兹发德的^8B4513毁葛^000000";
+	mes "^8B4513毁葛^000000,";
+	mes "在这乡下地方,";
+	mes "由我来负责解说,";
+	mes "你要感到荣幸.";
+	next;
+	while (1) {
+		switch(select("[ 主要设施 ]:[ 商店 & 小帮手 ]:删除小地图的标记:结束对话")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 教堂 ]:[ 旅馆 ]:[ 酒店 ]:[ 机场 ]:[ 武器店 ]:[ 道具店 ]:[ 宾果游戏场 ]:[ 猎人工会 ]:[ 节庆用品店 ]:[ 神殿挖掘队本部 ]:返回上一选单")) {
+				case 1:
+					callsub L_Mark,"^FF0000教堂";
+					viewpoint 1,159,113,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					callsub L_Mark,"^8B4513旅馆";
+					viewpoint 1,101,77,1,0x8B4513;
+					next;
+					break;
+				case 3:
+					callsub L_Mark,"^DAA520酒店";
+					viewpoint 1,126,65,2,0xDAA520;
+					next;
+					break;
+				case 4:
+					callsub L_Mark,"^D7567F机场";
+					viewpoint 1,178,146,3,0xD7567F;
+					next;
+					break;
+				case 5:
+					callsub L_Mark,"^CD5C5C武器店";
+					viewpoint 1,88,167,4,0xCD5C5C;
+					next;
+					break;
+				case 6:
+					callsub L_Mark,"^000080道具店";
+					viewpoint 1,92,163,5,0x000080;
+					next;
+					break;
+				case 7:
+					callsub L_Mark,"^800080宾果游戏场";
+					viewpoint 1,58,206,6,0x800080;
+					next;
+					break;
+				case 8:
+					callsub L_Mark,"^FF1493猎人工会";
+					viewpoint 1,209,224,7,0xFF1493;
+					next;
+					break;
+				case 9:
+					callsub L_Mark,"^483D8B节庆用品店";
+					viewpoint 1,95,103,8,0x483D8B;
+					next;
+					break;
+				case 10:
+					callsub L_Mark,"^834683神殿挖掘队本部";
+					viewpoint 1,52,95,9,0x834683;
+					next;
+					break;
+				case 11:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 魔物赛跑竞技场 ]:[ 准它企划公司职员 ]:返回上一选单")) {
+				case 1:
+					callsub L_Mark,"^FF1493魔物赛跑竞技场";
+					viewpoint 1,60,71,10,0xFF1493;
+					next;
+					break;
+				case 2:
+					callsub L_Mark,"^DA70D6准它企划公司职员";
+					viewpoint 1,88,168,11,0xDA70D6;
+					next;
+					break;
+				case 3:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[阿公]";
+			mes "标记已删除,";
+			mes "还需要其它服务吗?";
+			viewpoint 2,159,113,0,0xFFFFFF;
+			viewpoint 2,101,77,1,0xFFFFFF;
+			viewpoint 2,126,65,2,0xFFFFFF;
+			viewpoint 2,178,146,3,0xFFFFFF;
+			viewpoint 2,88,167,4,0xFFFFFF;
+			viewpoint 2,92,163,5,0xFFFFFF;
+			viewpoint 2,58,206,6,0xFFFFFF;
+			viewpoint 2,209,224,7,0xFFFFFF;
+			viewpoint 2,95,103,8,0xFFFFFF;
+			viewpoint 2,52,95,9,0xFFFFFF;
+			viewpoint 2,60,71,10,0xFFFFFF;
+			viewpoint 2,88,168,11,0xFFFFFF;
+			next;
+			break;
+		case 4:
+			mes "[阿公]";
+			mes "经过村落解说之后,";
+			mes "肚子开始有点饿了...";
+			mes "阿公的肚子饿了啦!";
+			close;
+		}
+	}
+	end;
+L_Mark:
+	mes "[阿公]";
+	mes "让我在你的小地图上标记一下";
+	mes getarg(0)+"^000000";
+	mes "的位置.";
+	mes "你还需要确认其他建筑物的位置吗?";
+	return;
+}

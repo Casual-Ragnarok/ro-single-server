@@ -1,0 +1,676 @@
+// ---------------------------------
+// - 忍者 转职脚本 - 
+//===================================
+// 版本：1.4
+//===================================
+
+alberta,30,65,3	script	亚卡其#nq	730,{
+
+	if(Class == Job_Novice) {
+		if(JobLevel > 9) {
+			mes "[亚卡其]";
+			mes "嗯...";
+			mes "你来到这黑暗的巷子，";
+			mes "想必是需要你的气韵";
+			mes "指引你脚步而来的吧，";
+			mes "你要前往宽容大道吗";
+			next;
+			if(select("不用 我不要:好的 我去") == 1) {
+				mes "[亚卡其]";
+				mes "我知道了，";
+				mes ".....";
+				mes "那么再见";
+				close;
+			}
+			else {
+				mes "[亚卡其]";
+				mes "好的，立即送你过去";
+				close2;
+				switch (rand(3)) {
+					case 1:  warp "amatsu", 170, 229; break;
+					case 2:  warp "amatsu", 216, 188; break;
+					default: warp "amatsu", 178, 176; break;
+				}
+				end;
+			}
+		}
+		else {
+			mes "[亚卡其]";
+			mes "这里不是你该来的地方，";
+			mes "等你变强一点后再过来吧";
+			close;
+		}
+	}
+	else {
+		mes "[亚卡其]";
+		mes "我跟你无话可说，";
+		mes "你回去吧";
+		close;
+	}
+}
+
+que_ng,30,65,3	script	库乌佳 加伊	730,{
+
+	if(Class == Job_Novice && JobLevel > 9)	{
+		switch(NINJ_Q)	{
+			case 0:
+				mes "["+strcharinfo(0)+"]";
+				mes "请问一下";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "嗯?...";
+				mes "你怎么会~!!";
+				mes "看得到我!";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "咒语~!";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "-丢掷多连发免洗筷子的男子-";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "-东闪西闪!-";
+				mes "啊呀~!";
+				mes "呜啊~! 你这是干嘛!";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "嗯?...";
+				mes "你不是来暗杀我的刺客呀";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "妈啊~ 你干什么~你怎么";
+				mes "可以不分青红皂白的，";
+				mes "也不做确认后就竟然乱丢...";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "呜喝~! 好气愤啊啊啊~~";
+				mes "我永远的死对头兼冤家，!";
+				mes "野猫乔伊!";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "........";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "哦哈哈哈哈哈~~~!!!";
+				mes "哦呵~哦呵~";
+				mes "啪!啪!啪~";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "-你没在听嘛-";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "恩...";
+				mes "啊! 你是谁啊?!";
+				mes "再者，你几时神不知";
+				mes "鬼不觉的来到我身边!";
+				mes "呀啊 接招!";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "唉呀~";
+				mes "你给我住手~";
+				mes "加上你现在的举动...";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "呼噢，";
+				mes "你身手不赖嘛~";
+				mes "竟都躲过我的招数";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "-你想干嘛...-";
+				mes "-而且完全不理我的话-";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "嗯~是吗~";
+				mes "难道你找我";
+				mes "有事吗?";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes ".........";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "啊...嗯...";
+				mes "是的，";
+				mes "我来是想转职为忍者";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "噢呵~ 那你是找对人了，";
+				mes "但是!";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes ".....";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "我看是有点困难";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "唉哟~ 为什么~";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "首先，我看你不太信任，";
+				mes "我觉得你以忍者活下去，";
+				mes "还是经验不太足啊";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "因此缘故，";
+				mes "走!!! 请你走开吧~!";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "...........";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "哼哼...";
+				mes "就是如此";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "...........";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "听懂了的话，你就离开吧，";
+				mes "你也知道我非常";
+				mes "忙碌啊...";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "因为我周围敌人太多，";
+				mes "我丝毫片刻都不能有，";
+				mes "怠慢警戒之心啊";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "我要去修练，以准备";
+				mes "下一场的决斗，";
+				mes "咿哟喔喔喔~!";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "下一场必会赢得胜利!";
+				mes "你等着瞧吧，";
+				mes "野猫乔伊!";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "野猫乔伊?";
+				mes "你是和猫打斗吗?";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "嗯? 那是那是，哈哈哈~嘿嘿~";
+				mes "野猫乔伊是那家伙的";
+				mes "绰号";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "他是个非常聪明伶俐的家伙，";
+				mes "为了获胜，往往不择手段";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "再加上他所使用的忍术，";
+				mes "既绚烂又强烈";
+				next;	
+				mes "[库乌佳 加伊]";
+				mes "刚好他和我所使用的";
+				mes "飞镖和卷轴";
+				mes "目前都已经用完，";
+				mes "所以暂时是休战状态，哈哈";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "如果你真想成为忍者的话，";
+				mes "可以帮我一件事吗?";
+				mes "若你把事情办妥的话，";
+				mes "即使不能让你变成忍者，";
+				mes "也许能教你几招忍术吧";
+				next;
+				if (select("答应:拒绝")==1) {
+					mes "["+strcharinfo(0)+"]";
+					mes "嗯...好吧";
+					next;
+					mes "[库乌佳 加伊]";
+					mes "噢..是吗，";
+					mes "那么请把这封信，";
+					mes "交给野猫乔伊";
+					mes "那家伙吧";
+					next;
+					mes "[库乌佳 加伊]";
+					mes "内容大致是说";
+					mes "直到彼此都准备妥当之前，";
+					mes "暂时维持休战，";
+					mes "并你务必带回回信";
+					next;
+					mes "[库乌佳 加伊]";
+					mes "另外提醒你，";
+					mes "根据情报，听说那家伙";
+					mes "去了'艾音布罗克'";
+					mes "至于去那边的原因";
+					mes "则不得而知...";
+					next;
+					mes "[库乌佳 加伊]";
+					mes "那家伙擅长于变身术";
+					mes "所以也有可能认不出来";
+					next;
+					mes "[库乌佳 加伊]";
+					mes "你得睁大眼睛仔细找，";
+					mes "那家伙偏爱高处，";
+					mes "你好好找吧";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "OK~";
+					mes "知道了";
+					set NINJ_Q,1;
+					close;
+				}
+				mes "["+strcharinfo(0)+"]";
+				mes "我并不止想学";
+				mes "几招忍术而已，";
+				mes "不好意思，";
+				mes "你另觅他人吧";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "嗯...这样啊...";
+				mes "我知道了，";
+				mes "我好像白费唇舌了，";
+				mes "那么你可以走了";
+				close;
+
+			case 1:
+				mes "[库乌佳 加伊]";
+				mes "嗯...虽然不是什么急事，";
+				mes "但你最好快点，";
+				mes "野猫乔伊那家伙在";
+				mes "艾音布罗克";
+				close;
+
+			case 2:
+				mes "[库乌佳 加伊]";
+				mes "Don't forget to bring me back his reply.";
+				mes "I have to make sure he doesn't claim otherwise later.";
+				close;
+
+			case 3:
+				mes "[库乌佳 加伊]";
+				mes "你把他的回信带来了吗?";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "在这里呢，请收下";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "噢噢噢..我看看..";
+				mes "- 翻页 翻页... -";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "- 他仔细地读着你带回去的回信 -";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Ugh~!!! How can this be!";
+				mes "He refused my request for a short truce!!!";
+				mes "Did he remake his Kunai?";
+				mes "What now...";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "I'm sorry, but I'd appreciate it if you can do me a favor.";
+				mes "I need to create weapons to fight against that Bastard Joe but I don't have enough ingredients.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "If you can get me these ingredients, then i'll acknowledge your abilities and make you a ninja.";
+				mes "What I need is...";
+				mes "1 Phracon and 5 Cyfar.";
+				mes "Time is of the essence, so please hurry.";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "Wait!!";
+				mes "Those are...";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "What's the matter? Is there a problem?";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "I just got these ingredients for Joe...";
+				mes "Uggghhhh...";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "What did you say?!!!";
+				mes "Then by sending you to him, I've ended up helping him...!";
+				mes "Ugh...";
+				mes "Aaahhh...";
+				mes "Why, why~ What a fool I am! An Idiot! A moron!!";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Ah.. Ah.. I'll calm down.";
+				mes "Hugh.. Hugh..";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "You must help me, for now.";
+				mes "Since things have become like this, there's no time to explain now.";
+				mes "Hurry and get me what I need.";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "Uhh...Sure..";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Hurrrry~~!!";
+				mes "Sob~";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "- Let's bring Mr. Gai 1 Phracon -";
+				mes "- And 5 Cyfars -";
+				set NINJ_Q,4;
+				close;
+
+			case 4:
+				mes "[库乌佳 加伊]";
+				if(countitem(7053) < 5 || countitem(1010) < 1)
+				{
+					mes "Get me 1 Phracon and 5 Cyfars.";
+					mes "What you have isn't what I said I need before.";
+					mes "It's urgent, so please hurry.";
+					close;
+				}
+				if(skillpoint >0)
+				{
+					mes "Please come back after you've learned all the basic skills.";
+					close;
+				}
+				mes "Oh, Did you bring me the things I need?";
+				mes "Let's see...";
+				mes "Hmm~ I see you've brought me what I need.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Whew~ You've made it in time.";
+				mes "You work better than I thought.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Very well.";
+				mes "As promised, I'll officially turn you into a Ninja.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Let me properly introduce myself.";
+				mes "I am an Upper Rank Ninja from the Doga Ninja Clan of the East.";
+				mes "I'm operating as a Search Captain to find Kazuma-san, the leader of the village I'm from.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Tell you the truth, there's a lot of complication going on internally in the Ninja Clan lately, which was why I was hesitant to allow you to become a Ninja.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "But seeing how Joe has complimented you highly and have completed my request well, I've changed my mind.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Being a Ninja is a lonely job.";
+				mes "You must value your jobs but also never forget your humanity.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "You're in for a lot of struggle from here on.";
+				mes "Although we keep our identity secret, we operate in every single town.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "The creation and usage of the basic equiptment of Ninjas is kept secret.";
+				mes "The purchase and sale of Ninja gear is strictly regulated, so try to be careful.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Well, I hereby recognize you as a member of the Doga Ninja Clan.";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Be quick as a Hawk from the Wind of the East.";
+				mes "And light as a Leaf wavering in the Wind of the West!!";
+				next;
+				mes "[库乌佳 加伊]";
+				mes "Haaa!!!!";
+				next;
+				nude;
+				callfunc "Job_Change",Job_Ninja;
+				callfunc "F_ClearJobVar";
+				getitem 13010,1;
+				close;
+		}
+	}
+	else if(Class == Job_Novice && JobLevel < 10) {
+		mes "[库乌佳 加伊]";
+		mes "It looks like you need to train more.";
+		mes "Come back after you gained more muscle.";
+		close;
+	}
+	else if(Class == Job_Ninja) {
+		mes "[库乌佳 加伊]";
+		mes "Hmm, how have you been?";
+		mes "You don't know when and where you may be asked to go on a mission, so don't put off your training for a single day.";
+		close;
+	}
+	else if(Class == Job_Baby) {
+		mes "[库乌佳 加伊]";
+		mes "What the...! A super baby!";
+		mes "Has this location been so exposed that even babies know where it is?";
+		mes "Oh no~ Ah no~";
+		close;
+	}
+	else {
+		mes "[库乌佳 加伊]";
+		mes "什么味道! 这腥味是!!";
+		mes "原来是从你身上散发的，";
+		mes "像你这样乳臭未干的人，";
+		mes "好久没见了，";
+		mes "请赶快从我眼前消失吧";
+		close;
+	}
+}
+
+einbroch,184,194,3	script	可疑的男子#nin	881,{
+
+	if(Class == Job_Ninja) {
+		mes "[野猫乔伊]";
+		mes "Oh, I see you've become a Ninja";
+		mes "There will be many hardships in the future, so don't slack off in training.";
+		close;
+	}
+	else if(!NINJ_Q) {
+		mes "[可疑的男子]";
+		mes "Hyaa~ This sure is a high spot.";
+		mes "I've been to many different lands, but this is the highest place I've found so far.";
+		mes "My only regret is that I can't spend more time looking around this spectacular view...";
+		close;
+	}
+	switch(NINJ_Q) {
+		case 1:
+			mes "[可疑的男子]";
+			mes "Hiyaa~ This sure is a high place, right?";
+			mes "I've traveled to many countries, but this is the first time I've seen such a tall building.";
+			next;
+			mes "[可疑的男子]";
+			mes "The air is clean, the town is quiet, and all the houses are short and cozy where I come from.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Ah! No way!";
+			mes "Amatsu?!!!";
+			next;
+			mes "[可疑的男子]";
+			mes "Nope.";
+			mes "....";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Hmm~";
+			mes "Not Amatsu...";
+			mes "Then are you from Izlude?";
+			next;
+			mes "[可疑的男子]";
+			mes "Yes, that's correct.";
+			mes "I'm from Izlude.";
+			next;
+			mes "[可疑的男子]";
+			mes "Due to personal reasons, I'm temporarily visiting this resource-rich country.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "I see...";
+			mes "Oh, do you happen to know a person named Field Cat Joe?";
+			mes "He's a Ninja from Amatsu";
+			mes "I need to find him.";
+			next;
+			mes "[可疑的男子]";
+			mes "I don't know. I've never heard of such a name.";
+			mes "I guess you must have some important reason why you must meet that person.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Yes. I have to deliver this letter to him so that I may become a Ninja too.";
+			next;
+			mes "[可疑的男子]";
+			mes "Hmm... Judging by your clothes, I see you're a traveler too.";
+			next;
+			mes "[可疑的男子]";
+			mes "Come to think of it, you may be able to find the person you are looking for.";
+			next;
+			mes "[可疑的男子]";
+			mes "I think I may have met him once in this village.";
+			next;
+			mes "[可疑的男子]";
+			mes "I'd like to help you find him together, but I still have some things to do first...";
+			next;
+			mes "[可疑的男子]";
+			mes "If you help me out with what I'm doing, then I will search for 野猫乔伊 with you.";
+			next;
+			switch( select( "I'll just search for him alone.","Ok, I'll help you." )){
+				case 1:
+					mes "[可疑的男子]";
+					mes "Ah, I understand.";
+					mes "Good luck looking for him. If you need help later, come and talk to me before I leave...";
+					close;
+				case 2:
+					mes "[可疑的男子]";
+					mes "Hmm.. Let's see.";
+					mes "I've come here to gather some raw materials so that I may create something I need.";
+					next;
+					mes "[可疑的男子]";
+					mes "I will be seeking the materials I need too, but I'm always running short in raw materials.";
+					mes "I'd be grateful if you could find me 1 Phracon and 5 Cyfar.";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "- Let's go find 1 Phracon and 5 Cyfar.-";
+					set NINJ_Q,2;
+					close;
+			}
+		case 2:
+			if(countitem(1010) < 1 || countitem(7053) < 5) {
+				mes "[可疑的男子]";
+				mes "I asked for 1 Phracon and 5 Cyfar.";
+				mes "It looks like you didn't gather the amount I've requested.";
+				mes "I don't need it immediately, but I'd appreciate it if you could get those items for me.";
+				close;
+			}
+			mes "[可疑的男子]";
+			mes "I see you've accurately brought back what I need.";
+			mes "Hmm... Very well.";
+			mes "You've brought me the things I need, so I will not help you. Hmm...";
+			next;
+			mes "[可疑的男子]";
+			mes "Let's see that letter.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "?????!!";
+			next;
+			mes "[可疑的男子]";
+			mes "Hmm? Are you perhaps here because Gai sent you here?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Gasp... Then you're Field Cat...";
+			next;
+			mes "[可疑的男子]";
+			mes "Nope.";
+			mes "I'm not Field Cat Joe, but 野猫乔伊.";
+			mes "The only person who teases me as 'Field Cat' is Gai. Haha.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Sigh... Is that how it is?";
+			next;
+			mes "[野猫乔伊]";
+			mes "If you want to become a Ninja, you can't just trust your eyes.";
+			next;
+			mes "[野猫乔伊]";
+			mes "Very few Ninjas, if any, where the stereotypical outfits depicted in picture books. And even if they did, you'd be lucky to spot one.";
+			next;
+			mes "[野猫乔伊]";
+			mes "Don't forget that as soon as you reveal your identity as a Ninja, your life is at stake.";
+			next;
+			mes "[野猫乔伊]";
+			mes "Even who I've said I am or anything I've said so far could be false.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Ok...";
+			mes "...........";
+			next;
+			mes "[野猫乔伊]";
+			mes "Well, Let's see it -- that letter.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Ah, Yes.";
+			mes "Here.";
+			mes "-Rustle, rustle -";
+			next;
+			mes "[野猫乔伊]";
+			mes "Hmm~~ Let's see...";
+			mes "I was thinking it might be another one of Gai's childish challenge letters, but I see it's a letter requesting truce.";
+			next;
+			mes "[野猫乔伊]";
+			mes "But there's no need for a truce for me...";
+			mes "Thanks to you, I've already acquired all the raw materials needed to create a Kunai. Haha~";
+			next;
+			mes "[野猫乔伊]";
+			mes "I'll write you a reply, regardless. Seeing how you've acquired my raw materials so quickly, with a bit of a sharper eye, I believe you could become an excellent Ninja.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes ".....";
+			next;
+			mes "[野猫乔伊]";
+			mes "Wait a moment.";
+			mes "I'll write you a response to Gai's letter right now.";
+			mes "Hmm Hmm...";
+			mes "...Scribble... Scribble...";
+			next;
+			mes "[野猫乔伊]";
+			mes "Here. Here it is.";
+			mes "You'll know what's written inside as soon as you show *him* the letter.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- You recieve the letter that Joe-";
+			mes "- has just now scribbled down -";
+			mes "- on paper.-";
+			next;
+			mes "[野猫乔伊]";
+			mes "Well, you better get a move on.";
+			mes "If you want to become a Ninja.";
+			next;
+			mes "[野猫乔伊]";
+			mes "And if you do become a Ninja, we may end up meet each other frequently.";
+			mes "I'll be looking forward to it.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Yes... Well, I better get going...";
+			next;
+			mes "[野猫乔伊]";
+			mes "Ah, It would probably take you a considerably long time to reach Amatsu.";
+			mes "Allow me to send you, "+strcharinfo(0)+" to Amatsu.";
+			mes "We'll meet again..";
+			delitem 1010,1;
+			delitem 7053,5;
+			set NINJ_Q,3;
+			close2;
+			warp "amatsu",113,127;
+			end;
+
+		case 3:
+			mes "[野猫乔伊]";
+			mes "Hmm, I don't know what happened, but it seems you've returned to me without reaching Gai first.";
+			next;
+			mes "[野猫乔伊]";
+			mes "If you would like, I can send you to amatsu again.";
+			mes "I'll take you back to Amatsu.";
+			next;
+			switch( select( "No thanks.","Yes, please send me to Amatsu." )) {
+				case 1 :
+					mes "[野猫乔伊]";
+					mes "Hmm, very well.";
+					mes "Decisions are best when decided yourself.";
+					close;
+				case 2:
+					mes "[野猫乔伊]";
+					mes "Very well.";
+					mes "I will now send you to Amatsu.";
+					close2;
+					warp "amatsu",113,127;
+					end;
+			}
+		case 4:
+			mes "[野猫乔伊]";
+			mes "Is Gai bothering you with a lot of bothersome tasks?";
+			mes "Don't give up -- it'll all come in handy during your training.";
+			close;
+	}
+}

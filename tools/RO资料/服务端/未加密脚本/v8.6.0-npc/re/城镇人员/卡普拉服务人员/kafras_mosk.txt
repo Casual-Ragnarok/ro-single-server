@@ -1,0 +1,130 @@
+//===== eAthena Script ======================================= 
+//= Moscovia Kafras
+//===== By: ================================================== 
+//= Kisuka
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= eAthena SVN
+//===== Description: ========================================= 
+//= Kafras for the town of Moscovia.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version. [Kisuka] (translated by Inkfish)
+//============================================================ 
+
+moscovia,223,191,4	script	Kafra Staff#mosk	114,{
+	cutin "kafra_04",2;
+	mes "[卡普拉服务人员]";
+	mes "欢迎来到卡普拉公司。";
+	mes "卡普拉服务永远在你身边。";
+	mes "我能帮您做什么?";
+	next;
+	switch(select("储存:使用仓库:租用手推车:查看其它信息:取消")) {
+		case 1:
+			mes "[卡普拉服务人员]";
+			mes "你的重生点已经保存为";
+			mes "莫斯科维亚。感谢您使用卡普拉服务。";
+			savepoint "moscovia",221,194;
+			close2;
+			cutin "", 255;
+			end;
+		case 2:
+			if(basicskillcheck() && getskilllv("NV_BASIC") < 6){
+				mes "[卡普拉服务人员]";
+				mes "对不起，使用仓库服务至少要";
+				mes "技能技能6级以上。";
+				close2;
+				cutin "", 255;
+				end;
+			}
+			if(countitem(7059)) delitem 7059,1;
+			else {
+				if(Zeny<80){
+					mes "[卡普拉服务人员]";
+					mes "抱歉，您没有足够的zeny来";
+					mes "使用仓库服务。";
+					mes "使用仓库服务至少要80zeny。";
+					close2;
+					cutin "", 255;
+					end;
+				}
+				set Zeny, Zeny-80;
+				set RESRVPTS, RESRVPTS + (80/5);
+			}
+			mes "[卡普拉服务人员]";
+			mes "让我来为你打开仓库吧";
+			mes "感谢使用卡普拉仓库。";
+			
+			callfunc("F_CheckKafCode");	//check your storage password, if set
+			
+			close2;
+			openstorage;
+			cutin "", 255;
+			end;
+		case 3:
+			if(baseClass != Job_Merchant){
+				mes "[卡普拉服务人员]";
+				mes "抱歉，手推车租赁服务仅对商人，铁匠，神工匠，炼金术士和创造者开放";
+				close2;
+				cutin "", 255;
+				end;
+			}
+
+			else if(checkcart() == 1){
+				mes "[卡普拉服务人员]";
+				mes "你已经有手推车了，抱歉每位顾客只能租赁一次。";
+				close2;
+				cutin "", 255;
+				end;
+			}
+
+			if(countitem(7061) > 0) delitem 7061,1;
+			else {
+				mes "[卡普拉服务人员]";
+				mes "租赁费为700zeny。";
+				mes "要租赁手推车吗？";
+				next;
+				if(select("租赁手推车:取消") == 1) {
+					if(Zeny<700){
+						mes "[卡普拉服务人员]";
+						mes "抱歉，你的钱不够。";
+						mes "租赁手推车至少需要700zeny。";
+						close2;
+						cutin "", 255;
+						end;
+					}
+					set Zeny,Zeny-700;
+					set RESRVPTS, RESRVPTS + 48;
+				}else{
+					close2;
+					cutin "", 255;
+					end;
+				}
+			}
+			setcart;
+			close2;
+			cutin "", 255;
+			end;
+		case 4:
+			if(select("查看累计点数:取消") == 2) {
+				cutin "", 255;
+				close;
+			}
+			mes "[卡普拉服务人员]";
+			mes strcharinfo(0) + ", 你总共有";
+			mes RESRVPTS+ " 点累计点数。";
+			next;
+			mes "[卡普拉服务人员]";
+			mes "你可以到爱尔帕兰的卡普拉总部兑换累计服务点数。";
+			mes "请使用我们提供的便利服务来看看我们提供的回报项目的好处。";
+			close2;
+			cutin "", 255;
+			end;
+		case 5:
+			mes "[卡普拉服务人员]";
+			mes "这里，卡普拉公司，竭诚为您提供最好的服务。希望我们能满足您的冒险需求和卓越标准。";
+			close2;
+			cutin "", 255;
+			end;
+	}
+}

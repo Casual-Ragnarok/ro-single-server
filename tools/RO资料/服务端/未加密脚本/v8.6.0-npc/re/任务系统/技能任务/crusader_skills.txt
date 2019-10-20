@@ -1,0 +1,98 @@
+//===== eAthena Script ======================================= 
+//= Crusader Skills Quests
+//===== By: ================================================== 
+//= Lupus, Reddozen
+//===== Current Version: ===================================== 
+//= 1.3a
+//===== Compatible With: ===================================== 
+//= eAthena Revision 3800+
+//===== Description: ========================================= 
+//= Temp quests for new skills for 2nd classes
+//===== Additional Comments: ================================= 
+//= 1.0 for fully working skills only [Lupus]
+//= 1.1 Added more new skill quests for more classes [Lupus]
+//= Somehow eA engine doesn't let you keep learn't skill V_V'
+//= 1.2 Added to correct locations, correct NPC's, fixed
+//= some of the items required and made them into real
+//= quests. [Reddozen] 
+//= 1.3 Fixed bugs and minor typos. Optimized [Lupus]
+//= 1.3a fixed an item ID typo, thx 2Spiritual Kid
+//= 1.3b Splitted into different files [DracoRPG]
+//============================================================
+
+
+//============================================================
+// 十字军技能 - 退缩
+//============================================================
+geffen.gat,110,117,3	script	福特	752,{
+	mes "[福特]";
+	if(BaseJob!=Job_Crusader) goto L_nocruz;
+	if(getskilllv(1002)) goto L_alreadyhave;
+	mes "也许我能教你个技能";
+	mes "但你得带点东西给我...";
+	next;
+	mes "[福特]";
+	mes "1 红色药水";
+	mes "20 粘稠液体";
+	mes "3 空瓶";
+	mes "5 杰勒比结晶";
+	mes "1 青苹果";
+	mes "1 葡萄";
+	mes "1 煤矿";
+	mes "3 赛依伐";
+	next;
+	
+	mes "[福特]";
+	mes "我来检查下你的东西~.";
+	next;
+	
+	if(countitem(501)<1 || countitem(938)<20 || countitem(713)<3 || countitem(909)<5 || countitem(619)<1 || countitem(514)<1 || countitem(1003)<1 || countitem(7053)<3)goto L_noitems;//Items: Red_Potion, Sticky_Mucus, Empty_Bottle, Jellopy, Unripe_Apple, Grape, Coal, Cyfar,
+	delitem 501, 1;//Items: Red_Potion,
+	delitem 938, 20;//Items: Sticky_Mucus,
+	delitem 713, 3;//Items: Empty_Bottle,
+	delitem 909, 5;//Items: Jellopy,
+	delitem 619, 1;//Items: Unripe_Apple,
+	delitem 514, 1;//Items: Grape,
+	delitem 1003, 1;//Items: Coal,
+	delitem 7053, 3;//Items: Cyfar,
+	mes "[福特]";
+	mes "拾次筛子.";
+	mes "我可从来没输过~";
+//TODO: add DICE emotions? 8)
+	emotion e_gg;
+	next;
+	if(rand(1,6)!=3) goto L_lose;
+	emotion 58;
+	next;
+	
+	skill 1002,1,0;
+	mes "我不相信我输了！！";
+	mes "我从没输过！。新技能你已经学会了";
+	emotion e_sob;
+	close;
+	
+L_noitems:
+	mes "[福特]";
+	mes "你还没足够的物品来学习啊.";
+	mes "等你有了再来找我~";
+	close;
+		
+L_lose:
+	emotion 63;
+	next;
+	mes "[福特]";
+	mes "我又赢了!!";
+	mes "不打算教你了~";
+	mes "如果你想学那就再来次吧";
+	close;
+	
+L_nocruz:
+	mes "如果你不是十字军,";
+	mes "那我们没什么可谈的";
+	close;
+	
+L_alreadyhave:
+	mes "嘿！你真幸运啊！~";
+	mes "这个技能就是要的幸运~";
+	close;
+}

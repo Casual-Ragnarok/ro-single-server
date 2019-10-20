@@ -15,38 +15,102 @@
 //= 1.3 Renewal script update. [Euphy]
 //============================================================ 
 
-prontera,113,294,3	script	Sign Post#god	837,{
-	mes "======== God Seal Status ========";
-	setarray .@seal$[1], "Sleipnir","Megingjard","Brisingamen","Mjolnir";
+//prontera,113,294,3	script	神器默示录#god	837,{
+prontera,156,305,3	script	神器默示录#god	837,{
+	
+	mes "======== 神器封印状态 ========";
+//	setarray .@seal$[1], "Sleipnir","Megingjard","Brisingamen","Mjolnir";
+	setarray .@seal$[1], "史雷普尼尔之靴","雷神腰带","女神颈链","雷神之锤";
 	for(set .@i,1; .@i<=4; set .@i,.@i+1) {
 		set .@val, getd("$God"+.@i);
-		if (.@val == 0)
-			set .@status$,"Unseen";
-		else if (.@val < $@god_check1)
-			set .@status$,"Active";
-		else if (.@val < $@god_check2)
-			set .@status$,"Appeared";
-		else
-			set .@status$,"Released";
+		if (.@val == 0) {
+			set .@status$,"未解封";		// 1:Unseen
+
+		} else if (.@val < $@god_check1) {
+			set .@status$,"可制作";		// 3:Active
+
+		} else if (.@val < $@god_check2) {
+			set .@status$,"已现世";		// 4:Appeared
+
+		} else {
+			set .@status$,"已解封";		// 2:Released
+		}
 		mes .@seal$[.@i]+" Seal: "+.@status$;
 	}
+
+
+	set .@cnt,0;
 	mes " ";
-	mes "======= Your Seal Status ========";
-	if (god_sl_1 < 51)
-		mes "^ff0000史雷普尼尔之靴: 未完成^000000";
-	else
+	mes "==== 你的神器解封任务进度 ====";
+	if (god_sl_1 < 51) {
+		mes "^ff0000史雷普尼尔之靴: 未完成^000000 (" + god_sl_1 + "/51)";
+	} else {
 		mes "^00ff00史雷普尼尔之靴: 已完成^000000";
-	if (god_eremes < 28)
-		mes "^ff0000雷神腰带: 未完成^000000";
-	else
+		set .@cnt,.@cnt+1;
+	}
+
+	if (god_eremes < 28) {
+		mes "^ff0000雷神腰带: 未完成^000000 (" + god_eremes + "/28)";
+	} else {
 		mes "^00ff00雷神腰带: 已完成^000000";
-	if (god_brising < 50)
-		mes "^ff0000女神项链: 未完成^000000";
-	else
+		set .@cnt,.@cnt+1;
+	}
+
+	if (god_brising < 50) {
+		mes "^ff0000女神项链: 未完成^000000 (" + god_brising + "/50)";
+	} else {
 		mes "^00ff00女神项链: 已完成^000000";
-	if (god_mjo_0 < 11)
-		mes "^ff0000雷神之锤: 未完成^000000";
-	else
+		set .@cnt,.@cnt+1;
+	}
+
+	if (god_mjo_0 < 11) {
+		mes "^ff0000雷神之锤: 未完成^000000 (" + god_mjo_0 + "/11):" + god_mjo_1 + ":" + god_mjo_2 + ":" + god_mjo_3 + ":" + god_mjo_4;
+	} else {
 		mes "^00ff00雷神之锤: 已完成^000000";
+		set .@cnt,.@cnt+1;
+	}
+
+	next;
+	mes "=====================";
+	mes "由于每个玩家只能做 1 轮解封任务";
+	mes "如果你已经制作过 1 次神器";
+	mes "你只能等待其他玩家再次解封神器后";
+	mes "你才有可能抢先制作第 2 件神器";
+	mes "弱肉强食是永远的真理~";
+	mes "...";
+	mes "...";
+	mes "...";
+	mes "...";
+	mes "好吧,, 其实,,, "; 
+	mes "同一个账号的每个角色";
+	mes "可分别做 1 轮解封任务";
+
+
+
+	set .@plv,callfunc("F_PLAYER_GMLV");
+	if (.@plv >= 99) {
+		next;
+		mes "您好, GM 大大";
+		mes "是否进入神器任务控制间?";
+
+		if (select("当然，我要摆弄蚁民的命运:算了，放任这些罪民") == 1) {
+			close2;
+			warp "sec_in02",20,172;
+			end;
+		}
+	}
+
+	if (.@cnt >= 4) {
+		next;
+		mes "是否进入神器制作间?";
+
+		if (select("当然,我要称霸服务器:我材料不够") == 1) {
+			close2;
+			warp "gld_dun01",26,88;
+			end;
+		}
+	}
+
 	close;
+
 }

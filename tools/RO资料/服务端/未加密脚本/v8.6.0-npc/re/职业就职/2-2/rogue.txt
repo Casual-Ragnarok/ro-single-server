@@ -1,0 +1,1076 @@
+//===== eAthena Script ======================================= 
+//= Rogue Job Quest
+//===== By: ================================================== 
+//= kobra_k88
+//===== Current Version: ===================================== 
+//= 1.3
+//===== Compatible With: ===================================== 
+//= eAthena 1.0 +
+//===== Description: ========================================= 
+//= Rogue job quest based off of official iRO Rogue quest.
+//= There are some differences from official quest due to scripting issues.
+//= Missing some message text.  
+//===== Additional Comments: ================================= 
+//= 1.1 fixed 3 wrong questions, added missing lines [Lupus]
+//= 1.3 Baby Class Support + 40/50 JobLevel Item fix [Lupus]
+//============================================================ 
+
+
+//=======================================================================================================//
+//					Markie: Test 1 and Jobchange						//
+//***********************************************************************************************************************************************************//
+in_rogue.gat,363,123,3	script	玛凯	747,{
+
+	mes "[玛凯]";
+	if(BaseJob == Job_Thief) goto L_Thief;
+	if(BaseJob == Job_Rogue) goto L_Rogue;
+
+L_JobOther:
+	mes "我不知道你是怎么找到这个地方的，但我建议你最好赶快离开..........";
+	close;
+
+L_Rogue:
+	mes "很高兴又见到你了，当流氓很有趣吧! 呵呵呵....";
+	close;
+
+L_Thief:
+	if(JobLevel >= 40) goto L_Start;
+	mes "噢! 你好! 如果你想成为一个流氓的话我想你得再多加训练才行.";
+	mes "只有职业等级在 40 以上的盗贼才能转职成流氓.";
+	close;
+
+HighRog:
+	mes "[玛凯]";
+	mes "哎呀! 你已经是上位盗贼了呢!";
+	mes "很抱歉! 我没有办法让你转职成流氓!";
+	mes "请你去找追迹者转职吧!";
+	mes "那才是适合你的职业!";
+	close;
+
+L_Start:
+	if(ROGUE_Q == 1) goto L_ReTest;
+	if(ROGUE_Q == 2) goto L_Test2;
+	if(ROGUE_Q == 3) goto L_Test3;
+	if(ROGUE_Q == 4) goto L_Test4;
+	if(ROGUE_Q == 5) goto L_Change;
+	mes "啊? 什么风把你吹来的? 噢! 这样啊... 你想成为一个流氓是吧?";
+	next;
+	menu "是的",-,"不是",L_End;
+
+	mes "[玛凯]";
+	if (((BaseJob == Job_Thief) && (Upper == 1)) || (ReBirth > 0)) goto HighRog;
+	mes "很高兴认识你，我的名字是玛凯，你呢?";
+	next;
+	mes "[玛凯]";
+	mes strcharinfo(0) + "..... 呵呵，你的名字真好听. 对了，你为什么会想成为一名流氓呢?";
+	next;
+	mes "[玛凯]";
+	mes "不过，既然你这么诚实地告诉我你的真实名字，我想那也不重要了.";
+	mes "不过为了你的将来着想，流氓是绝对不会向任何人透露他的真实身份的.";
+	next;
+	mes "[玛凯]";
+	mes "这是流氓守则第一条，从今以后你最好牢牢记住这一点.";
+	mes "嗯，那么，这里有一些表格需要你你填写一些必备的资料.....";
+	next;
+	mes "(你填写了一些表格并把他交给玛凯)";
+	set JBLVL, 40;			// used to determine what item to get at the end
+	if(JobLevel == 50) set JBLVL, 50;	// used to determine what item to get at the end
+	next;
+	mes "[玛凯]";
+	mes "嗯.... 看起来没什么问题，那么我就接受你的申请.";
+	mes "为了保险起见，我要先对你做一些测试";
+	next;
+	mes "[玛凯]";
+	mes "噢! 你不用紧张... 我只是想知道你对流氓了解多少而已.";
+	mes "我对每一个来申请的人都会作测试的，那么，可以开始了吗?";
+	next;
+	menu "开始吧",L_Test1, "等等...我还需要准备一下",-;
+
+		mes "[玛凯]";
+		mes "好的，放心地去准备吧，等你准备好之后再回来找我.";
+		close;
+
+
+//=================================================================
+L_Test1:
+//=======
+	mes "[玛凯]";
+	mes "现在开始我会问你一些问题，听清楚题目然后把你认为最正确的答案告诉我，了解吗?";
+	next;
+	savepoint "in_rogue.gat",366,114;
+	set @score, 0;
+	set ROGUE_Q, 1;
+	set @temp, rand(1,3);
+	if(@temp == 2) goto L_QSet2;
+	if(@temp == 3) goto L_QSet3;
+
+	L_QSet1:
+		mes "[玛凯]";
+		mes "1) 当盗贼的残影技能练到最高十时，所上升的回避率是多少?";
+		next;
+		menu "30",-, "40",sM1_1, "160",sM1_1, "20",sM1_1;
+
+			set @score, @score + 10;
+
+		sM1_1:
+
+		mes "[玛凯]";
+		mes "2) 下列哪一只魔物可以看到，隐匿/伪装的盗贼?";
+		next;
+		menu "艾斯蜘蛛",-, "森灵",sM1_2, "木乃伊",sM1_2, "邪骸士兵",sM1_2;
+
+			set @score, @score + 10;
+
+		sM1_2:
+
+		mes "[玛凯]";
+		mes "3) 下列有流氓转职所的地方是?";
+		next;
+		menu "克魔岛",sM1_3, "克克魔海边",sM1_3, "发乐斯 灯塔岛",-, "梦罗克",sM1_3;
+
+			set @score, @score + 10;
+
+		sM1_3:
+
+		mes "[玛凯]";
+		mes "4) 有盗贼转职所的村落是?";
+		next;
+		menu "克魔岛",sM1_4, "姜饼城",sM1_4, "爱尔贝塔",sM1_4, "梦罗克",-;
+
+			set @score, @score + 10;
+
+		sM1_4:
+
+		mes "[玛凯]";
+		mes "5) 与灵巧(Dex)没有关系的卡片是";
+		next;
+		menu "蝗虫卡",sM1_5, "木乃伊卡",-, "杰洛米卡",sM1_5, "土波利卡",sM1_5;
+
+			set @score, @score + 10;
+
+		sM1_5:
+
+		mes "[玛凯]";
+		mes "6) 请选择流氓比其它职业有吸引人的地方?";
+		next;
+		menu "卓越的坏气息",sM1_6, "卓越的狡猾",sM1_6, "卓越的厚颜无耻",sM1_6, "卓越的攻击力",-;
+
+			set @score, @score + 10;
+
+		sM1_6:
+
+		mes "[玛凯]";
+		mes "7) 盗贼的职业等级要达到几级，才可以转职成流氓?";
+		next;
+		menu "30",sM1_7, "35",sM1_7, "40",-, "50",-;
+
+			set @score, @score + 10;
+
+		sM1_7:
+
+		mes "[玛凯]";
+		mes "8) 想要把头发染成蓝色，请问带着蓝色颜料要到哪里去?";
+		next;
+		menu 	"梦罗克，7点钟方向建筑里",sM1_8, "普隆德拉，7点钟方面建筑里",-,
+			"梦罗克，5点钟方向建筑里",sM1_8, "普隆德拉，1点钟方向建筑里",sM1_8;
+
+			set @score, @score + 10;
+
+		sM1_8:
+
+		mes "[玛凯]";
+		mes "9) 初学者要转职为盗贼时，需要哪一种蘑菇?";
+		next;
+		menu "恶臭香菇",-, "红毛黏呼呼香菇",sM1_9, "毒香菇",-, "红香菇",sM1_9;
+
+			set @score, @score + 10;
+
+		sM1_9:
+
+		mes "[玛凯]";
+		mes "10) 和流氓没有关连的卡片是?";
+		next;
+		menu "白幽灵卡片",sM1_10, "长老树精卡片",-, "杰洛米卡片",sM1_10, "黑狐卡片",sM1_10;
+
+			set @score, @score + 10;
+
+		sM1_10:
+		goto L_Score;
+
+
+	L_QSet2:
+		mes "[玛凯]";
+		mes "1) 学习流氓的潜遁技能时，所需要的技能是?";
+		next;
+		menu "隐匿",-, "偷窃",sM2_1, "残影",sM2_1, "狂击",sM2_1;
+
+			set @score, @score + 10;
+
+		sM2_1:
+
+		mes "[玛凯]";
+		mes "2) 流氓的技能， '强制减价'物品的折价率，比商人低价买进等级10的时候，多几%?";
+		next;
+		menu "3%",sM2_2, "2%",sM2_2, "1%",-, "0%",sM2_2;
+
+			set @score, @score + 10;
+
+		sM2_2:
+
+		mes "[玛凯]";
+		mes "3) '偷钱' 技能的作用是?";
+		next;
+		menu "从玩家身上偷物品",sM2_3, "从魔物身上偷物品",sM2_3, "从魔物身上偷金币",-, "从玩家身上偷金币",sM2_3;
+
+			set @score, @score + 10;
+
+		sM2_3:
+
+		mes "[玛凯]";
+		mes "4) 使用 '流氓天国' 时所需要的人数是?";
+		next;
+		menu "1 流氓 + 2 刺客",sM2_4, "2 流氓 + 1 盗贼",sM2_4, "4 盗贼",sM2_4, "2 个或 2 个以上的流氓",-;
+
+			set @score, @score + 10;
+
+		sM2_4:
+
+		mes "[玛凯]";
+		mes "5) 卸除头盔技能Lv5时，所出现的技能是?";
+		next;
+		menu "施毒",sM2_5, "脱衣舞",sM2_5, "毒性感染",sM2_5, "卸除盾牌",-;
+
+			set @score, @score + 10;
+
+		sM2_5:
+
+		mes "[玛凯]";
+		mes "6) 下列哪一种是可以在隐匿的状态下移动?";
+		next;
+		menu "隐匿",sM2_6, "后退回避",sM2_6, "潜遁",-, "喷砂",sM2_6;
+
+			set @score, @score + 10;
+
+		sM2_6:
+
+		mes "[玛凯]";
+		mes "7) 下列哪一张卡片，可以发挥提升攻击命中率的卡片是?";
+		next;
+		menu "白蚁卡片",sM2_7, "吸血蝙蝠卡片",sM2_7, "木乃伊卡片",-, "水母卡片",sM2_7;
+
+			set @score, @score + 10;
+
+		sM2_7:
+
+		mes "[玛凯]";
+		mes "8) 使用螃蟹卡片时，对下列哪一种魔物的攻击较有效率?";
+		mes "(对火属性魔物增加 20% 的伤害力)";
+		next;
+		menu 	"螃蟹",sM2_8, "小恶魔",sM2_8, "长老树精",-, "巴风特",sM2_8;
+
+			set @score, @score + 10;
+
+		sM2_8:
+
+		mes "[玛凯]";
+		mes "9) 用短剑练二刀连击时，所消耗的SP量是?";
+		next;
+		menu "消耗 15 SP",sM2_9, "不需要消耗 SP",-, "消耗 10 SP",sM2_9, "消耗 54 SP",sM2_9;
+
+			set @score, @score + 10;
+
+		sM2_9:
+
+		mes "[玛凯]";
+		mes "10) 在依斯鲁得岛密穴里，有效的属性剑是什么?";
+		next;
+		menu "风属性笨拙短剑",-, "水属性笨拙短剑",sM2_10, "地属性笨拙短剑",sM2_10, "火属性笨拙短剑",sM2_10;
+
+			set @score, @score + 10;
+
+		sM2_10:
+		goto L_Score;
+
+
+	L_QSet3:
+		mes "[玛凯]";
+		mes "1) 有洞的长柄短剑可以从哪一只魔物身上获得?";
+		next;
+		menu "小盗虫",sM3_1, "大嘴鸟",sM3_1, "沙漠之狼",sM3_1, "犬妖",-;
+
+			set @score, @score + 10;
+
+		sM3_1:
+
+		mes "[玛凯]";
+		mes "2) 有洞的笨拙短剑可以从哪一只魔物身上获得?";
+		next;
+		menu "蜂兵",-, "沙漠之狼",sM3_2, "傀儡娃娃",sM3_2, "麦斯特",sM3_2;
+
+			set @score, @score + 10;
+
+		sM3_2:
+
+		mes "[玛凯]";
+		mes "3) 哪一个职业可以制作药水?";
+		next;
+		menu "商人",sM3_3, "炼金术士",-, "铁匠",sM3_3, "牧师",sM3_3;
+
+			set @score, @score + 10;
+
+		sM3_3:
+
+		mes "[玛凯]";
+		mes "4) 下列哪一项是流氓不能使用的武器?";
+		next;
+		menu "角弓",sM3_4, "十字弓",sM3_4, "长柄短剑",sM3_4, "卡塔勒拳刃",-;
+
+			set @score, @score + 10;
+
+		sM3_4:
+
+		mes "[玛凯]";
+		mes "5) 蚯蚓的属性是?";
+		next;
+		menu "水属性",sM3_5, "火属性",sM3_5, "风属性",sM3_5, "地属性",-;
+
+			set @score, @score + 10;
+
+		sM3_5:
+
+		mes "[玛凯]";
+		mes "6) 下列哪个魔物不能饲养成宠物?";
+		next;
+		menu "波波利",sM3_6, "克瑞米",-, "兽人战士",sM3_6, "毒魔菇",sM3_6;
+
+			set @score, @score + 10;
+
+		sM3_6:
+
+		mes "[玛凯]";
+		mes "7) 火属性短剑对哪一种魔物最有效?";
+		next;
+		menu "刺刀哥布灵",sM3_7, "刺锤哥布灵",sM3_7, "链锤哥布灵",sM3_7, "榔头哥布灵",-;
+
+			set @score, @score + 10;
+
+		sM3_7:
+
+		mes "[玛凯]";
+		mes "8) 下列哪一个村落没有设置工会城堡?";
+		next;
+		menu 	"普隆德拉",sM3_8, "艾尔帕兰",sM3_8, "艾尔贝塔",-, "斐扬",sM3_8;
+
+			set @score, @score + 10;
+
+		sM3_8:
+
+		mes "[玛凯]";
+		mes "9) 下列哪一种草会给蓝色药草?";
+		next;
+		menu "绿草",sM3_9, "黄草",sM3_9, "蓝草",-, "光芒草",-;
+
+			set @score, @score + 10;
+
+		sM3_9:
+
+		mes "[玛凯]";
+		mes "10) 下列哪一种不是不死系魔物?";
+		next;
+		menu "腐尸",sM3_10, "邪骸食人鱼",sM3_10, "吸血蝙蝠",-, "卡利斯格",sM3_10;
+
+			set @score, @score + 10;
+
+		sM3_10:
+		goto L_Score;
+
+	L_Score:
+		mes "[玛凯]";
+		mes "结束! 这些就是我所要问的问题，不算太难吧?";
+		mes "那么，我要开始检查你的答案了.";
+		next;
+		mes "[玛凯]";
+		mes "我喜欢为来申请的人打分数，这样他们才知道他们的知识有多少.";
+		mes "嗯...你的分数是: ^FF3355" + @score +"^000000/100............";
+		next;
+		mes "[玛凯]";
+		if(@score< 90) goto sL_Failed;
+		if(@score<100) goto sL_Passed;
+
+		sL_Perfect:
+			mes "噢! 满分呢! 你真有作流氓的资质.....";
+			mes "但别自得意满，因为后面还有一些其他的测验等着你呢.....";
+			next;
+			mes "[玛凯]";
+			set ROGUE_Q, 2;
+			goto L_Test2;
+		sL_Passed:
+			mes "很好，很好! 你做得不错. 不过后面还有一些其他的测验等着你呢.....";
+			next;
+			mes "[玛凯]";
+			set ROGUE_Q, 2;
+			goto L_Test2;
+		sL_Failed:
+			mes "唉..... 这不是我可以接受的分数......";
+			mes "我还能说什么好呢? 这种程度的知识水准是绝对不能作一个流氓的..........";
+			emotion 4;
+			next;
+			mes "[玛凯]";
+			mes "你还是再多去学习学习吧... 你很需要训练呐..... 真是浪费我的时间.....";
+			close;
+
+L_ReTest:
+	mes "你又来啦? 这次你准备好了吗?...... 嗯，放轻松一点....";
+	next;
+	goto L_Test1;
+
+L_Test2:
+	mes "你的下一个测验要去找 ^5533FF司马斯拉托^000000.";
+	mes "我要先警告你，司马斯拉托是很个难取悦的人. 所以，注意你的言行举止.";
+	close;
+L_Test3:
+	mes "我知道那些家伙实在很难找到. 但要有耐心地寻找. 同时确认一下你记得正确的密语..";
+	close;
+L_Test4:
+	mes "你在这里做什么? 该不会是想要放弃最后的测验吧?.........";
+	emotion 1;
+	next;
+	mes "[玛凯]";
+	mes "你快要完成所有的测验了，加油吧! 你一定可以办到的!";
+	close;
+
+
+//=======================================================================
+L_Change:
+//===========
+	mes "噢! 你活着回来了啊?看来你通过了所有的测验了.";
+	mes "你证明了你已经准备好要成为一名流氓!";
+	emotion 5;
+	next;
+	if(SkillPoint != 0) goto L_SkillP;
+	mes "[玛凯]";
+	mes "呵呵! 恭喜你成为一名流氓，你展现了你努力的精神，所以我要给你一个小礼物......";
+	setoption 0;
+	setlook 7,0;
+	callfunc "Job_Change",Job_Rogue;
+	emotion 46;
+	next;
+	mes "[玛凯]";
+	mes "你现在是一名流氓了，你可以随心所欲到任何地方去，做任何你想做的事.";
+	if(JBLVL == 40) getitem 1219,1;		// 2 slott gladius
+	if(JBLVL == 50) getitem 1220,1;		// 3 slott gladius
+	callfunc "F_ClearJobVar";
+	next;
+	mes "[玛凯]";
+	mes "但请记得，自由是要付出代价的! 待人要有同理心!";
+	next;
+L_End:
+	mes "[玛凯]";
+	mes "祝你好运，再见!";
+	close;
+
+//=======================================================================
+L_SkillP:
+//===========
+	mes "[玛凯]";
+	mes "噢! 不过有件事, 亲爱的... 你还有些技能没学完吧?!";
+	mes "请你先把你该学习的课程学完后再回来吧! 好吗?";
+	close;
+}
+
+
+
+//=======================================================================================================//
+//					司马斯拉托: Tests 2 and 3						//
+//***********************************************************************************************************************************************************//
+in_rogue.gat,376,23,3	script	司马斯拉托	57,{
+
+	mes "[司马斯拉托]";
+	if(BaseJob == Job_Thief) goto L_Thief;
+	if(BaseJob == Job_Rogue) goto L_Rogue;
+
+L_OtherJob:
+	mes "走开! 我很忙.....";
+	close;
+L_Rogue:
+	mes "我的流氓朋友啊，你看起来气色不错!";
+	close;
+L_Thief:
+	if(ROGUE_Q == 2) goto L_Test2;
+	if(ROGUE_Q == 3) goto L_Test3;
+	if(ROGUE_Q > 3) goto L_Done;
+	mes "好 好 .... 1... 2.... 3.... 那是在... 哪里.... 梦罗克... 吉分.... 克魔岛??.......";
+	next;
+	mes "[司马斯拉托]";
+	mes "唔..... 头好痛.......";
+	next;
+	mes "[司马斯拉托]";
+	mes "啊? 你是谁? 如果你想成为一名流氓的话你最好去找 ^5533FF玛凯^000000....";
+	next;
+	mes "[司马斯拉托]";
+	mes "...... 可恶! 我忘了我数到哪里了!!";
+	emotion 16;
+	close;
+
+//----------------------------------------------------------------------------------------------------
+L_Test2:
+//--------------
+	if(ROGUE_Q2 > 0) goto L_Check2;
+	mes "你是来这里参加第二阶段测验的是吧.... 嗯，很好.......";
+	next;
+	mes "[司马斯拉托]";
+	mes "在开始测验之前，先告诉你一些有关测试费用的事情";
+	mes "我们流氓工会有许多事务需要执行，所以我们需要固定的基金.";
+	next;
+	mes "[司马斯拉托]";
+	mes "这就是为什么我们需要向每位来申请流氓转职考试的人收取 ^5533FF10,000 zeny^000000 的费用.";
+	mes "这些费用会在你完成第二阶段测验的时候才向你收取，所以假使你现在没有钱，也可以放心参加测验";
+	next;
+	mes "[司马斯拉托]";
+	mes "好了，至于你的测验嘛..... 请你先去搜集下列物品:";
+	next;
+	mes "[司马斯拉托]";
+	set ROGUE_Q2, rand(1,3);
+	if(ROGUE_Q2 == 1) callsub sF2_R1;
+	if(ROGUE_Q2 == 2) callsub sF2_R2;
+	if(ROGUE_Q2 == 3) callsub sF2_R3;
+	next;
+	mes "[司马斯拉托]";
+	mes "等你搜集完了请记得连同 10,000 zeny 一起带过来给我.";
+	close;
+
+	sF2_R1:
+		mes "^5533FF蓝色药草 6 片";
+		mes "死人遗骨 10 个";
+		mes "亡者指甲 10 个";
+		mes "亡者牙齿 10 个^000000.";
+		return;
+	sF2_R2:
+		mes "^5533FF绿色药草 10 片";
+		mes "蛇鳞 10 个";
+		mes "加勒结晶 10 个";
+		mes "螃蟹外壳 10 个^000000";
+		return;
+	sF2_R3:
+		mes "^5533FF黄色药草 10 片";
+		mes "熊掌 10 个";
+		mes "坚硬外壳 10 个";
+		mes "蝗虫后腿 10 个^000000.";
+		return;
+
+L_Check2:
+	set @count, 0;
+	if(ROGUE_Q2 == 2) goto L_2;
+	if(ROGUE_Q2 == 3) goto L_3;
+
+	L_1:
+		set @R, 1;
+		if(countitem(510)<6 || countitem(932)<10 || countitem(957)<10 || countitem(958)<10 || Zeny < 10000) goto L_NotEnuf;
+		delitem 510,6;
+		delitem 932,10;
+		delitem 957,10;
+		delitem 958,10;
+		goto L_Done2;
+
+	L_2:
+		set @R, 2;
+		if(countitem(511)<10 || countitem(910)<10 || countitem(926)<10 || countitem(964)<10 || Zeny < 10000) goto L_NotEnuf;
+		delitem 511,10;
+		delitem 910,10;
+		delitem 926,10;
+		delitem 964,10;
+		goto L_Done2;
+
+	L_3:
+		set @R, 3;
+		if(countitem(508)<10 || countitem(948)<10 || countitem(935)<10 || countitem(940)<10 || Zeny < 10000) goto L_NotEnuf;
+		delitem 508,10;
+		delitem 948,10;
+		delitem 935,10;
+		delitem 940,10;
+
+	L_Done2:
+		mes "噢! 让我瞧瞧.... 申请费用.... 物品...... 嗯，都没问题，你通过了第二阶段测验啦.";
+		next;
+		mes "[司马斯拉托]";
+		mes "等你准备好迎接下一阶段测验的时候再来找我.";
+		set Zeny, Zeny - 10000;
+		set ROGUE_Q, 3;
+		set ROGUE_Q2, 0;
+		close;
+
+	L_NotEnuf:
+		mes ".... 啥!?!? 东西没带齐全你回来干嘛? 忘记要搜集哪些物品了吗?.....";
+		emotion 1;
+		next;
+		mes "[司马斯拉托]";
+		mes "拿纸笔写下来吧! 总共需要 ^5533FF10,000^000000 zeny 以及下列物品:";
+		if(ROGUE_Q2 == 1) callsub sF2_R1;
+		if(ROGUE_Q2 == 2) callsub sF2_R2;
+		if(ROGUE_Q2 == 3) callsub sF2_R3;
+		next;
+		mes "[司马斯拉托]";
+		mes "写好了没? 东西没带齐全不要回来找我......";
+		emotion 32;
+		close;
+
+
+//----------------------------------------------------------------------------------------------
+L_Test3:
+//---------------
+	if(ROGUE_Q2 > 0) goto L_Check3;
+	mes "让我瞧瞧..... 叫你去搜集什么好........ 嗯.........";
+	emotion 20;
+	next;
+	mes "[司马斯拉托]";
+	mes "噢! 我知道了! 就这么办，之前的测验我叫你去搜集了一些物品，这次我要你去找个特殊的人.";
+	emotion 5;
+	next;
+	mes "[司马斯拉托]";
+	set ROGUE_Q2, rand(1,3);
+	if(ROGUE_Q2 == 1) callsub sF3_R1;
+	if(ROGUE_Q2 == 2) callsub sF3_R2;
+	if(ROGUE_Q2 == 3) callsub sF3_R3;
+	next;
+	mes "[司马斯拉托]";
+	mes "祝你好运. 尽快完成这阶段的测试. 短时间内完成任务也是流氓的特点喔!";
+	close;
+
+	sF3_R1:
+		mes "你去找 ^5533FF阿拉甘^000000 吧.";
+		next;
+		mes "[司马斯拉托]";
+		mes "^5533FF东边地图的西南方^000000 那片沙漠上";
+		mes "有一间小房子，他就住在那儿";
+		next;
+		mes "[司马斯拉托]";
+		mes "他是一个不错的家伙，他很努力地在做他的讨债工作";
+		mes "不过有一些人却因为他父亲以前做过的一些事情而想杀他";
+		next;
+		mes "[司马斯拉托]";
+		mes "当他加入流氓工会之后，他决定隐居在他现在所住的地方";
+		mes "除了流氓工会的人以外没有人知道他住在哪儿.";
+		next;
+		mes "[司马斯拉托]";
+		mes "这里有一段密语，牢牢记住，当你见到他的时候把密语告诉他.";
+		mes "密语: '^5533FF阿拉甘 并没有把 精炼物品 转移到别处^000000'";
+		return;
+	sF3_R2:
+		mes "你去找 ^5533FF豪格蓝^000000 吧.";
+		next;
+		mes "[司马斯拉托]";
+		mes "^5533FF东边地图的东南方^000000 那片沙漠上";
+		mes "有一间小房子，他就住在那儿";
+		next;
+		mes "[司马斯拉托]";
+		mes "除了流氓工会的人以外没有人知道他住在哪儿.";
+		next;
+		mes "[司马斯拉托]";
+		mes "这里有一段密语，牢牢记住，当你见到他的时候把密语告诉他.";
+		mes "密语: '^5533FF我爸爸 并没有把 精炼物品 转移到别处^000000'";
+		return;
+	sF3_R3:
+		mes "你去找 ^5533FF安童尼奥^000000 吧.";
+		next;
+		mes "[司马斯拉托]";
+		mes "^5533FF西北边地图的东方^000000 克魔岛的沙滩上";
+		mes "有一间小屋子，他就住在那儿";
+		next;
+		mes "[司马斯拉托]";
+		mes "除了流氓工会的人以外没有人知道他住在哪儿.";
+		next;
+		mes "[司马斯拉托]";
+		mes "这里有一段密语，牢牢记住，当你见到他的时候把密语告诉他.";
+		mes "密语: '^5533FF安童尼奥 并不喜欢 打碎 精炼物品^000000'";
+		return;
+
+
+L_Check3:
+	mes "什么!?! 你忘记你要去哪里?........";
+	emotion 1;
+	next;
+	mes "[司马斯拉托]";
+	mes "拜托!!! 你不会拿纸笔记下来喔? 笨死了......";
+	emotion 6;
+	next;
+	mes "[司马斯拉托]";
+	if(ROGUE_Q2 == 1) callsub sF3_R1;
+	if(ROGUE_Q2 == 2) callsub sF3_R2;
+	if(ROGUE_Q2 == 3) callsub sF3_R3;
+	close;
+
+//-------------------------------------------------------------------------------------------------
+L_Done:
+//----------------
+	mes "这里没你的事了.........";
+	close;
+}
+
+
+//===========================================================
+// Guildsman that need to be found
+//===========================================================
+
+//------------------------------------------------------------------------------
+in_rogue.gat,272,136,3	script	海勒曼梭	85,{
+
+	mes "[海勒曼梭]";
+	mes "啊? 什.... 你是谁?! 你不是从流氓工会来的!! 给我滚开!";
+	emotion 1;
+	next;
+	mes "[海勒曼梭]";
+	mes "你是..... 原来如此! 你是他们的人!!! 你是来这里杀我的对吧??!! 不... 不要!! 我还没准备好要死!";
+	emotion 0;
+	next;
+	mes "[海勒曼梭]";
+	mes "啊啊啊啊啊啊!! 走开! 滚蛋! 不然我就杀了你!!!";
+	emotion 16;
+	close;
+}
+
+// --------------------------------------------------------------------------
+cmd_fild09.gat,106,195,0	script	Warp#1	45,1,1,{
+	callfunc "F_RogueTest3", 1, "阿拉甘", "并没有把", "精炼物品", "转移到别处", 244, 24;
+}
+
+// -----------------------------------------------------------------------------
+cmd_fild09.gat,335,143,0	script	Warp#2	45,1,1,{
+	callfunc "F_RogueTest3", 2, "我爸爸", "并没有把", "精炼物品", "转移到别处", 168, 34;
+}
+
+// ------------------------------------------------------------------------------
+cmd_fild04.gat,304,179,0	script	Warp#3	45,1,1,{
+	callfunc "F_RogueTest3", 3, "安童尼奥", "并不喜欢", "打碎", "精炼物品", 165, 104;
+}
+
+// Function for Guildsman ===================================
+function	script	F_RogueTest3	{
+
+	mes "[???]";
+	mes "谁在哪里?!!!";
+	mes "好大的胆子，竟敢擅自进入我的地盘?";
+	if((BaseJob != Job_Thief) || (ROGUE_Q < 3) || (ROGUE_Q2 == 0)) close;
+L_Start:
+	deletearray @choice$[1], 4;
+	next;
+	menu "我爸爸",M_1a, "阿拉甘",M_1b, "安童尼奥",M_1c, "勒苟拉斯",M_1d;
+
+	M_1a:
+		set @choice$[1], "我爸爸";
+		goto M_Menu2;
+	M_1b:
+		set @choice$[1], "阿拉甘";
+		goto M_Menu2;
+	M_1c:
+		set @choice$[1], "安童尼奥";
+		goto M_Menu2;
+	M_1d:
+		set @choice$[1], "勒苟拉斯";
+
+	M_Menu2:
+	callsub sF_Password;
+	menu "并没有将",M_2a, "并不喜欢",M_2b, "并没有把",M_2c, "从来没把",M_2d;
+
+	M_2a:
+		set @choice$[2], "并没有将";
+		goto M_Menu3;
+	M_2b:
+		set @choice$[2], "并不喜欢";
+		goto M_Menu3;
+	M_2c:
+		set @choice$[2], "并没有把";
+		goto M_Menu3;
+	M_2d:
+		set @choice$[2], "从来没把";
+
+	M_Menu3:
+	callsub sF_Password;
+	menu "精炼东西",M_3a, "精炼物品",M_3b, "藏起来",M_3c, "拿走",M_3d, "打碎",M_3e;
+
+	M_3a:
+		set @choice$[3], "精炼东西";
+		goto M_Menu4;
+	M_3b:
+		set @choice$[3], "精炼物品";
+		goto M_Menu4;
+	M_3c:
+		set @choice$[3], "藏起来";
+		goto M_Menu4;
+	M_3d:
+		set @choice$[3], "拿走";
+		goto M_Menu4;
+	M_3e:
+		set @choice$[3], "打碎";
+
+	M_Menu4:
+	callsub sF_Password;
+	menu "转移到别处",M_4a, "伪造物品",M_4b, "精炼物品",M_4c, "精炼装备",M_4d;
+
+	M_4a:
+		set @choice$[4], "转移到别处";
+		goto L_Check;
+	M_4b:
+		set @choice$[4], "伪造物品";
+		goto L_Check;
+	M_4c:
+		set @choice$[4], "精炼物品";
+		goto L_Check;
+	M_4d:
+		set @choice$[4], "精炼装备";
+
+L_Check:
+	callsub sF_Password;
+	if(ROGUE_Q2 != getarg(0)) goto L_Wrong;
+	if((@choice$[1] != getarg(1)) || (@choice$[2] != getarg(2)) || (@choice$[3] != getarg(3)) || (@choice$[4] != getarg(4))) goto L_Wrong;
+	mes "~ 咯吱咯吱 ~";
+	mes "你听到门打开的声音........";
+	next;
+	deletearray @choice$[1], 4;
+	initnpctimer "rogue04";
+	warp "in_rogue.gat", getarg(5), getarg(6);
+	end;
+
+	L_Wrong:
+		mes "[???]";
+		mes "滚开!!";
+		close;
+sF_Password:
+	mes "[^5533FF" + strcharinfo(0) + "^000000]";
+	mes @choice$[1];
+	mes @choice$[2];
+	mes @choice$[3];
+	mes @choice$[4];
+	next;
+	return;
+}
+
+
+//=======================================================================================================//
+//						Test 4: Last Test						//
+//***********************************************************************************************************************************************************//
+// Other path
+// warp "in_rogue.gat", 11, 388;
+// 390,389 end warp
+// 9,9 -> 9,21
+//===============================================
+// Guildsman
+//===============================================
+//---------------------------------------------------------------------------
+in_rogue.gat,244,39,4	script	阿拉甘#rg	99,{
+	callfunc "F_RogueTest4", "阿拉甘", 245, 27;
+}
+//---------------------------------------------------------------------------
+in_rogue.gat,152,27,6	script	豪格蓝#rg	85,{
+	callfunc "F_RogueTest4", "豪格蓝", 160, 32;
+}
+//---------------------------------------------------------------------------
+in_rogue.gat,183,105,4	script	安童尼奥#rg	88,{
+	callfunc "F_RogueTest4", "安童尼奥", 175, 107;
+}
+
+// Function for Guildsman =============================
+function	script	F_RogueTest4	{
+
+	if(ROGUE_Q == 4) goto L_Restart;
+	mes "[" + getarg(0) + "]";
+	mes "嘿! 小子... 你是从流氓工会来的吧!  我是 " + getarg(0) + "...... 我是沙漠的流氓..............";
+	next;
+	mes "[" + getarg(0) + "]";
+	mes "呵呵...我只是开玩笑...... 别说这些胡言乱语了，你来这里是希望能成为流氓的吗?";
+	emotion 4;
+	next;
+	mes "[" + getarg(0) + "]";
+	mes "流氓的格言: ^5533FF'避免硬碰硬! 找到弱点毕其功于一役!'^000000";
+	mes "这是与魔物对抗时最简单的法则.";
+	next;
+	mes "[" + getarg(0) + "]";
+	mes "在你成为流氓前最后一件要你做的事就是从地下密道走回去流氓工会.";
+	next;
+	mes "[" + getarg(0) + "]";
+	mes "听起来很简单吧? 很抱歉! 并没有想像中那么简单! 地下密道中充满了魔物! 不过不用担心....";
+	mes "如果你牢记流氓的格言并善用隐匿技能，打不过的时候就死命狂奔的话，你会通过测验的.";
+
+	M_Menu:
+	next;
+	mes "[" + getarg(0) + "]";
+	mes "嗯，你准备好了吗?";
+	next;
+	menu "我从来没有这么认真过",-, "老实说，我有点害怕",M_End;
+
+	if ($@rogue04test > 0) mes "[" + getarg(0) + "]";
+	if ($@rogue04test > 0) mes "地下密道中目前有人正在拚命中，你请在此处稍候一下吧，等里面没人了我会通知你!";
+	if ($@rogue04test > 0) close;
+
+		mes "[" + getarg(0) + "]";
+		mes "那么，祝你好运!";
+		next;
+		set ROGUE_Q, 4;
+		killmonsterall "in_rogue.gat";
+		savepoint "in_rogue.gat", getarg(1), getarg(2);
+		set $@rogue04test,1;
+		initnpctimer "rogue04";
+		warp "in_rogue.gat", 15, 105;
+		end;
+
+	M_End:
+		mes "[" + getarg(0) + "]";
+		mes ".....................";
+		next;
+		mes "[" + getarg(0) + "]";
+		mes "那么，你就慢慢磨蹭吧......";
+		close;
+
+L_Restart:
+	mes "[" + getarg(0) + "]";
+	mes "....... 看来你失败了.......";
+	emotion 4;
+	next;
+	mes "[" + getarg(0) + "]";
+	mes "如果你还想继续的话，我就再送你进去. 失败为成功之母.... 呵呵 嘻嘻 哈哈....";
+	percentheal 100,100;
+	goto M_Menu;
+}
+
+//================================================
+// Monster Spawns
+//================================================
+in_rogue.gat,15,185,0	script	rogue_mob1	139,8,0,{
+	monster "in_rogue.gat",14,188,"腐尸",1015,1;
+	monster "in_rogue.gat",15,188,"腐尸",1015,1;
+	monster "in_rogue.gat",16,188,"腐尸",1015,1;
+	monster "in_rogue.gat",14,189,"腐尸",1015,1;
+	monster "in_rogue.gat",15,189,"腐尸",1015,1;
+	monster "in_rogue.gat",16,189,"腐尸",1015,1;
+	end;
+}
+in_rogue.gat,15,245,0	script	rogue_mob2	139,8,0,{
+	monster "in_rogue.gat",14,247,"木乃伊",1041,1;
+	monster "in_rogue.gat",15,247,"木乃伊",1041,1;
+	monster "in_rogue.gat",16,247,"木乃伊",1041,1;
+	monster "in_rogue.gat",14,248,"木乃伊",1041,1;
+	monster "in_rogue.gat",15,248,"木乃伊",1041,1;
+	monster "in_rogue.gat",16,248,"木乃伊",1041,1;
+	end;
+}
+in_rogue.gat,15,328,0	script	rogue_mob3	139,8,0,{
+	monster "in_rogue.gat",14,331,"腐尸",1015,1;
+	monster "in_rogue.gat",15,331,"腐尸",1015,1;
+	monster "in_rogue.gat",16,331,"腐尸",1015,1;
+	monster "in_rogue.gat",14,332,"腐尸",1015,1;
+	monster "in_rogue.gat",15,332,"腐尸",1015,1;
+	monster "in_rogue.gat",16,332,"腐尸",1015,1;
+	end;
+}
+in_rogue.gat,35,342,0	script	rogue_mob4	139,0,8,{
+	monster "in_rogue.gat",38,340,"木乃伊",1041,1;
+	monster "in_rogue.gat",37,342,"深渊骑士",1219,1;
+	monster "in_rogue.gat",39,342,"绿腐尸",1036,1;
+	monster "in_rogue.gat",38,344,"木乃伊",1041,1;
+	end;
+}
+in_rogue.gat,57,306,0	script	rogue_mob5	139,4,0,{
+	monster "in_rogue.gat",59,301,"卡利斯格",1132,1;
+	end;
+}
+in_rogue.gat,96,333,0	script	rogue_mob6	139,0,4,{
+	monster "in_rogue.gat",92,325,"卡利斯格",1132,1;
+	end;
+}
+in_rogue.gat,139,313,0	script	rogue_mob7	139,4,0,{
+	monster "in_rogue.gat",139,309,"深渊骑士",1219,1;
+	end;
+}
+in_rogue.gat,135,246,0	script	rogue_mob8	139,0,4,{
+	monster "in_rogue.gat",139,245,"腐尸",1015,2;
+	monster "in_rogue.gat",139,246,"腐尸",1015,2;
+	monster "in_rogue.gat",139,247,"腐尸",1015,2;
+	end;
+}
+in_rogue.gat,62,302,0	script	rogue_mob9	139,0,4,{
+	monster "in_rogue.gat",57,305,"卡利斯格",1132,1;
+	end;
+}
+in_rogue.gat,199,218,0	script	rogue_mob10	139,0,8,{
+	monster "in_rogue.gat",157,218,"腐尸",1015,10;
+	monster "in_rogue.gat",157,218,"深渊骑士",1219,1;
+	monster "in_rogue.gat",157,218,"绿腐尸",1036,1;
+	monster "in_rogue.gat",157,218,"邪骸弓箭手",1016,1;
+	end;
+}
+in_rogue.gat,86,187,0	script	rogue_mob11	139,0,8,{
+	monster "in_rogue.gat",88,186,"木乃伊",1041,1;
+	monster "in_rogue.gat",88,187,"木乃伊",1041,1;
+	monster "in_rogue.gat",88,188,"木乃伊",1041,1;
+	end;
+}
+in_rogue.gat,225,187,0	script	rogue_mob12	139,0,8,{
+	monster "in_rogue.gat",232,191,"深渊骑士",1219,1;
+	monster "in_rogue.gat",233,190,"深渊骑士",1219,1;
+	monster "in_rogue.gat",234,189,"深渊骑士",1219,1;
+	end;
+}
+in_rogue.gat,252,320,0	script	rogue_mob13	139,0,8,{
+	monster "in_rogue.gat",252,319,"木乃伊",1041,1;
+	monster "in_rogue.gat",252,321,"木乃伊",1041,1;
+	monster "in_rogue.gat",252,319,"绿腐尸",1036,1;
+	monster "in_rogue.gat",252,321,"绿腐尸",1036,1;
+	monster "in_rogue.gat",257,320,"邪骸弓箭手",1016,1;
+	monster "in_rogue.gat",248,320,"邪骸弓箭手",1016,1;
+	end;
+}
+
+//================================================
+// End Warp
+//================================================
+in_rogue.gat,370,320,0	script	rogue04	45,1,1,{
+	set ROGUE_Q, 5;
+	killmonsterall "in_rogue.gat";
+	stopnpctimer "rogue04";
+	set $@rogue04test,0;
+	warp "in_rogue.gat",378,113;
+	end;
+
+OnTimer30000:
+	set $job_rogue_map1, getareausers("in_rogue.gat",234,20,275,61);
+	set $job_rogue_map2, getareausers("in_rogue.gat",148,22,173,59);
+	set $job_rogue_map3, getareausers("in_rogue.gat",158,102,185,119);
+	set $job_rogue_map4, getareausers("in_rogue.gat",1,1,391,391);
+	set $job_rogue_testarea,$job_rogue_map4-$job_rogue_map1-$job_rogue_map2-$job_rogue_map3;
+	if ($job_rogue_testarea == 0 && $job_rogue_map4 > 0) goto endtest;
+	if ($job_rogue_map4 == 0) goto endrogue;
+	initnpctimer "rogue04";
+	end;
+
+endtest:
+	killmonsterall "in_rogue.gat";
+	stopnpctimer "rogue04";
+	set $@rogue04test,0;
+	areaannounce "in_rogue.gat",234,20,275,61,"考场目前已经空出来了!下一位申请者请准备!",8;
+	areaannounce "in_rogue.gat",148,22,173,59,"考场目前已经空出来了!下一位申请者请准备!",8;
+	areaannounce "in_rogue.gat",158,102,185,119,"考场目前已经空出来了!下一位申请者请准备!",8;
+	end;
+
+endrogue:
+	killmonsterall "in_rogue.gat";
+	stopnpctimer "rogue04";
+	set $@rogue04test,0;
+	end;
+
+}
+
+//================================================
+// Timer: Keeps monsters from overspawning
+//================================================
+//~- script RogueTest3 -1,
+//~{
+//~	end;
+//~
+//~OnMinute10:
+//~OnMinute20:
+//~OnMinute30:
+//~OnMinute40:
+//~OnMinute50:
+//~OnMinute60:
+//~	killmonsterall "in_rogue.gat";
+//~	end;
+//~}

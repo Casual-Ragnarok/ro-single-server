@@ -1,0 +1,301 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - PVP 脚本 -
+//===================================
+// PvP解说员
+//===================================
+alberta_in.gat,22,146,4	script	PvP解说员#alb	84,{
+	callfunc "F_PvPNarr", "alberta_in.gat", 24, 143;
+	end;
+}
+payon_in01.gat,173,109,3	script	PvP解说员#pay	84,{
+	callfunc "F_PvPNarr", "payon_in01.gat", 169, 108;
+	end;
+}
+prt_in.gat,56,140,4	script	PvP解说员#prt	84,{
+	callfunc "F_PvPNarr", "prt_in.gat", 54, 137;
+	end;
+}
+morocc_in.gat,144,138,4	script	PvP解说员#moc	84,{
+	callfunc "F_PvPNarr", "morocc_in.gat", 141, 140;
+	end;
+}
+geffen_in.gat,67,63,4	script	PvP解说员#gef	84,{
+	callfunc "F_PvPNarr", "geffen_in.gat", 64, 60;
+	end;
+}
+
+
+function	script	F_PvPNarr	{
+	mes "[PVP解说员]";
+	mes "你好!";
+	mes "我是担任PVP";
+	mes "解说的";
+	mes "PVP 解说员!";
+	next;
+	switch (select("^3355ffPVP模式^000000?","什么叫做PVP模式?","PVP模式的规则是什么?","存储现在位置","结束对话")) {
+	case 1:
+		mes "[PVP解说员]";
+		mes "PVP模式就是";
+		mes "'Player VS Player Mode'";
+		mes "的简写..";
+		mes "也就是一种在假想的世界里，";
+		mes "享受玩家间大战的特别战斗";
+		next;
+		mes "[PVP解说员]";
+		mes "简单的说就是与其他玩家打斗的模式";
+		mes "只要向我身边这位^3355ff守门人^000000说一声";
+		mes "表示愿意尝试的话";
+		mes "他便会";
+		mes "引导你进入为PVP模式所准备的打斗场";
+		next;
+		mes "[PVP解说员]";
+		mes "请你一定要小心";
+		mes "也请好好享受战斗的乐趣吧";
+		mes "要进入PVP模式";
+		mes "玩家等级要达到31级以上";
+		next;
+		mes "[PVP解说员]";
+		mes "拥有参加资格以后";
+		mes "可以任意选择下列两个模式中的其中一个";
+		mes "那就是梦魇模式";
+		mes "及溜溜猴模式。";
+		next;
+		mes "[PVP解说员]";
+		mes "在梦魇模式中的游戏";
+		mes "规则跟在实战";
+		mes "是一样的";
+		mes "因此道具会有掉落的情况发生";
+		mes "经验值也会损失。";
+		next;
+		mes "[PVP解说员]";
+		mes "请熟知这一点，";
+		mes "以避免发生争执。";
+		mes "请仔细考虑清楚后再进入。";
+		close;
+	case 2:
+		mes "[PVP解说员]";
+		mes "透过我身旁这位 ' PVP守门人 ' ";
+		mes "请记得";
+		mes "缴交500金币";
+		mes "便可以往PVP模式的打斗场";
+		mes "移动前往。";
+		next;
+		mes "[PVP解说员]";
+		mes "打斗模式分为";
+		mes "溜溜猴模式和";
+		mes "梦魇模式";
+		mes "请一定小心选择自己的模式";
+		mes "这两种";
+		mes "模式的打斗场里";
+		next;
+		mes "[PVP解说员]";
+		mes "各有数名解说员";
+		mes "他们会将31级以上的参加者";
+		mes "每10等级";
+		mes "再做细分";
+		next;
+		mes "[PVP解说员]";
+		mes "有5个PVP专用房间可供选择";
+		mes "选择你所想去的那个房间";
+		mes "便可移动到那里";
+		mes "从解说员头上的窗口";
+		next;
+		mes "[PVP解说员]";
+		mes "可以知道等级的限制";
+		mes "以及此地图正在进行打斗的人数";
+		mes "这点请你要注意";
+		next;
+		mes "[PVP解说员]";
+		mes "解说员头上的窗口";
+		mes "会出现【参加人数/总人数】这样的数据";
+		next;
+		mes "[PVP解说员]";
+		mes "另一点请注意";
+		mes "PVP专用地图";
+		mes "是无法";
+		mes "储存位置的";
+		mes "请注意以上这点";
+		close;
+	case 3:
+		mes "[PVP解说员]";
+		mes "进入PVP模式后";
+		mes "画面右下角";
+		mes "出现的是";
+		mes "该地图";
+		mes "玩家自己的排行 / 地图玩家人数";
+		next;
+		mes "[PVP解说员]";
+		mes "相信会对你有帮助";
+		mes "在PVP模式中的经验?";
+		mes "只有在PVP模式中适用";
+		mes "这点要注意";
+		mes "一开始每位玩家的经验?";
+		next;
+		mes "[PVP解说员]";
+		mes "基本上都是' 5 '";
+		mes "在途中若是";
+		mes "赢得胜利的话";
+		mes "可增加经验 1";
+		mes "若是失败的话";
+		next;
+		mes "[PVP解说员]";
+		mes "则经验会减少 5";
+		mes "如果经验减到0以下";
+		next;
+		mes "[PVP解说员]";
+		mes "则会被踢出PVP模式";
+		mes "不得继续参与";
+		mes "但是如果经验大于0";
+		mes "却被杀死的话";
+		mes "可以藉由同伴";
+		next;
+		mes "[PVP解说员]";
+		mes "回复体力，继续参与游戏";
+		mes "这样你懂了吧";
+		next;
+		mes "[PVP解说员]";
+		mes "打斗的规则";
+		mes "与外面战斗的规则";
+		mes "是一样的";
+		close;
+	case 4:
+		savepoint getarg(0),getarg(1),getarg(2);
+		mes "[PVP解说员]";
+		mes "已经成功存储位置";
+		mes "非常感谢您的使用";
+		close;
+	case 5:
+		mes "[PVP解说员]";
+		mes "这是一个属于玩家与玩家间的大战";
+		mes "也是一个";
+		mes "能让玩家们在战斗中找到乐趣的";
+		mes "PVP模式!";
+		mes "期待各位";
+		mes "勇于前来挑战 !";
+		close;
+	}
+}
+
+//===================================
+// PvP守门人
+//===================================
+-	script	守门人::PvPdoor	-1,{
+	mes "[守门人]";
+	mes "很高兴为你服务";
+	mes "我是为您打开PVP打斗场之门";
+	mes "' PVP 守门人";
+	mes "有关PVP模式的说明";
+	mes "请你去向旁边那位解说员";
+	mes "询问!";
+	next;
+	switch ( select("前往^ff3355PVP 梦魇模式^000000 打斗场","前往^3355FFPVP 溜溜猴模式^000000 打斗场","前往^3355FFPVP 争霸模式^000000 打斗场","结束对话")) {
+	case 1:
+		mes "[守门人]";
+		mes "目前已停止使用 ";
+		mes "PVP梦魇模式了.";
+		mes "您愿意PVP的话 ";
+		mes "请利用溜溜猴模式吧.";
+		close;
+
+	case 2:
+		mes "[守门人]";
+		mes "参加费是500 Zeny 您要移动到";
+		mes "溜溜猴模式";
+		mes "移动到PVP打斗场吗?";
+		next;
+		switch( select("移动","取消")) {
+		case 1:
+			if(Zeny<500 || BaseLevel<31) {
+			mes "[守门人]";
+			mes "对不起!";
+			mes "您的 Zeny 不够 ，或者";
+			mes "您的等级不到31级";
+			close;
+			}
+			set Zeny,Zeny-500;
+			warp "pvp_y_room",51,23;
+			end;
+		case 2:
+		break;
+		}
+	case 3:
+		mes "[守门人]";
+		mes "欢迎光临～";
+		mes "你在确认一下";
+		mes "你有没有参赛券或者观赏券好吗？";
+		next;
+		mes "[守门人]";
+		mes "..... 呃? 没有吗？";
+		mes "很抱歉，这个竞技场是";
+		mes "只有带来参赛券或者观赏券的人";
+		mes "才能进来的。";
+	close;
+
+	case 4:
+		mes "[守门人]";
+		mes "这是一个属于玩家与玩家间的大战";
+		mes "也是一个";
+		mes "能让玩家们在战斗中找到乐趣的";
+		mes "PVP模式!";
+		mes "期待各位";
+		mes "勇于前来挑战 !";
+		close;
+	}
+}
+
+alberta_in.gat,26,146,4	duplicate(PvPdoor)	守门人#alb	83
+geffen_in.gat,63,63,4	duplicate(PvPdoor)	守门人#gef	83
+morocc_in.gat,144,142,4	duplicate(PvPdoor)	守门人#moc	83
+payon_in01.gat,140,53,4	duplicate(PvPdoor)	守门人#pay	83
+prt_in.gat,52,140,4	duplicate(PvPdoor)	守门人#prt	83
+
+//===================================
+// PvP接待员
+//===================================
+// 溜溜猴模式 无等级限制
+pvp_y_room.gat,86,85,4	script	打斗场接待员#1	105,{
+	callfunc "F_PvPRoom", "y_8",0,255;
+OnInit:
+	waitingroom "无限制", 0;
+	end;
+}
+
+// 梦魇模式 无等级限制
+pvp_n_room.gat,86,85,4	script	打斗场接待员	105,{
+	callfunc "F_PvPRoom", "n_8",0,255;
+OnInit:
+	waitingroom "无限制", 0;
+	end;
+}
+
+function	script	F_PvPRoom	{
+
+	if(BaseLevel < 31) {
+		mes "[打斗场接待员]";
+		mes "至少要LV31以上才可进入";
+	}
+	set @menu,select(	"普隆德拉?[" +getmapusers("pvp_y_8-1.gat")+ " / 128]",
+				"依斯鲁得?[" +getmapusers("pvp_y_8-2.gat")+ " / 128]",
+				"斐扬?[" +getmapusers("pvp_y_8-3.gat")+ " / 128]",
+				"艾尔贝塔?[" +getmapusers("pvp_y_8-4.gat")+ " / 128]",
+				"梦罗克?[" 	+getmapusers("pvp_y_8-5.gat")+ " / 128]",
+				"取消");
+	if(@menu==6) {
+		close;
+	}
+
+	if(getmapusers("pvp_y_8-"+@menu+"") >= 128) {
+		mes "[打斗场接待员]";
+		mes "人数到达极限";
+		return;
+	}
+	warp "pvp_y_8-"+@menu+"",0,0;	end;
+	close;
+
+OnInit:
+	waitingroom "无限制",0;
+	end;
+}

@@ -1,0 +1,51 @@
+//====================================
+//脚本名称 : 资源回收人员
+//脚本作者 : 酷企鹅 & 笨凯爷
+//脚本版本 : 无
+//脚本说明 : 利用一些 "其他" 类的物品 , 来换取 Cash 点和 Zeny ..
+//脚本测试 : eAthena 12716 之后版本皆可使用 , 至于之前的小弟还未测试 !
+//脚本备注 : 建议大家别新增太多东西 ,以免一页太满 ! 而太过凌乱
+//====================================
+//请保留以上内容,谢谢配合 !
+//====================================
+
+prontera.gat,146,107,5	script	资源回收人员	807,{
+//以下内容请务必对应好(例如: 物品编号(707)、所需的物品数量(10)、得到的cash点数(9)、得到的zeny(5)w)否则会出错 ^^
+	setarray $@RecoveryRTM[1],707,923,926,941,942,945,968,907;  //物品编号
+	setarray $@RecoveryNTM[1],10,100,180,220,180,120,250,160;  //所需的物品数量
+	setarray $@RecoveryZenA[1],50,150,300,350,250,130,350,140;  //得到的zeny(单位:万 , 所以1就表示给1万..以此类推)
+
+//以下内容非会写脚本的请勿修改
+
+	set $@RecoverySRTM,(getarraysize($@RecoveryRTM)-1);
+		mes "[资源回收员]";
+		for ( set @i,1; @i < ($@RecoverySRTM+1); set @i,@i+1 ) {
+			mes "No."+@i+" ^0000FF"+$@RecoveryNTM[@i]+"^000000 个 ^0000FF"+getitemname($@RecoveryRTM[@i])+"^000000 -";
+			mes "          换 ^FF0000"+$@RecoveryZenA[@i]+"^000000 万zeny";
+		}
+		mes "输入你想要回收的物品No.编号";
+		mes " ";
+	next;
+		input .@input;
+	next;
+	if (.@input == 0) goto E_C_it;
+	if (.@input > $@RecoverySRTM) goto E_C_it;
+	if ( countitem ($@RecoveryRTM[.@input]) < $@RecoveryNTM[.@input] ) goto N_C_it;
+	delitem $@RecoveryRTM[.@input],$@RecoveryNTM[.@input];
+	set #CASHPOINTS,#CASHPOINTS+$@RecoveryCas[.@input];
+	set zeny,zeny+$@RecoveryZenA[.@input]*10000;
+		mes "[资源回收员]";
+		mes "交易完成.";
+		mes "快去查询你的Zeny吧.";
+		close;
+N_C_it:
+		mes "[资源回收员]";
+		mes "所需的道具不足喔.";
+		mes "请检查你的道具栏!";
+		close;
+E_C_it:
+		mes "[资源回收员]";
+		mes "没有你输入的编号.";
+		mes "请重新输入可以吗?";
+		close;
+}

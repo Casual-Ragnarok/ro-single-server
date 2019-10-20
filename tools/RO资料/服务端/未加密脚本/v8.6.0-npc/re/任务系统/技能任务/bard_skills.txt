@@ -1,0 +1,68 @@
+//===== eAthena Script ======================================= 
+//= Bard Skills Quests
+//===== By: ================================================== 
+//= Lupus, Reddozen
+//===== Current Version: ===================================== 
+//= 1.3a
+//===== Compatible With: ===================================== 
+//= eAthena Revision 3800+
+//===== Description: ========================================= 
+//= Temp quests for new skills for 2nd classes
+//===== Additional Comments: ================================= 
+//= 1.0 for fully working skills only [Lupus]
+//= 1.1 Added more new skill quests for more classes [Lupus]
+//= Somehow eA engine doesn't let you keep learn't skill V_V'
+//= 1.2 Added to correct locations, correct NPC's, fixed
+//= some of the items required and made them into real
+//= quests. [Reddozen] 
+//= 1.3 Fixed bugs and minor typos. Optimized [Lupus]
+//= 1.3a fixed an item ID typo, thx 2Spiritual Kid
+//= 1.3b Splitted into different files [DracoRPG]
+//============================================================
+
+
+//============================================================
+// 吟游诗人 - 阵痛之声
+//============================================================
+prontera.gat,174,328,7	script	青年	89,{
+	mes "[青年]";
+	if(BaseJob!=Job_Bard) goto L_nobard;
+	if(getskilllv(1010)) goto L_alreadyhave;
+	if(JobLevel<40) goto L_nojob;
+
+	mes "我能教你个技能";
+	mes "但是你得给我一样我一直渴望得到的物品";
+	mes "1 热带_苏克拉特";
+	next;
+	
+	mes "[青年]";
+	mes "我来检查下你的物品.";
+	next;
+	
+	if (countitem(12112)<1) goto L_noitems;//Items: Tropical_Sograt,
+	delitem 12112, 1;//Items: Tropical_Sograt,
+	mes "[青年]";
+	mes "你带来了我想要的东西,";
+	mes "所以我也会教你新的技能.";
+	skill 1010,1,0;
+	close;
+	
+L_noitems:
+	mes "[青年]";
+	mes "你没带来我要的东西.";
+	mes "等你带来了再来找我吧";
+	close;
+		
+L_nobard:
+	mes "你看上去不像个有音乐天分的人";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "我已经教过你了";
+	close;
+
+L_nojob:
+	mes "等你成为一名诗人在来找我吧";
+	close;
+}

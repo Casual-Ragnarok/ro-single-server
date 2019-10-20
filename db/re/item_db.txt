@@ -113,7 +113,7 @@
 //===================================================================
 // Usable Items
 //===================================================================
-601,Wing_Of_Fly,苍蝇翅膀,11,10,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; getitem 601,1; },{},{}
+601,Wing_Of_Fly,苍蝇翅膀,11,10,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; if(countitem(601) <= 1) getitem 601,1; },{},{}
 602,Wing_Of_Butterfly,蝴蝶翅膀,11,100,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",3; getitem 602,1; },{},{}
 603,Old_Blue_Box,神秘箱子,2,10000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ getrandgroupitem(IG_BlueBox,1); },{},{}
 604,Branch_Of_Dead_Tree,枯树枝,2,50,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ monster "this",-1,-1,"--ja--",-1-MOBG_Branch_Of_Dead_Tree,1,""; },{},{}
@@ -124,7 +124,7 @@
 609,Amulet,返魂符,2,100,,100,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 610,Leaf_Of_Yggdrasil,天地树叶子,11,250,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "ALL_RESURRECTION",1; },{},{}
 // 611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "MC_IDENTIFY",1; },{},{}
-611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "F_IDENTIFY_ALL"; },{},{}
+611,Spectacles,放大镜,11,10,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "F_IDENTIFY_ALL"; if(countitem(611) > 1) delitem 611,1; },{},{}
 612,Portable_Furnace,携带用熔矿炉,2,150,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 21; },{},{}
 613,Iron_Hammer,钢铁锤子,2,1000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 1; },{},{}
 614,Golden_Hammer,黄金锤子,2,3000,,300,,,,,0xFFFFFFFF,63,2,,,,,,{ produce 2; },{},{}
@@ -888,7 +888,7 @@
 1527,Quadrille,秘锤冷月,5,20,,900,165,,1,0,0x00008110,63,2,2,4,40,1,8,{ bonus2 bAddRace,RC_Undead,10; bonus2 bAddRace,RC_DemiHuman,10; bonus2 bAddRace,RC_Player,10; bonus2 bAddEle,Ele_Earth,10; },{},{}
 1528,Grand_Cross,圣锤十字星,5,20,,1500,140,,1,0,0x00008110,63,2,2,4,40,1,8,{ bonus bAtkEle,Ele_Holy; skill "PR_TURNUNDEAD",3; bonus3 bAutoSpell,"PR_TURNUNDEAD",3,100; bonus2 bSPDrainValueRace,RC_Undead,1; bonus2 bSPGainRace,RC_Undead,3; },{},{}
 1529,Iron_Driver,高尔夫球杆,5,20,,3000,155,,2,0,0x00008100,63,2,2,3,78,1,8,{},{},{}
-1530,Mjolnir,雷神之锤,5,20,,6000,350,,1,0,0x000444A2,63,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,50; bonus bStr,20; bonus bAspdRate,10; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000; },{},{}
+1530,Mjolnir,雷神之锤,5,20,,6000,350,,1,0,0x000444A2,63,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,50; bonus bStr,20; bonus bAspdRate,200; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000; },{},{}
 1531,Spanner,钣手,5,20,,2500,115,,1,0,0x00008110,63,2,2,3,55,1,8,{ bonus2 bAddEff,Eff_Blind,100; bonus2 bAddEff,Eff_Stun,100; bonus2 bAddEff,Eff_Poison,100; bonus2 bAddEff,Eff_Freeze,100; },{},{}
 1532,Stunner_,昏迷之锤,5,60000,,2000,140,,1,2,0x00008110,63,2,2,3,27,1,8,{ bonus2 bAddEff,Eff_Stun,1000; },{},{}
 1533,Warrior_Balmung,勇士的神器天谴,5,20,,1000,170,,1,0,0xFFFFFFFF,63,2,2,4,48,1,8,{ bonus bAllStats,5; },{},{}
@@ -1630,7 +1630,7 @@
 2407,Chrystal_Pumps,玻璃鞋,4,20,,100,,5,,0,0xFFFFFFFE,63,0,64,,0,1,0,{ bonus bMdef,10; bonus bLuk,5; },{},{}
 2408,Cuffs,脚炼,4,5000,,3000,,18,,0,0xFFFFFFFF,63,2,64,,0,1,0,{},{},{}
 2409,Spiky_Heel,抗魔鞋,4,8500,,600,,4,,0,0xFFFFFFFE,63,2,64,,0,1,0,{ bonus bMdef,5; },{},{}
-2410,Sleipnir,史雷普尼尔之靴,4,20,,3500,,40,,0,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,25; bonus bSpeedRate,25; bonus bInt,25; },{},{}
+2410,Sleipnir,史雷普尼尔之靴,4,20,,3500,,40,,0,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,25; bonus bSpeedRate,100; bonus bInt,25; },{},{}
 2411,Grave,重靴,4,48000,,750,,27,,0,0x00004080,63,2,64,,65,1,0,{},{},{}
 2412,Grave_,重靴,4,54000,,750,,15,,1,0x00004080,63,2,64,,65,1,0,{},{},{}
 2413,Safty_Boots,安全鞋,4,34000,,350,,6,,0,0x00004082,63,2,64,,30,0,0,{},{},{}
@@ -1682,7 +1682,7 @@
 2459,Upg_Shoes,[强化]长靴,4,20,,200,,15,,1,0xFFFFFFFE,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
 2460,Upg_Boots,[强化]战士长靴,4,20,,300,,21,,1,0x416E5CEA,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
 2461,Upg_Greave,[强化]重靴,4,20,,400,,32,,1,0x00004080,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
-2462,Sleipnir_C,史雷普尼尔之靴,4,20,,0,,40,,0,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,15; bonus bSpeedRate,25; },{},{}
+2462,Sleipnir_C,史雷普尼尔之靴 1S,4,20,,0,,40,,1,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,15; bonus bSpeedRate,100; bonus bInt,25; },{},{}
 2463,Feral_Boots,狂野长靴,4,20,,0,,12,,0,0xFFFFFFFF,63,2,64,,75,0,0,{},{},{}
 2464,No_Fear_Shoes,无畏之靴,4,0,,0,,6,,0,0xFFFFFFFF,63,2,64,,20,0,0,{ bonus bStr,1; bonus bInt,1; bonus bDex,1; },{},{}
 2465,Dance_Shoes,舞鞋,4,20,,300,,15,,1,0x00080000,63,2,64,,105,1,0,{ bonus bAgi,1; bonus bAspdRate,2; bonus2 bSkillUseSP,"WA_SWING_DANCE",32; },{},{}
@@ -5780,7 +5780,7 @@
 7832,Brynhild_Armor_Piece,布伦希尔德的铠甲碎片,3,1,,500,,,,,,,,,,,,,{},{},{}
 7833,Hero_Remains,英雄的遗骸,3,1,,500,,,,,,,,,,,,,{},{},{}
 7834,Andvari_Ring,安德巴里的戒指,3,1,,500,,,,,,,,,,,,,{},{},{}
-7835,Dusk_Glow,黄昏的光芒.,3,1,,500,,,,,,,,,,,,,{},{},{}
+7835,Dusk_Glow,黄昏的光芒,3,1,,500,,,,,,,,,,,,,{},{},{}
 7836,Dawn_Essence,黎明的露珠,3,1,,500,,,,,,,,,,,,,{},{},{}
 7837,Cold_Moonlight,冰冷的月光,3,1,,500,,,,,,,,,,,,,{},{},{}
 7838,Hazy_Starlight,阴暗的星光,3,1,,500,,,,,,,,,,,,,{},{},{}
@@ -12595,3 +12595,10 @@
 
 
 50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 50000,1; callfunc "F_MANUAL"; },{},{}
+
+
+51530,Mjolnir_,雷神之锤 1S,5,20,,6000,350,,1,1,0x000444A2,63,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,50; bonus bStr,20; bonus bAspdRate,200; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000; },{},{}
+52383,Brynhild_,布伦希尔德 1S,4,20,,400,,120,,1,0xFFFFFFFF,63,2,16,,94,0,0,{ bonus bMdef,10; bonus bMaxHP,20*BaseLevel; bonus bMaxSP,5*BaseLevel; bonus2 bAddClass,Class_All,10; bonus bMatkRate,10; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
+52541,Asprika_,阿斯普利卡 1S,4,20,,400,,40,,1,0xFFFFFFFF,63,2,4,,94,0,0,{ bonus bMdef,5; bonus3 bSubEle,Ele_Neutral,30,BF_SHORT; bonus3 bSubEle,Ele_Water,30,BF_SHORT; bonus3 bSubEle,Ele_Earth,30,BF_SHORT; bonus3 bSubEle,Ele_Fire,30,BF_SHORT; bonus3 bSubEle,Ele_Wind,30,BF_SHORT; bonus3 bSubEle,Ele_Poison,30,BF_SHORT; bonus3 bSubEle,Ele_Holy,30,BF_SHORT; bonus3 bSubEle,Ele_Dark,30,BF_SHORT; bonus3 bSubEle,Ele_Ghost,30,BF_SHORT; bonus3 bSubEle,Ele_Undead,30,BF_SHORT; bonus bFlee,30; skill "AL_TELEPORT",1; bonus bUnbreakableGarment; },{},{}
+52629,Magingiorde_,雷神腰带 1S,4,20,,8000,,2,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,40+BaseLevel/5; bonus bMdef,7; if(readparam(bStr)>=120) bonus2 bAddClass,Class_Boss,10; },{},{}
+52630,Brysinggamen_,女神项链 1S,4,20,,1500,,1,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,6; bonus bAgi,6; bonus bVit,6; bonus bInt,10; bonus bLuk,10; bonus bMdef,5; bonus bHealPower,6; },{},{}

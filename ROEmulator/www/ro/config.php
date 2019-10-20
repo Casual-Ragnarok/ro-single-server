@@ -44,22 +44,22 @@ $config_index_url=		"http://127.0.0.1:8096/ro/";
 $config_bbs_url=		"http://127.0.0.1:8096/";
 //-- -------------------------------------------------------------------------------- --//
 //-- --------------论坛新帖---------------------------------------------------------- --//
-$config_bbs_msgscript=		"Github 免费永久破解版： ro-single-server";
+$config_bbs_msgscript=		"Github 免费永久破解版： <a href='https://github.com/lyy289065406/ro-single-server' target='_blank'>ro-single-server</a>";
 //-- -------------------------------------------------------------------------------- --//
 //-- --------------补丁设置---------------------------------------------------------- --//
 //
-$config_cilent_Vname=       "最新韩国KRO正式客户端20190306_Lite下载（请右键使用迅雷下载）";
+$config_cilent_Vname=       "最新韩国KRO正式客户端20190306_Lite下载（请使用百度网盘下载）";
 $config_patch_Vname=		"¨☆RO仙境传说-单机版☆¨ 下载";
 //
 $config_cilent_url1=		"https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw";
-$config_cilent_url2=		"http://www.99max.me/thread-485-1-1.html";
-$config_cilent_url3=		"http://ro.gnjoy.com/pds/down/";
-$config_cilent_url4=		"http://127.0.0.1/ro/download/Ragnarok_KRO_20190306_Lite.rar";
+$config_cilent_url2=		"https://pan.baidu.com/s/1mFC_EqUYgdoFQrd9kxzceA&shfl=sharepset";
+$config_cilent_url3=		"https://pan.baidu.com/s/1HRemCXSdPobKw39MkVAX-Q&shfl=sharepset";
+$config_cilent_url4=		"http://ro.gnjoy.com/pds/down/";
 //
-$config_patch_url1=		"https://pan.baidu.com/s/1NuJrVDepemA_SDo3S8kKZg";
-$config_patch_url2=		"http://www.99max.me/thread-3674-1-1.html";
-$config_patch_url3=		"http://127.0.0.1/ro/download/RO_Singel_Patch_v4.3 CHS 登录补丁.zip";
-$config_patch_url4=		"#";
+$config_patch_url1=		"https://pan.baidu.com/s/1F3XLwqDDwebvUNIYIKPlXQ&shfl=sharepset";
+$config_patch_url2=		"https://pan.baidu.com/s/1FuR9bpqaVhuSxcgHkZbmmQ&shfl=sharepset";
+$config_patch_url3=		"https://pan.baidu.com/s/1tMkj46v2Lm2RVqINb2XW_g&shfl=sharepset";
+$config_patch_url4=		"http://127.0.0.1/ro/download/RO_Singel_Patch_v4.3 CHS 登录补丁.zip";
 /***********************************************************************************************\
 *************************************************************************************************
 *************************************************************************************************

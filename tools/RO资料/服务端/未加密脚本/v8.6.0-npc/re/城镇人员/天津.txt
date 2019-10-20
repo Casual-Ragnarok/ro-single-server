@@ -1,0 +1,573 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 天津 城镇脚本 -
+//========================
+//= 版本：1.3
+//========================
+
+// Amatsu Transportation
+//=====================================================
+alberta,245,93,4	script	贸易船 船长#ama1	709,{
+	mes "[发特 摩俄斯]";
+	mes "喂，你，有听说过";
+	mes "在大海的对岸，和我们现在居住的";
+	mes "卢恩—米德加兹王国";
+	mes "有着完全不一样国家的事实嘛?";
+	next;
+	switch (select("询问有关天津町的事情..:去天津町:取消")) {
+	case 1:
+		mes "[发特 摩俄斯]";
+		mes "据说，有一位船夫迷失航路，";
+		mes "在漂流的过程中";
+		mes "无预期的被发现了...";
+		mes "在强大的暴风雨和迷雾中";
+		mes "船一定是遭殃的";
+		next;
+		mes "[发特 摩俄斯 ]";
+		mes "反正遭沉船后";
+		mes "所到达的村落";
+		mes "就叫做天津町，";
+		mes "那个人被那边的人治疗之后痊愈，";
+		mes "后来在那边辛苦的工作，";
+		mes "据说完成了一张海图?";
+		next;
+		mes "[发特 摩俄斯 ]";
+		mes "他回来后很快就就死掉了，";
+		mes "不过海图确实有传到特力斯坦 3世手上，";
+		mes "后来国王下令";
+		mes "只要是有人能开辟，";
+		mes "通往天津町航路的人就会有奖赏，";
+		mes "并且把海图的影印本发给大家了";
+		next;
+		mes "[发特 摩俄斯 ]";
+		mes "人们期望的是，并不是奖赏，";
+		mes "而是先占据和其它国家的贸易权";
+		mes "就这样赚取的利益，是无法想像的";
+		mes "所以说有很多冒险家和勇敢的船长，";
+		mes "拿着海图";
+		mes "朝向大海挑战去了...";
+		next;
+		mes "[发特 摩俄斯 ]";
+		mes "不过全部都失败了!";
+		mes "要面对巨大的海流和气象变化，";
+		mes "对航海术和大海";
+		mes "要有较多的经验才行，不过全部都为了";
+		mes "奖赏和占据贸易权瞎了眼，";
+		mes "都没有做好完全的准备";
+		next;
+		mes "[发特 摩俄斯 ]";
+		mes "就在这个时候有人发现了，";
+		mes "通往天津町的完整的航路...";
+		mes "那个人就是我，发特 摩俄斯先生";
+		mes "就是第一次开始和天津町做交易的人!";
+		mes "哈哈哈! 就是这些话了";
+		next;
+		mes "[发特 摩俄斯 ]";
+		mes "在这几年里在交易上赚了一点钱，";
+		mes "现在也试着对观光业";
+		mes "做一番投资，";
+		mes "假如想要去天津町的话";
+		mes "就对我说吧...!";
+		close;
+	case 2:
+		mes "[发特 摩俄斯]";
+		mes "对啊? 到天津町路途很遥远，";
+		mes "所以说费用比较贵一点，";
+		mes "你不会觉得过大洋和海流";
+		mes "是一件简单的事情吧?";
+		next;
+		mes "[发特 摩俄斯]";
+		mes "往返 10,000 金币! 我把我的";
+		mes "最坚固最安全贸易船，";
+		mes "特别留一个客舱给你，";
+		mes "当您回程时免费接待";
+		mes "我必须要收这么昂贵的价格";
+		next;
+		mes "[发特 摩俄斯]";
+		mes "那就，出发了?";
+		mes "旅费都准备好了吧? 那就快走吧";
+		next;
+		if(select("出发:取消")==2) {
+			mes "[发特 摩俄斯]";
+			mes "假如是冒险家的话，";
+			mes "会试着离开这个大陆，";
+			mes "再没有比接触新的文物更期待的事情...";
+			mes "随便，你怎么去想吧";
+			close;
+		}
+		if(Zeny<10000) {
+			mes "[发特 摩俄斯]";
+			mes "您把我的话都忘掉了吗?";
+			mes "10,000金币,若筹备不到这笔钱的话";
+			mes "到沉船附近,";
+			mes "找一下宝物也可以啦...";
+			mes "再去筹备旅费吧";
+			close;
+		}
+		mes "[发特 摩俄斯]";
+		mes "好啊，马上出发啊!";
+		close2;
+		set Zeny,Zeny-10000;
+		warp "amatsu",197,83;
+		end;
+	case 3:
+		mes "[发特 摩俄斯]";
+		mes "若觉得现在的生活无聊时，";
+		mes "不妨远渡重洋，到远方的国家";
+		mes "来趟观光旅游也不错啊";
+		close;
+	}
+}
+
+amatsu,194,79,4	script	贸易船船长#ama2	709,{
+	mes "[发特 摩俄斯]";
+	mes "这么快就要回去啊，足够享受到";
+	mes "天津町的风景了吧...? 那就";
+	mes "让你搭乘回艾尔贝塔";
+	mes "的船只啰?";
+	next;
+	if(select("回到艾尔贝塔:取消")==1) {
+		mes "[发特 摩俄斯]";
+		mes "那就出发啰，";
+		mes "回去找朋友要炫燿的事情可多的呢";
+		mes "那么，请搭船吧";
+		close2;
+		warp "alberta",243,91;
+		end;
+	}
+	mes "[发特 摩俄斯]";
+	mes "那么请你再慢慢的逛吧，";
+	mes "要回艾尔贝塔的船只，";
+	mes "每天都会准备好的...";
+	close;
+}
+
+// Generic Amatsu NPCs
+//=====================================================
+amatsu,230,160,4	script	井边小姐	757,{
+	mes "[优舞可]";
+	mes "虽然每天都会来提水";
+	mes "不过有雾的天气或下雨天";
+	mes "我不会出现在这附近的";
+	next;
+	mes "[优舞可]";
+	mes "好像在这井底深处有着";
+	mes "谁在采着井墙";
+	mes "爬上来的感觉";
+	mes "让人起鸡皮疙瘩";
+	close;
+}
+	
+amatsu,179,107,4	script	佑翰	86,{
+	mes "[佑翰]";
+	mes "唷";
+	mes "你也好跟我一样";
+	mes "不是这里出生的啊";
+	next;
+	mes "[佑翰]";
+	mes "我在这个位子";
+	mes "作生意，也快有5年了";
+	next;
+	mes "卢恩-米德加兹王国以及";
+	mes "和这里天津町之间";
+	mes "第一认左了交易时";
+	mes "我就想到'机会包了'!";
+	next;
+	mes "[佑翰]";
+	mes "想要开始做一些";
+	mes "跟别人不一样的事情";
+	next;
+	mes "[佑翰]";
+	mes "所以曾经下定决心";
+	mes "来到这天津町";
+	mes "学会这里的料理";
+	mes "之后再回到故乡";
+	mes "让大家可以尝到特别的饮食";
+	next;
+	mes "[佑翰]";
+	mes "不过最后还是";
+	mes "就这样对这里有了感情，";
+	mes "5年后的现在";
+	mes "仍然待在这里";
+	next;
+	mes "[佑翰]";
+	mes "反正从那时开始就在这位子";
+	mes "跟村民聊东聊西的";
+	mes "放松心情";
+	next;
+	mes "[佑翰]";
+	mes "不知何时从寿司名人";
+	mes "在对面开店之后";
+	mes "只看到苍蝇在这飞来飞去的";
+	next;
+	mes "[佑翰]";
+	mes "这辈子，我人生的乐趣";
+	mes "是在这里找到的";
+	mes "现在看来也快要结束了..";
+	close;
+}
+	
+amatsu,205,163,4	script	咪咪	759,{
+	mes "[咪咪]";
+	mes "呼呼..";
+	mes "看到港口附近的，冠军天津町小姐了吗?";
+	mes "非常漂亮吧?";
+	next;
+	mes "[咪咪]";
+	mes "等我长大之后也要参加选美";
+	next;
+	mes "[咪咪]";
+	mes "虽然我觉得现在这个样子，也算是村里最漂亮的..";
+	mes "女人总是要精心打扮自己的，呼呼";
+	close;
+}
+	
+amatsu,185,116,4	script	喝醉酒的大叔	765,{
+	mes "[酒助]";
+	mes "嗝..我这老太婆";
+	mes "只有力气最大..嗝..";
+	mes "我这次真的..嗝..决不会回家..嗝";
+	next;
+	if(select("大叔不要再喝了，赶快回家吧:大叔我们一起喝吧!")==1) {
+		mes "[酒助]";
+		mes "什么?!";
+		mes "你叫我像我太太，被锅盖般的大手挨揍吗?";
+		mes "嗝..你没有看过是不知道的";
+		mes "我老婆年轻时";
+		mes "都用空手抓老虎的..";
+		next;
+		mes "[酒助]";
+		mes "我在克..克什么的村落";
+		mes "输了一点点，他就";
+		mes "可以把我打成这样..嗝";
+		next;
+		mes "[酒助]";
+		mes "乏味~的~人生~";
+		mes "金币都是什么~~";
+		mes "嗝...嗝...";
+		mes "...............";
+		mes "......嗝.......";
+	}
+	else {
+		mes "[酒助]";
+		mes "呵呵呵..是个好年轻人啊..";
+		mes "嗝..不过呢..嗝";
+		mes "不能把我的酒给你..嗝..";
+		next;
+		mes "[酒助]";
+		mes "如果你要请我喝酒的话我再考虑看看";
+		mes "呵呵..嗝..";
+	}
+	close;
+}
+	
+amatsu,217,179,0	script	老太太	760,{
+	mes "[初惠]";
+	mes "我老公太沉迷于赌博，真是令人担心啊";
+	mes "今天去了那遥远的村里，又是输了不少钱";
+	mes "回来..";
+	next;
+	mes "[初惠]";
+	mes "因为太生气了，我也不知不觉的乱发脾气了";
+	mes "不知道是不是又在酒家喝酒";
+	mes "真是小气..呼呜.";
+	close;
+}
+	
+amatsu,287,266,3	script	嘉普罗	766,{
+	mes "[嘉普罗]";
+	mes "这里是我跟我老婆";
+	mes "回亿的场所";
+	next;
+	mes "[嘉普罗]";
+	mes "..在我那时在这下面的";
+	mes "树木那边跟她告白的..";
+	mes "真没想到她也";
+	mes "对我有意思";
+	next;
+	mes "[嘉普罗]";
+	mes "从那次之后我们就在这里聊了很多,";
+	mes "这里安静又和平";
+	mes "是个最棒的地点,";
+	mes "一直都有着幸福的时间";
+	next;
+	mes "[嘉普罗]";
+	mes "现在也是眼睛闭起来,就会很清楚的想起";
+	mes "那时候的点点滴滴";
+	mes "就好像是昨天的事情一样...呼呼..";
+	next;
+	mes "[嘉普罗]";
+	mes "虽然我老婆已不在这世上了";
+	mes "现在只有我一个人来到这里,";
+	mes "不过每次来这里我老婆就好像陪在我身边";
+	mes ",而我忧郁的心情就会不见了";
+	next;
+	mes "[嘉普罗]";
+	mes "假如您听我讲完话之后";
+	mes "有想起来的人吗?";
+	mes "如果有的话,不要在犹豫也不要踌躇,全";
+	mes "心全力的对待她吧";
+	next;
+	mes "[嘉普罗]";
+	mes "所谓人类,就算笑着过一辈子";
+	mes "那一生也真的很短,";
+	mes "甩掉忧郁的心情";
+	mes "永远过着幸福的日子吧";
+	close;
+}
+// Legendary Tree
+//=====================================================
+amatsu,269,221,1	script	告白 少女	758,{
+	mes "[乎塔利 希欧阔]";
+	mes "很高兴见到您";
+	mes "我的名字叫乎塔利 希欧阔,";
+	mes "兴趣是听音乐,";
+	mes "而我比较常听古典音乐";
+	next;
+	mes "[乎塔利 希欧阔]";
+	mes "在我们村落里的这个小山坡上";
+	mes "有着一个传说";
+	mes "您知道吗?";
+	next;
+	mes "[乎塔利 希欧阔]";
+	mes "传说中如果在那树木下告白";
+	mes "两个人就会永远";
+	mes "保持幸福的关系";
+	next;
+	mes "[乎塔利 希欧阔]";
+	mes "不过不能随时随地告白";
+	mes "一定要礼拜六晚上";
+	mes "告白才会实现";
+	next;
+	mes "[乎塔利 希欧阔]";
+	mes "还有礼拜六晚上接受";
+	mes "告白之后一定要在隔天";
+	mes "礼拜六晚上之前回应";
+	next;
+	emotion 3;
+	mes "[乎塔利 希欧阔]";
+	mes "如果心里有喜欢的人的话...";
+	mes "不妨约在那树下";
+	mes "再跟那个人告白,如何呢?";
+	mes "一定会发生好事的";
+	close;
+}
+	
+amatsu,243,202,3	script	Drama Teacher#ama	760,{
+	set jap_tree,2;
+	mes "[Garakame sensei]";
+	mes "This is a beautiful place";
+	mes "with everlasting cherry blossoms.";
+	mes "Also, this town is the origin of";
+	mes "legendary play, 'White Dryad.' ";
+	next;
+	if (Sex) {
+		mes "[Garakame sensei]";
+		mes "If you know a girl who is";
+		mes "talented in acting, please";
+		mes "bring her to me. I have been";
+		mes "searching for a girl who could";
+		mes "play the role as the 'White Dryad.'";
+		next;
+		mes "[Garakame sensei]";
+		mes "The 'White Dryad' is a nymph of";
+		mes "cherry tree... It has been hard to";
+		mes "find a girl who can perform";
+		mes "as the 'White Drayd...'";
+		close;
+	}
+	emotion e_gasp;
+	mes "[Garakame sensei]";
+	mes "Are you interested in acting?";
+	mes "I need someone who sees";
+	mes "the passion in acting and";
+	mes "can understand my vision.";
+	next;
+	mes "[Garakame sensei]";
+	mes "When you stand on the stage,";
+	mes "you need to become the";
+	mes "character. Your acting needs";
+	mes "to touch the hearts of the";
+	mes "audience and touch their souls.";
+	next;
+	mes "[Garakame sensei]";
+	mes "Everyone's life is like a ";
+	mes "drama, right? Enjoy your life";
+	mes "as what you are and find me";
+	mes "someday when you are ready.";
+	close;
+}
+	
+amatsu,283,203,1	script	Bonubonu#ama1	1323,{
+	end;
+}
+
+amatsu,283,203,1	script	宝奴宝奴	738,{
+	Emotion 19;
+	mes "[宝奴宝奴]";
+	mes "这山坡上的树木已经";
+	mes "很久很久了,是棵很大而";
+	mes "总是盛开着樱花的王樱花树";
+	next;
+	Emotion 19;
+	mes "[宝奴宝奴]";
+	mes "而且很感激这颗树,";
+	mes "有伤心或是难过的事";
+	mes "总是会坐在那棵树下";
+	next;
+	Emotion 19;
+	mes "[宝奴宝奴]";
+	mes "这样的话不管是伤心或难过的事";
+	mes "全部都可以忘记....";
+	mes "那棵树是会安慰我们";
+	mes "平且可以让我们忘记难过的事情";
+	mes "的神奇树";
+	next;
+	Emotion 19;
+	mes "[宝奴宝奴]";
+	mes "有伤心难过的事的话";
+	mes "不妨坐在那棵树下吧";
+	mes "真的是神奇又感激的树木...";
+	close;
+}
+	
+amatsu,274,178,7	script	兽医#ama	735,{
+	set jap_tree,4;
+	mes "[撒库拉 塞宜齐]";
+	mes "啊... 我不是可疑的人,";
+	mes "请不要惊讶,我只是";
+	mes "平凡的兽医,";
+	mes "以治疗生病的";
+	mes "动物为职业";
+	next;
+	mes "[撒库拉 塞宜齐]";
+	mes "不过呢... 您知道吗?";
+	mes "有关山坡上的樱桃树";
+	mes "的故事... 也许您是第一次";
+	mes "听说";
+	next;
+	mes "[撒库拉 塞宜齐]";
+	mes "那颗树总是可以维持着";
+	mes "白白又美丽的样子";
+	mes "是有秘诀的...";
+	mes "那就是... 因为那颗树下面";
+	mes "埋葬着尸体...";
+	next;
+	if (select("被埋葬的人们会不会觉得痛苦呢?:讲这种愚蠢的话...") == 1) {
+		mes "[撒库拉 塞宜齐]";
+		mes "呼呼... 也许会吧...";
+		mes "不管怎样要我不要跟我";
+		mes "打个赌啊...?";
+		next;
+		emotion 9;
+		mes "[撒库拉 塞宜齐]";
+		mes "万一我呢...";
+		mes "............";
+		mes ".........";
+		next;
+		mes "^6633FF她的笑声埋在风声里^000000";
+		mes "^6633FF逐渐的变小,^000000";
+		mes "^6633FF最后完全听不到了,^000000";
+		mes "^6633FF连他要讲什么话^000000";
+		mes "^6633FF都不太记得了...^000000";
+		close;
+	}
+	mes "[撒库拉 塞宜齐]";
+	mes "您听成这样,也没关系吧...";
+	mes "小心点吧,总有一天这种事";
+	mes "也会发生在您身上..";
+	next;
+	Emotion 9;
+	mes "[撒库拉 塞宜齐]";
+	mes "哈哈哈... 哈哈哈哈.....";
+	mes "...............";
+	mes "...........";
+	next;
+	mes "^6633FF她的笑声埋在风声里^000000";
+	mes "^6633FF逐渐的变小,^000000";
+	mes "^6633FF最后完全听不到了,^000000";
+	mes "^6633FF我不晓得她跟我讲那种话^000000";
+	mes "^6633FF有什么意图...^000000";
+	close;
+}
+	
+amatsu,262,197,1	script	传说中的 树木	111,{
+	if (jap_tree == 1) {
+		mes "^0000FF就像她说的一样";
+		mes "这棵树是很多人告白的地方";
+		mes "因此而出名";
+		mes "偶尔会看到几个淘气的";
+		mes "画着爱心写着恋人";
+		mes "名字的标记^000000";
+		next;
+		mes "^0000FF不只是爱情告白,";
+		mes "听说还会约在这里";
+		mes "谈一些重要的事情,";
+		mes "在这么美的场所";
+		mes "不管谁讲什么事情";
+		mes "都可以答应似的^000000";
+		close;
+	}
+	else if (jap_tree == 2) {
+		mes "^3355FFThe legendary play, 'White Dryad'.....";
+		mes "I never heard about that title but";
+		mes "it sounds familiar.";
+		mes "Nymph of cherry tree... What would";
+		mes "be her position in the play?^000000";
+		next;
+		if (Sex) {
+			mes "^3355FFI would like to find";
+			mes "a person who is talented";
+			mes "in acting and help her until";
+			mes "she performs the play. However,";
+			mes "it seems to be easier said than done.^000000";
+			close;
+		}
+		mes "^3355FFI might have talent in";
+		mes "acting which hasn't been discovered yet. I thought, 'If I dress up, I should perform as the 'White Dryad...'^000000";
+		close;
+	}
+	else if (jap_tree == 3) {
+		mes "^3355FFUnlike other cherry trees,";
+		mes "this tree has a strong fragnance.";
+		mes "I just fell into a relaxed";
+		mes "mood. The fragnance eased";
+		mes "my burdens and I felt";
+		mes "very comfortable.^000000";
+		next;
+		mes "^3355FFIt was just for a few moments";
+		mes "but I could forget the";
+		mes "burdens of life. I wish to";
+		mes "come back again and";
+		mes "sit under this tree...^000000";
+		close;
+	}
+	else if (jap_tree == 4) {
+		mes "^3355FFThis strong fragnance";
+		mes "is making me dizzy. Not like";
+		mes "other cherry trees, this tree's";
+		mes "shimmering white petals";
+		mes "felt strange.^000000";
+		next;
+		mes "^3355FFIt feels as if my soul is";
+		mes "being drained if I stay here";
+		mes "longer. After a glimpse of";
+		mes "the cherry tree, I thought to";
+		mes "mayself, 'I must get out of here quickly.'^000000";
+		close;
+	}
+	mes "^3355FFThere was a cherry tree";
+	mes "on the hill. It doesn't look";
+	mes "like the other trees.";
+	mes "This tree seems to have";
+	mes "a long history...^000000";
+	next;
+	mes "^3355FFAre there any people";
+	mes "who live here? I took";
+	mes "a look around and found";
+	mes "someone down the hill.";
+	mes "I better ask her about this tree.^000000";
+	close;
+}

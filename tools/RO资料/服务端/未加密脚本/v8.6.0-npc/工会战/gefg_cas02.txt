@@ -1,0 +1,133 @@
+//===== rAthena Script =======================================
+//= War of Emperium (Geffen)
+//===== By: ==================================================
+//= L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= NPCs that relate to Geffen Guild Castle 2
+//===== Additional Comments: =================================
+//= 1.0 First Version. No longer uses functions. [L0ne_W0lf]
+//= 1.1 Removed dialog from interior flags. [L0ne_W0lf]
+//= 1.2 Partially rewrote Script. [Masao]
+//============================================================
+
+// Guild Flag (Outside Castle)
+//============================================================
+-	script	耀布力格#1::OutsideFlagsG2	722,{
+
+	set .@GID, GetCastleData("gefg_cas02",1);
+
+	if (.@GID == 0) {
+		mes "[ 神圣卢恩·米德加兹王国法令 ]";
+		mes " ";
+		mes "1. 遵循神圣卢恩·米德加兹王国法令, ";
+		mes "我们正式声明";
+		mes "此城堡没有正式拥有者.";
+		mes " ";
+		mes "2. 经过所有试炼,";
+		mes "并且击碎华丽金属的勇士.";
+		mes "将会得到国王殿下的诏书";
+		mes "被授予该城堡拥有权.";
+		mes "并一同守护卢恩·米德加兹王国!";
+		close;
+	}
+	if (getcharid(2) == .@GID) {
+		mes "[ 回声 ]";
+		mes "勇士们...";
+		mes "想要回到你们的荣耀之地吗?";
+		next;
+		if(select("返回公会城堡.:取消.") == 1) {
+			close2;
+			if (getcharid(2) == GetCastleData("gefg_cas02",1)) {
+				warp "gefg_cas02",178,43;
+				end;
+			}
+			end;
+		}
+		close;
+	}
+	mes "[ 神圣卢恩·米德加兹王国法令 ]";
+	mes " ";
+	mes "1. 遵循神圣卢恩·米德加兹王国法令,";
+	mes "我们认可此处为.";
+	mes " ^ff0000"+GetGuildName(.@GID)+"^000000公会的私人领地.";
+	mes " ";
+	mes "2. 公会 ^ff0000"+GetGuildName(.@GID)+"^000000 的领袖为:";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "如果任何人对此有异议.";
+	mes "请用手中的武器来证明自己的勇气和荣耀!";
+	close;
+
+OnRecvCastleG02:
+	FlagEmblem GetCastleData("gefg_cas02",1);
+	end;
+}
+
+gef_fild13,303,243,4	duplicate(OutsideFlagsG2)	耀布力格#1-2	722
+gef_fild13,312,243,4	duplicate(OutsideFlagsG2)	耀布力格#2	722
+gef_fild13,290,243,4	duplicate(OutsideFlagsG2)	耀布力格#3	722
+gef_fild13,324,243,4	duplicate(OutsideFlagsG2)	耀布力格#4	722
+
+// Guild Flag (Inside Castle)
+//============================================================
+-	script	耀布力格#5::InsideFlagsG2	722,{
+	end;
+
+OnRecvCastleG02:
+	FlagEmblem GetCastleData("gefg_cas02",1);
+	end;
+}
+
+gefg_cas02,65,130,5	duplicate(InsideFlagsG2)	耀布力格#5-2	722
+gefg_cas02,30,123,5	duplicate(InsideFlagsG2)	耀布力格#6	722
+gefg_cas02,65,139,6	duplicate(InsideFlagsG2)	耀布力格#7	722
+gefg_cas02,37,177,6	duplicate(InsideFlagsG2)	耀布力格#8	722
+gefg_cas02,37,168,6	duplicate(InsideFlagsG2)	耀布力格#9	722
+gefg_cas02,68,47,2	duplicate(InsideFlagsG2)	耀布力格#10	722
+gefg_cas02,68,36,2	duplicate(InsideFlagsG2)	耀布力格#11	722
+
+// Guild Flag (Town)
+//============================================================
+geffen,112,129,1	duplicate(InsideFlagsG2)	耀布力格#12	722
+
+// Kafra Employee
+//============================================================
+gefg_cas02,23,66,3	duplicate(guildkafra)	卡普拉 职员#gefg_cas02	117
+
+// Steward
+//============================================================
+gefg_cas02,12,66,5	duplicate(cm)	Esmarehk#gefg_cas02	55
+
+// Treasure Room Exit
+//============================================================
+gefg_cas02,145,114,0	script	#lever_G02	111,{
+
+	mes " ";
+	mes "这里有一个小小的控制杆, 去拉一下吗?";
+	next;
+	if(select("上前拉杆.:算了.") == 1) {
+		close2;
+		warp "gefg_cas02",12,67;
+		end;
+	}
+	close;
+}
+
+// Guild Dungeon Switch
+//============================================================
+gefg_cas02,167,40,0	duplicate(gdlever)	#gefg_cas02	111
+
+// Guild Treasure Spawns
+//============================================================
+gefg_cas02,140,116,0	duplicate(Gld_Trea_Spawn)	宝箱#gefg_cas02	-1
+
+// AGIT Manager
+//============================================================
+gefg_cas02,176,178,0	duplicate(Gld_Agit_Manager)	Agit#gefg_cas02	-1
+
+// Guardians
+//============================================================
+gefg_cas02,12,66,5	duplicate(Gld_Guard_Template)	监护人#gefg_cas02	-1

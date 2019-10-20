@@ -1,0 +1,79 @@
+//===== rAthena Script ======================================= 
+//= Brasilis Guide
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guide for the city of Brasilis.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version, Renewal guide.
+//= 1.1 Added a missing close.
+//============================================================
+
+brasilis,219,97,3	script	巴西导游	478,{
+	mes "[巴西导游]";
+	mes "欢迎光临 ^8B4513巴西^000000";
+	mes "像太阳般热情的国度,";
+	mes "需要为您介绍吗?";
+	while (1){
+		next;
+		switch(select("[ 大饭店 ]:[ 丛林缆车 ]:[ 美术博物馆 ]:[ 商店 ]:[ 凡拉西纪念碑 ]:删除小地图的标记:结束对话")) {
+		case 1:
+			mes "[巴西导游]";
+			mes "大饭店位于^FF3355+^000000.";
+			mes "还需要其它服务吗?";
+			viewpoint 1,274,151,2,0xFF3355;
+			next;
+			break;
+		case 2:
+			mes "[巴西导游]";
+			mes "想要征服丛林吗?丛林缆车位于可在^CE6300+^000000搭乘";
+			mes "还需要其它服务吗?";
+			viewpoint 1,308,335,3,0xCE6300;
+			next;
+			break;
+		case 3:
+			mes "[巴西导游]";
+			mes "巴西最有名的世界级美术博物馆位于^A5BAAD+^000000.";
+			mes "还需要其它服务吗?";
+			viewpoint 1,137,167,4,0x00FF00;
+			next;
+			break;
+		case 4:
+			mes "[巴西导游]";
+			mes "狩猎用品可到^55FF33+^000000购买";
+			mes "还需要其它服务吗?";
+			viewpoint 1,254,248,5,0x55FF33;
+			next;
+			break;
+		case 5:
+			mes "[巴西导游]";
+			mes "象征巴西雕刻的凡拉西纪念碑位于^3355FF+^000000";
+			mes "还需要其它服务吗?";
+			viewpoint 1,195,235,6,0x3355FF;
+			next;
+			break;
+		case 6:
+			mes "[巴西导游]";
+			mes "标记已删除,";
+			mes "还需要其它服务吗?";
+			viewpoint 0,274,151,2,0x00FF00;
+			viewpoint 0,308,335,3,0x00FF00;
+			viewpoint 0,137,167,4,0x00FF00;
+			viewpoint 0,254,248,5,0x00FF00;
+			viewpoint 0,195,235,6,0x00FF00;
+			next;
+			break;
+		case 7:
+			mes "[巴西导游]";
+			mes "祝你旅途愉快!";
+			close;
+		}
+		close;
+		break;
+	}
+}

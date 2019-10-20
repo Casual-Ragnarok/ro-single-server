@@ -1,0 +1,227 @@
+// 二转快速转职NPC
+// Write by robert 蝴蝶君 重写于 2005-05-10
+// 采用新的逻辑判断语法，减少变量的使用，记录玩家转职之前的职业和职业等级。
+// 修改 by 水夏 于 2006-11-26 
+// 修改 By 最后防线 于 2009-12-18 增加对进阶职业的判断
+
+prt_in.gat,135,32,3	script	二转就职人员	751,{
+	if(upper == 0 || upper == 2) setarray @classname$[0],"骑士","巫师","牧师","铁匠","刺客","猎人";
+	if(upper == 1 ) setarray @classname$[0],"骑士领主","超魔导士","神官","银匠","十字刺客","神射手";
+	mes "[二转就职人员]";
+	mes "你是来转职的吧？";
+	mes "我可以帮你快速的转职为:" + @classname$[0] +"、"+ @classname$[1] +"、"+ @classname$[2] +"、"+@classname$[3]+"、"+ @classname$[4]+"。";
+	next;
+	mes "[二转就职人员]";
+	mes "如果你已经转生了，你的职业等级必须达到^FF000050^000000级才可以转职，只能转职你转生前的职业。";
+	next;
+	mes "[二转就职人员]";
+	mes "如果你还没有转生，你的职业等级必须达到^FF000040^000000级，已经是一转的职业才可以转职。你确定要转职吗？";
+	next;
+	switch(select("是的","离开"))
+	{
+		mes "[二转就职人员]";
+		case 1:
+			if(class == 0 && class == 4001)
+			{
+				mes "不对喔，你必须先就职一转职业，达到^FF000040^000000级以上的职业技能以后才可以进行二转就职。";
+				close;
+				break;
+				end;
+			}
+			if((upper == 0 || upper == 2) && joblevel < 40)
+			{
+				mes "Sorry，你的职业等级必须达到^FF000040级^000000才能进行转职，^FF000040级^000000以后再来找我，快去练吧！";
+				close;
+				end;
+			}
+			if(upper == 1 && joblevel < 50)
+			{
+				mes "Sorry，你的职业等级必须达到^FF000050级^000000才能进行转职，^FF000050级^000000以后再来找我，快去练吧！";
+				close;
+				end;
+			}
+			if(skillpoint != 0)
+			{
+				mes "Sorry，你的职业技能点数必须加完，且不能有剩余点数才能进行转职。";
+				close;
+				end;
+			}
+			mes"那么请选择你要转的新职业";
+			next;
+			switch(select(@classname$[0],@classname$[1],@classname$[2],@classname$[3],@classname$[4],@classname$[5],"取消"))
+			{
+				mes "[二转就职人员]";
+				case 1:
+					if(class !=1 && class !=4002)
+					{
+						mes "不对喔，只有^FF0000剑士^000000才能转职成为^0000FF"+ @classname$[0] +"^000000喔！";
+						mes "如果你一转的职业不是剑士，那么请选择其他二转职业吧。祝你转职顺利！";
+						close;
+						end;
+						break;
+					}
+    					if(upper == 1 && Reclass != 7)
+    					{
+    						mes "Sorry，转生之前你的职业并不是骑士，不能转职为"+ @classname$[0] +"。";
+    						close;
+    						end;
+    						break;
+    					}
+
+					mes "OK，恭喜你，转职成功！";
+					mes "快看看，你现在是^0000FF"+ @classname$[0] +"^000000了。";
+					mes "祝你玩得愉快！";
+					set pc_1_class,class;
+					set pc_1_joblv,joblevel;
+					unequip -1;
+					jobchange 7,upper;
+					close;
+					end;
+					break;
+				case 2:
+					if(class !=2 && class !=4003)
+					{
+						mes "不对喔，只有^FF0000法师^000000才能转职成为^0000FF"+ @classname$[1] +"^000000喔！";
+						mes "如果你一转的职业不是法师，那么请选择其他二转职业吧。祝你转职顺利！";
+						close;
+						end;
+						break;
+					}
+    					if(upper == 1 && Reclass != 9)
+    					{
+    						mes "Sorry，转生之前你的职业并不是巫师，不能转职为"+ @classname$[1] +"。";
+    						close;
+    						end;
+    						break;
+    					}
+					mes "OK，恭喜你，转职成功！";
+					mes "快看看，你现在是^0000FF"+ @classname$[1] +"^000000了。";
+					mes "祝你玩得愉快！";
+					set pc_1_class,class;
+					set pc_1_joblv,joblevel;
+					unequip -1;
+					jobchange 9,upper;
+					close;
+					end;
+					break;
+				case 3:
+					if(class !=4 && class !=4005)
+					{
+						mes "不对喔，只有^FF0000服侍^000000才能转职成为^0000FF"+ @classname$[2] +"^000000喔！";
+						mes "如果你一转的职业不是服侍，那么请选择其他二转职业吧。祝你转职顺利！";
+						close;
+						end;
+						break;
+					}
+    					if(upper == 1 && Reclass != 8)
+    					{
+    						mes "Sorry，转生之前你的职业并不是牧师，不能转职为"+ @classname$[2] +"。";
+    						close;
+    						end;
+    						break;
+    					}
+					mes "OK，恭喜你，转职成功！";
+					mes "快看看，你现在是^0000FF"+ @classname$[2] +"^000000了。";
+					mes "祝你玩得愉快！";
+					set pc_1_class,class;
+					set pc_1_joblv,joblevel;
+					unequip -1;
+					jobchange 8,upper;
+					close;
+					end;
+					break;
+				case 4:
+					if(class !=5 && class !=4006)
+					{
+						mes "不对喔，只有^FF0000商人^000000才能转职成为^0000FF"+ @classname$[3] +"^000000喔！";
+						mes "如果你一转的职业不是商人，那么请选择其他二转职业吧。祝你转职顺利！";
+						close;
+						end;
+						break;
+					}
+    					if(upper == 1 && Reclass != 10)
+    					{
+    						mes "Sorry，转生之前你的职业并不是铁匠，不能转职为"+ @classname$[3] +"。";
+    						close;
+    						end;
+    						break;
+    					}
+					mes "OK，恭喜你，转职成功！";
+					mes "快看看，你现在是^0000FF"+ @classname$[3] +"^000000了。";
+					mes "祝你玩得愉快！";
+					set pc_1_class,class;
+					set pc_1_joblv,joblevel;
+					unequip -1;
+					jobchange 10,upper;
+					close;
+					end;
+					break;
+				case 5:
+					if(class !=6 && class !=4007)
+					{
+						mes "不对喔，只有^FF0000盗贼^000000才能转职成为^0000FF"+ @classname$[4] +"^000000喔！";
+						mes "如果你一转的职业不是盗贼，那么请选择其他二转职业吧。祝你转职顺利！";
+						close;
+						end;
+						break;
+					}
+    					if(upper == 1 && Reclass != 12)
+    					{
+    						mes "Sorry，转生之前你的职业并不是刺客，不能转职为"+ @classname$[4] +"。";
+    						close;
+    						end;
+    						break;
+    					}
+					mes "OK，恭喜你，转职成功！";
+					mes "快看看，你现在是^0000FF"+ @classname$[4] +"^000000了。";
+					mes "祝你玩得愉快！";
+					set pc_1_class,class;
+					set pc_1_joblv,joblevel;
+					unequip -1;
+					jobchange 12,upper;
+					close;
+					end;
+					break;
+				case 6:
+					if(class !=3 && class !=4004)
+					{
+						mes "不对喔，只有^FF0000弓箭手^000000才能转职成为^0000FF"+ @classname$[5] +"^000000喔！";
+						mes "如果你一转的职业不是弓箭手，那么请选择其他二转职业吧。祝你转职顺利！";
+						close;
+						end;
+						break;
+					}
+    					if(upper == 1 && Reclass != 11)
+    					{
+    						mes "Sorry，转生之前你的职业并不是猎人，不能转职为"+ @classname$[5] +"。";
+    						close;
+    						end;
+    						break;
+    					}
+					mes "OK，恭喜你，转职成功！";
+					mes "快看看，你现在是^0000FF"+ @classname$[5] +"^000000了。";
+					mes "祝你玩得愉快！";
+					set pc_1_class,class;
+					set pc_1_joblv,joblevel;
+					unequip -1;
+					jobchange 11,upper;
+					close;
+					end;
+					break;
+				case 7:
+					mes "嗯，好的，好好想想吧。决定要转了随时欢迎回来找我！";
+					mes "祝你玩得愉快！";
+					close;
+					end;
+					break;
+			}
+			break;
+		case 2:
+			mes "那么好吧，当你需要的时候再来找我吧。";
+			close;
+			end;
+			break;
+	}
+
+
+}

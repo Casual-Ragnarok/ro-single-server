@@ -1,0 +1,106 @@
+		//------------------------------//
+		//	全自动超快精炼师	//
+		//	    By 司徒		//
+		//	   2004-05-20		//
+		//------------------------------//
+	//----------------------------------------------//
+	//		    使用说明			//
+	//	此精炼师为科技产品			//
+	//	因为他是一个全自动化的npc		//
+	//	功能一：全自动判断你要精炼的装备。	//
+	//	功能二：全自动装备一次+10。		//
+	//	特点一：只有一个字那就是"快"		//
+	//	可不用装备头中、头下、饰品1、饰品2	//
+	//	预设不会去判断所以有装和没装都一样。	//
+	//----------------------------------------------//
+
+	//2004-05-20 AM:03:28 修正//
+	//去除npc几个对话
+	//2004-05-20 PM:05:41 修正//
+	//说明内容少一个符号
+
+//变数说明
+//@max -- 精炼最大值
+//@part -- 装备位子 (请勿修改)
+//@ngp -- 是否有装备没装备自动+1 (请勿修改)
+//@ygp -- 是否精炼小于@max不是自动+1 (请勿修改)
+//@ngpmx -- 是否有装备没装备自动+1的最大值 (如果@part_max改成11的话也把此项改为11)
+//@ygpmx -- 是否精炼小于@max不是自动+1的最大值 (如果@part_max改成11的话也把此项改为11)
+//@part_max -- 装备位子最大值 (预设只能精炼武器、铠甲、头1、鞋、披肩、盾)
+//             如果要头2、头3、饰品1、饰品2都能精炼的话请改成11 (未测试过) )
+//             如果改为11的话请找到下面这行并移除
+//             mes " 可不用装备头中、头下、饰品1、饰品2，npc不会去判断所以有装和没装都一样。";
+
+prontera.gat,147,165,5	script	安全精练人员	878,{
+	set @max,6;
+	set @part,1;
+	set @part_max,7;
+	set @ngp,1;
+	set @ygp,1;
+	set @ngpmx,7;
+	set @ygpmx,7;
+	mes " [安全精练人员] ";
+	mes " 我是专门锻治武器与防具的铁匠。";
+	mes " 我可以^ff0000超快速^000000把所有物品安全＋"+@max+"";
+	mes " ^ff0000第一次使用^000000记得看说明唷!!";
+	next;
+	menu	"不要一定骗人的",L_CANCEL,
+		"我要锻治",L_Yes,
+		"使用说明书",L_dme;
+L_dme:
+	mes " [安全精练人员] ";
+	mes " 第一次使用记得看说明唷。";
+	mes " 此精炼师为科技产品";
+	mes " 因为他是一个全自动化的npc";
+	mes " ^0000FF功能一：^000000全自动判断你要精炼的装备。";
+	mes " ^0000FF特点一：^000000只有一个字那就是'^0000FF快^000000'";
+	next;
+	mes " 可不用装备头中、头下、饰品1、饰品2，npc不会去判断所以有装和没装都一样。";
+	goto L_CLOSE;
+
+L_Yes:
+	if (@ngp == @ngpmx) goto L_ERROR;
+	if (@ygp == @ygpmx) goto L_ERROR1;
+	if (@part == @part_max) goto L_CLOSE;
+	if ( getequipisequiped(@part) > 0) goto L_Yes2;
+	set @ngp,@ngp+1;
+	set @part,@part+1;
+	goto L_Yes;
+L_Yes2:
+	if ( getequiprefinerycnt(@part) < @max) goto L_Yes3;
+	set @ygp,@ygp+1;
+	set @part,@part+1;
+	goto L_Yes;
+L_Yes3:
+	if ( getequipisenableref(@part) > 0 ) goto L_Yes4;
+	set @part,@part+1;
+	goto L_Yes;
+L_Yes4:
+	if ( getequiprefinerycnt(@part) >= @max) end;
+	goto L_Yes5;
+L_Yes5:
+	successrefitem @part;
+	goto L_Yes;
+
+L_ERROR:
+	mes " [安全精练人员] ";
+	mes " 你是来找搽的吗?";
+	mes " 全身都没有装备你来干嘛!!";
+	mes " 滚吧你，我不想看见你。";
+	goto L_CLOSE;
+L_ERROR1:
+	mes " [安全精练人员] ";
+	mes " 对不起!!你全身装备+"+@max+"喽";
+	mes " 我不能再为你精炼了!!";
+        mes " 如果还要精炼，你只能去精炼房找老师傅了。";
+	goto L_CLOSE;
+
+L_CANCEL:
+	mes " [安全精练人员] ";
+	mes " 真是无聊的人！！";
+	mes " 快离开我的视线！";
+	goto L_CLOSE;
+
+L_CLOSE:
+	close;
+}

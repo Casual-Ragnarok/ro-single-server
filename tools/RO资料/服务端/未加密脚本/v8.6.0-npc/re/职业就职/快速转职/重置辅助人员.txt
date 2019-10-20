@@ -1,0 +1,48 @@
+//By GeisHa
+//Modify By aspd199 马仔 2006-6-14  QQ:229522449
+//Optimize By aspd199 马仔 2006-7-20  QQ:229522449
+//修改 by 水夏 于 2006-11-26
+
+prt_in.gat,128,23,2	script	重置人员	763,{
+	if (Class==0||Class==23)
+	{
+		mes "[重置辅助人员]";
+		mes "小朋友表来捣乱";
+		goto LEnd;
+	}
+	mes "[重置辅助人员]";
+	mes "我专门负责重置点数";
+	mes "你想重置什么呢？";
+	next;
+	switch(select("^FF3355技能点(费用50w)^000000","^FF3355属性点(费用50w)^000000","^FF3355技能点和属性点(费用80w)^000000","结束对话"))
+	{
+	case 1:
+		if(Zeny<500000) goto NeedZenys;
+		set Zeny,Zeny-500000;
+		resetskill;
+		break;
+	case 2:
+		if(Zeny<500000) goto NeedZenys;
+		set Zeny,Zeny-500000;
+		resetstatus;
+		break;
+	case 3:
+		if(Zeny<500000) goto NeedZenys;
+		set Zeny,Zeny-800000;
+		resetstatus;
+		resetskill;
+		break;
+	case 4:	goto LEnd;
+	}
+	mes "[重置辅助人员]";
+	mes "已经重置好了";
+	mes "^FF3355请好好分配^000000";
+	close;
+
+NeedZenys:
+	mes "[重置辅助人员]";
+	mes "穷人不要来凑热闹！影响我做生意";
+LEnd:
+	close;
+	end;
+}

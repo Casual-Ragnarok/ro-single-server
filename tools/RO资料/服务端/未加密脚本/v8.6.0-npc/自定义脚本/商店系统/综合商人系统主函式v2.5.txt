@@ -1,0 +1,182 @@
+//====================================================//
+//====================================================//
+//==制作人 : 陈小修 (SkyTwo) 　　　　　　99MaxEA　　==//
+//==更新日期 : 2009.02.04　　　　　　　           　==//
+//==脚本版号 : v2.5 　　　　　　　　　　　　　　　　==//
+//==脚本名称 : 99Max商店系统　　　　　　　　　　　　==//
+//==　　　　　　　　　　　　　　　　　　　　　　　　==//
+//==技术支援 : 熊猫　　　　　　　　　　　　　　　　 ==//
+//==　　　　　 黑狐上将　　　　　　　　　　　　　　 ==//
+//==　　　　　 Dino9021　　　　　　　　　　　　　　 ==//
+//==                                                ==//
+//==修正支援 : ゞ嘬後防線ゞ☆                       ==//
+//==　　　　　　　　　　　　　　　　　　　　　　　　==//
+//==各位大哥大姐转载请保留以上，万分感激。　　　　　==//
+//====================================================//
+//====================================================//
+
+function	script	Npc_Refine	{
+
+	switch(select("购买铁砧","购买锤子","购买熔矿炉","购买强化金属"))
+
+	{	case 1:	callfunc "Npc_Refine_A";	end;
+		case 2:	callfunc "Npc_Refine_B";	end;
+		case 3:	callfunc "Npc_Refine_C";	end;
+		case 4:	callfunc "Npc_Refine_D";	end;	}
+}
+
+//====================================================//
+
+function	script	Npc_Refine_A	{
+
+	switch(select("铁砧 - 30000z","神之金属铁砧 - 120000z","黄金铁砧 - 300000z"))
+
+	{	case 1:
+			if ( Zeny < 30000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 30000;
+			getitem 986,1;
+			close;	end;	break;
+		case 2:
+			if ( Zeny < 120000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 120000;
+			getitem 987,1;
+			close;	end;	break;
+		case 3:
+			if ( Zeny < 300000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 300000;
+			getitem 988,1;
+			close;	end;	break;	}
+}
+
+//====================================================//
+
+function	script	Npc_Refine_B	{
+
+	switch(select("钢铁锤子 - 1000z","黄金锤子 - 3000z","神之金属锤子 - 5000z"))
+	{
+		case 1:
+			if ( Zeny < 1000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 1000;
+			getitem 613,1;
+			close;	end;	break;
+		case 2:
+			if ( Zeny < 3000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 3000;
+			getitem 614,1;
+			close;	end;	break;
+		case 3:
+			if ( Zeny < 5000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 5000;
+			getitem 615,1;
+			close;	end;	break;	}
+}
+
+//====================================================//
+
+function	script	Npc_Refine_C	{
+
+	switch(select("携带用熔矿炉 - 150z"))
+
+	{	case 1:
+			set @input, 0;
+			input @input;
+			if ( ( @input < 1 )  || ( @input > 999 ) )
+			{	dispbottom "购买的数量不得小于1个或大于999个";	close;	end;	break;	}
+			if ( Zeny < 150 * @input )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - ( 150 * @input);
+			getitem 612, @input;
+			close;	end;	break;	}
+}
+
+//====================================================//
+
+function	script	Npc_Refine_D	{
+
+	switch(select("一级强化金属 - 200z","二级强化金属 - 1000z"))
+	{	case 1:
+			set @input, 0;
+			input @input;
+			if ( ( @input < 1 )  || ( @input > 999 ) )
+			{	dispbottom "购买的数量不得小于1个或大于999个";	close;	end;	break;	}
+			if ( Zeny < 200 * @input )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - ( 200 * @input);
+			getitem 1010, @input;
+			close;	end;	break;
+		case 2:
+			set @input, 0;
+			input @input;
+			if ( ( @input < 1 )  || ( @input > 999 ) )
+			{	dispbottom "购买的数量不得小于1个或大于999个";	close;	end;	break;	}
+			if ( Zeny < 1000 * @input )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - ( 1000 * @input);
+			getitem 1011, @input;
+			close;	end;	break;	}
+}
+
+//====================================================//
+
+function	script	Npc_Books	{
+
+	switch(select("酒精 - 100000z","火烟瓶 - 100000z","盐酸瓶 - 100000z","植物瓶 - 100000z",
+		"刺锤瓶 - 100000z","护贝药 - 100000z","纤细药水 - 240000z","一般药水 - 100000z"))
+	{
+		case 1:
+			if ( Zeny < 100000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 100000;
+			getitem 7127,1;
+			close;	end;	break;
+		case 2:
+			if ( Zeny < 100000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 100000;
+			getitem 7128,1;
+			close;	end;	break;
+		case 3:
+			if ( Zeny < 100000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 100000;
+			getitem 7129,1;
+			close;	end;	break;
+		case 4:
+			if ( Zeny < 100000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 100000;
+			getitem 7130,1;
+			close;	end;	break;
+		case 5:
+			if ( Zeny < 100000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 100000;
+			getitem 7131,1;
+			close;	end;	break;
+		case 6:
+			if ( Zeny < 100000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 100000;
+			getitem 7132,1;
+			close;	end;	break;
+		case 7:
+			if ( Zeny < 240000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 240000;
+			getitem 7133,1;
+			close;	end;	break;
+		case 8:
+			if ( Zeny < 100000 )
+			{	dispbottom "您的金钱不足";	close;	end;	break;	}
+			set Zeny, Zeny - 100000;
+			getitem 7144,1;
+			close;	end;	break;	}
+}
+
+//====================================================//

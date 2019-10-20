@@ -1,0 +1,1431 @@
+// ---------------------------------
+// - 十字军 转职脚本 - 
+//===================================
+// 版本：2.9a
+//===================================
+// 翻译 - [阿轩]
+//===================================
+prt_castle,45,169,5	script	十字军 领袖	752,{
+		mes "[米凯兰 坎土尼汶]";
+		if (Upper == 1) {
+			mes "我们是十字军，是根据奥丁的旨意准备圣战的人";
+			mes "像千年前那样，有一天魔族们会重新讨伐我们的";
+			next;
+			mes "[米凯兰 坎土尼汶]";
+			mes "对你来说，会有比这个场合更适合你的地方...";
+			mes "不要停留此地，不断地锻炼自己吧";
+			close;
+		} 
+	else if(BaseJob != Job_Swordman) {
+		if(BaseJob == Job_Crusader) {
+			mes "像千年前那样，有一天魔族们会重新讨伐我们的";
+			close;
+		}
+		else if(BaseJob == Job_Novice) {
+			mes "我们是十字军，是根据奥丁的旨意准备圣战的人";
+			next;
+			mes "[米凯兰 坎土尼汶]";
+			mes "你也想要加入志同道合的我们，";
+			mes "就以剑士的身分累积足够的修练再来吧....";
+			close;
+		}
+			mes "像千年前那样，不知不觉讨伐魔族们的日子会重新来临....";
+			close;
+		close;
+	} 
+	else if(CRUS_Q <= 3 && countitem(1004) && countitem(1009)) {
+		mes "嗯....";
+		mes "我在你身上看到了成为十字军的天赋";
+		mes "但是能不能成为十字军现在还不知道";
+		mes "要接受考验";
+		next;
+		mes "[米凯兰 坎土尼汶]";
+		mes "接下来你就前往普隆德拉城右边找牧勒拿喀 咪月，继续下面的考试吧";
+		next;
+		mes "[米凯兰 坎土尼汶]";
+		mes "他会告诉你怎么做的";
+		mes "当考试全部结束后再回来我这里";
+		delitem 1004, 1;
+		delitem 1009, 1;
+		set CRUS_Q,4;
+		close;
+	}
+	else if(CRUS_Q == 0) {
+		mes "我们是十字军，是根据奥丁的旨意准备圣战的人";
+		mes "来这里有什么事情呢?";
+		next;
+		if (select("我也想参加圣战:没什么") == 1) {
+			mes "[米凯兰 坎土尼汶]";
+			mes "你说想成为十字军吗?";
+			mes "加入我们可不是那么容易";
+			next;
+			mes "[米凯兰 坎土尼汶]";
+			mes "我是米凯兰 坎土尼汶";
+			mes "是为迎接圣战的其中一人";
+			mes "我们值得信赖和忠诚心使我们不断训练自己";
+			next;
+			mes "[米凯兰 坎土尼汶]";
+			mes "根据奥丁的旨意，从剑士当中选拔出可靠的人，我们希望这些人加入";
+			next;
+			mes "[米凯兰 坎土尼汶]";
+			mes "特别是，如果拥有^3152FF忠诚之证^000000和^3152FF神之手^000000的剑士，";
+			mes "天生被赋予了成为十字军的素质";
+			mes "那样的剑士，如果能跨越某个考验便能成为十字军";
+			next;
+			mes "[米凯兰 坎土尼汶]";
+			mes "虽然我仍然不是很了解你，";
+			mes "不过你不试着挑战一次考验吗?";
+			next;
+			if (select("好吧，我接受:让我考虑一下") == 1) {
+				if(JobLevel < 40) {
+				mes "[米凯兰 坎土尼汶]";
+				mes "真可怜啊....";
+				mes "职业等级必须在40或以上才能成为十字军";
+				next;
+				mes "[米凯兰 坎土尼汶]";
+				mes "当你等待奥丁命令的时候，请作为一名剑士继续努力修练吧";
+				mes "我们明白你想加入我们的热心，但现在我们不能什么也不做....";
+				close;
+				} 
+				if (Skillpoint) {
+				mes "[米凯兰 坎土尼汶]";
+				mes "嗯....情况不错，你还有一些必备技能还没学会吧";
+				mes "等你先学会那些技能之后再来申请吧";
+				close;
+				}
+				mes "[米凯兰 坎土尼汶]";
+				mes "好吧，那我就收下你的转职申请书了";
+				mes "名字是" +strcharinfo(0)+ "对吧";
+				next;
+				if (countitem(1004) && countitem(1009)) {
+					mes "[米凯兰 坎土尼汶]";
+					mes "嗯....";
+					mes "我在你身上看到了成为十字军的天赋";
+					mes "但是能不能成为十字军现在还不知道";
+					mes "要接受考验";
+					next;
+					mes "[米凯兰 坎土尼汶]";
+					mes "接下来你就前往普隆德拉城右边找牧勒拿喀 咪月，继续下面的考试吧";
+					next;
+					mes "[米凯兰 坎土尼汶]";
+					mes "他会告诉你怎么做的";
+					mes "当考试全部结束后再回来我这里";
+					delitem 1004, 1;
+					delitem 1009, 1;
+					set CRUS_Q,4;
+				}
+			mes "[米凯兰 坎土尼汶]";
+			mes "嗯....";
+			mes "虽然很难看得出你有成为十字军的素质....";
+			mes "不过我看到你想成为十字军的热心，";
+			mes "那么请展示给我们你努力的态度吧";
+			next;
+			mes "[米凯兰 坎土尼汶]";
+			mes "以下是你所要收集的物品";
+				set .@cru_m1,rand(1,3);
+				if(.@cru_m1 == 1) {
+					set CRUS_Q, 1;
+					mes "^3152FF亡者指甲^000000 10个";
+					mes "^3152FF腐烂鳞片^000000 10个";
+					mes "^3152FF老旧犯人服^000000 10个";
+					mes "^3152FF辫子^000000 10个";
+					next;
+				}
+				else if(.@cru_m1 == 2) {
+					set CRUS_Q, 2;
+					mes "^3152FF死人遗骨^000000 10个";
+					mes "^3152FF兽人指甲^000000 10个";
+					mes "^3152FF手铐^000000 10个";
+					mes "^3152FF短辫子^000000 10个";
+					next;
+				}
+				else {
+					set CRUS_Q, 3;
+					mes "^3152FF亡者牙齿^000000 10个";
+					mes "^3152FF腐烂绷带^000000 10个";
+					mes "^3152FF手提灯^000000 10个";
+					mes "^3152FF南瓜头^000000 10个";
+					next;
+				}
+			mes "[米凯兰 坎土尼汶]";
+			mes "你的努力将决定你能否接受十字军的考验";
+			mes "那么快去收集吧";
+			mes "愿奥丁神保佑你";
+			close;
+			}
+			mes "[米凯兰 坎土尼汶]";
+			mes "你也是用剑的人，也要注意平时的修练";
+			mes "没有人知道什么时候开始圣战";
+			next;
+			mes "[米凯兰 坎土尼汶]";
+			mes "说不定奥丁的声音能传达给现在还无法理解的你";
+			close;
+		}
+		mes "[米凯兰 坎土尼汶]";
+		mes "如果你是个剑士，请你不断地锻炼自己，没有人知道圣战何时会再来临!";
+		close;
+	}
+	else if(CRUS_Q >= 1 && CRUS_Q <= 3) {
+		mes "你也是能听到奥丁的声音的人吗?";
+		mes "还是来证明你的努力的?";
+		next;
+		switch(CRUS_Q) {
+		case 1:
+			set @item1, 957;
+			set @item2, 959;
+			set @item3, 1099;
+			set @item4, 901;
+			break;
+		Case 2:
+			set @item1, 932;
+			set @item2, 1043;
+			set @item3, 1098;
+			set @item4, 1094;
+			break;
+		Case 3:
+			set @item1, 958;
+			set @item2, 930;
+			set @item3, 1041;
+			set @item4, 1062;
+			break;
+		}
+		if (countitem(@item1) > 9 && countitem(@item2) > 9 && countitem(@item3) > 9 && countitem(@item4) > 9) {
+		mes "[米凯兰 坎土尼汶]";
+		mes "很好!东西都很齐全!";
+		mes "现在承认你的努力，那么你可以接受十字军的考验了";
+		next;
+		mes "[米凯兰 坎土尼汶]";
+		mes "接下来你就前往普隆德拉城右边找牧勒拿喀 咪月，继续下面的考试吧";
+		next;
+			delitem @item1, 10;
+			delitem @item2, 10;
+			delitem @item3, 10;
+			delitem @item4, 10;
+			set CRUS_Q, 4;
+			mes "[米凯兰 坎土尼汶]";
+			mes "他会告诉你怎么做的";
+			mes "当考试全部结束后再回来我这里";
+			close;
+		}
+		mes "[米凯兰 坎土尼汶]";
+		mes "现在还看不出你成为十字军的天赋";
+		mes "那么就让我看看你的努力吧";
+		next;
+		mes "[米凯兰 坎土尼汶]";
+		mes "以下是你所要收集的物品";
+		mes "^3355FF"+getitemname(@item1)+"^00000010个，";
+		mes "^3355FF"+getitemname(@item2)+"^00000010个，";
+		mes "^3355FF"+getitemname(@item3)+"^00000010个，";
+		mes "还有^3355FF"+getitemname(@item4)+"^00000010个 ";
+		next;
+		next;
+		mes "[米凯兰 坎土尼汶]";
+		mes "我希望看看你再努力一下的样子";
+		mes "那么快去收集吧";
+		mes "愿奥丁神保佑你";
+		close;
+	}
+	else if(CRUS_Q == 10) {
+		if(SkillPoint) {
+			mes "嗯....情况不错，你还有一些必备技能还没学会吧";
+			mes "等你先学会那些技能之后再来申请吧";
+			close;
+		}
+		mes "你已经通过所有的考验!";
+		mes "真不错";
+		mes "身心都已经准备好和我们一起准备圣战了";
+		next;
+		set .@Joblevel,JobLevel;
+		callfunc "Job_Change",Job_Crusader;
+		callfunc "F_ClearJobVar";
+		mes "[米凯兰 坎土尼汶]";
+		mes "恭喜";
+		mes "你现在已经是十字军的一员了";
+		next;
+		if(.@JobLevel != 50) getitem 504, 6;
+		else getitem 504, 12;
+		mes "[米凯兰 坎土尼汶]";
+		mes "然后，这个请在紧急的情况时使用吧....";
+		mes "这将再次给予我们十字军战斗力";
+		next;
+		mes "[米凯兰 坎土尼汶]";
+		mes "希望在圣战来临之前能够不断的锻炼自我，成就自我";
+		mes "愿奥丁神保佑你";
+		mes "现在去为圣战作准备吧!";
+		close;
+	}
+		mes "你还没有完成所有的考试";
+		mes "现在还不能决定你能否成为十字军";
+		next;
+		mes "[米凯兰 坎土尼汶]";
+		mes "完成了所有的考试后再回来吧";
+		mes "那时再作出评价";
+		close;
+}
+
+//===================== Suffering Man: 2nd Endurance Test ===============================================
+prt_castle,164,32,1	script	受苦难者	733,{
+	mes "[牧勒拿喀 咪月]";
+	if(BaseJob != Job_Swordman) {
+		if (BaseJob == Job_Crusader) {
+			mes "不要停留在这种地方，往前进吧";
+			mes "说不定有一天我们会并肩作战....";
+			close;
+		}
+		else if(BaseJob == Job_Novice) {
+			mes "是初学者啊....";
+			mes "我不是坏人啊";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "我只是为了修练自己，而待在这里";
+			close;
+		}
+		mes "保持安静并且离开这里";
+		next;
+		mes "[牧勒拿喀 咪月]";
+		mes "请不要妨碍我修练";
+		close;
+	}
+	else if(CRUS_Q >= 0 && CRUS_Q <= 3) {
+		mes "有什么事情?";
+		mes "没事的话请出去....";
+		mes "在修练中需要“平静”的心情";
+		next;
+		mes "[牧勒拿喀 咪月]";
+		mes "我必须为准备圣战而保持平静的心情";
+		mes "所以，请你离开这里吧";
+		close;
+	}
+	else if(CRUS_Q == 4) {
+		mes "有什么事吗?";
+		mes "有什么事要打扰我修练吗?";
+		next;
+		if (select("我要成为十字军:没什么事") == 1) {
+			mes "[牧勒拿喀 咪月]";
+			mes "很久没有看到像你这么想成为十字军的人了....";
+			mes "真是少见啊....";
+			mes "我的名字叫牧勒拿喀 咪月，";
+			mes "是为圣战做准备的其中一人";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "你的名字是....";
+			mes strcharinfo(0)+ "对吧";
+			mes "来，让我看看";
+			next;
+			if(getequipid(7) != 2608 && getequipid(8) != 2608) {
+				mes "[牧勒拿喀 咪月]";
+				mes "但是!";
+				mes "你连幸运珠链都没有，打算怎么成为十字军呢?";
+				mes "我可不想看到这样思想上没准备的家伙";
+				next;
+				mes "[牧勒拿喀 咪月]";
+				mes "给我出去";
+				close;
+			}
+			mes "[牧勒拿喀 咪月]";
+			mes "非常好....";
+			mes "思想上也准备好了";
+			mes "不过只靠这个就想成为十字军是不行的";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "那么，首先要看看你的忍耐力";
+			mes "十字军在忍耐上需要很强的意志力";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "那么马上开始吧";
+			mes "也不是很困难的";
+			mes "只要一直走到最后就好了....";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "有一件事情希望你能牢记";
+			mes "无论发生什么都不能攻击怪物";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "那么请出发吧";
+			close2;
+			warp "job_cru",98,40;
+			end;
+		}
+		mes "[牧勒拿喀 咪月]";
+		mes "你真的这么闲吗?";
+		mes "别在这里玩耍了，到外面去捡杰勒比结晶吧";
+		close;
+	}
+	else if(CRUS_Q == 5) {
+		mes "是刚才的剑士啊，有什么事呢?";
+		mes "嗯....你失败了....";
+		next;
+		if (select("我要继续挑战:这个是什么鬼考试啊?") == 1) {
+			mes "[牧勒拿喀 咪月]";
+			mes "无论你再挑战多少次";
+			mes "失败了都是因为你思想上有问题";
+			next;
+			if(getequipid(7) != 2608 && getequipid(8) != 2608) {
+				mes "[牧勒拿喀 咪月]";
+				mes "幸运珠链在哪里呢?";
+				mes "受到奥丁神保佑的我们，";
+				mes "不可以随便的忽视幸运珠链";
+				next;
+				mes "[牧勒拿喀 咪月]";
+				mes "如果什么都不考虑仅仅会挥剑，这和怪物没什么差别";
+				mes "想要接受考验的话，请先准备好作为礼节的幸运珠链";
+			}
+			mes "[牧勒拿喀 咪月]";
+			mes "平时看到怪物就马上拔剑攻击....还没有脱离这种习惯吧";
+			mes "依我看还是请你别忘记考验忍耐力这件事";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "那么我再说一次吧，";
+			mes "只要一直走到尽头就好了";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "一定不可以打倒怪物";
+			mes "牢记这点后再去吧";
+			next;
+			mes "[牧勒拿喀 咪月]";
+			mes "那么要开始了";
+			close2;
+			warp "job_cru",98,40;
+		}
+		mes "[牧勒拿喀 咪月]";
+		mes "....嗯?";
+		mes "看来你是完全没有把我的考验放在心上呢";
+		mes "我不希望像你这样的人加入到圣战的队伍中来";
+		next;
+		mes "[牧勒拿喀 咪月]";
+		mes "在你改变想法之前不要来找我";
+		close;
+	}
+	else if(CRUS_Q == 6) {
+		mes "很好，表现不错";
+		mes "没什么难的对吧?";
+		mes "你现在找我也没什么意义了";
+		next;
+		mes "[牧勒拿喀 咪月]";
+		mes "到普隆德拉大圣堂找盖布利尔 范伦铁诺进行下一个考试吧";
+		mes "好，现在可以去了";
+		close;
+	}
+	mes "你好像还没完成所有考试吧，别拖拉了，快点去吧";
+	close;
+}
+
+//===================== Gabriel Valentine: 3rd Knowledge Test =================================
+prt_church,95,127,3	script	圣堂骑士	745,{
+	mes "[盖布利尔 范伦铁诺]";
+	if(BaseJob != Job_Swordman) {
+		if (BaseJob == Job_Crusader) {
+			mes "欢迎光临，十字军";
+			mes "还记得你的修练吗?";
+			next;
+			mes "[盖布利尔 范伦铁诺]";
+			mes "为了防备不知不觉的圣战准备一切....";
+			close;
+		}
+		else if(BaseJob == Job_Novice) {
+			mes "如果你对十字军有兴趣，就以剑士的身分累积足够的修练吧";
+			mes "当成为经验丰富的剑士后再回来这里吧";
+			next;
+			mes "[盖布利尔 范伦铁诺]";
+			mes "我们在普隆德拉城任职";
+			mes "试着访问一下也不错呢";
+			close;
+		}
+		mes "欢迎光临";
+		mes "我是个十字军";
+		mes "防备不知不觉来临的圣战的人";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "如果你想成为十字军，请到普隆德拉城内找十字军领袖吧";
+		close;
+	}
+	else if(CRUS_Q == 0) {
+		mes "你是想成为十字军吧?";
+		mes "现在还没轮到我的考试呢";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "请完成其他考试后再来找我吧";
+		mes "我会在这里等你";
+		mes "就这样吧....";
+		close;
+	}
+	else if(CRUS_Q == 6) {
+		mes "欢迎光临";
+		mes "已经通过了忍耐力考试了吧";
+		mes "接下来的考试由我负责";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "我的名字叫盖布利尔 范伦铁诺";
+		mes "是防备圣战的其中一人";
+		mes "在圣堂这里负责保护圣职者的任务";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "我想看看你是否拥有成为十字军所需的知识";
+		mes "圣战不能让仅仅只会挥剑的人加入";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "那么，我会出10条问题";
+		mes "好好听着，并选出正确答案";
+		next;
+		goto C_Questions;
+	} 
+	else if(CRUS_Q == 7) {
+		mes "欢迎光临";
+		mes "准备好一切了吗?";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "这次同样会出10条问题";
+		mes "好好听着，并选出正确答案";
+		next;
+C_Questions:
+		set .@cru_m,rand(1,3);
+		if (.@cru_m == 1) {
+			mes "[盖布利尔 范伦铁诺]";
+			mes "1.";
+			mes "对不死系最有效的属性攻击是?";
+			next;
+			if (select("无属性:地属性:不死属性:圣属性") == 4)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "2.";
+			mes "怪物属性为不死属性Lv2的时候，";
+			mes "圣属性攻击所造成的伤害率是?";
+			next;
+			if (select("125 %:150 %:175 %:200 %") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "3.";
+			mes "闇神官身上取不到的物品是?";
+			next;
+			if (select("神圣之帽:天地树叶子:白色药草:返魂符") == 1)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "4.";
+			mes "下面哪个不死系怪物中的HP值最高?";
+			next;
+			if (select("绿腐尸:邪骸战俘:恶灵:腐尸战俘") == 4) 
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "5.";
+			mes "下面哪个不死系怪物和其他的体型不同?";
+			next;
+			if (select("恶灵:卡利斯格:海盗之王:闇神官") == 3)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "6.";
+			mes "可减少不死属性攻击伤害的卡片是?";
+			next;
+			if (select("邪骸兽人卡片:兽人腐尸卡片:绿腐尸卡片:邪骸矿工卡片") == 2)
+				set .@cru_t,.@cru_t+10;
+			mes "[盖布利尔 范伦铁诺]";
+			mes "7.";
+			mes "僵尸与妖道以前的关系是?";
+			next;
+			if (select("妹妹与亲哥哥:邻居姊姊与弟弟:阿公和阿嬷:一对仇人") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "8.";
+			mes "选出下面怪物中非主动攻击的不死系怪物";
+			next;
+			if (select("邪骸士兵:邪骸兽人:邪骸战士:邪骸矿工") == 3)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "9.";
+			mes "僵尸卡片插在盾上的名字叫?";
+			next;
+			if (select("护身符的:额外的:挡住的:坚硬的") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "10.";
+			mes "不掉落亡者遗物的怪物是?";
+			next;
+			if (select("僵尸:绿腐尸:木乃伊:邪骸士兵") == 1)
+				set .@cru_t,.@cru_t+10;
+		}
+		else if (.@cru_m == 2) {
+			mes "[盖布利尔 范伦铁诺]";
+			mes "1.";
+			mes "下面恶魔系怪物中，哪种的属性与其他不一样?";
+			next;
+			if (select("卡拉特小丑:风魔巫师:蛇女伊丝:邪骸浪人") == 3)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "2.";
+			mes "对恶魔种族有加成效果的剑是下面哪把";
+			next;
+			if (select("灵巧的 日本刀:交叉的 日本刀:混合成的 日本刀:像大镰刀的 日本刀") == 1)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "3.";
+			mes "不能从土人身上获得的物品是?";
+			next;
+			if (select("铝原石:黄金之锤:尖刃铁锤:巫杖 魂咬") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "4.";
+			mes "下列HP最高的恶魔系魔物是?";
+			next;
+			if (select("波利:魔锅蛋:土人:傀儡娃娃") == 4)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "5.";
+			mes "下列体型不同的恶魔系魔物是?";
+			next;
+			if (select("幽灵波利:白幽灵:小恶魔:小巴风特") == 1)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "6.";
+			mes "对闇属性攻击带有耐性的披肩是?";
+			next;
+			if (select("光荣的 披肩:神圣的 披肩:天使的 披肩:模仿的 披肩") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "7.";
+			mes "对风魔巫师有效的属性攻击是?";
+			next;
+			if (select("水属性:地属性:火属性:风属性") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "8.";
+			mes "下列恶魔系怪物中哪种会主动攻击?";
+			next;
+			if (select("鬼女:基尔瑟:土人:白幽灵") == 4)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "9.";
+			mes "傀儡娃娃卡片的能力是?";
+			next;
+			if (select("暗属性攻击耐性增加 30%:毒属性攻击耐性增加 30%:念属性攻击耐性增加 30%:无属性攻击耐性增加 30%") == 3)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "10.";
+			mes "若遇到恶魔种族怪物时，最有效果的应对方法是?";
+			next;
+			if (select("大叫“恶魔，消失吧!”:跟他说“咬我啊大笨蛋!”:在武器上洒圣水后攻击它:戴上小恶魔帽") == 3)
+				set .@cru_t,.@cru_t+10;
+		}
+		else {
+			mes "[盖布利尔 范伦铁诺]";
+			mes "1.";
+			mes "为了学习“天使之击”，“天使之护”最小的技能Lv是?";
+			next;
+			if (select("Lv1:Lv2:Lv3:Lv4") == 3)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "2.";
+			mes "在BaseLv55时，包含INT加成值为30时，治愈术Lv5的回复量是?";
+			next;
+			if (select("396:440:484:528") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "3.";
+			mes "天使之护Lv7时，对不死系增加的防御力是?";
+			next;
+			if (select("21:22:23:24") == 1)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "4.";
+			mes "在下列魔物中，能攻击念属性的梦魇的矛是?";
+			next;
+			if (select("骑士长矛:双刃长戟:死神之镰:风灵之矛") == 4)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "5.";
+			mes "为了学习“治疗术”，“治愈术”最小的技能Lv是?";
+			next;
+			if (select("Lv 1:Lv 2:Lv 3:Lv 4") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "6.";
+			mes "骑兵修练学到Lv3时，攻击速度是?";
+			next;
+			if(select("正常的 70%:正常的 80%:正常的 90%:正常的 100%")==2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "7.";
+			mes "有关天使之击说明错误的是?";
+			next;
+			if (select("对不死系的攻击力增加:只属于服事的技能:修练完成时增加 +30:被动技能") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "8.";
+			mes "治愈术Lv7的SP消费量是?";
+			next;
+			if (select("30:31:33:35") == 2)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "9.";
+			mes "治疗术无法解除的异常效果是?";
+			next;
+			if (select("诅咒:沉没:混乱:黑暗") == 1)
+				set .@cru_t,.@cru_t+10;
+
+			mes "[盖布利尔 范伦铁诺]";
+			mes "10.";
+			mes "十字军是靠着什么存在?";
+			next;
+			if (select("准备吃饭的人:准备圣战的人:准备喝酒的人:准备药水的人") == 2)
+				set .@cru_t,.@cru_t+10;
+
+		}
+		mes "[盖布利尔 范伦铁诺]";
+		mes "辛苦你了";
+		mes "现在公布结果";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes strcharinfo(0)+ "你的分数是";
+		mes " " + .@cru_t + " 分...";
+		if(.@cru_t == 100) {
+			set CRUS_Q, 8;
+			mes "请准备下一个考试吧";
+			next;
+			mes "[盖布利尔 范伦铁诺]";
+			mes "去普隆德拉城见布里顿 皮耀勒德吧";
+			mes "我已经事先传达让他准备好了";
+			close;
+		}
+		else if(.@cru_t == 90) {
+			set CRUS_Q, 8;
+			mes "请准备下一个考试吧";
+			next;
+			mes "[盖布利尔 范伦铁诺]";
+			mes "去普隆德拉城见布里顿 皮耀勒德吧";
+			mes "我已经事先传达让他准备好了";
+			close;
+		}
+		else if (.@cru_t == 80 && CRUS_Q == 7) {
+			set CRUS_Q,8;
+			mes "请准备下一个考试吧";
+			next;
+			mes "[盖布利尔 范伦铁诺]";
+			mes "去普隆德拉城见布里顿 皮耀勒德吧";
+			mes "我已经事先传达让他准备好了";
+			close;
+		}
+		set CRUS_Q,7;
+		mes "真可惜....";
+		mes "请你再稍微学习一下再来吧";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "因为需要很多知识，所以在你准备好之前我都会在这里等你";
+		mes "希望你下次来的时候充满自信";
+		close;
+	}
+	else if(CRUS_Q == 8 || CRUS_Q == 9) {
+		mes "像之前说的那样，去前往下一个考试吧";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "到普隆德拉城内见布里顿 皮耀勒德吧";
+		close;
+	}
+	else if(CRUS_Q == 10) {
+		mes "还在这里干什么?";
+		mes "考试应该全部通过了";
+		mes "怎么还不去见会长?";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "要成为十字军还要到那里去";
+		mes "总之，你应该可以成为我们的一员了";
+		mes "转职之后也请不要怠慢修练";
+		close;
+	}
+		mes "真可惜....";
+		mes "请你再稍微学习一下再来吧";
+		next;
+		mes "[盖布利尔 范伦铁诺]";
+		mes "因为需要很多知识，所以在你准备好之前我都会在这里等你";
+		mes "希望你下次来的时候充满自信";
+		close;
+}
+
+//===================== Crusader: 4th Purification Test =====================================================
+prt_castle,35,151,5	script	守卫兵	751,{
+	mes "[布里顿 皮耀勒德]";
+	mes "欢迎";
+	if(BaseJob != Job_Swordman) {
+		if(BaseJob == Job_Crusader) {
+			mes "每天努力的修练，成为优秀的十字军吧";
+			close;
+		}
+		else if(BaseJob == Job_Novice) {
+			mes "如果对十字军感兴趣的话，欢迎你随时加入";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "就以剑士的身分累积足够的修练吧，";
+			mes "有被奥丁召唤的人，我们会更欢迎的";
+			close;
+		}
+		mes "和平时一样不要怠慢修练吧";
+		mes "为了不知不觉到来的那一天....";
+		close;
+	}
+	else if(CRUS_Q == 0) {
+		mes "如果对十字军感兴趣的欢迎随时加入";
+		next;
+		mes "[布里顿 皮耀勒德]";
+		mes "要加入十字军，剑士的职业等级要在40级或以上";
+		mes "更详细的情况请找我们领袖谈谈";
+		next;
+		mes "[布里顿 皮耀勒德]";
+		mes "那么，愿奥丁神保佑你";
+		close;
+	}
+	else if(CRUS_Q == 8 || CRUS_Q == 9) {
+		if (CRUS_Q == 8) {
+			mes "欢迎";
+			mes "这个是最后的考试了";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "我的名字叫布里顿 皮耀勒德";
+			mes "是准备圣战的其中一人";
+			mes "来到这里已经很努力了";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "最后我的考试是，实战训练";
+			mes "作为十字军，必须有卓越的战斗能力";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "在接受考试之前，请先准备一瓶^3152FF圣水^000000";
+			mes "为了净化接受考试的人";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "那么，要开始了";
+			mes "准备好了吗?";
+		}
+		else {
+			mes "欢迎你来";
+			mes "都准备好了吧?";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "现在可以接受考试了吗?";
+			mes "准备好了吗?";
+			close;
+		}
+		next;
+		if (select("开始:还没准备好") == 1) {
+			if(getequipid(7) != 2608 && getequipid(8) != 2608) {
+			mes "[布里顿 皮耀勒德]";
+			mes "....嗯?";
+			mes "你还没有幸运珠链啊";
+			mes "接受考试的时候必须要有幸运珠链在身";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "携带幸运珠链再来吧";
+			close;
+			}
+			else if(countitem(523) < 1) {
+				mes "[布里顿 皮耀勒德]";
+				mes "在接受考试前请先准备一瓶^3152FF圣水^000000";
+				mes "像之前说的一样，为了净化接受考试的人";
+				next;
+				mes "[布里顿 皮耀勒德]";
+				mes "请去准备吧";
+				mes "我会在这里等你";
+				close;
+			}
+			delitem 523, 1; //Holy Water
+			mes "[布里顿 皮耀勒德]";
+			mes "那么现在要开始了";
+			mes "首先是洗净你的身体";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "....";
+			next;
+			mes "[布里顿 皮耀勒德]";
+			mes "那么请进入等待室待命吧";
+			mes "把出现的怪物全部击倒就行了";
+			close2;
+			warp "job_cru",24,169;
+			end;
+		}
+		mes "[布里顿 皮耀勒德]";
+		mes "明白了";
+		mes "准备好之后再来吧";
+		mes "我会在这里等你";
+		close;
+	} 
+	else if(CRUS_Q == 10) {
+		mes "恭喜";
+		mes "这样就完成了十字军的所有考试";
+		next;
+		mes "[布里顿 皮耀勒德]";
+		mes "现在到里面去找十字军领袖吧，";
+		mes "那样你就可以成为参加圣战的一员了";
+		close;
+	}
+		mes "欢迎";
+		mes "你是来接受十字军考试的吧";
+		next;
+		mes "[布里顿 皮耀勒德]";
+		mes "但是，现在来参加我的考试还太早";
+		mes "请通过其他考试再来找我吧";
+		next;
+		mes "[布里顿 皮耀勒德]";
+		mes "我会在这里等你";
+		mes "愿奥丁神保佑你";
+	close;
+}
+
+//=== Actual tests ========================================
+//=== Endurance Test ======================================
+job_cru,1,1,1	script	Summoner#cr1	-1,{
+OnTimer300000:
+	donpcevent "Summoner#cr1::OnReset";
+	end;
+
+OnTimer300500:
+	donpcevent "Summoner#cr1::OnEnd";
+	end;
+
+OnTimer301000:
+	donpcevent "Summoner#cr1::OnStart";
+	stopnpctimer;
+	end;
+
+OnInit:
+	enablenpc "Summoner#cr1";
+	monster "job_cru",94,45,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,55,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,65,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,75,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,85,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,95,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,45,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,55,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,65,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,75,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,85,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,95,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	initnpctimer;
+	end;
+
+OnStart:
+	enablenpc "Summoner#cr1";
+	monster "job_cru",94,45,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,55,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,65,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,75,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,85,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",94,95,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,45,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,55,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,65,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,75,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,85,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	monster "job_cru",101,95,"曼陀罗魔花",1020,1,"Summoner#cr1::OnDead";
+	initnpctimer;
+	end;
+
+OnReset:
+	killmonster "job_cru","Summoner#cr1::OnDead";
+	end;
+
+OnEnd:
+	disablenpc "Summoner#cr1";
+	end;
+
+OnDead:
+	warp "prt_fild05",353,251;
+	end;
+}
+
+job_cru,1,2,1	script	Summoner#cr2	-1,{
+OnTimer345000:
+	donpcevent "Summoner#cr2::OnReset";
+	end;
+
+OnTimer345500:
+	donpcevent "Summoner#cr2::OnEnd";
+	end;
+
+OnTimer346000:
+	donpcevent "Summoner#cr2::OnStart";
+	stopnpctimer;
+	end;
+
+OnInit:
+	enablenpc "Summoner#cr2";
+	monster "job_cru",98,50,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",92,60,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",104,60,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",98,70,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",92,80,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",104,90,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",98,90,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	initnpctimer;
+	end;
+
+OnStart:
+	enablenpc "Summoner#cr2";
+	monster "job_cru",98,50,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",92,60,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",104,60,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",98,70,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",92,80,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",104,90,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	monster "job_cru",98,90,"噬人花",1118,1,"Summoner#cr2::OnDead";
+	initnpctimer;
+	end;
+
+OnReset:
+	killmonster "job_cru","Summoner#cr2::OnDead";
+	end;
+
+OnEnd:
+	disablenpc "Summoner#cr2";
+	end;
+
+OnDead:
+	warp "prt_fild05",353,251;
+	end;
+}
+
+job_cru,1,3,1	script	Summoner#cr3	-1,{
+OnTimer345000:
+	donpcevent "Summoner#cr3::OnReset";
+	end;
+
+OnTimer345500:
+	donpcevent "Summoner#cr3::OnEnd";
+	end;
+
+OnTimer346000:
+	donpcevent "Summoner#cr3::OnStart";
+	stopnpctimer;
+	end;
+
+OnInit:
+	enablenpc "Summoner#cr3";
+	monster "job_cru",92,50,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",104,50,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,50,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",92,70,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",104,70,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,80,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",92,90,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",104,90,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	Initnpctimer;
+	end;
+
+OnStart:
+	enablenpc "Summoner#cr3";
+	monster "job_cru",92,50,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",104,50,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,50,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",92,70,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",104,70,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,80,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",92,90,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	monster "job_cru",104,90,"将军魔碑",1277,1,"Summoner#cr3::OnDead";
+	Initnpctimer;
+	end;
+
+OnReset:
+	killmonster "job_cru","Summoner#cr3::OnDead";
+	end;
+
+OnEnd:
+	disablenpc "Summoner#cr3";
+	end;
+
+OnDead:
+	warp "prt_fild05",353,251;
+	end;
+}
+
+job_cru,1,4,1	script	Summoner#cr4	-1,{
+OnTimer345000:
+	donpcevent "Summoner#cr4::OnReset";
+	end;
+
+OnTimer345500:
+	donpcevent "Summoner#cr4::OnEnd";
+	end;
+
+OnTimer346000:
+	donpcevent "Summoner#cr4::OnStart";
+	stopnpctimer;
+	end;
+
+OnInit:
+	enablenpc "Summoner#cr4";
+	monster "job_cru",98,50,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,55,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,60,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,65,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,70,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,75,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,80,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,85,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,90,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",90,34,"?????",1182,1,"Summoner#cr3::OnDead";
+	monster "job_cru",105,34,"?????",1182,1,"Summoner#cr3::OnDead";
+	initnpctimer;
+	end;
+
+OnStart:
+	enablenpc "Summoner#cr4";
+	monster "job_cru",98,50,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,55,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,60,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,65,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,70,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,75,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,80,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,85,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",98,90,"吸血蝙蝠",1005,1,"Summoner#cr3::OnDead";
+	monster "job_cru",90,34,"!!!!!",1182,1,"Summoner#cr3::OnDead";
+	monster "job_cru",105,34,"!!!!!",1182,1,"Summoner#cr3::OnDead";
+	initnpctimer;
+	end;
+
+OnReset:
+	killmonster "job_cru","Summoner#cr4::OnDead";
+	end;
+
+OnEnd:
+	disablenpc "Summoner#cr4";
+	end;
+
+OnDead:
+	warp "prt_fild05",353,251;
+	end;
+}
+
+
+job_cru,98,105,4	script	 Summoner#cr5	45,3,3,{
+OnTouch:
+	set CRUS_Q,6;
+	warp "prt_castle",164,28;
+	end;
+}
+
+//=== Purification Test ===================================
+job_cru,24,187,4	script	守卫骑士#2	751,{
+	mes "[布里顿 皮耀勒德]";
+	mes "欢迎";
+	mes "在这里你会接受最后的考试";
+	mes "要开始的话，请进入等待室";
+	next;
+	mes "[布里顿 皮耀勒德]";
+	mes "最多只能同时一人进入考场";
+	mes "其他要接受考试的人会在等待室待命";
+	next;
+	mes "[布里顿 皮耀勒德]";
+	mes "每人有4分钟时限，要中途停止的话只要重新登陆就行了";
+	close;
+}
+
+job_cru,24,187,2	script	Waiting Room#cr1	700,{
+	end;
+
+OnInit:
+	disablenpc "Waiting Room#cr1";
+	waitingroom "等待室",20,"Waiting Room#cr1::OnStart",1;
+	end;
+
+OnStart:
+	if (getareausers("job_cru", 160, 16, 190, 190)) end;
+	if (!getwaitingroomstate(33)) end;
+	warpwaitingpc "job_cru",168,21;
+	donpcevent "Monster Summon#cr0::OnStart";
+	end;
+
+}
+
+job_cru,168,17,0	script	Zombie Guide	-1,2,2,{
+OnTouch:
+	mes "[布里顿 皮耀勒德]";
+	mes "虽然是一直前进，但是请把出现的所有敌人全部击倒吧";
+	mes "即使只剩下一个也是不合格的";
+	next;
+	mes "[布里顿 皮耀勒德]";
+	mes "时限是4分钟";
+	mes "那么请去吧";
+	close;
+}
+
+job_cru,2,1,1	script	Monster Summon#cr0	-1,{
+OnInit:
+	disablenpc "Monster Summon#cr0";
+	end;
+
+OnStart:
+	set .MyMobCount,0;
+	enablenpc "Monster Summon#cr0";
+	donpcevent "Monster Summon#cr1::OnStart";
+	donpcevent "Monster Summon#cr2::OnStart";
+	donpcevent "Monster Summon#cr3::OnStart";
+	donpcevent "Monster Summon#cr4::OnStart";
+	donpcevent "Monster Summon#cr6::OnStart";
+	end;
+
+OnMonster1:
+	monster "job_cru",168,45,"腐尸",1015,1,"Monster Summon#cr0::OnDead";
+	monster "job_cru",168,45,"腐尸",1015,1,"Monster Summon#cr0::OnDead";
+	monster "job_cru",168,45,"腐尸",1015,1,"Monster Summon#cr0::OnDead";
+	monster "job_cru",168,45,"腐尸",1015,1,"Monster Summon#cr0::OnDead";
+	monster "job_cru",168,45,"腐尸",1015,1,"Monster Summon#cr0::OnDead";
+	monster "job_cru",168,45,"腐尸",1015,1,"Monster Summon#cr0::OnDead";
+	end;
+
+OnMonster2:
+	monster "job_cru",168,80,"邪骸士兵",1028,1,"Monster Summon#cr0::OnDead";
+	monster "job_cru",168,80,"邪骸士兵",1028,1,"Monster Summon#cr0::OnDead";
+	monster "job_cru",168,80,"邪骸士兵",1028,1,"Monster Summon#cr0::OnDead";
+	end;
+
+OnMonster3:
+	monster "job_cru",168,115,"木乃伊",1041,1,"Monster Summon#cr0::OnDead";
+	end;
+
+OnDead:
+	set .MyMonsterCount,.MyMonsterCount+1;
+	if (.MyMonsterCount >= 10) set CRUS_Q,10;
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr0";
+	end;
+
+OnReset:
+	killmonster "job_cru","Monster Summon#cr0::OnDead";
+	end;
+}
+
+job_cru,168,45,0	script	Monster Summon#cr1	-1,15,1,{
+OnInit:
+	disablenpc "Monster Summon#cr1";
+	end;
+
+OnTouch:
+	donpcevent "Monster Summon#cr0::OnMonster1";
+	donpcevent "Monster Summon#cr1::OnEnd";
+	end;
+
+OnStart:
+	enablenpc "Monster Summon#cr1";
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr1";
+	end;
+}
+
+job_cru,168,80,0	script	Monster Summon#cr2	-1,15,1,{
+OnInit:
+	disablenpc "Monster Summon#cr2";
+	end;
+
+OnTouch:
+	donpcevent "Monster Summon#cr0::OnMonster2";
+	donpcevent "Monster Summon#cr2::OnEnd";
+	end;
+
+OnStart:
+	enablenpc "Monster Summon#cr2";
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr2";
+	end;
+}
+
+job_cru,165,115,0	script	Monster Summon#cr3	-1,15,1,{
+OnInit:
+	disablenpc "Monster Summon#cr3";
+	end;
+
+OnTouch:
+	monster "job_cru",168,110,"邪骸弓箭手",1016,1;
+	donpcevent "Monster Summon#cr0::OnMonster3";
+	donpcevent "Monster Summon#cr3::OnEnd";
+	end;
+
+OnStart:
+	enablenpc "Monster Summon#cr3";
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr3";
+	end;
+}
+
+job_cru,168,150,0	script	Monster Summon#cr4	-1,15,1,{
+OnInit:
+	disablenpc "Monster Summon#cr4";
+	end;
+
+OnTouch:
+	monster "job_cru",168,150,strcharinfo(0),1036,1,"Monster Summon#cr4-a::OnDead";
+	donpcevent "Monster Summon#cr4::OnEnd";
+	end;
+
+OnDead:
+	donpcevent "Monster Summon#cr5::OnStart";
+	end;
+
+OnStart:
+	enablenpc "Monster Summon#cr4";
+	end;
+
+OnReset:
+	killmonster "job_cru","Monster Summon#cr4-a::OnDead";
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr4";
+	end;
+
+}
+
+job_cru,168,150,0	script	Monster Summon#cr4-a	-1,{
+OnDead:
+	donpcevent "Monster Summon#cr5::OnStart";
+	end;
+}
+
+job_cru,168,180,4	script	Monster Summon#cr5	45,3,3,{
+OnInit:
+	disablenpc "Monster Summon#cr5";
+	end;
+
+OnTouch:
+	warp "prt_castle",35,147;
+	donpcevent "Monster Summon#cr0::OnReset";
+	donpcevent "Monster Summon#cr0::OnEnd";
+	donpcevent "Monster Summon#cr6::OnStop";
+	donpcevent "Monster Summon#cr6::OnEnd";
+	donpcevent "Monster Summon#cr5::OnEnd";
+	donpcevent "Waiting Room#cr1::OnStart";
+	end;
+
+OnStart:
+	enablenpc "Monster Summon#cr5";
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr5";
+	end;
+}
+
+job_cru,2,2,1	script	Monster Summon#cr6	-1,{
+OnTimer60000:
+	donpcevent "Monster Summon#cr8::OnStart";
+	end;
+
+OnTimer61000:
+	donpcevent "Monster Summon#cr8::OnEnd";
+	end;
+
+OnTimer240000:
+	donpcevent "Monster Summon#cr7::OnStart";
+	end;
+
+OnTimer241000:
+	donpcevent "Monster Summon#cr0::OnReset";
+	donpcevent "Monster Summon#cr4::OnReset";
+	end;
+
+OnTimer242000:
+	donpcevent "Monster Summon#cr0::OnEnd";
+	donpcevent "Monster Summon#cr4::OnEnd";
+	donpcevent "Monster Summon#cr7::OnEnd";
+	end;
+
+OnTimer243000:
+	donpcevent "Monster Summon#cr6::OnEnd";
+	donpcevent "Waiting Room#cr1::OnStart";
+	stopnpctimer;
+	end;
+
+OnInit:
+	disablenpc "Monster Summon#cr6";
+	end;
+
+OnStart:
+	enablenpc "Monster Summon#cr6";
+	initnpctimer;
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr6";
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+}
+
+job_cru,168,110,0	script	Monster Summon#cr7	-1,14,82,{
+OnInit:
+	disablenpc "Monster Summon#cr7";
+	end;
+
+OnTouch:
+	warp "prontera",234,318;
+	end;
+
+OnStart:
+	enablenpc "Monster Summon#cr7";
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr7";
+	end;
+}
+
+job_cru,168,17,0	script	Monster Summon#cr8	-1,14,5,{
+OnInit:
+	disablenpc "Monster Summon#cr8";
+	end;
+
+OnTouch:
+	warp "prontera",234,318;
+	end;
+
+OnStart:
+	enablenpc "Monster Summon#cr8";
+	end;
+
+OnEnd:
+	disablenpc "Monster Summon#cr8";
+	end;
+
+}
+
+//============================================================ 
+// mapflag
+//============================================================ 
+job_cru	mapflag	nomemo
+job_cru	mapflag	noteleport
+job_cru	mapflag	nosave	SavePoint
+job_cru	mapflag	nopenalty
+job_cru	mapflag	nobranch
+job_cru	mapflag	noexp
+job_cru	mapflag	noloot

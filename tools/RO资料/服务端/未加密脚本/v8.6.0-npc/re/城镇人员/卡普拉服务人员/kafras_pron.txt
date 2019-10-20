@@ -1,0 +1,82 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 普隆德拉 卡普拉脚本 - 
+//===================================
+// 版本：2.7c
+//===================================
+
+
+// North ==================================
+prontera,152,326,3	script	卡普拉服务人员::kaf_prontera	112,{
+	cutin "kafra_06",2;
+	callfunc "F_KafSetPront";
+	callfunc "F_Kafra",0,3,0,40,800;
+
+M_Save:
+	savepoint "prontera",157,327;
+	callfunc "F_KafEnd",0,1,"在城内";
+}
+
+// SOUTH ======================================
+prontera,151,29,0	script	卡普拉服务人员::kaf_prontera2	115,{
+	cutin "kafra_03",2;
+	callfunc "F_KafSetPront";
+	callfunc "F_Kafra",0,0,0,40,800;
+
+	M_Save:
+		savepoint "prontera",116,73;
+		callfunc "F_KafEnd",0,1,"在城内";
+}
+
+//WEST=========================================
+prontera,29,207,6	script	卡普拉服务人员::kaf_prontera3	113,{
+	cutin "kafra_05",2;
+	callfunc "F_KafSetPront";
+	callfunc "F_Kafra",0,0,0,40,800;
+
+	M_Save:
+		savepoint "prontera",33,208;
+		callfunc "F_KafEnd",0,1,"在城内";
+}
+
+// East ===========================================
+prontera,282,200,2	script	卡普拉服务人员::kaf_prontera4	114,{
+	cutin "kafra_04",2;
+	callfunc "F_KafSetPront";
+	callfunc "F_Kafra",0,0,0,40,800;
+
+	M_Save:
+		savepoint "prontera",281,203;
+		callfunc "F_KafEnd",0,1,"在城内";
+}
+
+// Center ===========================================
+prontera,146,89,6	script	卡普拉服务人员::kaf_prontera5	117,{
+	cutin "kafra_01",2;
+	callfunc "F_KafSetPront";
+	callfunc "F_Kafra",0,9,0,40,800;
+
+M_Save:
+	savepoint "prontera",116,73;
+	callfunc "F_KafEnd",0,1,"在城内";
+}
+
+
+// Function: Sets variables for Prontera Kafras ----------------------------
+function	script	F_KafSetPront	{
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpD$[0], "依斯鲁得岛", "吉芬", "斐扬", "梦罗克", "兽人地下洞窟", "艾尔贝塔";
+	setarray @wrpP[0], 600, 1200, 1200, 1200, 1200, 1800;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], @wrpD$[4]+" -> "+@wrpP[4];
+	set @wrpC$[5], @wrpD$[5]+" -> "+@wrpP[5];
+	set @wrpC$[6], "取消";
+	setarray @viewpX[0], 151, 29, 282, 152;
+	setarray @viewpY[0], 29, 207, 200, 326;
+	return;
+}

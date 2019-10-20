@@ -1,0 +1,128 @@
+//===== rAthena Script =======================================
+//= White Day Event Script
+//===== By: ==================================================
+//= 1.0a Muad_Dib (Prometheus Project)
+//===== Current Version: =====================================
+//= 1.0a
+//===== Compatible With: =====================================
+//= Any Athena Version; RO Episode 6+
+//===== Description: =========================================
+//= Sells candy, candy cane and well baked cookie.
+//===== Additional Comments: =================================
+//= 07/06/05 : Added 1st Version. [Muad_Dib]
+//= Converted to rAthena format by Dr.Evil
+//============================================================
+
+
+alberta,188,64,4	script	点心商人	91,{
+	set @maplenum,0;
+	set @mapleItemID,0;
+	set @maplePrice,0;
+	set @maplePriceT,0;
+	mes "[美宝露　舒卡]";
+	mes "欢迎光临!";
+	mes "你需要一些美味的点心吗?";
+	mes "老师...他是...";
+	mes "艾尔贝塔的点心师傅";
+	mes "他非常努力制作点心";
+	next;
+	mes "[美宝露　舒卡]";
+	mes "从爱人那里得到了回礼";
+	mes "整个心也是甜的...";
+	mes "需要一些点心吗～?";
+	next;
+	menu "请你给我一些点心!",-,"我不需要。",M_END,"老师?",M_L1;
+
+	mes "[美宝露　舒卡]";
+	mes "是!";
+	mes "这边有菜单～";
+	mes "因为限定了购买的数量";
+	mes "总购入是^ff0000  5 ^000000个";
+	mes "请交给我做吧";
+	next;
+	menu "糖果",-,"棒棒糖",L0_2,"烧烤过的曲奇",L0_3;
+
+	set @maplePrice,3000;
+	set @mapleItemID,529;
+	mes "[美宝露　舒卡]";
+	mes "糖果啊～";
+	mes "价值为3000Zeny～";
+	mes "你要买多少个呢?";
+	next;
+	goto L_INPUT;
+L0_2:
+	set @maplePrice,4000;
+	set @mapleItemID,530;
+	mes "[美宝露　舒卡]";
+	mes "柺杖糖糖果啊～";
+	mes "价值为4000Zeny～";
+	mes "你要买多少个呢?";
+	next;
+	goto L_INPUT;
+L0_3:
+	set @maplePrice,2000;
+	set @mapleItemID,538; 
+	mes "[美宝露　舒卡]";
+	mes "姜饼糖果啊～";
+	mes "价值为2000Zeny～";
+	mes "你要买多少个呢?";
+	next;
+
+L_INPUT:
+	input @maplenum;
+	if (@maplenum > 5) goto L_ERROR;
+	if (@maplenum == 0) goto M_END;
+	set @maplePriceT,@maplePrice*@maplenum;
+	if (Zeny < @maplePriceT) goto L_ERROR2;
+	set Zeny,Zeny- @maplePriceT;
+	getitem @mapleItemID,@maplenum;
+	mes "[美宝露　舒卡]";
+	mes "真的谢谢你～";
+	mes "这些点心，真的很美味啊～";
+	mes "老师做的点心真是世界第一啊!";
+	mes "虽然自己也觉得很好吃";
+	mes "但是，不要吃太多，不然会引致肥胖的";
+	mes "请注意一下吧";
+	close;
+
+M_L1:
+	mes "[美宝露　舒卡]";
+	mes "是啊!!";
+	mes "我的点心老师";
+	mes "是古巴路先生和基路斯先生";
+	mes "承蒙两位老师让我在这里作点心的修行～";
+	next;
+	mes "[美宝露　舒卡]";
+	mes "在这个时期~";
+	mes "老师们好像在做移动贩卖...";
+	mes "现在会去那里也不知道";
+	mes "说不定日后会在那里碰面呢～";
+	close;
+
+L_ERROR:
+	mes "[美宝露　舒卡]";
+	mes "呀?";
+	mes "你要多少个呢?";
+	mes "刚刚我听漏了";
+	mes "会否介意再说多一次吗?";
+	mes "同时间只能购买五个";
+	mes "^ff0000 5 ^000000个～";
+	next;
+	goto L_INPUT;
+
+L_ERROR2:
+	mes "[美宝露　舒卡]";
+	mes "咦...?";
+	mes "客人，你金钱不足啊～";
+	mes "请再一次确认你拥有的款项";
+	mes "拜托你再看一次那个说明～";
+	close;
+
+M_END:
+	mes "[美宝露　舒卡]";
+	mes "是这样嘛...真是遗憾";
+	mes "暂且在这边销售吧";
+	mes "如果真的想要我帮忙销售的话，";
+	mes "请通知我吧!";
+	close;
+}
