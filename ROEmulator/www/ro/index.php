@@ -99,9 +99,9 @@ echo "
 					<TD colSpan=4 height=30><DIV align=center><SPAN class=txt><IMG height=46 src='images/c_http1.gif' width=228 border=0></SPAN></DIV></TD>
 					</TR>
 					<TR>
-					<TD width='14%' height=30><DIV align=center><SPAN class=txt><A href='".$config_cilent_url1."' target=_blank>百度网盘(dgui)</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url2."' target=_blank>99Max(收费)</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url3."' target=_blank>韩国官网</A></SPAN></DIV></TD>
+					<TD width='14%' height=30><DIV align=center><SPAN class=txt><A href='".$config_cilent_url1."' target=_blank>v201903-度盘(dgui)</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url2."' target=_blank>v201610-度盘(a2sv)</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url3."' target=_blank>v201405-度盘(kmnx)</A></SPAN></DIV></TD>
 					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_cilent_url4."' target=_blank>本地下载</A></SPAN></DIV></TD>
 					</TR>
 					</TBODY>
@@ -112,10 +112,10 @@ echo "
 					<TD height=30 colspan='4'><DIV class=txt align=center><IMG src='images/c_http2.gif' width=228 height=46 border=0></DIV></TD>
 					</TR>
 					<TR>
-					<TD width='14%' height=30><DIV class=txt align=center><A href='".$config_patch_url1."' target=_blank>百度网盘(5i4k)</A></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url2."' target=_blank>99Max(收费)</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url3."' target=_blank>本地下载一</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url4."' target=_blank>本地下载二</A></SPAN></DIV></TD>
+					<TD width='14%' height=30><DIV class=txt align=center><A href='".$config_patch_url1."' target=_blank>v4.3-度盘(iav5)</A></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url2."' target=_blank>v3.7-度盘(fy43)</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url3."' target=_blank>v3.0-度盘(rc8s)</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url4."' target=_blank>本地下载</A></SPAN></DIV></TD>
 					</TR>
 					</TBODY>
 					</TABLE>
