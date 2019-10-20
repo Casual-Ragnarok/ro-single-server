@@ -1518,14 +1518,14 @@ gld_dun01,20,99,5	script	神之放逐者	811,{
 
 					case 7:
 						mes "[堕天 被遗弃的神]";
-						if ((zeny >= 100000000) && (countitem(5353) > 0)) { 
+						if ((zeny >= 100000000) && (countitem(5022) > 0)) { 
 
 							mes "很好, 材料齐了";
 							mes "我现在就帮你强化投影!!!";
 							next;
 
 							set zeny,zeny - 100000000;
-							delitem 5353,1;    // 太阳神头盔
+							delitem 5022,1;    // 太阳神头盔
 							
 							skilleffect "AL_ANGELUS",0;
 							mes "完成了! 拿着吧~";
