@@ -51,6 +51,7 @@ gld_dun01,28,85,0	script	神之执行者#1::GodDwarf	826,{
 		mes "[矮人 格伦伯蒂]";
 		mes "我们拥有最丰富的知识和技能!!!";
 		close;
+
 	case 2:
 		mes "[Dwarf Grunburti]";
 		mes "你只是问我在这里做什么？ ";
@@ -70,6 +71,8 @@ gld_dun01,28,85,0	script	神之执行者#1::GodDwarf	826,{
 		mes "[Dwarf Grunburti]";
 		mes "因为一千年前的战争，我的家乡消失了";
 		mes "我再也找不到回家的路...";
+		close;
+
 	case 3:
 		mes "[矮人 格伦伯蒂]";
 		mes "我是四大正神的代言人";
@@ -83,6 +86,7 @@ gld_dun01,28,85,0	script	神之执行者#1::GodDwarf	826,{
 
 		hideoffnpc "神之放逐者";
 		close;
+		
 	case 4:
 		set .@GID,getcharid(2);
 		if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
