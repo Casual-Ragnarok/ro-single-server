@@ -1630,7 +1630,7 @@
 2407,Chrystal_Pumps,²£Á§Ð¬,4,20,,100,,5,,0,0xFFFFFFFE,63,0,64,,0,1,0,{ bonus bMdef,10; bonus bLuk,5; },{},{}
 2408,Cuffs,½ÅÁ¶,4,5000,,3000,,18,,0,0xFFFFFFFF,63,2,64,,0,1,0,{},{},{}
 2409,Spiky_Heel,¿¹Ä§Ð¬,4,8500,,600,,4,,0,0xFFFFFFFE,63,2,64,,0,1,0,{ bonus bMdef,5; },{},{}
-2410,Sleipnir,Ê·À×ÆÕÄá¶ûÖ®Ñ¥,4,20,,3500,,40,,0,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,25; bonus bSpeedRate,25; bonus bInt,25; },{},{}
+2410,Sleipnir,Ê·À×ÆÕÄá¶ûÖ®Ñ¥,4,20,,3500,,40,,0,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,25; bonus bSpeedRate,100; bonus bInt,25; },{},{}
 2411,Grave,ÖØÑ¥,4,48000,,750,,27,,0,0x00004080,63,2,64,,65,1,0,{},{},{}
 2412,Grave_,ÖØÑ¥,4,54000,,750,,15,,1,0x00004080,63,2,64,,65,1,0,{},{},{}
 2413,Safty_Boots,°²È«Ð¬,4,34000,,350,,6,,0,0x00004082,63,2,64,,30,0,0,{},{},{}

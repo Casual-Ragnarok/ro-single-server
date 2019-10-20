@@ -13,6 +13,7 @@
 //= 1.0 First Version. [Euphy]
 //============================================================ 
 
+// 打洞.. 其实就是换掉装备, 会损失精炼值
 prontera,147,61,3	script	Driller#pron	87,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
@@ -82,6 +83,7 @@ prontera,147,61,3	script	Driller#pron	87,{
 	}
 }
 
+// 附魔
 prontera,147,59,3	script	Goldberg#pron	878,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
