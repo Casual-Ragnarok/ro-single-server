@@ -2330,7 +2330,7 @@
 4128,Golden_Bug_Card,»Æ½ð³æ¿¨Æ¬,6,20,,10,,,,,,,,32,,,,,{ bonus bNoMagicDamage,100; bonus bUseSPrate,100; },{},{}
 4129,Baphomet__Card,Ð¡°Í·çÌØ¿¨Æ¬,6,20,,10,,,,,,,,4,,,,,{ bonus bAgi,3; bonus bCritical,1; },{},{}
 4130,Scorpion_King_Card,Ð«×ÓÖ®Íõ¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus2 bAddEle,Ele_Undead,20; },{},{}
-4131,Moonlight_Flower_Card,ÔÂÒ¹Ã¨¿¨Æ¬,6,20,,10,,,,,,,,64,,,,,{ bonus bSpeedRate,25; },{},{}
+4131,Moonlight_Flower_Card,ÔÂÒ¹Ã¨¿¨Æ¬,6,20,,10,,,,,,,,64,,,,,{ bonus bSpeedRate,100; },{},{}
 4132,Mistress_Card,·äºó¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bNoGemStone; bonus bUseSPrate,25; },{},{}
 4133,Daydric_Card,ÓÄÁé½£Ê¿¿¨Æ¬,6,20,,10,,,,,,,,4,,,,,{ bonus2 bSubEle,Ele_Neutral,20; },{},{}
 4134,Dracula_Card,µÂ¹ÅÀ­²®¾ô¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus2 bSPDrainRate,100,5; },{},{}
