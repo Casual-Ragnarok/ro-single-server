@@ -143,13 +143,14 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 客户端补丁（登陆器）：v4.3 【[Github](https://github.com/lyy289065406/ro-single-client)】【[百度网盘(iav5)](https://pan.baidu.com/s/1F3XLwqDDwebvUNIYIKPlXQ&shfl=sharepset)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
  
 > 备注：
+<br/>　服务端脚本更新记录（游戏内公示）: [view](https://github.com/lyy289065406/ro-single-server/blob/master/npc/re/%E5%8A%9F%E8%83%BD%E8%84%9A%E6%9C%AC/update.txt)
 <br/>　服务端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-server.md)
 <br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
 
 
 ## 版本特色
 
-- 三转职业最高 BASE 等级 175, 最高 JOB 等级 60
+- 三转职业最高 BASE 等级 175, 最高 JOB 等级 70
 - 扩展职业最高 BASE 等级 160, 最高 JOB 等级 50
 - 全新种族 [杜兰族] （即喵族，原本 RO 只能控制人族）
 - 无登录限制，无限在线人数
@@ -308,10 +309,6 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
 ![](https://github.com/lyy289065406/ro-single-server/blob/master/img/11.png)
 
-
-### GM 进阶 - RO 脚本编辑指引
-
-> [传送门](https://github.com/lyy289065406/ro-single-server/blob/master/tools/README.md)
 
 </details>
 
@@ -498,6 +495,12 @@ RO 服务端启动后，会开启 5 个服务：
 
 
 
+### 0x99 更多资料
+
+> [传送门](https://github.com/lyy289065406/ro-single-server/tree/master/tools/RO%E8%B5%84%E6%96%99)
+
+
+
 ## 【附】 目录 & 文件功能说明
 
 
@@ -675,7 +678,15 @@ ro-single-server
 |   |   └-- statpoint.txt  ..................  [※ Base 每级素质点（需开启 exp.conf 的 use_statpoint_table）]
 |   └-- README.md  ..........................  [RO 服务端文本数据库说明]
 |-- npc  ....................................  [NPC 脚本库（在 re 文件夹内表示"复兴后", .99Max 后缀为已加密）]
-|   |-- old  ................................  [旧版 NPC 目录（大部分未加密，仅用于参考）]
+|   |-- 任务系统
+|   |   └-- seals  ..........................  [※ 复兴前四神器任务]
+|   |       |-- god_global.txt  .............  [四神器任务人数 & 进度调整脚本]
+|   |       |-- seal_status.txt  ............  [四神器任务进度面板]
+|   |       |-- god_weapon_creation.txt  ....  [六神器创建脚本（含复兴后的新神器）]
+|   |       |-- brisingamen_seal.txt  .......  [女神颈链解封任务]
+|   |       |-- megingjard_seal.txt  ........  [雷神腰带解封任务]
+|   |       |-- sleipnir_seal.txt  ..........  [史雷普尼尔之靴解封任务]
+|   |       └-- mjolnir_seal.txt  ...........  [雷神之锤解封任务]
 |   |-- re  .................................  [复兴后的脚本库]
 |   |   |-- script_main.conf  ...............  [※ NPC 配置脚本的总入口点]
 |   |   |-- 任务系统.conf  ...................  [子系统脚本的入口点]
@@ -697,7 +708,9 @@ ro-single-server
 |   |   |   └-- custom_warp.txt  ............  [※ 自定义传送阵]
 |   |   |-- 副本系统
 |   |   |-- 功能脚本
-|   |   |   └-- dismount_card.txt  ..........  [※ 安全拆卡 NPC]
+|   |   |   |-- dismount_card.txt  ..........  [※ 安全拆卡 NPC]
+|   |   |   |-- onekey_master.txt  ..........  [※ 一键大师]
+|   |   |   └-- update.txt  .................  [※ 升级内容公示面板]
 |   |   |-- 卡普拉人员
 |   |   |-- 商店系统
 |   |   |   └-- custom_shop.txt  ............  [※ 自定义商店 NPC]
