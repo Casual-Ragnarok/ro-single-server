@@ -1,6 +1,23 @@
-# rAthena - SC 一览
+# SC 可选状态一览
 
 ------
+
+使用方法：
+- 通过函数命令 `sc_start <type>,<tick>,<val1>[,<target_id>];` 调用（详见 [doc](https://github.com/lyy289065406/ro-single-server/blob/master/doc/script_commands.txt) 文档）
+- 其中
+
+<type> 异常状态的编号（数值类型）
+　（Eathena.Net） 
+请参考status.h。也可以参考在const.txt中的"SC_xxxx"字样的定义 
+　 
+（Jathena.Net） 
+请参考skill.h或check_option的项目 
+ 
+<tick> 异常状态持续的时间（数值类型，单位为ms） 
+<val1> 造成异常状态对应的技能的等级（数值类型） 
+<target_id> 单位ID（数值类型，省略时为自己） 
+
+
 
 | 编号 | 状态值 | 状态描述 |
 |:----:|:------:|:---------|
