@@ -1,25 +1,19 @@
-# SC 可选状态一览
+# SC 技能状态一览
 
 ------
 
 使用方法：
 - 通过函数命令 `sc_start <type>,<tick>,<val1>[,<target_id>];` 调用（详见 [doc](https://github.com/lyy289065406/ro-single-server/blob/master/doc/script_commands.txt) 文档）
-- 其中
+<br/>　参数 `<type>` 表示技能状态的编号（下表为可选范围，数值或常量均可） 
+<br/>　参数 `<tick>` 异常状态持续的时间（数值类型，单位为ms） 
+<br/>　参数 `<val1>` 表示造成该状态的对应技能的等级（数值类型） 
+<br/>　参数 `<target_id>` 目标ID（数值类型，省略时为自己） 
+- 示例：`sc_start SC_BLESSING,600000,10;` 表示使自己陷入 10 级天使之赐福效果 600 秒
 
-<type> 异常状态的编号（数值类型）
-　（Eathena.Net） 
-请参考status.h。也可以参考在const.txt中的"SC_xxxx"字样的定义 
-　 
-（Jathena.Net） 
-请参考skill.h或check_option的项目 
- 
-<tick> 异常状态持续的时间（数值类型，单位为ms） 
-<val1> 造成异常状态对应的技能的等级（数值类型） 
-<target_id> 单位ID（数值类型，省略时为自己） 
+> 注意区分 `skilleffect` 函数命令，该命令仅是使画面呈现技能发动效果，而不会使得角色陷入技能状态，但是一般和 `sc_start` 一起使用
 
 
-
-| 编号 | 状态值 | 状态描述 |
+| 状态编号 | 状态常量值 | 状态描述 |
 |:----:|:------:|:---------|
 | 0 | SC_STONE | 石化 |
 | 1 | 1 | SC_FREEZE | 冰冻 |
