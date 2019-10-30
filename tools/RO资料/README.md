@@ -18,8 +18,4 @@
 - [神器任务](https://github.com/lyy289065406/ro-single-server/blob/master/tools/RO%E8%B5%84%E6%96%99/%E5%AE%A2%E6%88%B7%E7%AB%AF/%E7%A5%9E%E5%99%A8%E4%BB%BB%E5%8A%A1.md)
 
 
-http://gz.bendibao.com/gzsi/2014917/si169956.shtml
-https://www.gdzwfw.gov.cn/portal/guide/1144030069558324853442111681000
-https://www.gdzwfw.gov.cn/portal/guide/11440300693981103B3442014055014
-
 ------
