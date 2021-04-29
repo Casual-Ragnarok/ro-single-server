@@ -3,14 +3,14 @@
 ------
 
 使用方法：
-- 通过函数命令 `sc_start <type>,<tick>,<val1>[,<target_id>];` 调用（详见 [doc](https://github.com/lyy289065406/ro-single-server/blob/master/doc/script_commands.txt) 文档）
+- 通过函数命令 [`sc_start <type>,<tick>,<val1>[,<target_id>];`](https://lyy289065406.github.io/api-online/javadoc/RO-EA-API/exp/ro/cmd/ch/04_player/0400_Player_Commands.html#Z:Z_sc_start--) 调用
 <br/>　参数 `<type>` 表示技能状态的编号（下表为可选范围，数值或常量均可） 
 <br/>　参数 `<tick>` 异常状态持续的时间（数值类型，单位为ms） 
 <br/>　参数 `<val1>` 表示造成该状态的对应技能的等级（数值类型） 
 <br/>　参数 `<target_id>` 目标ID（数值类型，省略时为自己） 
 - 示例：`sc_start SC_BLESSING,600000,10;` 表示使自己陷入 10 级天使之赐福效果 600 秒
 
-> 注意区分 `skilleffect` 函数命令
+> 注意区分 [`skilleffect`](https://lyy289065406.github.io/api-online/javadoc/RO-EA-API/exp/ro/cmd/ch/04_player/0400_Player_Commands.html#Z:Z_skilleffect--) 函数命令
 <br/>　该命令仅是使画面呈现技能发动效果，而不会使得角色陷入技能状态，但是一般和 `sc_start` 一起使用
 
 ------
