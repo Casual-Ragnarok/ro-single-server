@@ -6,8 +6,8 @@
 // - param: 无参数
 // - return: 玩家 ID
 function	script	F_PLAYER_ID	{
-	set @player_id$, getcharid(0);
-	return @player_id$;
+	set @player_id, getcharid(0);
+	return @player_id;
 }
 
 // 获取当前玩家名称
@@ -94,7 +94,7 @@ function	script	F_MANUAL	{
 	next;
 	mes "[RO 手册]";
 	mes "本手册并无任何效果加成";
-	menu "附加神赐体质（限时）",_TO_GOD_CONSTITUTION,
+	menu "附加神赐体质（限时）",_TO_GOD_POWER,
 	     "查看权限指令",_TO_CHAR_COMMANDS,
 		 "查看常用命令",_TO_GAME_COMMANDS,
 		 "查看服务器信息",_TO_SERVER_RATES,
@@ -105,7 +105,7 @@ function	script	F_MANUAL	{
 		 "全身鉴定",_TO_IDENTIFY_ALL,
 		 "没事了.",_TO_CLOSE;
 
-    _TO_GOD_CONSTITUTION:
+    _TO_GOD_POWER:
 	    mes "目前共 16 种神赐体质";
 		mes "每种神赐体质对应一个隐藏世界任务";
 		mes "每种神赐体质仅全服第一个完成某一种世界任务的角色可获得";
@@ -136,8 +136,62 @@ function	script	F_MANUAL	{
 		mes "不死鸟（HP 最少为 1，但持续消耗 MP 直至归零）";
 		next;
 		mes "你当前拥有的神赐体质为：none";
-		mes "你不是天选之子，附加失败";
 		// TODO
+
+		set @pid,callfunc("F_PLAYER_ID");
+		set $GOD_POWER_02, @pid;
+
+		if (@pid == $GOD_POWER_01) {
+			mes "1";
+			bonus_script "{ bonus bFlee,300; bonus bFlee2,300; bonus bHit,300; bonus bCritical,300; }",600;
+
+		}
+		
+		if (@pid == $GOD_POWER_02) {
+			mes "2";
+			bonus_script "{ bonus bFlee,100; bonus bFlee2,100; bonus bHit,100; bonus bCritical,100; }",3600;
+
+		}
+		mes "你不是天选之子，附加失败";
+
+bonus_script \"{ bonus2 bHPLossRate,100,10000; bonus bBaseAtk,20; bonus bAspdRate,25; }\",60,0,0,EFST_STEAMPACK;
+*bonus_script "<script code>",<duration>{,<flag>{,<type>{,<status_icon>{,<char_id>}}}};
+
+This command will attach a script to a player for a given duration, in seconds.
+After that time, the script will automatically expire. The same bonus cannot be
+stacked. By default, this bonus will be stored on `bonus_script` table when player
+logs out.
+
+Flags (bitmask):
+	1   : Remove when dead.
+	2   : Removable by Dispell.
+	4   : Removable by Clearance.
+	8   : Remove when player logs out.
+	16  : Removeable by Banishing Buster.
+	32  : Removable by Refresh.
+	64  : Removable by Lux Anima.
+	128 : Remove when Madogear is activated or deactivated.
+	256 : Remove when receive damage.
+	512 : Script is permanent, cannot be cleared by bonus_script_clear.
+	1024: Force to replace duplicated script by expanding the duration.
+	2048: Force to add duplicated script. This flag cannot be stacked with 1024,
+	      if both are defined, 1024 will be checked first and ignore this flag.
+
+Types:
+	This will be used to decide negative or positive buff for 'debuff_on_logout'.
+	0: Ignore the buff type and won't be removed if the flag is not &8 (Default)
+	1: Buff
+	2: Debuff
+
+Status_icon: See "Status Icon" section in 'src/map/script_constants.hpp'. Default is SI_BLANK (-1).
+
+Example:
+	// Apple gives you +5 Str bonus for 1 minute when it's consumed.
+	512,Apple,Apple,0,15,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus_script "{ bonus bStr,5; }",60; },{},{}
+
+		set $aaaaa,111;
+		set #bbbbb,222;
+		callsub(_TO_CLOSE);
 		return;
 
 	_TO_CHAR_COMMANDS:
@@ -166,10 +220,10 @@ function	script	F_MANUAL	{
 	_TO_CHARINFO:
 		set @pid$,callfunc("F_PLAYER_ID");
 		set @pname$,callfunc("F_PLAYER_NAME");
-		set @plv,callfunc("F_PLAYER_GMLV");
+		set @plv$,callfunc("F_PLAYER_GMLV");
 		mes "[角色ID] " + @pid$;
 		mes "[角色名称] " + @pname$;
-		mes "[权限等级] " + @plv;
+		mes "[权限等级] " + @plv$;
 		callsub(_TO_CLOSE);
 		return;
 

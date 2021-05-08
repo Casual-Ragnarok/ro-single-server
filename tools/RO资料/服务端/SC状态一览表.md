@@ -61,8 +61,8 @@
 | 50 | SC_BROKENARMOR | 防具破碎 |
 | 51 | SC_BROKENWEAPON | 武器破碎 |
 | 52 | SC_HALLUCINATION | 幻觉 |
-| 53 | SC_WEIGHT50 | 50趴负重 |
-| 54 | SC_WEIGHT90 | 90趴负重 |
+| 53 | SC_WEIGHT50 | 50%负重 |
+| 54 | SC_WEIGHT90 | 90%负重 |
 | 55 | SC_ASPDPOTION0 | 集中药水 |
 | 56 | SC_ASPDPOTION1 | 觉醒药水 |
 | 57 | SC_ASPDPOTION2 | 菠色克药水 |

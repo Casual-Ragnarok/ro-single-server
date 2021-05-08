@@ -15,8 +15,8 @@ UPGRADEROOT:
 		 "一键全身鉴定（-1W）",TO_IDENTITY,
 		 "一键全身修复（-10W）",TO_REPAIRE,
 		 "一键精炼+10（-1E）",TO_REFINE_10,
-		 "一键精炼+15（-10E）",TO_REFINE_15,
-		 "一键精炼+20（-50E）",TO_REFINE_20,
+		 "一键精炼+15（-8E）",TO_REFINE_15,
+		 "一键精炼+20（-16E）",TO_REFINE_20,
 		 "一键破产（0Z）",TO_BANKRUPTCY,
 		 "一键自杀（+444Z）",TO_KILL_SELF,
 		 "一键暗杀（-100W）",TO_KILL_OTHER,
@@ -130,7 +130,7 @@ TO_REFINE_10:
 
 
 TO_REFINE_15:
-	set @money,1000000000;
+	set @money,800000000;
 	if(zeny >= @money) {
 		set @refine_num,15;
 		goto TO_SELECT;
@@ -141,7 +141,7 @@ TO_REFINE_15:
 
 
 TO_REFINE_20:
-	set @money,5000000000;
+	set @money,1600000000;
 	if(zeny >= @money) {
 		set @refine_num,20;
 		goto TO_SELECT;

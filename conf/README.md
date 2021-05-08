@@ -115,9 +115,9 @@ display_party_name: yes
 pet_rename: yes
 
 // player.conf
-max_aspd: 196
-max_third_aspd: 196
-max_extended_aspd: 196
+max_aspd: 199
+max_third_aspd: 199
+max_extended_aspd: 199
 vip_disp_rate: no
 
 // status.conf
