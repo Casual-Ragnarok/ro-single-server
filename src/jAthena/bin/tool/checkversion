@@ -1,0 +1,82 @@
+#!/usr/bin/perl
+
+##########################################################################
+# Athena用サーバーバージョン所得ツール
+#
+# 　起動中のAthenaの各サーバーに接続して情報を表示する
+#
+#-------------------------------------------------------------------------
+#   ./checkversion IP:port として使用します
+#   ./checkversion IP port でも動きます
+#
+# 　成功するとコード０で終了します
+#
+##########################################################################
+
+
+
+$connecttimeout=10;	# 接続タイムアウト(秒)
+
+#-------------------------------設定ここまで-----------------------------
+
+
+
+
+use IO::Socket;
+
+unless($ARGV[0]){
+	print "USAGE: $0 server:port\n";
+	exit(1);
+}
+
+$server=$ARGV[0];
+$port=$ARGV[1];
+$port=$1 if($server=~s/:(\d+)//);
+$port||=6900;
+
+# サーバーに接続する
+my($so,$er)=();
+eval{
+	$so=IO::Socket::INET->new(
+		PeerAddr=> $server,
+		PeerPort=> $port,
+		Proto	=> "tcp",
+		Timeout	=> $connecttimeout) or $er=1;
+};
+if($er || $@){
+	print "Cant connect to server [$server:$port] !\n";
+	exit(2);
+}
+
+# 情報要求
+print $so pack("v",30000);
+$so->flush();
+
+# 所得
+if( read($so,$buf,10)<10 ){
+	print "socket read error. not athena or too old version ?\n";
+	exit(5);
+}
+
+# 切断要求
+print $so pack("v",30002);
+$so->flush();
+
+# パケット解析
+my($ret,$maver,$miver,$rev,$dev,$mod,$type,$mdver)=unpack("v c6 v",$buf);
+
+if($ret!=30001){
+	print "server error. not athena or too old version ?\n";
+	exit(6);
+}
+
+print "[$server:$port]\n";
+printf "Athena %s-%d.%d", ("stable","dev")[$dev], $maver,$miver;
+printf ".%d",$rev if $rev;
+printf "%s%d\n",("","-mod")[$mod],$mdver;
+my(@stype)=();
+foreach $i(0..3){
+	push @stype,(("login","char","inter","map")[$i]) if( $type & (1<<$i) );
+}
+print join("/",@stype)." server.\n";
+exit(0);

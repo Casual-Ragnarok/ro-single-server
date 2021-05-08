@@ -1,0 +1,532 @@
+//====================================================================
+//Ragnarok Online EP4.0(J) Marriage System      V1.0
+//====================================================================
+prt_church.gat,94,100,4	script	結婚コンパニオン	71,{
+	mes "[ハッピーマリー]";
+	mes "結婚とは、幸せを夢見る";
+	mes "全ての人々の希望です。";
+	mes "おやおや、もしかして……";
+	mes "あなた、結婚したい方が";
+	mes "いらっしゃるのですか？";
+	next;
+	menu "結婚式について聞きたい",-,"結婚式ってどうやるんですか",L2,"結婚式を申し込みたい",L3,"私は無敵のソロ軍団！",L4;
+		mes "[ハッピーマリー]";
+		mes "結婚はルーンミッドガッツ王国の";
+		mes "国王であるトリスタン3世陛下が";
+		mes "すべての新郎新婦に祝福を与えたいと";
+		mes "式を全て執り行っております。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "国政にお忙しい方ですが、新しく門出を";
+		mes "迎える方々のため、このプロンテラ";
+		mes "大聖堂に、わざわざ御出でくださって";
+		mes "いるのです。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "まず、結婚についてですが……慎重に";
+		mes "行ってください。";
+		mes "一度結婚すると、二度と別れることが";
+		mes "出来ないからです。結婚した二人は";
+		mes "例え一人がこの世を去ったとしても";
+		mes "永遠に一緒なのです。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "男性は女性と、女性は男性と結婚する";
+		mes "ことができます。同性やモンスターと";
+		mes "結婚したいと主張される方がいるかも";
+		mes "しれませんが……陛下がお認めに";
+		mes "ならないので、ご了承くださいませ。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "未来を約束した相手がいらっしゃい";
+		mes "ましたら、プロポーズしてみたら";
+		mes "いかがですか？";
+		mes "幸せな幸せな未来を夢見る";
+		mes "すべての恋人に祝福あれ!!";
+		close;
+	L2:
+		mes "[ハッピーマリー]";
+		mes "まず、新郎新婦は私に結婚の申し込みを";
+		mes "してください。申し込まれましたら";
+		mes "二人だけのパーティーを組み、国王";
+		mes "陛下に会いに行ってください。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "国王陛下へは、最初に^0000FF男性^000000が話しかけて";
+		mes "ください。そして結婚したい女性の名前";
+		mes "を正確にお伝えください。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "新郎が報告を終えましたら、次は新婦の";
+		mes "番です。国王陛下に新郎の名前を正確に";
+		mes "お伝えください。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "お互い結婚相手の名前を報告し終えると";
+		mes "指輪交換が行われ、その瞬間、二人は";
+		mes "永遠の愛の証を得たこととなります。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "結婚を申し込む方がたくさんいる場合、";
+		mes "順番をお待ちいただくことになります。";
+		mes "陛下のお体は1つですので、同時に";
+		mes "複数の式を行うことは出来ないのです。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "そして、陛下へご報告を行う際は、";
+		mes "^ff0000最初に新郎が声を掛けてから3分以内に";
+		mes "すべての過程を終わらせてください。^000000";
+		mes "もし3分以内に式が終わらなかった場合";
+		mes "二度と結婚することは出来ません。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "また、陛下に結婚相手の名前を報告";
+		mes "する時は、必ず正確にお願いします。";
+		mes "少しでも報告間違いがありますと";
+		mes "やはり式に支障をきたしてしまいます。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "式の事前に、必ず結婚相手の名前の";
+		mes "正確な綴りをご確認ください。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "方法としましては、";
+		mes "相手の方に耳打ちを行ってみると";
+		mes "よろしいと思います。相手に通じれば";
+		mes "その名前が正しい綴りですし、もし通じ";
+		mes "なければ、名前が間違っている可能性が";
+		mes "あります。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "まず、相手に一度耳打ちをして、";
+		mes "チャットウィンドウ左部のボタンを";
+		mes "押します。そうすると、";
+		mes "耳打ちリストに相手の名前が";
+		mes "表示されますので選択しましょう。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "相手の名前がボタンの左に";
+		mes "表示されますので、その名前を";
+		mes "Ctrl+Cでコピーしておきます。";
+		mes "そうすれば、報告の際に";
+		mes "Shift＋Insertで相手の名前を";
+		mes "呼び出すことができます。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "1)相手と耳打ち会話をする";
+		mes "2)耳打ちリストに表示された";
+		mes "相手の名前を選択する";
+		mes "3)チャットウィンドウの左下に";
+		mes "表示された相手の名前を";
+		mes "Ctrl+Cでコピーする。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "この方法で、相手の名前を";
+		mes "確実に覚えることができますし、";
+		mes "陛下に報告する時にも";
+		mes "使っていただけると思います。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "説明だけですとなんですので、1回";
+		mes "試してみましょうか。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "Ctrl＋Cでコピーしたものを";
+		mes "Shift＋Insertキーで呼び出してみて";
+		mes "ください。よろしいですか？";
+		next;
+		input @test$;
+		mes "[ハッピーマリー]";
+		mes "どうです、出来ましたか？";
+		next;
+		mes "[ハッピーマリー]";
+		mes "では、もし結婚したいと思うお相手が";
+		mes "いましたら、申し込みを是非どうぞ。";
+		close;
+	L3:
+		mes "[ハッピーマリー]";
+		mes "結婚をするためには、いくつか条件が";
+		mes "ございます。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "まず、結婚するには^3377FFベースレベルが";
+		mes "45以上^000000でなければなりません。";
+		mes "そして、新郎新婦二人とも、申し込みを";
+		mes "していただく必要がございます。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "申し込みの際、男性は^3377FF1,300,000zeny^000000と";
+		mes "^3377FFタキシード1着^000000、女性は^3377FF1,200,000zeny^000000と";
+		mes "^3377FFウェディングドレス1着^000000が必要です。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "あと、結婚指輪を準備しなければなりま";
+		mes "せんので、新郎新婦は1個ずつ、^3377FFダイヤ";
+		mes "の指輪^000000を準備してください。";
+		mes "新郎が1つ、新婦が1つですよ。";
+		mes "よろしいですね。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "以上の品が全てそろっているのを確認";
+		mes "しましたら、申し込み書に御自分の名前";
+		mes "を記入していただきます。";
+		next;
+		mes "[ハッピーマリー]";
+		mes "二人とも申し込みが済みましたら";
+		mes "結婚式を挙げることができます。";
+		mes "申し込みをなさいますか？";
+		next;
+		menu "はい",L3_1,"いいえ",-;
+			mes "[ハッピーマリー]";
+			mes "今日も幸せな一日にな～っれっ！";
+			close;
+		L3_1:
+			if (PartnerID > 0) goto Lmarried;
+			if (@event_marry==1) goto LError;
+			if (BaseLevel<45) goto Llowlevel;
+			if (countitem(2613)<1) goto LitemError1;
+			if ((Sex==0) && (countitem(2338)<1)) goto LitemError2W;
+			if ((Sex==0) && (Zeny<1200000)) goto LZenyError;
+			if ((Sex==1) && (countitem(7170)<1)) goto LitemError2M;
+			if ((Sex==1) && (Zeny<1300000)) goto LZenyError;
+			mes "[ハッピーマリー]";
+			mes "御結婚お祝い申し上げます！";
+			next;
+			mes "[ハッピーマリー]";
+			mes "それでは、これが申し込み書です。";
+			mes "ここに自分の名前を記入してください。";
+			next;
+		LEnterName:
+			input @name$;
+			if (@name$!=strcharinfo(0)) goto LNameError;
+			delitem 2613,1;
+			if (Sex==0) delitem 2338,1;
+			if (Sex==0) set Zeny,Zeny-1200000;
+			if (Sex==1) delitem 7170,1;
+			if (Sex==1) set Zeny,Zeny-1300000;
+			set @event_marry,1;
+			mes "[ハッピーマリー]";
+			mes "はい、申し込み書を承りました。";
+			mes "後程、陛下には結婚相手の名前も報告";
+			mes "することになります。式の前に相手の";
+			mes "名前を正確に言えるよう、準備して";
+			mes "おくことをお勧めいたします。";
+			next;
+			mes "[ハッピーマリー]";
+			mes "では、結婚相手の方も申し込みを済ませ";
+			mes "ましたら、二人だけでパーティーを組み";
+			mes "この奥にいます国王陛下の元へどうぞ。";
+			next;
+			mes "[ハッピーマリー]";
+			mes "そして……お幸せに～";
+			emotion 3;
+			close;
+	L4:
+		emotion 23;
+		hideoffnpc "ソロ軍団#プロンテラ";
+		hideoffnpc "ソロ軍団#ゲフェン";
+		hideoffnpc "ソロ軍団#モロク";
+		hideoffnpc "ソロ軍団#フェイヨン";
+		hideoffnpc "ソロ軍団#アマツ";
+		hideoffnpc "ソロ軍団#コンロン";
+		donpcevent "::OnSolos";
+		mes "[ソロ軍団]";
+		mes "精錬は1人で出来ちゃうぞ！";
+		mes "ダンジョンでパーティーは贅沢だ！";
+		mes "私には心に決めたNPCがいる！";
+		mes "生まれて転職まで独りでした！";
+		mes "クリスマスにはシングルベ～ル！";
+		mes "私たちは無敵のソロ軍団！";
+		next;
+		hideonnpc "ソロ軍団#プロンテラ";
+		hideonnpc "ソロ軍団#ゲフェン";
+		hideonnpc "ソロ軍団#モロク";
+		hideonnpc "ソロ軍団#フェイヨン";
+		hideonnpc "ソロ軍団#アマツ";
+		hideonnpc "ソロ軍団#コンロン";
+		emotion 4;
+		close;
+Llowlevel:
+	mes "[ハッピーマリー]";
+	mes "プロポーズなさるより先に、ご自分の";
+	mes "鍛練が必要なようです。結婚には義務や";
+	mes "責任が招じます。相手の方を守れるくら";
+	mes "い強くなってから、いらして下さい。";
+	close;
+LitemError1:
+	mes "[ハッピーマリー]";
+	mes "結婚指輪に使うダイヤの指輪を";
+	mes "忘れていらっしゃったようですね。";
+	mes "ダイヤの指輪をお持ちになってから";
+	mes "またお申し込みください。";
+	close;
+LitemError2M:
+	mes "[ハッピーマリー]";
+	mes "おや、タキシードはどうなさいました？";
+	mes "式を挙げるのに、花婿がそのような出で";
+	mes "立ちでは……一生に一度の事ですし、";
+	mes "忘れずに準備してきてくださいませ。";
+	close;
+LitemError2W:
+	mes "[ハッピーマリー]";
+	mes "おや、ウェディングドレスはどうなさい";
+	mes "ましたか？式を挙げるのに、花嫁がドレ";
+	mes "ス無しでは……一生に一度の事ですし、";
+	mes "忘れずに準備してきてくださいませ。";
+	close;
+LZenyError:
+	mes "[ハッピーマリー]";
+	mes "申し訳ございませんが、結婚式の費用と";
+	if (Sex==0) mes "して1,200,000zeny必要です。";
+	if (Sex==1) mes "して1,300,000zeny必要です。";
+	close;
+LNameError:
+	mes "[ハッピーマリー]";
+	mes "まぁまぁ！";
+	mes "自分の名前を正しく書くことが出来ない";
+	mes "のですか。結婚するつもりなら、自分の";
+	mes "名前くらい正しく名乗れるようになって";
+	mes "ください……もう一度、ここに自分の名";
+	mes "前をちゃんと正確に記入してください。";
+	next;
+	goto LEnterName;
+LError:
+	mes "[ハッピーマリー]";
+	mes "おや、すでに申し込みをされているよう";
+	mes "ですね。この奥に陛下がいらっしゃい";
+	mes "ますので、陛下へと赴き、式の順番を";
+	mes "お待ちください。";
+	close;
+Lmarried:
+	mes "[ハッピーマリー]";
+	mes "もう結婚しておられるようですね。";
+	mes "重婚は陛下が認めておられません。";
+	next;
+	mes "[ハッピーマリー]";
+	mes "それ以前に、一生を共にするという";
+	mes "約束を破るということが、どのような";
+	mes "意味であるか……相手のお気持ちを";
+	mes "考えたことがありまして？";
+	next;
+	mes "[ハッピーマリー]";
+	mes "結婚は一度きりです。例え相手が";
+	mes "死んだとしても、誓いは永遠なのです。";
+	close;
+OnInterIfInit:
+	hideonnpc "ソロ軍団#プロンテラ";
+	hideonnpc "ソロ軍団#ゲフェン";
+	hideonnpc "ソロ軍団#モロク";
+	hideonnpc "ソロ軍団#フェイヨン";
+	hideonnpc "ソロ軍団#アマツ";
+	hideonnpc "ソロ軍団#コンロン";
+	end;
+}
+//========================================================================================
+prt_church.gat,99,125,4	script	国王陛下	108,{
+	if ($@marry==1) goto LErrorWOS;
+	if (PartnerID > 0) goto Lmarried;
+	if (@event_marry==1) goto Lmarrychk;
+	mes "[トリスタン3世]";
+	mes "結婚を望むなら、まずは申し込みから";
+	mes "済ませてきなさい。";
+	close;
+Lmarrychk:
+	if (Sex==0) goto LmarryWoman;
+//PTの人数は2人か？
+	getpartymember getcharid(1);
+	if ($@partymembercount != 2) goto LError;
+//同じPTに相棒(異性)がいるか
+	if (readparam(21,$@partymembername$[0]) == 1) goto LChechSexW;
+	if (readparam(21,$@partymembername$[0]) == 0) goto LChechSexM;
+LChechSexW:
+	if (readparam(21,$@partymembername$[1]) == 1) goto LError;
+	goto LChechEnd;
+LChechSexM:
+	if (readparam(21,$@partymembername$[1]) == 0) goto LError;
+	goto LChechEnd;
+LChechEnd:
+	if (getcharid(0,$@partymembername$[0]) < 0) goto LError;
+	if (getcharid(0,$@partymembername$[1]) < 0) goto LError;
+//男か⇒(LmarryMan)
+	if (Sex == 1) goto LmarryMan;
+LError:
+	mes "[トリスタン3世]";
+	mes "結婚を望むなら、式を挙げる二人で";
+	mes "パーティーを結成しなさい。";
+	close;
+LmarryMan:
+	set $@marry,1;
+	initnpctimer;/*3分以内に終わらせないとリセット*/
+	set $@NameMan$,strcharinfo(0);
+	mes "[トリスタン3世]";
+	mes "幸せな未来を夢見る若者よ。";
+	mes "これから二人で歩む人生が幸せである";
+	mes "よう、共に過ごす時が至宝となるよう";
+	mes "二人の時が永遠となるよう……";
+	next;
+	mapannounce "prt_church.gat","国王陛下: 新郎" + $@NameMan$ + "よ、汝に問う……",8;
+	mes "[トリスタン3世]";
+	mes "" + $@NameMan$ + "よ。";
+	mes "汝の将来を明るく照らし、生涯を";
+	mes "共に歩まんとする女性の名前を";
+	mes "ここに告げよ。";
+	next;
+	input $@NameWoman$;
+//嫁が存在するか
+	if (getcharid(0,$@NameWoman$) < 0) goto LError2;
+//嫁が♀か
+	if (readparam(21,$@NameWoman$) != 0) goto LError3;
+	mapannounce "prt_church.gat","国王陛下: 汝、その富める時も、貧しき時も、病めるときも、健やかなる時も",8;
+	mes "[トリスタン3世]";
+	mes "新郎" + $@NameMan$ + "よ。";
+	mes "汝、その富める時も、貧しき時も、";
+	mes "病めるときも、健やかなる時も、";
+	mes "" + $@NameWoman$ + "を愛し";
+	mes "敬い、慰め、助け、その命の限り";
+	mes "堅く節操を守ることを誓うか。";
+	next;
+	mapannounce "prt_church.gat","国王陛下: " + $@NameWoman$ + "を愛し、敬い、慰め、助け、その命の限り堅く節操を守ることを誓うか",8;
+	menu "誓います",-;
+	mapannounce "prt_church.gat","国王陛下: 新郎" + $@NameMan$ + "が新婦" + $@NameWoman$ + "に愛を誓った……",8;
+	mes "[トリスタン3世]";
+	mes "うむ。では、新婦に問うてみよう。";
+	set $@marry,2;
+	close;
+LmarryWoman:
+	if ($@marry!=2) goto LErrorWWF;
+	mes "[トリスタン3世]";
+	mes "幸せな未来を夢見る若者よ。";
+	mes "これから二人で歩む人生が幸せである";
+	mes "よう、共に過ごす時が至宝となるよう";
+	mes "二人の時が永遠となるよう……";
+	next;
+	mapannounce "prt_church.gat","国王陛下: 新婦" + $@NameWoman$ + "よ、汝に問う……",8;
+	mes "[トリスタン3世]";
+	mes "" + $@NameWoman$ + "よ。";
+	mes "汝を常に守り、生涯を共に";
+	mes "歩まんとする男性の名前は";
+	mes "" + $@NameMan$ + "か。";
+	next;
+	menu "はい",-,"いいえ",LWrong;
+	mapannounce "prt_church.gat","国王陛下: 汝、その富める時も、貧しき時も、病めるときも、健やかなる時も",8;
+	mes "[トリスタン3世]";
+	mes "新婦" + $@NameWoman$ + "よ。";
+	mes "汝、その富める時も、貧しき時も、";
+	mes "病めるときも、健やかなる時も、";
+	mes "" + $@NameMan$ + "を愛し";
+	mes "敬い、慰め、助け、その命の限り";
+	mes "堅く節操を守ることを誓うか。";
+	next;
+	mapannounce "prt_church.gat","国王陛下: " + $@NameMan$ + "を愛し、敬い、慰め、助け、その命の限り堅く節操を守ることを誓うか",8;
+	menu "誓います",-,"……やっぱりやめます",LWrong;
+//ｹｺｰﾝ処理
+	set $res,marriage($@NameMan$);
+	getitem 2635,1,0;
+	getitem 2634,1,0,getcharid(3,$@NameMan$);
+	set $@marry,0;
+	sc_start SC_WEDDING,3600,0;
+	sc_start SC_WEDDING,3600,0,getcharid(3,$@NameMan$);
+	wedding;
+	stopnpctimer;
+	mapannounce "prt_church.gat","国王陛下: 新郎" + $@NameMan$ + "と新婦" + $@NameWoman$ + "、新たなる夫婦の誕生をここに祝福しよう！",8;
+	mes "[トリスタン三世]";
+	mes "ルーン=ミッドガッツ王国が国王";
+	mes "トリスタン三世の名において、汝ら";
+	mes "二人の未来を祝福しよう。";
+	next;
+	mes "[トリスタン三世]";
+	mes "二人とも……幸せにな……";
+	close;
+LErrorWWF:
+	mes "[トリスタン3世]";
+	mes "先ず、新郎から私に報告なさい。";
+	close;
+LErrorWOS:
+	mes "[トリスタン3世]";
+	mes "他の式が進行中だ。";
+	mes "順番をお待ちなさい。";
+	close;
+LWrong:/*脳内*/
+	mes "[トリスタン3世]";
+	mes "そうか";
+	mapannounce "prt_church.gat","国王陛下: 新婦が嫌みたいだ……次の式を行うとしよう。",8;
+	stopnpctimer;
+	set $@marry,0;
+	close;
+Lmarried:
+	mes "[トリスタン3世]";
+	mes "いつまでも、お幸せに。";
+	close;
+LError2:
+	mes "[トリスタン3世]";
+	mes "Error!";
+	mes "嫁が存在しません";
+	mapannounce "prt_church.gat","国王陛下: 準備不足のようだ……次の式を行うとしよう。",8;
+	stopnpctimer;
+	set $@marry,0;
+	close;
+LError3:
+	mes "[トリスタン3世]";
+	mes "Error!";
+	mes "性別判定で不具合が出ました";
+	mes "本人Readparam:"+readparam(21,strcharinfo(0));
+	mes "相手Readparam:"+readparam(21,$@NameWoman$);
+	mapannounce "prt_church.gat","国王陛下: 準備不足のようだ……次の式を行うとしよう。",8;
+	stopnpctimer;
+	set $@marry,0;
+	close;
+//新郎が話して3分以内に結婚成立しないとき。(この状態になってもまた話せば結婚可能)
+OnTimer180000:
+	mapannounce "prt_church.gat","国王陛下: 返事が遅い……次の式を行うとしよう。",8;
+	set $@marry,0;
+	end;
+}
+//=======================Solo軍団==============================
+prt_church.gat,97,102,0	script	ソロ軍団#プロンテラ	105,{
+	mes "[ソロ軍団]";
+	mes "精錬は1人で出来ちゃうぞ！";
+	close;
+OnSolos:
+	emotion 27;
+	end;
+}
+prt_church.gat,98,102,0	script	ソロ軍団#ゲフェン	705,{
+	mes "[ソロ軍団]";
+	mes "ダンジョンでパーティーは贅沢だ！";
+	close;
+OnSolos:
+	emotion 27;
+	end;
+}
+prt_church.gat,99,102,0	script	ソロ軍団#モロク	707,{
+	mes "[ソロ軍団]";
+	mes "私には心に決めたNPCがいる！";
+	close;
+OnSolos:
+	emotion 27;
+	end;
+}
+prt_church.gat,100,102,0	script	ソロ軍団#フェイヨン	708,{
+	mes "[ソロ軍団]";
+	mes "生まれて転職まで独りでした！";
+	close;
+OnSolos:
+	emotion 27;
+	end;
+}
+prt_church.gat,101,102,0	script	ソロ軍団#アマツ	767,{
+	mes "[ソロ軍団]";
+	mes "クリスマスにはシングルベ～ル！";
+	close;
+OnSolos:
+	emotion 27;
+	end;
+}
+prt_church.gat,102,102,0	script	ソロ軍団#コンロン	780,{
+	mes "[ソロ軍団]";
+	mes "私たちは無敵のソロ軍団！";
+	close;
+OnSolos:
+	emotion 27;
+	end;
+}

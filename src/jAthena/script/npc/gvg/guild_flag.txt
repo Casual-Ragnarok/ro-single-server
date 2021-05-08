@@ -1,0 +1,123 @@
+//===================================================================
+//guild_flag         by kalen
+//===================================================================
+prt_gld.gat,160,210,4	script	ギルドフラッグ#prtm1	722,{
+	callfunc "flagsc","prtg_cas01.gat",2,1,97,174;
+OnRecvCastleP01:
+	FlagEmblem getcastledata("prtg_cas01.gat",1);
+	end;
+}
+prt_gld.gat,153,213,3	script	ギルドフラッグ#prtm2	722,{
+	callfunc "flagsc","prtg_cas02.gat",2,1,71,36;
+OnRecvCastleP02:
+	FlagEmblem getcastledata("prtg_cas02.gat",1);
+	end;
+}
+prt_gld.gat,150,220,2	script	ギルドフラッグ#prtm3	722,{
+	callfunc "flagsc","prtg_cas03.gat",2,1,181,215;
+OnRecvCastleP03:
+	FlagEmblem getcastledata("prtg_cas03.gat",1);
+	end;
+}
+prt_gld.gat,169,220,6	script	ギルドフラッグ#prtm4	722,{
+	callfunc "flagsc","prtg_cas04.gat",2,1,258,247;
+OnRecvCastleP04:
+	FlagEmblem getcastledata("prtg_cas04.gat",1);
+	end;
+}
+prt_gld.gat,167,213,5	script	ギルドフラッグ#prtm5	722,{
+	callfunc "flagsc","prtg_cas05.gat",2,1,52,41;
+OnRecvCastleP05:
+	FlagEmblem getcastledata("prtg_cas05.gat",1);
+	end;
+}
+pay_gld.gat,347,125,2	script	ギルドフラッグ#paym1	722,{
+	callfunc "flagsc","payg_cas01.gat",2,1,212,108;
+OnRecvCastleF01:
+	FlagEmblem getcastledata("payg_cas01.gat",1);
+	end;
+}
+pay_gld.gat,347,116,2	script	ギルドフラッグ#paym2	722,{
+	callfunc "flagsc","payg_cas02.gat",2,1,22,275;
+OnRecvCastleF02:
+	FlagEmblem getcastledata("payg_cas02.gat",1);
+	end;
+}
+pay_gld.gat,341,106,0	script	ギルドフラッグ#paym3	722,{
+	callfunc "flagsc","payg_cas03.gat",2,1,9,263;
+OnRecvCastleF03:
+	FlagEmblem getcastledata("payg_cas03.gat",1);
+	end;
+}
+pay_gld.gat,330,106,0	script	ギルドフラッグ#paym4	722,{
+	callfunc "flagsc","payg_cas04.gat",2,1,40,235;
+OnRecvCastleF04:
+	FlagEmblem getcastledata("payg_cas04.gat",1);
+	end;
+}
+pay_gld.gat,318,106,0	script	ギルドフラッグ#paym5	722,{
+	callfunc "flagsc","payg_cas05.gat",2,1,276,227;
+OnRecvCastleF05:
+	FlagEmblem getcastledata("payg_cas05.gat",1);
+	end;
+}
+alde_gld.gat,257,153,7	script	ギルドフラッグ#aldm1	722,{
+	callfunc "flagsc","aldeg_cas01.gat",1,1,218,170;
+OnRecvCastleA01:
+	FlagEmblem getcastledata("aldeg_cas01.gat",1);
+	end;
+}
+alde_gld.gat,257,166,5	script	ギルドフラッグ#aldm2	722,{
+	callfunc "flagsc","aldeg_cas02.gat",1,1,84,74;
+OnRecvCastleA02:
+	FlagEmblem getcastledata("aldeg_cas02.gat",1);
+	end;
+}
+alde_gld.gat,262,153,7	script	ギルドフラッグ#aldm3	722,{
+	callfunc "flagsc","aldeg_cas03.gat",1,1,118,76;
+OnRecvCastleA03:
+	FlagEmblem getcastledata("aldeg_cas03.gat",1);
+	end;
+}
+alde_gld.gat,262,166,5	script	ギルドフラッグ#aldm4	722,{
+	callfunc "flagsc","aldeg_cas04.gat",1,1,45,88;
+OnRecvCastleA04:
+	FlagEmblem getcastledata("aldeg_cas04.gat",1);
+	end;
+}
+alde_gld.gat,267,153,7	script	ギルドフラッグ#aldm5	722,{
+	callfunc "flagsc","aldeg_cas05.gat",1,1,31,190;
+OnRecvCastleA05:
+	FlagEmblem getcastledata("aldeg_cas05.gat",1);
+	end;
+}
+gef_fild07.gat,330,199,2	script	ギルドフラッグ#gefm1	722,{
+	callfunc "flagsc","gefg_cas01.gat",2,1,83,47;
+OnRecvCastleG01:
+	FlagEmblem getcastledata("gefg_cas01.gat",1);
+	end;
+}
+gef_fild07.gat,330,204,2	script	ギルドフラッグ#gefm2	722,{
+	callfunc "flagsc","gefg_cas02.gat",2,1,23,66;
+OnRecvCastleG02:
+	FlagEmblem getcastledata("gefg_cas02.gat",1);
+	end;
+}
+gef_fild07.gat,330,176,2	script	ギルドフラッグ#gefm3	722,{
+	callfunc "flagsc","gefg_cas03.gat",2,1,116,89;
+OnRecvCastleG03:
+	FlagEmblem getcastledata("gefg_cas03.gat",1);
+	end;
+}
+gef_fild07.gat,330,171,2	script	ギルドフラッグ#gefm4	722,{
+	callfunc "flagsc","gefg_cas04.gat",2,1,59,70;
+OnRecvCastleG04:
+	FlagEmblem getcastledata("gefg_cas04.gat",1);
+	end;
+}
+gef_fild07.gat,330,166,2	script	ギルドフラッグ#gefm5	722,{
+	callfunc "flagsc","gefg_cas05.gat",2,1,61,52;
+OnRecvCastleG05:
+	FlagEmblem getcastledata("gefg_cas05.gat",1);
+	end;
+}

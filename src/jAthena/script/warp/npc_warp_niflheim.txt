@@ -1,0 +1,52 @@
+//==============================================================================
+//Ragnarok Online Warp Script(EP4.0 Niflheim) by kalen
+//==============================================================================
+//UmbalaD F2
+um_dun02.gat,126,162,0	warp	nif01	1,1,yggdrasil01.gat,39,63
+//yggdrasil01.gat,36,63,0	warp	nif02	1,1,um_dun02.gat,126,147
+
+//yggdrasil01
+yggdrasil01.gat,270,52,0	warp	nif03	1,1,yggdrasil01.gat,30,196
+yggdrasil01.gat,27,195,0	warp	nif04	1,1,yggdrasil01.gat,267,56
+yggdrasil01.gat,248,259,0	warp	nif5	1,1,nif_fild01.gat,315,67
+//nif_fild01.gat,315,63,0	warp	nif6	1,1,yggdrasil01.gat,245,259
+
+//nif_fild01 ÅÃ nif_fild02
+nif_fild01.gat,344,322,0	warp	nif07	1,1,nif_fild02.gat,26,311
+nif_fild02.gat,22,311,0	warp	nif08	1,1,nif_fild01.gat,340,322
+
+//nif_fild02 ÅÃ niflheim
+nif_fild02.gat,378,235,0	warp	nif09	1,1,niflheim.gat,23,154
+niflheim.gat,19,154,0	warp	nif10	1,1,nif_fild02.gat,375,235
+
+//House1(Girl)
+niflheim.gat,166,162,0	warp	nif11	1,1,nif_in.gat,157,81
+nif_in.gat,154,78,0	warp	nif12	1,1,niflheim.gat,169,162
+nif_in.gat,169,82,0	warp	nif13	1,1,nif_in.gat,189,106
+nif_in.gat,186,106,0	warp	nif14	1,1,nif_in.gat,166,82
+
+//House2(Waste Shop)
+niflheim.gat,189,210,0	warp	nif15	1,1,nif_in.gat,23,14
+nif_in.gat,23,11,0	warp	nif16	1,1,niflheim.gat,189,207
+nif_in.gat,34,34,0	warp	nif17	1,1,nif_in.gat,88,32
+nif_in.gat,88,29,0	warp	nif18	1,1,nif_in.gat,34,30
+
+//House3(Item Shop)
+niflheim.gat,219,198,0	warp	nif19	1,1,nif_in.gat,137,15
+nif_in.gat,135,13,0	warp	nif20	1,1,niflheim.gat,217,196
+
+//House4(Equip Shop)
+niflheim.gat,219,169,0	warp	nif21	1,1,nif_in.gat,14,88
+nif_in.gat,11,88,0	warp	nif22	1,1,niflheim.gat,216,171
+
+//House5(Minstrel's house)
+niflheim.gat,189,241,0	warp	nif23	1,1,nif_in.gat,81,77
+nif_in.gat,78,74,0	warp	nif24	1,1,niflheim.gat,186,241
+niflheim.gat,202,248,0	warp	nif25	1,1,nif_in.gat,95,102
+nif_in.gat,95,106,0	warp	nif26	1,1,niflheim.gat,202,254
+
+//House6(Witch's house)
+niflheim.gat,255,194,0	warp	nif27	1,1,nif_in.gat,21,157
+nif_in.gat,18,154,0	warp	nif28	1,1,niflheim.gat,253,191
+nif_in.gat,65,174,0	warp	nif29	1,1,nif_in.gat,140,174
+nif_in.gat,140,171,0	warp	nif30	1,1,nif_in.gat,65,170

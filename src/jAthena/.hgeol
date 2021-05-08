@@ -1,0 +1,24 @@
+[repository]
+native = LF
+
+[patterns]
+Readme* = native
+README* = native
+Makefile = native
+configure = native
+LICENCE* = native
+**.c = native
+**.h = native
+**.conf = native
+**.css = native
+**.html = native
+**.htm = native
+**.in = native
+**.pl = native
+**.sh = native
+**.sql = native
+**.txt = native
+**.bat = CRLF
+**.dsp = CRLF
+**.dsw = CRLF
+**.sln = CRLF

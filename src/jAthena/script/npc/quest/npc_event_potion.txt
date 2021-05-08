@@ -1,0 +1,453 @@
+//----------------------------------------------------------------------
+// スクリプト : Event_Potion v1.1
+//----------------------------------------------------------------------
+
+prontera.gat,73,140,0	script	牛乳商人	86,{
+		mes "[牛乳商人]";
+		mes "空甁を持ってきたら、たったの 15 Zenyで 牛乳 1個と交換してあげます!!";
+		next;
+		menu "甁を全部交換する.",-,"数を指定する",L_MENU_1,"やめる.",L_MENU_2;
+			set @CHANGE_NUM,countitem(713);
+			if (countitem(713)>=1) goto L_ROOT_1;
+				mes "[牛乳商人]";
+				mes "さ、 空甁を下さい! 空甁!!";
+				mes "....ありませんか...?";
+				close;
+	L_MENU_1:
+			mes "[牛乳商人]";
+			mes "どれだけ交換しますか？";
+			next;
+			input @CHANGE_NUM;
+			if (@CHANGE_NUM <= 0) goto L_MENU_2;
+	L_ROOT_1:
+			set @CHANGE_ZENY,@CHANGE_NUM;
+			set @CHANGE_ZENY,@CHANGE_ZENY*15;
+			if (countitem(713)>=@CHANGE_NUM) goto L_ROOT_2;
+				mes "[牛乳商人]";
+				mes "お客樣、空甁が足りません.";
+				close;
+	L_ROOT_2:
+			if (Zeny >= @CHANGE_ZENY) goto L_ROOT_3;
+				mes "[牛乳商人]";
+				mes "甁の数に比べて金が足りませんね.";
+				mes "お客樣は " + @CHANGE_ZENY + " Zenyを支払ってください.";
+				close;
+	L_ROOT_3:
+			if (checkweight(519,@CHANGE_NUM)) goto L_ROOT_4;
+				mes "[牛乳商人]";
+				mes "お客樣、重量オーバーになります.";
+				close;
+	L_ROOT_4:
+			delitem 713,@CHANGE_NUM;
+			set Zeny,Zeny-@CHANGE_ZENY;
+			getitem 519,@CHANGE_NUM;
+			mes "[牛乳商人]";
+			mes "ありがとうございました.";
+	L_MENU_2:
+			close;
+}
+
+prt_in.gat,49,172,3	script	マリエヌ	53,{
+		if (MORISON_MEAT != 15) goto L_START_1;
+			mes "[主婦 マリエヌ]";
+			mes "ふう... 肉じゃないと食べようともしないとは...";
+			mes "なんか果物が食べやすくなれば食べるかな... 例えば.. 碾いたりして...";
+			next;
+			set MOTHER_MARIENU,2;
+			mes "[主婦 マリエヌ]";
+			mes "あ! そういえば、ある村では果物を碾いてくれると言ってた.";
+			mes "... それが... フェイヨンだったけ?.... モロクだったけ...";
+			close;
+	L_START_1:
+		if (MOTHER_MARIENU != 1) goto L_START_2;
+			mes "[主婦 マリエヌ]";
+			mes "モリスン!! はやく果物を食べなさい!! あなたは一体大人になって何になろうとこんなに自分勝手なの!";
+			mes "太すぎた豚になりたいわけ?";
+			next;
+			menu "話をする",-,"やめる",L_MENU_1;
+				mes "[主婦 マリエヌ]";
+				mes "うーむ.. あ! あなた! うちのモリスンに 肉を食べさせたあの人ね?!";
+				mes "ひょっとして、私が知らないと思って、またうちに来たんですか? ふん... 図々しいね.";
+				mes "あら... 私が馬鹿だと思ってるわけ?";
+				next;
+				mes "[主婦 マリエヌ]";
+				mes "今すぐ出ていきなさい!!";
+				close;
+	L_MENU_1:
+				mes "[主婦 マリエヌ]";
+				mes "モリスン!! あんた、やめないとママ本当に怒るよ!";
+				close;
+	L_START_2:
+		if (MORISON_MEAT <= 0) goto L_START_3;
+			set MOTHER_MARIENU,1;
+			mes "[主婦 マリエヌ]";
+			mes "あらっ!!.... こ...これは一体...";
+			mes "な~んですか、これ!!うちの子に変なの食べさせないでください!";
+			mes "あふ～ 辛気くさい!! あなた、速く出ていきなさい!";
+			close;
+	L_START_3:
+		mes "[主婦 マリエヌ]";
+		mes "モリスン!! はやく果物食べないか!! 食べなさいって~!";
+		mes "ったく~!! 気にいらないんだから. どうして、あんなことだけはお父さんにそっくりなのかしら...";
+		next;
+		menu "話をする",-,"やめる",L_MENU_3;
+			mes "[主婦 マリエヌ]";
+			mes "ふ... この子は モリスンと言う... 私の息子です。";
+			mes "ところで、この頃、こいつが果物を食べようとしないんです。 果物を全く食べないから顔色も悪くて...";
+			mes "ずっと肉ばかり食べようとしています... ふう... どうしても果物とか野菜を食べさせなきゃ....";
+			close;
+	L_MENU_3:
+			mes "[主婦 マリエヌ]";
+			mes "モリスン!! あんた、お母さんの言うこと聴かないと怒るよ!";
+			close;
+}
+
+prt_in.gat,47,173,3	script	モリスン	97,{
+		if (MORISON_MEAT != 15) goto L_START_1;
+			mes "[ちび モリスン]";
+			mes "ちぇっ... いいよ、もう... 一生果物ばっかり食べて死ぬかどうが、僕のこと気にしないでちょうだい.";
+			close;
+	L_START_1:
+		if (MORISON_MEAT <= 9) goto L_START_2;
+			mes "[ちび モリスン]";
+			mes "あ... もうお腹いっぱいだ。もういいです";
+			mes "もう肉はくれなくてもいいです。これ以上食べたらお腹が破れてしまいそう.";
+			if (MORISON_MEAT != 10) goto L_ROOT_1;
+				next;
+				set MORISON_MEAT,MORISON_MEAT+1;
+				mes "[ちび モリスン]";
+				mes "そして... うーむ... これ、受け取って";
+				mes "僕が先日にプレゼントにもらったキャンディなんだけど、人のいないとこでこっそり食べようと隱しておいたものだけど、肉をくれたから僕も 僕の持っているものをあげるよ。";
+				getitem 529,3;
+				getitem 530,1;
+	L_ROOT_1:
+			close;
+	L_START_2:
+		mes "[ちび モリスン]";
+		mes "あ....アアァッ!!! た..食べないんだから";
+		mes ".. 果物なんか、食べないんだから!!";
+		next;
+		if (countitem(517)<1) goto L_START_3;
+			menu "話をする",-,"肉を見せる",L_MENU_2_1,"やめる",L_MENU_2_2;
+				mes "[ちび モリスン]";
+				mes "アアアッ!! 一度二度だったら知れないけど!! もうこれ以上は果物は食べれない!";
+				mes "實は... 果物みたいなもん... 一度皮をむいて食べなきゃならないから面倒出、食べるときにお水が多くて気持悪い";
+				mes "それにすっぱくてぬるぬる... それに食べた後は物足りないし、アアアッ! 肉をちょうだい~";
+				close;
+	L_MENU_2_1:
+				mes "[ちび モリスン]";
+				mes "アアッ! に...肉だっ... おおっ";
+				mes "あ... お....お腹すい... この肉の匂い... あの... 僕にひとつだけもらえませんか?";
+				next;
+				menu "肉をあげる",-,"肉をあげない",L_MENU_2_3;
+					delitem 517,1;
+					set MORISON_MEAT,MORISON_MEAT+1;
+					mes "[ちび モリスン]";
+					mes "わあ~!!! 肉だ、肉! 美味しそう.";
+					mes "ありがとう。もう生けそうです。 がりがり....";
+					close;
+	L_MENU_2_3:
+					set MORISON_MEAT,15;
+					mes "[ちび モリスン]";
+					mes "うう... そ...そう.... もう わかった。 大人達はみんな同じだ!";
+					close;
+	L_MENU_2_2:
+				mes "[ちび モリスン]";
+				mes "ああっ!!! 何と言っても、僕は野菜と果物は食べれないよ!";
+				close;
+	L_START_3:
+		menu "話をする",-,"やめる",L_MENU_4;
+			mes "[ちび モリスン]";
+			mes "アアアッ!! 一度二度だったら知れないけど!! もうこれ以上は果物は食べれない!";
+				mes "實は... 果物みたいなもん... 一度皮をむいて食べなきゃならないから面倒出、食べるときにお水が多くて気持悪い";
+				mes "それにすっぱくてぬるぬる... それに食べた後は物足りないし、アアアッ! 肉をちょうだい~";
+			close;
+	L_MENU_4:
+			mes "[ちび モリスン]";
+			mes "ああっ!!! 何と言っても、僕は野菜と果物は食べれないよ!";
+			close;
+}
+
+payon_in01.gat,174,113,3	script	マルクハンセン	86,{
+		if (MOTHER_MARIENU != 2) goto L_START_0;
+			mes "[商人 マルクハンセン]";
+			mes "いらっしゃい、あなたも果物を加工しに来ましたか?";
+			next;
+			menu "フルーツジュースをつくる",-,"話をする",L_MENU_2,"やめる",L_MENU_3;
+				mes "[商人 マルクハンセン]";
+				mes "どんなフルーツジュースをつくりますか?";
+				next;
+				menu "りんごジュース",L_MENU_1_1,"バナナジュース",L_MENU_1_2,"にんじんジュース",L_MENU_1_3,"葡萄ジュース",L_MENU_1_4,"やめる",L_MENU_1_5;
+	L_MENU_1_1:
+				set @BUY_ID,512;
+				set @GET_ID,531;
+				goto L_SUB_1_1;
+	L_MENU_1_2:
+				set @BUY_ID,513;
+				set @GET_ID,532;
+				goto L_SUB_1_1;
+	L_MENU_1_3:
+				set @BUY_ID,515;
+				set @GET_ID,534;
+				goto L_SUB_1_1;
+	L_MENU_1_4:
+				set @BUY_ID,514;
+				set @GET_ID,533;
+	L_SUB_1_1:
+				set @FRUIT,countitem(@BUY_ID);
+				set @BOTTLE,countitem(713);
+				set @BUY_NUM,@FRUIT;
+				if (@BUY_NUM <= @BOTTLE) goto L_SUB_1_2;
+				set @BUY_NUM,@BOTTLE;
+	L_SUB_1_2:
+				if (@BUY_NUM <= 0) goto L_ROOT_1_1;
+				mes "[商人 マルクハンセン]";
+				mes "いくつほどほしいのでしょうか？";
+				next;
+				menu "できるだけ全部",L_SUB_1_3,"数を決める",-,"やめる",L_MENU_1_5;
+				mes "[商人 マルクハンセン]";
+				mes "１００個以下で決めて下され、いらないのなら０でいいぞ";
+				mes "君が持っているアイテムでは最大 " + @BUY_NUM + " 個までできるんだ";
+				next;
+				input @BUY_NUM;
+				if (@BUY_NUM <= 0) goto L_MENU_1_5;
+	L_SUB_1_3:
+				set @BUY_ZENY,@BUY_NUM;
+				set @BUY_ZENY,@BUY_ZENY*3;
+				if (countitem(@BUY_ID)<@BUY_NUM) goto L_ROOT_1_1;
+				if (countitem(713)<@BUY_NUM) goto L_ROOT_1_1;
+				if (!(checkweight(@GET_ID,@BUY_NUM))) goto L_ROOT_1_2;
+				if (Zeny < @BUY_ZENY) goto L_ROOT_1_3;
+				delitem @BUY_ID,@BUY_NUM;
+				delitem 713,@BUY_NUM;
+				set Zeny,Zeny-@BUY_ZENY;
+				getitem @GET_ID,@BUY_NUM;
+				goto L_START_2;
+	L_ROOT_1_1:
+				mes "[商人 マルクハンセン]";
+				mes "これこれ...材料が足りないね。こんな風なら、私にもしようがない";
+				close;
+	L_ROOT_1_2:
+				mes "[商人 マルクハンセン]";
+				mes "重量オーバーです";
+				close;
+	L_ROOT_1_3:
+				mes "[商人 マルクハンセン]";
+				mes "これこれ...お金が足りないね。こんな風なら、私にもしようがない";
+				close;
+	L_MENU_1_5:
+				mes "[商人 マルクハンセン]";
+				mes "ふーむ、いやならしようがない...";
+				close;
+	L_START_2:
+				mes "[商人 マルクハンセン]";
+				mes "さ ! 約束したジュースです。 味がとてもいいでしょう.";
+				mes "では、今度また来てください.";
+				close;
+	L_MENU_2:
+				mes "[商人 マルクハンセン]";
+				mes "人間がまだ今のように多くの知識を持つ前には、みんな木の果物をとって食べながら生きていたという.";
+				mes "ひょっとしたら、果物は人間をこの世に存在できるようにした大自然の祝福ではなかったのでしょうか.";
+				next;
+				mes "[商人 マルクハンセン]";
+				mes "生活が豊かになると、この頃の若者たちは果物を別に食べないようになったみたいです.";
+				mes "それで、果物をもっと食べやすくする方法を考えてみました.";
+				mes "その結果、果物をよく碾いて果汁にして食べたら、食べやすくなり、味ももっと良くなることが分かりました.";
+				next;
+				mes "# フルーツジュース #";
+				mes "りんごジュース - ";
+				mes "- りんご x 1 , 空甁 x 1 個 , 3  Zeny.";
+				mes "";
+				mes "バナナジュース -";
+				mes "- バナナ x 1 個, 空甁 x 1 個 , 3  Zeny.";
+				mes "";
+				mes "にんじんジュース -";
+				mes "- にんじん x 1 個, 空甁 x 1 個 , 3  Zeny.";
+				mes "";
+				mes "葡萄ジュース -";
+				mes "- 葡萄 x 1 個, 空甁 x 1 個 , 3  Zeny.";
+				close;
+	L_MENU_3:
+				mes "[商人 マルクハンセン]";
+				mes "ほら、人を訪ねてきたら用事を話したらどうですか?.";
+				close;
+	L_START_0:
+		mes "[商人 マルクハンセン]";
+		mes "いらっしゃい、私になんの用ですか??";
+		next;
+		menu "話をする",-,"やめる",L_MENU_4;
+			mes "[商人 マルクハンセン]";
+			mes "人間がまだ今のように多くの知識を持つ前には、みんな木の果物をとって食べながら生きていたという.";
+			mes "ひょっとしたら、果物は人間をこの世に存在できるようにした大自然の祝福ではなかったのでしょうか.";
+			next;
+			mes "[商人 マルクハンセン]";
+			mes "生活が豊かになると、この頃の若者たちは果物を別に食べないようになったみたいです.";
+			mes "それで、果物をもっと食べやすくする方法を考えてみました.";
+			mes "その結果、果物をよく碾いて果汁にして食べたら、食べやすくなり、味ももっと良くなることが分かりました.";
+			close;
+	L_MENU_4:
+			mes "[商人 マルクハンセン]";
+			mes "ほら、人を訪ねてきたら用事を話したらどうですか?.";
+			close;
+}
+
+alberta_in.gat,16,28,4	script	薬師おじいさん	61,{
+		mes "[製薬師 おじいさん]";
+		mes "ええ…お客さんか…?何の用かい?";
+		next;
+		menu "ポーションを造る.",-,"対話する.",L_MENU_2,"組合方法を聞く.",L_MENU_3,"何でもありません.",L_MENU_4;
+			mes "[製薬師 おじいさん]";
+			mes "材料は用意して来たかい?どの奴がほしい?";
+			next;
+			menu "赤ポーション.",L_MENU_1_1,"紅ポーション.",L_MENU_1_2,"黄ポーション.",L_MENU_1_3,"白ポーション.",L_MENU_1_4,"青ポーション.",L_MENU_1_5,"緑ポーション.",L_MENU_1_6,"やっぱりやめる.",L_MENU_1_7;
+	L_MENU_1_1:
+			set @BUY_ID1,507;
+			set @BUY_NEED1,2;
+			set @BUY_ID2,0;
+			set @BUY_NEED2,0;
+			set @GET_ID,501;
+			set @BUY_PRICE,3;
+			goto L_SUB_1_1;
+	L_MENU_1_2:
+			set @BUY_ID1,507;
+			set @BUY_NEED1,1;
+			set @BUY_ID2,508;
+			set @BUY_NEED2,1;
+			set @GET_ID,502;
+			set @BUY_PRICE,5;
+			goto L_SUB_1_1;
+	L_MENU_1_3:
+			set @BUY_ID1,508;
+			set @BUY_NEED1,2;
+			set @BUY_ID2,0;
+			set @BUY_NEED2,0;
+			set @GET_ID,503;
+			set @BUY_PRICE,10;
+			goto L_SUB_1_1;
+	L_MENU_1_4:
+			set @BUY_ID1,509;
+			set @BUY_NEED1,2;
+			set @BUY_ID2,0;
+			set @BUY_NEED2,0;
+			set @GET_ID,504;
+			set @BUY_PRICE,20;
+			goto L_SUB_1_1;
+	L_MENU_1_5:
+			set @BUY_ID1,510;
+			set @BUY_NEED1,2;
+			set @BUY_ID2,0;
+			set @BUY_NEED2,0;
+			set @GET_ID,505;
+			set @BUY_PRICE,30;
+			goto L_SUB_1_1;
+	L_MENU_1_6:
+			set @BUY_ID1,511;
+			set @BUY_NEED1,2;
+			set @BUY_ID2,0;
+			set @BUY_NEED2,0;
+			set @GET_ID,506;
+			set @BUY_PRICE,3;
+	L_SUB_1_1:
+			set @POTION1,countitem(@BUY_ID1);
+			set @POTION1,@POTION1/@BUY_NEED1;
+			if (@BUY_ID2 <= 0) goto L_SUB_1_2;
+			set @POTION2,countitem(@BUY_ID2);
+			set @POTION2,@POTION2/@BUY_NEED2;
+	L_SUB_1_2:
+			set @BOTTLE,countitem(713);
+			set @BUY_NUM,@POTION1;
+			if (@BUY_ID2 <= 0) goto L_SUB_1_3;
+			if (@BUY_NUM <= @POTION2) goto L_SUB_1_3;
+			set @BUY_NUM,@POTION2;
+			if (@BUY_NUM <= @BOTTLE) goto L_SUB_1_3;
+			set @BUY_NUM,@BOTTLE;
+	L_SUB_1_3:
+			if (@BUY_NUM <= 0) goto L_ROOT_1_1;
+			mes "[製薬師 おじいさん]";
+			mes "どのくらい欲しい?";
+			next;
+			menu "全部です.",L_SUB_1_4,"数を決めます.",-,"やっぱりやめます.",L_MENU_1_7;
+			mes "[製薬師 おじいさん]";
+			mes "そうしたら、１００個以下にしてくれ.やめるんだったら、'０'にしてくれ.";
+			mes "君が持っている材料では、" + @BUY_NUM + " 個ぐらい造れそうだな.";
+			next;
+			input @BUY_NUM;
+			if (@BUY_NUM <= 0) goto L_MENU_1_7;
+	L_SUB_1_4:
+			set @BUY_ZENY,@BUY_NUM;
+			set @BUY_ZENY,@BUY_ZENY*@BUY_PRICE;
+			set @BUY_NUM1,@BUY_NUM;
+			set @BUY_NUM1,@BUY_NUM1*@BUY_NEED1;
+			if (countitem(@BUY_ID1)<@BUY_NUM1) goto L_ROOT_1_1;
+			if (@BUY_ID2 <= 0) goto L_SUB_1_5;
+			set @BUY_NUM2,@BUY_NUM;
+			set @BUY_NUM2,@BUY_NUM2*@BUY_NEED2;
+			if (countitem(@BUY_ID2)<@BUY_NUM2) goto L_ROOT_1_1;
+	L_SUB_1_5:
+			if (countitem(713)<@BUY_NUM) goto L_ROOT_1_1;
+			if (!(checkweight(@GET_ID,@BUY_NUM))) goto L_ROOT_1_3;
+			if (Zeny < @BUY_ZENY) goto L_ROOT_1_2;
+			delitem @BUY_ID1,@BUY_NUM1;
+			if (@BUY_ID2 <= 0) goto L_SUB_1_6;
+			delitem @BUY_ID2,@BUY_NUM2;
+	L_SUB_1_6:
+			delitem 713,@BUY_NUM;
+			set Zeny,Zeny-@BUY_ZENY;
+			getitem @GET_ID,@BUY_NUM;
+			goto L_START_2;
+	L_ROOT_1_1:
+			mes "[製薬師 おじいさん]";
+			mes "この悪ガキ!材料もないくせにに造ってくれって?";
+			mes "帰れ!帰れ!";
+			close;
+	L_ROOT_1_2:
+			mes "[製薬師 おじいさん]";
+			mes "この悪ガキ!お金もないくせに造ってくれって?";
+			mes "帰れ!帰れ!";
+			close;
+	L_ROOT_1_3:
+			mes "[製薬師 おじいさん]";
+			mes "重量オーバーです.";
+			mes "帰れ!帰れ!";
+			close;
+	L_START_2:
+			mes "[製薬師 おじいさん]";
+			mes "うむ.出来上がり!受け取れよ.";
+			mes "気を付けろ!薬は使いすぎると体によくないぞ!";
+			close;
+	L_MENU_1_7:
+			mes "[製薬師 おじいさん]";
+			mes "なに?こいつ…用がなかったら話しかけるな!";
+			close;
+	L_MENU_2:
+			mes "[製薬師 おじいさん]";
+			mes "薬では人間の回復能力が向できる.どこまでも人間の回復能力を 極大化させることにすぎなければならない...";
+			mes "とほほ... 年を取ったからなのか、また昔のことが 思い出すな....";
+			mes "とにかく、ポーションは薬であるだけだ... それ以上もそれ以下でもない.";
+			close;
+	L_MENU_3:
+			mes "[製薬師 おじいさん]";
+			mes "やれやれ... 若いヤツが相当しつこいね... よし、 どうせ聞いたもんだから、詳細に説明してやる.";
+			next;
+			mes "[製薬師 おじいさん]";
+			mes "ハーブはそのまま使っても效果はあるけど、わしだけ知っている特殊な秘法と優れた能力を十分発揮して、水薬につくれば、その效果はもっと高くなる.";
+			next;
+			mes "[製薬師 おじいさん]";
+			mes "君が頼むなら作ってあげる.だが、ただで作ってやるということじゃなくて.... 若干の 手数料が必要けど、わしの小遣いくらい稼ごうとするもんだから、そんなに高くはない.";
+			next;
+			mes "[製薬師 おじいさん]";
+			mes "赤いポーション - ^0098E5赤いハーブ 2個、 空甁 1個、 手数料 3 Zeny.^000000";
+			mes "朱色ポーション - ^0098E5赤いハーブ 1個、 黄色いハーブ 1個、 空甁 1個、 手数料 5 Zeny.^000000";
+			mes "黄色ポーション - ^0098E5黄色いハーブ 2個、 空甁 1個、 手数料 10 Zeny.^000000";
+			next;
+			mes "[製薬師 おじいさん]";
+			mes "白いポーション - ^0098E5白いハーブ 2個、 空甁 1個、 手数料 20 Zeny.^000000";
+			mes "青いポーション - ^0098E5靑いハーブ 2個、 空甁 1個、 手数料 30 Zeny.^000000";
+			mes "録ポーション - ^0098E5録色ハーブ 2個、 空甁 1個、 手数料 3 Zeny.^000000";
+			close;
+	L_MENU_4:
+			mes "[製薬師 おじいさん]";
+			mes "何だ?言いたいことがあったらはっきり言えよ!";
+			close;
+}
+

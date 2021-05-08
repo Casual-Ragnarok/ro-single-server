@@ -1,0 +1,78 @@
+// ------------------
+//   —Œ—zƒŠƒ“ƒN
+// ------------------
+
+// Louyang -> Fild01
+louyang.gat,217,23,0	warp	lo0001	3,1,lou_fild01.gat,232,354
+lou_fild01.gat,232,357,0	warp	lo0002	2,1,louyang.gat,217,40
+
+// Louyang -> Lou_dun01
+louyang.gat,36,271,0	warp	lo0003	1,1,lou_dun01.gat,219,196
+lou_dun01.gat,222,196,0	warp	lo0004	1,1,louyang.gat,40,273
+
+// Lou_dun01 -> Lou_dun02
+lou_dun01.gat,30,203,0	warp	lo0005	1,1,lou_dun02.gat,282,20
+lou_dun02.gat,287,20,0	warp	lo0006	1,2,lou_dun01.gat,38,204
+
+// Lou_dun02 -> Lou_dun03
+lou_dun02.gat,165,270,0	warp	lo0007	1,1,lou_dun03.gat,165,37
+lou_dun03.gat,165,34,0	warp	lo0008	1,1,lou_dun02.gat,165,262
+
+// Louyang -> Lou_in01
+louyang.gat,218,255,0	warp	lo0009	2,1,lou_in01.gat,101,123
+lou_in01.gat,101,118,0	warp	lo0010	1,1,louyang.gat,218,249
+
+// Lou_in01 -> Lou_in01
+lou_in01.gat,125,140,0	warp	lo0011	2,1,lou_in01.gat,156,140
+lou_in01.gat,152,140,0	warp	lo0012	1,1,lou_in01.gat,120,140
+
+// Lou_in01 -> Lou_in01
+lou_in01.gat,78,140,0	warp	lo0013	2,1,lou_in01.gat,45,140
+lou_in01.gat,51,140,0	warp	lo0014	1,1,lou_in01.gat,83,140
+
+// –¯h
+louyang.gat,122,148,0	warp	lo0015	1,1,lou_in02.gat,246,58
+lou_in02.gat,242,58,0	warp	lo0016	1,1,louyang.gat,122,152
+
+// “¹‹ï‰®
+louyang.gat,135,96,0	warp	lo0017	1,1,lou_in02.gat,250,174
+lou_in02.gat,253,177,0	warp	lo0018	1,1,louyang.gat,140,101
+
+// ‘qŒÉ
+louyang.gat,125,121,0	warp	lo0019	1,1,lou_in02.gat,197,162
+lou_in02.gat,197,158,0	warp	lo0020	1,1,louyang.gat,125,118
+louyang.gat,129,121,0	warp	lo0021	1,1,lou_in02.gat,203,162
+lou_in02.gat,203,158,0	warp	lo0022	1,1,louyang.gat,129,118
+
+// •Ší‰®
+louyang.gat,145,175,0	warp	lo0023	1,1,lou_in02.gat,125,167
+lou_in02.gat,125,164,0	warp	lo0024	1,1,louyang.gat,145,171
+
+// ğ‰®
+louyang.gat,279,168,0	warp	lo0025	1,1,lou_in02.gat,57,174
+lou_in02.gat,57,170,0	warp	lo0026	1,1,louyang.gat,279,165
+
+// ğ‰® -> 2F¶
+lou_in02.gat,34,190,0	warp	lo0027	1,1,lou_in02.gat,37,138
+lou_in02.gat,43,138,0	warp	lo0028	1,1,lou_in02.gat,38,190
+
+// ğ‰® -> 2F‰E
+lou_in02.gat,81,190,0	warp	lo0029	1,1,lou_in02.gat,78,140
+lou_in02.gat,72,140,0	warp	lo0030	1,1,lou_in02.gat,76,190
+
+// }‘ŠÙŒš•¨
+louyang.gat,309,81,0	warp	lo0031	1,1,lou_in02.gat,189,78
+lou_in02.gat,189,74,0	warp	lo0032	1,1,louyang.gat,309,77
+
+// Œš•¨2F
+lou_in02.gat,200,94,0	warp	lo0033	1,1,lou_in02.gat,170,45
+lou_in02.gat,176,45,0	warp	lo0034	1,1,lou_in02.gat,206,93
+
+// •’Ê‚Ì•”‰®
+louyang.gat,130,63,0	warp	lo0035	1,1,lou_in02.gat,71,32
+lou_in02.gat,71,28,0	warp	lo0036	1,1,louyang.gat,130,60
+
+// •’Ê‚Ì•”‰®2†
+louyang.gat,317,177,0	warp	lo0037	1,1,lou_in02.gat,121,32
+lou_in02.gat,121,28,0	warp	lo0038	1,1,louyang.gat,317,175
+

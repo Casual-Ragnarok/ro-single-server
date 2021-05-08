@@ -1,0 +1,1832 @@
+//====================================================================
+//Ragnarok Online Knight jobchange script 未完成
+//====================================================================
+//
+//change_knight
+//1	受付終了
+//2	第一試験パターン1
+//3	第一試験パターン2
+//4	第一試験パターン3
+//5	第一試験合格
+//6	第二試験リトライ
+//7	第二試験合格
+//8	第三試験リトライ
+//9	第三試験合格
+//10	第四試験リトライ
+//11	第四試験合格
+//12	第五試験リトライ
+//13	第五試験合格
+//14	最終試験リトライ
+//15	最終試験合格(転職権利獲得)
+prt_in.gat,88,101,4	script	プロンテラ騎士団長	56,{
+	if (Class == 7) goto Lknight;
+	if (Class == 0) goto Lnovice;
+	if (Class == 1) goto Lswordman;
+	mes "[騎士団長ヘルマン]";
+	mes "プロンテラ騎士団に訪ねてきた";
+	mes "ことを歓迎する。";
+	mes "ゆっくりしていきなさい。";
+	close;
+Lnovice:
+	mes "[騎士団長ヘルマン]";
+	mes "こちらはプロンテラ騎士団です。";
+	mes "何の用事かな？";
+	next;
+	menu "剣士に転職したいです",Ln_1,"ナイトに転職したいです",Ln_2,"見物に来たんです",Ln_3;
+	Ln_1:
+		mes "[騎士団長ヘルマン]";
+		mes "ハハハ！なるほど…";
+		mes "訪ねる所を間違えたな～";
+		next;
+		mes "[騎士団長ヘルマン]";
+		mes "ここは剣士ギルドではなく、騎士団だ。";
+		mes "剣士になりたければ、イズルードの";
+		mes "剣士ギルドへ行きなさい。";
+		goto Ln_end;
+	Ln_2:
+		mes "[騎士団長ヘルマン]";
+		mes "ふむ、夢を大きく持つのはいいことだ。";
+		mes "だが、ナイトになるためにはまず";
+		mes "剣士にならなければならないぞ。";
+		next;
+		mes "[騎士団長ヘルマン]";
+		mes "イズルードの剣士ギルドへ";
+		mes "行ってみなさい。";
+		mes "剣士としてある程度腕を磨いたら";
+		mes "また来なさい。";
+		goto Ln_end;
+	Ln_3:
+		mes "[騎士団長ヘルマン]";
+		mes "そうか、見物も良いが、";
+		mes "暇ならモンスターを一匹でも多く";
+		mes "倒すのだ。";
+	Ln_end:
+		next;
+		mes "[騎士団長ヘルマン]";
+		mes "それでは、また必要なときに";
+		mes "訪ねて来なさい。";
+		close;
+Lswordman:
+	if ((change_knight >= 1) && (change_knight <= 14)) goto LStart2;
+	if (change_knight == 15) goto LJobchange;
+	mes "[騎士団長ヘルマン]";
+	mes "こちらはプロンテラ騎士団です。";
+	mes "何の用事かな？";
+	next;
+	menu "ナイトに転職したいです",Ls_1,"見物に来たんです",-;
+		mes "[騎士団長ヘルマン]";
+		mes "ほう、君は剣士ではないか。";
+		mes "見たところ君は今までに";
+		mes "相当腕を磨いたようだが…";
+		next;
+		mes "[騎士団長ヘルマン]";
+		mes "剣士なら一度、ナイトへの転職を";
+		mes "考えてみてはどうか？";
+		mes "もしナイトに転職する意志があれば";
+		mes "私を訪ねなさい。";
+		next;
+		mes "[騎士団長ヘルマン]";
+		mes "それではゆっくり見ていきなさい。";
+		close;
+	Ls_1:
+		if (Upper == 1) goto LUpper1;
+		mes "[騎士団長ヘルマン]";
+		mes "おお、ナイトを目指す青年か！";
+		mes "私達プロンテラ騎士が君の";
+		mes "面倒を見るぞ。";
+		next;
+		mes "[騎士団長ヘルマン]";
+		mes "私はここプロンテラ騎士団の";
+		mes "騎士団長である";
+		mes "ヘルマン=フォン=エペソス";
+		mes "という。";
+		mes "意欲あふれる若者達を見る度に";
+		mes "私の胸も高鳴る。";
+		next;
+		mes "[騎士団長ヘルマン]";
+		mes "私達プロンテラ騎士団は、";
+		mes "JobLv40以上の剣士にのみ";
+		mes "試験を受けさせている。";
+		mes "青臭い者をナイトにさせることは";
+		mes "できないからな！";
+		next;
+		mes "[騎士団長ヘルマン]";
+		mes "それでは転職の申し込みを";
+		mes "するかね？";
+		next;
+		menu "はい、申し込みます",Ls_1_1,"もうちょっと考えてみます",-;
+			mes "[騎士団長ヘルマン]";
+			mes "はは、少し話が急だったか？";
+			mes "それならばゆっくりと考えてみなさい。";
+			next;
+			mes "[騎士団長ヘルマン]";
+			mes "転職する用意ができたら";
+			mes "また来なさい。";
+			close;
+		Ls_1_1:/*適当*/
+			if (JobLevel < 40) goto Llowlv;
+			if (SkillPoint > 0) goto LError;
+			mes "[騎士団長へルマン]";
+			mes "よーし申し込みが完了した。";
+			next;
+			mes "[騎士団長へルマン]";/*適当*/
+			mes "それではアンドリューの所へ";
+			mes "行ってくれ。";
+			mes "彼が最初の試験の担当だ。";
+			set change_knight,1;
+			close;
+LStart2:
+	mes "[騎士団長ヘルマン]";
+	mes "うん "+strcharinfo(0)+" だな。";
+	mes "試験は難しいかもしれないが、";
+	mes "頑張ってくれたまえ。";
+	close;
+LJobchange:
+	if (SkillPoint > 0) goto LError;
+	mes "[騎士団長ヘルマン]";
+	mes "うむ、騎士の試験を全て終えてきたな。";
+	mes "しかし試験を終えた全ての剣士が";
+	mes "騎士になれるわけではない。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "試験の過程でどれくらい真面目";
+	mes "であったか、誉れあったか、";
+	mes "強さを見せたか…";
+	mes "礼儀を重んじたか、敬意を表したか、";
+	mes "謙遜することができたか…";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "試験の間見させてもらった。";
+	mes "そして私達の7人の評価によって";
+	mes "騎士転職への決定が下るのだ。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "それでは、皆の評価を";
+	mes "聞いてみようか。";
+	mes "この者をナイトに転職させるか？";
+	mes "シャイロック、貴公の考えはどうか！ ";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "厄介な品を頼んでも、";
+	mes "しっかりと手に入れて来ました。";
+	mes "賛成です！";
+	mes "彼女はナイトになった後も";
+	mes "まじめに暮らすでしょう。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "うむ、非常に良い評価だな。";
+	mes "シラキューズはどう思うか？";
+	next;
+	mes "[騎士ジェームズ]";
+	mes "まぁ良いでしょう。";
+	mes "今はあまり気に入りませんが";
+	mes "ナイトになった後に名声を";
+	mes "高めてくれることでしょう。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "うむ。ベネディクト、貴公は？";
+	next;
+	mes "[騎士ウインザー]";
+	mes "…";
+	next;
+	mes "[騎士ウインザー]";
+	mes "賛成…";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "君に不満があるわけではなさそうだ。";
+	mes "それではベアトリスの評価を";
+	mes "聞いて見ようか。";
+	next;
+	mes "[騎士エイミー]";
+	mes "うん、良いですね！";
+	mes "彼女は十分礼儀正しいですから。";
+	mes "しかも可愛いから点数をもっと…";
+	mes "なんて言ってはいけませんね？";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "何か変な評価だが、賛成であることは";
+	mes "間違いなさそうだ。";
+	mes "グロスト、貴公も一言。";
+	next;
+	mes "[騎士エドモンド]";
+	mes "まだ荒削りだが、";
+	mes "良いモノを持っている。";
+	mes "彼女の隠された宝石が";
+	mes "私達に光を見せる日が来るでしょう。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "最後に、プロスフェロ。";
+	mes "話を聞いてみようか。";
+	next;
+	mes "[騎士グレー]";
+	mes "私からはもう言うことがありませんな。";
+	mes "若いお嬢さんが、勇敢にも";
+	mes "騎士になることを望んだだけで";
+	mes "十分です。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "皆賛成か。反対は居ないのだな。";
+	mes "それでは最後に私からの評価だ。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "…";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "賛成だ。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "すべての試験を完璧にクリアしたか";
+	mes "どうかは難しいが、騎士としての徳を";
+	mes "十分に具えていると判断した。";
+	next;
+	jobchange 7;
+	set change_knight,0;
+	mes "[騎士団長ヘルマン]";
+	mes "これで貴公も私達プロンテラ騎士団の";
+	mes "一員だ。";
+	mes "弱い者を護り、誉れ高き騎士を";
+	mes "目指しなさい。";
+	next;
+	getitem 656,7;
+	mes "[騎士団長ヘルマン]";
+	mes "そして私達皆、貴公の転職を祝って";
+	mes "贈り物を用意した。";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "それでは行きなさい！";
+	mes "貴公の未来・騎士団の未来に";
+	mes "光あらんことを！";
+	close;
+LError:
+	mes "[騎士団長へルマン]";
+	mes "スキルポイントを";
+	mes "使い切ってから来てくれ。";
+	close;
+Llowlv:
+	mes "[騎士団長ヘルマン]";
+	mes "はは、君はまだナイトになるには";
+	mes "早いぞ。";
+	mes "JobLvが40以上必要だと";
+	mes "言ったはずだが！";
+	next;
+	mes "[騎士団長ヘルマン]";
+	mes "もちろんその意欲はかうが";
+	mes "まだだめだ。";
+	mes "もう少し多くのモンスターと";
+	mes "戦ってからまた来なさい。";
+	mes "待っているからな。";
+	close;
+LUpper1:
+	mes "[騎士団長ヘルマン]";
+	mes "あなたは転生されていますので";
+	mes "ここでは転職案内できません。";
+	close;
+Lknight:
+	mes "[騎士団長ヘルマン]";
+	mes "おお、騎士団員よ…私の言った言葉を";
+	mes "覚えているかな？";
+	mes "わが騎士団員は、たとえ死に瀕しても";
+	mes "堂々としていること。";
+	close;
+}
+//==============================================================================
+prt_in.gat,75,107,4	script	騎士アンドリュー	65,{
+	if (Class == 7) goto Lknight;
+	if (Class == 0) goto Lnovice;
+	if ((Class == 1) && (Upper == 0) && (change_knight >= 1)) goto LSwordman;
+	mes "[騎士アンドリュー]";
+	mes "私達プロンテラ騎士団は、";
+	mes "この大陸の平和のために";
+	mes "努力しています。";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "幾多の戦闘の中にも、";
+	mes "いつか来る明るい未来を";
+	mes "思い描いています。";
+	close;
+Lnovice:
+	mes "[騎士アンドリュー]";
+	mes "ノービスですね。";
+	mes "プロンテラ騎士団にようこそ。";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "今は限りなく自分が弱く感じられるが、";
+	mes "努力をすれば強くなれます。";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "明るい未来を夢見て、自分の道を";
+	mes "黙々と歩いて行きなさい。";
+	close;
+LSwordman:/*適当*/
+	if ((change_knight >= 2) && (change_knight <= 4)) goto Lcheck;
+	if (change_knight == 5) goto LStart2;
+	if ((change_knight >= 6) && (change_knight <=14)) goto LStart3;
+	if (change_knight == 15) goto LStart4;
+	mes "[騎士アンドリュー]";
+	mes "よし、では第一試験を始める";
+	mes "以下のItemを集めてきてくれ";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "短い足 5個,";
+	mes "人魚の心臓 5個,";
+	mes "食人植物の花 5個,";
+	mes "貝のむきみ 5個,";
+	mes "古いフライパン 5個,";
+	mes "カタシムリの皮 5個,";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "では行ってらっしゃい。";
+	set change_knight,2;
+	close;
+Lcheck:
+	mes "[騎士アンドリュー]";
+	mes "お帰りなさい。";
+	mes "アイテムは集めてきましたか？";
+	mes "それでは見てみましょう。";
+	next;
+	if ((change_knight == 2) && (countitem(1042)>=5) && (countitem(950)>=5) && (countitem(1032)>=5) && (countitem(966)>=5) && (countitem(7031)>=5) && (countitem(946)>=5)) goto Lok1;
+	mes "[騎士アンドリュー]";
+	mes "ちょっと待ってください。";
+	mes "全部揃ってないじゃありませんか。";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "まともな準備もしないでナイトに";
+	mes "なれるとでも思ったのですか？";
+	mes "頼んだアイテムを忘れてしまったなら";
+	mes "もう一度言いますよ。";
+	next;
+	mes "[騎士アンドリュー]";
+	if (change_knight == 2) goto LErritem1;
+	if (change_knight == 3) goto LErritem2;
+	if (change_knight == 4) goto LErritem3;
+LErritem1:
+	mes "短い足 5個,";
+	mes "人魚の心臓 5個,";
+	mes "食人植物の花 5個,";
+	mes "貝のむきみ 5個,";
+	mes "古いフライパン 5個,";
+	mes "カタシムリの皮 5個,";
+	goto LErritemF;
+LErritem2:
+	goto LErritemF;
+LErritem3:
+	goto LErritemF;
+LErritemF:
+	next;
+	mes "[騎士アンドリュー]";
+	mes "もう一度申し上げるが、";
+	mes "真面目に試験に臨んでください。";
+	mes "では行きなさい。";
+	close;
+Lok1:
+	delitem 1042,5;
+	delitem 950,5;
+	delitem 1032,5;
+	delitem 966,5;
+	delitem 7031,5;
+	delitem 946,5;
+	goto Lokend;
+Lokend:
+	mes "[騎士アンドリュー]";
+	mes "完璧ですね。お疲れ様でした。";
+	mes "このアイテムは、騎士団の";
+	mes "財政に大きく貢献するでしょう。";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "それでは私の同僚騎士である";
+	mes "ジェームズ=シラキューズのところへ";
+	mes "行ってみてください。";
+	mes "残った試験も、今まで暮らしてきた";
+	mes "ように真面目に望むようお願いします。";
+	set change_knight,5;
+	close;
+LStart2:/*適当*/
+	mes "[騎士アンドリュー]";
+	mes "ジェームズ=シラキューズのところへ";
+	mes "行ってみてください。";
+LStart3:
+	mes "[騎士アンドリュー]";
+	mes "何か私に話したいことがあるのですか？";
+	mes "そのような暇があるなら、次の試験を";
+	mes "受けてきなさい。";
+	mes "もう一度申し上げるが、";
+	mes "まじめに試験に臨んでください。";
+	close;
+LStart4:
+	mes "[騎士アンドリュー]";
+	mes "試験を皆終えましたね。お疲れ様。";
+	mes "それでは私たちの騎士団長の所で";
+	mes "皆の評価を聞いてもらってください。";
+	close;
+Lknight:
+	mes "[騎士アンドリュー]";
+	mes "騎士団員ですね。最近どうですか？";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "装備を整えて食べ物も得るには";
+	mes "堅実な習慣が重要ですね。";
+	mes "毎日の戦闘で得られるゼロピー1つ";
+	mes "残さず集めましょう。";
+	next;
+	mes "[騎士アンドリュー]";
+	mes "だからといって、たくさんの物資を";
+	mes "貪るのも良くないですね。";
+	mes "私達は騎士ですから。";
+	close;
+}
+//==============================================================================
+prt_in.gat,69,107,6	script	騎士エイミー	728,{
+	if (Class == 7) goto Lknight;
+	if (Class == 0) goto Lnovice;
+	if (Class == 1) goto Lswordman;
+	mes "[騎士エイミー]";
+	mes "プロンテラ騎士団へようこそ！";
+	next;
+	mes "[騎士エイミー]";
+	mes "うちは騎士ばかりだけど";
+	mes "ゆっくりしていきなさい～。";
+	close;
+Lnovice:
+	mes "[騎士エイミー]";
+	mes "あら、かわいいノービスさん。";
+	mes "とってもかわいいわ～。";
+	next;
+	mes "[騎士エイミー]";
+	mes "ねぇ、後でナイトにならない？";
+	mes "ナイトになったらきっと";
+	mes "かっこよくなるわ！";
+	next;
+	mes "[騎士エイミー]";
+	mes "あたし、覚えておくから…";
+	mes "ぜったいナイトになってね！";
+	mes "約束よ！";
+	close;
+Lswordman:
+	if ((Upper == 0) && (change_knight >= 1)) goto Lswordman2;
+	mes "[騎士エイミー]";
+	mes "あら、剣士さん。";
+	mes "ナイトに転職しにきたの？";
+	next;
+	mes "[騎士エイミー]";
+	mes "ナイトへの転職は、まずあそこに";
+	mes "いらっしゃる騎士団長様のお話を";
+	mes "聞いてみてね。";
+	close;
+Lswordman2:
+	if ((change_knight == 11) || (change_knight == 12)) goto LStart2;
+	if ((change_knight == 13) || (change_knight == 14)) goto LStart3;
+	if (change_knight == 15) goto LStart4;
+	mes "[騎士エイミー]";
+	mes "うん？エイミーに何の用かしら？";
+	next;
+	menu "ナイト転職試験を受けたいです",Ls_1,"なんでもないです",-;
+		mes "[騎士エイミー]";
+		mes "エイミーつまらないわ…";
+		close;
+	Ls_1:
+		if (change_knight == 9) goto Lq_1;
+		if (change_knight == 10) goto Lq_2;
+		mes "[騎士エイミー]";
+		mes "うん！転職申し込みは済ませたのね！";
+		mes "それじゃ、あたしの前に他の騎士様の";
+		mes "試験を受けてきてちょうだい！";
+		next;
+		mes "[騎士エイミー]";
+		mes "初めから見てあげたいけど";
+		mes "それじゃーだめ！";
+		close;
+	Lq_1:
+		mes "[騎士エイミー]";
+		mes "ほら、もっとこっちに来なさい！";
+		mes "今度はエイミーの試験よ。ふふ。";
+		next;
+		mes "[騎士エイミー]";
+		mes "あたしの名前は";
+		mes "エイミー=ベアトリス。";
+		mes "プロンテラ騎士団の紅一点です。";
+		next;
+		mes "[騎士エイミー]";
+		mes "エイミーの試験では、";
+		mes "ナイトになるのに十分な";
+		mes "礼節がそなわっているかを";
+		mes "見ます。";
+		next;
+		mes "[騎士エイミー]";
+		mes "あたしが言うことを聞きながら";
+		mes "たまに質問に答えてくれれば、";
+		mes "そのつど評価してあげます。";
+		next;
+		mes "[騎士エイミー]";
+		mes "なので、よく聞いて、ナイトとして";
+		mes "正しいと思う考えを言ってくれれば";
+		mes "いいの。わかったわね？";
+		next;
+		mes "[騎士エイミー]";
+		mes "それじゃ、はじめます。";
+		set change_knight,10;
+		next;
+		goto Lquestion;
+	Lq_2:
+		mes "[騎士エイミー]";
+		mes "うん、今度は礼儀について";
+		mes "勉強してきたのかな？";
+		next;
+		mes "[騎士エイミー]";
+		mes "今度も落ちたら、エイミーが";
+		mes "怒っちゃうわよ！";
+		next;
+		mes "[騎士エイミー]";
+		mes "そして、騎士団長様に申し上げて、";
+		mes "ナイトにさせないように";
+		mes "しちゃうんだから。";
+		next;
+		mes "[騎士エイミー]";
+		mes "なのでよく聞いて、ナイトとして";
+		mes "正しい答えを出すんですよ！";
+		next;
+		mes "[騎士エイミー]";
+		mes "それでは、いってみましょう！";
+		next;
+		goto Lquestion;
+Lquestion:
+		set @knt_t4,0;
+		mes "[騎士エイミー]";
+		mes "あなたはナイト。モロクの通りで";
+		mes "パーティーを求めています。";
+		mes "どのように募集すれば良いでしょうか？";
+		next;
+		menu "パーティーを募集していると叫ぶ",Lque_2,"チャットルームを作って待つ",-,"ナイトを求める人々を探す",-;
+			set @knt_t4,@knt_t4+1;
+	Lque_2:
+		mes "[騎士エイミー]";
+		mes "レベルの近い人々とパーティーを";
+		mes "結びました。プリースト・ウィザード";
+		mes "ハンター・アサシン・ブラックスミス";
+		mes "とです。";
+		next;
+		mes "そのまま６人でピラミッドに行くことに";
+		mes "なりました。";
+		next;
+		mes "[騎士エイミー]";
+		mes "４階に着きました。";
+		mes "さて、どんな行動をしますか？";
+		next;
+		menu "周囲を見回して冷静に判断する",-,"パーティーのためにモンスターを集める",Lque_3,"先頭をゆっくり進む",-;
+			set @knt_t4,@knt_t4+1;
+	Lque_3:
+		mes "[騎士エイミー]";
+		mes "そこへ、ある人がモンスターを多く";
+		mes "引き連れ、突然消えました。";
+		mes "その時あなたは？";
+		next;
+		menu "パーティーを護って攻撃を受ける",-,"撤退しながら戦う",-,"ペコペコで素早く逃げる",Lque_4;
+			set @knt_t4,@knt_t4+1;
+	Lque_4:
+		mes "[騎士エイミー]";
+		mes "幸いにもパーティーの皆は無事に";
+		mes "危機から脱しました。";
+		mes "さて、ずっと歩いていくと";
+		mes "パーティーメンバーではない人が";
+		mes "倒れています。";
+		next;
+		mes "[騎士エイミー]";
+		mes "その人は、手当てをしてほしいと";
+		mes "丁寧にお願いしてきました。";
+		next;
+		menu "パーティーのプリーストに知らせる",-,"お金をくれたら手当てすると言う",Lque_5,"無視して通り過ぎる",Lque_5;
+			set @knt_t4,@knt_t4+1;
+	Lque_5:
+		mes "[騎士エイミー]";
+		mes "そろそろ他の場所に行く用があるため";
+		mes "パーティーメンバーたちとお別れを";
+		mes "しなければならない。";
+		next;
+		mes "[騎士エイミー]";
+		mes "その時、戦闘中に獲得した";
+		mes "戦利品の分配はどうしますか？";
+		next;
+		menu "功労の多い人に渡す",Lque_6,"しらんぷりをして自分で持ち帰る",Lque_6,"皆で話し合って決める",-;
+			set @knt_t4,@knt_t4+1;
+	Lque_6:
+		mes "[騎士エイミー]";
+		mes "パーティーメンバーと別れた後、";
+		mes "貴重なアイテムを売るために";
+		mes "プロンテラに来た。";
+		mes "広場ではたくさんの人々が露店を";
+		mes "開いたり・取引チャットを立てて";
+		mes "います。";
+		next;
+		mes "[騎士エイミー]";
+		mes "さあどのようにアイテムを ";
+		mes "売りに出しましょうか？";
+		next;
+		menu "人々に呼びかけて歩く",Lque_7,"チャットルームを開いて待つ",-,"アイテムを求めている人を探す",-;
+			set @knt_t4,@knt_t4+1;
+	Lque_7:
+		mes "[騎士エイミー]";
+		mes "そうこうしていたら、";
+		mes "物乞いをする人に会った。";
+		mes "どうしたら良いでしょうか。";
+		next;
+		menu "私のお金とアイテムを分ける",Lque_8,"無視して去る",Lque_8,"その人に適した狩場を教える",-;
+			set @knt_t4,@knt_t4+1;
+	Lque_8:
+		mes "[騎士エイミー]";
+		mes "今度は一人で迷宮の森に行って";
+		mes "みることにしました。";
+		mes "ペコペコに乗って鼻歌まじりに";
+		mes "進んでいます。";
+		next;
+		mes "[騎士エイミー]";
+		mes "そこで、道に迷ってしまった人に";
+		mes "出くわしました。どうしますか？";
+		next;
+		menu "帰り道を教えてあげる",-,"出口まで案内する",-,"蝶の羽を一つあげる",Lque_9;
+			set @knt_t4,@knt_t4+1;
+	Lque_9:
+		mes "[騎士エイミー]";
+		mes "森の中で多くのモンスターに囲まれ、";
+		mes "回復薬が尽きてしまいました。";
+		mes "体力は赤色に表示されて、";
+		mes "危ない状況です。";
+		next;
+		mes "[騎士エイミー]";
+		mes "あ、ちょうどプリーストが通りかかり";
+		mes "ました。どのように頼みますか？";
+		next;
+		menu "よろしかったらヒールを少しください",-,"ヒールください",-,"ヒール",Lque_10;
+			set @knt_t4,@knt_t4+1;
+	Lque_10:
+		mes "[騎士エイミー]";
+		mes "もうだいぶ疲れました。";
+		mes "街に戻る時間です。";
+		next;
+		mes "[騎士エイミー]";
+		mes "帰る途中、非常に高価なアイテムが";
+		mes "落ちているのを発見しました。";
+		next;
+		menu "拾って自分が持ち帰る",Lque_f,"誰の物か捜してみる",-,"ただ通り過ぎる",Lque_f;
+			set @knt_t4,@knt_t4+1;
+	Lque_f:
+		mes "[騎士エイミー]";
+		mes "はい、これであたしの試験は終わり！";
+		next;
+		if (((@knt_t4 >= 9) && (change_knight ==9)) || ((@knt_t4 >= 8) && (change_knight ==10))) goto LOK;
+		if (change_knight == 10) goto LNG2;
+		mes "[騎士エイミー]";
+		mes "うーん…考えてみたけどだめね。";
+		mes "本当にそんなふうに行動していたら";
+		mes "うちの騎士様はみんな無礼な人と";
+		mes "いうことになるわ。";
+		next;
+		mes "[騎士エイミー]";
+		mes "私がした質問にどう答えたか";
+		mes "もう一度考えてから、";
+		mes "また試験を受けにきてくださいね。";
+		close;
+	LNG2:
+		mes "[騎士エイミー]";
+		mes "うーん…やっぱりだめ！";
+		mes "あなたをナイトにしてしまったら";
+		mes "うちの騎士団も悪く見られるわ…";
+		next;
+		mes "[騎士エイミー]";
+		mes "帰って、どこで間違った行動を";
+		mes "したのかゆっくり考えてみなさい。";
+		mes "そうしたら、また試験を受けさせて";
+		mes "あげる。いいわね？";
+		close;
+	LOK:
+		mes "[騎士エイミー]";
+		mes "すごい！それだけの心得があれば";
+		mes "騎士として十分です！";
+		mes "次の試験は…エドモンド様のところ";
+		mes "ですね。";
+		next;
+		mes "[騎士エイミー]";
+		mes "騎士様の話をよく聞いて、";
+		mes "残った試験も頑張ってくださいね！";
+		set change_knight,11;
+		close;
+LStart2:
+	mes "[騎士エイミー]";
+	mes "うん？エイミーに何の用かしら？";
+	next;
+	mes "[騎士エイミー]";
+	mes "エドモンド様のところへ行って。";
+	mes "エイミーの試験はもう終わったの。";
+	close;
+LStart3:
+	mes "[騎士エイミー]";
+	mes "未調査";
+	mes "(他の試験中)";
+	close;
+LStart4:
+	mes "[騎士エイミー]";
+	mes "あ、もう皆で結果を出す時間！";
+	next;
+	mes "[騎士エイミー]";
+	mes "騎士団長様のお話を聞いて。";
+	mes "あまり緊張しないでね。";
+	close;
+Lknight:
+	mes "[騎士エイミー]";
+	mes "あら？私を訪ねてくるなんて";
+	mes "何の用かしら？";
+	next;
+	mes "[騎士エイミー]";
+	mes "騎士生活に問題があるわけじゃ";
+	mes "無いわよね？";
+	mes "エイミーは騎士様がうまくやって";
+	mes "いることを信じています。";
+	next;
+	mes "[騎士エイミー]";
+	mes "それでは！";
+	mes "我がプロンテラ騎士団員様！";
+	close;
+}
+//==============================================================================
+prt_in.gat,70,99,6	script	騎士エドモンド	734,{
+	if (Class == 7) goto Lknight;
+	if (Class == 0) goto Lnovice;
+	if (Class == 1) goto Lswordman;
+	mes "[騎士エドモンド]";
+	mes "世の全ての物は…皆調和して";
+	mes "成り立っている。";
+	next;
+	mes "[騎士エドモンド]";
+	mes "その理に逆らわずに暮らすことだ。";
+	close;
+Lnovice:
+	mes "[騎士エドモンド]";
+	mes "根深い木は風に負けない…";
+	next;
+	mes "[騎士エドモンド]";
+	mes "基礎から固く築き上げられた力は";
+	mes "いつか輝かしい結果をもたらす。";
+	next;
+	mes "[騎士エドモンド]";
+	mes "君の未来は今から決まると言える…";
+	close;
+Lswordman:
+	if ((Upper == 0) && (change_knight >= 1)) goto Lswordman2;
+	mes "[騎士エドモンド]";
+	mes "暗い考えを持つ者は";
+	mes "暗い夢ばかり見るだろう…";
+	next;
+	mes "[騎士エドモンド]";
+	mes "暗い夢を見続ければ";
+	mes "夢すら見なくなるだろう…";
+	close;
+Lswordman2:
+	if ((change_knight == 13) || (change_knight == 14)) goto LStart2;
+	if (change_knight == 15) goto LStart4;
+	mes "[騎士エドモンド]";
+	mes "用か？剣士よ…";
+	next;
+	menu "ナイト転職試験を受けたいです",Ls_1,"なんでもないです",-;
+		mes "[騎士エドモンド]";
+		mes "君の願いは、眼前に開けるだろう。";
+		close;
+	Ls_1:
+		if (change_knight == 11) goto Lq_1;
+		if (change_knight == 12) goto Lq_2;
+		mes "[騎士エドモンド]";
+		mes "花は…若芽が育ち、茎が伸び、";
+		mes "葉が生え、実が出来て咲く。";
+		next;
+		mes "[騎士エドモンド]";
+		mes "さもなくば、それは不完全な";
+		mes "花となるだろう…";
+		next;
+		mes "[騎士エドモンド]";
+		mes "先に君を待つ人がいる。";
+		mes "君の道を見つけられるだろう。";
+		close;
+	Lq_1:
+		mes "[騎士エドモンド]";
+		mes "私の試験を受ける番か…";
+		mes "これまでの試験のように";
+		mes "賢明な判断をすれば良い。";
+		next;
+		mes "[騎士エドモンド]";
+		mes "私の名前はエドモンド=グロスト";
+		mes "プロンテラ騎士団に属する者だ。";
+		next;
+		mes "[騎士エドモンド]";
+		mes "騎士は他の人々の模範となるような";
+		mes "人間でなければならない。";
+		mes "したがって敬虔さを常に持ち、";
+		mes "世界の秩序を守るのに";
+		mes "ふさわしい人間でなければならない。";
+		next;
+		mes "[騎士エドモンド]";
+		mes "好き勝手に判断し、軽率な行動を";
+		mes "取るようではいけない。";
+		mes "時には水のように柔軟な心が必要で、";
+		mes "時には岩のように固い決心が必要だ。";
+		next;
+		mes "[騎士エドモンド]";
+		mes "何の理由も無しにモンスターを";
+		mes "殺してはならないし、殺戮を楽しむ";
+		mes "などはもってのほかだ。";
+		mes "瞑想をし、心を整えなさい。";
+		next;
+		mes "[騎士エドモンド]";
+		mes "それでは試験を始める。";
+		mes "敬虔なる心を持って臨みなさい。";
+		close2;
+		goto Lwarp;
+	Lq_2:
+		mes "[騎士エドモンド]";
+		mes "前回は軽率な動きをしたな。";
+		mes "騎士は弱き者を護る職業だ…";
+		mes "弱き者を虐げる職業ではない…";
+		next;
+		mes "[騎士エドモンド]";
+		mes "世の万物たちが調和を成す所で";
+		mes "人間だけが破壊を続けたらどうなるか…";
+		mes "これは試験だけに限ったことではなく";
+		mes "実際の世界での話なのだ…";
+		next;
+		mes "[騎士エドモンド]";
+		mes "それではもう一度だ。";
+		mes "静かに待つ心を私に見せてくれ。";
+		close2;
+		goto Lwarp;
+	Lwarp:
+		set change_knight,12;
+		addtimer 270000,"kntt2::OnWarp";
+		killmonster "job_knt.gat","kntt2";
+		monster "job_knt.gat",167,57,"--ja--",1182,1,"kntt2";
+		monster "job_knt.gat",167,54,"--ja--",1182,1,"kntt2";
+		monster "job_knt.gat",120,57,"--ja--",1182,1,"kntt2";
+		monster "job_knt.gat",120,54,"--ja--",1182,1,"kntt2";
+		monster "job_knt.gat",141,57,"--ja--",1002,1,"kntt2";
+		monster "job_knt.gat",145,57,"--ja--",1002,1,"kntt2";
+		monster "job_knt.gat",143,55,"--ja--",1002,1,"kntt2";
+		monster "job_knt.gat",143,59,"--ja--",1002,1,"kntt2";
+		monster "job_knt.gat",141,55,"--ja--",1063,1,"kntt2";
+		monster "job_knt.gat",141,59,"--ja--",1063,1,"kntt2";
+		monster "job_knt.gat",145,55,"--ja--",1063,1,"kntt2";
+		monster "job_knt.gat",145,59,"--ja--",1063,1,"kntt2";
+//stackとみなされ別所に沸くみたいなのでコメントアウト
+//		monster "job_knt.gat",139,57,"--ja--",1011,1,"kntt2";
+//		monster "job_knt.gat",147,57,"--ja--",1011,1,"kntt2";
+//		monster "job_knt.gat",143,53,"--ja--",1011,1,"kntt2";
+//		monster "job_knt.gat",143,61,"--ja--",1011,1,"kntt2";
+		warp "job_knt.gat",143,57;
+		end;
+LStart2:
+	mes "[騎士エドモンド]";
+	mes "君の心は見せてもらった。";
+	mes "騎士グレーの所へ行き、";
+	mes "最後の試験を受けるがいい…";
+	close;
+LStart4:
+	mes "[騎士エドモンド]";
+	mes "騎士団長の話を聞きなさい…";
+	mes "皆の意見もその時聞けるだろう…";
+	close;
+Lknight:
+	mes "[騎士エドモンド]";
+	mes "心を流れる水の如く…";
+	next;
+	mes "[騎士エドモンド]";
+	mes "流れる水は岩をかすめながら";
+	mes "自分の道を進む。";
+	next;
+	mes "[騎士エドモンド]";
+	mes "騎士はどんな状況でも水のように";
+	mes "静かに流れなければならない。";
+	close;
+}
+//==============================================================================
+prt_in.gat,71,91,0	script	騎士ジェームズ	65,{
+	if (Class == 7) goto Lknight;
+	if (Class == 0) goto Lnovice;
+	if ((Class == 1) && (Upper == 0) && (change_knight >= 1)) goto LSwordman;
+	mes "[騎士ジェームズ]";
+	mes "攻撃と防御、これらを同時に";
+	mes "できないためか、両手剣を使えば";
+	mes "盾を捨てる事になるので";
+	mes "防御が弱くなる。この欠点を";
+	mes "克服できる武器はないのかな。";
+	next;
+	mes "[騎士ジェームズ]";
+	mes "そんなモノを作ることができたら";
+	mes "騎士達の役に立つはずだが。";
+	close;
+Lnovice:
+	mes "[騎士ジェームズ]";
+	mes "おう、ノービスがこんな所に";
+	mes "どんな用かな？";
+	next;
+	mes "[騎士ジェームズ]";
+	mes "もしナイトに関心があっても、";
+	mes "ノービスからナイトに転職することは";
+	mes "できないんだ。";
+	next;
+	mes "[騎士ジェームズ]";
+	mes "剣士で修練を積んでから";
+	mes "またいらっしゃい";
+	close;
+LSwordman:
+	if ((change_knight >= 9) && (change_knight <= 14)) goto LStart3;
+	if (change_knight == 15) goto LStart4;
+	mes "[騎士ジェームズ]";
+	if (change_knight == 6) goto LSwordman2;
+	if ((change_knight == 7) || (change_knight == 8)) goto LSwordman3;
+	mes "ん、俺に何か用かい？";
+	goto Lmenu;
+LSwordman2:
+	mes "ん、またお前か。何の用だ？";
+	goto Lmenu;
+LSwordman3:
+	mes "ん、まだ俺に用かい？";
+	goto Lmenu;
+Lmenu:
+	next;
+	menu "ナイト転職試験を受けたいです",Ls_1,"何でもないです",Ls_0;
+	Ls_0:
+		mes "[騎士ジェームズ]";
+		mes "なんだ、水臭いな。";
+		close;
+	Ls_1:
+		if (change_knight == 5) goto Lq_1;
+		if (change_knight == 6) goto Lq_2;
+		if (change_knight >= 7) goto Lq_3;
+		mes "[騎士ジェームズ]";
+		mes "はは、こらこら…";
+		mes "お前はアンドリューの試験を";
+		mes "受けてる最中だろう？";
+		mes "それを無視して俺の所に来るなんて…。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "ほら、さっさと行け！";
+		close;
+	Lq_3:
+		mes "[騎士ジェームズ]";
+		mes "こら、お前はもう俺の試験を受けた";
+		mes "だろう！他の同僚の所に行ってくれ。";
+		mes "騎士ウインザーが待っていると";
+		mes "言ったはずだが。";
+		close;
+	Lq_2:
+		mes "[騎士ジェームズ]";
+		mes "そうか。今度はまともな答えを";
+		mes "期待しているぞ。";
+		mes "次間違えたら…覚悟しろよ！";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "それでは始める。";
+		next;
+		goto Lquestion;
+	Lq_1:
+		mes "[騎士ジェームズ]";
+		mes "おう、一つめの試験が終わったか。";
+		mes "よし、俺がお前のためにちょっと";
+		mes "時間をくれてやろう。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "俺の名はジェームズ=シラキューズ。";
+		mes "当然プロンテラ騎士団所属の騎士だ。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "お前がこれから受ける試験は、";
+		mes "お前がどれだけ騎士というものを";
+		mes "理解しているか、また、騎士の名誉";
+		mes "に関する君の考えを聞きたいね。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "緊張しなくていいぞ。";
+		mes "そんなに時間はかからない。";
+		mes "簡単な質問だ。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "それでは始める。すぐ答えろよ。";
+		next;
+Lquestion:
+		mes "[騎士ジェームズ]";
+		mes "ナイトは高い物理攻撃力と防御力、";
+		mes "攻撃速度と共に力強い両手剣スキルを";
+		mes "そなえた職業だ。";
+		mes "そこで、代表的な両手剣スキルである";
+		mes "「ツーハンドクイッケン」を使うことが";
+		mes "できない武器を答えろ。";
+		next;
+		menu "カタナ",-,"スレイヤー",-,"ブロードソード",-,"フランベルジェ",Lquestion2;
+			mes "[騎士ジェームズ]";
+			mes "違う！それは両手剣だから使える！";
+			mes "ナイトになろうというやつがナイトの";
+			mes "スキルを知らなくてどうする！";
+			next;
+			mes "[騎士ジェームズ]";
+			mes "分からなければ、街を出て";
+			mes "その辺のナイトをつかまえて";
+			mes "聞いてみな。";
+			mes "ナイトについてもうちょっと";
+			mes "調べてくるように。";
+			set change_knight,6;
+			close;
+	Lquestion2:
+		mes "[騎士ジェームズ]";
+		mes "よし、それじゃスキルについて";
+		mes "もう少し学んでみようか。";
+		mes "「ボーリングバッシュ」を習得するのに";
+		mes "必要でないスキルは？";
+		next;
+		menu "両手剣修練 Lv.5",-,"マグナムブレイク Lv.3",-,"プロボック Lv.10",Lquestion3,"バッシュ Lv.10",-;
+			mes "[騎士ジェームズ]";
+			mes "違う！それを覚えなければ";
+			mes "永遠にボーリングバッシュを";
+			mes "使えないぞ！";
+			mes "ナイトになろうというやつがナイトの";
+			mes "スキルを知らなくてどうする！";
+			next;
+			mes "[騎士ジェームズ]";
+			mes "分からなければ、街を出て";
+			mes "その辺のナイトをつかまえて";
+			mes "聞いてみな。";
+			mes "ナイトについてもうちょっと";
+			mes "調べてくるように。";
+			set change_knight,6;
+			close;
+	Lquestion3:
+		mes "[騎士ジェームズ]";
+		mes "ナイトは槍を扱うことができる。";
+		mes "そして槍を利用したスキルを";
+		mes "使うことができる。その中の一つ、";
+		mes "「ブランディッシュスピア」のために";
+		mes "習得が必要でないものを答えろ。";
+		next;
+		menu "ピアース Lv.5",-,"スピアスタッブLv.3",-,"スピアブーメラン Lv.3",Lquestion4,"ライディングLv.1",-;
+			mes "[騎士ジェームズ]";
+			mes "違う！それを覚えなければ";
+			mes "永遠にブランディッシュスピアを";
+			mes "使えないぞ！";
+			mes "ナイトになろうというやつがナイトの";
+			mes "スキルを知らなくてどうする！";
+			next;
+			mes "[騎士ジェームズ]";
+			mes "分からなければ、街を出て";
+			mes "その辺のナイトをつかまえて";
+			mes "聞いてみな。";
+			mes "ナイトについてもうちょっと";
+			mes "調べてくるように。";
+			set change_knight,6;
+			close;
+	Lquestion4:
+		mes "[騎士ジェームズ]";
+		mes "槍の中にも、他の武器同様";
+		mes "属性を持ったものが存在する。";
+		mes "では次の中で、「念」属性である";
+		mes "ナイトメアにダメージを与えられる";
+		mes "槍はどれか。";
+		next;
+		menu "ゼピュロス",Lquestion5,"ランス",-,"ギザルム",-,"クレセントサイダー",-;
+			mes "[騎士ジェームズ]";
+			mes "違う！そんなもので突いたところで";
+			mes "空振りするだけだ！";
+			mes "ナイトになろうというやつがナイトの";
+			mes "武器について知らなくてどうする！";
+			next;
+			mes "[騎士ジェームズ]";
+			mes "分からなければ、街を出て";
+			mes "その辺のナイトをつかまえて";
+			mes "聞いてみな。";
+			mes "ナイトについてもうちょっと";
+			mes "調べてくるように。";
+			set change_knight,6;
+			close;
+	Lquestion5:
+		mes "[騎士ジェームズ]";
+		mes "ナイトになればペコペコに乗って";
+		mes "移動することが可能になる。";
+		mes "その代わり攻撃速度が下がる。";
+		mes "しかし、騎兵修練スキルを習得する";
+		mes "ことにより攻撃速度を上げることが";
+		mes "できる。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "では、騎兵修練を Lv.3まで";
+		mes "習得した時の攻撃速度は";
+		mes "どうなるか？";
+		next;
+		menu "通常の 70%",-,"通常の 80%",Lquestion6,"通常の 90%",-,"通常の 100%",-;
+			mes "[騎士ジェームズ]";
+			mes "違う！騎兵修練について知らないなら";
+			mes "ペコペコになど乗るな！";
+			mes "ナイトになろうというやつがナイトの";
+			mes "武器について知らなくてどうする！";
+			next;
+			mes "[騎士ジェームズ]";
+			mes "分からなければ、街を出て";
+			mes "その辺のナイトをつかまえて";
+			mes "聞いてみな。";
+			mes "ナイトについてもうちょっと";
+			mes "調べてくるように。";
+			set change_knight,6;
+			close;
+	Lquestion6:
+		mes "[騎士ジェームズ]";
+		mes "よし、この位答えられるなら";
+		mes "ナイトの知識はひとまず良いだろう。";
+		mes "それではナイトについての個人的な";
+		mes "質問を少ししてみようか。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "街でアドバイスを求める初心者に";
+		mes "出会った時どうするべきか？";
+		next;
+		menu "適当な狩り場を薦めてあげる",Lquestion7,"攻撃を受けてあげて助ける",Lquestion6_1,"お金とアイテムをたっぷりあげる",-;
+			mes "[騎士ジェームズ]";
+			mes "何か思い違いをしているね。";
+			mes "それが本当にその人のために";
+			mes "なるだろうか？";
+			mes "うぬぼれが強い。出直せ！";
+			set change_knight,6;
+			close;
+		Lquestion6_1:
+			mes "[騎士ジェームズ]";
+			mes "ふむ。相手は喜ぶかもしれないが、";
+			mes "それは毒をあげるようなものだ。";
+			mes "助けるどころか、相手をだめにして";
+			mes "しまう。出直せ！";
+			set change_knight,6;
+			close;
+	Lquestion7:
+		mes "[騎士ジェームズ]";
+		mes "そうだ。初心者もいつかは自立";
+		mes "していかなければならない。";
+		mes "自分の力で成長していくのに";
+		mes "適した場所を教えてあげることは";
+		mes "非常に大切なことだ。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "じゃあ、パーティ内では";
+		mes "どのように動くべきか？";
+		next;
+		menu "先頭に立って皆を守る",Lquestion8,"モンスターを集めて皆殺しにさせる",Lquestion7_1,"戦闘と関係なくアイテムを拾う",-;
+			mes "[騎士ジェームズ]";
+			mes "…";
+			mes "やる気が無いなら帰っていいぞ。";
+			set change_knight,6;
+			close;
+		Lquestion7_1:
+			mes "[騎士ジェームズ]";
+			mes "…お前本気か？";
+			mes "それでどれだけ周りに被害が出るか";
+			mes "わかったものじゃないぞ。";
+			mes "もう帰れ！";
+			set change_knight,6;
+			close;
+	Lquestion8:
+		mes "[騎士ジェームズ]";
+		mes "まさにそうだ！俺達騎士の強靭な";
+		mes "体力と攻撃力はパーティ内で";
+		mes "本当に重要な役割をする。";
+		mes "常にその考えでいるように。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "最後に、騎士にとって一番大事な";
+		mes "ものとは何か？";
+		next;
+		menu "名誉",LquestionEnd,"金銭",Lquestion8_1,"地位",-;
+			mes "[騎士ジェームズ]";
+			mes "出世のために戦うような根性の";
+			mes "曲がった奴は、俺達の騎士団に";
+			mes "入れることはできない。";
+			set change_knight,6;
+			close;
+		Lquestion8_1:
+			mes "[騎士ジェームズ]";
+			mes "腐った根性だ！どこへでも行け！";
+			mes "俺達の騎士団では、お前のような奴を";
+			mes "受け入れることはできない。";
+			set change_knight,6;
+			close;
+	LquestionEnd:
+		mes "[騎士ジェームズ]";
+		mes "そう、騎士は名誉だ！";
+		mes "名誉のために生き、名誉のために死ぬ。";
+		mes "いつも心に入れておかねばならない。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "よし、俺からの試験は終わりだ。";
+		next;
+		mes "[騎士ジェームズ]";
+		mes "騎士ウインザーがお前を待っている。";
+		mes "無口なやつだから言葉に気をつけろ。";
+		set change_knight,7;
+		close;
+LStart3:
+	mes "[騎士ジェームズ]";
+	mes "未調査";
+	mes "(他の試験中)";
+	close;
+LStart4:
+	mes "[騎士ジェームズ]";
+	mes "ふむ、他の同僚の試験を全て終えたか。";
+	next;
+	mes "[騎士ジェームズ]";
+	mes "なら、騎士団長の話を聞いてこい。";
+	mes "俺達も参加するから。";
+	close;
+Lknight:
+	mes "[騎士ジェームズ]";
+	mes "よう元気か！騎士団も昔のままだよ。";
+	next;
+	mes "[騎士ジェームズ]";
+	mes "新しい騎士団員達をずっと受け持って";
+	mes "きたが、ごつい奴ばかりだ。";
+	mes "ところで、どこかで我ら騎士団の";
+	mes "名誉を汚すようなやつを見かけたり";
+	mes "しなかったか？";
+	next;
+	mes "[騎士ジェームズ]";
+	mes "もしそんなやつを見かけたら、";
+	mes "俺の代わりに叱ってやってくれ。";
+	close;
+}
+//==============================================================================
+prt_in.gat,79,94,4	script	騎士ウインザー	733,{
+	if (Class == 7) goto Lknight;
+	if (Class == 0) goto Lnovice;
+	if (Class == 1) goto Lswordman;
+	mes "[騎士ウインザー]";
+	mes "……";
+	next;
+	mes "[騎士ウインザー]";
+	mes "何の用だ…";
+	close;
+Lnovice:
+	mes "[騎士ウインザー]";
+	mes "……";
+	next;
+	mes "[騎士ウインザー]";
+	mes "外で遊びなさい…";
+	close;
+Lswordman:
+	if ((Upper == 0) && (change_knight >= 1)) goto Lswordman2;
+	mes "[騎士ウインザー]";
+	mes "……";
+	next;
+	mes "[騎士ウインザー]";
+	mes "話し掛けるな…";
+	close;
+Lswordman2:
+	if ((change_knight >= 9) && (change_knight <= 14)) goto LStart2;
+	if (change_knight == 15) goto LStart4;
+	mes "[騎士ウインザー]";
+	mes "……";
+	next;
+	if (change_knight == 8) goto Lswordman3;
+		mes "[騎士ウインザー]";
+		mes "何の用だ…";
+		goto Lmenu;
+	Lswordman3:
+		mes "[騎士ウインザー]";
+		mes "…またか…何の用だ。";
+		goto Lmenu;
+Lmenu:
+	next;
+	menu "ナイト転職試験を受けたいです",Ls_1,"何でもないです",-;
+		mes "[騎士ウインザー]";
+		mes "……";
+		close;
+	Ls_1:
+		if ((change_knight == 7) || (change_knight == 8)) goto Lq_1;
+		mes "[騎士ウインザー]";
+		mes "……";
+		next;
+		mes "[騎士ウインザー]";
+		mes "私の番ではない…";
+		close;
+	Lq_1:
+		mes "[騎士ウインザー]";
+		mes "……";
+		next;
+		mes "[騎士ウインザー]";
+		mes "…ついて来なさい。";
+		close2;
+		set @kntt1_1,0;
+		warp "job_knt.gat",89,101;
+		end;
+LStart2:
+	mes "[騎士ウインザー]";
+	mes "……";
+	next;
+	mes "[騎士ウインザー]";
+	mes "戦闘がしたいのか…";
+	close;
+LStart4:
+	mes "[騎士ウインザー]";
+	mes "……";
+	next;
+	mes "[騎士ウインザー]";
+	mes "団長のところへ…";
+	close;
+Lknight:
+	mes "[騎士ウインザー]";
+	mes "……";
+	next;
+	mes "[騎士ウインザー]";
+	mes "話しかけるな…";
+	close;
+}
+//==============================================================================
+prt_in.gat,87,92,4	script	騎士グレー	119,{
+	if (Class == 7) goto Lknight;
+	if (Class == 0) goto Lnovice;
+	if ((Class == 1) && (Upper == 0) && (change_knight >= 1)) goto LSwordman;
+	mes "[騎士グレー]";
+	mes "若者よ、時間は大切にしろよ。";
+	next;
+	mes "[騎士グレー]";
+	mes "時間が経ってから、自分のしてきた";
+	mes "ことを後悔するようになっても";
+	mes "遅いからな。";
+	close;
+Lnovice:
+	mes "[騎士グレー]";
+	mes "こう見えても、俺にだって";
+	mes "ノービス時代があったんだ。";
+	next;
+	mes "[騎士グレー]";
+	mes "特別に騎士になろうとは思わなかったが";
+	mes "強くなりたいとずっと思っていた。";
+	next;
+	mes "[騎士グレー]";
+	mes "そうしたら、いつの間にか";
+	mes "騎士になってたということさ。ははは。";
+	close;
+LSwordman:
+	if (change_knight == 15) goto LStart3;
+	mes "[騎士グレー]";
+	if (change_knight != 14) mes "若い剣士よ、何か用かな？";
+	if (change_knight == 14) mes "あ、お前か。何の用だ？";
+	next;
+	menu "ナイト転職試験を受けたいです",Ls_1,"なんでもないです",-;
+		mes "[騎士グレー]";
+		mes "体を大事にしなさい。";
+		mes "健康が第一だ。";
+		close;
+	Ls_1:
+		if (change_knight == 13) goto Lq_1;
+		if (change_knight == 14) goto Lq_2;
+		mes "[騎士グレー]";
+		mes "はは、ここには俺よりずっと若い";
+		mes "騎士がいるんだよ。そいつらに";
+		mes "まずはなしかけてから来なさい。";
+		next;
+		mes "[騎士グレー]";
+		mes "連中の話が済んだら";
+		mes "俺が面倒を見てやる。";
+		close;
+	Lq_1:
+		mes "[騎士グレー]";
+		mes "ほう、そうか。他の連中の試験を";
+		mes "すべて受けてきたんだな。";
+		next;
+		mes "[騎士グレー]";
+		mes "それでは俺の試験を始めるか。";
+		mes "ま、試験と言う程でもないんだが。";
+		next;
+		mes "[騎士グレー]";
+		mes "気楽に話をしようか。";
+		next;
+		set change_knight,14;
+		goto Lquestion;
+	Lq_2:
+		mes "[騎士グレー]";
+		mes "そうか…色々と考えてきたようだな。";
+		next;
+		mes "[騎士グレー]";
+		mes "それでは、また話を聞いてみようか。";
+		next;
+		goto Lquestion;
+	Lquestion:/*3番適当*/
+		mes "[騎士グレー]";
+		mes "まず…お前はなぜナイトになろうと";
+		mes "決心したんだ？";
+		next;
+		menu "もっと強くなるために",-,"ギルドの役に立とうと",Lques1_1,"現在に満足できなくて",Lque1_2;
+			mes "[騎士グレー]";
+			mes "もっと強くなるためだと…？";
+			mes "確かにナイトは強い。";
+			next;
+			mes "[騎士グレー]";
+			mes "しかし、その強さとは何だろうか。";
+			mes "人に力を誇示するためのものなのか、";
+			mes "または有名になるためのものなのか、";
+			mes "その他のものか…";
+			next;
+			goto Lquestion2_1;
+		Lques1_1:
+			mes "[騎士グレー]";
+			mes "ギルド…またはパーティーと";
+			mes "共に活動をする…";
+			mes "俺達の国王であるトリスタン三世も";
+			mes "次のようにおっしゃった。";
+			next;
+			mes "[騎士グレー]";
+			mes "平和な日常の裏には、常に脅威が";
+			mes "存在している。であるから、";
+			mes "あらかじめ全ての危機に対して";
+			mes "準備しておかなければならない…と。";
+			next;
+			goto Lquestion2_2;
+		Lques1_2:
+			mes "[騎士グレー]";
+			mes "ほうほう";
+			goto Lquestion2_1;
+	Lquestion2_1:/*2,3番適当*/
+		mes "[騎士グレー]";
+		mes "騎士としての「力」とは何だろうか？";
+		next;
+		menu "武勲と名声を得るためのもの",-,"自分を護ることができるもの",Lque2_1_1,"他の人々を護るためのもの",Lque2_1_1;
+			mes "[騎士グレー]";
+			mes "もちろん、お金を手に入れたり";
+			mes "有名になることは良いことだ。";
+			mes "しかし、そうではない価値を得る";
+			mes "ためにうちの騎士達は生きている。";
+			next;
+			mes "[騎士グレー]";
+			mes "ふむ、お前はよく考えているね。";
+			mes "中には何も考えずにナイトに";
+			mes "なろうとする奴もいるんだよ…";
+			next;
+			mes "[騎士グレー]";
+			mes "そんな若者達が問題を起こし、";
+			mes "騎士団の名誉を傷つける。";
+			next;
+			mes "[騎士グレー]";
+			mes "これはお前にも言えることだが、";
+			mes "一度ナイトになったら二度と剣士に";
+			mes "戻ることができない。";
+			mes "ナイトとしての自覚と責任は";
+			mes "絶対に忘れてはならないのだ。";
+			next;
+			goto Lquestion3;
+		Lque2_1_1:
+			mes "[騎士グレー]";
+			mes "ほうほう";
+			next;
+			goto Lquestion3;
+	Lquestion2_2:/*1,3番適当*/
+		mes "[騎士グレー]";
+		mes "それでは、お前が得る力は";
+		mes "どのようにギルドの役に立つ？";
+		next;
+		menu "ギルドが私の力を必要としています",Lque2_2_1,"ギルドの資金確保に役立ちます",-,"ギルド員達を護ることができます",Lque2_2_1;
+			mes "[騎士グレー]";
+			mes "もちろん、お金を手に入れたり";
+			mes "有名になることは良いことだ。";
+			mes "しかし、そうではない価値を得る";
+			mes "ためにうちの騎士達は生きている。";
+			next;
+			mes "[騎士グレー]";
+			mes "ふむ、お前はよく考えているね。";
+			mes "中には何も考えずにナイトに";
+			mes "なろうとする奴もいるんだよ…";
+			next;
+			mes "[騎士グレー]";
+			mes "そんな若者達が問題を起こし、";
+			mes "騎士団の名誉を傷つける。";
+			next;
+			mes "[騎士グレー]";
+			mes "これはお前にも言えることだが、";
+			mes "一度ナイトになったら二度と剣士に";
+			mes "戻ることができない。";
+			mes "ナイトとしての自覚と責任は";
+			mes "絶対に忘れてはならないのだ。";
+			next;
+			goto Lquestion3;
+		Lque2_2_1:
+			mes "[騎士グレー]";
+			mes "ほうほう";
+			next;
+			goto Lquestion3;
+	Lquestion3:/*3番適当*/
+		mes "[騎士グレー]";
+		mes "もし、今すぐナイトになれたら";
+		mes "何をする？";
+		next;
+		menu "直ちに戦いに出ます",Lquestion4_1,"私を待つ人々の元へ",Lquestion4_2,"騎士についてもっと学びます",Lquestion4_1;
+	Lquestion4_1:/*2,3番適当*/
+		mes "[騎士グレー]";
+		mes "ふむ、そして？";
+		next;
+		menu "早く成長するでしょう",-,"ナイトになった自分の技を試したい",-,"剣士では行かれない場所へ行く",-;
+			mes "[騎士グレー]";
+			mes "あまり急ぐものではない。";
+			mes "お前自身が急に成長するとは";
+			mes "かぎらないだろう。";
+			mes "基礎を固く固めるのが良い。";
+			next;
+			goto LquestionE;
+	Lquestion4_2:/*1,3番適当*/
+		mes "[騎士グレー]";
+		mes "誰が待っているんだ？";
+		next;
+		menu "友人です",-,"ギルド員達です",-,"恋人です",-;
+			mes "[騎士グレー]";
+			mes "生死を共にする仲間達か。";
+			mes "仲間を大切にして、彼らを護って";
+			mes "いきなさい。";
+			next;
+			goto LquestionE;
+	LquestionE:/*合格条件不明なため、2回目で無条件合格*/
+		if (change_knight == 14) goto LOK;
+		mes "[騎士グレー]";
+		mes "お…ずいぶん長話になってしまったな。";
+		next;
+		mes "[騎士グレー]";
+		mes "お前との話は退屈だった。";
+		mes "まだナイトになるのは早いだろう。";
+		next;
+		mes "[騎士グレー]";
+		mes "剣士でもう少し色々学んだほうが";
+		mes "良いだろう。";
+		mes "本当にナイトを目指すなら、自分自身を";
+		mes "変える必要があるだろう。";
+		close;
+	LOK:
+		mes "[騎士グレー]";
+		mes "お前との話は楽しかった。";
+		mes "少し気になる点もあったが。";
+		next;
+		mes "[騎士グレー]";
+		mes "それでは、騎士団長の話を聞いて、";
+		mes "連中にも判断してもらおうか。";
+		next;
+		mes "[騎士グレー]";
+		mes "あまり心配するな。";
+		mes "俺がよく話してやる。";
+		set change_knight,15;
+		close;
+LStart3:
+	mes "[騎士グレー]";
+	mes "騎士団長の話を聞いてみろ。";
+	next;
+	mes "[騎士グレー]";
+	mes "連中もよく考えてくれるから。";
+	mes "早く行きなさい。";
+	close;
+Lknight:/*クレイモア販売*/
+	mes "[騎士グレー]";
+	mes "何とも形容しがたい美しい色の刃…";
+	mes "騎士が持つべき武器と言えばこれだ！";
+	mes "そう、 ^3355FF「クレイモア」^000000 !!";
+	mes "騎士なら一本は持っていなければな。";
+	next;
+	menu "^3355FF「クレイモア」^000000 について",Lkni_1,"クレイモアを購入する",Lkni_2,"会話をやめる",-;
+		mes "[騎士グレー]";
+		mes "立派な騎士ならクレイモアなど";
+		mes "手足の如く使いこなさなければね。";
+		mes "いつかまた来てくれることを";
+		mes "期待しているよ。";
+		close;
+	Lkni_1:
+		mes "[騎士グレー]";
+		mes "ルーンミッドガッツ王国のプロンテラで";
+		mes "手に入れることができる様々な名剣の";
+		mes "中でも一際優れていると言われる剣";
+		mes "クレイモア!!";
+		mes "騎士との相性はまさに抜群だ。";
+		next;
+		mes "[騎士グレー]";
+		mes "その評判のクレイモアを";
+		mes "我が騎士団では騎士達だけのために";
+		mes "^3355FF74000^000000Zenyで製作している。";
+		next;
+		mes "[騎士グレー]";
+		mes "しかし、クレイモアの特徴である";
+		mes "その頑丈で鋭利な刃を造るために";
+		mes "貴重な ^3355FF「鋼鉄」^000000 一つが必要だ。";
+		mes "制作費と鋼鉄を持って来たらすぐに";
+		mes "造ってやる。騎士団の名誉にかけてな。";
+		close;
+	Lkni_2:
+		if ((countitem(999) >= 1) && (Zeny >= 74000)) goto Lmake;
+		mes "[騎士グレー]";
+		mes "お前がクレイモアを欲しがる気持ちは";
+		mes "わかったが、用意が整わなければ";
+		mes "造ってやることはできないな。";
+		mes "^3355FF74000Zeny！鋼鉄一つ！^000000";
+		next;
+		mes "[騎士グレー]";
+		mes "用意ができたらまた来なさい。";
+		mes "いつでも待っているから。";
+		close;
+	Lmake:
+		if (checkweight(1163,1)) goto Lmake2;
+			mes "[騎士グレー]";
+			mes "荷物が一杯のようだ";
+			close;
+	Lmake2:
+		mes "[騎士グレー]";
+		mes "おお！用意してきたか。";
+		mes "クレイモアの価値がわかる奴め。";
+		mes "ようし…今すぐ作ってやるぞ！";
+		next;
+		mes "[騎士グレー]";
+		mes "クレイモアの刀身を熱して";
+		mes "鋼鉄を溶かして混ぜて…";
+		next;
+		mes "^3355FF- カキンカキンカキン -^000000";
+		next;
+		mes "[騎士グレー]";
+		mes "ほら、騎士団が誇るクレイモアだ！";
+		mes "これからの旅で頼もしい相棒と";
+		mes "なるだろう！";
+		delitem 999,1;
+		set Zeny,Zeny-74000;
+		getitem 1163,1;
+		close;
+}
+//==============================================================================
+job_knt.gat,89,106,4	script	騎士ウインザー::knttest1	733,{
+	mes "[騎士ウインザー]";
+	mes "……";
+	next;
+	mes "[騎士ウインザー]";
+	mes "質問があるのか…？";
+	next;
+	menu "どんな試験なんでしょう？",-,"試験はどのように進むんですか？",L2,"ここから出たいです",L3,"いいえ",L4;
+		mes "[騎士ウインザー]";
+		mes "……";
+		next;
+		mes "[騎士ウインザー]";
+		mes "モンスターとの戦闘だ…";
+		next;
+		mes "[騎士ウインザー]";
+		mes "全て倒しなさい…";
+		next;
+		mes "[騎士ウインザー]";
+		mes "……";
+		next;
+		mes "[騎士ウインザー]";
+		mes "３段階全て終わらせなさい…";
+		next;
+		mes "[騎士ウインザー]";
+		mes "１段階３分与える…";
+		next;
+		mes "[騎士ウインザー]";
+		mes "……";
+		close;
+	L2:
+		mes "[騎士ウインザー]";
+		mes "……";
+		next;
+		mes "[騎士ウインザー]";
+		mes "控え室に入りなさい…";
+		next;
+		mes "[騎士ウインザー]";
+		mes "それではすぐに始める。";
+		next;
+		mes "[騎士ウインザー]";
+		mes "……";
+		next;
+		mes "[騎士ウインザー]";
+		mes "他の者が試験中なら待つ。";
+		next;
+		mes "[騎士ウインザー]";
+		mes "一人終わったらすぐに入る。";
+		next;
+		mes "[騎士ウインザー]";
+		mes "……";
+		close;
+	L3:
+		mes "[騎士ウインザー]";
+		mes "……";
+		next;
+		mes "[騎士ウインザー]";
+		mes "…そうか……";
+		close2;
+		warp "prt_in.gat",80,100;
+		end;
+	L4:
+		mes "[騎士ウインザー]";
+		mes "……";
+		close;
+OnWarp:
+	warpwaitingpc "job_knt.gat",43,147,1;
+	disablewaitingroomevent;
+	monster "job_knt.gat",39,150,"--ja--",1114,1,"kntt1_1";
+	monster "job_knt.gat",39,142,"--ja--",1114,1,"kntt1_1";
+	monster "job_knt.gat",35,146,"--ja--",1100,1,"kntt1_1";
+	monster "job_knt.gat",47,150,"--ja--",1114,1,"kntt1_1";
+	monster "job_knt.gat",47,142,"--ja--",1114,1,"kntt1_1";
+	monster "job_knt.gat",43,137,"--ja--",1160,1,"kntt1_1";
+	monster "job_knt.gat",43,137,"--ja--",1095,1,"kntt1_1";
+	monster "job_knt.gat",43,137,"--ja--",1105,1,"kntt1_1";
+	monster "job_knt.gat",43,155,"--ja--",1160,1,"kntt1_1";
+	monster "job_knt.gat",43,155,"--ja--",1095,1,"kntt1_1";
+	monster "job_knt.gat",43,155,"--ja--",1105,1,"kntt1_1";
+	monster "job_knt.gat",52,146,"--ja--",1100,1,"kntt1_1";
+	initnpctimer "knttimer";
+	end;
+OnInit:
+	waitingroom "控室",20,"knttest1::OnWarp",1;
+	end;
+}
+job_knt.gat,0,0,0	script	knttimer	-1,{
+	end;
+OnTimer180000:
+	areawarp "job_knt.gat",22,126,65,165,"prt_in.gat",80,100;
+	areawarp "job_knt.gat",22,32,65,71,"prt_in.gat",80,100;
+	areawarp "job_knt.gat",122,132,165,171,"prt_in.gat",80,100;
+	enablewaitingroomevent "knttest1";
+	stopnpctimer;
+	killmonster "job_knt.gat","kntt1_1";
+	killmonster "job_knt.gat","kntt1_2";
+	killmonster "job_knt.gat","kntt1_3";
+	end;
+}
+job_knt.gat,43,146,0	script	kntt1_1	-1,{
+	set @kntt1_1,@kntt1_1+1;
+	if (@kntt1_1 == 12) goto LOK;
+	end;
+LOK:
+	stopnpctimer "knttimer";
+	mes "[騎士ウインザー]";
+	mes "……";
+	close2;
+	mes "[騎士ウインザー]";
+	mes "次の段階に進みなさい…";
+	close2;
+	set @kntt1_2,0;
+	monster "job_knt.gat",34,52,"--ja--",1119,1,"kntt1_2";
+	monster "job_knt.gat",29,52,"--ja--",1111,2,"kntt1_2";
+	monster "job_knt.gat",53,52,"--ja--",1119,1,"kntt1_2";
+	monster "job_knt.gat",58,52,"--ja--",1111,2,"kntt1_2";
+	monster "job_knt.gat",43,42,"--ja--",1106,1,"kntt1_2";
+	monster "job_knt.gat",43,62,"--ja--",1106,1,"kntt1_2";
+	monster "job_knt.gat",57,64,"--ja--",1030,1,"kntt1_2";
+	monster "job_knt.gat",57,39,"--ja--",1030,1,"kntt1_2";
+	monster "job_knt.gat",31,64,"--ja--",1030,1,"kntt1_2";
+	monster "job_knt.gat",31,39,"--ja--",1030,1,"kntt1_2";
+	initnpctimer "knttimer";
+	warp "job_knt.gat",43,52;
+	end;
+}
+job_knt.gat,43,52,0	script	kntt1_2	-1,{
+	set @kntt1_2,@kntt1_2+1;
+	if (@kntt1_2 == 12) goto LOK;
+	end;
+LOK:
+	stopnpctimer "knttimer";
+	mes "[騎士ウインザー]";
+	mes "……";
+	close2;
+	mes "[騎士ウインザー]";
+	mes "あと一段階…";
+	close2;
+	set @kntt1_3,0;
+	monster "job_knt.gat",136,152,"--ja--",1122,1,"kntt1_3";
+	monster "job_knt.gat",150,152,"--ja--",1123,1,"kntt1_3";
+	monster "job_knt.gat",143,145,"--ja--",1124,1,"kntt1_3";
+	monster "job_knt.gat",136,158,"--ja--",1280,1,"kntt1_3";
+	monster "job_knt.gat",130,165,"--ja--",1125,1,"kntt1_3";
+	monster "job_knt.gat",156,165,"--ja--",1126,1,"kntt1_3";
+	monster "job_knt.gat",143,167,"--ja--",1258,1,"kntt1_3";
+	initnpctimer "knttimer";
+	warp "job_knt.gat",143,152;
+	end;
+}
+job_knt.gat,143,152,0	script	kntt1_3	-1,{
+	set @kntt1_3,@kntt1_3+1;
+	if (@kntt1_3 == 7) goto LOK;
+	end;
+LOK:
+	stopnpctimer "knttimer";
+	mes "[騎士ウインザー]";
+	mes "……";
+	close2;
+	mes "[騎士ウインザー]";
+	mes "試験終了…";
+	close2;
+	mes "[騎士ウインザー]";
+	mes "ここを出て";
+	mes "エイミー=ベアトリスに";
+	mes "会いなさい。";
+	close2;
+	set change_knight,9;
+	killmonster "job_knt.gat","kntt1_1";
+	killmonster "job_knt.gat","kntt1_2";
+	killmonster "job_knt.gat","kntt1_3";
+	enablewaitingroomevent "knttest1";
+	warp "prt_in.gat",80,100;
+	end;
+}
+job_knt.gat,143,57,0	script	kntt2	-1,{
+	deltimer "kntt2::OnWarp";
+	warp "prt_fild05.gat",353,251;
+	end;
+OnWarp:
+	set change_knight,13;
+	warp "prt_in.gat",80,100;
+	end;
+}

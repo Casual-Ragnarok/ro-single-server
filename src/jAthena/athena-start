@@ -1,0 +1,175 @@
+#!/bin/sh
+# athena starting script by rowla
+
+# chkconfig: 345 99 01
+# description: start and stop athena service
+
+PATH=./:$PATH
+
+L_SRV=./bin/login-server
+C_SRV=./bin/char-server
+M_SRV=./bin/map-server
+L_SRV_C=./conf/login_athena.conf
+C_SRV_C=./conf/char_athena.conf
+C_SRV_C2=./conf/inter_athena.conf
+M_SRV_C=./conf/map_athena.conf
+M_SRV_C2=./conf/battle_athena.conf
+M_SRV_C3=./conf/atcommand_athena.conf
+M_SRV_C4=./conf/script_athena.conf
+M_SRV_C5=./conf/msg_athena.conf
+M_SRV_C6=./conf/grf-files.txt
+
+print_start() {
+#	more << EOF
+echo "Athena Starting..."
+echo "			(c) 2003 Athena Project."
+echo "			URL:http://project-yare.de/"
+echo ""
+echo "Debug informations will appear,"
+echo "since this is a test release."
+echo ""
+echo "checking..."
+#EOF
+}
+
+check_account() {
+	if [ ! -d ./save ]; then
+		mkdir ./save
+	fi
+
+	if [ ! -d ./log ]; then
+		mkdir ./log
+	fi
+
+	if [ ! -d ./conf/import ]; then
+		mkdir ./conf/import
+	fi
+
+	if [ ! -f ./save/account.txt ]; then
+		i=0
+		while [ $i -le 4 ];
+		do
+			echo -e "$i\ts`expr $i + 1`\tp`expr $i + 1`\t-\tS\t0\t0\r" >> save/account.txt
+			i=`expr $i + 1`
+		done
+	fi
+
+	if [ ! -f ./save/athena.txt ]; then
+		echo -n > save/athena.txt
+	fi
+
+	if [ ! -f ./save/bank.txt ]; then
+		echo -n > save/bank.txt
+	fi
+
+	if [ ! -f ./save/guild.txt ]; then
+		echo -n > save/guild.txt
+	fi
+
+	if [ ! -f ./save/party.txt ]; then
+		echo -n > save/party.txt
+	fi
+
+	if [ ! -f ./save/pet.txt ]; then
+		echo -n > save/pet.txt
+	fi
+
+	if [ ! -f ./save/storage.txt ]; then
+		echo -n > save/storage.txt
+	fi
+
+	if [ ! -f ./save/castle.txt ]; then
+		i=0
+		while [ $i -le 19 ];
+		do
+			echo -e "$i,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\r" >> save/castle.txt
+			i=`expr $i + 1`
+		done
+	fi
+
+	if [ ! -f ./conf/import/atcommand_conf.txt ]; then
+		echo -n > conf/import/atcommand_conf.txt
+	fi
+
+	if [ ! -f ./conf/import/battle_conf.txt ]; then
+		echo -n > conf/import/battle_conf.txt
+	fi
+
+	if [ ! -f ./conf/import/char_conf.txt ]; then
+		echo -n > conf/import/char_conf.txt
+	fi
+
+	if [ ! -f ./conf/import/inter_conf.txt ]; then
+		echo -n > conf/import/inter_conf.txt
+	fi
+
+	if [ ! -f ./conf/import/login_conf.txt ]; then
+		echo -n > conf/import/login_conf.txt
+	fi
+
+	if [ ! -f ./conf/import/map_conf.txt ]; then
+		echo -n > conf/import/map_conf.txt
+	fi
+}
+
+check_files() {
+
+	for i in ${L_SRV} ${C_SRV} ${M_SRV} ${L_SRV_C} ${C_SRV_C} ${C_SRV_C2} ${M_SRV_C} ${M_SRV_C2} ${M_SRV_C3} ${M_SRV_C4} ${M_SRV_C5} ${M_SRV_C6}
+	do
+		if [ ! -f ./$i ]; then
+    		echo "$i does not exist, or can't run."
+    		echo "Stoped, Check your compile or configuration file."
+    		exit 1;
+		fi
+	done
+
+#	more << EOF
+echo "Check done."
+echo "Looks good, have a nice athena!"
+#EOF
+}
+	
+
+case $1 in
+	'start')
+		if [ $(ps ax | grep -E "${M_SRV}|${C_SRV}|${L_SRV}" | grep -v grep | wc -l) -eq 0 ]; then
+			print_start
+			check_account
+			check_files
+
+			exec ${L_SRV} ${L_SRV_C}&
+#			exec ${C_SRV} ${C_SRV_C} ${C_SRV_C2} > /dev/null&
+#			exec ${M_SRV} ${M_SRV_C} ${M_SRV_C2} > /dev/null&
+			exec ${C_SRV} ${C_SRV_C} ${C_SRV_C2}&
+#			exec nice -n -20 ${M_SRV} ${M_SRV_C} ${M_SRV_C2} ${M_SRV_C3} ${M_SRV_C4} ${M_SRV_C5} ${M_SRV_C6}&
+			exec ${M_SRV} ${M_SRV_C} ${M_SRV_C2} ${M_SRV_C3} ${M_SRV_C4} ${M_SRV_C5} ${M_SRV_C6}&
+
+			echo "Now Started Athena."
+		else
+			echo "Athena is already running..."
+		fi
+;;
+	'stop')
+		if [ $(ps ax | grep -E "${M_SRV}|${C_SRV}|${L_SRV}" | grep -v grep | wc -l) -ne 0 ]; then
+			ps ax | grep -E "${L_SRV}|${C_SRV}|${M_SRV}" | awk '{print $1}' | xargs kill
+			while	[ $(ps ax | grep -E "${L_SRV}|${C_SRV}|${M_SRV}" | grep -v grep | wc -l) -ne 0 ]; do
+				sleep 1
+			done
+		fi
+	;;
+	'kill')
+		if [ $(ps ax | grep -E "${M_SRV}|${C_SRV}|${L_SRV}" | grep -v grep | wc -l) -ne 0 ]; then
+			ps ax | grep -E "${M_SRV}|${C_SRV}|${L_SRV}" | awk '{print $1}' | xargs kill -9
+			while	[ $(ps ax | grep -E "${L_SRV}|${C_SRV}|${M_SRV}" | grep -v grep | wc -l) -ne 0 ]; do
+				sleep 1
+			done
+		fi
+	;;
+	'restart')
+		$0 stop
+		$0 start
+	;;
+	*)
+		echo "Usage: athena-start { start | stop | kill | restart }"
+	;;
+esac

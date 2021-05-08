@@ -1,0 +1,42 @@
+prontera.gat,152,192,4	script	リセット職員	117,{
+	set @KAFRA_COUPON,0;
+	cutin "kafra_01",2;
+	mes "[リセット職員]";
+	mes "いらっしゃいませ";
+	mes "こちらではステータス、スキルの";
+	mes "リセットを行えます。";
+	next;
+	mes "[リセット職員]";
+	mes "リセット料金は300Zenyです。";
+	next;
+	menu "ステータスリセット",Lresetst_0,"スキルリセット",Lresetsk_0,"終了",Lclose;
+Lresetst_0:
+	if(Zeny >= 300) goto Lresetst_1;
+		mes "[カプラ職員]";
+		mes "お客様、お金が足りません。";
+		mes "所持金をお確かめください。";
+		goto Lclose;
+Lresetst_1:
+	set Zeny,Zeny-300;
+	resetstatus;
+	mes "[リセット職員]";
+	mes "リセット完了しました。";
+	mes "利用してくださってありがとうございます。";
+	goto Lclose;
+Lresetsk_0:
+	if(Zeny >= 300) goto Lresetsk_1;
+		mes "[カプラ職員]";
+		mes "お客様、お金が足りません。";
+		mes "所持金をお確かめください。";
+		goto Lclose;
+Lresetsk_1:
+	set Zeny,Zeny-300;
+	resetskill;
+	mes "[リセット職員]";
+	mes "リセット完了しました。";
+	mes "利用してくださってありがとうございます。";
+	goto Lclose;
+Lclose:	
+	cutin "kafra_01",255;
+	close;
+}

@@ -1,0 +1,166 @@
+skill n,x;	nにスキル番号、xにSLV
+
+bonus bStr,n;	STR+n
+bonus bAgi,n;	AGI+n
+bonus bVit,n;	VIT+n
+bonus bInt,n;	INT+n
+bonus bDex,n;	DEX+n
+bonus bLuk,n;	LUK+n
+
+bonus bMaxHP,n;			最大HP+n
+bonus bMaxSP,n;			最大SP+n
+bonus bMaxHPrate,n;		最大HP+n% 
+bonus bMaxSPrate,n;		最大SP+n%
+bonus bAtk,n;			攻撃力+n
+bonus bAtk2,n;			攻撃力2+n
+bonus bAtkRate			攻撃力+n%
+bonus bBaseAtk,n;		基本攻撃力+n
+bonus bMatk,n;			魔法攻撃力1+n、魔法攻撃力2+n
+bonus bMatk1,n;			魔法攻撃力1+n
+bonus bMatk2,n;			魔法攻撃力2+n
+bonus bMatkRate,n;		魔法攻撃力+n%
+bonus bMdef,n;			魔法防御力+n
+bonus bDef,n;			防御力+n
+bonus bHit,n;			命中力+n
+bonus bCritical,n;		クリティカル+n
+bonus bCriticalRate,n;		クリティカル+n%
+bonus bFlee,n;			回避力+n
+bonus bFlee2,n;			完全回避+n
+bonus bAddSpeed,n;			移動速度+n
+bonus bAspd,n;			攻撃速度+n
+bonus bSpeedRate,n;		移動速度n%(高い物だけ適用)
+bonus bAspdRate,n;		攻撃速度n%(高い物だけ適用)
+bonus bSpeedAddRate,n;		移動速度+n%
+bonus bAspdAddRate,n;		攻撃速度+n%
+bonus bAtkRange,n;		攻撃射程+n
+bonus bCastrate,n;		詠唱時間+n%
+bonus bUseSPrate,n;		SP消費量+n%
+bonus bHPrecovRate,n;		HP自然回復量+n%(スキルによる回復は除く)
+bonus bSPrecovRate,n;		SP自然回復量+n%(スキルによる回復は除く)
+bonus bDoubleRate,n;		ダブルアタック発動確率n%(武器無視で、高い物だけ適用)
+bonus bDoubleAddRate,n;		ダブルアタック発動確率+n%(武器無視)
+bonus bPerfectHitRate,n;	必中攻撃確率n%(高い物だけ適用)
+bonus bPerfectHitAddRate,n;	必中攻撃確率+n%
+bonus bGetZenyNum,n;		物理攻撃でモンスターを倒した時モンスターレベル*10 + rand()%nのZenyを得る(nは高い物だけ適用)
+bonus bAddGetZenyNum,n;		物理攻撃でモンスターを倒した時モンスターレベル*10 + rand()%nのZenyを得る(nは+される)
+bonus bAddStealRate,n;		スティール確率+n%
+bonus bCriticalDef,n;		クリティカルを喰らわない確率+n%
+bonus bNearAtkDef,n;		近距離攻撃のダメージをn%軽減(魔法とトラップ、鷹を除く)
+bonus bLongAtkDef,n;		遠距離攻撃のダメージをn%軽減(魔法とトラップ、鷹を除く)
+bonus bMagicAtkDef,n;		魔法攻撃のダメージをn%軽減
+bonus bMiscAtkDef,n;		MISC攻撃(トラップや鷹)のダメージをn%軽減
+
+bonus bIgnoreDefRace,n;		n種族に対して防御力無視ダメージ
+					0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター、プレイヤーも含む)
+bonus bIgnoreDefEle,n;		n属性に対して防御力無視ダメージ
+					0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus bIgnoreMDefRace,n;	n種族に対して魔法防御力無視ダメージ
+					0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター、プレイヤーも含む)
+bonus bIgnoreMDefEle,n;		n属性に対して魔法防御力無視ダメージ
+					0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus bDefRatioAtkRace,n;	n種族に対して防御力が高ければ高いほど大きなダメージを与える(防御無視)
+					0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター、プレイヤーも含む)
+bonus bDefRatioAtkEle,n;	n属性に対して防御力が高ければ高いほど大きなダメージを与える(防御無視)
+					0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus bAtkEle,n;		武器にnの属性付与
+					0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus bDefEle,n;		防具にnの属性付与
+					0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus bHitRate,n;		命中率+n%
+bonus bFleeRate,n;		回避率+n%
+bonus bFlee2Rate,n;		完全回避率+n%
+bonus bDefRate,n;		防御率+n%(装備)
+bonus bDef2Rate,n;		防御率+n%(vitによる物)
+bonus bMdefRate,n;		魔法防御率+n%(装備)
+bonus bMdef2Rate,n;		魔法防御率+n%(intによる物)
+bonus bSplashRange,n;	通常の武器攻撃でターゲットの周辺nセルにダメージを与える(nは高い物だけ適用、1なら3*3、2なら5*5)
+bonus bSplashAddRange,n;	通常の武器攻撃でターゲットの周辺nセルにダメージを与える(nは+される)
+
+bonus bInfiniteEndure,n;	無限インデュア(nは無意味)
+bonus bRestartFullRecover,n;	復活した時HPとSPを全て回復(nは無意味)
+bonus bNoCastCancel,n;		キャスティングをキャンセルされない(GVGではキャンセルされる、nは無意味)
+bonus bNoCastCancel2,n;		キャスティングをキャンセルされない(GVGでもキャンセルされない、nは無意味)
+bonus bNoSizeFix,n;		モンスターのサイズによる攻撃補正を受けない(nは無意味)
+bonus bNoWeaponDamage,n;	物理攻撃でダメージを受けない(nは無意味)
+bonus bNoMagicDamage,n;		魔法でダメージを受けない(ヒールも含む、nは無意味)
+bonus bNoGemStone,n;		スキルを使う時ジェムストーンを消耗しない(nは無意味)
+bonus bShortWeaponDamageReturn,n;	近距離物理攻撃のn%を敵に跳ね返す(ダメージは減らない。nは+される。)
+bonus bLongWeaponDamageReturn,n;	遠距離物理攻撃のn%を敵に跳ね返す(ダメージは減らない。nは+される。)
+bonus bShortWeaponDamageReturn,n;	近距離物理攻撃のn%を敵に跳ね返す(ダメージは減らない。nは+される。)
+bonus bBreakWeaponRate,n;	プレイヤー対象攻撃の場合、n%の確率で対象の武器を破壊(nは万分率。確率は+される)
+bonus bBreakArmorRate,n;	プレイヤー対象攻撃の場合、n%の確率で対象の鎧を破壊(nは万分率。確率は+される)
+bonus bUnbreakableWeapon,n;		絶対に武器が破壊されない(nは無意味)
+bonus bUnbreakableArmor,n;		絶対に鎧が破壊されない(nは無意味)
+
+bonus2 bAddEff,Eff_Blind,n;	n%の確率で攻撃対象に暗黒付与(nは万分率)
+bonus2 bAddEff,Eff_Sleep,n;	n%の確率で攻撃対象に睡眠付与(nは万分率)
+bonus2 bAddEff,Eff_Poison,n;	n%の確率で攻撃対象に毒付与(nは万分率)
+bonus2 bAddEff,Eff_Freeze,n;	n%の確率で攻撃対象に凍結付与(nは万分率)
+bonus2 bAddEff,Eff_Silence,n;	n%の確率で攻撃対象に沈黙付与(nは万分率)
+bonus2 bAddEff,Eff_Stan,n;	n%の確率攻撃対象にでスタン付与(nは万分率)
+bonus2 bAddEff,Eff_Curse,n;	n%の確率で攻撃対象に呪い付与(nは万分率)
+bonus2 bAddEff,Eff_Confusion,n;	n%の確率で攻撃対象に混乱付与(nは万分率)
+bonus2 bAddEff,Eff_Stone,n;	n%の確率で攻撃対象に石化付与(nは万分率)
+
+bonus2 bAddEff2,Eff_Blind,n;	n%の確率で自分に暗黒付与(nは万分率)
+bonus2 bAddEff2,Eff_Sleep,n;	n%の確率で自分に睡眠付与(nは万分率)
+bonus2 bAddEff2,Eff_Poison,n;	n%の確率で自分に毒付与(nは万分率)
+bonus2 bAddEff2,Eff_Freeze,n;	n%の確率で自分に凍結付与(nは万分率)
+bonus2 bAddEff2,Eff_Silence,n;	n%の確率で自分に沈黙付与(nは万分率)
+bonus2 bAddEff2,Eff_Stan,n;	n%の確率で自分にスタン付与(nは万分率)
+bonus2 bAddEff2,Eff_Curse,n;	n%の確率で自分に呪い付与(nは万分率)
+bonus2 bAddEff2,Eff_Confusion,n;	n%の確率で自分に混乱付与(nは万分率)
+bonus2 bAddEff2,Eff_Stone,n;	n%の確率で自分に石化付与(nは万分率)
+
+bonus2 bResEff,Eff_Blind,n;	暗黒耐性+n%(nは万分率)
+bonus2 bResEff,Eff_Sleep,n;	睡眠耐性+n%(nは万分率)
+bonus2 bResEff,Eff_Poison,n;	毒耐性+n%(nは万分率)
+bonus2 bResEff,Eff_Freeze,n;	凍結耐性+n%(nは万分率)
+bonus2 bResEff,Eff_Silence,n;	沈黙耐性+n%(nは万分率)
+bonus2 bResEff,Eff_Stan,n;	スタン耐性+n%(nは万分率)
+bonus2 bResEff,Eff_Curse,n;	呪い耐性+n%(nは万分率)
+bonus2 bResEff,Eff_Confusion,n;	混乱耐性+n%(nは万分率)
+bonus2 bResEff,Eff_Stone,n;	石化耐性+n%(nは万分率)
+
+bonus2 bAddSize,n,x;			nサイズにx%のダメージ追加(物理攻撃のみ)
+						0,小型　1,中型　2,大型
+bonus2 bAddRace,n,x;			n種族にx%のダメージ追加(物理攻撃のみ)
+						0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター、プレイヤーも含む)
+bonus2 bSubRace,n,x;			n種族からのダメージx%軽減(物理攻撃のみ)
+						0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター、プレイヤーも含む)
+bonus2 bMagicAddRace,n,x;		n種族にx%のダメージ追加(魔法攻撃のみ)
+						0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター、プレイヤーも含む)
+bonus2 bMagicSubRace,n,x;		n種族からのダメージx%軽減(魔法攻撃のみ)
+						0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター、プレイヤーも含む)
+bonus2 bAddEle,n,x;			n属性にx%のダメージ追加(物理攻撃のみ)
+						0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus2 bMagicAddEle,n,x;		n属性にx%のダメージ追加(魔法攻撃のみ)
+						0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus2 bSubEle,n,x;			n属性からのダメージx%軽減(魔法も軽減)
+						0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus2 bAddDamageClass,n,x;		クラスnのモンスターにx%のダメージ追加(物理攻撃のみ)、プレイヤーの場合はn職業にx%のダメージ追加
+bonus2 bAddMagicDamageClass,n,x;	クラスnのモンスターにx%の魔法ダメージ追加、プレイヤーの場合はn職業にx%の魔法ダメージ追加
+bonus2 bAddDefClass,n,x;		クラスnのモンスターにx%のダメージ軽減(物理攻撃のみ)、プレイヤーの場合はn職業にx%のダメージ軽減
+bonus2 bAddMDefClass,n,x;		クラスnのモンスターにx%の魔法ダメージ軽減、プレイヤーの場合はn職業にx%の魔法ダメージ軽減
+bonus2 bHPDrainRate,n,x;		敵に与えたダメージをn%確率でx%をHPに吸収。(nとxは+される)
+bonus2 bSPDrainRate,n,x;		敵に与えたダメージをn%確率でx%をSPに吸収。(nとxは+される)
+bonus2 bHPDrainValue,n,x;		敵に与えたダメージをn%確率でxをHPに吸収。(nとxは+される)
+bonus2 bSPDrainValue,n,x;		敵に与えたダメージをn%確率でxをSPに吸収。(nとxは+される)
+bonus2 bWeaponComaEle, n, x;		n属性に対して x%確率で即死攻撃(xは万分率で+される)
+						0,無　1,水　2,土　3,火　4,風　5,毒　6,聖　7,闇　8,念　9,不死
+bonus2 bWeaponComaRace, n, x;		n種族に対して x%確率で即死攻撃(xは万分率+される)
+						0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター、プレイヤーも含む)
+bonus2 bWeaponAtk,n,x;			タイプnの武器を装備しているときに攻撃力+x。
+						0,素手	1,短剣	2,片手剣　3,両手剣　4,片手槍　5,両手槍	6,片手斧　7,両手斧　8,鈍器	9,	10,杖	11,弓	12,拳	13,楽器	14,鞭	15,本	16,カタール
+bonus2 bWeaponAtkRate,n,x;		タイプnの武器を装備しているときに攻撃力+x%。
+						0,素手	1,短剣	2,片手剣　3,両手剣　4,片手槍　5,両手槍	6,片手斧　7,両手斧　8,鈍器	9,	10,杖	11,弓	12,拳	13,楽器	14,鞭	15,本	16,カタール
+
+bonus3 bAddMonsterDropItem,n,x,y;	物理攻撃でモンスターを倒した時モンスターの種族がxならアイテムnを落とす確率y%(モンスターが落とすアイテムとは無関係の物、高い物だけ適用)
+					yは万分率で複数の種族を入れたい時はnを同じ物にしてyを0にするとxだけ反映することができる
+						0,無形　1,不死　2,動物　3,植物　4,昆虫　5,魚貝　6,悪魔　7,人間　8,天使　9,竜族　10,ボスモンスター　11,ボスモンスター以外(普通のモンスター)
+bonus3 bAutoSpell,n,x,y: オートスペルでスキルnをxレベルでy%確率で使用。
+
+bAddDamageClass、bAddMagicDamageClass、bAddMonsterDropItemは10個まで設定可能です。10個を越える物は無視されます。
+bAutoSpellは一つだけ有効です。複数入れても最後の一つだけ適用されます。
+
+矢で使える物はbCritical、bAtkEle、bHit、bAtkRange、bAddEle、bAddRace、bAddSize、bAddEffのみです。その他は無視されます。

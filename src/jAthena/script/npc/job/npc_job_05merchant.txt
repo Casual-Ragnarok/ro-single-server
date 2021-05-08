@@ -1,0 +1,914 @@
+//----------------------------------------------------------------------
+// スクリプト : Job_Merchant v1.0
+//----------------------------------------------------------------------
+
+alberta_in.gat,53,43,6	script	商人組合員	86,{
+	mes "[組合員マンス]";
+	if ((JOB_MERCHANT_Q != 2) || (Class != 0)) goto L_START_1;
+		set JOB_MERCHANT_Q,0;
+		set JOB_MERCHANT_Q2,0;
+		set NOV_3_MERCHANT,0;
+		set FIRST_JOB_QUEST,0;
+		set NOV_1_2_COS_C,0;
+		set NOV_1ST_COS,0;
+		set NOV_2ND_COS,0;
+		set NOV_3_ACOLYTE,0;
+		set NOV_3_ARCHER,0;
+		set NOV_3_MAGICIAN,0;
+		set JOB_THIEF_Q,0;
+		mes "姓名 " + strcharinfo(0) + " .";
+		mes "貴方の商人転職試験は不合格だ。";
+		mes "以上。";
+		close;
+	L_START_1:
+		if (JOB_MERCHANT_Q > 10) goto L_START_2;
+		if (JOB_MERCHANT_Q < 9) goto L_START_2;
+			if (Sex != 1) goto L_NAME_1_1;
+				mes "あ、" + strcharinfo(0) + " 君、";
+				goto L_NAME_1_2;
+	L_NAME_1_1:
+				mes "あ、" + strcharinfo(0) + " さん、";
+	L_NAME_1_2:
+   		mes "良い知らせだ。";
+		if (JOB_MERCHANT_Q != 10) goto L_SUB_1_1;
+   		mes "君が転職試験を受けている間";
+		mes "商人ギルド総会は、君に商人資格と";
+		mes "ギルドへの正式入団を承認した。";
+		goto L_SUB_1_2;
+	L_SUB_1_1:
+		if (JOB_MERCHANT_Q != 9) goto L_SUB_1_2;
+   		mes "君が転職試験を受けている間";
+		mes "商人ギルド総会は、君に商人資格と";
+		mes "ギルドへの正式入団を承認した。";
+   		mes "あと残ってるのは会費だけだ。いいか？";
+		next;
+   		menu "残り500Zenyを払う",-,"やめる",L_MENU_1_1;
+			mes "[組合員マンス]";
+			if (Zeny >= 500) goto L_ROOT_1_1;
+				mes "ここまで来て勘定ができないとは！";
+				mes "商人になろうとする人間は";
+				mes "信用第一主義でなければならん！";
+				close;
+			L_ROOT_1_1:
+				set Zeny,Zeny-500;
+ 				mes "よし！確かに500Zenyもらった。";
+				goto L_SUB_1_2;
+		L_MENU_1_1:
+			mes "[組合員マンス]";
+   			mes "どうした…？何か問題でもあるのか？";
+ 			close;
+		L_SUB_1_2:
+	   		mes "じゃ、話を進めようか！";
+	   		next;
+ 			mes "[組合員マンス]";
+			mes "おめでとう！";
+			jobchange 5;
+			mes "組合一同、君が商人ギルドの一員に";
+			mes "なった事を心からお祝いする。";
+			mes "これからも頑張って活動してくれ。";
+	   		next;
+			if (JOB_MERCHANT_Q2 < 7) goto L_SUB_1_3;
+			if (JOB_MERCHANT_Q2 > 8) goto L_SUB_1_3;
+			if (NOV_3_MERCHANT != 11) goto L_ROOT_1_2;
+				mes "[組合員マンス]";
+				mes "(そして…これは小さな金額だけど";
+				mes "貰っとけ。手紙を送ってくれた感謝の";
+				mes "しるしだ。またよろしく…)";
+				set Zeny,Zeny+100;
+	   			next;
+				goto L_SUB_1_3;
+			L_ROOT_1_2:
+	   			mes "[組合員マンス]";
+				mes "(手紙…忘れてたか…";
+				mes "まあ、仕方がないな、ご苦労様)";
+	   			next;
+		L_SUB_1_3:
+				set JOB_MERCHANT_Q,0;
+				set JOB_MERCHANT_Q2,0;
+				set NOV_3_MERCHANT,0;
+				set FIRST_JOB_QUEST,0;
+				set NOV_1_2_COS_C,0;
+				set NOV_1ST_COS,0;
+				set NOV_2ND_COS,0;
+				set NOV_3_ACOLYTE,0;
+				set NOV_3_ARCHER,0;
+				set NOV_3_MAGICIAN,0;
+				set JOB_THIEF_Q,0;
+				mes "[組合員マンス]";
+				mes "全世界通貨量の20％確保という";
+				mes "我らの壮大な目標を達成するため、";
+				mes "情熱溢れる青年の力が必要不可欠だ！";
+				mes "判ったか？俺の言う事が!?";
+				mes "まあ、今のは話のたとえだ。";
+				mes "結論的にはお金を稼ごうって話し。";
+	  			close;
+	L_START_2:
+		if (JOB_MERCHANT_Q > 8) goto L_START_3;
+		if (JOB_MERCHANT_Q < 7) goto L_START_3;
+		mes "あ、" + strcharinfo(0) + " 、";
+		mes "無事に到着したか。まずは領収証を";
+		mes "倉庫職員に渡しておいでよ。";
+	   close;
+	L_START_3:
+		if (JOB_MERCHANT_Q > 6) goto L_START_4;
+		if (JOB_MERCHANT_Q <= 0) goto L_START_4;
+		mes "君、またここで何してるの？";
+			if (JOB_MERCHANT_Q2 > 2) goto L_SUB_3_1;
+			if (JOB_MERCHANT_Q2 < 1) goto L_SUB_3_1;
+			mes "倉庫で荷物を受け取って、プロンテラの";
+			mes "元剣士ギルドに行って、";
+			mes "(株）カプラ＝プロンテラ支部";
+			mes "総責任者に渡せばいい。";
+			if (JOB_MERCHANT_Q2 != 1) goto L_ROOT_3_1;
+				mes "荷物の商品番号は^3355FF2485741^000000だ。";
+				goto L_SUB_3_4;
+			L_ROOT_3_1:
+				mes "荷物の商品番号は^3355FF2328137^000000だ。";
+				goto L_SUB_3_4;
+		L_SUB_3_1:
+			if (JOB_MERCHANT_Q2 > 4) goto L_SUB_3_2;
+			if (JOB_MERCHANT_Q2 < 3) goto L_SUB_3_2;
+   			mes "倉庫で荷物を受け取って、";
+			mes "ゲフェンの魔法学院の行って、";
+			mes "そこの関係者に渡せばいい。";
+			if (JOB_MERCHANT_Q2 != 3) goto L_ROOT_3_2;
+				mes "荷物の商品番号は^3355FF2989396^000000だ。";
+				goto L_SUB_3_4;
+			L_ROOT_3_2:
+				mes "荷物の商品番号は^3355FF2191737^000000だ。";
+				goto L_SUB_3_4;
+		L_SUB_3_2:
+			if (JOB_MERCHANT_Q2 > 6) goto L_SUB_3_3;
+			if (JOB_MERCHANT_Q2 < 5) goto L_SUB_3_3;
+   			mes "倉庫で荷物を受け取って、";
+			mes "モロクの染料製作者、";
+			mes "<ザバドゥリハン>の見習生に";
+			mes "渡せばいい。";
+			if (JOB_MERCHANT_Q2 != 5) goto L_ROOT_3_3;
+				mes "荷物の商品番号は^3355FF3012685^000000だ。";
+				goto L_SUB_3_4;
+			L_ROOT_3_3:
+				mes "荷物の商品番号は^3355FF3487372^000000だ。";
+				goto L_SUB_3_4;
+		L_SUB_3_3:
+			mes "倉庫で荷物を受け取って、";
+			mes "イズルード近くのバイアラン島の";
+			mes "カプラ職員に渡せばいい。";
+			if (JOB_MERCHANT_Q2 != 7) goto L_ROOT_3_4;
+				mes "荷物の商品番号は^3355FF3318702^000000だ。";
+				goto L_SUB_3_4;
+			L_ROOT_3_4:
+   				mes "荷物の商品番号は^3355FF3543625^000000だ。";
+		L_SUB_3_4:
+			next;
+			mes "[組合員マンス]";
+			mes "倉庫は右の部屋だ。";
+			if (JOB_MERCHANT_Q2 > 8) goto L_SUB_3_5;
+			if (JOB_MERCHANT_Q2 < 7) goto L_SUB_3_5;
+			mes "そして… (手紙もよろしく～)";
+		L_SUB_3_5:
+			mes "この番号をよく覚えておいて、";
+			mes "倉庫で倉庫管理者に目的地と";
+			mes "商品番号を言うと、荷物がもらえる";
+			mes "はずだ。忘れるな！";
+			next;
+			mes "[組合員マンス]";
+   			mes "荷物を届け先に届けてから";
+			mes "またここに戻って、領収証を";
+			mes "倉庫管理者に渡したらOKだ。";
+   			mes "全部終わったら俺に話し掛けてくれ。";
+			mes "それじゃ、気を付けてな！";
+   			close;
+	L_START_4:
+   		mes "俺に何か用でも？";
+		next;
+   		menu "商人になりたいんです",L_MENU_4_1,"商人って何？",L_MENU_4_2,"商人転職条件は？",L_MENU_4_3,"何でもない",L_MENU_4_4;
+		L_MENU_4_1:
+			if (Class != 5) goto L_SUB_4_1;
+   			mes "[組合員マンス]";
+   			mes "…？うん？なにを言ってる？";
+			mes "君はもう商人じゃない…まったく。";
+   			mes "ここって笑う所だったの？";
+			close;
+		L_SUB_4_1:
+			if (Class == 0) goto L_SUB_4_2;
+			mes "[組合員マンス]";
+			mes "我ら商人ギルドの人間は、";
+			mes "コウモリみたいな奴が一番嫌いだ。";
+			mes "昼は商売して、夜はエッチな服を着て";
+			mes "怪しい酒場に通ってるそういう奴。";
+			mes "うー…ムカムカ";
+			next;
+			mes "[組合員マンス]";
+		   	mes "まあ、話しが長くなったけど、";
+			mes "他の職業を持っている君みたいな奴は";
+			mes "商人ギルドには要らない。";
+		   	close;
+		L_SUB_4_2:
+   			mes "[組合員マンス]";
+			mes "商人になりたいって？ふ…";
+			next;
+//転生ノビ処理
+	callfunc "jobchanger","組合員マンス",5;
+			if (JobLevel != 10) goto L_SUB_4_2A;
+			if (SkillPoint == 0) goto L_SUB_4_3;
+		L_SUB_4_2A:
+			mes "[組合員マンス]";
+   			mes "しかーし！商人になるためには、";
+			mes "少なくても初心者JOBスキルが";
+			mes "9以上にならなきゃ！";
+   			mes "いくら金稼ぎの商人でも、";
+			mes "最低限、基本がなってないとね。";
+   			close;
+		L_SUB_4_3:
+			mes "[組合員マンス]";
+			mes "よしそれじゃこの申請書にサインして、";
+			mes "商人ギルド加入会費1000Zenyを";
+			mes "払うのだ。";
+			mes "あ、今お金がなかったら、まず";
+			mes "500Zenyだけ払ってもらって、残りは";
+			mes "試験の後でもで良いぞ。どうする？";
+			next;
+			menu "もちろん",L_MENU_ROOT_1,"いや、また今度…",L_MENU_ROOT_2;
+			L_MENU_ROOT_1:
+				set JOB_MERCHANT_Q,0;
+				set JOB_MERCHANT_Q2,0;
+				set NOV_3_MERCHANT,0;
+				set FIRST_JOB_QUEST,0;
+				set NOV_1_2_COS_C,0;
+				set NOV_1ST_COS,0;
+				set NOV_2ND_COS,0;
+				set NOV_3_ACOLYTE,0;
+				set NOV_3_ARCHER,0;
+				set NOV_3_MAGICIAN,0;
+				set JOB_THIEF_Q,0;
+				mes "[組合員マンス]";
+				mes "この申請書は会費と一緒に";
+				mes "出さなきゃならないけど…";
+				mes "会費の方はどうする？";
+   				next;
+   				menu "1000Zeny全部払う",L_MENU_ROOT_3,"先に500Zenyだけ払う",L_MENU_ROOT_4,"やめます",L_MENU_ROOT_5;
+				L_MENU_ROOT_3:
+					mes "[組合員マンス]";
+					if (Zeny < 1000) goto L_ROOT_4_1;
+					set Zeny,Zeny-1000;
+					set JOB_MERCHANT_Q,4;
+					mes "OK… 1000Zeny確かに頂いた。";
+					goto START_5_1;
+				L_ROOT_4_1:
+					mes "何でそんなを顔する？";
+					mes "お金がもったいないとか";
+					mes "思ってるだろう？";
+					close;
+				L_MENU_ROOT_4:
+					mes "[組合員マンス]";
+					if (Zeny < 500) goto L_ROOT_4_2;
+					set Zeny,Zeny-500;
+					set JOB_MERCHANT_Q,3;
+   					mes "ふむ… 500Zeny確かに頂いた。";
+					mes "まあ、こういう風に分割払いするのは";
+					mes "商人として好ましくないが…";
+					goto START_5_1;
+				L_ROOT_4_2:
+   					mes "「１Zenyも持ってない自分が嫌だ」";
+					mes "という顔をするな！";
+					mes "今からでも遅くないから";
+					mes "お金を貯めて来い！";
+					close;
+				L_MENU_ROOT_5:
+   					mes "[組合員マンス]";
+   					mes "準備が出来たら、いつでも来い。";
+   					close;
+			L_MENU_ROOT_2:
+				mes "[組合員マンス]";
+				mes "今はお金がないか？";
+				mes "まあ、仕方がないな";
+				mes "焦らずに頑張ってくれ。";
+				close;
+	START_5_1:
+			next;
+			mes "[組合員マンス]";
+			mes "よし、ギルド加入申請書を出す。";
+			mes "その次、転職試験について説明する。";
+			mes "その前に一言。たまに、人の話しを";
+			mes "適当に解釈して、勝手な事をする奴が";
+			mes "いるけど、君はそんな事するなよ。";
+			next;
+			mes "[組合員マンス]";
+  			set @MERCHANT_JOB,rand(4);
+			if (@MERCHANT_JOB != 0) goto L_SUB_5_2;
+		L_SUB_5_1:
+			mes "倉庫で荷物を受け取って、プロンテラの";
+			mes "元剣士ギルドに行って、";
+			mes "(株）カプラ＝プロンテラ支部";
+			mes "総責任者に渡せばいい。";
+			set @MERCHANT_JOB2,rand(2);
+			if (@MERCHANT_JOB2 != 0) goto L_ROOT_5_1;
+   				mes "荷物の商品番号は^3355FF2485741^000000だ。";
+   				set JOB_MERCHANT_Q2,1;
+				goto L_SUB_5_5;
+			L_ROOT_5_1:
+   				mes "荷物の商品番号は^3355FF2328137^000000だ。";
+   				set JOB_MERCHANT_Q2,2;
+				goto L_SUB_5_5;
+		L_SUB_5_2:
+			if (@MERCHANT_JOB != 1) goto L_SUB_5_3;
+			mes "倉庫で荷物を受け取って、";
+			mes "ゲフェンの魔法学院の行って、";
+			mes "そこの関係者に渡せばいい。";
+			set @MERCHANT_JOB2,rand(2);
+			if (@MERCHANT_JOB2 != 0) goto L_ROOT_5_2;
+				mes "荷物の商品番号は^3355FF2989396^000000だ。";
+				set JOB_MERCHANT_Q2,3;
+				goto L_SUB_5_5;
+			L_ROOT_5_2:
+				mes "荷物の商品番号は^3355FF2191737^000000だ。";
+				set JOB_MERCHANT_Q2,4;
+				goto L_SUB_5_5;
+		L_SUB_5_3:
+			if (@MERCHANT_JOB != 2) goto L_SUB_5_4;
+			mes "倉庫で荷物を受け取って、";
+			mes "モロクの染料製作者、";
+			mes "<ザバドゥリハン>の見習生に";
+			mes "渡せばいい。";
+			set @MERCHANT_JOB2,rand(2);
+			if (@MERCHANT_JOB2 != 0) goto L_ROOT_5_3;
+				mes "荷物の商品番号は^3355FF3012685^000000だ。";
+				set JOB_MERCHANT_Q2,5;
+				goto L_SUB_5_5;
+			L_ROOT_5_3:
+				mes "荷物の商品番号は^3355FF3487372^000000だ。";
+				set JOB_MERCHANT_Q2,6;
+				goto L_SUB_5_5;
+		L_SUB_5_4:
+			mes "倉庫で荷物を受け取って、";
+			mes "イズルード近くのバイアラン島の";
+			mes "カプラ職員に渡せばいい。";
+			set @MERCHANT_JOB2,rand(2);
+			if (@MERCHANT_JOB2 != 0) goto L_ROOT_5_4;
+				mes "荷物の商品番号は^3355FF3318702^000000だ。";
+				set JOB_MERCHANT_Q2,7;
+				goto L_ROOT_5_5;
+			L_ROOT_5_4:
+				mes "荷物の商品番号は^3355FF3543625^000000だ。";
+				set JOB_MERCHANT_Q2,8;
+			L_ROOT_5_5:
+				next;
+   				mes "[組合員マンス]";
+   				mes "そして… (これは俺の個人的な";
+				mes "頼みなんだけど…荷物を渡す時、";
+				mes "この手紙を一緒に渡してくれ。";
+				mes "お願いっ！)";
+				getitem 1072,1;
+		L_SUB_5_5:
+			next;
+			mes "[組合員マンス]";
+			mes "この番号をよく覚えておいて、";
+			mes "右の倉庫で管理者に目的地と";
+			mes "商品番号を言うと、荷物がもらえる";
+			mes "はずだ。忘れるな！";
+			next;
+			mes "[組合員マンス]";
+			mes "荷物を届け先に届けてから";
+			mes "またここに戻って、領収証を";
+			mes "倉庫管理者に渡したらOKだ。";
+   			mes "全部終わったら俺に話し掛けてくれ。";
+			mes "それじゃ、気を付けてな！";
+   			close;
+		L_MENU_4_2:
+			mes "[組合員マンス]";
+			mes "商人？簡単に言うと、物を売って";
+			mes "お金を稼ぐ。それが商人だ。";
+			mes "戦闘が得意なわけではないし、";
+			mes "大した攻撃・回復スキルもない。";
+			mes "でも、安い値段でアイテムが手に入る。";
+			next;
+			mes "[組合員マンス]";
+   			mes "「メマーナイト」という究極の技が";
+			mes "あるけれど…まあ、それはちょっと";
+			mes "別として…弓、杖、両手剣以外";
+			mes "大体の武器も使えるし…";
+   			mes "と、とにかく、商人はお金稼ぎの";
+			mes "ための職業だ。それで充分だろう？";
+   			close;
+		L_MENU_4_3:
+			mes "[組合員マンス]";
+			mes "商人になるためには";
+			mes "3つの条件が必要だ。";
+			next;
+			mes "[組合員マンス]";
+			mes "1つ、いくら商売主体の商人でも、";
+			mes "初心者スキルが9に達して";
+			mes "いないと駄目だ。";
+			next;
+			mes "[組合員マンス]";
+			mes "2つ、商人ギルド加入会費";
+			mes "1000Zenyは必要だ。商人を目指す";
+			mes "者なら、その位のお金を貯めるのは";
+			mes "簡単だろう。";
+			next;
+			mes "[組合員マンス]";
+			mes "3つ、基礎体力及び方向感覚のテスト。";
+			mes "正確性を試す転職試験だ。";
+			mes "指定した人物に会って、";
+			mes "荷物を届ける事で商人の資質が";
+			mes "あるかどうかを見る。";
+			close;
+		L_MENU_4_4:
+			close;
+}
+
+
+alberta_in.gat,28,29,2	script	商人組合員	83,{
+	set @CHECK_JOBCHANGE,0;
+	mes "[組合員ケイ]";
+	mes "やあー何の用？";
+	next;
+	menu "転職試験のことです",L_MENU_1_1,"アルバイトの事です",L_MENU_1_2,"何でもありません",L_MENU_1_3;
+	L_MENU_1_1:
+		mes "[組合員ケイ]";
+		if (Class != 5) goto L_SUB_1_1;
+		mes "何を言ってる？君はもう商人だろう？";
+		close;
+	L_SUB_1_1:
+			if (JOB_MERCHANT_Q == 10) goto L_ROOT_1_3;
+		L_ROOT_1_1:
+			if (JOB_MERCHANT_Q == 9) goto L_ROOT_1_3;
+		L_ROOT_1_2:
+			if (JOB_MERCHANT_Q != 2) goto L_START_2;
+		L_ROOT_1_3:
+			mes "君の記録はすでに転職課に送った。";
+			mes "中央の<組合員マンス>に話してみて。";
+			close;
+	L_START_2:
+		if (JOB_MERCHANT_Q > 8) goto L_START_3;
+		if (JOB_MERCHANT_Q < 7) goto L_START_3;
+		mes "あ、来たね。じゃ確認するよ。";
+		mes "君の名前は…";
+		mes strcharinfo(0) + " か。";
+		next;
+		mes "[組合員ケイ]";
+		mes "目的地は…";
+		L_SUB_2_1:
+			if (JOB_MERCHANT_Q2 > 2) goto L_SUB_2_2;
+			if (JOB_MERCHANT_Q2 < 1) goto L_SUB_2_2;
+			mes "プロンテラのカプラ姉ちゃんだったな。";
+			mes "領収証は？";
+				if (JOB_MERCHANT_Q2 != 1) goto L_ROOT_2_1;
+				if (countitem(1073)<1) goto L_ROOT_2_1;
+				delitem 1073,1;
+				goto L_SUB_2_5;
+			L_ROOT_2_1:
+				if (JOB_MERCHANT_Q2 != 2) goto L_ROOT_2_2;
+				if (countitem(1074)<1) goto L_ROOT_2_2;
+				delitem 1074,1;
+				goto L_SUB_2_5;
+			L_ROOT_2_2:
+				set @CHECK_JOBCHANGE,1;
+				goto L_SUB_2_5;
+		L_SUB_2_2:
+			if (JOB_MERCHANT_Q2 > 4) goto L_SUB_2_3;
+			if (JOB_MERCHANT_Q2 < 3) goto L_SUB_2_3;
+			mes "ゲフェンの魔法学院だったな。";
+			mes "領収証は？";
+				if (JOB_MERCHANT_Q2 != 3) goto L_ROOT_2_3;
+				if (countitem(1075)<1) goto L_ROOT_2_3;
+				delitem 1075,1;
+				goto L_SUB_2_5;
+			L_ROOT_2_3:
+				if (JOB_MERCHANT_Q2 != 4) goto L_ROOT_2_4;
+				if (countitem(1076)<1) goto L_ROOT_2_4;
+				delitem 1076,1;
+				goto L_SUB_2_5;
+			L_ROOT_2_4:
+				set @CHECK_JOBCHANGE,1;
+				goto L_SUB_2_5;
+		L_SUB_2_3:
+			if (JOB_MERCHANT_Q2 > 6) goto L_SUB_2_4;
+			if (JOB_MERCHANT_Q2 < 5) goto L_SUB_2_4;
+			mes "モロクの染料製作者だったな。";
+			mes "領収証は？";
+				if (JOB_MERCHANT_Q2 != 5) goto L_ROOT_2_5;
+				if (countitem(1077)<1) goto L_ROOT_2_5;
+				delitem 1077,1;
+				goto L_SUB_2_5;
+			L_ROOT_2_5:
+				if (JOB_MERCHANT_Q2 != 6) goto L_ROOT_2_6;
+				if (countitem(1078)<1) goto L_ROOT_2_6;
+				delitem 1078,1;
+				goto L_SUB_2_5;
+			L_ROOT_2_6:
+				set @CHECK_JOBCHANGE,1;
+				goto L_SUB_2_5;
+		L_SUB_2_4:
+			mes "イズルード・バイアラン島の";
+			mes "カプラ姉ちゃんだったな。領収証は？";
+				if (JOB_MERCHANT_Q2 != 7) goto L_ROOT_2_7;
+				if (countitem(1079)<1) goto L_ROOT_2_7;
+				delitem 1079,1;
+				goto L_SUB_2_5;
+			L_ROOT_2_7:
+				if (JOB_MERCHANT_Q2 != 8) goto L_ROOT_2_8;
+				if (countitem(1080)<1) goto L_ROOT_2_8;
+				delitem 1080,1;
+				goto L_SUB_2_5;
+			L_ROOT_2_8:
+				set @CHECK_JOBCHANGE,1;
+		L_SUB_2_5:
+			if (@CHECK_JOBCHANGE != 1) goto L_SUB_2_6;
+			mes "うん？何？領収証がない？";
+			mes "どうなってるんだ？";
+			next;
+			mes "君の記録を転職課に送る。";
+			mes "中央の<組合員マンス>に話しな！";
+			set JOB_MERCHANT_Q,2;
+			close;
+		L_SUB_2_6:
+			mes "…よし！完璧だ！";
+			mes "君の記録は転職課に送る。";
+			mes "中央の<組合員マンス>に話しな！";
+			if (JOB_MERCHANT_Q != 8) goto L_SUB_2_7;
+			set JOB_MERCHANT_Q,10;
+			close;
+		L_SUB_2_7:
+			set JOB_MERCHANT_Q,9;
+			close;
+	L_START_3:
+		if (JOB_MERCHANT_Q > 6) goto L_START_4;
+		if (JOB_MERCHANT_Q < 5) goto L_START_4;
+		if (countitem(1081)>=1) goto L_START_4;
+		if (countitem(1082)>=1) goto L_START_4;
+		if (countitem(1091)>=1) goto L_START_4;
+   		mes "うん？あー無事に戻って来た？";
+		mes "他に用でも？";
+   		next;
+		menu "荷物を無くしました",-,"何でもありません",L_MENU_3_1;
+			set JOB_MERCHANT_Q,2;
+			mes "[組合員ケイ]";
+			mes "この馬鹿が！荷物をなくしったって？";
+			mes "どうするつもりなんだよ！";
+			mes "悪いけど規定上、君の記録を";
+			mes "商人ギルド転職課に送る。";
+			close;
+		L_MENU_3_1:
+			mes "[組合員ケイ]";
+			mes "用が無いなら早く行ってよ。";
+			close;
+	L_START_4:
+		if (JOB_MERCHANT_Q > 6) goto L_START_5;
+		if (JOB_MERCHANT_Q < 5) goto L_START_5;
+		if (countitem(1081)>=1) goto L_SUB_4_1;
+		if (countitem(1082)>=1) goto L_SUB_4_1;
+		if (countitem(1091)<1) goto L_START_5;
+	L_SUB_4_1:
+		mes "うん？まだ出発してなかったのか？";
+		mes "何をしてるの？";
+		next;
+		menu "荷物を交換してください",-,"何でもないです",L_MENU_4_1;
+			mes "[組合員ケイ]";
+			if (countitem(1081)>=1) goto L_SUB_4_2;
+			if (countitem(1082)>=1) goto L_SUB_4_2;
+			if (countitem(1083)>=1) goto L_SUB_4_2;
+			if (countitem(1091)>=1) goto L_SUB_4_2;
+			mes "荷物は？荷物はどこにある？";
+			next;
+			menu "荷物を…無くしてしまいました",-,"な…何でもありません",L_MENU_4_2;
+				set JOB_MERCHANT_Q,2;
+				mes "[組合員ケイ]";
+				mes "この大馬鹿が！荷物を無くしただと？";
+				mes "悪いけど規定上、君の記録を";
+				mes "商人ギルド転職課に送る。";
+				close;
+			L_MENU_4_2:
+				mes "[組合員ケイ]";
+				mes "何言ってるの？おい、しっかりしてよ！";
+				close;
+		L_SUB_4_2:
+			mes "ったく、馬鹿やろうが！";
+			mes "トロくさいんだよ！";
+				if (countitem(1081)<1) goto L_ROOT_4_1;
+				delitem 1081,1;
+				goto L_ROOT_4_3;
+			L_ROOT_4_1:
+				if (countitem(1082)<1) goto L_ROOT_4_2;
+				delitem 1082,1;
+				goto L_ROOT_4_3;
+			L_ROOT_4_2:
+				if (countitem(1091)<1) goto L_ROOT_4_3;
+				delitem 1091,1;
+			L_ROOT_4_3:
+				set FIRST_JOB_QUEST,0;
+				set JOB_MERCHANT_Q,4;
+				set @RESET_JOBCHANGE,1;
+	L_MENU_4_1:
+		mes "[組合員ケイ]";
+		mes "…？ なんだよ…。";
+		close;
+	L_START_5:
+		if (@RESET_JOBCHANGE != 0) goto L_SUB_5_2;
+		mes "名前は？";
+		mes strcharinfo(0) + " …か。";
+		if (JOB_MERCHANT_Q != 0) goto L_SUB_5_1;
+		mes "うん？君の名前は名簿にないよ.もう一度確認した方がどう？";
+		close;
+	L_SUB_5_1:
+		mes "あ、名簿にある。";
+		mes "それじゃ荷物を渡すよ。";
+	L_SUB_5_2:
+		mes "正確な目的地はどこ？";
+		next;
+		menu "プロンテラ",L_MENU_5_1,"ゲフェン",L_MENU_5_2,"モロク",L_MENU_5_3,"イズルード",L_MENU_5_4;
+		L_MENU_5_1:
+			set @WHERE_VILLAGE,1;
+			goto L_SUB_5_3;
+		L_MENU_5_2:
+			set @WHERE_VILLAGE,2;
+			goto L_SUB_5_3;
+		L_MENU_5_3:
+			set @WHERE_VILLAGE,3;
+			goto L_SUB_5_3;
+		L_MENU_5_4:
+			set @WHERE_VILLAGE,4;
+	L_SUB_5_3:
+		mes "[組合員ケイ]";
+		mes "さあ、荷物の商品番号を書いて。";
+		mes "もし、間違ったりしたら、";
+		mes "<０>って書けばいい。";
+		next;
+	L_SUB_5_4:
+		input @NUM_INPUT;
+		if (@NUM_INPUT >= 1) goto L_SUB_5_5;
+			mes "[組合員ケイ]";
+			mes "本当にやめるの？";
+			menu "うん",-,"ううん",L_MENU_5_5;
+				mes "わかった。取り消しー";
+				close;
+		L_MENU_5_5:
+			goto L_SUB_5_3;
+	L_SUB_5_5:
+		if (@NUM_INPUT < 1000000) goto L_SUB_5_6;
+		if (@NUM_INPUT <= 5000000) goto L_SUB_5_7;
+	L_SUB_5_6:
+		mes "[組合員ケイ]";
+		mes "おいおい、多すぎだよ。";
+		mes "1000000から5000000";
+		mes "までの数字だ。";
+		next;
+		goto L_SUB_5_3;
+	L_SUB_5_7:
+		mes "[組合員ケイ]";
+		if (@WHERE_VILLAGE != 1) goto L_ROOT_5_1;
+			mes "目的地はプロンテラ！";
+			mes "荷物の商品番号も間違いないか？";
+			goto L_SUB_5_8;
+	L_ROOT_5_1:
+		if (@WHERE_VILLAGE != 2) goto L_ROOT_5_2;
+			mes "目的地はゲフェン！うー遠い。";
+			mes "君も本当に運がない奴だな。";
+			mes "荷物の商品番号も間違いないか？";
+			goto L_SUB_5_8;
+	L_ROOT_5_2:
+		if (@WHERE_VILLAGE != 3) goto L_ROOT_5_3;
+			mes "目的地はモロク！うわー遠いな。";
+			mes "君も本当に運がない奴だな。";
+			mes "荷物の商品番号も間違いないか？";
+			goto L_SUB_5_8;
+	L_ROOT_5_3:
+			mes "目的地はバイアラン島！";
+			mes "荷物の商品番号も間違いないか？";
+	L_SUB_5_8:
+		next;
+		menu "OK.",L_START_6,"NO.",-;
+			goto L_SUB_5_3;
+	L_START_6:
+		if (@WHERE_VILLAGE != 1) goto L_SUB_6_2;
+		set FIRST_JOB_QUEST,1;
+			if (JOB_MERCHANT_Q2 != 1) goto L_ROOT_6_1;
+			if (@NUM_INPUT != 2485741) goto L_ROOT_6_1;
+			getitem 1081,1;
+			goto L_START_7;
+		L_ROOT_6_1:
+			if (JOB_MERCHANT_Q2 != 2) goto L_ROOT_6_2;
+			if (@NUM_INPUT != 2328137) goto L_ROOT_6_2;
+			getitem 1082,1;
+			goto L_START_7;
+		L_ROOT_6_2:
+			getitem 1091,1;
+			goto L_START_7;
+	L_SUB_6_2:
+		if (@WHERE_VILLAGE != 2) goto L_SUB_6_3;
+		set FIRST_JOB_QUEST,2;
+			if (JOB_MERCHANT_Q2 != 3) goto L_ROOT_6_3;
+			if (@NUM_INPUT != 2989396) goto L_ROOT_6_3;
+			getitem 1081,1;
+			goto L_START_7;
+		L_ROOT_6_3:
+			if (JOB_MERCHANT_Q2 != 4) goto L_ROOT_6_4;
+			if (@NUM_INPUT != 2191737) goto L_ROOT_6_4;
+			getitem 1082,1;
+			goto L_START_7;
+		L_ROOT_6_4:
+			getitem 1091,1;
+			goto L_START_7;
+	L_SUB_6_3:
+		if (@WHERE_VILLAGE != 3) goto L_SUB_6_4;
+		set FIRST_JOB_QUEST,3;
+			if (JOB_MERCHANT_Q2 != 5) goto L_ROOT_6_5;
+			if (@NUM_INPUT != 3012685) goto L_ROOT_6_5;
+			getitem 1081,1;
+			goto L_START_7;
+		L_ROOT_6_5:
+			if (JOB_MERCHANT_Q2 != 6) goto L_ROOT_6_6;
+			if (@NUM_INPUT != 3487372) goto L_ROOT_6_6;
+			getitem 1082,1;
+			goto L_START_7;
+		L_ROOT_6_6:
+			getitem 1091,1;
+			goto L_START_7;
+	L_SUB_6_4:
+		set FIRST_JOB_QUEST,4;
+			if (JOB_MERCHANT_Q2 != 7) goto L_ROOT_6_7;
+			if (@NUM_INPUT != 3318702) goto L_ROOT_6_7;
+			getitem 1081,1;
+			goto L_START_7;
+		L_ROOT_6_7:
+			if (JOB_MERCHANT_Q2 != 8) goto L_ROOT_6_8;
+			if (@NUM_INPUT != 3543625) goto L_ROOT_6_8;
+			getitem 1082,1;
+			goto L_START_7;
+		L_ROOT_6_8:
+			getitem 1091,1;
+			goto L_START_7;
+	L_START_7:
+		if (JOB_MERCHANT_Q != 4) goto L_SUB_7_1;
+		set JOB_MERCHANT_Q,6;
+		goto L_SUB_7_2;
+	L_SUB_7_1:
+		set JOB_MERCHANT_Q,5;
+	L_SUB_7_2:
+		mes "[組合員ケイ]";
+		mes "１回支給された荷物を失くしたら、";
+		mes "転職は無しだ。絶対無くすなよ！";
+		mes "それじゃ、行っていらっしゃい。";
+		mes "あ、領収証も忘れるな！じゃ！";
+		close;
+	L_MENU_1_2:
+		mes "[組合員ケイ]";
+		mes "アルバイト？まだ準備中だ。";
+		mes "総会が予算をくれないんだ。まったく…";
+		close;
+	L_MENU_1_3:
+		mes "[組合員ケイ]";
+		mes "…？…うん？うん？";
+		mes "何か…？";
+		close;
+}
+
+
+geffen_in.gat,155,122,4	script	ギルド関係者	47,{
+	if (FIRST_JOB_QUEST == 2) goto L_START_1;
+		mes "[魔法ギルド関係者]";
+		mes "荷物が届く頃なのに…";
+		mes "遅いな…ふん…";
+		close;
+	L_START_1:
+		if (JOB_MERCHANT_Q > 8) goto L_SUB_1_1;
+		if (JOB_MERCHANT_Q < 7) goto L_SUB_1_1;
+		mes "[魔法ギルド関係者]";
+		mes "やー商人ギルドの方、元気ですか？";
+		mes "また、よろしくー。";
+		close;
+	L_SUB_1_1:
+		if (JOB_MERCHANT_Q > 6) goto L_START_2;
+		if (JOB_MERCHANT_Q < 5) goto L_START_2;
+		mes "[魔法ギルド関係者]";
+		mes "あ、来た来た！";
+		mes "商人ギルドからでしょう？";
+		mes "さあ、こちらへ…。";
+		if (countitem(1081)>=1) goto L_ROOT_1_2;
+		if (countitem(1082)>=1) goto L_ROOT_1_2;
+		if (countitem(1091)>=1) goto L_ROOT_1_2;
+		goto L_ROOT_1_3;
+	L_ROOT_1_2:
+		mes "こんなに熱い中、本当にお疲れ様～";
+		goto L_START_2;
+	L_ROOT_1_3:
+		mes "あらら？荷物は？荷物はどこですか？";
+		close;
+	L_START_2:
+		next;
+		mes "[魔法ギルド関係者]";
+		mes "品物の伝票番号を確認してみます。";
+		mes "えっと…";
+			if (JOB_MERCHANT_Q2 != 3) goto L_SUB_2_1;
+			if (countitem(1081)<1) goto L_SUB_2_1;
+			mes "2989396…はい、OKです。";
+			mes "さあ、領収証を。";
+			delitem 1081,1;
+			getitem 1075,1;
+			goto L_SUB_2_3;
+	L_SUB_2_1:
+			if (JOB_MERCHANT_Q2 != 4) goto L_SUB_2_2;
+			if (countitem(1082)<1) goto L_SUB_2_2;
+			mes "2191737…はい、OKです。";
+			mes "さあ、領収証を。";
+			delitem 1082,1;
+			getitem 1076,1;
+			goto L_SUB_2_3;
+	L_SUB_2_2:
+			mes "…？ 番号が違う!?";
+			next;
+   			mes "[魔法ギルド関係者]";
+			mes "えーと、この品物は";
+			mes "こちらのものじゃないですね。";
+			mes "商人ギルドからここに来る品物の";
+			mes "伝票番号は^3355FF2989396^000000";
+			mes "または^3355FF2191737^000000です。";
+			mes "受け取る時に間違えちゃいましたか？";
+			close;
+	L_SUB_2_3:
+		if (JOB_MERCHANT_Q != 6) goto L_SUB_2_4;
+		set JOB_MERCHANT_Q,8;
+		goto L_SUB_2_5;
+	L_SUB_2_4:
+		set JOB_MERCHANT_Q,7;
+	L_SUB_2_5:
+		next;
+		mes "[魔法ギルド関係者]";
+		mes "ふふ、今後もよろしく～";
+		close;
+}
+
+
+morocc_in.gat,140,102,4	script	見習生	86,{
+	if (FIRST_JOB_QUEST == 3) goto L_START_1;
+		mes "[染料製作の見習い]";
+		mes "ザバドゥリハン先生の染色の腕は、";
+		mes "ミッドガルド大陸の誰も真似できない！";
+		mes "素晴らしい腕の持ち主ですよ。";
+		mes "僕はあの方の弟子です！";
+		close;
+	L_START_1:
+		if (JOB_MERCHANT_Q > 8) goto L_SUB_1_1;
+		if (JOB_MERCHANT_Q < 7) goto L_SUB_1_1;
+		mes "[染料製作の見習い]";
+   		mes "あ、お帰りになりますか？さよなら～";
+   		close;
+	L_SUB_1_1:
+		if (JOB_MERCHANT_Q > 6) goto L_START_2;
+		if (JOB_MERCHANT_Q < 5) goto L_START_2;
+		mes "[染料製作の見習い]";
+		mes "商人ギルドから？";
+		mes "あ、お疲れ様です～。";
+		if (countitem(1081)>=1) goto L_ROOT_1_2;
+		if (countitem(1082)>=1) goto L_ROOT_1_2;
+		if (countitem(1091)>=1) goto L_ROOT_1_2;
+		goto L_ROOT_1_3;
+	L_ROOT_1_2:
+		mes "じゃ、ここへお願いします。";
+		goto L_START_2;
+	L_ROOT_1_3:
+		mes "…で、荷物はどこですか？";
+		close;
+	L_START_2:
+		next;
+		mes "[染料製作の見習い]";
+		mes "領収証を渡す前に、ちょっと";
+		mes "荷物の商品番号を確認しますね。";
+			if (JOB_MERCHANT_Q2 != 5) goto L_SUB_2_1;
+			if (countitem(1081)<1) goto L_SUB_2_1;
+   			mes "3012685…注文した物に";
+			mes "間違いありません。はい、領収証です。";
+			delitem 1081,1;
+			getitem 1077,1;
+			goto L_SUB_2_3;
+	L_SUB_2_1:
+			if (JOB_MERCHANT_Q2 != 6) goto L_SUB_2_2;
+			if (countitem(1082)<1) goto L_SUB_2_2;
+   			mes "3487372…注文した物に";
+			mes "間違いありません。はい、領収証です。";
+			delitem 1082,1;
+			getitem 1078,1;
+			goto L_SUB_2_3;
+	L_SUB_2_2:
+   			next;
+			mes "[染料製作の見習い]";
+   			mes "…あの、うちの荷物じゃないみたい";
+			mes "みたいですけど…来るはずの商品番号は";
+			mes "^3355FF3012685^000000または^3355FF3487372^000000";
+			mes "です…。";
+   			close;
+	L_SUB_2_3:
+		if (JOB_MERCHANT_Q != 6) goto L_SUB_2_4;
+		set JOB_MERCHANT_Q,8;
+		goto L_SUB_2_5;
+	L_SUB_2_4:
+		set JOB_MERCHANT_Q,7;
+	L_SUB_2_5:
+		next;
+		mes "[染料製作の見習い]";
+		mes "またよろしくお願いします～。";
+		close;
+}
+
+

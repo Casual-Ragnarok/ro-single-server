@@ -1,0 +1,361 @@
+//==============================================================================
+//Novice
+//==============================================================================
+new_1-1.gat,148,112,0	warp	new11	2,3,new_1-2.gat,100,9
+new_1-1.gat,166,112,0	warp	new12	2,2,new_1-2.gat,100,153
+new_1-2.gat,100,150,0	warp	new12-1	2,1,new_1-1.gat,162,112
+new_1-1.gat,169,75,0	warp	new13	2,2,new_1-2.gat,182,163
+new_1-2.gat,182,159,0	warp	new13-1	2,2,new_1-1.gat,165,75
+new_1-1.gat,169,147,0	warp	new14	2,2,new_1-2.gat,18,163
+new_1-2.gat,18,159,0	warp	new14-1	2,2,new_1-1.gat,165,147
+new_1-2.gat,100,122,0	warp	new15	2,1,new_1-2.gat,100,162
+new_1-2.gat,100,165,0	warp	new15-1	2,1,new_1-2.gat,100,119
+new_1-2.gat,126,106,0	warp	new16	2,4,new_1-2.gat,156,171
+new_1-2.gat,153,171,0	warp	new16-1	2,4,new_1-2.gat,123,106
+new_1-3.gat,96,175,0	warp	new17	3,2,new_1-4.gat,100,14
+
+//==============================================================================
+//Swordman
+//==============================================================================
+izlude_in.gat,43,169,0	warp	swd001	2,3,izlude_in.gat,64,169
+sword_1-1.gat,65,117,0	warp	swd101	1,1,sword_1-1.gat,10,245
+sword_1-1.gat,98,27,0	warp	swd102	1,1,sword_1-1.gat,11,207
+sword_1-1.gat,161,27,0	warp	swd103	1,1,sword_1-1.gat,11,207
+sword_1-1.gat,223,205,0	warp	swd104	1,1,sword_1-1.gat,11,168
+sword_1-1.gat,223,243,0	warp	swd105	1,1,sword_1-1.gat,11,206
+sword_1-1.gat,239,117,0	warp	swd106	1,1,sword_1-1.gat,11,169
+// 1st
+//==================================================================
+sword_1-1.gat,16,250,0	script	1st_fall	-1,{
+	set @r,rand(5);
+	if(@r==0) goto w1;
+	if(@r==1) goto w2;
+	if(@r==2) goto w3;
+	if(@r==3) goto w4;
+	warp "sword_1-1.gat",65,56; end;
+w1:	warp "sword_1-1.gat",29,26; end;
+w2:	warp "sword_1-1.gat",43,16; end;
+w3:	warp "sword_1-1.gat",23,112; end;
+w4:	warp "sword_1-1.gat",58,83; end;
+}
+sword_1-1.gat,16,251,0	script	1_blank_1_a	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,19,251,0	script	1_blank_1_b	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,17,250,0	script	1_blank_1_c	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,16,238,0	script	1_blank_2_a	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,19,238,0	script	1_blank_2_b	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,17,239,0	script	1_blank_2_c	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,28,247,0	script	1_blank_3_a	139,4,0,{doevent "1st_fall";end;}
+sword_1-1.gat,33,245,0	script	1_blank_3_b	139,0,2,{doevent "1st_fall";end;}
+sword_1-1.gat,29,242,0	script	1_blank_3_c	139,4,0,{doevent "1st_fall";end;}
+sword_1-1.gat,24,244,0	script	1_blank_3_d	139,0,2,{doevent "1st_fall";end;}
+sword_1-1.gat,38,251,0	script	1_blank_4_a	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,41,251,0	script	1_blank_4_b	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,39,250,0	script	1_blank_4_c	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,38,238,0	script	1_blank_5_a	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,41,238,0	script	1_blank_5_b	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,39,239,0	script	1_blank_5_c	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,54,251,0	script	1_blank_6_a	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,71,251,0	script	1_blank_6_b	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,62,250,0	script	1_blank_6_c	139,9,0,{doevent "1st_fall";end;}
+sword_1-1.gat,62,247,0	script	1_blank_7_a	139,8,0,{doevent "1st_fall";end;}
+sword_1-1.gat,71,244,0	script	1_blank_7_b	139,0,2,{doevent "1st_fall";end;}
+sword_1-1.gat,63,242,0	script	1_blank_7_c	139,8,0,{doevent "1st_fall";end;}
+sword_1-1.gat,54,244,0	script	1_blank_7_d	139,0,2,{doevent "1st_fall";end;}
+sword_1-1.gat,54,238,0	script	1_blank_8_a	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,71,238,0	script	1_blank_8_b	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,62,239,0	script	1_blank_8_c	139,9,0,{doevent "1st_fall";end;}
+sword_1-1.gat,102,247,0	script	1_blank_9_a	139,2,0,{doevent "1st_fall";end;}
+sword_1-1.gat,105,245,0	script	1_blank_9_b	139,0,2,{doevent "1st_fall";end;}
+sword_1-1.gat,103,242,0	script	1_blank_9_c	139,2,0,{doevent "1st_fall";end;}
+sword_1-1.gat,100,244,0	script	1_blank_9_d	139,0,2,{doevent "1st_fall";end;}
+sword_1-1.gat,156,249,0	script	1_blank_10_a	139,14,0,{doevent "1st_fall";end;}
+sword_1-1.gat,156,248,0	script	1_blank_10_b	139,14,0,{doevent "1st_fall";end;}
+sword_1-1.gat,170,249,0	script	1_blank_10_c	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,170,248,0	script	1_blank_10_d	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,156,245,0	script	1_blank_11_a	139,14,0,{doevent "1st_fall";end;}
+sword_1-1.gat,156,244,0	script	1_blank_11_b	139,14,0,{doevent "1st_fall";end;}
+sword_1-1.gat,170,245,0	script	1_blank_11_c	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,170,244,0	script	1_blank_11_d	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,156,241,0	script	1_blank_12_a	139,14,0,{doevent "1st_fall";end;}
+sword_1-1.gat,156,240,0	script	1_blank_12_b	139,14,0,{doevent "1st_fall";end;}
+sword_1-1.gat,170,241,0	script	1_blank_12_c	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,170,240,0	script	1_blank_12_d	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,180,251,0	script	1_blank_13_a	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,183,251,0	script	1_blank_13_b	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,181,250,0	script	1_blank_13_c	139,1,0,{doevent "1st_fall";end;}
+sword_1-1.gat,180,238,0	script	1_blank_14_a	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,183,238,0	script	1_blank_14_b	139,0,1,{doevent "1st_fall";end;}
+sword_1-1.gat,181,239,0	script	1_blank_14_c	139,1,0,{doevent "1st_fall";end;}
+// 2nd
+//==================================================================
+sword_1-1.gat,56,211,0	script	2nd_fall	-1,{
+	set @r,rand(5);
+	if(@r==0) goto w1;
+	if(@r==1) goto w2;
+	if(@r==2) goto w3;
+	if(@r==3) goto w4;
+	warp "sword_1-1.gat",162,120; end;
+w1:	warp "sword_1-1.gat",94,120; end;
+w2:	warp "sword_1-1.gat",94,85; end;
+w3:	warp "sword_1-1.gat",162,85; end;
+w4:	warp "sword_1-1.gat",130,47; end;
+}
+sword_1-1.gat,26,212,0	script	2_blank_1_a	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,47,212,0	script	2_blank_1_b	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,68,212,0	script	2_blank_1_c	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,87,212,0	script	2_blank_1_d	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,26,210,0	script	2_blank_1_e	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,47,210,0	script	2_blank_1_f	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,68,210,0	script	2_blank_1_g	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,87,210,0	script	2_blank_1_h	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,16,206,0	script	2_blank_2_a	139,0,3,{doevent "2nd_fall";end;}
+sword_1-1.gat,97,206,0	script	2_blank_2_b	139,0,3,{doevent "2nd_fall";end;}
+sword_1-1.gat,26,203,0	script	2_blank_3_a	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,47,203,0	script	2_blank_3_b	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,68,203,0	script	2_blank_3_c	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,87,203,0	script	2_blank_3_d	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,26,201,0	script	2_blank_3_e	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,47,201,0	script	2_blank_3_f	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,68,201,0	script	2_blank_3_g	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,87,201,0	script	2_blank_3_h	139,10,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,113,212,0	script	2_blank_4_a	139,14,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,125,212,0	script	2_blank_4_b	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,113,210,0	script	2_blank_5_a	139,14,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,125,210,0	script	2_blank_5_b	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,100,206,0	script	2_blank_5_c	139,0,3,{doevent "2nd_fall";end;}
+sword_1-1.gat,127,206,0	script	2_blank_5_d	139,0,3,{doevent "2nd_fall";end;}
+sword_1-1.gat,113,203,0	script	2_blank_5_e	139,14,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,125,203,0	script	2_blank_5_f	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,113,201,0	script	2_blank_6_a	139,14,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,125,201,0	script	2_blank_6_b	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,132,212,0	script	2_blank_7_0	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,155,212,0	script	2_blank_7_a	139,21,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,181,212,0	script	2_blank_7_b	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,132,210,0	script	2_blank_8_0	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,155,210,0	script	2_blank_8_a	139,21,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,181,210,0	script	2_blank_8_b	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,130,206,0	script	2_blank_8_c	139,0,3,{doevent "2nd_fall";end;}
+sword_1-1.gat,183,206,0	script	2_blank_8_d	139,0,3,{doevent "2nd_fall";end;}
+sword_1-1.gat,132,203,0	script	2_blank_8_1	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,155,203,0	script	2_blank_8_e	139,21,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,181,203,0	script	2_blank_8_f	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,132,201,0	script	2_blank_9_0	139,2,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,155,201,0	script	2_blank_9_a	139,21,0,{doevent "2nd_fall";end;}
+sword_1-1.gat,181,201,0	script	2_blank_9_b	139,2,0,{doevent "2nd_fall";end;}
+
+// 3rd
+//==================================================================
+
+sword_1-1.gat,17,174,0	script	3rd_fall	-1,{
+	set @r,rand(5);
+	if(@r==0) goto w1;
+	if(@r==1) goto w2;
+	if(@r==2) goto w3;
+	if(@r==3) goto w4;
+	warp "sword_1-1.gat",195,15; end;
+w1:	warp "sword_1-1.gat",195,38; end;
+w2:	warp "sword_1-1.gat",231,30; end;
+w3:	warp "sword_1-1.gat",198,65; end;
+w4:	warp "sword_1-1.gat",196,116; end;
+}
+sword_1-1.gat,17,174,0	script	3_blank_1_a	139,2,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,17,163,0	script	3_blank_2_a	139,2,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,29,171,0	script	3_blank_3_a	139,2,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,31,168,0	script	3_blank_3_b	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,28,166,0	script	3_blank_3_c	139,2,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,26,168,0	script	3_blank_3_d	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,36,169,0	script	3_blank_4_a	139,0,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,37,169,0	script	3_blank_4_b	139,0,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,37,168,0	script	3_blank_4_c	139,0,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,36,168,0	script	3_blank_4_c	139,0,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,40,175,0	script	3_blank_5_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,41,175,0	script	3_blank_5_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,41,171,0	script	3_blank_6_a	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,41,170,0	script	3_blank_6_b	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,41,167,0	script	3_blank_6_c	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,41,166,0	script	3_blank_6_d	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,42,169,0	script	3_blank_6_e	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,43,170,0	script	3_blank_6_f	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,43,167,0	script	3_blank_6_g	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,40,162,0	script	3_blank_7_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,41,162,0	script	3_blank_7_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,46,175,0	script	3_blank_8_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,51,175,0	script	3_blank_8_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,47,174,0	script	3_blank_8_c	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,50,174,0	script	3_blank_8_d	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,48,173,0	script	3_blank_8_e	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,49,173,0	script	3_blank_8_f	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,46,162,0	script	3_blank_9_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,51,162,0	script	3_blank_9_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,47,163,0	script	3_blank_9_c	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,50,163,0	script	3_blank_9_d	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,48,164,0	script	3_blank_9_e	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,49,164,0	script	3_blank_9_f	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,54,170,0	script	3_blank_10_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,55,170,0	script	3_blank_10_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,54,167,0	script	3_blank_10_c	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,55,167,0	script	3_blank_10_d	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,53,169,0	script	3_blank_10_e	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,53,168,0	script	3_blank_10_f	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,56,169,0	script	3_blank_10_g	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,56,168,0	script	3_blank_10_h	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,58,175,0	script	3_blank_11_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,59,174,0	script	3_blank_11_b	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,60,173,0	script	3_blank_11_c	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,61,172,0	script	3_blank_11_d	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,58,162,0	script	3_blank_12_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,59,163,0	script	3_blank_12_b	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,60,164,0	script	3_blank_12_c	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,61,165,0	script	3_blank_12_d	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,76,172,0	script	3_blank_13_a	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,77,173,0	script	3_blank_13_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,78,174,0	script	3_blank_13_c	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,79,175,0	script	3_blank_13_d	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,76,165,0	script	3_blank_14_a	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,77,164,0	script	3_blank_14_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,78,163,0	script	3_blank_14_c	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,79,162,0	script	3_blank_14_d	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,94,175,0	script	3_blank_15_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,95,174,0	script	3_blank_15_b	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,98,174,0	script	3_blank_15_c	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,99,175,0	script	3_blank_16_d	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,96,169,0	script	3_blank_17_a	139,0,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,97,169,0	script	3_blank_17_b	139,0,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,97,168,0	script	3_blank_17_c	139,0,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,96,168,0	script	3_blank_17_d	139,0,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,94,162,0	script	3_blank_18_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,95,163,0	script	3_blank_18_b	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,98,163,0	script	3_blank_18_c	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,99,162,0	script	3_blank_18_d	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,114,175,0	script	3_blank_19_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,115,175,0	script	3_blank_19_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,114,162,0	script	3_blank_20_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,115,162,0	script	3_blank_20_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,126,175,0	script	3_blank_21_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,127,175,0	script	3_blank_21_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,126,162,0	script	3_blank_23_a	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,127,162,0	script	3_blank_23_b	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,160,174,0	script	3_blank_24_a	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,161,174,0	script	3_blank_24_b	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,160,163,0	script	3_blank_25_a	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,161,163,0	script	3_blank_25_b	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,168,175,0	script	3_blank_26_a	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,169,175,0	script	3_blank_26_b	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,168,162,0	script	3_blank_27_a	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,169,162,0	script	3_blank_27_b	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,176,174,0	script	3_blank_28_a	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,177,174,0	script	3_blank_28_b	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,178,173,0	script	3_blank_28_c	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,178,172,0	script	3_blank_28_d	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,181,174,0	script	3_blank_28_e	139,2,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,179,169,0	script	3_blank_29_a	139,3,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,179,168,0	script	3_blank_29_b	139,3,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,182,169,0	script	3_blank_29_c	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,183,169,0	script	3_blank_29_d	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,181,167,0	script	3_blank_29_e	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,181,166,0	script	3_blank_29_f	139,1,0,{doevent "3rd_fall";end;}
+sword_1-1.gat,183,167,0	script	3_blank_29_g	139,0,1,{doevent "3rd_fall";end;}
+sword_1-1.gat,176,163,0	script	3_blank_30_a	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,177,163,0	script	3_blank_30_b	139,0,2,{doevent "3rd_fall";end;}
+sword_1-1.gat,181,163,0	script	3_blank_30_c	139,2,0,{doevent "3rd_fall";end;}
+
+//==============================================================================
+//Thief
+//==============================================================================
+job_thief1.gat,180,15,0	warp	jthf	7,1,moc_ruins.gat,145,117
+
+//==============================================================================
+//Wizerd
+//==============================================================================
+//job_wiz.gat,0,0,0	warp	jwiz	3,3,job_wiz.gat,0,0
+//job_wiz.gat,99,160,0	warp	jwiz01	3,3,job_wiz.gat,0,0
+//job_wiz.gat,128,169,0	warp	jwiz02	3,3,job_wiz.gat,0,0
+//job_wiz.gat,114,154,0	warp	jwiz03	3,3,job_wiz.gat,0,0
+//job_wiz.gat,60,165,0	warp	jwiz04	3,3,job_wiz.gat,0,0
+//job_wiz.gat,48,177,0	warp	jwiz05	3,3,job_wiz.gat,0,0
+//job_wiz.gat,115,82,0	warp	jwiz06	3,3,job_wiz.gat,0,0
+//job_wiz.gat,100,97,0	warp	jwiz07	3,3,job_wiz.gat,0,0
+//job_wiz.gat,116,97,0	warp	jwiz08	3,3,job_wiz.gat,0,0
+//job_wiz.gat,116,113,0	warp	jwiz09	3,3,job_wiz.gat,0,0
+//job_wiz.gat,131,98,0	warp	jwiz10	3,3,job_wiz.gat,0,0
+
+//==============================================================================
+//prist
+//==============================================================================
+//job_prist.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
+//job_prist.gat,97,104,0	warp	jpri	0,0,job_prist.gat,0,0
+//job_prist.gat,24,109,0	warp	jpri	4,3,job_prist.gat,168,17
+
+//==============================================================================
+//Hunter
+//==============================================================================
+in_hunter.gat,100,15,0	warp 	jhun01	0,0,pay_fild10.gat,143,250
+job_hunte.gat,89,139,0	warp	jhun02	3,3,job_hunte.gat,0,0
+job_hunte.gat,89,68,0	warp	jhun03	3,3,job_hunte.gat,0,0
+
+//==============================================================================
+//Monk
+//==============================================================================
+prt_monk.gat,245,137,0	warp	monk01	1,1,monk_in.gat,98,183
+monk_in.gat,98,186,0	warp	monk02	1,1,prt_monk.gat,245,139
+prt_monk.gat,245,106,0	warp	monk03	1,1,monk_in.gat,98,30
+monk_in.gat,98,27,0	warp	monk04	1,1,prt_monk.gat,245,104
+monk_in.gat,99,141,0	warp	monk05	1,1,monk_in.gat,99,100
+monk_in.gat,99,102,0	warp	monk06	1,1,monk_in.gat,99,143
+monk_in.gat,128,84,0	warp	monk07	1,1,monk_in.gat,161,90
+monk_in.gat,159,90,0	warp	monk08	1,1,monk_in.gat,126,84
+monk_in.gat,128,46,0	warp	monk09	1,1,monk_in.gat,161,38
+monk_in.gat,159,38,0	warp	monk10	1,1,monk_in.gat,126,46
+monk_in.gat,69,46,0	warp	monk11	1,1,monk_in.gat,38,38
+monk_in.gat,40,38,0	warp	monk12	1,1,monk_in.gat,71,46
+monk_in.gat,69,84,0	warp	monk13	1,1,monk_in.gat,38,92
+monk_in.gat,40,92,0	warp	monk14	1,1,monk_in.gat,71,84
+prt_monk.gat,192,172,0	warp	monk15	1,1,monk_test.gat,329,50
+monk_test.gat,329,47,0	warp	monk16	1,1,prt_monk.gat,193,166
+monk_test.gat,329,76,0	warp	monk17	1,1,monk_test.gat,259,118
+monk_test.gat,259,115,0	warp	monk18	1,1,monk_test.gat,329,71
+monk_test.gat,272,125,0	warp	monk19	1,1,monk_test.gat,301,127
+monk_test.gat,298,127,0	warp	monk20	1,1,monk_test.gat,268,125
+
+//==============================================================================
+//Alchemist
+//==============================================================================
+//Town - Alchemist , Alchemist - Town
+aldebaran.gat,54,66,0	warp	alche01	1,1,alde_alche.gat,41,174
+alde_alche.gat,41,171,0	warp	alche02	1,1,aldebaran.gat,56,68
+//Alchemist Hall 1st Floor Top Rooms
+alde_alche.gat,129,104,0	warp	alche03	1,1,alde_alche.gat,163,163
+alde_alche.gat,159,163,0	warp	alche04	1,1,alde_alche.gat,126,104
+alde_alche.gat,131,77,0	warp	alche05	1,1,alde_alche.gat,162,107
+alde_alche.gat,159,107,0	warp	alche06	1,1,alde_alche.gat,128,77
+//Alchemist Hall 1st Floor Bottom Rooms
+alde_alche.gat,47,103,0	warp	alche07	1,1,alde_alche.gat,155,18
+alde_alche.gat,159,18,0	warp	alche08	1,1,alde_alche.gat,50,103
+alde_alche.gat,47,77,0	warp	alche09	1,1,alde_alche.gat,88,18
+alde_alche.gat,92,18,0	warp	alche10	1,1,alde_alche.gat,50,77
+
+//Alchemist Hall 2nd Floor - 1st Floor Link
+alde_alche.gat,14,184,0	warp	alche11	1,1,alde_alche.gat,88,113
+alde_alche.gat,88,117,0	warp	alche12	1,1,alde_alche.gat,14,180
+//Alchemist Hall 2nd Floor Rooms
+alde_alche.gat,19,171,0	warp	alche13	1,1,aldebaran.gat,68,56
+aldebaran.gat,66,54,0	warp	alche14	1,1,alde_alche.gat,19,175
+alde_alche.gat,18,28,0	warp	alche15	1,1,alde_alche.gat,89,66
+alde_alche.gat,89,63,0	warp	alche16	1,1,alde_alche.gat,18,24
+//Alchemist Hall 3rd Floor
+alde_alche.gat,41,187,0	warp	alche17	1,1,alde_alche.gat,114,178
+alde_alche.gat,114,182,0	warp	alche18	1,1,alde_alche.gat,41,183
+
+//==============================================================================
+//Rogue
+//==============================================================================
+cmd_fild07.gat,193,117,0	warp	rogue01	0,0,in_rogue.gat,379,46
+in_rogue.gat,375,46,0	warp	rogue02	0,0,cmd_fild07.gat,196,117
+in_rogue.gat,375,33,0	warp	rogue03	0,0,in_rogue.gat,380,125
+in_rogue.gat,375,125,0	warp	rogue04	0,0,in_rogue.gat,379,33
+
+//==============================================================================
+//duncer
+//==============================================================================
+job_duncer.gat,69,43,0	warp 	duncer1	1,1,comodo.gat,185,156
+

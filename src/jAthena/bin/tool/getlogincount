@@ -1,0 +1,113 @@
+#!/usr/bin/perl
+
+##########################################################################
+# Athena用ログイン人数所得ツール
+#
+# 　起動中のAthenaのlogin.exeに接続してログイン人数を所得するツール
+#
+#-------------------------------------------------------------------------
+# 設定方法
+# 　ログイン鯖のIP、ポート、有効なアカウントを正しく設定します.
+# 　設定したら getlogincount で全サーバーの人数リスト、
+# 　getlogincount --first で一番サーバーの人数、
+# 　getlogincount [servername] で指定したサーバーの人数を表示します
+#
+# 　成功するとコード０で終了します
+#
+##########################################################################
+
+
+$loginserverip="127.0.0.1";		#ログイン鯖のIP
+$loginserverport=6900;			#ログイン鯖のポート
+$loginversion=10;			#ログイン鯖のバージョン
+$loginaccount="s1";			#アカウント
+$loginpasswd="p1";			#パスワード
+
+$connecttimeout=10;	# 接続タイムアウト(秒)
+
+#-------------------------------設定ここまで-----------------------------
+
+
+
+
+
+
+
+
+
+use IO::Socket;
+
+$sname=$ARGV[0];
+
+
+# サーバーに接続する
+my($so,$er)=();
+eval{
+	$so=IO::Socket::INET->new(
+		PeerAddr=> $loginserverip,
+		PeerPort=> $loginserverport,
+		Proto	=> "tcp",
+		Timeout	=> $connecttimeout) or $er=1;
+};
+if($er || $@){
+	print "Cant connect to login server [${loginserverip}:$loginserverport] !\n";
+	exit(2);
+}
+
+#ログイン要求
+print $so pack("v V a24 a24 C",0x0064,$loginversion,$loginaccount,$loginpasswd,3);
+$so->flush();
+
+# 成功してない
+if(unpack("v", &soread(\$so,2) )!=0x0069){
+	print "login error.\n";
+	exit(3);
+}
+
+# パケットの長さ所得
+$plen=unpack("v",&soread(\$so,2))-4;
+
+# アカウント情報スキップ
+&soread(\$so,43);
+$plen-=43;
+
+# サーバー情報読み込み
+my(@slist)=();
+for(;$plen>0;$plen-=32){
+	my($name,$count)=unpack("x6 a20 V",&soread(\$so,32));
+	$name=substr($name,0,index($name,"\0"));
+	push @slist, [ $name, $count ];
+}
+
+# 結果表示
+if($sname eq "--first"){ print $slist[0][1]; }	# 一番最初のサーバー
+elsif($sname eq ""){		# 全てのサーバーのリスト
+	foreach $i(@slist){
+		printf "%-20s : %5d\n",$i->[0],$i->[1];
+	}
+}else{				# 指定したサーバー
+	my($flag)=1;
+	foreach $i(@slist){
+		if($i->[0] eq $sname){
+			print $i->[1];
+			$flag=0;
+		}
+	}
+	exit(1) if($flag);	# 指定したサーバーが存在しない
+}
+
+# 切断
+$so->shutdown(2);
+$so->close();
+exit(0);
+
+# ソケット読み出し関数
+sub soread {
+	my($so,$len)= @_;
+	my($sobuf);
+	if( read($$so,$sobuf,$len)<$len){
+		print "socket read error.\n";
+		exit(5);
+	}
+	return $sobuf;
+};

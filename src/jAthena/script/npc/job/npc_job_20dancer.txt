@@ -1,0 +1,932 @@
+//====================================================================
+//Ragnarok Online Dancer Jobchange Script by Kalen
+//====================================================================
+comodo.gat,193,151,4	script	ボルロブ	86,{
+	mes "[ボルロブ]";
+	mes "ああ……多くの人の注目を集める";
+	mes "プリマドンナ！";
+	mes "彼女達がダンサーになる瞬間を";
+	mes "目の前で見られるなんて！";
+	next;
+	mes "[ボルロブ]";
+	mes "この時代に生まれて本当に幸せ。";
+	mes "コモドダンサーばんざい！";
+	next;
+	mes "[ボルロブ]";
+	mes "うん？あなたもダンサー転職試験を";
+	mes "見たいって？";
+	next;
+	menu "ダンサー転職場に移動",L1,"取り消し",-;
+		mes "[ボルロブ]";
+		mes "ノリわる～い";
+		close;
+L1:
+		mes "[ボルロブ]";
+		mes "イェェイ！レッツゴー！";
+		close2;
+		warp "job_duncer.gat",70,49;
+		end;
+}
+//==================================================================
+job_duncer.gat,43,93,4	script	エイル	724,{
+	if ((Class == 3) && (Sex == 0)) goto Larcher;
+	if (Class == 20) goto Ldancer;
+	mes "[エイル]";
+	mes "お客さん、ここは関係者以外";
+	mes "立ち入り禁止ですよ？";
+	next;
+	mes "[エイル]";
+	mes "ダンススクールは誰でも入れる";
+	mes "わけじゃないんですから。";
+	next;
+	mes "[エイル]";
+	mes "見学なら村のダンスステージに";
+	mes "行ってくださいね。";
+	close;
+Ldancer:
+	mes "[エイル]";
+	mes "こんにちは～";
+	mes "最近はどうですか？";
+	mes "人々を楽しませていますか？";
+	close;
+Larcher:
+	if (Upper == 1) goto LUpper1;
+	if (change_dancer == 1) goto LStart2;
+	if (change_dancer == 2) goto LItem1;
+	if (change_dancer == 3) goto LItem2;
+	if (change_dancer == 4) goto LItem3;
+	if ((change_dancer == 5) || (change_dancer == 6)) goto LStart3;
+	if (change_dancer >= 7) goto LStart4;
+	mes "[エイル]";
+	mes "いらっしゃいませ～";
+	mes "様々な踊りを教えている";
+	mes "「コモドダンススクール」です。";
+	next;
+	mes "[エイル]";
+	mes "各地から訪れる観光客に";
+	mes "素敵な踊りを提供し、";
+	next;
+	mes "[エイル]";
+	mes "さらにはルーンミッドガッツの";
+	mes "有名人になることができる";
+	mes "踊り娘を育てているんです。";
+	next;
+	mes "[エイル]";
+	mes "どうですか？";
+	mes "たくさんの人々の前で派手な";
+	mes "ライトを受けダンスをすることが";
+	mes "できるんです。";
+	mes "素敵じゃありませんか！";
+	next;
+	mes "[エイル]";
+	mes "でも、我がダンススクールは";
+	mes "誰でも入れるわけじゃないのが";
+	mes "他とは違うところ。";
+	next;
+	mes "[エイル]";
+	mes "ダンサーになれそうもない人は";
+	mes "スクールで断られてしまうんです。";
+	next;
+	mes "[エイル]";
+	mes "どうでしょう、";
+	mes "お姉さんには素質がありそうな";
+	mes "感じがします。";
+	mes "ここでダンスレッスンを受けて";
+	mes "みませんか？";
+	next;
+	mes "[エイル]";
+	mes "そこにある申込書にちょこっと";
+	mes "書くだけです。";
+	next;
+	mes "[エイル]";
+	mes "どうです？";
+	mes "申し込んでみませんか？";
+	mes "ね？見学も兼ねてどうですか？";
+	next;
+	menu "はい、やってみます",L1,"無視する",-;
+		mes "[エイル]";
+		mes "そんな……冷たいわ……";
+		mes "また寄ってくださいね？";
+		mes "ね？";
+		close;
+L1:
+		if (JobLevel < 40) goto Llowlv;
+		mes "[エイル]";
+		mes "よく決心しました！";
+		mes "そこにある申込書に記入してください。";
+		next;
+		mes "……";
+		next;
+		mes "……カリカリカリ……";
+		next;
+		mes "……";
+		next;
+		mes "[エイル]";
+		mes "お名前は……";
+		mes strcharinfo(0)+"さん……";
+		mes "素敵な名前ですね！";
+		mes "では少々お待ちを。";
+		mes "書類をスクール長に届けてきます。";
+		set change_dancer,1;
+		close;
+LStart2:
+	mes "[エイル]";
+	mes "はい、さきほど申し込みを";
+	mes "されましたね？";
+	mes "ではレッスンに必要な物を";
+	mes "用意していただきます。";
+	next;
+	mes "[エイル]";
+	mes "備品に不足なものがあって……";
+	mes "ご自分のレッスンに使うもの";
+	mes "ですから、お手数ですが";
+	mes "揃えてきてくださいね。";
+	next;
+//ランダム3種類 2 3 4
+
+	mes "[エイル]";
+	mes "それと一応^0000FFレッスン料";
+	mes "10000Zeny^000000が必要です。あと、";
+	mes "靴のすべり止めにする";
+	mes "^0000FFミミズの皮 5個^000000があれば";
+	mes "良いでしょう。";
+	next;
+	mes "[エイル]";
+	mes "そして足を怪我しないように";
+	mes "^0000FFブーツ^000000も1足必要です。";
+	next;
+	mes "[エイル]";
+	mes "では、レッスンの用意ができたら";
+	mes "また声をかけてください。";
+	set change_dancer,2;
+	close;
+
+LItem2:
+
+LItem3:
+
+LItem1:
+	if ((Countitem(1055) >= 5) && (Countitem(2405) >= 1) && (Zeny >= 10000)) goto LItemOK;
+	mes "[エイル]";
+	mes "うん……";
+	mes "ちょっと足りないみたいです。";
+	mes "必要な物をもう一度教えるから";
+	mes "用意してきてくださいね。";
+	next;
+	mes "[エイル]";
+	mes "^0000FFレッスン料 10000 Zeny^000000";
+	mes "^0000FFミミズの皮 5個^000000";
+	mes "^0000FFブーツ 1足^000000 ";
+	next;
+	mes "[エイル]";
+	mes "以上です。";
+	mes "待ってますね。";
+	close;
+LItemOK:/*共通*/
+	mes "[エイル]";
+	mes "あっ全部持ってきましたね。";
+	mes "ではレッスン料をいただいて";
+	mes "おきます。";
+	set Zeny,Zeny-10000;
+	next;
+LStart3:
+	mes "[エイル]";
+	mes "面接試験担当の^0000FF「ボルワージュ」^000000先生";
+	mes "のところに行ってみてください。";
+	mes "簡単な質問に答えるだけですから";
+	mes "リラックスして受けてくださいね。";
+	if (change_dancer < 5) set change_dancer,5;
+	close;
+LStart4:
+	mes "[エイル]";
+	mes "熱心に練習して素敵な踊りを";
+	mes "見せてくださいね！";
+	close;
+Llowlv:
+	mes "[エイル]";
+	mes "えっと……";
+	mes "惜しいですがレッスンを受ける";
+	mes "条件を満たしていなかった";
+	mes "ようです……";
+	next;
+	mes "[エイル]";
+	mes "少なくともJobLv40以上に";
+	mes "ならないと申し込みをお受け";
+	mes "することができないんです。";
+	mes "それでは、またお目にかかれる";
+	mes "日を楽しみにしております。";
+	close;
+LUpper1:
+	mes "[エイル]";
+	mes "あなたは転生されていますので";
+	mes "ここでは転職案内できません。";
+	close;
+
+}
+//==================================================================
+job_duncer.gat,95,93,4	script	ボルワージュ	101,{
+	if ((Class == 3) && (Sex == 0)) goto LArcher;
+	if (Class == 20) goto LDancer;
+	mes "[ボルワージュ]";
+	mes "あら、外からいらしたの？";
+	mes "私の素敵な踊りを見るために、";
+	mes "遠いところいらしたのね……";
+	next;
+	mes "[ボルワージュ]";
+	mes "残念ながら私はもう現役引退して";
+	mes "後輩の養成に力を注いでいるの。";
+	next;
+	mes "[ボルワージュ]";
+	mes "村中央部のダンスステージへ";
+	mes "行ってみれば、私の踊りを";
+	mes "しっかり受け継いだ娘が";
+	mes "踊りを披露しているはず。";
+	close;
+LDancer:
+	mes "[ボルワージュ]";
+	mes "あら、こんにちは～";
+	next;
+	mes "[ボルワージュ]";
+	mes "最近はどう？";
+	mes "たくさんの人達に感動を与えてる";
+	mes "かしら？";
+	mes "常にダンサーとしての心構えを";
+	mes "忘れないでね。";
+	close;
+LArcher:
+	if (Skillpoint != 0) goto LErrorA;
+	if (change_dancer == 5) goto Ltest1;
+	if (change_dancer == 6) goto Ltest2;
+	if (change_dancer == 7) goto LStart2;
+	if (change_dancer == 8) goto Lwarp;
+	if (change_dancer == 10) goto Ljobchange;
+	mes "[ボルワージュ]";
+	mes "あら、ダンサー志望の娘ね。";
+	next;
+	mes "[ボルワージュ]";
+	mes "ダンサーになりたければ、";
+	mes "まず当スクールへの申し込みを";
+	mes "済ませてらっしゃい。";
+	mes "舞台の左側らへんにいる「エイル」";
+	mes "に聞けばあれこれ教えてくれるはず。";
+	close;
+LErrorA:
+	mes "[ボルワージュ]";
+	mes "スキルポイントが残っていたら";
+	mes "転職できません。";
+	mes "消費してきなさい。";
+	close;
+Ltest1:
+	mes "[ボルワージュ]";
+	mes "あら、ダンサー志望生ね。";
+	next;
+	mes "[ボルワージュ]";
+	mes "……もうちょっと体を";
+	mes "引き締めないとね。";
+	next;
+	mes "[ボルワージュ]";
+	mes "そんなに心配しなくても大丈夫。";
+	mes "レッスンの途中に体もできて";
+	mes "くるから。";
+	mes "体型矯正レッスンもあるし。ふふ……";
+	next;
+	mes "[ボルワージュ]";
+	mes "それではあなたダンサーになる心構えを";
+	mes "知りたいから、いくつか聞いてみたいと";
+	mes "思います。一応面接なんだけど";
+	mes "簡単な質問だから気楽にね。";
+	next;
+	goto LsetQ;
+Ltest2:
+	mes "[ボルワージュ]";
+	mes "元気出して！";
+	next;
+LsetQ:
+	set @rand,rand(2);
+	set @dcpoint,0;
+	if (@rand == 1) goto LQuestion2;
+//-------
+LQuestion1:
+	mes "[ボルワージュ]";
+	mes "1.";
+	mes "ダンサー・バード合奏スキル";
+	mes "「ロキの叫び」の効果は？";
+	next;
+	menu "レベル4武器の攻撃力が向上する",L1_2,"ダメージを二倍にしてくれる",L1_2,"範囲内ではスキルと魔法が使用不能になる",-,"攻撃速度が上昇する",L1_2;
+		set @dcpoint,@dcpoint+10;
+L1_2:
+	mes "[ボルワージュ]";
+	mes "2.";
+	mes "ダンスフロアでダンスをした後";
+	mes "相手に対する礼儀に反する行為は？";
+	next;
+	menu "相手に感謝の言葉を伝える",L1_3,"踊りを誉める",L1_3,"他のダンスも踊ろうと誘う",L1_3,"自分の相手には不足だと言う",-;
+		set @dcpoint,@dcpoint+10;
+L1_3:
+	mes "[ボルワージュ]";
+	mes "3.";
+	mes "誰かがダンスで間違った場合";
+	mes "それに気づいたあなたは";
+	mes "どうしますか？";
+	next;
+	menu "笑顔を絶やさずダンスを続ける",L1_4,"間違いを指摘してあげる",-,"気づかないふりをする",L1_4,"こっそり微笑んであげる",L1_4;
+		set @dcpoint,@dcpoint+10;
+L1_4:
+	mes "[ボルワージュ]";
+	mes "4.";
+	mes "ダンサーに転職ができる村の名前は？";
+	next;
+	menu "ココモ",L1_5,"サンダルマン",L1_5,"コムモ",L1_5,"コモド",-;
+		set @dcpoint,@dcpoint+10;
+L1_5:
+	mes "[ボルワージュ]";
+	mes "5.";
+	mes "コモドと直接繋がっている";
+	mes "洞窟の数は？";
+	next;
+	menu "1個",L1_6,"2個",L1_6,"3個",-,"4個",L1_6;
+		set @dcpoint,@dcpoint+10;
+L1_6:
+	mes "[ボルワージュ]";
+	mes "6.";
+	mes "次の中で、ペットできない";
+	mes "モンスターは？";
+	next;
+	menu "イシス",L1_7,"アルギオペ",-,"ドケビ",L1_7,"デビルチ",L1_7;
+		set @dcpoint,@dcpoint+10;
+L1_7:
+	mes "[ボルワージュ]";
+	mes "7.";
+	mes "ダンスが一番うまい人は誰か？";
+	next;
+	menu strcharinfo(0),L1_7a,"ボルワージュ様",-,"イシス",L1_8,"メルシー",L1_8;
+		set @dcpoint,@dcpoint+10;
+		goto L1_8;
+	L1_7a:
+		set @dcpoint,@dcpoint-100;
+		mes "…………";
+		next;
+L1_8:
+	mes "[ボルワージュ]";
+	mes "8.";
+	mes "コモドにあるカプラサービスの";
+	mes "拠点は何というか。";
+	next;
+	menu "カプラサービス本社",L1_9,"カプラサービス西部地区",L1_9,"カプラサービス",L1_9,"カプラサービス西部支部",-;
+		set @dcpoint,@dcpoint+10;
+L1_9:
+	mes "[……]";
+	mes "9.";
+	mes "私の名前は何？";
+	next;
+	menu "ボンソワール",L1_10,"ブルジョア",L1_10,"ボルワージュ",-,"ボンジュール",L1_10;
+		set @dcpoint,@dcpoint+10;
+L1_10:
+	mes "[ボルワージュ]";
+	mes "10.";
+	mes "スキル「子守歌」の能力は？";
+	next;
+	menu "周囲に暗黒の効果",Lcheckpt,"周囲に睡眠の効果",-,"周囲に徹夜の效果",Lcheckpt,"周囲に凍結の效果",Lcheckpt;
+		set @dcpoint,@dcpoint+10;
+		goto Lcheckpt;
+//-------
+LQuestion2:
+	mes "[ボルワージュ]";
+	mes "1.";
+	mes "ダンサーの「ダンスの練習」スキルの";
+	mes "効果は？";
+	next;
+	menu "INTを上げる",L2_2,"ダンススキルの効果を高める",-,"鞭系攻撃のダメージを高める",L2_2,"一定範囲にスタンの効果",L2_2;
+		set @dcpoint,@dcpoint+10;
+L2_2:
+	mes "[ボルワージュ]";
+	mes "2.";
+	mes "甲高い音がでる特殊な靴を履いて";
+	mes "ステップを踏み、軽快なリズムを刻む";
+	mes "踊りのことを何と言うか。";
+	next;
+	menu "タップダンス",-,"集中力向上",L2_3,"タンゴ",L2_3,"ダブルストレイフィング",L2_3;
+		set @dcpoint,@dcpoint+10;
+L2_3:
+	mes "[ボルワージュ]";
+	mes "3.";
+	mes "ダンサーの特徴から離れている";
+	mes "ものを選びなさい。";
+	next;
+	menu "ダンススキルを使いこなす",L2_4,"遠距離攻撃をする",L2_4,"鞭を使う",L2_4,"両手剣を使う",-;
+		set @dcpoint,@dcpoint+10;
+L2_4:
+	mes "[ボルワージュ]";
+	mes "4.";
+	mes "ダンサー達が一番多く居る街は？";
+	next;
+	menu "アルデバラン",L2_5,"ジュノー",L2_5,"モロク",L2_5,"コモド",-;
+		set @dcpoint,@dcpoint+10;
+L2_5:
+	mes "[ボルワージュ]";
+	mes "5.";
+	mes "一番美しいダンスを披露する人は？";
+	next;
+	menu strcharinfo(0),L2_5a,"ボルワージュ様",-,"イシス",L2_6,"エメラルハンダス",L2_6;
+		set @dcpoint,@dcpoint+10;
+		goto L2_6;
+	L2_5a:
+		set @dcpoint,@dcpoint-100;
+L2_6:
+	mes "[ボルワージュ]";
+	mes "6.";
+	mes "ダンサーが、他の職業に比べて";
+	mes "秀でている点を答えなさい。";
+	next;
+	menu "体力",L2_7,"演技力",L2_7,"ダンスの実力",-,"魔法の実力",L2_7;
+		set @dcpoint,@dcpoint+10;
+L2_7:
+	mes "[ボルワージュ]";
+	mes "7.";
+	mes "コモドカジノのマネージャーの名前は？";
+	next;
+	menu "ルー",L2_8,"ムー",L2_8,"マーティン",-,"ローヤー",L2_8;
+		set @dcpoint,@dcpoint+10;
+L2_8:
+	mes "[ボルワージュ]";
+	mes "8.";
+	mes "ダンサーが装備できないアイテムは？";
+	next;
+	menu "猫耳のヘアバンド",L2_9,"ツーハンドソード",-,"サンダル",L2_9,"イヤリング",L2_9;
+		set @dcpoint,@dcpoint+10;
+L2_9:
+	mes "[ボルワージュ]";
+	mes "9.";
+	mes "試験は退屈？";
+	next;
+	menu "はい",L2_10,"いいえ",-;
+		set @dcpoint,@dcpoint+10;
+L2_10:
+	mes "[ボルワージュ]";
+	mes "10.";
+	mes "ファロス燈台島にある燈台の数は";
+	mes "全部でいくつ？";
+	next;
+	menu "1",-,"2",Lcheckpt,"3",Lcheckpt;
+		set @dcpoint,@dcpoint+10;
+		goto Lcheckpt;
+//-------
+Lcheckpt:
+	mes "[ボルワージュ]";
+	mes "はい、お疲れさま～";
+	next;
+	if ((@dcpoint >= 80) && (change_dancer == 5)) goto LpointOK;
+	if ((@dcpoint >= 70) && (change_dancer == 6)) goto LpointOK;
+		mes "[ボルワージュ]";
+		mes "面接の結果は"+@dcpoint+"点……";
+		mes "不合格。";
+		mes "こんなんじゃ困るわ。";
+		next;
+		mes "[ボルワージュ]";
+		mes "ちょっと難しかったかな？";
+		mes "でも私の若い頃はもっとできたわよ？";
+		mes "また勉強してきてね。";
+		set change_dancer,6;
+		close;
+	LpointOK:
+		mes "[ボルワージュ]";
+		mes "面接の結果は"+@dcpoint+"点……";
+		if (@dcpoint == 100) mes "すばらしいです。合格です。";
+		if (@dcpoint != 100) mes "いくつか気になる点があったけど";
+		if (@dcpoint != 100) mes "まあいいでしょう。";
+		next;
+		mes "[ボルワージュ]";
+		mes "このくらいなら大丈夫ね。";
+		mes "ダンスの実習はそうもいかない";
+		mes "けど、努力すればなんとかなるわ。";
+		set change_dancer,7;
+		close;
+LStart2:
+	mes "[ボルワージュ]";
+	mes "それでは実習にはいります。";
+	mes "その前にいくつか注意事項を";
+	mes "話しておきましょうか。";
+	next;
+	menu "注意事項を聞く",-,"試験場に移動する",Lwarp;
+		mes "[ボルワージュ]";
+		mes "実はこれはオーディションなの。";
+		mes "^0000FF1分^000000の制限時間で";
+		next;
+		mes "[ボルワージュ]";
+		mes "^0000FF一人づつ順番に^000000 ダンスを踊って";
+		mes "もらいます。";
+		mes "ダンスの経験が無くても心配しないで。";
+		next;
+		mes "[ボルワージュ]";
+		mes "会場に入ると舞台が見えて、";
+		mes "まず ^0000FF舞台全体が見渡せる^000000位置に";
+		mes "立たなければならない。";
+		next;
+		mes "[ボルワージュ]";
+		mes "^0000FF前後左右が良く見渡せるように^000000ね。";
+		mes "マウスの右ボタンをダブルクリック";
+		mes "して方向も初期の状態に……";
+		mes "撮影用語はあまりくわしくないけど……";
+		next;
+		mes "[ボルワージュ]";
+		mes "開始の合図があるまでは^0000FF控室^000000で";
+		mes "順番を待ってね。";
+		mes "前の人が脱落するか、時間が来たら";
+		mes "あなたの番よ。";
+		next;
+		mes "[ボルワージュ]";
+		mes "人が多いと控室が満員になる";
+		mes "場合があります。そんな時は";
+		mes "順番を守って並ぶようにしてね。";
+		next;
+		mes "[ボルワージュ]";
+		mes "オーディションが始まると";
+		mes "アナウンスが流れ、最初の立ち位置を";
+		mes "基準にしてどっちの方向に移動するか";
+		mes "教えます。それに合わせて動けば";
+		mes "いいんです。";
+		next;
+		mes "[ボルワージュ]";
+		mes "^0000FF指定時間内にタイミングを";
+		mes "合わせることができなければ";
+		mes "すぐに脱落^000000となります。";
+		mes "厳しくいきますよ！";
+		close;
+	Lwarp:
+		mes "[ボルワージュ]";
+		mes "それではがんばって！";
+		set change_dancer,8;
+		next;
+		warp "job_duncer.gat",104,109;end;
+Ljobchange:
+	mes "[ボルワージュ]";
+	mes "あら、さっきの踊り、";
+	mes "良かったわよ～";
+	next;
+	mes "[ボルワージュ]";
+	mes "あれくらい踊れればダンサー";
+	mes "になるのに十分ですね。";
+	mes "さぁ、転職させてあげます。";
+	next;
+	mes "[ボルワージュ]";
+	mes "汝、今……女神の加護を受け";
+	next;
+	mes "[ボルワージュ]";
+	mes "すべての人に喜びを与える";
+	mes "ダンサーになりたもう……";
+	next;
+	if (JobLevel == 50) set @item,1;
+	if (JobLevel != 50) set @item,0;
+	mes "[ボルワージュ]";
+	mes "これから汝が踊るたび";
+	next;
+	jobchange 20;
+	set change_dancer,0;
+	mes "[ボルワージュ]";
+	mes "人々の微笑みがあふれんことを……";
+	next;
+	mes "[ボルワージュ]";
+	mes "これは私からのプレゼントです。";
+	mes "合格おめでとう！";
+	if (@item == 0) getitem 1950,1;
+	if (@item == 1) getitem 1953,1;
+	close;
+
+}
+//==================================================================
+job_duncer.gat,32,152,6	script	案内要員::dancew	69,{
+	close;
+OnWarp:
+	warpwaitingpc "job_duncer.gat",70,112,1;
+	disablewaitingroomevent;
+	initnpctimer "jobDq";
+	end;
+OnInit:
+	waitingroom "ダンスレッスン待合室",20,"dancew::OnWarp",1;
+	end;
+}
+//==================================================================
+//==================================================================
+job_duncer.gat,0,0,0	script	jobDq	-1,{
+	end;
+OnTimer1000:
+	mapannounce "job_duncer.gat","ボルワージュ: さあ、始めます。緊張を解いて。 制限時間は 1分です。",8;
+	end;
+OnTimer3000:
+	mapannounce "job_duncer.gat","ボルワージュ:  はい、後ろへ！ : [↑]",8;
+	callsub L_SUB1,2000;
+	end;
+OnTimer7000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  前～ : [↓]",8;
+	callsub L_SUB5,2000;
+	end;
+OnTimer11000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  左～ : [←]",8;
+	callsub L_SUB2,2000;
+	end;
+OnTimer15000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  右にターン : [→]",8;
+	callsub L_SUB4,2000;
+	end;
+OnTimer19000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  真ん中に戻って : [・]",8;
+	callsub L_SUB3,3000;
+	end;
+OnTimer21000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  そのままポーズ！ ",8;
+	end;
+OnTimer26000:
+	mapannounce "job_duncer.gat","ボルワージュ:  ポーズの後「集中力向上」などをアドリブで入れて！ ",8;
+	end;
+OnTimer28000:
+	mapannounce "job_duncer.gat","ボルワージュ:  そのまま～ ",8;
+	end;
+OnTimer29000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  左へ～ : [←]",8;
+	callsub L_SUB2,2000;
+	end;
+OnTimer33000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  前～ : [↓] ",8;
+	/*判定なし(次のすぐ右が厳しい)*/
+	end;
+OnTimer35000:
+	mapannounce "job_duncer.gat","ボルワージュ:  すぐに右！ : [→] ",8;
+	callsub L_SUB4,3000;
+	end;
+OnTimer38000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  はいポーズ！ ",8;
+	end;
+OnTimer41000:
+	mapannounce "job_duncer.gat","ボルワージュ:  左・真ん中・右・後ろ～ : [←][・][→][↑] ",8;
+	callsub L_SUB1,0;
+	end;
+OnTimer47000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  [→] ",8;
+	callsub L_SUB4,3000;
+	end;
+OnTimer50000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  左・真ん中・前・後ろ : [←][・][↓][↑] ",8;
+	callsub L_SUB1,0;
+	end;
+OnTimer56000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  もう一度、左・真ん中・前・後ろ : [←][・][↓][↑] ",8;
+	callsub L_SUB1,0;
+	end;
+OnTimer62000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  前～ : [↓]",8;
+	callsub L_SUB5,2500;
+	end;
+OnTimer65000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  左 : [←] ",8;
+	callsub L_SUB2,2500;
+	end;
+OnTimer68000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  真ん中 : [・] ",8;
+	callsub L_SUB3,2500;
+	end;
+OnTimer71000:
+	donpcevent "::OnDE1";
+	mapannounce "job_duncer.gat","ボルワージュ:  アローシャワーで決め！ ",8;
+	monster "job_duncer.gat",69,106,"ダンスポリン",1002,1,"jddie";
+	end;
+OnTimer76000:
+	killmonsterall "job_duncer.gat";
+	end;
+OnTimer80000:
+	mapannounce "job_duncer.gat","dance: タイミングが遅れました！",8;
+	if (getareausers("job_duncer.gat",68,106,70,114) != 0) areawarp "job_duncer.gat",68,106,70,114,"comodo.gat",188,162;
+	if (getareausers("job_duncer.gat",65,109,73,111) != 0) areawarp "job_duncer.gat",65,109,73,111,"comodo.gat",188,162;
+	stopnpctimer;
+	enablewaitingroomevent "dancew";
+	end;
+//上
+L_SUB1:
+	hideonnpc "#左判定";
+	hideonnpc "#中判定";
+	hideonnpc "#右判定";
+	hideonnpc "#下判定";
+	setnpctimer getarg(0),"jdt1";
+	startnpctimer "jdt1";
+	return;
+//左
+L_SUB2:
+	hideonnpc "#上判定";
+	hideonnpc "#中判定";
+	hideonnpc "#右判定";
+	hideonnpc "#下判定";
+	setnpctimer getarg(0),"jdt2";
+	startnpctimer "jdt2";
+	return;
+//中
+L_SUB3:
+	hideonnpc "#上判定";
+	hideonnpc "#左判定";
+	hideonnpc "#右判定";
+	hideonnpc "#下判定";
+	setnpctimer getarg(0),"jdt3";
+	startnpctimer "jdt3";
+	return;
+//右
+L_SUB4:
+	hideonnpc "#左判定";
+	hideonnpc "#中判定";
+	hideonnpc "#上判定";
+	hideonnpc "#下判定";
+	setnpctimer getarg(0),"jdt4";
+	startnpctimer "jdt4";
+	return;
+//下
+L_SUB5:
+	hideonnpc "#左判定";
+	hideonnpc "#中判定";
+	hideonnpc "#右判定";
+	hideonnpc "#上判定";
+	setnpctimer getarg(0),"jdt5";
+	startnpctimer "jdt5";
+	return;
+}
+//==================================================================
+job_duncer.gat,0,0,0	script	jddie	-1,{
+	mapannounce "job_duncer.gat","dance: お上手でした！ボルワージュ先生にアピールできたでしょう～",8;
+	set change_dancer,10;
+	stopnpctimer "jobDq";
+	enablewaitingroomevent "dancew";
+	warp "comodo.gat",188,162;
+	end;
+}
+//==================================================================
+job_duncer.gat,63,110,4	script	バックダンサー#1::jdt1	724,{
+	end;
+OnTimer5000:
+	hideoffnpc "#左判定";
+	hideoffnpc "#中判定";
+	hideoffnpc "#右判定";
+	hideoffnpc "#下判定";
+	stopnpctimer;
+	end;
+OnDE1:
+	emotion	21;
+	end;
+OnDE2:
+	emotion 23;
+	end;
+}
+//==================================================================
+job_duncer.gat,66,113,4	script	バックダンサー#2::jdt2	724,{
+	end;
+OnTimer5000:
+	hideoffnpc "#上判定";
+	hideoffnpc "#中判定";
+	hideoffnpc "#右判定";
+	hideoffnpc "#下判定";
+	stopnpctimer;
+	end;
+OnDE1:
+	emotion	21;
+	end;
+OnDE2:
+	emotion 23;
+	end;
+}
+//==================================================================
+job_duncer.gat,72,113,4	script	バックダンサー#3::jdt3	724,{
+	end;
+OnTimer5000:
+	hideoffnpc "#左判定";
+	hideoffnpc "#上判定";
+	hideoffnpc "#右判定";
+	hideoffnpc "#下判定";
+	stopnpctimer;
+	end;
+OnDE1:
+	emotion	21;
+	end;
+OnDE2:
+	emotion 23;
+	end;
+}
+//==================================================================
+job_duncer.gat,75,110,4	script	バックダンサー#4::jdt4	724,{
+	end;
+OnTimer5000:
+	hideoffnpc "#左判定";
+	hideoffnpc "#中判定";
+	hideoffnpc "#上判定";
+	hideoffnpc "#下判定";
+	stopnpctimer;
+	end;
+OnDE1:
+	emotion	21;
+	end;
+OnDE2:
+	emotion 23;
+	end;
+}
+//==================================================================
+job_duncer.gat,75,110,4	script	jdt5	139,{
+	end;
+OnTimer5000:
+	hideoffnpc "#左判定";
+	hideoffnpc "#中判定";
+	hideoffnpc "#右判定";
+	hideoffnpc "#上判定";
+	stopnpctimer;
+	end;
+}
+//==================================================================
+job_duncer.gat,69,113,4	script	#上判定	139,1,1,{
+	end;
+OnTouch:
+	mapannounce "job_duncer.gat","dance: "+strcharinfo(0)+"さん～ タイミングが遅れました！",8;
+	areawarp "job_duncer.gat",68,112,70,114,"comodo.gat",188,162;
+	donpcevent "::OnDE2";
+	end;
+OnDE1:
+OnInit:
+	hideonnpc "#上判定";
+	end;
+}
+//==================================================================
+job_duncer.gat,66,110,4	script	#左判定	139,1,1,{
+	end;
+OnTouch:
+	mapannounce "job_duncer.gat","dance: "+strcharinfo(0)+"さん～ タイミングが遅れました！",8;
+	areawarp "job_duncer.gat",65,109,67,111,"comodo.gat",188,162;
+	donpcevent "::OnDE2";
+	end;
+OnDE1:
+OnInit:
+	hideonnpc "#左判定";
+	end;
+}
+//==================================================================
+job_duncer.gat,69,110,4	script	#中判定	139,1,1,{
+	end;
+OnTouch:
+	mapannounce "job_duncer.gat","dance: "+strcharinfo(0)+"さん～ タイミングが遅れました！",8;
+	areawarp "job_duncer.gat",68,109,70,111,"comodo.gat",188,162;
+	donpcevent "::OnDE2";
+	end;
+OnDE1:
+OnInit:
+	hideonnpc "#中判定";
+	end;
+}
+//==================================================================
+job_duncer.gat,72,110,4	script	#右判定	139,1,1,{
+	end;
+OnTouch:
+	mapannounce "job_duncer.gat","dance: "+strcharinfo(0)+"さん～ タイミングが遅れました！",8;
+	areawarp "job_duncer.gat",71,109,73,111,"comodo.gat",188,162;
+	donpcevent "::OnDE2";
+	end;
+OnDE1:
+OnInit:
+	hideonnpc "#右判定";
+	end;
+}
+//==================================================================
+job_duncer.gat,69,107,4	script	#下判定	139,1,1,{
+	end;
+OnTouch:
+	mapannounce "job_duncer.gat","dance: "+strcharinfo(0)+"さん～ タイミングが遅れました！",8;
+	areawarp "job_duncer.gat",68,106,70,108,"comodo.gat",188,162;
+	donpcevent "::OnDE2";
+	end;
+OnDE1:
+OnInit:
+	hideonnpc "#下判定";
+	end;
+}
+//==================================================================
+//job_duncer.gat,69,105,4	script	でばぐ1	98,{donpcevent "::OnDE1"; close;}
+//job_duncer.gat,69,110,4	script	でばぐ2	98,{donpcevent "::OnDE2"; close;}
+//job_duncer.gat,66,100,4	script	でばぐON	98,{hideonnpc "#上判定";hideonnpc "#左判定";hideonnpc "#中判定";hideonnpc "#右判定";hideonnpc "#下判定";close;}
+//job_duncer.gat,72,100,4	script	でばぐOFF	98,{hideoffnpc "#上判定";hideoffnpc "#左判定";hideoffnpc "#中判定";hideoffnpc "#右判定";hideoffnpc "#下判定";close;}
+//==================================================================
+//job_duncer.gat,69,102,4	script	転職クエストテスト	100,{
+//	mes "[TEST]";
+//	mes "テストしますか？";
+//	next;
+//	menu "する",Lgo,"しない",-;
+//		close;
+//Lgo:
+//	warp "job_duncer.gat",70,112;
+//	disablewaitingroomevent "dancew";
+//	initnpctimer "jobDq";
+//	end;
+//}

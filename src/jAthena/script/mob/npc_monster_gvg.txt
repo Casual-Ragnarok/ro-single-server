@@ -1,0 +1,645 @@
+//=aldeg_cas01==================================================================================				
+aldeg_cas01.gat,0,0,0	script	mobcaller#1	-1,{
+OnRecvCastleA01:
+	if (GetCastleData("aldeg_cas01.gat",10) == 1) monster "aldeg_cas01.gat",17,218,"--ja--",1287,1,"Agit_A01::On_GDa11";
+	if (GetCastleData("aldeg_cas01.gat",11) == 1) monster "aldeg_cas01.gat",39,205,"--ja--",1285,1,"Agit_A01::On_GDa12";
+	if (GetCastleData("aldeg_cas01.gat",12) == 1) monster "aldeg_cas01.gat",38,196,"--ja--",1285,1,"Agit_A01::On_GDa13";
+	if (GetCastleData("aldeg_cas01.gat",13) == 1) monster "aldeg_cas01.gat",21,194,"--ja--",1286,1,"Agit_A01::On_GDa14";
+	if (GetCastleData("aldeg_cas01.gat",14) == 1) monster "aldeg_cas01.gat",218,24,"--ja--",1286,1,"Agit_A01::On_GDa15";
+	if (GetCastleData("aldeg_cas01.gat",15) == 1) monster "aldeg_cas01.gat",213,24,"--ja--",1286,1,"Agit_A01::On_GDa16";
+	if (GetCastleData("aldeg_cas01.gat",16) == 1) monster "aldeg_cas01.gat",73,70,"--ja--",1286,1,"Agit_A01::On_GDa17";
+	if (GetCastleData("aldeg_cas01.gat",17) == 1) monster "aldeg_cas01.gat",45,228,"--ja--",1285,1,"Agit_A01::On_GDa18";
+	if (getcastledata("aldeg_cas01.gat",9) == 0) disablenpc "kapra_aldeg01";
+	if (getcastledata("aldeg_cas01.gat",1) != 0) end;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"カーリッツバーグ",1132,4;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"深淵の騎士",1219,2;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"エクスキューショナー",1205,1;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"ペノメナ",1216,10;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"アラーム",1193,17;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"クロック",1269,9;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"レイドリックアーチャー",1276,7;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"彷徨う者",1208,3;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"ブラッディナイト",1268,1;
+	areamonster "aldeg_cas01.gat",0,0,300,300,"ダークロード",1272,1;
+	monster "aldeg_cas01.gat",216,23,"ダークロード",1272,1;
+	monster "aldeg_cas01.gat",216,23,"時計塔管理者",1270,4;
+	monster "aldeg_cas01.gat",216,23,"ブラッディナイト",1268,1;
+	monster "aldeg_cas01.gat",216,23,"深淵の騎士",1219,1;
+	monster "aldeg_cas01.gat",216,23,"レイドリックアーチャー",1276,5;
+OnGDEMPSetA01:
+	Monster "aldeg_cas01.gat",216,24,"エンペリウム",1288,1,"Agit_A01::OnAgitBreak";
+	end;
+}
+//=aldeg_cas02==================================================================================				
+aldeg_cas02.gat,0,0,0	script	mobcaller#2	-1,{
+OnRecvCastleA02:
+	if (GetCastleData("aldeg_cas02.gat",10) == 1) monster "aldeg_cas02.gat",51,183,"--ja--",1287,1,"Agit_A02::On_GDa21";
+	if (GetCastleData("aldeg_cas02.gat",11) == 1) monster "aldeg_cas02.gat",27,184,"--ja--",1286,1,"Agit_A02::On_GDa22";
+	if (GetCastleData("aldeg_cas02.gat",12) == 1) monster "aldeg_cas02.gat",88,43,"--ja--",1286,1,"Agit_A02::On_GDa23";
+	if (GetCastleData("aldeg_cas02.gat",13) == 1) monster "aldeg_cas02.gat",210,7,"--ja--",1285,1,"Agit_A02::On_GDa24";
+	if (GetCastleData("aldeg_cas02.gat",14) == 1) monster "aldeg_cas02.gat",60,203,"--ja--",1287,1,"Agit_A02::On_GDa25";
+	if (GetCastleData("aldeg_cas02.gat",15) == 1) monster "aldeg_cas02.gat",21,177,"--ja--",1285,1,"Agit_A02::On_GDa26";
+	if (GetCastleData("aldeg_cas02.gat",16) == 1) monster "aldeg_cas02.gat",117,46,"--ja--",1286,1,"Agit_A02::On_GDa27";
+	if (GetCastleData("aldeg_cas02.gat",17) == 1) monster "aldeg_cas02.gat",36,183,"--ja--",1285,1,"Agit_A02::On_GDa28";
+	if (getcastledata("aldeg_cas02.gat",9) == 0) disablenpc "kapra_aldeg02";
+	if (getcastledata("aldeg_cas02.gat",1) != 0) end;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"カーリッツバーグ",1132,4;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"深淵の騎士",1219,2;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"エクスキューショナー",1205,1;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"ペノメナ",1216,10;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"アラーム",1193,18;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"クロック",1269,9;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"レイドリックアーチャー",1276,7;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"彷徨う者",1208,3;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"ブラッディナイト",1268,1;
+	areamonster "aldeg_cas02.gat",0,0,300,300,"ダークロード",1272,1;
+	monster "aldeg_cas02.gat",213,23,"ダークロード",1272,1;
+	monster "aldeg_cas02.gat",213,23,"時計塔管理者",1270,4;
+	monster "aldeg_cas02.gat",213,23,"ブラッディナイト",1268,1;
+	monster "aldeg_cas02.gat",213,23,"深淵の騎士",1219,1;
+	monster "aldeg_cas02.gat",213,23,"レイドリックアーチャー",1276,5;
+OnGDEMPSetA02:
+	Monster "aldeg_cas02.gat",214,24,"エンペリウム",1288,1,"Agit_A02::OnAgitBreak";
+	end;
+}
+//=aldeg_cas03==================================================================================				
+aldeg_cas03.gat,0,0,0	script	mobcaller#3	-1,{
+OnRecvCastleA03:
+	if (GetCastleData("aldeg_cas03.gat",10) == 1) monster "aldeg_cas03.gat",110,217,"--ja--",1285,1,"Agit_A03::On_GDa31";
+	if (GetCastleData("aldeg_cas03.gat",11) == 1) monster "aldeg_cas03.gat",90,112,"--ja--",1286,1,"Agit_A03::On_GDa32";
+	if (GetCastleData("aldeg_cas03.gat",12) == 1) monster "aldeg_cas03.gat",86,120,"--ja--",1287,1,"Agit_A03::On_GDa33";
+	if (GetCastleData("aldeg_cas03.gat",13) == 1) monster "aldeg_cas03.gat",195,151,"--ja--",1285,1,"Agit_A03::On_GDa34";
+	if (GetCastleData("aldeg_cas03.gat",14) == 1) monster "aldeg_cas03.gat",116,112,"--ja--",1286,1,"Agit_A03::On_GDa35";
+	if (GetCastleData("aldeg_cas03.gat",15) == 1) monster "aldeg_cas03.gat",116,76,"--ja--",1287,1,"Agit_A03::On_GDa36";
+	if (GetCastleData("aldeg_cas03.gat",16) == 1) monster "aldeg_cas03.gat",64,103,"--ja--",1287,1,"Agit_A03::On_GDa37";
+	if (GetCastleData("aldeg_cas03.gat",17) == 1) monster "aldeg_cas03.gat",212,160,"--ja--",1285,1,"Agit_A03::On_GDa38";
+	if (getcastledata("aldeg_cas03.gat",9) == 0) disablenpc "kapra_aldeg03";
+	if (getcastledata("aldeg_cas03.gat",1) != 0) end;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"カーリッツバーグ",1132,4;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"深淵の騎士",1219,2;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"エクスキューショナー",1205,1;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"ペノメナ",1216,10;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"アラーム",1193,18;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"クロック",1269,9;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"レイドリックアーチャー",1276,7;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"彷徨う者",1208,3;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"ブラッディナイト",1268,1;
+	areamonster "aldeg_cas03.gat",0,0,300,300,"ダークロード",1272,1;
+	monster "aldeg_cas03.gat",205,31,"ダークロード",1272,1;
+	monster "aldeg_cas03.gat",205,31,"時計塔管理者",1270,4;
+	monster "aldeg_cas03.gat",205,31,"ブラッディナイト",1268,1;
+	monster "aldeg_cas03.gat",205,31,"深淵の騎士",1219,1;
+	monster "aldeg_cas03.gat",205,31,"レイドリックアーチャー",1276,5;
+OnGDEMPSetA03:
+	Monster "aldeg_cas03.gat",206,32,"エンペリウム",1288,1,"Agit_A03::OnAgitBreak";
+	end;
+}
+//=aldeg_cas04==================================================================================				
+aldeg_cas04.gat,0,0,0	script	mobcaller#4	-1,{
+OnRecvCastleA04:
+	if (GetCastleData("aldeg_cas04.gat",10) == 1) monster "aldeg_cas04.gat",187,100,"--ja--",1285,1,"Agit_A04::On_GDa41";
+	if (GetCastleData("aldeg_cas04.gat",11) == 1) monster "aldeg_cas04.gat",192,42,"--ja--",1285,1,"Agit_A04::On_GDa42";
+	if (GetCastleData("aldeg_cas04.gat",12) == 1) monster "aldeg_cas04.gat",55,88,"--ja--",1286,1,"Agit_A04::On_GDa43";
+	if (GetCastleData("aldeg_cas04.gat",13) == 1) monster "aldeg_cas04.gat",145,209,"--ja--",1287,1,"Agit_A04::On_GDa44";
+	if (GetCastleData("aldeg_cas04.gat",14) == 1) monster "aldeg_cas04.gat",169,53,"--ja--",1287,1,"Agit_A04::On_GDa45";
+	if (GetCastleData("aldeg_cas04.gat",15) == 1) monster "aldeg_cas04.gat",198,77,"--ja--",1287,1,"Agit_A04::On_GDa46";
+	if (GetCastleData("aldeg_cas04.gat",16) == 1) monster "aldeg_cas04.gat",148,88,"--ja--",1285,1,"Agit_A04::On_GDa47";
+	if (GetCastleData("aldeg_cas04.gat",17) == 1) monster "aldeg_cas04.gat",48,72,"--ja--",1286,1,"Agit_A04::On_GDa48";
+	if (getcastledata("aldeg_cas04.gat",9) == 0) disablenpc "kapra_aldeg04";
+	if (getcastledata("aldeg_cas04.gat",1) != 0) end;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"カーリッツバーグ",1132,4;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"深淵の騎士",1219,2;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"エクスキューショナー",1205,1;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"ペノメナ",1216,10;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"アラーム",1193,18;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"クロック",1269,9;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"レイドリックアーチャー",1276,7;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"彷徨う者",1208,3;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"ブラッディナイト",1268,1;
+	areamonster "aldeg_cas04.gat",0,0,300,300,"ダークロード",1272,1;
+	monster "aldeg_cas04.gat",36,217,"ダークロード",1272,1;
+	monster "aldeg_cas04.gat",36,217,"時計塔管理者",1270,4;
+	monster "aldeg_cas04.gat",36,217,"ブラッディナイト",1268,1;
+	monster "aldeg_cas04.gat",36,217,"深淵の騎士",1219,1;
+	monster "aldeg_cas04.gat",36,217,"レイドリックアーチャー",1276,5;
+OnGDEMPSetA04:
+	Monster "aldeg_cas04.gat",36,218,"エンペリウム",1288,1,"Agit_A04::OnAgitBreak";
+	end;
+}
+//=aldeg_cas05==================================================================================				
+aldeg_cas05.gat,0,0,0	script	mobcaller#5	-1,{
+OnRecvCastleA05:
+	if (GetCastleData("aldeg_cas05.gat",10) == 1) monster "aldeg_cas05.gat",51,202,"--ja--",1285,1,"Agit_A05::On_GDa51";
+	if (GetCastleData("aldeg_cas05.gat",11) == 1) monster "aldeg_cas05.gat",27,221,"--ja--",1286,1,"Agit_A05::On_GDa52";
+	if (GetCastleData("aldeg_cas05.gat",12) == 1) monster "aldeg_cas05.gat",145,78,"--ja--",1286,1,"Agit_A05::On_GDa53";
+	if (GetCastleData("aldeg_cas05.gat",13) == 1) monster "aldeg_cas05.gat",157,192,"--ja--",1287,1,"Agit_A05::On_GDa54";
+	if (GetCastleData("aldeg_cas05.gat",14) == 1) monster "aldeg_cas05.gat",157,74,"--ja--",1287,1,"Agit_A05::On_GDa55";
+	if (GetCastleData("aldeg_cas05.gat",15) == 1) monster "aldeg_cas05.gat",188,79,"--ja--",1285,1,"Agit_A05::On_GDa56";
+	if (GetCastleData("aldeg_cas05.gat",16) == 1) monster "aldeg_cas05.gat",156,73,"--ja--",1286,1,"Agit_A05::On_GDa57";
+	if (GetCastleData("aldeg_cas05.gat",17) == 1) monster "aldeg_cas05.gat",41,112,"--ja--",1286,1,"Agit_A05::On_GDa58";
+	if (getcastledata("aldeg_cas05.gat",9) == 0) disablenpc "kapra_aldeg05";
+	if (getcastledata("aldeg_cas05.gat",1) != 0) end;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"カーリッツバーグ",1132,4;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"深淵の騎士",1219,2;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"エクスキューショナー",1205,1;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"ペノメナ",1216,10;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"アラーム",1193,18;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"クロック",1269,9;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"レイドリックアーチャー",1276,7;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"彷徨う者",1208,3;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"ブラッディナイト",1268,1;
+	areamonster "aldeg_cas05.gat",0,0,300,300,"ダークロード",1272,1;
+	monster "aldeg_cas05.gat",27,101,"ダークロード",1272,1;
+	monster "aldeg_cas05.gat",27,101,"時計塔管理者",1270,4;
+	monster "aldeg_cas05.gat",27,101,"ブラッディナイト",1268,1;
+	monster "aldeg_cas05.gat",27,101,"深淵の騎士",1219,1;
+	monster "aldeg_cas05.gat",27,101,"レイドリックアーチャー",1276,5;
+OnGDEMPSetA05:
+	Monster "aldeg_cas05.gat",28,102,"エンペリウム",1288,1,"Agit_A05::OnAgitBreak";
+	end;
+}
+//=gefg_cas01===================================================================================				
+gefg_cas01.gat,0,0,0	script	mobcaller#6	-1,{
+OnRecvCastleG01:
+	if (GetCastleData("gefg_cas01.gat",10) == 1) monster "gefg_cas01.gat",67,179,"--ja--",1287,1,"Agit_B01::On_GDg11";
+	if (GetCastleData("gefg_cas01.gat",11) == 1) monster "gefg_cas01.gat",36,186,"--ja--",1285,1,"Agit_B01::On_GDg12";
+	if (GetCastleData("gefg_cas01.gat",12) == 1) monster "gefg_cas01.gat",50,186,"--ja--",1285,1,"Agit_B01::On_GDg13";
+	if (GetCastleData("gefg_cas01.gat",13) == 1) monster "gefg_cas01.gat",62,41,"--ja--",1287,1,"Agit_B01::On_GDg14";
+	if (GetCastleData("gefg_cas01.gat",14) == 1) monster "gefg_cas01.gat",50,67,"--ja--",1286,1,"Agit_B01::On_GDg15";
+	if (GetCastleData("gefg_cas01.gat",15) == 1) monster "gefg_cas01.gat",184,20,"--ja--",1287,1,"Agit_B01::On_GDg16";
+	if (GetCastleData("gefg_cas01.gat",16) == 1) monster "gefg_cas01.gat",189,41,"--ja--",1286,1,"Agit_B01::On_GDg17";
+	if (GetCastleData("gefg_cas01.gat",17) == 1) monster "gefg_cas01.gat",200,167,"--ja--",1286,1,"Agit_B01::On_GDg18";
+	if (getcastledata("gefg_cas01.gat",9) == 0) disablenpc "kapra_gefg01";
+	if (getcastledata("gefg_cas01.gat",1) != 0) end;
+	areamonster "gefg_cas01.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "gefg_cas01.gat",0,0,300,300,"ウィンドゴースト",1263,11;
+	areamonster "gefg_cas01.gat",0,0,300,300,"バースリー",1102,10;
+	areamonster "gefg_cas01.gat",0,0,300,300,"ジャック",1130,10;
+	areamonster "gefg_cas01.gat",0,0,300,300,"マルドゥーク",1140,20;
+	areamonster "gefg_cas01.gat",0,0,300,300,"レイドリック",1163,9;
+	areamonster "gefg_cas01.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "gefg_cas01.gat",0,0,300,300,"深淵の騎士",1219,1;
+	areamonster "gefg_cas01.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "gefg_cas01.gat",0,0,300,300,"フリオニ",1159,1;
+	monster "gefg_cas01.gat",197,181,"ミステルテイン",1203,1;
+	monster "gefg_cas01.gat",197,181,"オークヒーロー",1087,1;
+	monster "gefg_cas01.gat",197,181,"ハイオーク",1213,10;
+	monster "gefg_cas01.gat",197,181,"オークアーチャー",1189,10;
+OnGDEMPSetG01:
+	Monster "gefg_cas01.gat",198,182,"エンペリウム",1288,1,"Agit_B01::OnAgitBreak";
+	end;
+}
+//=gefg_cas02===================================================================================				
+gefg_cas02.gat,0,0,0	script	mobcaller#7	-1,{
+OnRecvCastleG02:
+	if (GetCastleData("gefg_cas02.gat",10) == 1) monster "gefg_cas02.gat",64,168,"--ja--",1287,1,"Agit_B02::On_GDg21";
+	if (GetCastleData("gefg_cas02.gat",11) == 1) monster "gefg_cas02.gat",35,148,"--ja--",1285,1,"Agit_B02::On_GDg22";
+	if (GetCastleData("gefg_cas02.gat",12) == 1) monster "gefg_cas02.gat",20,150,"--ja--",1285,1,"Agit_B02::On_GDg23";
+	if (GetCastleData("gefg_cas02.gat",13) == 1) monster "gefg_cas02.gat",56,41,"--ja--",1287,1,"Agit_B02::On_GDg24";
+	if (GetCastleData("gefg_cas02.gat",14) == 1) monster "gefg_cas02.gat",19,41,"--ja--",1286,1,"Agit_B02::On_GDg25";
+	if (GetCastleData("gefg_cas02.gat",15) == 1) monster "gefg_cas02.gat",166,25,"--ja--",1287,1,"Agit_B02::On_GDg26";
+	if (GetCastleData("gefg_cas02.gat",16) == 1) monster "gefg_cas02.gat",166,42,"--ja--",1286,1,"Agit_B02::On_GDg27";
+	if (GetCastleData("gefg_cas02.gat",17) == 1) monster "gefg_cas02.gat",159,188,"--ja--",1286,1,"Agit_B02::On_GDg28";
+	if (getcastledata("gefg_cas02.gat",9) == 0) disablenpc "kapra_gefg02";
+	if (getcastledata("gefg_cas02.gat",1) != 0) end;
+	areamonster "gefg_cas02.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "gefg_cas02.gat",0,0,300,300,"ウィンドゴースト",1263,11;
+	areamonster "gefg_cas02.gat",0,0,300,300,"バースリー",1102,10;
+	areamonster "gefg_cas02.gat",0,0,300,300,"ジャック",1130,10;
+	areamonster "gefg_cas02.gat",0,0,300,300,"マルドゥーク",1140,20;
+	areamonster "gefg_cas02.gat",0,0,300,300,"レイドリック",1163,9;
+	areamonster "gefg_cas02.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "gefg_cas02.gat",0,0,300,300,"深淵の騎士",1219,1;
+	areamonster "gefg_cas02.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "gefg_cas02.gat",0,0,300,300,"フリオニ",1159,1;
+	monster "gefg_cas02.gat",176,178,"ミステルテイン",1203,1;
+	monster "gefg_cas02.gat",176,178,"オークヒーロー",1087,1;
+	monster "gefg_cas02.gat",176,178,"ハイオーク",1213,7;
+	monster "gefg_cas02.gat",176,178,"オークアーチャー",1189,7;
+OnGDEMPSetG02:
+	Monster "gefg_cas02.gat",176,178,"エンペリウム",1288,1,"Agit_B02::OnAgitBreak";
+	end;
+}
+//=gefg_cas03===================================================================================				
+gefg_cas03.gat,0,0,0	script	mobcaller#8	-1,{
+OnRecvCastleG03:
+	if (GetCastleData("gefg_cas03.gat",10) == 1) monster "gefg_cas03.gat",48,176,"--ja--",1285,1,"Agit_B03::On_GDg31";
+	if (GetCastleData("gefg_cas03.gat",11) == 1) monster "gefg_cas03.gat",113,214,"--ja--",1285,1,"Agit_B03::On_GDg32";
+	if (GetCastleData("gefg_cas03.gat",12) == 1) monster "gefg_cas03.gat",48,207,"--ja--",1287,1,"Agit_B03::On_GDg33";
+	if (GetCastleData("gefg_cas03.gat",13) == 1) monster "gefg_cas03.gat",157,62,"--ja--",1287,1,"Agit_B03::On_GDg34";
+	if (GetCastleData("gefg_cas03.gat",14) == 1) monster "gefg_cas03.gat",157,45,"--ja--",1286,1,"Agit_B03::On_GDg35";
+	if (GetCastleData("gefg_cas03.gat",15) == 1) monster "gefg_cas03.gat",243,41,"--ja--",1287,1,"Agit_B03::On_GDg36";
+	if (GetCastleData("gefg_cas03.gat",16) == 1) monster "gefg_cas03.gat",234,25,"--ja--",1286,1,"Agit_B03::On_GDg37";
+	if (GetCastleData("gefg_cas03.gat",17) == 1) monster "gefg_cas03.gat",238,160,"--ja--",1286,1,"Agit_B03::On_GDg38";
+	if (getcastledata("gefg_cas03.gat",9) == 0) disablenpc "kapra_gefg03";
+	if (getcastledata("gefg_cas03.gat",1) != 0) end;
+	areamonster "gefg_cas03.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "gefg_cas03.gat",0,0,300,300,"ウィンドゴースト",1263,11;
+	areamonster "gefg_cas03.gat",0,0,300,300,"バースリー",1102,10;
+	areamonster "gefg_cas03.gat",0,0,300,300,"ジャック",1130,10;
+	areamonster "gefg_cas03.gat",0,0,300,300,"マルドゥーク",1140,20;
+	areamonster "gefg_cas03.gat",0,0,300,300,"レイドリック",1163,9;
+	areamonster "gefg_cas03.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "gefg_cas03.gat",0,0,300,300,"深淵の騎士",1219,1;
+	areamonster "gefg_cas03.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "gefg_cas03.gat",0,0,300,300,"フリオニ",1159,1;
+	monster "gefg_cas03.gat",244,166,"ミステルテイン",1203,1;
+	monster "gefg_cas03.gat",244,166,"オークヒーロー",1087,1;
+	monster "gefg_cas03.gat",244,166,"ハイオーク",1213,7;
+	monster "gefg_cas03.gat",244,166,"オークアーチャー",1189,7;
+OnGDEMPSetG03:
+	Monster "gefg_cas03.gat",245,167,"エンペリウム",1288,1,"Agit_B03::OnAgitBreak";
+	end;
+}
+//=gefg_cas04===================================================================================				
+gefg_cas04.gat,0,0,0	script	mobcaller#9	-1,{
+OnRecvCastleG04:
+	if (GetCastleData("gefg_cas04.gat",10) == 1) monster "gefg_cas04.gat",53,191,"--ja--",1285,1,"Agit_B04::On_GDg41";
+	if (GetCastleData("gefg_cas04.gat",11) == 1) monster "gefg_cas04.gat",31,178,"--ja--",1285,1,"Agit_B04::On_GDg42";
+	if (GetCastleData("gefg_cas04.gat",12) == 1) monster "gefg_cas04.gat",49,220,"--ja--",1287,1,"Agit_B04::On_GDg43";
+	if (GetCastleData("gefg_cas04.gat",13) == 1) monster "gefg_cas04.gat",29,46,"--ja--",1287,1,"Agit_B04::On_GDg44";
+	if (GetCastleData("gefg_cas04.gat",14) == 1) monster "gefg_cas04.gat",57,46,"--ja--",1286,1,"Agit_B04::On_GDg45";
+	if (GetCastleData("gefg_cas04.gat",15) == 1) monster "gefg_cas04.gat",147,65,"--ja--",1287,1,"Agit_B04::On_GDg46";
+	if (GetCastleData("gefg_cas04.gat",16) == 1) monster "gefg_cas04.gat",160,50,"--ja--",1286,1,"Agit_B04::On_GDg47";
+	if (GetCastleData("gefg_cas04.gat",17) == 1) monster "gefg_cas04.gat",148,189,"--ja--",1286,1,"Agit_B04::On_GDg48";
+	if (getcastledata("gefg_cas04.gat",9) == 0) disablenpc "kapra_gefg04";
+	if (getcastledata("gefg_cas04.gat",1) != 0) end;
+	areamonster "gefg_cas04.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "gefg_cas04.gat",0,0,300,300,"ウィンドゴースト",1263,11;
+	areamonster "gefg_cas04.gat",0,0,300,300,"バースリー",1102,10;
+	areamonster "gefg_cas04.gat",0,0,300,300,"ジャック",1130,10;
+	areamonster "gefg_cas04.gat",0,0,300,300,"マルドゥーク",1140,20;
+	areamonster "gefg_cas04.gat",0,0,300,300,"レイドリック",1163,9;
+	areamonster "gefg_cas04.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "gefg_cas04.gat",0,0,300,300,"深淵の騎士",1219,1;
+	areamonster "gefg_cas04.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "gefg_cas04.gat",0,0,300,300,"フリオニ",1159,1;
+	monster "gefg_cas04.gat",174,177,"ミステルテイン",1203,1;
+	monster "gefg_cas04.gat",174,177,"オークヒーロー",1087,1;
+	monster "gefg_cas04.gat",174,177,"ハイオーク",1213,7;
+	monster "gefg_cas04.gat",174,177,"オークアーチャー",1189,7;
+OnGDEMPSetG04:
+	Monster "gefg_cas04.gat",174,178,"エンペリウム",1288,1,"Agit_B04::OnAgitBreak";
+	end;
+}
+//=gefg_cas05===================================================================================				
+gefg_cas05.gat,0,0,0	script	mobcaller#10	-1,{
+OnRecvCastleG05:
+	if (GetCastleData("gefg_cas05.gat",10) == 1) monster "gefg_cas05.gat",45,149,"--ja--",1285,1,"Agit_B05::On_GDg51";
+	if (GetCastleData("gefg_cas05.gat",11) == 1) monster "gefg_cas05.gat",71,163,"--ja--",1285,1,"Agit_B05::On_GDg52";
+	if (GetCastleData("gefg_cas05.gat",12) == 1) monster "gefg_cas05.gat",72,142,"--ja--",1287,1,"Agit_B05::On_GDg53";
+	if (GetCastleData("gefg_cas05.gat",13) == 1) monster "gefg_cas05.gat",66,47,"--ja--",1287,1,"Agit_B05::On_GDg54";
+	if (GetCastleData("gefg_cas05.gat",14) == 1) monster "gefg_cas05.gat",66,17,"--ja--",1286,1,"Agit_B05::On_GDg55";
+	if (GetCastleData("gefg_cas05.gat",15) == 1) monster "gefg_cas05.gat",177,50,"--ja--",1287,1,"Agit_B05::On_GDg56";
+	if (GetCastleData("gefg_cas05.gat",16) == 1) monster "gefg_cas05.gat",177,35,"--ja--",1286,1,"Agit_B05::On_GDg57";
+	if (GetCastleData("gefg_cas05.gat",17) == 1) monster "gefg_cas05.gat",193,166,"--ja--",1286,1,"Agit_B05::On_GDg58";
+	if (getcastledata("gefg_cas05.gat",9) == 0) disablenpc "kapra_gefg05";
+	if (getcastledata("gefg_cas05.gat",1) != 0) end;
+	areamonster "gefg_cas05.gat",0,0,300,300,"イビルドルイド",1117,10;
+	areamonster "gefg_cas05.gat",0,0,300,300,"ウィンドゴースト",1263,11;
+	areamonster "gefg_cas05.gat",0,0,300,300,"バースリー",1102,10;
+	areamonster "gefg_cas05.gat",0,0,300,300,"ジャック",1130,10;
+	areamonster "gefg_cas05.gat",0,0,300,300,"マルドゥーク",1140,20;
+	areamonster "gefg_cas05.gat",0,0,300,300,"レイドリック",1163,9;
+	areamonster "gefg_cas05.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "gefg_cas05.gat",0,0,300,300,"深淵の騎士",1219,1;
+	areamonster "gefg_cas05.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "gefg_cas05.gat",0,0,300,300,"フリオニ",1159,1;
+	monster "gefg_cas05.gat",194,184,"ミステルテイン",1203,1;
+	monster "gefg_cas05.gat",194,184,"オークヒーロー",1087,1;
+	monster "gefg_cas05.gat",194,184,"ハイオーク",1213,7;
+	monster "gefg_cas05.gat",194,184,"オークアーチャー",1189,7;
+OnGDEMPSetG05:
+	Monster "gefg_cas05.gat",194,184,"エンペリウム",1288,1,"Agit_B05::OnAgitBreak";
+	end;
+}
+//=payg_cas01===================================================================================				
+payg_cas01.gat,0,0,0	script	mobcaller#11	-1,{
+OnRecvCastleF01:
+	if (GetCastleData("payg_cas01.gat",10) == 1) monster "payg_cas01.gat",229,92,"--ja--",1285,1,"Agit_C01::On_GDf11";
+	if (GetCastleData("payg_cas01.gat",11) == 1) monster "payg_cas01.gat",225,80,"--ja--",1285,1,"Agit_C01::On_GDf12";
+	if (GetCastleData("payg_cas01.gat",12) == 1) monster "payg_cas01.gat",222,111,"--ja--",1285,1,"Agit_C01::On_GDf13";
+	if (GetCastleData("payg_cas01.gat",13) == 1) monster "payg_cas01.gat",99,45,"--ja--",1285,1,"Agit_C01::On_GDf14";
+	if (GetCastleData("payg_cas01.gat",14) == 1) monster "payg_cas01.gat",65,31,"--ja--",1285,1,"Agit_C01::On_GDf15";
+	if (GetCastleData("payg_cas01.gat",15) == 1) monster "payg_cas01.gat",36,127,"--ja--",1285,1,"Agit_C01::On_GDf16";
+	if (GetCastleData("payg_cas01.gat",16) == 1) monster "payg_cas01.gat",51,144,"--ja--",1285,1,"Agit_C01::On_GDf17";
+	if (GetCastleData("payg_cas01.gat",17) == 1) monster "payg_cas01.gat",138,133,"--ja--",1286,1,"Agit_C01::On_GDf18";
+	if (getcastledata("payg_cas01.gat",9) == 0) disablenpc "kapra_payg01";
+	if (getcastledata("payg_cas01.gat",1) != 0) end;
+	areamonster "payg_cas01.gat",0,0,300,300,"天下大将軍",1277,10;
+	areamonster "payg_cas01.gat",0,0,300,300,"彷徨う者",1208,10;
+	areamonster "payg_cas01.gat",0,0,300,300,"ミュータントドラゴン",1262,5;
+	areamonster "payg_cas01.gat",0,0,300,300,"バースリー",1102,5;
+	areamonster "payg_cas01.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "payg_cas01.gat",0,0,300,300,"エドガ",1115,1;
+	areamonster "payg_cas01.gat",0,0,300,300,"ホロン",1129,11;
+	areamonster "payg_cas01.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "payg_cas01.gat",0,0,300,300,"コボルドアーチャー",1282,4;
+	areamonster "payg_cas01.gat",0,0,300,300,"ガーゴイル",1253,5;
+	monster "payg_cas01.gat",138,138,"月夜花",1150,1;
+	monster "payg_cas01.gat",138,138,"エドガ",1115,1;
+	monster "payg_cas01.gat",138,138,"彷徨う者",1208,6;
+	monster "payg_cas01.gat",138,138,"レイドリックアーチャー",1276,5;
+OnGDEMPSetF01:
+	Monster "payg_cas01.gat",139,139,"エンペリウム",1288,1,"Agit_C01::OnAgitBreak";
+	end;
+}
+//=payg_cas02===================================================================================				
+payg_cas02.gat,0,0,0	script	mobcaller#12	-1,{
+OnRecvCastleF02:
+	if (GetCastleData("payg_cas02.gat",10) == 1) monster "payg_cas02.gat",237,54,"--ja--",1285,1,"Agit_C02::On_GDf21";
+	if (GetCastleData("payg_cas02.gat",11) == 1) monster "payg_cas02.gat",228,72,"--ja--",1285,1,"Agit_C02::On_GDf22";
+	if (GetCastleData("payg_cas02.gat",12) == 1) monster "payg_cas02.gat",210,41,"--ja--",1285,1,"Agit_C02::On_GDf23";
+	if (GetCastleData("payg_cas02.gat",13) == 1) monster "payg_cas02.gat",57,241,"--ja--",1285,1,"Agit_C02::On_GDf24";
+	if (GetCastleData("payg_cas02.gat",14) == 1) monster "payg_cas02.gat",42,241,"--ja--",1285,1,"Agit_C02::On_GDf25";
+	if (GetCastleData("payg_cas02.gat",15) == 1) monster "payg_cas02.gat",287,257,"--ja--",1285,1,"Agit_C02::On_GDf26";
+	if (GetCastleData("payg_cas02.gat",16) == 1) monster "payg_cas02.gat",264,272,"--ja--",1285,1,"Agit_C02::On_GDf27";
+	if (GetCastleData("payg_cas02.gat",17) == 1) monster "payg_cas02.gat",27,20,"--ja--",1286,1,"Agit_C02::On_GDf28";
+	if (getcastledata("payg_cas02.gat",9) == 0) disablenpc "kapra_payg02";
+	if (getcastledata("payg_cas02.gat",1) != 0) end;
+	areamonster "payg_cas02.gat",0,0,300,300,"天下大将軍",1277,10;
+	areamonster "payg_cas02.gat",0,0,300,300,"彷徨う者",1208,10;
+	areamonster "payg_cas02.gat",0,0,300,300,"ミュータントドラゴン",1262,5;
+	areamonster "payg_cas02.gat",0,0,300,300,"バースリー",1102,5;
+	areamonster "payg_cas02.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "payg_cas02.gat",0,0,300,300,"エドガ",1115,1;
+	areamonster "payg_cas02.gat",0,0,300,300,"ホロン",1129,11;
+	areamonster "payg_cas02.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "payg_cas02.gat",0,0,300,300,"コボルドアーチャー",1282,4;
+	areamonster "payg_cas02.gat",0,0,300,300,"ガーゴイル",1253,5;
+	monster "payg_cas02.gat",38,25,"月夜花",1150,1;
+	monster "payg_cas02.gat",38,25,"エドガ",1115,1;
+	monster "payg_cas02.gat",38,25,"彷徨う者",1208,6;
+	monster "payg_cas02.gat",38,25,"レイドリックアーチャー",1276,5;
+OnGDEMPSetF02:
+	Monster "payg_cas02.gat",39,25,"エンペリウム",1288,1,"Agit_C02::OnAgitBreak";
+	end;
+}
+//=payg_cas03===================================================================================				
+payg_cas03.gat,0,0,0	script	mobcaller#13	-1,{
+OnRecvCastleF03:
+	if (GetCastleData("payg_cas03.gat",10) == 1) monster "payg_cas03.gat",245,37,"--ja--",1285,1,"Agit_C03::On_GDf31";
+	if (GetCastleData("payg_cas03.gat",11) == 1) monster "payg_cas03.gat",269,51,"--ja--",1285,1,"Agit_C03::On_GDf32";
+	if (GetCastleData("payg_cas03.gat",12) == 1) monster "payg_cas03.gat",36,39,"--ja--",1285,1,"Agit_C03::On_GDf33";
+	if (GetCastleData("payg_cas03.gat",13) == 1) monster "payg_cas03.gat",41,39,"--ja--",1285,1,"Agit_C03::On_GDf34";
+	if (GetCastleData("payg_cas03.gat",14) == 1) monster "payg_cas03.gat",39,65,"--ja--",1285,1,"Agit_C03::On_GDf35";
+	if (GetCastleData("payg_cas03.gat",15) == 1) monster "payg_cas03.gat",19,276,"--ja--",1285,1,"Agit_C03::On_GDf36";
+	if (GetCastleData("payg_cas03.gat",16) == 1) monster "payg_cas03.gat",37,277,"--ja--",1285,1,"Agit_C03::On_GDf37";
+	if (GetCastleData("payg_cas03.gat",17) == 1) monster "payg_cas03.gat",268,244,"--ja--",1286,1,"Agit_C03::On_GDf38";
+	if (getcastledata("payg_cas03.gat",9) == 0) disablenpc "kapra_payg03";
+	if (getcastledata("payg_cas03.gat",1) != 0) end;
+	areamonster "payg_cas03.gat",0,0,300,300,"天下大将軍",1277,10;
+	areamonster "payg_cas03.gat",0,0,300,300,"彷徨う者",1208,10;
+	areamonster "payg_cas03.gat",0,0,300,300,"ミュータントドラゴン",1262,5;
+	areamonster "payg_cas03.gat",0,0,300,300,"バースリー",1102,5;
+	areamonster "payg_cas03.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "payg_cas03.gat",0,0,300,300,"エドガ",1115,1;
+	areamonster "payg_cas03.gat",0,0,300,300,"ホロン",1129,11;
+	areamonster "payg_cas03.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "payg_cas03.gat",0,0,300,300,"コボルドアーチャー",1282,4;
+	areamonster "payg_cas03.gat",0,0,300,300,"ガーゴイル",1253,5;
+	monster "payg_cas03.gat",268,264,"月夜花",1150,1;
+	monster "payg_cas03.gat",268,264,"エドガ",1115,1;
+	monster "payg_cas03.gat",268,264,"彷徨う者",1208,6;
+	monster "payg_cas03.gat",268,264,"レイドリックアーチャー",1276,5;
+OnGDEMPSetF03:
+	Monster "payg_cas03.gat",269,265,"エンペリウム",1288,1,"Agit_C03::OnAgitBreak";
+	end;
+}
+//=payg_cas04===================================================================================				
+payg_cas04.gat,0,0,0	script	mobcaller#14	-1,{
+OnRecvCastleF04:
+	if (GetCastleData("payg_cas04.gat",10) == 1) monster "payg_cas04.gat",251,212,"--ja--",1285,1,"Agit_C04::On_GDf41";
+	if (GetCastleData("payg_cas04.gat",11) == 1) monster "payg_cas04.gat",232,212,"--ja--",1285,1,"Agit_C04::On_GDf42";
+	if (GetCastleData("payg_cas04.gat",12) == 1) monster "payg_cas04.gat",231,175,"--ja--",1285,1,"Agit_C04::On_GDf43";
+	if (GetCastleData("payg_cas04.gat",13) == 1) monster "payg_cas04.gat",32,287,"--ja--",1285,1,"Agit_C04::On_GDf44";
+	if (GetCastleData("payg_cas04.gat",14) == 1) monster "payg_cas04.gat",32,232,"--ja--",1285,1,"Agit_C04::On_GDf45";
+	if (GetCastleData("payg_cas04.gat",15) == 1) monster "payg_cas04.gat",35,45,"--ja--",1285,1,"Agit_C04::On_GDf46";
+	if (GetCastleData("payg_cas04.gat",16) == 1) monster "payg_cas04.gat",36,17,"--ja--",1285,1,"Agit_C04::On_GDf47";
+	if (GetCastleData("payg_cas04.gat",17) == 1) monster "payg_cas04.gat",270,41,"--ja--",1286,1,"Agit_C04::On_GDf48";
+	if (getcastledata("payg_cas04.gat",9) == 0) disablenpc "kapra_payg04";
+	if (getcastledata("payg_cas04.gat",1) != 0) end;
+	areamonster "payg_cas04.gat",0,0,300,300,"天下大将軍",1277,10;
+	areamonster "payg_cas04.gat",0,0,300,300,"彷徨う者",1208,10;
+	areamonster "payg_cas04.gat",0,0,300,300,"ミュータントドラゴン",1262,5;
+	areamonster "payg_cas04.gat",0,0,300,300,"バースリー",1102,5;
+	areamonster "payg_cas04.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "payg_cas04.gat",0,0,300,300,"エドガ",1115,1;
+	areamonster "payg_cas04.gat",0,0,300,300,"ホロン",1129,11;
+	areamonster "payg_cas04.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "payg_cas04.gat",0,0,300,300,"コボルドアーチャー",1282,4;
+	areamonster "payg_cas04.gat",0,0,300,300,"ガーゴイル",1253,5;
+	monster "payg_cas04.gat",270,28,"月夜花",1150,1;
+	monster "payg_cas04.gat",270,28,"エドガ",1115,1;
+	monster "payg_cas04.gat",270,28,"彷徨う者",1208,6;
+	monster "payg_cas04.gat",270,28,"レイドリックアーチャー",1276,5;
+OnGDEMPSetF04:
+	Monster "payg_cas04.gat",271,29,"エンペリウム",1288,1,"Agit_C04::OnAgitBreak";
+	end;
+}
+//=payg_cas05===================================================================================				
+payg_cas05.gat,0,0,0	script	mobcaller#15	-1,{
+OnRecvCastleF05:
+	if (GetCastleData("payg_cas05.gat",10) == 1) monster "payg_cas05.gat",19,279,"--ja--",1285,1,"Agit_C05::On_GDf51";
+	if (GetCastleData("payg_cas05.gat",11) == 1) monster "payg_cas05.gat",33,260,"--ja--",1285,1,"Agit_C05::On_GDf52";
+	if (GetCastleData("payg_cas05.gat",12) == 1) monster "payg_cas05.gat",266,234,"--ja--",1285,1,"Agit_C05::On_GDf53";
+	if (GetCastleData("payg_cas05.gat",13) == 1) monster "payg_cas05.gat",266,279,"--ja--",1285,1,"Agit_C05::On_GDf54";
+	if (GetCastleData("payg_cas05.gat",14) == 1) monster "payg_cas05.gat",263,37,"--ja--",1285,1,"Agit_C05::On_GDf55";
+	if (GetCastleData("payg_cas05.gat",15) == 1) monster "payg_cas05.gat",263,21,"--ja--",1285,1,"Agit_C05::On_GDf56";
+	if (GetCastleData("payg_cas05.gat",16) == 1) monster "payg_cas05.gat",250,22,"--ja--",1285,1,"Agit_C05::On_GDf57";
+	if (GetCastleData("payg_cas05.gat",17) == 1) monster "payg_cas05.gat",36,36,"--ja--",1286,1,"Agit_C05::On_GDf58";
+	if (getcastledata("payg_cas05.gat",9) == 0) disablenpc "kapra_payg05";
+	if (getcastledata("payg_cas05.gat",1) != 0) end;
+	areamonster "payg_cas05.gat",0,0,300,300,"天下大将軍",1277,10;
+	areamonster "payg_cas05.gat",0,0,300,300,"彷徨う者",1208,10;
+	areamonster "payg_cas05.gat",0,0,300,300,"ミュータントドラゴン",1262,5;
+	areamonster "payg_cas05.gat",0,0,300,300,"バースリー",1102,5;
+	areamonster "payg_cas05.gat",0,0,300,300,"月夜花",1150,1;
+	areamonster "payg_cas05.gat",0,0,300,300,"エドガ",1115,1;
+	areamonster "payg_cas05.gat",0,0,300,300,"ホロン",1129,11;
+	areamonster "payg_cas05.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "payg_cas05.gat",0,0,300,300,"コボルドアーチャー",1282,4;
+	areamonster "payg_cas05.gat",0,0,300,300,"ガーゴイル",1253,5;
+	monster "payg_cas05.gat",30,30,"月夜花",1150,1;
+	monster "payg_cas05.gat",30,30,"エドガ",1115,1;
+	monster "payg_cas05.gat",30,30,"彷徨う者",1208,6;
+	monster "payg_cas05.gat",30,30,"レイドリックアーチャー",1276,5;
+OnGDEMPSetF05:
+	Monster "payg_cas05.gat",30,30,"エンペリウム",1288,1,"Agit_C05::OnAgitBreak";
+	end;
+}
+//=prtg_cas01===================================================================================				
+prtg_cas01.gat,0,0,0	script	mobcaller#16	-1,{
+OnRecvCastleP01:
+	if (GetCastleData("prtg_cas01.gat",10) == 1) monster "prtg_cas01.gat",182,68,"--ja--",1287,1,"Agit_D01::On_GDp11";
+	if (GetCastleData("prtg_cas01.gat",11) == 1) monster "prtg_cas01.gat",182,116,"--ja--",1287,1,"Agit_D01::On_GDp12";
+	if (GetCastleData("prtg_cas01.gat",12) == 1) monster "prtg_cas01.gat",153,86,"--ja--",1287,1,"Agit_D01::On_GDp13";
+	if (GetCastleData("prtg_cas01.gat",13) == 1) monster "prtg_cas01.gat",59,28,"--ja--",1285,1,"Agit_D01::On_GDp14";
+	if (GetCastleData("prtg_cas01.gat",14) == 1) monster "prtg_cas01.gat",50,36,"--ja--",1285,1,"Agit_D01::On_GDp15";
+	if (GetCastleData("prtg_cas01.gat",15) == 1) monster "prtg_cas01.gat",184,183,"--ja--",1286,1,"Agit_D01::On_GDp16";
+	if (GetCastleData("prtg_cas01.gat",16) == 1) monster "prtg_cas01.gat",196,189,"--ja--",1286,1,"Agit_D01::On_GDp17";
+	if (GetCastleData("prtg_cas01.gat",17) == 1) monster "prtg_cas01.gat",107,179,"--ja--",1286,1,"Agit_D01::On_GDp18";
+	if (getcastledata("prtg_cas01.gat",9) == 0) disablenpc "kapra_prtg01";
+	if (getcastledata("prtg_cas01.gat",1) != 0) end;
+	areamonster "prtg_cas01.gat",0,0,300,300,"レイドリック",1163,15;
+	areamonster "prtg_cas01.gat",0,0,300,300,"カーリッツバーグ",1132,10;
+	areamonster "prtg_cas01.gat",0,0,300,300,"深淵の騎士",1219,5;
+	areamonster "prtg_cas01.gat",0,0,300,300,"ブラッディナイト",1268,5;
+	areamonster "prtg_cas01.gat",0,0,300,300,"ストームナイト",1251,1;
+	areamonster "prtg_cas01.gat",0,0,300,300,"ハティー",1252,1;
+	areamonster "prtg_cas01.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "prtg_cas01.gat",0,0,300,300,"グリフォン",1259,2;
+	areamonster "prtg_cas01.gat",0,0,300,300,"キメラ",1283,2;
+	areamonster "prtg_cas01.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "prtg_cas01.gat",0,0,300,300,"ジルタス",1200,1;
+	monster "prtg_cas01.gat",197,197,"ブラッディナイト",1268,1;
+	monster "prtg_cas01.gat",197,197,"ストームナイト",1251,1;
+	monster "prtg_cas01.gat",197,197,"ハティー",1252,1;
+	monster "prtg_cas01.gat",197,197,"深淵の騎士",1219,2;
+	monster "prtg_cas01.gat",197,197,"レイドリックアーチャー",1276,5;
+OnGDEMPSetP01:
+	monster "prtg_cas01.gat",197,197,"エンペリウム",1288,1,"Agit_D01::OnAgitBreak";
+	end;
+}
+//=prtg_cas02===================================================================================				
+prtg_cas02.gat,0,0,0	script	mobcaller#17	-1,{
+OnRecvCastleP02:
+	if (GetCastleData("prtg_cas02.gat",10) == 1) monster "prtg_cas02.gat",188,175,"--ja--",1286,1,"Agit_D02::On_GDp21";
+	if (GetCastleData("prtg_cas02.gat",11) == 1) monster "prtg_cas02.gat",198,175,"--ja--",1286,1,"Agit_D02::On_GDp22";
+	if (GetCastleData("prtg_cas02.gat",12) == 1) monster "prtg_cas02.gat",178,44,"--ja--",1286,1,"Agit_D02::On_GDp23";
+	if (GetCastleData("prtg_cas02.gat",13) == 1) monster "prtg_cas02.gat",71,75,"--ja--",1287,1,"Agit_D02::On_GDp24";
+	if (GetCastleData("prtg_cas02.gat",14) == 1) monster "prtg_cas02.gat",49,28,"--ja--",1287,1,"Agit_D02::On_GDp25";
+	if (GetCastleData("prtg_cas02.gat",15) == 1) monster "prtg_cas02.gat",64,186,"--ja--",1285,1,"Agit_D02::On_GDp26";
+	if (GetCastleData("prtg_cas02.gat",16) == 1) monster "prtg_cas02.gat",76,196,"--ja--",1285,1,"Agit_D02::On_GDp27";
+	if (GetCastleData("prtg_cas02.gat",17) == 1) monster "prtg_cas02.gat",75,175,"--ja--",1285,1,"Agit_D02::On_GDp28";
+	if (getcastledata("prtg_cas02.gat",9) == 0) disablenpc "kapra_prtg02";
+	if (getcastledata("prtg_cas02.gat",1) != 0) end;
+	areamonster "prtg_cas02.gat",0,0,300,300,"レイドリック",1163,15;
+	areamonster "prtg_cas02.gat",0,0,300,300,"カーリッツバーグ",1132,10;
+	areamonster "prtg_cas02.gat",0,0,300,300,"深淵の騎士",1219,5;
+	areamonster "prtg_cas02.gat",0,0,300,300,"ブラッディナイト",1268,5;
+	areamonster "prtg_cas02.gat",0,0,300,300,"ストームナイト",1251,1;
+	areamonster "prtg_cas02.gat",0,0,300,300,"ハティー",1252,1;
+	areamonster "prtg_cas02.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "prtg_cas02.gat",0,0,300,300,"グリフォン",1259,2;
+	areamonster "prtg_cas02.gat",0,0,300,300,"キメラ",1283,2;
+	areamonster "prtg_cas02.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "prtg_cas02.gat",0,0,300,300,"ジルタス",1200,1;
+	monster "prtg_cas02.gat",157,174,"ブラッディナイト",1268,1;
+	monster "prtg_cas02.gat",157,174,"ストームナイト",1251,1;
+	monster "prtg_cas02.gat",157,174,"ハティー",1252,1;
+	monster "prtg_cas02.gat",157,174,"深淵の騎士",1219,2;
+	monster "prtg_cas02.gat",157,174,"レイドリックアーチャー",1276,5;
+OnGDEMPSetP02:
+	Monster "prtg_cas02.gat",158,174,"エンペリウム",1288,1,"Agit_D02::OnAgitBreak";
+	end;
+}
+//=prtg_cas03===================================================================================				
+prtg_cas03.gat,0,0,0	script	mobcaller#18	-1,{
+OnRecvCastleP03:
+	if (GetCastleData("prtg_cas03.gat",10) == 1) monster "prtg_cas03.gat",191,190,"--ja--",1286,1,"Agit_D03::On_GDp31";
+	if (GetCastleData("prtg_cas03.gat",11) == 1) monster "prtg_cas03.gat",137,190,"--ja--",1286,1,"Agit_D03::On_GDp32";
+	if (GetCastleData("prtg_cas03.gat",12) == 1) monster "prtg_cas03.gat",45,99,"--ja--",1286,1,"Agit_D03::On_GDp33";
+	if (GetCastleData("prtg_cas03.gat",13) == 1) monster "prtg_cas03.gat",50,87,"--ja--",1287,1,"Agit_D03::On_GDp34";
+	if (GetCastleData("prtg_cas03.gat",14) == 1) monster "prtg_cas03.gat",41,87,"--ja--",1287,1,"Agit_D03::On_GDp35";
+	if (GetCastleData("prtg_cas03.gat",15) == 1) monster "prtg_cas03.gat",191,42,"--ja--",1285,1,"Agit_D03::On_GDp36";
+	if (GetCastleData("prtg_cas03.gat",16) == 1) monster "prtg_cas03.gat",179,43,"--ja--",1285,1,"Agit_D03::On_GDp37";
+	if (GetCastleData("prtg_cas03.gat",17) == 1) monster "prtg_cas03.gat",191,72,"--ja--",1285,1,"Agit_D03::On_GDp38";
+	if (getcastledata("prtg_cas03.gat",9) == 0) disablenpc "kapra_prtg03";
+	if (getcastledata("prtg_cas03.gat",1) != 0) end;
+	areamonster "prtg_cas03.gat",0,0,300,300,"レイドリック",1163,15;
+	areamonster "prtg_cas03.gat",0,0,300,300,"カーリッツバーグ",1132,10;
+	areamonster "prtg_cas03.gat",0,0,300,300,"深淵の騎士",1219,5;
+	areamonster "prtg_cas03.gat",0,0,300,300,"ブラッディナイト",1268,5;
+	areamonster "prtg_cas03.gat",0,0,300,300,"ストームナイト",1251,1;
+	areamonster "prtg_cas03.gat",0,0,300,300,"ハティー",1252,1;
+	areamonster "prtg_cas03.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "prtg_cas03.gat",0,0,300,300,"グリフォン",1259,2;
+	areamonster "prtg_cas03.gat",0,0,300,300,"キメラ",1283,2;
+	areamonster "prtg_cas03.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "prtg_cas03.gat",0,0,300,300,"ジルタス",1200,1;
+	monster "prtg_cas03.gat",16,220,"ブラッディナイト",1268,1;
+	monster "prtg_cas03.gat",16,220,"ストームナイト",1251,1;
+	monster "prtg_cas03.gat",16,220,"ハティー",1252,1;
+	monster "prtg_cas03.gat",16,220,"深淵の騎士",1219,2;
+	monster "prtg_cas03.gat",16,220,"レイドリックアーチャー",1276,5;
+OnGDEMPSetP03:
+	Monster "prtg_cas03.gat",17,221,"エンペリウム",1288,1,"Agit_D03::OnAgitBreak";
+	end;
+}
+//=prtg_cas04===================================================================================				
+prtg_cas04.gat,0,0,0	script	mobcaller#19	-1,{
+OnRecvCastleP04:
+	if (GetCastleData("prtg_cas04.gat",10) == 1) monster "prtg_cas04.gat",276,14,"--ja--",1286,1,"Agit_D04::On_GDp41";
+	if (GetCastleData("prtg_cas04.gat",11) == 1) monster "prtg_cas04.gat",274,35,"--ja--",1286,1,"Agit_D04::On_GDp42";
+	if (GetCastleData("prtg_cas04.gat",12) == 1) monster "prtg_cas04.gat",246,246,"--ja--",1286,1,"Agit_D04::On_GDp43";
+	if (GetCastleData("prtg_cas04.gat",13) == 1) monster "prtg_cas04.gat",38,240,"--ja--",1287,1,"Agit_D04::On_GDp44";
+	if (GetCastleData("prtg_cas04.gat",14) == 1) monster "prtg_cas04.gat",29,240,"--ja--",1287,1,"Agit_D04::On_GDp45";
+	if (GetCastleData("prtg_cas04.gat",15) == 1) monster "prtg_cas04.gat",33,258,"--ja--",1287,1,"Agit_D04::On_GDp46";
+	if (GetCastleData("prtg_cas04.gat",16) == 1) monster "prtg_cas04.gat",78,48,"--ja--",1285,1,"Agit_D04::On_GDp47";
+	if (GetCastleData("prtg_cas04.gat",17) == 1) monster "prtg_cas04.gat",36,61,"--ja--",1285,1,"Agit_D04::On_GDp48";
+	if (getcastledata("prtg_cas04.gat",9) == 0) disablenpc "kapra_prtg04";
+	if (getcastledata("prtg_cas04.gat",1) != 0) end;
+	areamonster "prtg_cas04.gat",0,0,300,300,"レイドリック",1163,15;
+	areamonster "prtg_cas04.gat",0,0,300,300,"カーリッツバーグ",1132,10;
+	areamonster "prtg_cas04.gat",0,0,300,300,"深淵の騎士",1219,5;
+	areamonster "prtg_cas04.gat",0,0,300,300,"ブラッディナイト",1268,5;
+	areamonster "prtg_cas04.gat",0,0,300,300,"ストームナイト",1251,1;
+	areamonster "prtg_cas04.gat",0,0,300,300,"ハティー",1252,1;
+	areamonster "prtg_cas04.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "prtg_cas04.gat",0,0,300,300,"グリフォン",1259,2;
+	areamonster "prtg_cas04.gat",0,0,300,300,"キメラ",1283,2;
+	areamonster "prtg_cas04.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "prtg_cas04.gat",0,0,300,300,"ジルタス",1200,1;
+	monster "prtg_cas04.gat",291,14,"ブラッディナイト",1268,1;
+	monster "prtg_cas04.gat",291,14,"ストームナイト",1251,1;
+	monster "prtg_cas04.gat",291,14,"ハティー",1252,1;
+	monster "prtg_cas04.gat",291,14,"深淵の騎士",1219,2;
+	monster "prtg_cas04.gat",291,14,"レイドリックアーチャー",1276,5;
+OnGDEMPSetP04:
+	Monster "prtg_cas04.gat",292,14,"エンペリウム",1288,1,"Agit_D04::OnAgitBreak";
+	end;
+}
+//=prtg_cas05===================================================================================				
+prtg_cas05.gat,0,0,0	script	mobcaller#20	-1,{
+OnRecvCastleP05:
+	if (GetCastleData("prtg_cas05.gat",10) == 1) monster "prtg_cas05.gat",266,262,"--ja--",1286,1,"Agit_D05::On_GDp51";
+	if (GetCastleData("prtg_cas05.gat",11) == 1) monster "prtg_cas05.gat",287,280,"--ja--",1286,1,"Agit_D05::On_GDp52";
+	if (GetCastleData("prtg_cas05.gat",12) == 1) monster "prtg_cas05.gat",245,250,"--ja--",1286,1,"Agit_D05::On_GDp53";
+	if (GetCastleData("prtg_cas05.gat",13) == 1) monster "prtg_cas05.gat",236,63,"--ja--",1287,1,"Agit_D05::On_GDp54";
+	if (GetCastleData("prtg_cas05.gat",14) == 1) monster "prtg_cas05.gat",251,63,"--ja--",1287,1,"Agit_D05::On_GDp55";
+	if (GetCastleData("prtg_cas05.gat",15) == 1) monster "prtg_cas05.gat",278,71,"--ja--",1287,1,"Agit_D05::On_GDp56";
+	if (GetCastleData("prtg_cas05.gat",16) == 1) monster "prtg_cas05.gat",32,253,"--ja--",1285,1,"Agit_D05::On_GDp57";
+	if (GetCastleData("prtg_cas05.gat",17) == 1) monster "prtg_cas05.gat",44,248,"--ja--",1285,1,"Agit_D05::On_GDp58";
+	if (getcastledata("prtg_cas05.gat",9) == 0) disablenpc "kapra_prtg05";
+	if (getcastledata("prtg_cas05.gat",1) != 0) end;
+	areamonster "prtg_cas05.gat",0,0,300,300,"レイドリック",1163,15;
+	areamonster "prtg_cas05.gat",0,0,300,300,"カーリッツバーグ",1132,10;
+	areamonster "prtg_cas05.gat",0,0,300,300,"深淵の騎士",1219,5;
+	areamonster "prtg_cas05.gat",0,0,300,300,"ブラッディナイト",1268,5;
+	areamonster "prtg_cas05.gat",0,0,300,300,"ストームナイト",1251,1;
+	areamonster "prtg_cas05.gat",0,0,300,300,"ハティー",1252,1;
+	areamonster "prtg_cas05.gat",0,0,300,300,"レイドリックアーチャー",1276,5;
+	areamonster "prtg_cas05.gat",0,0,300,300,"グリフォン",1259,2;
+	areamonster "prtg_cas05.gat",0,0,300,300,"キメラ",1283,2;
+	areamonster "prtg_cas05.gat",0,0,300,300,"アリス",1275,1;
+	areamonster "prtg_cas05.gat",0,0,300,300,"ジルタス",1200,1;
+	monster "prtg_cas05.gat",266,266,"ブラッディナイト",1268,1;
+	monster "prtg_cas05.gat",266,266,"ストームナイト",1251,1;
+	monster "prtg_cas05.gat",266,266,"ハティー",1252,1;
+	monster "prtg_cas05.gat",266,266,"深淵の騎士",1219,2;
+	monster "prtg_cas05.gat",266,266,"レイドリックアーチャー",1276,5;
+OnGDEMPSetP05:
+	Monster "prtg_cas05.gat",266,266,"エンペリウム",1288,1,"Agit_D05::OnAgitBreak";
+	end;
+}

@@ -1,0 +1,454 @@
+//==============================================================================
+//Ragnarok Online EP4.0 Niflheim NPC Script
+//==============================================================================
+nif_in.gat,37,93,1,	shop	斧商人	801,1301:500,1351:5400,1354:15500,1357:34000,1360:55000
+nif_in.gat,37,84,1,	shop	防具商人	801,2501:1000,2501:1000,2503:5000,2503:5000,2505:32000,2505:32000
+nif_in.gat,145,23,1,	shop	道具商人	801,535:15,1062:374,902:12,7106:672,537:1000,7154:160,1052:46,934:600
+//
+//event_key&1	アルレグ
+//event_key&2	詩人
+//event_key&4	ガラクタ屋
+//event_key&8	墓石１
+//event_key&16	墓石１
+//event_key&32	墓石２
+//event_key&64	ピアノにはめた
+//
+
+niflheim.gat,52,147,3	script	キズ	796,{
+	mes "[キズ]";
+	mes "生きている者はこちらへ来ては";
+	mes "いけない!!生きている者の通行は";
+	mes "絶対に認めない!!";
+	close;
+}
+
+niflheim.gat,153,215,4	script	ペイリン	794,{
+	mes "[ペイリン]";
+	mes "こんなに危ない街にどうして";
+	mes "いらっしゃったのですか？";
+	mes "早く帰りなさい。";
+	close;
+}
+
+nif_in.gat,16,27,1	script	死んだニワトリ	800,{
+	percentheal -5,0;
+	mes "[モンチキン]";
+	mes "生きていた時、おいらは人間に";
+	mes "食われた。だから今度はおいらが";
+	mes "食う番。コケコッコー!!";
+	mes "でも死んだからこそ、こんな世界に";
+	mes "いるんだよな……コケ、コケ、";
+	mes "コケコッコー!!";
+	close;
+}
+
+nif_in.gat,16,30,4	script	死んだコウモリ	799,{
+	percentheal -5,0;
+	mes "[バットミルリア]";
+	mes "生きてても死んでても";
+	mes "人間の血はトレビア～ンです。";
+	mes "何です？君も我に血を";
+	mes "吸われたいのですか？";
+	close;
+}
+
+niflheim.gat,195,211,6	script	ギガンティア	796,3,3,{
+//バフォ帽、白い角などを装備時→LStart2;
+	mes "[ギガンティア]";
+	mes "王様はいつでも、全てのモノを";
+	mes "見ていらっしゃる……";
+	close;
+LStart2:
+	mes "["+strcharinfo(0)+"]";
+	mes "私に何か用でも？";
+	next;
+	mes "[ギガンティア]";
+	mes "声をかけたのは俺だ。そして";
+	mes "その相手は君！間違いない。";
+	mes "ちょっとこっちに来てくれ。";
+	next;
+	mes "[ギガンティア]";
+	mes "角を着けているんだな。角はいつでも";
+	mes "俺ら死者の王様がちゃんと見て";
+	mes "いらっしゃる。";
+	close;
+OnTouch:
+//バフォ帽、白い角などを装備時
+	mes "[ギガンティア]";
+	mes "ちょっと待て！";
+	close;
+}
+
+niflheim.gat,224,243,3	script	アルレグ	795,{
+	mes "[アルレグ]";
+	mes "煮込みやすくて……うん、";
+	mes "お前……うまそうだ。";
+	next;
+	mes "[アルレグ]";
+	mes "……";
+	mes "お前を食べてやる!!";
+	next;
+	mes "-ガブッガブッ-";
+	if(event_key&1) goto L_2ND;
+	percentheal -80,0;
+	next;
+	mes "[アルレグ]";
+	mes "久々にうまい肉だった……";
+	mes "養殖の鳥並みにの良い肉だよ、お前は。";
+	mes "……良い餌を与えて上質のソースを";
+	mes "かければ、もっとうまくなりそうだ……";
+	next;
+	mes "[アルレグ]";
+	mes "お礼にこれをあげるよ。";
+	mes "この間、拾ったんだ。ほれっ！";
+	getitem 7184,1;
+	set event_key,event_key|1;
+	close;
+L_2ND:
+	percentheal -30,0;
+	close;
+}
+nif_in.gat,105,81,3	script	クレユ	794,{
+	mes "[クレユ]";
+	mes "生ある者よ……いつからか、";
+	mes "誰からか……それすらも分からない程、";
+	mes "古くから伝わる詩を聴かせましょう……";
+	next;
+	mes "[クレユ]";
+	mes "^FF0000陽が傾いて西の山にかかりし時";
+	mes "^FF0000空が紫の夕暮れに染まる頃";
+	mes "^FF0000美しき旋律に身を委ねれば";
+	mes "^FF0000主なる者を助ける鍵を得ようぞ^000000";
+	next;
+	mes "[クレユ]";
+	mes "どんな意味があるのでしょうか……？";
+	mes "私は奥深いものがあるような気が";
+	mes "します。この詩はもしかしたら、";
+	mes "何か秘密があるのかもしれませんね。";
+	if (!(event_key&1) || (event_key&2)) close;
+//	if ((event_key&1) && !(event_key&2)) goto LStart2;
+//	close;
+//LStart2:
+	next;
+	set @rand,rand(4);
+	if (@rand == 1) goto Lrand1;
+	if (@rand == 2) goto Lrand2;
+	if (@rand == 3) goto Lrand3;
+		mes "[クレユ]";
+		mes "それではここでテスト! ";
+		mes "今、聴かせた詩の最初の行を";
+		mes "正確に再現してください！";
+		next;
+		input @nfword$;
+		if (@nfword$ == "陽が傾いて西の山にかかりし時") goto LSucsess;
+			goto LWrong;
+Lrand1:
+		mes "[クレユ]";
+		mes "それではここでテスト! ";
+		mes "今、聴かせた詩の二行目を";
+		mes "正確に再現してください！";
+		next;
+		input @nfword$;
+		if (@nfword$ == "空が紫の夕暮れに染まる頃") goto LSucsess;
+			goto LWrong;
+Lrand2:
+		mes "[クレユ]";
+		mes "それではここでテスト! ";
+		mes "今、聴かせた詩の三行目を";
+		mes "正確に再現してください！";
+		next;
+		input @nfword$;
+		if (@nfword$ == "美しき旋律に身を委ねれば") goto LSucsess;
+			goto LWrong;
+Lrand3:
+		mes "[クレユ]";
+		mes "それではここでテスト! ";
+		mes "今、聴かせた詩の最後の行を";
+		mes "正確に再現してください！";
+		next;
+		input @nfword$;
+		if (@nfword$ == "主なる者を助ける鍵を得ようぞ") goto LSucsess;
+			goto LWrong;
+LWrong:
+	mes "[クレユ]";
+	mes "ううむ……。しっかり聴いていたら、";
+	mes "こんなの簡単に歌えるでしょう！";
+	mes "きちんと覚えてから再度、挑戦しに";
+	mes "来なさい！";
+	close;
+LSucsess:
+	mes "[クレユ]";
+	mes "おお……よく覚えていましたね！";
+	mes "私はクレユと申します。";
+	mes "吟遊詩人にとってあなたは";
+	mes "一番、好まれるお客です。";
+	mes "ご褒美にこれをさしあげましょう。";
+	next;
+	set event_key,event_key|2;
+	getitem 7184,1;
+	mes "[クレユ]";
+	mes "是非、他の吟遊詩人達も";
+	mes "喜ばせてください。";
+	close;
+
+}
+
+nif_in.gat,31,20,3	script	ガラクタ屋	794,{
+	mes "[ガラクタ屋]";
+	mes "商売にいっくら精を出してもよ！";
+	mes "前世で出した店も今も、何故か商売が";
+	mes "うまくいかないんだよな……";
+	if (!(event_key&1) || (event_key&4)) close;
+	next;
+	mes "[ガラクタ屋]";
+	mes "おい、あんた！";
+	mes "どうせ外へ行くんなら";
+	mes "これを捨ててきてくれ！";
+	set event_key,event_key|4;
+	getitem 7184,1;
+	next;
+	mes "[ガラクタ屋]";
+	mes "全くどーして商売が";
+	mes "軌道に乗らないんだよ。";
+	mes "俺の何が悪いってんだよ。";
+	mes "ぶつぶつぶつ……";
+	close;
+}
+
+niflheim.gat,208,103,0	script	#墓1	111,1,1,{
+	close;
+OnTouch:
+	if (!(event_key&1) || !(event_key&2) || !(event_key&4)) close;
+	if ((event_key&8) && (event_key&16)) close;
+	if (event_key&8) goto LStart2;
+	mes "- 墓石の周りに何かが埋められて -";
+	mes "- いるのを見つけた。細長い物だ。 -";
+	mes "- 何かの部品だろうか？ -";
+	mes "- ………… -";
+	next;
+	mes "- 拾いますか？ -";
+	next;
+	menu "はい",L1,"いいえ",-;
+		close;
+	L1:
+		getitem 7184,1;
+		set event_key,event_key|8;
+		close;
+LStart2:
+	mes "- 先ほど掘りだした所に、更に何かが -";
+	mes "- 埋まっているのを見つけた。また -";
+	mes "- 同じ物のようだ。やはり何かの -";
+	mes "- 部品かもしれない。 -";
+	next;
+	mes "- 拾いますか？ -";
+	next;
+	menu "はい",L2,"いいえ",-;
+		close;
+	L2:
+		getitem 7184,1;
+		set event_key,event_key|16;
+		close;
+}
+
+niflheim.gat,169,71,0	script	#墓2	111,1,1,{
+		close;
+OnTouch:
+	if (event_key&32) close;
+	if !((event_key&8) && (event_key&16)) close;
+	mes "- 墓石の周りに何かが埋められて -";
+	mes "- いるのを見つけた。細長い物だ。 -";
+	mes "- 何かの部品だろうか？ -";
+	mes "- ………… -";
+	next;
+	mes "- 拾いますか？ -";
+	next;
+	menu "はい",L1,"いいえ",-;
+		close;
+	L1:
+		getitem 7184,1;
+		set event_key,event_key|32;
+		close;
+}
+
+nif_in.gat,156,93,5	script	少女#ニブルヘイム	793,{
+	mes "[鍵を握る少女]";
+	mes "ここはどこ……？";
+	mes "私、目が覚めたらここにいたの……";
+	mes "ママ……ねぇ、ママを見なかった？";
+	mes "……うわ～ん。お家に帰りたいよ～。";
+	next;
+	menu "魔女って何？",-,"呪いって何？",L2,"会話をやめる",L3;
+		mes "[鍵を握る少女]";
+		mes "魔女……？魔女なんて知らないよ……";
+		mes "あ、でも絵本で見たことある。";
+		mes "魔女か……もし本当にいたらとても";
+		mes "怖いよね……";
+		next;
+		mes "[鍵を握る少女]";
+		mes "ねぇ、どうしてこんなに寒いの……？";
+		mes "お姉ちゃんは寒くないの？";
+		mes "……変なのー。ふぅ～。";
+		mes "暖かいお家に帰りたいな。";
+		mes "私も一緒に連れてってくれない……？";
+		mes "ねぇ……？ねぇ……？";
+		close;
+	L2:
+		mes "[鍵を握る少女]";
+		mes "呪い……お婆ちゃんの話を思い出すな。";
+		mes "祝福でも解けない強い呪いを解く";
+		mes "呪文があるんだって。";
+		next;
+		mes "[鍵を握る少女]";
+		mes "クルラト……ベラタ……";
+		mes "えっと……あれ？何だったけ……？";
+		mes "うーん……あと一つが思い出せない。";
+		next;
+		mes "[鍵を握る少女]";
+		mes "……とにかく、その3つの呪文を";
+		mes "順番通りに唱えれば、呪われた";
+		mes "運命から逃げられるらしいの。";
+		mes "何のお話のことかは……うーん、";
+		mes "思い出せないな。";
+		close;
+	L3:
+		mes "[鍵を握る少女]";
+		mes "寒い……寒いよ～……";
+		mes "お家に帰りたいよぉ～……";
+		mes "ねぇ、私も連れてって……";
+		mes "ここはとても怖い所なの。";
+		mes "お願い……助けて……";
+		close;
+}
+
+niflheim.gat,153,215,3	script	ペイリン	794,{
+	mes "[ペイリン]";
+	mes "こんなに危ない街にどうして";
+	mes "いらっしゃったのですか？";
+	mes "早く帰りなさい。";
+	close;
+}
+
+niflheim.gat,350,258,1	script	呪われた魂	802,{
+	killmonster "niflheim.gat","nif_soul";
+	mes "[アッシュブルース]";
+	mes "お主には強い呪いを感じる!!!!";
+	mes "わしはお主の存在を拒否する!!!!";
+	mes "もし退かぬのなら、死を与えよう!!";
+	mes "わしの大事な本たちに";
+	mes "触れるんじゃない!!!!";
+	next;
+	menu "1番目の本を取ってみる",-,"2番目の本を取ってみる",L_MENU_2,"3番目の本を取ってみる",L_MENU_3,"おとなしく退く",L_MENU_4;
+		mes "[アッシュブルース]";
+		mes "ぐはははは!!";
+		mes "むやみにわしの本を触れるからだ!!";
+		mes "噛み切られ、引き裂かれるがよい!!";
+		mes "永遠の呪いに囚われるのだ!!";
+		monster "niflheim.gat",349,259,"--ja--",1478,1,"nif_soul";
+		close;
+	L_MENU_2:
+		mes "[アッシュブルース]";
+		mes "わしの本たちに触れるとは……";
+		mes "早々に消えろ!!わしの休息の";
+		mes "邪魔をするんじゃない!!";
+		close2;
+		warp "niflheim.gat",34,162;
+		end;
+	L_MENU_3:
+		mes "[アッシュブルース]";
+		mes "ぬうう……お主。";
+		mes "結構、度胸があるようだな。";
+		mes "…………!!!!";
+		mes "ならば……一度呪文を";
+		mes "唱えてみるがよい……!!";
+		set @nif_soul,0;
+		next;
+			menu "クローバ",L_MENU_3_1,"クルラト",-,"クレイトス",L_MENU_3_1;
+				set @nif_soul,@nif_soul+1;
+		L_MENU_3_1:
+			menu "ベリト",L_MENU_3_2,"ベリタス",L_MENU_3_2,"ベラタ",-;
+				set @nif_soul,@nif_soul+1;
+		L_MENU_3_2:
+			menu "ネクタイ",L_MENU_3_3,"ネックレス",L_MENU_3_3,"ネロ",L_MENU_3_3,"^FFFFFFニックト^000000",-;
+				set @nif_soul,@nif_soul+1;
+		L_MENU_3_3:
+			if (@nif_soul==3) goto L_MENU_3_OK;
+			mes "[アッシュブルース]";
+			mes "ぐはははは!!!!";
+			mes "お主、呪文が間違っているぞ!!";
+			mes "お主に必要なのは死のようだな。";
+			mes "一生、呪われ続けるがよい……!!";
+			monster "niflheim.gat",345,259,"--ja--",1462,1,"nif_soul";
+			monster "niflheim.gat",347,261,"--ja--",1462,1,"nif_soul";
+			monster "niflheim.gat",344,253,"--ja--",1462,1,"nif_soul";
+			monster "niflheim.gat",346,251,"--ja--",1462,1,"nif_soul";
+			monster "niflheim.gat",349,249,"--ja--",1462,1,"nif_soul";
+			monster "niflheim.gat",350,260,"--ja--",1462,1,"nif_soul";
+			monster "niflheim.gat",353,256,"--ja--",1462,1,"nif_soul";
+			close;
+		L_MENU_3_OK:
+//他に条件あるぽ
+			mes "[アッシュブルース]";
+			mes "呪文は確かに正しい……だが、";
+			mes "お主の呪いは解けないのだ……";
+			mes "ぐはははは……!!!!";
+			close;
+	L_MENU_4:
+		mes "[アッシュブルース]";
+		mes "ぶははは!!";
+		mes "よく考えたようだな……";
+		mes "お主が無事に生きて帰れることを";
+		mes "わしも祈ってやろう。";
+		close;
+}
+
+nif_in.gat,115,181,0	script	#ピアノ	111,1,1,{
+	close;
+OnTouch:
+	if ((event_key&64) || !(event_key&32)) close;
+	mes "- ピアノの欠けた部分に鍵盤を -";
+	mes "- 一つずつはめてみた。だが、 -";
+	mes "- 一番左側の鍵盤が一つだけ  -";
+	mes "- 足りなかった。-";
+	set event_key,event_key|64;
+	close;
+}
+
+nif_in.gat,118,151,1	script	#ピアノ3	111,1,1,{
+	close;
+OnTouch:
+	if !(event_key&64) end;
+	mes "- 自分の体から伸びた影が、 -";
+	mes "- 一つだけ欠けた鍵盤の上に -";
+	mes "- ちょうど重なった瞬間…… -";
+	next;
+	soundeffect "complete.wav",0;
+	next;
+	mes "- 体が軽くなるような感じがして…… -";
+	mes "- 周囲が曇り始めた…… -";
+	close2;
+	warp "nif_in.gat",179,163;
+	end;
+}
+
+nif_in.gat,188,168,3	script	魔女	792,1,1,{
+	close;
+OnTouch:
+	mes "[キルケラ]";
+	mes "うーん……？";
+	mes "あなた、生きてるじゃない!?";
+	mes "ここまで来るのは";
+	mes "大変だったでしょう……";
+	mes "理由はどうあれ、ここは";
+	mes "生きている者が来る所じゃないよ。";
+	next;
+	mes "[キルケラ]";
+	mes "私の力で外へ出してあげるから、";
+	mes "もう二度と来ちゃ駄目だよ。";
+	close2;
+	warp "umbala.gat",138,208;
+	end;
+}
+
+//別Event
+prt_in.gat,161,20,4	script	アルシン	92,{close;}
+umbala.gat,215,181,4	script	ビリー	733,{close;}

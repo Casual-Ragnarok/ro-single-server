@@ -1,0 +1,3 @@
+<Message of the Day>
+Welcome to Athena !
+<End of MOTD>

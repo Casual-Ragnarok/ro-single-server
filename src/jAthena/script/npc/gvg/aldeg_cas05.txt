@@ -1,0 +1,80 @@
+//===================================================================
+//Ragnarok Online EP2.5 GVG Script	aldeg_cas05         by kalen
+//===================================================================
+-	script	gfaldeE	722,{
+	callfunc "flagsc","aldeg_cas05.gat",1,0,0,0;
+OnRecvCastleA05:
+	FlagEmblem getcastledata("aldeg_cas05.gat",1);
+	end;
+}
+aldeg_cas05.gat,170,85,2	duplicate(gfaldeE)	ギルドフラッグ#a5-1	722
+aldeg_cas05.gat,142,212,2	duplicate(gfaldeE)	ギルドフラッグ#a5-2	722
+aldeg_cas05.gat,149,196,2	duplicate(gfaldeE)	ギルドフラッグ#a5-3	722
+aldeg_cas05.gat,41,180,2	duplicate(gfaldeE)	ギルドフラッグ#a5-4	722
+aldeg_cas05.gat,38,201,2	duplicate(gfaldeE)	ギルドフラッグ#a5-5	722
+aldeg_cas05.gat,65,182,2	duplicate(gfaldeE)	ギルドフラッグ#a5-6	722
+aldeg_cas05.gat,65,205,2	duplicate(gfaldeE)	ギルドフラッグ#a5-7	722
+aldeg_cas05.gat,10,218,2	duplicate(gfaldeE)	ギルドフラッグ#a5-8	722
+aldeg_cas05.gat,164,201,2	duplicate(gfaldeE)	ギルドフラッグ#a5-9	722
+aldeg_cas05.gat,216,96,2	duplicate(gfaldeE)	ギルドフラッグ#a5-10	722
+aldeg_cas05.gat,217,80,2	duplicate(gfaldeE)	ギルドフラッグ#a5-11	722
+aldeg_cas05.gat,14,117,2	duplicate(gfaldeE)	ギルドフラッグ#a5-12	722
+aldeg_cas05.gat,10,225,2	duplicate(gfaldeE)	ギルドフラッグ#a5-13	722
+aldeg_cas05.gat,187,59,2	duplicate(gfaldeE)	ギルドフラッグ#a5-14	722
+aldeg_cas05.gat,154,51,2	duplicate(gfaldeE)	ギルドフラッグ#a5-15	722
+aldeg_cas05.gat,22,211,2	duplicate(gfaldeE)	ギルドフラッグ#a5-16	722
+aldeg_cas05.gat,150,202,2	duplicate(gfaldeE)	ギルドフラッグ#a5-17	722
+//------------------------------カプラ--------------------------------
+aldeg_cas05.gat,31,190,0	script	カプラ職員::kapra_aldeg05	117,{
+	callfunc "gkfmenu","aldeg_cas05.gat";
+	menu "倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"終了",L7;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	callfunc "gkfwarp","アルデバラン","aldebaran.gat",132,103;
+L4:
+	callfunc "kfcart",800;
+L7:
+	callfunc "kfend";
+}
+//-------------------------------執事---------------------------------
+aldeg_cas05.gat,51,179,0	script	ブリムヘンセン	55,{
+	callfunc "Steward_menu0","aldeg_cas05.gat","ブリムヘンセン";
+	menu "砦の状態を表示",L1,"商業発展に投資",L2,"砦の防衛に投資",L3,"ガーディアン設置",L4,"カプラとの契約 / 解雇",L5,"マスターの部屋に入る",L6,"アジトを放棄する",L7;
+L1:
+	callfunc "Steward_menu1","aldeg_cas05.gat","ブリムヘンセン";
+L2:
+	callfunc "Steward_menu2","aldeg_cas05.gat","ブリムヘンセン";
+L3:
+	callfunc "Steward_menu3","aldeg_cas05.gat","ブリムヘンセン";
+L4:
+	callfunc "Steward_menu4","aldeg_cas05.gat","ブリムヘンセン";
+	if (@GDnum == 10) monster "aldeg_cas05.gat",51,202,"--ja--",1285,1,"Agit_A05::On_GDa51";
+	if (@GDnum == 11) monster "aldeg_cas05.gat",27,221,"--ja--",1286,1,"Agit_A05::On_GDa52";
+	if (@GDnum == 12) monster "aldeg_cas05.gat",145,78,"--ja--",1286,1,"Agit_A05::On_GDa53";
+	if (@GDnum == 13) monster "aldeg_cas05.gat",157,192,"--ja--",1287,1,"Agit_A05::On_GDa54";
+	if (@GDnum == 14) monster "aldeg_cas05.gat",157,74,"--ja--",1287,1,"Agit_A05::On_GDa55";
+	if (@GDnum == 15) monster "aldeg_cas05.gat",188,79,"--ja--",1285,1,"Agit_A05::On_GDa56";
+	if (@GDnum == 16) monster "aldeg_cas05.gat",156,73,"--ja--",1286,1,"Agit_A05::On_GDa57";
+	if (@GDnum == 17) monster "aldeg_cas05.gat",41,112,"--ja--",1286,1,"Agit_A05::On_GDa58";
+	mes "[執事ブリムヘンセン]";
+	mes "ガーディアンが設置されました。";
+	mes "ガーディアンは私達の城を";
+	mes "敵から守ってくれるでしょう。";
+	close;
+L5:
+	callfunc "Steward_menu5","aldeg_cas05.gat","ブリムヘンセン","kapra_aldeg05";
+L6:
+	callfunc "Steward_menu6","aldeg_cas05.gat","ブリムヘンセン",68,13;
+L7:
+	callfunc "Steward_menu7","aldeg_cas05.gat","ブリムヘンセン";
+	callfunc "resetcastledata","aldeg_cas05.gat","::OnRecvCastleA05","kapra_aldeg05",@GID;
+}
+//-----------------------------スイッチ-------------------------------
+aldeg_cas05.gat,64,8,0	script	　	111,{
+callfunc "gdswitch","aldeg_cas05.gat",51,179;
+}
+//-----------------------------スイッチ2------------------------------
+aldeg_cas05.gat,65,23,0	script	　	111,{
+callfunc "gdswitch2","aldeg_cas05.gat","gld_dun02.gat",103,169;
+}

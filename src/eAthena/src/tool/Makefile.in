@@ -1,0 +1,45 @@
+
+COMMON_OBJ = ../common/obj_all/core.o ../common/obj_all/malloc.o \
+	../common/obj_all/showmsg.o ../common/obj_all/strlib.o \
+	../common/obj_all/utils.o ../common/obj_all/des.o ../common/obj_all/grfio.o \
+	../common/obj_all/db.o ../common/obj_all/ers.o ../common/obj_all/socket.o \
+	../common/obj_all/timer.o ../common/obj_all/plugins.o
+COMMON_H = ../common/core.h ../common/mmo.h ../common/version.h \
+	../common/malloc.h ../common/showmsg.h ../common/strlib.h \
+	../common/utils.h ../common/cbasetypes.h ../common/des.h ../common/grfio.h \
+	../common/db.h ../common/ers.h ../common/socket.h \
+	../common/timer.h ../common/plugins.h
+
+MAPCACHE_OBJ = obj_all/mapcache.o
+
+@SET_MAKE@
+
+#####################################################################
+.PHONY : all mapcache clean help
+
+all: mapcache
+
+mapcache: obj_all $(MAPCACHE_OBJ) $(COMMON_OBJ)
+	@CC@ @LDFLAGS@ -o ../../mapcache@EXEEXT@ $(MAPCACHE_OBJ) $(COMMON_OBJ) @LIBS@
+
+clean:
+	rm -rf obj_all/*.o ../../mapcache@EXEEXT@
+
+help:
+	@echo "possible targets are 'mapcache' 'all' 'clean' 'help'"
+	@echo "'mapcache'  - mapcache generator"
+	@echo "'all'       - builds all above targets"
+	@echo "'clean'     - cleans builds and objects"
+	@echo "'help'      - outputs this message"
+
+#####################################################################
+
+obj_all:
+	-mkdir obj_all
+
+obj_all/%.o: %.c $(COMMON_H)
+	@CC@ @DEFS@ @CFLAGS@ @LDFLAGS@ @CPPFLAGS@ -c $(OUTPUT_OPTION) $<
+
+# missing common object files
+../common/obj_all/%.o:
+	@$(MAKE) -C ../common txt

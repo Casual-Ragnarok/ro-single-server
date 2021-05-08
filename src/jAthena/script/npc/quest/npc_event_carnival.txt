@@ -1,0 +1,45 @@
+//==============================================================================
+//Ragnarok Online - Carnival Event Script (1st)
+//==============================================================================
+izlude.gat,139,93,3	script	(有)闇転送	82,{
+	mes "[闇転送職員]";
+	mes "ふ…カプラサービスに仕事を";
+	mes "取られて今じゃこのありさまさ…";
+	mes "だが！奴らを上回るサービスで";
+	mes "会社を再建してみせる！";
+	mes "送料はすべて当社負担?!";
+	mes "さぁ…選べ！";
+	next;
+	menu "おまかせ -> ？z",L1,"プロンテラ",L2,"ゲフェン",L2,"フェイヨン",L2,"やめる",LEnd;
+L1:
+	set @rdwarp,rand(10);
+	if (@rdwarp == 1) goto LW1;
+	if (@rdwarp == 2) goto LW2;
+	if (@rdwarp == 3) goto LW3;
+	if (@rdwarp == 4) goto LW4;
+	if (@rdwarp == 5) goto LW5;
+	if (@rdwarp == 6) goto LW6;
+	if (@rdwarp == 7) goto LW7;
+	if (@rdwarp == 8) goto LW8;
+	if (@rdwarp == 9) goto LW9;
+	warp "gl_dun02.gat",234,64; end;
+LW1: warp "gl_dun02.gat",219,192; end;
+LW2: warp "gl_dun02.gat",221,261; end;
+LW3: warp "gl_dun01.gat",215,101; end;
+LW4: warp "gl_dun01.gat",237,170; end;
+LW5: warp "gl_dun01.gat",163,247; end;
+LW6: warp "gl_dun01.gat",64,73; end;
+LW7: warp "gl_knt02.gat",100,87; end;
+LW8: warp "alde_dun04.gat",173,152; end;
+LW9: warp "c_tower04.gat",110,73; end;
+L2:
+	mes "[闇転送職員]";
+	mes "近いな";
+	mes "歩いていってくれ";
+LEnd:
+	close;
+}
+
+//カーニバルイベント SHOP
+geffen.gat,76,135,8	shop	あやしい商人	89,998:100,999:1000,984:10000
+payon.gat,136,185,8	shop	巫女	720,1766:40

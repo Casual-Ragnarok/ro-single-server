@@ -1,0 +1,82 @@
+//===================================================================
+//Ragnarok Online EP2.5 GVG Script	aldeg_cas04         by kalen
+//===================================================================
+-	script	gfaldeD	722,{
+	callfunc "flagsc","aldeg_cas04.gat",1,0,0,0;
+OnRecvCastleA04:
+	FlagEmblem getcastledata("aldeg_cas04.gat",1);
+	end;
+}
+aldeg_cas04.gat,167,61,2	duplicate(gfaldeD)	ギルドフラッグ#a4-1	722
+aldeg_cas04.gat,164,90,2	duplicate(gfaldeD)	ギルドフラッグ#a4-2	722
+aldeg_cas04.gat,143,209,2	duplicate(gfaldeD)	ギルドフラッグ#a4-3	722
+aldeg_cas04.gat,129,193,2	duplicate(gfaldeD)	ギルドフラッグ#a4-4	722
+aldeg_cas04.gat,112,206,2	duplicate(gfaldeD)	ギルドフラッグ#a4-5	722
+aldeg_cas04.gat,113,212,2	duplicate(gfaldeD)	ギルドフラッグ#a4-6	722
+aldeg_cas04.gat,77,117,2	duplicate(gfaldeD)	ギルドフラッグ#a4-7	722
+aldeg_cas04.gat,186,42,2	duplicate(gfaldeD)	ギルドフラッグ#a4-8	722
+aldeg_cas04.gat,30,69,2	duplicate(gfaldeD)	ギルドフラッグ#a4-9	722
+aldeg_cas04.gat,55,97,2	duplicate(gfaldeD)	ギルドフラッグ#a4-10	722
+aldeg_cas04.gat,45,98,2	duplicate(gfaldeD)	ギルドフラッグ#a4-11	722
+aldeg_cas04.gat,33,116,2	duplicate(gfaldeD)	ギルドフラッグ#a4-12	722
+aldeg_cas04.gat,130,180,2	duplicate(gfaldeD)	ギルドフラッグ#a4-13	722
+aldeg_cas04.gat,129,193,2	duplicate(gfaldeD)	ギルドフラッグ#a4-14	722
+aldeg_cas04.gat,142,209,2	duplicate(gfaldeD)	ギルドフラッグ#a4-15	722
+aldeg_cas04.gat,33,107,2	duplicate(gfaldeD)	ギルドフラッグ#a4-16	722
+aldeg_cas04.gat,133,220,2	duplicate(gfaldeD)	ギルドフラッグ#a4-17	722
+aldeg_cas04.gat,169,22,2	duplicate(gfaldeD)	ギルドフラッグ#a4-18	722
+aldeg_cas04.gat,169,15,2	duplicate(gfaldeD)	ギルドフラッグ#a4-19	722
+//------------------------------カプラ--------------------------------
+aldeg_cas04.gat,45,88,0	script	カプラ職員::kapra_aldeg04	117,{
+	callfunc "gkfmenu","aldeg_cas04.gat";
+	menu "倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"終了",L7;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	callfunc "gkfwarp","アルデバラン","aldebaran.gat",132,103;
+L4:
+	callfunc "kfcart",800;
+L7:
+	callfunc "kfend";
+}
+//-------------------------------執事---------------------------------
+aldeg_cas04.gat,67,116,0	script	ウィリオット	55,{
+	callfunc "Steward_menu0","aldeg_cas04.gat","ウィリオット";
+	menu "砦の状態を表示",L1,"商業発展に投資",L2,"砦の防衛に投資",L3,"ガーディアン設置",L4,"カプラとの契約 / 解雇",L5,"マスターの部屋に入る",L6,"アジトを放棄する",L7;
+L1:
+	callfunc "Steward_menu1","aldeg_cas04.gat","ウィリオット";
+L2:
+	callfunc "Steward_menu2","aldeg_cas04.gat","ウィリオット";
+L3:
+	callfunc "Steward_menu3","aldeg_cas04.gat","ウィリオット";
+L4:
+	callfunc "Steward_menu4","aldeg_cas04.gat","ウィリオット";
+	if (@GDnum == 10) monster "aldeg_cas04.gat",187,100,"--ja--",1285,1,"Agit_A04::On_GDa41";
+	if (@GDnum == 11) monster "aldeg_cas04.gat",192,42,"--ja--",1285,1,"Agit_A04::On_GDa42";
+	if (@GDnum == 12) monster "aldeg_cas04.gat",55,88,"--ja--",1286,1,"Agit_A04::On_GDa43";
+	if (@GDnum == 13) monster "aldeg_cas04.gat",145,209,"--ja--",1287,1,"Agit_A04::On_GDa44";
+	if (@GDnum == 14) monster "aldeg_cas04.gat",169,53,"--ja--",1287,1,"Agit_A04::On_GDa45";
+	if (@GDnum == 15) monster "aldeg_cas04.gat",198,77,"--ja--",1287,1,"Agit_A04::On_GDa46";
+	if (@GDnum == 16) monster "aldeg_cas04.gat",148,88,"--ja--",1285,1,"Agit_A04::On_GDa47";
+	if (@GDnum == 17) monster "aldeg_cas04.gat",48,72,"--ja--",1286,1,"Agit_A04::On_GDa48";
+	mes "[執事ウィリオット]";
+	mes "ガーディアンが設置されました。";
+	mes "ガーディアンは私達の城を";
+	mes "敵から守ってくれるでしょう。";
+	close;
+L5:
+	callfunc "Steward_menu5","aldeg_cas04.gat","ウィリオット","kapra_aldeg04";
+L6:
+	callfunc "Steward_menu6","aldeg_cas04.gat","ウィリオット",79,14;
+L7:
+	callfunc "Steward_menu7","aldeg_cas04.gat","ウィリオット";
+	callfunc "resetcastledata","aldeg_cas04.gat","::OnRecvCastleA04","kapra_aldeg04",@GID;
+}
+//-----------------------------スイッチ-------------------------------
+aldeg_cas04.gat,83,17,0	script	　	111,{
+callfunc "gdswitch","aldeg_cas04.gat",67,117;
+}
+//-----------------------------スイッチ2------------------------------
+aldeg_cas04.gat,76,64,0	script	　	111,{
+callfunc "gdswitch2","aldeg_cas04.gat","gld_dun02.gat",160,148;
+}

@@ -1,0 +1,69 @@
+//北洞窟ルワンダ ⇔ ルルカ森
+beach_dun2.gat,258,244,0	warp	umba0001	1,1,um_fild01.gat,35,276
+um_fild01.gat,31,274,0	warp	umba0002	1,1,beach_dun2.gat,255,244
+//パプチカ森 ⇔ カララ沼(右)
+cmd_fild01.gat,178,370,0	warp	umba0003	1,1,um_fild03.gat,243,29
+um_fild03.gat,243,26,0	warp	umba0004	1,1,cmd_fild01.gat,176,367
+//パプチカ森 ⇔ カララ沼(左)
+cmd_fild01.gat,77,366,0	warp	umba0005	1,1,um_fild03.gat,114,53
+um_fild03.gat,114,50,0	warp	umba0006	1,1,cmd_fild01.gat,74,363
+//ルルカ森 ⇔ フムガ森
+um_fild01.gat,369,277,0	warp	umba0007	1,1,um_fild02.gat,25,272
+um_fild02.gat,22,272,0	warp	umba0008	1,1,um_fild01.gat,366,277
+//カララ沼 ⇔ フムガ森(上)
+um_fild03.gat,19,334,0	warp	umba0009	1,1,um_fild02.gat,370,329
+um_fild02.gat,373,329,0	warp	umba0010	1,1,um_fild03.gat,23,334
+//カララ沼 ⇔ フムガ森(下)
+um_fild03.gat,32,145,0	warp	umba0011	1,1,um_fild02.gat,370,148
+um_fild02.gat,373,148,0	warp	umba0012	1,1,um_fild03.gat,36,145
+//フムガ森 ⇔ フムガジャングル
+um_fild02.gat,188,374,0	warp	umba0013	1,1,um_fild04.gat,182,16
+um_fild04.gat,182,13,0	warp	umba0014	1,1,um_fild02.gat,190,371
+//フムガジャングル ⇔ ウンバラ
+umbala.gat,130,79,0	warp	umba0015	1,1,um_fild04.gat,215,336
+um_fild04.gat,215,339,0	warp	umba0016	1,1,umbala.gat,130,82
+//チャビバタンの家北
+umbala.gat,100,203,0	warp	umba0017	1,1,um_in.gat,163,69
+um_in.gat,166,69,0	warp	umba0018	1,1,umbala.gat,102,205
+//チャビバタンの家南
+umbala.gat,94,186,0	warp	umba0019	1,1,um_in.gat,141,42
+um_in.gat,141,39,0	warp	umba0020	1,1,umbala.gat,94,183
+//酋長の家
+umbala.gat,68,253,0	warp	umba0021	1,1,um_in.gat,38,113
+um_in.gat,38,110,0	warp	umba0022	1,1,umbala.gat,66,250
+//ウェナタンの家
+umbala.gat,107,130,0	warp	umba0023	1,1,um_in.gat,99,66
+um_in.gat,99,63,0	warp	umba0024	1,1,umbala.gat,108,127
+//武器屋
+umbala.gat,125,157,0	warp	umba0025	1,1,um_in.gat,155,114
+um_in.gat,155,111,0	warp	umba0026	1,1,umbala.gat,126,154
+//道具屋
+umbala.gat,138,129,0	warp	umba0027	1,1,um_in.gat,99,114
+um_in.gat,99,111,0	warp	umba0028	1,1,umbala.gat,136,127
+//シャーマンの家
+umbala.gat,220,189,0	script	#umba0029	45,1,1,{if (event_umbala==7) warp "um_in.gat",32,71;end;}
+um_in.gat,29,71,0	warp	umba0030	1,1,umbala.gat,217,186
+//D入り口
+umbala.gat,106,285,0	warp	umba0031	1,1,um_dun01,42,30
+um_dun01.gat,42,27,0	warp	umba0032	1,1,umbala,109,284
+//D1F ⇔ D2F
+um_dun01.gat,149,198,0	warp	umba0033	1,1,um_dun02,52,22
+um_dun02.gat,55,18,0	warp	umba0034	1,1,um_dun01,152,198
+//2FLink A
+um_dun02.gat,64,79,0	warp	umba0035	1,1,um_dun02,219,261
+um_dun02.gat,222,259,0	warp	umba0036	1,1,um_dun02,67,77
+//2FLink B
+um_dun02.gat,169,38,0	warp	umba0037	1,1,um_dun02,215,88
+um_dun02.gat,215,85,0	warp	umba0038	1,1,um_dun02,166,38
+//2FLink C
+um_dun02.gat,32,249,0	warp	umba0039	1,1,um_dun02,117,208
+um_dun02.gat,113,208,0	warp	umba0040	1,1,um_dun02,35,252
+//2FLink D
+um_dun02.gat,177,38,0	warp	umba0041	1,1,um_dun02,100,208
+um_dun02.gat,103,208,0	warp	umba0042	1,1,um_dun02,180,38
+//2FLink E
+um_dun02.gat,231,255,0	warp	umba0043	1,1,um_dun02,25,241
+um_dun02.gat,24,244,0	warp	umba0044	1,1,um_dun02,233,253
+//2FLink F
+um_dun02.gat,215,77,0	warp	umba0045	1,1,um_dun02,60,92
+um_dun02.gat,60,89,0	warp	umba0046	1,1,um_dun02,215,74
