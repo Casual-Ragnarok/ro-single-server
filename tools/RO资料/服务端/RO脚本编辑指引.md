@@ -1,141 +1,28 @@
-mes "[message]";
-显示消息
-[message]:信息内容 
+# RO 脚本编辑指引
 
+> RO 所有脚本都定义为【NPC】
 
+------
 
-自己修改增加了一点，基本算是完全了，还有错误请指出
-mes "[message]";
-显示消息
-[message]:信息内容
+## 基础知识
 
-next;
-进入下个页信息
+### 如何添加自己制作的 NPC
 
-close;
-全部对话结束
+做一个脚本放到 [npc](../../../npc) 目录里面如：`商人.txt`
 
-menu "[text]",[label],"[text]",[label]???;
-选项
-[test]：选项的名称
-[label]：脚本中行的跳转点。
+~~然后在 [conf/map_athena.conf](../../../conf/map_athena.conf) 里面添加相对路径和文件名，举例：~~
 
-goto [label];
-跳转到脚本的某一行。
+然后在 [npc/re/scripts_main.conf](../../../npc/re/scripts_main.conf) 找到对应 npc 分类下的 `*.conf`，再在该 `*.conf` 文件里面添加相对路径和文件名，举例：
 
-cutin "[filename]",[flag];
-显示图片，就象我们点击kapula后，会有kapula的一副图片显示在屏幕上。
-[filename]：图片名称kafra_01 _ kafra_06 ( comodo 是 07)
-[flag]：2显示； 255消失。
-
-store;
-仓库
-
-warp "[mapname]",[X],[Y];
-地图跳转。
-[mapname]:地图名称
-[X],[Y]:坐标
-
-save "[mapname]",[X],[Y];
-存储纪录
-[mapname]:地图名称
-[X],[Y]:坐标
-
-heal [HP+],[SP+];
-指定HP和SP的恢复量
-最大值是 30000
-
-set [formula],[limit];
-值的变更
-[type][= + += - -=][val]の形式で指定します。
-[type]：(Zeny,Job,BaseLevel,JobLevel,StatusPoint,SkillPoint)等自己定义的变量
-值的增加用 += ; 如： Zeny += 100,就是说Zeny加100
-减少则相反用 -= 。
-自己定义变量常用来做任务。
-如： set pet_food = 1 ; 自己定义了一个 pet_food 变量，值是1。可以在后面的脚本中来判断这个值。
-
-additem [ItemID],[amount];
-道具添加
-[ItemID]编号
-[Amount]个数
-
-delitem [ItemID],[amount];
-删除道具
-[ItemID]编号
-[Amount]个数
-
-check [formula],[label1],[label2];
-对应上面的自定义变量
-[formula]变量名称
-[type][<= >= = == <> != > <][val]
-[type](Zeny,Job,BaseLevel,JobLevel,StatusPoint,SkillPoint)等自定义变量。
-判断后结果正确，跳转到[label1]
-不成立，跳转到[label2]
-Example:
-
-check Pet_Food > 0,L_CHECK_1,-; //检查 Pet_Food 这个自定义变量，如果>0，跳转到L_CHECK_1，不大于0继续。
-mes "[Egar]";
-mes "Can I help you?";
-close;
-L_CHECK_1:
-mes "[Egar]";
-mes "give you";
-additem 541,1; //这里，添加道具了。
-next;
-
-jobchange [job];
-职业的变更。
-[job]：数字
-0 初心者
-1 劍士
-2 法師
-3 弓箭手
-4 牧師
-5 商人
-6 盜贼
-7 騎士
-8 祭師
-9 巫師
-10 鐵匠
-11 獵人
-12 刺客
-14十字军
-15武僧
-16贤者
-17流氓
-18练金术士
-19诗人
-20舞者
-
-
-viewpoint [type],[X],[Y],[PointID],[color];
-标记某个坐标，在地图上的该坐标点用[color]显示。
-[type]：1表示显示，2表示影藏。
-[X]，[Y]：点的坐标。
-[PointID]：坐标编号，如：1代表道具店，2代表武器店。这样在地图上就能同时显示两个点。
-如果都用1的话，地图上只能显示一个点。
-[color]：颜色，用16进制表示。如： 0xFF0000， 0x 是表示16进制，后面的FF0000是颜色代码。
-拥有[ItemID]所指定物品[Amount]个或以上数量的话
-到[label1]，反之到[label2]
-如果要调查的物品为装备品的话，请务必将[amount]设为1
-得到[ItemID]所指定的道具[Amount]个的话
-如果重量超过最大值就转到[label1]
-反之即转到[label2]
-如果要调查的物品为装备品的话，请务必将[amount]设为1.这个指令是配合additem的指令
-
-
-
-基础知识
-一、如何添加自己制作的NPC
-做一个脚本放到npc目录里面
-如：商人.txt
-然后在map_athena里面添加相对路径和文件名，相对路径是指以map-server.exe所在文件夹内的文件夹名称。
-举例：
-运行NPC脚本设置（不需要运行的脚本在npc前输入表示关闭）
+```
+运行NPC脚本设置（不需要运行的脚本在 npc 前输入 // 注释表示关闭）
 npc: npc\商人.txt
 npc: npc\npc1\商人1.txt
 npc: npc\npc1\npc2\商人2.txt
-二、如何设定NPC
+```
+
+### 如何设定 NPC
+
 基本格式：
 地图名称,横坐标,纵坐标,面对方向     类型     名称     造型,
 类型：     shop：商店。script：脚本
@@ -1247,3 +1134,128 @@ end;
 
 //波利赛跑的等待区域
 warp quiz_02.gat,300,241 ;
+
+
+
+
+
+
+常用指令
+
+mes "[message]";
+显示消息
+[message]:信息内容
+
+next;
+进入下个页信息
+
+close;
+全部对话结束
+
+menu "[text]",[label],"[text]",[label]???;
+选项
+[test]：选项的名称
+[label]：脚本中行的跳转点。
+
+goto [label];
+跳转到脚本的某一行。
+
+cutin "[filename]",[flag];
+显示图片，就象我们点击kapula后，会有kapula的一副图片显示在屏幕上。
+[filename]：图片名称kafra_01 _ kafra_06 ( comodo 是 07)
+[flag]：2显示； 255消失。
+
+store;
+仓库
+
+warp "[mapname]",[X],[Y];
+地图跳转。
+[mapname]:地图名称
+[X],[Y]:坐标
+
+save "[mapname]",[X],[Y];
+存储纪录
+[mapname]:地图名称
+[X],[Y]:坐标
+
+heal [HP+],[SP+];
+指定HP和SP的恢复量
+最大值是 30000
+
+set [formula],[limit];
+值的变更
+[type][= + += - -=][val]の形式で指定します。
+[type]：(Zeny,Job,BaseLevel,JobLevel,StatusPoint,SkillPoint)等自己定义的变量
+值的增加用 += ; 如： Zeny += 100,就是说Zeny加100
+减少则相反用 -= 。
+自己定义变量常用来做任务。
+如： set pet_food = 1 ; 自己定义了一个 pet_food 变量，值是1。可以在后面的脚本中来判断这个值。
+
+additem [ItemID],[amount];
+道具添加
+[ItemID]编号
+[Amount]个数
+
+delitem [ItemID],[amount];
+删除道具
+[ItemID]编号
+[Amount]个数
+
+check [formula],[label1],[label2];
+对应上面的自定义变量
+[formula]变量名称
+[type][<= >= = == <> != > <][val]
+[type](Zeny,Job,BaseLevel,JobLevel,StatusPoint,SkillPoint)等自定义变量。
+判断后结果正确，跳转到[label1]
+不成立，跳转到[label2]
+Example:
+
+check Pet_Food > 0,L_CHECK_1,-; //检查 Pet_Food 这个自定义变量，如果>0，跳转到L_CHECK_1，不大于0继续。
+mes "[Egar]";
+mes "Can I help you?";
+close;
+L_CHECK_1:
+mes "[Egar]";
+mes "give you";
+additem 541,1; //这里，添加道具了。
+next;
+
+jobchange [job];
+职业的变更。
+[job]：数字
+0 初心者
+1 劍士
+2 法師
+3 弓箭手
+4 牧師
+5 商人
+6 盜贼
+7 騎士
+8 祭師
+9 巫師
+10 鐵匠
+11 獵人
+12 刺客
+14十字军
+15武僧
+16贤者
+17流氓
+18练金术士
+19诗人
+20舞者
+
+
+viewpoint [type],[X],[Y],[PointID],[color];
+标记某个坐标，在地图上的该坐标点用[color]显示。
+[type]：1表示显示，2表示影藏。
+[X]，[Y]：点的坐标。
+[PointID]：坐标编号，如：1代表道具店，2代表武器店。这样在地图上就能同时显示两个点。
+如果都用1的话，地图上只能显示一个点。
+[color]：颜色，用16进制表示。如： 0xFF0000， 0x 是表示16进制，后面的FF0000是颜色代码。
+拥有[ItemID]所指定物品[Amount]个或以上数量的话
+到[label1]，反之到[label2]
+如果要调查的物品为装备品的话，请务必将[amount]设为1
+得到[ItemID]所指定的道具[Amount]个的话
+如果重量超过最大值就转到[label1]
+反之即转到[label2]
+如果要调查的物品为装备品的话，请务必将[amount]设为1.这个指令是配合additem的指令
