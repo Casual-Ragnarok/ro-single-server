@@ -3,7 +3,7 @@
 // Transelated By Memory.
 
 
-prontera.gat,164,106,4	script	一键大师	709,{
+prontera,164,106,4	script	一键大师	709,{
 
 UPGRADEROOT:
 	mes "[一键大师]";

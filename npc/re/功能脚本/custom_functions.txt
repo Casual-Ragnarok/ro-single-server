@@ -94,7 +94,8 @@ function	script	F_MANUAL	{
 	next;
 	mes "[RO 手册]";
 	mes "本手册并无任何效果加成";
-	menu "查看权限指令",_TO_CHAR_COMMANDS,
+	menu "附加神赐体质（限时）",_TO_GOD_CONSTITUTION,
+	     "查看权限指令",_TO_CHAR_COMMANDS,
 		 "查看常用命令",_TO_GAME_COMMANDS,
 		 "查看服务器信息",_TO_SERVER_RATES,
 		 "查看在线人数",_TO_ONLINE,
@@ -103,6 +104,41 @@ function	script	F_MANUAL	{
 		 "自动拾取[开/关]",_TO_AUTOLOOT,
 		 "全身鉴定",_TO_IDENTIFY_ALL,
 		 "没事了.",_TO_CLOSE;
+
+    _TO_GOD_CONSTITUTION:
+	    mes "目前共 16 种神赐体质";
+		mes "每种神赐体质对应一个隐藏世界任务";
+		mes "每种神赐体质仅全服第一个完成某一种世界任务的角色可获得";
+		mes "同一个角色可获得复数个神赐体质";
+		mes "附加时会同时附加所有已获得的神赐体质";
+		mes "因极强的副作用，初次附加可持续 1 小时，尔后冷却 24 小时";
+		mes "但随着附加次数增加，身体适应性会上升，极限可持续 12 小时";
+		mes "不过极限附加后，因超过人类极限，角色会丧失所有神赐体质";
+		mes "连续 30 天没有附加神赐体质，会被神舍弃，失去所有神赐体质";
+		mes "失去神赐体质亦可重做世界任务重新获取";
+		next;
+		mes "目前的 16 种神赐体质分为为：";
+		mes "攻击回避（仅针对普通攻击，无法回避技能/魔法）";
+		mes "技能回避（仅针对技能/魔法，无法回避群体普通攻击）";
+		mes "绝对命中";
+		mes "绝对暴击";
+		mes "无限攻速（仅针对普通攻击）";
+		mes "无念咏唱";
+		mes "魔法无效";
+		mes "物理无效";
+		mes "魔法反射";
+		mes "物理反射";
+		mes "高速移动";
+		mes "极速回复（HP）";
+		mes "极速回复（MP）";
+		mes "消耗代偿";
+		mes "极限负重";
+		mes "不死鸟（HP 最少为 1，但持续消耗 MP 直至归零）";
+		next;
+		mes "你当前拥有的神赐体质为：none";
+		mes "你不是天选之子，附加失败";
+		// TODO
+		return;
 
 	_TO_CHAR_COMMANDS:
 		callfunc("F_COMMANDS");
