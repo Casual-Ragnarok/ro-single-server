@@ -106,173 +106,137 @@ function	script	F_MANUAL	{
 		 "没事了.",_TO_CLOSE;
 
     _TO_GOD_POWER:
-	    mes "已在现世发现的神赐体质共 16 种";
-		mes "每种神赐体质对应一个隐藏世界任务";
-		mes "每种神赐体质仅全服第一个完成某一种世界任务的角色可获得";
-		mes "同一个角色可获得复数个神赐体质";
-		mes "附加时会同时附加所有已获得的神赐体质";
-		mes "因极强的副作用，附加仅可持续 1 小时，尔后冷却 24 小时";
-		mes "连续 30 天没有进入世界，会被神舍弃，失去所有神赐体质";
-		mes "失去神赐体质亦可重做世界任务重新获取";
-		next;
-		mes "目前的 16 种神赐体质分为为：";
-		mes "完全回避";
-		mes "绝对命中";
-		mes "绝对暴击";
-		mes "无限攻击加速";
-		mes "无咏唱";
-		mes "物理无效";
-		mes "魔法无效";
-		mes "物理反射";
-		mes "魔法反射";
-		mes "高速移动";
-		mes "极速回复";
-		mes "嗜血";
-		mes "吸魔";
-		mes "触媒无偿";
-		mes "极限负重";
-		mes "不死鸟（HP 最少为 1，但持续消耗 MP 直至归零）";
-		next;
-
 		set @god_power,0;
 		set @buff_time,60;
 		set @pid,callfunc("F_PLAYER_ID");
-		set $GOD_POWER_01, @pid;
-		set $GOD_POWER_02, @pid;
-		set $GOD_POWER_03, @pid;
-		set $GOD_POWER_04, @pid;
-		set $GOD_POWER_05, @pid;
-		set $GOD_POWER_06, @pid;
-		set $GOD_POWER_07, @pid;
-		set $GOD_POWER_08, @pid;
-		set $GOD_POWER_09, @pid;
-		set $GOD_POWER_10, @pid;
-		set $GOD_POWER_11, @pid;
-		set $GOD_POWER_12, @pid;
-		set $GOD_POWER_13, @pid;
-		set $GOD_POWER_14, @pid;
-		set $GOD_POWER_15, @pid;
-		set $GOD_POWER_16, @pid;
 
 		if (@pid == $GOD_POWER_01) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [完全回避] " + @buff_time + " 秒！";
 			dispbottom "附加 [完全回避] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",@buff_time,512,0,SP_FLEE2;
+			bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",@buff_time,512,0;
 		}	
 
 		if (@pid == $GOD_POWER_02) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [绝对命中] " + @buff_time + " 秒！";
 			dispbottom "附加 [绝对命中] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHit,999; bonus bPerfectHitRate,100; }",@buff_time,512,0,SP_HIT;
+			bonus_script "{ bonus bHit,999; bonus bPerfectHitRate,100; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_03) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [绝对暴击] " + @buff_time + " 秒！";
 			dispbottom "附加 [绝对暴击] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bCritical,999; bonus bCriticalLong,999; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bCritical,999; bonus bCriticalLong,999; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_04) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [无限攻击加速] " + @buff_time + " 秒！";
 			dispbottom "附加 [无限攻击加速] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAspd,58; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bAspd,58; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_05) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [无视距离] " + @buff_time + " 秒！";
 			dispbottom "附加 [无视距离] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAtkRange,20; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bAtkRange,20; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_06) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [无咏唱] " + @buff_time + " 秒！";
 			dispbottom "附加 [无咏唱] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bFixedCast,-10000; bonus bVariableCast,-10000; bonus bNoCastCancel; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bFixedCast,-10000; bonus bVariableCast,-10000; bonus bNoCastCancel; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_07) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [物理无效] " + @buff_time + " 秒！";
 			dispbottom "附加 [物理无效] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoWeaponDamage,100; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bNoWeaponDamage,100; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_08) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [魔法无效] " + @buff_time + " 秒！";
 			dispbottom "附加 [魔法无效] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoMagicDamage,100; bonus bNoMiscDamage,100; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bNoMagicDamage,100; bonus bNoMiscDamage,100; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_09) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [物理反射] " + @buff_time + " 秒！";
 			dispbottom "附加 [物理反射] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bShortWeaponDamageReturn,100; bonus bLongWeaponDamageReturn,100; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bShortWeaponDamageReturn,100; bonus bLongWeaponDamageReturn,100; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_10) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [魔法反射] " + @buff_time + " 秒！";
 			dispbottom "附加 [魔法反射] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bMagicDamageReturn,100; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bMagicDamageReturn,100; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_11) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [高速移动] " + @buff_time + " 秒！";
 			dispbottom "附加 [高速移动] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bSpeedRate,200; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bSpeedRate,200; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_12) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [极速回复] " + @buff_time + " 秒！";
 			dispbottom "附加 [极速回复] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHPrecovRate,1000; bonus bSPrecovRate,1000; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bHPrecovRate,1000; bonus bSPrecovRate,1000; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_13) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [嗜血] " + @buff_time + " 秒！";
 			dispbottom "附加 [嗜血] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHPGainValue,1000; bonus bMagicHPGainValue,1000; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bHPGainValue,1000; bonus bMagicHPGainValue,1000; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_14) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [吸魔] " + @buff_time + " 秒！";
 			dispbottom "附加 [吸魔] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bSPGainValue,50; bonus bMagicSPGainValue,50; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bSPGainValue,50; bonus bMagicSPGainValue,50; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_15) {
 			set @god_power,(@god_power + 1);
-			mes "附加 [触媒无偿] " + @buff_time + " 秒！";
-			dispbottom "附加 [触媒无偿] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoGemStone; }",@buff_time,512,0,SP_CRITICAL;
+			mes "附加 [无偿触媒] " + @buff_time + " 秒！";
+			dispbottom "附加 [无偿触媒] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bNoGemStone; }",@buff_time,512,0;
 		}
 
 		if (@pid == $GOD_POWER_16) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [极限负重] " + @buff_time + " 秒！";
 			dispbottom "附加 [极限负重] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAddMaxWeight,100000; }",@buff_time,512,0,SP_CRITICAL;
+			bonus_script "{ bonus bAddMaxWeight,100000; }",@buff_time,512,0;
 		}
 
 		if (@god_power > 0) {
-			mes "竟然拥有 " + @god_power + " 项神赐体质，你果然是天选之子！";
-			dispbottom "竟然拥有 " + @god_power + " 项神赐体质，你果然是天选之子！",0xFF8000;
+			mes "^0000FF[" + @god_power + "] 项神赐体质？！难道是 ...^000000";
+			mes "神赐体质对人体伤害极大";
+			mes "^0000FF附加效果仅持续 1 小时，冷却 24 小时^000000";
+
+			dispbottom "[" + @god_power + "] 项神赐体质？！难道是 ...",0xFFFF00;
+			dispbottom "因对人体伤害极大，附加效果仅持续 1 小时，尔后冷却 24 小时",0xFFFF00;
 
 		} else {
-			mes "你不是天选之子，附加失败！";
-			dispbottom "你不是天选之子，附加失败！",0xFF8000;
+			mes "你不是天选之子！没有附加资格！";
+			mes "-------------------------------";
+			mes "传言在^FF0000沙漠深处^000000出土了一块^FF0000古老石碑^000000，";
+			mes "上面记载了关于^FF0000世界隐藏任务^000000的线索，";
+			mes "有幸达成任务的天选之人 ...... ";
+			mes "或可获得被神授予特殊体质的资格 ......";
 		}
 		
 		callsub(_TO_CLOSE);
