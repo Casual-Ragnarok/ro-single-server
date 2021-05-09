@@ -300,6 +300,12 @@ TO_KILL_OTHER:
 	}
 
 
+TO_CLEAR_ITEMS:
+	clearitem;
+	next;
+	goto TO_CLOSE;
+
+
 TO_DO:
 	mes "[一键大师]";
 	mes "此功能正在开发中...";

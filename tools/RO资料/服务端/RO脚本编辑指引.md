@@ -30,9 +30,9 @@ NPC 脚本基本格式：
 其中：
 
 - 面对方向、类型、名称、造型 之间为制表符`	`（`\t`）
-- 地图名称： 可以在 [ro321](http://ro.ro321.com/index.php?page=areainfo&area=5999) 查询，也可以进入游戏输入命令 `/where` 可查当前地图英文名，
+- 地图名称： 可以在 [RO321](http://ro.ro321.com/index.php?page=areainfo&area=5999) 查询，也可以进入游戏输入命令 `/where` 可查当前地图英文名，
 - 类型：只有两个可选值，`shop` 表示商店，`script` 表示脚本。
-- 造型：造型编号参考《[Eathena.net脚本指令大全.chm](./Eathena.net脚本指令大全.chm)》中【其他资料】的【NPC 代码一览表】，但注意不要选客户端没有的造型，否则会报错。另外，若造型编号为 `-1` 表示为事件，可以被其他命令调用；类型为 `shop` 的造型不可为 `-1`。
+- 造型：造型编号可参考《[AzureFlame](http://www.usamimi.info/~blaze/npc/npc_all.html)》、或《[Eathena.net脚本指令大全.chm](./Eathena.net脚本指令大全.chm)》中【其他资料】的【NPC 代码一览表】，但注意不要选客户端没有的造型，否则会报错。另外，若造型编号为 `-1` 表示为事件，可以被其他命令调用；类型为 `shop` 的造型不可为 `-1`。
 - 面对方向：以小地图方向为准，假设 NPC 为 X，其面对方向编号为：
 
 ```

@@ -117,21 +117,56 @@ moc_fild07,33,352,6	script	残破的远古石碑	406,{
 
 	mes "[残破的远古石碑]";
 	mes "------------------------";
-	mes "获得方法是 ...";
-	mes "...... ......";
-	mes "...... ......";
-	mes "...... ......";
-	mes "...... ......";
-	mes "......";
-	mes "...";
-	mes ".";
+	mes "获得方法是";
+	mes ".........";
+	mes "..";
+	mes ",";
+	mes ".....";
+	mes ".........";
+	next;
 	mes "后面的字迹好像被什么人抹去了";
 
+	// 此账号获得资格
+	if (#GOD_POWER_FLAG <= 0) {
+		set #GOD_POWER_FLAG,1;
+	}
 	goto _TO_CLOSE;
 
 _TO_CLOSE:
 	close2;
 	close;
 	end;
+}
 
+
+
+moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
+
+	mes "一个小沙堆，要挖开吗？";
+	switch(select("不挖:挖开")) {
+		case 1:
+			break;
+		case 2:
+			if (#GOD_POWER_FLAG <= 0) {
+				mes "没有东西";
+
+			} else if (#GOD_POWER_FLAG == 1) {
+				mes "发现一套残破旅行者装备";
+				getitem 55055,1;
+				getitem 52112,1;
+				getitem 51202,1;
+				getitem 52340,1;
+				getitem 52502,1;
+				getitem 52414,1;
+				getitem 52628,1;
+				set #GOD_POWER_FLAG,2;
+
+			} else if (#GOD_POWER_FLAG >= 2) {
+				mes "已经什么也没有了";
+			}
+			break;
+	}
+
+	close;
+	end;
 }
