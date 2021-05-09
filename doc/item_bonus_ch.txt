@@ -236,13 +236,13 @@ bonus2 bAddItemGroupHealRate,ig,n;		组别为ig的恢复类道具效果上升 n%
 
 咏唱/延迟相关
 ---------------
-bonus bCastrate,n;             		可变咏唱时间 + n%
+bonus bCastrate,n;             		所有技能可变咏唱时间 + n%
 bonus2 bCastrate,sk,n;         		增加 sk 技能 n% 的可变咏唱时间 (支持技能名)
 
-bonus bFixedCastrate,n;        		固定咏唱时间 + n%（复兴后有效）
-bonus2 bFixedCastrate,sk,n;    		增加 sk技能 n% 的可固定唱时间 (支持技能名)
+bonus bFixedCastrate,n;        		所有技能固定咏唱时间 + n%（复兴后有效）
+bonus2 bFixedCastrate,sk,n;    		增加 sk 技能 n% 的可固定唱时间 (支持技能名)
 
-bonus bVariableCastrate,n;     		可变咏唱时间 + n%(复兴后没有定义等于bonus bCastrate,n; )
+bonus bVariableCastrate,n;     		所有技能可变咏唱时间 + n%(复兴后没有定义等于bonus bCastrate,n; )
 bonus2 bVariableCastrate,sk,n; 		增加 sk 技能 n% 的可变咏唱时间 (支持技能名)
 
 bonus bFixedCast,t;            		所有技能固定咏唱时间 + t 毫秒（1000毫秒=1秒|复兴后有效）
@@ -410,7 +410,7 @@ HP/SP 获得
 ------------
 bonus bHPGainValue,n;     		以物理攻击杀死魔物时得到 n HP
 bonus bSPGainValue,n;     		以物理攻击杀死魔物时得到 n SP
-bonus2 bSPGainRace,r,n;   		物理攻击杀死 r 种族怪物时，得到 n 点SP
+bonus2 bSPGainRace,r,n;   		物理攻击杀死 r 种族怪物时，得到 n 点 SP
 bonus bMagicHPGainValue,n;		以魔法攻击杀死魔物时得到 n HP
 bonus bMagicSPGainValue,n;		以魔法攻击杀死魔物时得到 n SP
 

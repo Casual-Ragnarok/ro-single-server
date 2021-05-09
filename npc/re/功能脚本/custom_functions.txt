@@ -91,10 +91,10 @@ function	script	F_AUTOLOOT	{
 function	script	F_MANUAL	{
 	mes "[RO 手册]";
 	mes "RO 便利手册";
+	mes "手册本身并无任何 BUFF 效果";
 	next;
 	mes "[RO 手册]";
-	mes "本手册并无任何效果加成";
-	menu "附加神赐体质（限时）",_TO_GOD_POWER,
+	menu "附加神赐体质",_TO_GOD_POWER,
 	     "查看权限指令",_TO_CHAR_COMMANDS,
 		 "查看常用命令",_TO_GAME_COMMANDS,
 		 "查看服务器信息",_TO_SERVER_RATES,
@@ -106,91 +106,175 @@ function	script	F_MANUAL	{
 		 "没事了.",_TO_CLOSE;
 
     _TO_GOD_POWER:
-	    mes "目前共 16 种神赐体质";
+	    mes "已在现世发现的神赐体质共 16 种";
 		mes "每种神赐体质对应一个隐藏世界任务";
 		mes "每种神赐体质仅全服第一个完成某一种世界任务的角色可获得";
 		mes "同一个角色可获得复数个神赐体质";
 		mes "附加时会同时附加所有已获得的神赐体质";
-		mes "因极强的副作用，初次附加可持续 1 小时，尔后冷却 24 小时";
-		mes "但随着附加次数增加，身体适应性会上升，极限可持续 12 小时";
-		mes "不过极限附加后，因超过人类极限，角色会丧失所有神赐体质";
-		mes "连续 30 天没有附加神赐体质，会被神舍弃，失去所有神赐体质";
+		mes "因极强的副作用，附加仅可持续 1 小时，尔后冷却 24 小时";
+		mes "连续 30 天没有进入世界，会被神舍弃，失去所有神赐体质";
 		mes "失去神赐体质亦可重做世界任务重新获取";
 		next;
 		mes "目前的 16 种神赐体质分为为：";
-		mes "攻击回避（仅针对普通攻击，无法回避技能/魔法）";
-		mes "技能回避（仅针对技能/魔法，无法回避群体普通攻击）";
+		mes "完全回避";
 		mes "绝对命中";
 		mes "绝对暴击";
-		mes "无限攻速（仅针对普通攻击）";
-		mes "无念咏唱";
-		mes "魔法无效";
+		mes "无限攻击加速";
+		mes "无咏唱";
 		mes "物理无效";
-		mes "魔法反射";
+		mes "魔法无效";
 		mes "物理反射";
+		mes "魔法反射";
 		mes "高速移动";
-		mes "极速回复（HP）";
-		mes "极速回复（MP）";
-		mes "消耗代偿";
+		mes "极速回复";
+		mes "嗜血";
+		mes "吸魔";
+		mes "触媒无偿";
 		mes "极限负重";
 		mes "不死鸟（HP 最少为 1，但持续消耗 MP 直至归零）";
 		next;
-		mes "你当前拥有的神赐体质为：none";
-		// TODO
 
+		set @god_power,0;
+		set @buff_time,60;
 		set @pid,callfunc("F_PLAYER_ID");
+		set $GOD_POWER_01, @pid;
 		set $GOD_POWER_02, @pid;
+		set $GOD_POWER_03, @pid;
+		set $GOD_POWER_04, @pid;
+		set $GOD_POWER_05, @pid;
+		set $GOD_POWER_06, @pid;
+		set $GOD_POWER_07, @pid;
+		set $GOD_POWER_08, @pid;
+		set $GOD_POWER_09, @pid;
+		set $GOD_POWER_10, @pid;
+		set $GOD_POWER_11, @pid;
+		set $GOD_POWER_12, @pid;
+		set $GOD_POWER_13, @pid;
+		set $GOD_POWER_14, @pid;
+		set $GOD_POWER_15, @pid;
+		set $GOD_POWER_16, @pid;
 
 		if (@pid == $GOD_POWER_01) {
-			mes "1";
-			bonus_script "{ bonus bFlee,300; bonus bFlee2,300; bonus bHit,300; bonus bCritical,300; }",600;
+			set @god_power,(@god_power + 1);
+			mes "附加 [完全回避] " + @buff_time + " 秒！";
+			dispbottom "附加 [完全回避] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",@buff_time,512,0,SP_FLEE2;
+		}	
 
+		if (@pid == $GOD_POWER_02) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [绝对命中] " + @buff_time + " 秒！";
+			dispbottom "附加 [绝对命中] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bHit,999; bonus bPerfectHitRate,100; }",@buff_time,512,0,SP_HIT;
+		}
+
+		if (@pid == $GOD_POWER_03) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [绝对暴击] " + @buff_time + " 秒！";
+			dispbottom "附加 [绝对暴击] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bCritical,999; bonus bCriticalLong,999; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_04) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [无限攻击加速] " + @buff_time + " 秒！";
+			dispbottom "附加 [无限攻击加速] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bAspd,58; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_05) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [无视距离] " + @buff_time + " 秒！";
+			dispbottom "附加 [无视距离] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bAtkRange,20; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_06) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [无咏唱] " + @buff_time + " 秒！";
+			dispbottom "附加 [无咏唱] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bFixedCast,-10000; bonus bVariableCast,-10000; bonus bNoCastCancel; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_07) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [物理无效] " + @buff_time + " 秒！";
+			dispbottom "附加 [物理无效] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bNoWeaponDamage,100; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_08) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [魔法无效] " + @buff_time + " 秒！";
+			dispbottom "附加 [魔法无效] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bNoMagicDamage,100; bonus bNoMiscDamage,100; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_09) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [物理反射] " + @buff_time + " 秒！";
+			dispbottom "附加 [物理反射] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bShortWeaponDamageReturn,100; bonus bLongWeaponDamageReturn,100; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_10) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [魔法反射] " + @buff_time + " 秒！";
+			dispbottom "附加 [魔法反射] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bMagicDamageReturn,100; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_11) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [高速移动] " + @buff_time + " 秒！";
+			dispbottom "附加 [高速移动] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bSpeedRate,200; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_12) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [极速回复] " + @buff_time + " 秒！";
+			dispbottom "附加 [极速回复] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bHPrecovRate,1000; bonus bSPrecovRate,1000; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_13) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [嗜血] " + @buff_time + " 秒！";
+			dispbottom "附加 [嗜血] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bHPGainValue,1000; bonus bMagicHPGainValue,1000; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_14) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [吸魔] " + @buff_time + " 秒！";
+			dispbottom "附加 [吸魔] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bSPGainValue,50; bonus bMagicSPGainValue,50; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_15) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [触媒无偿] " + @buff_time + " 秒！";
+			dispbottom "附加 [触媒无偿] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bNoGemStone; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@pid == $GOD_POWER_16) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [极限负重] " + @buff_time + " 秒！";
+			dispbottom "附加 [极限负重] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bAddMaxWeight,100000; }",@buff_time,512,0,SP_CRITICAL;
+		}
+
+		if (@god_power > 0) {
+			mes "竟然拥有 " + @god_power + " 项神赐体质，你果然是天选之子！";
+			dispbottom "竟然拥有 " + @god_power + " 项神赐体质，你果然是天选之子！",0xFF8000;
+
+		} else {
+			mes "你不是天选之子，附加失败！";
+			dispbottom "你不是天选之子，附加失败！",0xFF8000;
 		}
 		
-		if (@pid == $GOD_POWER_02) {
-			mes "2";
-			bonus_script "{ bonus bFlee,100; bonus bFlee2,100; bonus bHit,100; bonus bCritical,100; }",3600;
-
-		}
-		mes "你不是天选之子，附加失败";
-
-bonus_script \"{ bonus2 bHPLossRate,100,10000; bonus bBaseAtk,20; bonus bAspdRate,25; }\",60,0,0,EFST_STEAMPACK;
-*bonus_script "<script code>",<duration>{,<flag>{,<type>{,<status_icon>{,<char_id>}}}};
-
-This command will attach a script to a player for a given duration, in seconds.
-After that time, the script will automatically expire. The same bonus cannot be
-stacked. By default, this bonus will be stored on `bonus_script` table when player
-logs out.
-
-Flags (bitmask):
-	1   : Remove when dead.
-	2   : Removable by Dispell.
-	4   : Removable by Clearance.
-	8   : Remove when player logs out.
-	16  : Removeable by Banishing Buster.
-	32  : Removable by Refresh.
-	64  : Removable by Lux Anima.
-	128 : Remove when Madogear is activated or deactivated.
-	256 : Remove when receive damage.
-	512 : Script is permanent, cannot be cleared by bonus_script_clear.
-	1024: Force to replace duplicated script by expanding the duration.
-	2048: Force to add duplicated script. This flag cannot be stacked with 1024,
-	      if both are defined, 1024 will be checked first and ignore this flag.
-
-Types:
-	This will be used to decide negative or positive buff for 'debuff_on_logout'.
-	0: Ignore the buff type and won't be removed if the flag is not &8 (Default)
-	1: Buff
-	2: Debuff
-
-Status_icon: See "Status Icon" section in 'src/map/script_constants.hpp'. Default is SI_BLANK (-1).
-
-Example:
-	// Apple gives you +5 Str bonus for 1 minute when it's consumed.
-	512,Apple,Apple,0,15,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus_script "{ bonus bStr,5; }",60; },{},{}
-
-		set $aaaaa,111;
-		set #bbbbb,222;
 		callsub(_TO_CLOSE);
 		return;
 
