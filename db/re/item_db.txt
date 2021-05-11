@@ -3,7 +3,7 @@
 //=============================================================
 //
 // 数据库的格式说明:
-// ID,AegisName,Name,Type,Buy,Sell,Weight,ATK[:MATK],DEF,Range,Slots,Job,Class,Gender,Loc,wLV,eLV[:maxLevel],Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
+// ID,AegisName,Name,Type,Buy,Sell,Weight,ATK[:MATK],DEF,Range,Slots,Job,Class,Gender,Location,wLV,eLV[:maxLevel],Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
 //
 // 关于ATK字段的提示：
 // - 在复兴后版本(RE)中，这个字段能够多存放一个可选数值，用来表示一个武器的matk是多少
@@ -12594,19 +12594,30 @@
 
 
 
-50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 50000,1; callfunc "F_MANUAL"; },{},{}
 
-55055,Ancient_Egg_Cap,古老的蛋壳帽,4,1,,1,,6,,1,0xFFFFFFFF,63,2,256,,0,0,101,{ autobonus2 "{ set #aaa,(#aaa + 1);  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}
-52112,Ancient_Guard,古老的铁盾,4,1,,1,,20,,1,0xFFFFFFFF,63,2,32,,0,0,1,{   },{},{}
-51202,Ancient_Knife,古老的短剑,5,50,,400,17,,1,1,0xFFFFFFFF,63,2,2,1,1,1,1,{  },{},{}
-52340,Ancient_Breast,古老的胸铠,4,89000,,500,,4,,1,0xFFFFFFFF,63,2,16,,10,1,0,{   },{},{}
-52502,Ancient_Hood,古老的连帽披肩,4,1000,,200,,4,,1,0xFFFFFFFF,63,2,4,,0,1,0,{   },{},{}
-52414,Ancient_Boots,古老的海滩鞋,4,1,,1,,5,,1,0xFFFFFFFF,63,2,64,,0,0,0,{    },{},{}
-52628,Ancient_Armlet,古老的手镯,4,400,,200,,0,,1,0xFFFFFFFF,63,2,136,,0,0,0,{    },{},{}
-54001,Ancient_Poring_Card,古老的波利卡片,6,20,,10,,,,,,,,16,,,,,{  },{},{}
 
 51530,Mjolnir_,雷神之锤 1S,5,20,,6000,350,,1,1,0x000444A2,63,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,50; bonus bStr,20; bonus bAspdRate,200; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000; },{},{}
 52383,Brynhild_,布伦希尔德 1S,4,20,,400,,120,,1,0xFFFFFFFF,63,2,16,,94,0,0,{ bonus bMdef,10; bonus bMaxHP,20*BaseLevel; bonus bMaxSP,5*BaseLevel; bonus2 bAddClass,Class_All,10; bonus bMatkRate,10; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
 52541,Asprika_,阿斯普利卡 1S,4,20,,400,,40,,1,0xFFFFFFFF,63,2,4,,94,0,0,{ bonus bMdef,5; bonus3 bSubEle,Ele_Neutral,30,BF_SHORT; bonus3 bSubEle,Ele_Water,30,BF_SHORT; bonus3 bSubEle,Ele_Earth,30,BF_SHORT; bonus3 bSubEle,Ele_Fire,30,BF_SHORT; bonus3 bSubEle,Ele_Wind,30,BF_SHORT; bonus3 bSubEle,Ele_Poison,30,BF_SHORT; bonus3 bSubEle,Ele_Holy,30,BF_SHORT; bonus3 bSubEle,Ele_Dark,30,BF_SHORT; bonus3 bSubEle,Ele_Ghost,30,BF_SHORT; bonus3 bSubEle,Ele_Undead,30,BF_SHORT; bonus bFlee,30; skill "AL_TELEPORT",1; bonus bUnbreakableGarment; },{},{}
 52629,Magingiorde_,雷神腰带 1S,4,20,,8000,,2,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,40+BaseLevel/5; bonus bMdef,7; if(readparam(bStr)>=120) bonus2 bAddClass,Class_Boss,10; },{},{}
 52630,Brysinggamen_,女神项链 1S,4,20,,1500,,1,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,6; bonus bAgi,6; bonus bVit,6; bonus bInt,10; bonus bLuk,10; bonus bMdef,5; bonus bHealPower,6; },{},{}
+
+
+
+50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 50000,1; callfunc "F_MANUAL"; },{},{}
+
+
+62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,,0,0,57,{},{},{}
+61201,Ancient_Knife,古老的 破裂的剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{},{},{}
+61202,Ancient_Shuriken,古老的 破旧之手里剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{},{},{}
+61550,Ancient_Book,古老的 撕裂的魔法书,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,15,{},{},{}
+63104,Ancient_Garrison,古老的 残破的枪械残骸,5,1,,50,20,,7,0,0xFFFFFFFF,63,2,34,1,1,1,17,{},{},{}
+62501,Ancient_Hood,古老的 破旧的围巾,4,1,,50,,10,,0,0xFFFFFFFF,63,2,4,,0,1,0,{},{},{}
+62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{},{},{}
+62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{},{},{}
+62101,Ancient_Guard,古老的 破裂的硬壳,4,1,,50,,10,,0,0xFFFFFFFF,63,2,32,,0,1,1,{},{},{}
+62401,Ancient_Sandals,古老的 被盗的凉鞋,4,1,,50,,10,,0,0xFFFFFFFF,63,2,64,,0,1,0,{},{},{}
+62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,0,0,0,{},{},{}
+62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,1,0,0,{},{},{}
+62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,50,,10,,0,0xFFFFFFFF,63,2,256,,0,1,6,{},{},{}
+62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,,0,0,82,{ autobonus2 "{ set #aaa,(#aaa + 1);  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}

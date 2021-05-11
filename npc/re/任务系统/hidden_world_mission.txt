@@ -70,13 +70,13 @@ moc_fild07,33,352,6	script	残破的远古石碑	406,{
 		goto _TO_CLOSE;
 	}
 
-	// 解读：神赐体质一经获得不会消失，除非角色超过 30 天不登录
+	// 解读：神赐体质一经获得不会消失，除非角色超过 15 天不登录
 	// 已经失去的神赐体质，通过达成相同的世界隐藏任务可以重新获取
 	mes "[残破的远古石碑]";
 	mes "-------------------------------";
 	mes "消除神赐体质方法 ... 不明 ...";
 	mes "据传有人 ... 误入世界尽头漩涡";
-	mes "...... ^FF0000跌出世界^000000 ...^FF0000 30 天^000000 ...";
+	mes "...... ^FF0000跌出世界^000000 ...^FF0000 15 天^000000 ...";
 	mes "突然在世界出现 ... 能力全失 ..";
 	mes " ... 努力锻炼 ... 重获能力 ..";
 	
@@ -146,21 +146,46 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 	switch(select("不挖:挖开")) {
 		case 1:
 			break;
+
 		case 2:
 			if (#GOD_POWER_FLAG <= 0) {
 				mes "没有东西";
 
 			} else if (#GOD_POWER_FLAG == 1) {
-				mes "发现一套残破旅行者装备";
-				getitem 55055,1;
-				getitem 52112,1;
-				getitem 51202,1;
-				getitem 52340,1;
-				getitem 52502,1;
-				getitem 52414,1;
-				getitem 52628,1;
-				set #GOD_POWER_FLAG,2;
+				mes "发现一个残破的木箱，要怎么办？";
+				switch(select("用力砸开:轻轻撬开:重新埋起来")) {
+					case 1:
+						mes "里面的东西被砸得粉碎 ...";
+						mes "一阵风吹过 ...";
+						mes "尘归尘、土归土";
+						set #GOD_POWER_FLAG,2;
+						break;
 
+					case 2:
+						mes "得到一套不知道是谁的残破装备";
+						getitem 62270,1;
+						getitem 61201,1;
+						getitem 61202,1;
+						getitem 61550,1;
+						getitem 63104,1;
+						getitem 62501,1;
+						getitem 62301,1;
+						getitem 62328,1;
+						getitem 62101,1;
+						getitem 62401,1;
+						getitem 62612,1;
+						getitem 62627,1;
+						getitem 62211,1;
+						getitem 62295,1;
+						set #GOD_POWER_FLAG,2;
+						break;
+
+					case 3:
+						mes "看上去有点可怕 ...";
+						mes "可能有毒虫在里面 ...";
+						mes "不义之财不可得，埋起来吧。";
+						break;
+				}
 			} else if (#GOD_POWER_FLAG >= 2) {
 				mes "已经什么也没有了";
 			}
