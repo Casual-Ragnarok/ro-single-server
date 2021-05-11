@@ -15,7 +15,7 @@
 ## 客户端资料
 
 
-- Data 文件夹素材：[详解](./%E5%AE%A2%E6%88%B7%E7%AB%AF/RO%E8%B5%84%E6%96%99/RO%E5%AE%A2%E6%88%B7%E7%AB%AFDATA%E6%96%87%E4%BB%B6%E5%A4%B9%E8%AF%A6%E8%A7%A3.md)[【Demo】](https://github.com/lyy289065406/ROenglishRE)
+- Data 文件夹素材：[【详解】](./%E5%AE%A2%E6%88%B7%E7%AB%AF/RO%E8%B5%84%E6%96%99/RO%E5%AE%A2%E6%88%B7%E7%AB%AFDATA%E6%96%87%E4%BB%B6%E5%A4%B9%E8%AF%A6%E8%A7%A3.md)[【Demo】](https://github.com/lyy289065406/ROenglishRE)
 - [GVG 宝箱物品掉率](./%E5%AE%A2%E6%88%B7%E7%AB%AF/RO%E8%B5%84%E6%96%99/GVG%E5%AE%9D%E7%AE%B1%E7%89%A9%E5%93%81%E6%8E%89%E7%8E%87.md)
 - [神器任务](./%E5%AE%A2%E6%88%B7%E7%AB%AF/RO%E8%B5%84%E6%96%99/%E7%A5%9E%E5%99%A8%E4%BB%BB%E5%8A%A1/)
 
