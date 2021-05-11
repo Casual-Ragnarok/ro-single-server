@@ -6,7 +6,7 @@
 
 - RO 脚本编辑指引手册：[【TXT 原版】](../doc/script_commands.txt)[【汉化版】](./%E6%9C%8D%E5%8A%A1%E7%AB%AF/RO%E8%B5%84%E6%96%99/RO%E8%84%9A%E6%9C%AC%E7%BC%96%E8%BE%91%E6%8C%87%E5%BC%95.md)
 - RO 脚本 预设函数/API 查询手册： [【离线版（推荐）】](./tools/%E6%9C%8D%E5%8A%A1%E7%AB%AF/RO%E8%B5%84%E6%96%99/Eathena.net%E8%84%9A%E6%9C%AC%E6%8C%87%E4%BB%A4%E5%A4%A7%E5%85%A8.chm)[【伪Javadoc版】](https://lyy289065406.github.io/api-online/javadoc/RO-EA-API/index.html)[【在线版】](http://ea.dj-yhn.com/)
-- [旧版服务端的未加密脚本](./tools/%E6%9C%8D%E5%8A%A1%E7%AB%AF/%E6%9C%AA%E5%8A%A0%E5%AF%86%E8%84%9A%E6%9C%AC/)
+- [旧版服务端的未加密脚本](./tools/%E6%9C%8D%E5%8A%A1%E7%AB%AF/%E6%9C%AA%E5%8A%A0%E5%AF%86%E8%84%9A%E6%9C%AC/v8.6.0-npc/)
 - [SC 状态一览](./%E6%9C%8D%E5%8A%A1%E7%AB%AF/RO%E8%B5%84%E6%96%99/SC%E7%8A%B6%E6%80%81%E4%B8%80%E8%A7%88%E8%A1%A8.md)
 
 
