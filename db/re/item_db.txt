@@ -12596,6 +12596,14 @@
 
 50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 50000,1; callfunc "F_MANUAL"; },{},{}
 
+55055,Ancient_Egg_Cap,古老的蛋壳帽,4,1,,1,,6,,1,0xFFFFFFFF,63,2,256,,0,0,101,{ autobonus2 "{ set #aaa,(#aaa + 1);  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}
+52112,Ancient_Guard,古老的铁盾,4,1,,1,,20,,1,0xFFFFFFFF,63,2,32,,0,0,1,{   },{},{}
+51202,Ancient_Knife,古老的短剑,5,50,,400,17,,1,1,0xFFFFFFFF,63,2,2,1,1,1,1,{  },{},{}
+52340,Ancient_Breast,古老的胸铠,4,89000,,500,,4,,1,0xFFFFFFFF,63,2,16,,10,1,0,{   },{},{}
+52502,Ancient_Hood,古老的连帽披肩,4,1000,,200,,4,,1,0xFFFFFFFF,63,2,4,,0,1,0,{   },{},{}
+52414,Ancient_Boots,古老的海滩鞋,4,1,,1,,5,,1,0xFFFFFFFF,63,2,64,,0,0,0,{    },{},{}
+52628,Ancient_Armlet,古老的手镯,4,400,,200,,0,,1,0xFFFFFFFF,63,2,136,,0,0,0,{    },{},{}
+54001,Ancient_Poring_Card,古老的波利卡片,6,20,,10,,,,,,,,16,,,,,{  },{},{}
 
 51530,Mjolnir_,雷神之锤 1S,5,20,,6000,350,,1,1,0x000444A2,63,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,50; bonus bStr,20; bonus bAspdRate,200; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000; },{},{}
 52383,Brynhild_,布伦希尔德 1S,4,20,,400,,120,,1,0xFFFFFFFF,63,2,16,,94,0,0,{ bonus bMdef,10; bonus bMaxHP,20*BaseLevel; bonus bMaxSP,5*BaseLevel; bonus2 bAddClass,Class_All,10; bonus bMatkRate,10; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
