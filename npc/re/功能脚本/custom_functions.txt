@@ -83,7 +83,6 @@ function	script	F_AUTOLOOT	{
 	return;
 }
 
-
 // RO手册
 //============================================================ 
 // - param: 无参数
@@ -222,6 +221,20 @@ function	script	F_MANUAL	{
 			bonus_script "{ bonus bAddMaxWeight,100000; }",@buff_time,512,0,SC_KNOWLEDGE;
 		}
 
+		if (@pid == $GOD_POWER[17]) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [火属性免疫] " + @buff_time + " 秒！";
+			dispbottom "附加 [火属性免疫] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bDefEle,Ele_Fire; }",@buff_time,512,0,SC_ARMOR_RESIST;
+		}
+
+		if (@pid == $GOD_POWER[18]) {
+			set @god_power,(@god_power + 1);
+			mes "附加 [毒属性免疫] " + @buff_time + " 秒！";
+			dispbottom "附加 [毒属性免疫] " + @buff_time + " 秒！",0xFF8000;
+			bonus_script "{ bonus bDefEle,Ele_Poison; }",@buff_time,512,0,SC_SLOWPOISON;
+		}
+
 		if (@god_power > 0) {
 			mes "^0000FF[" + @god_power + "] 项神赐体质？！难道是 ...^000000";
 			mes "神赐体质对人体伤害极大";
@@ -301,4 +314,22 @@ function	script	F_MANUAL	{
 	_TO_CLOSE:
 		close;
 		return;
+}
+
+
+
+
+// 修炼神赐体质01 - 完全回避
+//============================================================ 
+// - param: 无参数
+// - return: （达成修炼条件后）是否破坏当前装备
+function	script	F_TRAIN_GOD_POWER_01	{
+	// 被攻击时计数器 + 1
+	// TODO autobonus2 有 BUG, 当多个装备都设置了autobonus2脚本且 同时受到攻击时，计数器会脏读，第一件装备被攻击计数为1，后一件为2
+	// TODO 如何判断是什么魔物发起攻击？
+	autobonus2 "{ set #aaa,(#aaa + 1);  }",1000,BF_NORMAL|BF_SKILL,0;
+
+
+	// Todo 关于体质高速移动，可以在迷宫入口设触发点计时，1小时内攻破迷宫深处 BOSS
+	return;
 }
