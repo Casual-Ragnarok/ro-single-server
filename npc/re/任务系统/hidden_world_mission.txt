@@ -1,5 +1,5 @@
 
-
+// TODO ■■■
 moc_fild07,33,352,6	script	残破的远古石碑	406,{
 	
 	mes "[残破的远古石碑]";
@@ -163,20 +163,21 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 
 					case 2:
 						mes "得到一套不知道是谁的残破装备";
-						getitem 62270,1;
-						getitem 61201,1;
-						getitem 61202,1;
-						getitem 61550,1;
-						getitem 63104,1;
-						getitem 62501,1;
-						getitem 62301,1;
-						getitem 62328,1;
-						getitem 62101,1;
-						getitem 62401,1;
-						getitem 62612,1;
-						getitem 62627,1;
-						getitem 62211,1;
-						getitem 62295,1;
+						// TODO 达成条件后装备自爆
+						getitem 62270,1;	// 古老的 断针
+						getitem 61201,1;	// 古老的 破裂的剑
+						getitem 61202,1;	// 古老的 破旧之手里剑
+						getitem 61550,1;	// 古老的 撕裂的魔法书
+						getitem 63104,1;	// 古老的 残破的枪械残骸
+						getitem 62501,1;	// 古老的 破旧的围巾
+						getitem 62301,1;	// 古老的 破烂烂的衣服
+						getitem 62328,1;	// 古老的 破裂的铠甲一角
+						getitem 62101,1;	// 古老的 破裂的硬壳
+						getitem 62401,1;	// 古老的 被盗的凉鞋
+						getitem 62612,1;	// 古老的 破损的魔法石
+						getitem 62627,1;	// 古老的 破坏的令牌
+						getitem 62211,1;	// 古老的 破裂的王冠
+						getitem 62295,1;	// 古老的 支离破碎的布片
 						set #GOD_POWER_FLAG,2;
 						break;
 

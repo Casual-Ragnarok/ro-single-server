@@ -110,118 +110,116 @@ function	script	F_MANUAL	{
 		set @buff_time,3600;
 		set @pid,callfunc("F_PLAYER_ID");
 
-		set $GOD_POWER[3],@pid;
-
 		if (@pid == $GOD_POWER[1]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [完全回避] " + @buff_time + " 秒！";
 			dispbottom "附加 [完全回避] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",@buff_time,512,0,SC_INCFLEE2;
 		}	
 
 		if (@pid == $GOD_POWER[2]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [绝对命中] " + @buff_time + " 秒！";
 			dispbottom "附加 [绝对命中] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHit,999; bonus bPerfectHitRate,100; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bHit,999; bonus bPerfectHitRate,100; }",@buff_time,512,0,SC_INCHITRATE;
 		}
 
 		if (@pid == $GOD_POWER[3]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [绝对暴击] " + @buff_time + " 秒！";
 			dispbottom "附加 [绝对暴击] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bCritical,999; bonus bCriticalLong,999; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bCritical,999; bonus bCriticalLong,999; }",@buff_time,512,0,SC_CRIFOOD;
 		}
 
 		if (@pid == $GOD_POWER[4]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [无限攻击加速] " + @buff_time + " 秒！";
 			dispbottom "附加 [无限攻击加速] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAspd,58; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bAspd,199; }",@buff_time,512,0,SC_FLASHCOMBO;
 		}
 
 		if (@pid == $GOD_POWER[5]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [无视距离] " + @buff_time + " 秒！";
 			dispbottom "附加 [无视距离] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAtkRange,20; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bAtkRange,20; }",@buff_time,512,0,SC_TRUESIGHT;
 		}
 
 		if (@pid == $GOD_POWER[6]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [无咏唱] " + @buff_time + " 秒！";
 			dispbottom "附加 [无咏唱] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bFixedCast,-10000; bonus bVariableCast,-10000; bonus bNoCastCancel; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bFixedCast,-10000; bonus bVariableCast,-10000; bonus bNoCastCancel; }",@buff_time,512,0,SC_ADORAMUS;
 		}
 
 		if (@pid == $GOD_POWER[7]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [物理无效] " + @buff_time + " 秒！";
 			dispbottom "附加 [物理无效] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoWeaponDamage,100; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bNoWeaponDamage,100; }",@buff_time,512,0,SC_SHIELDSPELL_DEF;
 		}
 
 		if (@pid == $GOD_POWER[8]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [魔法无效] " + @buff_time + " 秒！";
 			dispbottom "附加 [魔法无效] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoMagicDamage,100; bonus bNoMiscDamage,100; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bNoMagicDamage,100; bonus bNoMiscDamage,100; }",@buff_time,512,0,SC_SHIELDSPELL_MDEF;
 		}
 
 		if (@pid == $GOD_POWER[9]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [物理反射] " + @buff_time + " 秒！";
 			dispbottom "附加 [物理反射] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bShortWeaponDamageReturn,100; bonus bLongWeaponDamageReturn,100; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bShortWeaponDamageReturn,100; bonus bLongWeaponDamageReturn,100; }",@buff_time,512,0,SC_REFLECTDAMAGE;
 		}
 
 		if (@pid == $GOD_POWER[10]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [魔法反射] " + @buff_time + " 秒！";
 			dispbottom "附加 [魔法反射] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bMagicDamageReturn,100; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bMagicDamageReturn,100; }",@buff_time,512,0,SC_KAITE;
 		}
 
 		if (@pid == $GOD_POWER[11]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [高速移动] " + @buff_time + " 秒！";
 			dispbottom "附加 [高速移动] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bSpeedRate,200; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bSpeedRate,200; }",@buff_time,512,0,SC_KAGEHUMI;
 		}
 
 		if (@pid == $GOD_POWER[12]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [极速回复] " + @buff_time + " 秒！";
 			dispbottom "附加 [极速回复] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHPrecovRate,1000; bonus bSPrecovRate,1000; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bHPrecovRate,1000; bonus bSPrecovRate,1000; }",@buff_time,512,0,SC_TENSIONRELAX;
 		}
 
 		if (@pid == $GOD_POWER[13]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [嗜血] " + @buff_time + " 秒！";
 			dispbottom "附加 [嗜血] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHPGainValue,1000; bonus bMagicHPGainValue,1000; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bHPGainValue,1000; bonus bMagicHPGainValue,1000; }",@buff_time,512,0,SC_BLOODYLUST;
 		}
 
 		if (@pid == $GOD_POWER[14]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [吸魔] " + @buff_time + " 秒！";
 			dispbottom "附加 [吸魔] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bSPGainValue,50; bonus bMagicSPGainValue,50; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bSPGainValue,50; bonus bMagicSPGainValue,50; }",@buff_time,512,0,SC_SPIRIT;
 		}
 
 		if (@pid == $GOD_POWER[15]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [无偿触媒] " + @buff_time + " 秒！";
 			dispbottom "附加 [无偿触媒] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoGemStone; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bNoGemStone; }",@buff_time,512,0,SC_INTOABYSS;
 		}
 
 		if (@pid == $GOD_POWER[16]) {
 			set @god_power,(@god_power + 1);
 			mes "附加 [极限负重] " + @buff_time + " 秒！";
 			dispbottom "附加 [极限负重] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAddMaxWeight,100000; }",@buff_time,512,0,SI_SWINGDANCE;
+			bonus_script "{ bonus bAddMaxWeight,100000; }",@buff_time,512,0,SC_KNOWLEDGE;
 		}
 
 		if (@god_power > 0) {
@@ -230,7 +228,7 @@ function	script	F_MANUAL	{
 			mes "^0000FF附加效果持续 1 hour，CD 24 hour^000000";
 
 			dispbottom "[" + @god_power + "] 项神赐体质？！难道是 ...",0xFFFF00;
-			dispbottom "因对人体伤害极大，附加效果仅持续 1 小时，尔后冷却 24 小时",0xFFFF00;
+			dispbottom "神赐体质对人体伤害极大，附加效果仅持续 1 小时，之后冷却 24 小时才可以重新附加",0xFFFF00;
 
 		} else {
 			mes "你不是天选之子！没有附加资格！";

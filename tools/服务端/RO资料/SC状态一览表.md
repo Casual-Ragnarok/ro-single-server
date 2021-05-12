@@ -273,7 +273,7 @@
 | 262 | SC_INCDEF | 防御提升 |
 | 263 | SC_INCBASEATK | 基础攻击力增加 |
 | 264 | SC_FASTCAST | 尚末使用 |
-| 265 | SC_MDEF_RATE | 动魔法防御倍率提升 |
+| 265 | SC_MDEF_RATE | 对魔法防御倍率提升 |
 | 266 | SC_HPREGEN | 尚末使用 |
 | 267 | SC_INCHEALRATE | 对恢复补品的性能提升 |
 | 268 | SC_PNEUMA | 光壁 |
