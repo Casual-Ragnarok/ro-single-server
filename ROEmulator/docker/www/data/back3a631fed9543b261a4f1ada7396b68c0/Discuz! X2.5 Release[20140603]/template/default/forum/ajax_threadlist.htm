@@ -1,0 +1,34 @@
+<!--{template common/header_ajax}-->
+	<script type="text/javascript">
+		if(!isUndefined(checkForumnew_handle)) {
+			clearTimeout(checkForumnew_handle);
+		}
+		<!--{if $threadlist}-->
+			if($('separatorline')) {
+				var table = $('separatorline').parentNode;
+			} else {
+				var table = $('forum_' + $fid);
+			}
+			var newthread = [];
+			<!--{eval $i = 0;}-->
+			<!--{loop $threadlist $thread}-->
+				newthread[{$i}] = {'tid':$thread[tid], 'thread': {'icn':{'className':'icn','val':'<a href="forum.php?mod=viewthread&tid={$thread[tid]}" target="_blank"><img src="{IMGDIR}/folder_new.gif"></a>'}<!--{if $_G['forum']['ismoderator']}-->, 'o':{'className':'o','val':'<input type="checkbox" value="{$thread[tid]}" name="moderate[]" onclick="tmodclick(this)">'}<!--{/if}--> ,'common':{'className':'new','val':'$thread[threadurl]'}, 'author':{'className':'by','val':'<cite>$thread[authorurl]</cite><em><span>{$thread[dateline]}</span></em>'}, 'num':{'className':'num','val':'<a href="forum.php?mod=viewthread&tid={$thread[tid]}">{$thread[replies]}</a><em>{$thread[views]}</em>'}, 'lastpost':{'className':'by','val':'<cite>$thread[lastposterurl]</cite><em><a href="forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost">{$thread[lastpost]}</a></em>'}}};
+				<!--{eval $i++;}-->
+			<!--{/loop}-->
+			removetbodyrow(table, 'forumnewshow');
+			for(var i = 0; i < newthread.length; i++) {
+				if(newthread[i].tid) {
+					addtbodyrow(table, ['tbody', 'newthread'], ['normalthread_', 'normalthread_'], 'separatorline', newthread[i]);
+				}
+			}
+			function readthread(tid) {
+				if($("checknewthread_"+tid)) {
+					$("checknewthread_"+tid).className = "";
+				}
+			}
+		<!--{elseif !$threadlist && $_GET['uncheck'] == 2}-->
+			showDialog('{lang none_newthread}', 'notice', null, null, 0, null, null, null, null, 3);
+		<!--{/if}-->
+		checkForumnew_handle = setTimeout(function () {checkForumnew('{$fid}', '{$_G[timestamp]}');}, checkForumtimeout);
+	</script>
+<!--{template common/footer_ajax}-->

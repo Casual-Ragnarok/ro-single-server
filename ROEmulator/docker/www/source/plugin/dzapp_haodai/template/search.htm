@@ -1,0 +1,233 @@
+<!--{template common/header}-->
+<link href="source/plugin/dzapp_haodai/images/public.css" rel="stylesheet" type="text/css" />
+<link href="source/plugin/dzapp_haodai/images/result.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="source/plugin/dzapp_haodai/images/jquery-1.8.0.min.js"></script>
+<script src="source/plugin/dzapp_haodai/images/daik.js"></script>
+<!-[if IE 6]>
+<script src="source/plugin/dzapp_haodai/images/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('img,div,a,span');
+</script>
+<![endif]->
+<style>
+#wp .wp {
+width: 960px !important;
+}
+.wp {
+width: 960px !important;
+}
+</style>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> <a href="{echo rewrite_index();}">{lang dzapp_haodai:apply_htm_1}</a> <em>&rsaquo;</em> {lang dzapp_haodai:search_htm_2}
+	</div>
+	<div class="y">
+		{$zones[$city]}<a href="plugin.php?id=dzapp_haodai:city" title="{lang dzapp_haodai:switch_city}">[{lang dzapp_haodai:switch_city}]</a>
+	</div>
+</div>
+<div id="ct" class="wp cl">
+	<div class="main">
+	  <div class="content"> 
+		<div class="result_top">
+		  <div class="heater_left">{lang dzapp_haodai:search_htm_3}<span>{$num}</span>{lang dzapp_haodai:search_htm_4}</div>
+		  <div class="heater_right">
+			<div class="text_dai">{lang dzapp_haodai:search_htm_5}</div>
+			<div class="kuan_dai" id="dkMoney">
+			  <div class="Tosearch_ts"></div>
+			  <div class="wydk_dai" onclick="iptxlCK(this)">
+				<div class="danw">
+				<input id="xuazn" class="wydk_ass" onfocus="JGPageFoc(this)" onblur="JGPageMoneyBlu()" onkeyup="JGPageKeyup(this)" {if $money}reval="{$money}" value="{$money}"{else}{if $_GET[xd_type] == 'goufang'}reval="100" value="100"{else}reval="10" value="10"{/if}{/if} type="text" />
+				</div></div>
+				<div class="wydk_xlk">
+			   <ul class="wydk_xiala xiala_no" id="xlk_ul">
+				<!--{if $_GET[xd_type] == 'goufang'}-->
+			<li><a onclick="JGPmoneySelect(this);" reval="30">30 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="50">50 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="80">80 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="100">100 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="200">200 {lang dzapp_haodai:search_htm_6}</a></li>
+				<!--{elseif $_GET[xd_type] == 'gouche'}-->
+			<li><a onclick="JGPmoneySelect(this);" reval="10">10 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="15">15 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="20">20 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="30">30 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="50">50 {lang dzapp_haodai:search_htm_6}</a></li>
+				<!--{elseif $_GET[xd_type] == 'qiye'}-->
+			<li><a onclick="JGPmoneySelect(this)" reval="10">10 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="20">20 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="30">30 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="50">50 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="100">100 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="200">200 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="500">500 {lang dzapp_haodai:search_htm_6}</a></li>
+				<!--{elseif $_GET[xd_type] == 'xiaofei'}-->
+			<li><a onclick="JGPmoneySelect(this)" reval="5">5 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="10">10 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="15">15 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="20">20 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="25">25 {lang dzapp_haodai:search_htm_6}</a></li>
+			<li><a onclick="JGPmoneySelect(this)" reval="30">30 {lang dzapp_haodai:search_htm_6}</a></li>
+				<!--{/if}-->
+		  </ul>
+		</div>
+			</div>
+			
+			<div class="text_dai">{lang dzapp_haodai:search_htm_29}</div>
+			<div class="kuan_dai">
+			  <div class="Tosearch_ts"></div>
+			  <div class="wydk_dai" onclick="iptxlCK(this)">
+			  <div class="geyue" id="time_dw">
+				<input id="qixan" class="wydk_ass" onfocus="JGPageFoc(this)" onblur="JGPageTimeBlu()" onkeyup="JGPageKeyup(this)" name="" {if $month}reval="{$month}" value="{$month}"{else}{if $_GET[xd_type] == 'goufang'}reval="240" value="240"{else}reval="12" value="12"{/if}{/if} type="text" />
+				</div></div>
+				<div class="wydk_xlk">
+			   <ul class="wydk_xiala xiala_no" id="qixan_ul">
+				<!--{if $_GET[xd_type] == 'goufang'}-->
+			<li><a onclick="JGPmonthSelect(this)" reval="36" s='3'>3 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="60" s='5'>5 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="120" s='10'>10 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="180" s='15'>15 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="240" s='20'>20 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="300" s='25'>25 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="360" s='30'>30 {lang dzapp_haodai:apply_htm_197}</a></li>
+				<!--{elseif $_GET[xd_type] == 'gouche'}-->
+			<li><a onclick="JGPmonthSelect(this)" reval="12" s='1'>1 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="24" s='2'>2 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="36" s='3'>3 {lang dzapp_haodai:apply_htm_197}</a></li>
+				<!--{elseif $_GET[xd_type] == 'qiye'}-->
+			<li><a onclick="JGPmonthSelect(this)" class="dw_month" reval="6" s='6'>6 {lang dzapp_haodai:apply_htm_199}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="12" s='1'>1 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" class="dw_month" reval="18" s='18'>18 {lang dzapp_haodai:apply_htm_199}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="24" s='2'>2 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="36" s='3'>3 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="60" s='5'>5 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="120" s='10'>10 {lang dzapp_haodai:apply_htm_197}</a></li>
+				<!--{elseif $_GET[xd_type] == 'xiaofei'}-->
+			<li><a onclick="JGPmonthSelect(this)" class="dw_month" reval="3" s='3'>3 {lang dzapp_haodai:apply_htm_199}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" class="dw_month" reval="6" s='6'>6 {lang dzapp_haodai:apply_htm_199}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" class="dw_month" reval="10" s='10'>10 {lang dzapp_haodai:apply_htm_199}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="12" s='1'>1 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="24" s='2'>2 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="36" s='3'>3 {lang dzapp_haodai:apply_htm_197}</a></li>
+			<li><a onclick="JGPmonthSelect(this)" reval="48" s='4'>4 {lang dzapp_haodai:apply_htm_197}</a></li>
+				<!--{/if}-->
+		  </ul>
+		</div>
+			</div>
+			<div class="sosu hd_fl"><input type="button" value="{lang dzapp_haodai:search_htm_54}"  onclick="PageSearch('{$_G[siteurl]}plugin.php?id=dzapp_haodai&action=search&xd_type={$_GET[xd_type]}')" class="jgss"></div>
+			<div class="clear"></div>
+		  </div>
+		</div>
+		<div class="box">
+		  <div class="tiaojian"> <span><a href="{$theurl}&allremove=1">{lang dzapp_haodai:search_htm_55}</a></span>
+			<ul class="sx">
+			  <li class="sx1">{lang dzapp_haodai:search_htm_56}</li>
+			  <!--{loop $chosen $value}-->
+			  <a href="{$theurl}&remove={$value[key]}"><li class="sx2">$value[name]</li></a>
+			  <!--{/loop}-->
+			</ul>
+		  </div>
+			<!--{loop $filter[filter] $key $value}-->
+			<ul class="jglis{if $key == 0} mt7{/if}">
+			<li class="jglistit">$value[name]{lang dzapp_haodai:search_htm_57}</li>
+			<!--{loop $filter[filter][$key][options] $value2}-->
+			<li class="lis1"><a href="{$filter[filter][$key][link]}&{$filter[filter][$key][key]}={$value2[val]}" class="{if $_GET[$filter[filter][$key][key]] == {$value2[val]}}co3 bold{else}hd_blue{/if}">$value2[name]</a></li>
+			<!--{/loop}-->
+			</ul>
+			<!--{/loop}-->
+		</div>
+		<div class="detail">
+		  <div class="deta">
+			<ul class="deta_right">
+			<a href="{$theurl_without_sort}&grade=0"><li{if !$_GET[grade] && !$_GET[total_interest] && !$_GET[month_repay]} class="dfh"{/if}>{lang dzapp_haodai:search_htm_58}</li></a>
+			<a href="{$theurl_without_sort}&total_interest=1"><li class="arrt{if $_GET[total_interest]} dfh{/if}">{lang dzapp_haodai:search_htm_59}</li></a>
+			<a href="{$theurl_without_sort}&month_repay=1"><li class="arrt{if $_GET[month_repay]} dfh{/if}">{lang dzapp_haodai:calc_chedai_htm_27}</li></a>
+			<a href="{$theurl_without_sort}&grade=1"><li class="arrt{if $_GET[grade]} dfh{/if}">{lang dzapp_haodai:search_htm_61}</li></a>
+			<div class="clear"></div>
+			</ul>
+			<div class="clear"></div>
+		  </div>
+		  <div class="matter">
+			<div class="ma_title">
+			  <div class="cona01">{lang dzapp_haodai:search_htm_62}/{lang dzapp_haodai:search_htm_63}</div>
+			  <div class="cona02"><span>{lang dzapp_haodai:search_htm_64}/{lang dzapp_haodai:calc_debj_htm_14}</span>
+				<div class="wen">
+				<div class="wenhao"><img src="source/plugin/dzapp_haodai/images/wen.png" width="16" height="16" /></div>
+				<div class="ceng">
+				  <div class="cnr">
+					<p class="ctit">{lang dzapp_haodai:search_htm_66}</p>
+					<p>{lang dzapp_haodai:search_htm_67}</p>
+					<p class="ctit">{lang dzapp_haodai:search_htm_68}</p>
+					<p>{lang dzapp_haodai:search_htm_69}</p>
+				  </div>
+				</div>
+				</div>
+			  </div>
+			  <div class="cona03"><span>{lang dzapp_haodai:search_htm_70}</span>
+				<div class="wen"><div class="wenhao"><img src="source/plugin/dzapp_haodai/images/wen.png" width="16" height="16" /></div>
+				 <div class="ceng">
+				   <div class="cnr">
+					 <p class="ctit">{lang dzapp_haodai:search_htm_71}</p>
+					 <p>{lang dzapp_haodai:search_htm_72}"{lang dzapp_haodai:search_htm_73}"{lang dzapp_haodai:search_htm_74}"{lang dzapp_haodai:search_htm_75}"{lang dzapp_haodai:search_htm_74}"{lang dzapp_haodai:search_htm_77}"{lang dzapp_haodai:search_htm_78}</p>
+					 <p class="ctit">{lang dzapp_haodai:search_htm_79}</p>
+					 <p>{lang dzapp_haodai:search_htm_80}"{lang dzapp_haodai:search_htm_81}"{lang dzapp_haodai:search_htm_74}"{lang dzapp_haodai:search_htm_83}"{lang dzapp_haodai:search_htm_74}"{lang dzapp_haodai:search_htm_85}"{lang dzapp_haodai:search_htm_86}</p>
+					 <p class="ctit">{lang dzapp_haodai:search_htm_87}</p>
+					 <p>{lang dzapp_haodai:search_htm_88}</p>
+				   </div>
+				 </div>
+				</div>
+			  </div>
+			  <div class="cona04">{lang dzapp_haodai:search_htm_89}</div>
+			  <div class="cona05">{lang dzapp_haodai:search_htm_90}</div>
+			</div>
+			<!--{loop $items $key $value}-->
+			<div class="ma_nr">
+			  <div class="con01"><span><a href="#"><img src="{$value[bank_img]}" width="37" height="41" /></a></span><samp>
+				<p class="co3 jqtap" style="font-weight:bold;"><a href="{echo rewrite_view_apply('view',$value[id],$_GET[xd_type],$month,$money);}">{$value[bank_name]}-{$value[name]}</a></p>
+				<p class="jqtap co9"><a href="#">{$value[assure_type_name]}</a></p>
+				<p class="Pstars">
+				<span class="hdstars stars_small"  style="display:inline"><em class="hdstars Sval_{$value[star]}"></em></span>
+				<span class="small_tc" id="xians" style="display:none">"{lang dzapp_haodai:search_htm_91}"</span>
+				</p>
+				</samp></div>
+			  <div class="con02">
+				<div class="wan co6">
+				  <p><span class="ori" style="font-weight:bold;">{$value[data][total_interest]}{lang dzapp_haodai:search_htm_6}</span> / {$value[money]}{lang dzapp_haodai:search_htm_6}</p>
+				  <p class="jqtap co9">{lang dzapp_haodai:search_htm_94}</p>
+				</div>
+			  </div>
+			  <div class="con03">
+				  <p class="co6 jqtap">{$value[refund_type_name]} <span class="ori" style="font-weight:bold;">{$value[data][month_repay]}</span>{lang dzapp_haodai:apply_htm_39}/{lang dzapp_haodai:apply_htm_199}</p>
+				<p class="co6 jqtap">{lang dzapp_haodai:search_htm_97}{$value[year_rate]}%</p>
+			  </div>
+			  <div class="con04">
+				<!--{if !empty($value[profession])}-->
+				<!--{loop $value[professions] $value2}-->
+				<p class="co9 jqtap">$value2</p>
+				<!--{/loop}-->
+				<!--{else}-->
+				<p class="co9 jqtap">{lang dzapp_haodai:search_htm_98}</p>
+				<!--{/if}-->
+				<!--{if $value[more]}-->
+				<p class="sfa"><a href="{echo rewrite_view_apply('view',$value[id],$_GET[xd_type],$month,$money);}">{lang dzapp_haodai:search_htm_99}</a></p>
+				<!--{/if}-->
+			  </div>
+			  <div class="con05">
+				<ul class="icon">
+				<!--{loop $value[tags] $value2}-->
+				<li><a style="background-image:url('{$value2[img]}');" class="png_img" title="{$value2[tag_name]}"></a></li>
+				<!--{/loop}-->
+				  <div class="clear"></div>
+				</ul>
+				  <div class="anniu"><a target="_blank;" href="{echo rewrite_view_apply('view',$value[id],$_GET[xd_type],$month,$money);}" title="{$value[bank_name]}_{$value[name]}" class="ck" id="detail_{$value[id]}">{lang dzapp_haodai:search_htm_100}</a></div>
+			  </div>
+			  <div class="clear"></div>
+			</div>
+			<!--{/loop}-->
+			{$multipage}
+		  </div>
+		 <div class="clear"></div>
+		</div>
+	  </div>
+	</div>
+</div>
+<!--{template common/footer}-->

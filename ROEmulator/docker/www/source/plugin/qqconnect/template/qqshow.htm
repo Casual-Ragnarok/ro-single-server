@@ -1,0 +1,38 @@
+<div class="mtw bm2 cl">
+	<!--{if $_G['member']['conisbind']}-->
+		<div class="bm2_b bw0 hm" style="padding-top: 10px;">
+			$qqshow
+
+			<form action="home.php?mod=spacecp&ac=plugin&id=qqconnect:qqshow&connectsubmit=yes" id="qqshowform" method="post" autocomplete="off" onsubmit="ajaxpost('qqshowform', 'return_qqshowform', 'return_qqshowform');return false;">
+				<input type="hidden" name="formhash" value="{FORMHASH}">
+				<div class="mtm">
+					<!--{if !$_G['member']['conisqqshow']}-->
+						<input type="hidden" name="do" value="open" />
+						<button type="submit" name="connectsubmit" value="yes" class="pn pnc"><strong>{lang qqconnect:connect_config_qqshow_btn_open}</strong></button>
+					<!--{else}-->
+						<input type="hidden" name="do" value="close" />
+						<button type="submit" name="connectsubmit" value="yes" class="pn pnc"><strong>{lang qqconnect:connect_config_qqshow_btn_close}</strong></button>
+						<p class="mtm">
+							<a href="http://show.qq.com/?from=discuz" target="_blank" class="xi2">{lang qqconnect:connect_config_qqshow_btn_tips}</a>
+						</p>
+					<!--{/if}-->
+				</div>
+			</form>
+			<span id="return_qqshowform"></span>
+		</div>
+	<!--{else}-->
+		<div class="bm2_b bw0 hm" style="padding-top: 40px;">
+			<a href="{$_G['connect']['loginbind_url']}&isqqshow=yes"><img src="{IMGDIR}/qq_bind.gif" /></a>
+			<p class="mtn xg1">{lang qqconnect:connect_config_bind}</p>
+		</div>
+	<!--{/if}-->
+	<div class="bm2_b bm2_b_y bw0">
+		<dl class="xld">
+			<h2 class="xi1 xs2">{lang qqconnect:connect_config_qqshow_title}</h2>
+			<dt></dt>
+			<dd class="xg1">{lang qqconnect:connect_config_qqshow_desc1}</dd>
+			<dt><!--{if !$_G['member']['conisqqshow']}-->{lang qqconnect:connect_config_qqshow_desc3}<!--{/if}--></dt>
+			<dd class="xg1"></dd>
+		</dl>
+	</div>
+</div>

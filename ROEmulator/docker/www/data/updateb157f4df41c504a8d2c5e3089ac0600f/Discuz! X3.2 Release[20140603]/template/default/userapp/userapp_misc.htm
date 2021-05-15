@@ -1,0 +1,43 @@
+<!--{template common/header_ajax}-->
+
+	<!--{if $_GET['action'] == 'menu'}-->
+		<!--{if isset($list[1]) && $list[1]}-->
+		<ul class="mrec">
+			<!--{loop $list[1] $app}-->
+			<li>
+				<a href="$app['url']" target="_top">
+					<img src="$app['pic']"><br/>
+					$app[name]
+				</a>
+				<span class="icon_hotapp">{lang recommend_unit}</span>
+			</li>
+			<!--{/loop}-->
+		</ul>
+		<!--{/if}-->
+		<ul class="uused">
+		<!--{loop $usedList $app}-->
+		<li>
+			<a href="$app['url']" target="_top">
+				<img src="$app['pic']"><br/>
+				$app[name]
+			</a>
+		</li>
+		<!--{/loop}-->
+		</ul>
+		<ul class="adv">
+			<li class="icon_myapp"><a href="userapp.php?#/userapp/list" title="{lang myapp}">{lang myapp}</a></li>
+			<li class="icon_myapp icon_appcenter"><a href="userapp.php" title="{lang appcenter}">{lang appcenter}</a></li>
+			<li class="cl"></li>
+			<!--{if isset($list[3]) && $list[3]}-->
+			<!--{loop $list[3] $app}-->
+			<li class="ad_img hm">
+				<a href="$app['url']" target="_top">
+					<img src="$app['pic']"><br/>
+					$app[name]
+				</a>
+			</li>
+			<!--{/loop}-->
+			<!--{/if}-->
+		</ul>
+	<!--{/if}-->
+<!--{template common/footer_ajax}-->

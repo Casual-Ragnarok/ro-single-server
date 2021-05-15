@@ -1,0 +1,147 @@
+<!--{eval
+	$_G[home_tpl_titles] = array(lang('userapp/template', 'app_management'));
+}-->
+<!--{template common/header}-->
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>$_G[setting][navs][5][navname]
+	</div>
+</div>
+
+<!--{if $_GET['ac'] == 'deleteapp'}-->
+
+	<h3 class="flb">
+		<em id="return_$_GET[handlekey]">{lang remove_app}</em>
+		<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_GET[handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span><!--{/if}-->
+	</h3>
+	<form id="editcommentform_{$cid}" name="editcommentform_{$cid}" method="post" autocomplete="off" action="userapp.php?mod=manage&my_suffix=%2Fuserapp%2Funinstall%3FappId%3D$_GET[appid]">
+		<input type="hidden" name="referer" value="{echo dreferer()}" />
+		<input type="hidden" name="delappsubmit" value="true" />
+		<!--{if $_G[inajax]}--><input type="hidden" name="handlekey" value="$_GET[handlekey]" /><!--{/if}-->
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<div class="c">
+			{lang remove_app_message}
+		</div>
+		<p class="o pns">
+			<button type="submit" name="delappsubmit_btn" id="delappsubmit_btn" value="true" class="pn pnc"><strong>{lang determine}</strong></button>
+		</p>
+	</form>
+
+<!--{elseif $_GET['ac'] == 'menu'}-->
+
+<div id="ct" class="wp cl">
+	<div class="mn">
+		<div class="bm bw0">
+			<h1 class="mt bbs"><img alt="app" src="static/image/common/appsetting.gif" alt="appsetting" class="vm" /> {lang app_management}</h1>
+			<div class="myset cl">
+				<div class="mgapp" id="applistcontent">
+					<h3 class="pbn bbda cl">
+						<a href="userapp.php?mod=manage&my_suffix=%2Fapp%2Flist" class="y xg1 xw0">{lang app_add}</a>
+						{lang my}$_G[setting][navs][5][navname]
+					</h3>
+					<!--{if $my_userapp}-->
+						<script type="text/javascript" src="{$_G[setting][jspath]}home_drag.js?{VERHASH}"></script>
+						<form id="userappform" name="userappform" method="post" autocomplete="off" action="userapp.php?mod=manage&ac=menu">
+							<input type="hidden" name="formhash" value="{FORMHASH}" />
+							<input type="hidden" name="ordersubmit" value="true" />
+							<div id="Drags0">
+								<div id="DragContainer0">
+									<!--{loop $my_userapp $key $value}-->
+									<div id="$key" class="apps dragable">
+										<span class="y">
+											<a href="userapp.php?mod=manage&my_suffix=%2Fuserapp%2FmodifyPrivacy%3FappId%3D$value[appid]">{lang edit_settings}</a>
+											<a href="userapp.php?mod=manage&ac=deleteapp&appid=$value[appid]" id="delete_$value[appid]" onclick="showWindow(this.id, this.href, 'get', 0)">{lang remove}</a>
+										</span>
+										<img {if $value[icon]}src="$value[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$value[appid]'"{else} src="http://appicon.manyou.com/icons/$value[appid]"{/if} />
+										<a href="userapp.php?mod=app&id=$value[appid]">$value[appname]</a>(<a href="userapp.php?mod=manage&my_suffix=%2Fuserapp%2Fabout%3FappId%3D$value[appid]" target="_blank">{lang introduction}</a>)
+										<input type="hidden" name="order[]" value="$value[appid]">
+									</div>
+									<!--{/if}-->
+								</div>
+							</div>
+							<p class="mtm mbm">
+								{lang left_menu_view_num}
+								<select name="menunum" class="ps">
+									<option value="5"$menunum[5]>5</option>
+									<option value="10"$menunum[10]>10</option>
+									<option value="15"$menunum[15]>15</option>
+									<option value="20"$menunum[20]>20</option>
+									<option value="25"$menunum[25]>25</option>
+									<option value="30"$menunum[30]>30</option>
+									<option value="999"$menunum[999]>{lang all}</option>
+								</select>
+							</p>
+							<p class="pns">
+								<button type="submit" name="ordersubmitbtn" class="pn"><em>{lang save_settings}</em></button>
+							</p>
+						</form>
+						<script type="text/javascript">init_drag2();</script>
+					<!--{/if}-->
+				</div>
+			</div>
+
+			<div class="note xg1 mtw">
+				<h4>{lang use_assistant}</h4>
+				{lang user_assistant_message}
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--{else}-->
+<div id="ct" class="wp cl">
+	<div class="mn">
+		<script type="text/javascript" src="http://static.manyou.com/scripts/my_iframe.js"></script>
+		<script language="javascript">
+		var prefixURL = "$my_prefix";
+		var suffixURL = "$my_suffix";
+		var queryString = '';
+		var url = "{$url}";
+		var oldHash = null;
+		var timer = null;
+		var server = new MyXD.Server("ifm0");
+		server.registHandler('iframeHasLoaded');
+		server.registHandler('setTitle');
+		server.start();
+
+		function iframeHasLoaded(ifm_id) {
+				MyXD.Util.showIframe(ifm_id);
+				document.getElementById('loading').style.display = 'none';
+		}
+
+		function  htmlspecialchars_decode(string) {
+			string = string.toString();
+			string = string.replace(/&amp;/g, '&');
+			string = string.replace(/&lt;/g, '<');
+			string = string.replace(/&gt;/g, '>');
+			string = string.replace(/&quot;/g, '"');
+			string = string.replace(/&#039;/g, "'");
+			return string;
+
+		}
+
+		function setTitle(x) {
+			<!--{eval $my_site_name=dhtmlspecialchars($_G['setting']['sitename'], ENT_QUOTES);}-->
+			var my_site_name = htmlspecialchars_decode('{$my_site_name}');
+
+			x = htmlspecialchars_decode(x);
+			document.title = x + ' - <!--{if $space}--><!--{eval echo daddslashes($space[username])}--> - <!--{/if}-->' + my_site_name + ' - Powered by UCenter Home';
+		}
+
+		</script>
+		<iframe id="ifm0" frameborder="0" width="100%" scrolling="no" height="810" style="position: absolute; top: -5000px; left: -5000px;" src="{$url}"></iframe>
+
+		<div id="mx2note" style="display: none; padding: 150px 0; text-align: center; background-color: #FFFFBF; color: #DB0000; letter-spacing: 1px;">
+			{lang no_maxthon2_message}
+		</div>
+		<div id="loading" style="display: block; padding: 100px 0; text-align: center; color: #999;">
+			<img src="{IMGDIR}/loading.gif" alt="loading..." class="vm" /> {lang page_loading}
+		</div>
+	</div>
+	
+</div>
+<!--{if $_G['group']['radminid'] == 1}-->
+	<!--{eval helper_manyou::checkupdate();}-->
+<!--{/if}-->
+<!--{/if}-->
+<!--{template common/footer}-->

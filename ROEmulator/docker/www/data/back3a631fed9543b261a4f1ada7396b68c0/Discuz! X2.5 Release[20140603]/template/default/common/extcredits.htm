@@ -1,0 +1,6 @@
+<!--{template common/header}-->
+<ul>
+	<!--{loop $_G['setting']['extcredits'] $extcreditid $extcredit}--><!--{if empty($extcredit['hiddeninheader'])}--><li>{$extcredit[img]} $extcredit[title]: <span id="hcredit_$extcreditid"><!--{echo getuserprofile('extcredits'.$extcreditid);}-->{$extcredit[unit]}</span></li><!--{/if}--><!--{/loop}-->
+	<!--{hook/spacecp_credit_extra}-->
+</ul>
+<!--{template common/footer}-->

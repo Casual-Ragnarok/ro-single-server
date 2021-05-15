@@ -1,0 +1,4 @@
+/** forum::index, forum::forumdisplay **/
+.fl_g_hot { height: 18px; overflow: hidden; }
+	.fl_g_hot strong, .fl_g_hot a { float: left; margin-right: 8px; font-weight: 400; white-space: nowrap; }
+/** end **/

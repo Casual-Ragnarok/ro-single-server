@@ -1,0 +1,146 @@
+<!--{block haodai_html}-->
+<div>
+<!--{if $haodaistyle =='1'}-->
+<style type="text/css">
+.haodai_ads {}
+
+.haodai_title { margin-bottom:10px;}
+	.haodai_title .z {font-size:14px; font-weight:bold;}
+	.haodai_title .y { float:right; font-size:12px; font-weight:normal}
+	
+.haodai_tab .tb { padding:0 10px; margin:0 0 10px 0}
+	.haodai_tab .tb li.y { float:right; color:#555}
+	.haodai_tab .tb li.y a { display:inline; padding:0}
+.haodai_c {}
+.haodai_c dl { padding-left:80px; margin-bottom:5px; line-height:23px}
+	.haodai_c dt { float:left; width:70px; margin-left:-80px; text-align:right; font-weight:bold; color:#888}
+	.haodai_c dd { float:left; width:100%}
+	.haodai_c dd a { white-space:nowrap; margin:0 15px 0 0; float:left}
+
+.haodai_news { padding:0 10px; margin-bottom:10px; height:72px; overflow:hidden}
+	.haodai_news ul li { height:24px; line-height:24px; width:50%; overflow:hidden; float:left; background:url(./static/image/common/slisticon.gif) no-repeat 0 50%;}
+	.haodai_news ul li a { padding-left:12px; color:#666}
+	.haodai_news ul li a:hover { color:#F30; text-decoration:underline}
+</style>
+
+<div class="cl bm fl haodai_ads">
+	<div class="cl bm_h haodai_title">
+    	<div class="z">{lang dzapp_haodai:hooklang_1}</div>
+        <div class="y">
+            <span class="o"><img src="{IMGDIR}/collapsed_no.gif" alt="{lang spread}" onclick="toggle_collapse('haodai_adsbox');" /></span>
+        	<a href="plugin.php?id=dzapp_haodai&action=calc&type=fd" target="_blank" class="xi2">{lang dzapp_haodai:calc_chedai_htm_3}</a>
+            <span class="pipe">|</span>
+        	<a href="plugin.php?id=dzapp_haodai&action=calc&type=chedai" target="_blank" class="xi2">{lang dzapp_haodai:calc_chedai_htm_4}</a>
+            <span class="pipe">|</span>
+        	<a href="plugin.php?id=dzapp_haodai&action=calc&type=secondhand" target="_blank" class="xi2">{lang dzapp_haodai:calc_chedai_htm_9}</a>
+        </div>
+    </div>
+    <div id="haodai_adsbox">
+    <!--{if $dkgl_article}-->
+        <div class="haodai_news cl">
+            <ul>
+                <!--{loop $dkgl_article $value}-->
+                <li><a href="plugin.php?id=dzapp_haodai&action=news&aid=$value[id]" target="_blank">$value[title]</a></li>
+                <!--{/loop}-->
+            </ul>
+        </div>
+   	<!--{/if}-->
+    <!--{if $goufang && $xiaofei && $gouche}-->
+        <div class="haodai_tab">
+            <ul class="cl tb">
+            <li class="a" id="haodai_tab_1" onmouseover="switchTab('haodai_tab', 1, 3, 'a')"><a href="plugin.php?id=dzapp_haodai&action=search&xd_type=goufang&money=200&month=12" target="_blank">{lang dzapp_haodai:main_htm_16}</a></li>
+            <li id="haodai_tab_2" onmouseover="switchTab('haodai_tab', 2, 3, 'a')"><a href="plugin.php?id=dzapp_haodai&action=search&xd_type=xiaofei" target="_blank">{lang dzapp_haodai:hooklang_7}</a></li>
+            <li id="haodai_tab_3" onmouseover="switchTab('haodai_tab', 3, 3, 'a')"><a href="plugin.php?id=dzapp_haodai&action=search&money=15&month=24&first_pay=3&xd_type=gouche" target="_blank">{lang dzapp_haodai:main_htm_15}</a></li>
+            <li class="y">{lang dzapp_haodai:hooklang_2}</li>
+            </ul>
+            
+            <div class="haodai_c">
+                <div id="haodai_tab_c_1">
+                    <!--{loop $goufang $value}-->
+                    <dl class="cl">
+                    <dt>$value[name]</dt>
+                    <dd>
+                        <!--{loop $value[options] $v}-->
+                        <a href="plugin.php?id=dzapp_haodai&action=search&money=100&month=240&xd_type=goufang&{$value[key]}=$v[val]" class="xi2" target="_blank">$v[name]</a>
+                        <!--{/loop}-->
+                    </dd>
+                    </dl>
+                    <!--{/loop}-->
+                </div>
+                <div id="haodai_tab_c_2" style="display:none">
+                    <!--{loop $xiaofei $value}-->
+                    <dl class="cl">
+                    <dt>$value[name]</dt>
+                    <dd>
+                        <!--{loop $value[options] $v}-->
+                        <a href="plugin.php?id=dzapp_haodai&action=search&money=10&month=12&xd_type=xiaofei&{$value[key]}=$v[val]" class="xi2" target="_blank">$v[name]</a>
+                        <!--{/loop}-->
+                    </dd>
+                    </dl>
+                    <!--{/loop}-->
+                </div>
+                <div id="haodai_tab_c_3" style="display:none">
+                    <!--{loop $gouche $value}-->
+                    <dl class="cl">
+                    <dt>$value[name]</dt>
+                    <dd>
+                        <!--{loop $value[options] $v}-->
+                        <a href="plugin.php?id=dzapp_haodai&action=search&money=10&month=12&xd_type=gouche&{$value[key]}=$v[val]" class="xi2" target="_blank">$v[name]</a>
+                        <!--{/loop}-->
+                    </dd>
+                    </dl>
+                    <!--{/loop}-->
+                </div>
+            </div>
+        </div>
+    <!--{/if}-->
+    </div>
+</div>
+<!--{elseif $haodaistyle =='2'}-->
+	<style type="text/css">
+	.haodaiads_box { margin:10px 0;}
+	.haodaiads_box .cr_h { height:34px; line-height:34px; background:#f5f5f5; padding:0 10px;}
+	.haodaiads_box .cr_h h2 { font-size:14px; font-weight:bold}
+	.haodai_newslist {margin:10px 0;}
+		.haodai_newslist ul { height:60px; overflow:hidden}
+		.haodai_newslist li { height:20px; line-height:20px; width:33%; overflow:hidden; float:left; background:url(./static/image/common/slisticon.gif) no-repeat 0 50%;}
+		.haodai_newslist ul li a { padding:0 10px 0 12px; color:#666; }
+		.haodai_newslist ul li a:hover { color:#F30; text-decoration:underline}
+	.haodai_tags {}
+		.haodai_tags a { padding:5px 10px; background:#eee; float:left; margin:0 10px 5px 0;}
+		.haodai_tags a.cr_1 { background:#0084A4; color:#fff}
+		.haodai_tags a.cr_5 ,.haodai_tags a.cr_6 { background:#FB9A04; color:#fff}
+		.haodai_tags a.cr_7 ,.haodai_tags a.cr_4 { background:#69F; color:#fff}
+	</style>
+	
+    <div class="cl haodaiads_box">
+    	<div class="cr_h">
+        <span class="y">
+            <a href="plugin.php?id=dzapp_haodai&action=calc&type=fd" target="_blank" class="xi2">{lang dzapp_haodai:calc_chedai_htm_3}</a>
+            <span class="pipe">|</span>
+        	<a href="plugin.php?id=dzapp_haodai&action=calc&type=chedai" target="_blank" class="xi2">{lang dzapp_haodai:calc_chedai_htm_4}</a>
+            <span class="pipe">|</span>
+        	<a href="plugin.php?id=dzapp_haodai&action=calc&type=secondhand" target="_blank" class="xi2">{lang dzapp_haodai:calc_chedai_htm_9}</a>
+        </span>
+        <h2>{lang dzapp_haodai:hooklang_1}</h2>
+        </div>
+    	<div class="cl haodai_newslist">
+            <ul>
+            <!--{loop $haodai_article $value}-->
+                <li><a href="plugin.php?id=dzapp_haodai&action=news&aid=$value[id]" title="{$value[title]}" target="_blank">{$value[title]}</a></li>
+            <!--{/loop}-->
+            </ul>
+        </div>
+        <div class="cl haodai_tags">
+            <a href="plugin.php?id=dzapp_haodai&action=search&xd_type=goufang" target="_blank" class="cr_1">{lang dzapp_haodai:main_htm_16}</a>
+            <a href="plugin.php?id=dzapp_haodai&action=search&xd_type=xiaofei" target="_blank" class="cr_1">{lang dzapp_haodai:hooklang_7}</a>
+            <a href="plugin.php?id=dzapp_haodai&action=search&xd_type=gouche" target="_blank" class="cr_1">{lang dzapp_haodai:main_htm_15}</a>
+            <a href="plugin.php?id=dzapp_haodai&action=search&xd_type=goufang&fitsr_suite=2" target="_blank" class="cr_4">{lang dzapp_haodai:hooklang_3}</a>
+            <a href="plugin.php?id=dzapp_haodai&action=search&money=10&month=12&xd_type=xiaofei" target="_blank" class="cr_5">{lang dzapp_haodai:hooklang_4}</a>
+            <a href="plugin.php?id=dzapp_haodai&action=search&xd_type=xiaofei&has_house=1&credit_record=1" target="_blank" class="cr_6">{lang dzapp_haodai:hooklang_5}</a>
+            <a href="plugin.php?id=dzapp_haodai&action=search&xd_type=gouche&has_house=1" target="_blank" class="cr_7">{lang dzapp_haodai:hooklang_6}</a>
+        </div>
+    </div>
+<!--{/if}-->
+</div>
+<!--{/block}-->

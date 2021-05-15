@@ -1,0 +1,28 @@
+<!--{subtemplate common/header}-->
+<div id="ct" class="wp w cl">
+	<div class="mn mw">
+		<div class="blr">
+			<h3 class="flb" style="padding-left:0">
+				<em>{lang getpassword}</em>
+			</h3>
+			<form method="post" autocomplete="off" action="member.php?mod=getpasswd&uid=$uid&id=$hashid">
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<div class="c cl">
+					<div class="lgfm">
+						<label><em>{lang username}:</em>$member[username]</label>
+						<label><em>{lang new_password}:</em><input type="password" name="newpasswd1" size="25" class="txt" /></label>
+						<label><em>{lang new_password_confirm}:</em><input type="password" name="newpasswd2" size="25" class="txt" /></label>
+					</div>
+					<div class="lgf minf">
+						<h4>{lang login_guest}</h4>
+					</div>
+				</div>
+				<p class="fsb pns cl">
+					<em>&nbsp;</em>
+					<button class="pn pnc" type="submit" name="getpwsubmit" value="true"><span>{lang submit}</span></button>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<!--{subtemplate common/footer}-->

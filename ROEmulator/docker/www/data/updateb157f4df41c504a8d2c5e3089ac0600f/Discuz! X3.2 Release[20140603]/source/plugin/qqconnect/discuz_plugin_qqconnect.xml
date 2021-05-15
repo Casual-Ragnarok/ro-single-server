@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[QQ»¥Áª]]></item>
+			<item id="identifier"><![CDATA[qqconnect]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[qqconnect/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[1.18.2]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[connect]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[connect]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[28]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="2">
+					<item id="name"><![CDATA[admincp]]></item>
+					<item id="param"><![CDATA[ac=setting]]></item>
+					<item id="menu"><![CDATA[QQ»¥Áª]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="3">
+					<item id="name"><![CDATA[spacecp]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[QQ°ó¶¨]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[7]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="4">
+					<item id="name"><![CDATA[admincp]]></item>
+					<item id="param"><![CDATA[ac=service]]></item>
+					<item id="menu"><![CDATA[ÆäËû]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3.2]]></item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
+		<item id="enablefile"><![CDATA[switch.php]]></item>
+		<item id="disablefile"><![CDATA[switch.php]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="qqconnect_closed"><![CDATA[±§Ç¸£¬QQ»¥Áª¹¦ÄÜÉÐÎ´¿ªÆô]]></item>
+				<item id="connect_app_invalid"><![CDATA[±§Ç¸£¬QQ»¥Áª¹¦ÄÜÔÝÊ±²»¿ÉÓÃ]]></item>
+				<item id="connect_register_bind_already"><![CDATA[±§Ç¸£¬¸ÃÓÃ»§ÒÑ°ó¶¨¹ýÁíÒ»¸öQQÓÃ»§£¬ÎÞ·¨ÔÙ´Î°ó¶¨]]></item>
+				<item id="connect_register_uinlimit"><![CDATA[±§Ç¸£¬Ã¿¸öQQÕÊºÅÖ»ÄÜ×¢²á {limit} ¸öÕÊºÅ]]></item>
+				<item id="connect_register_closed"><![CDATA[QQ×¢²á¹¦ÄÜÒÑ¹Ø±Õ]]></item>
+				<item id="connect_register_bind"><![CDATA[°ó¶¨ÒÑÓÐÕÊºÅ]]></item>
+				<item id="connect_register_profile"><![CDATA[ÍêÉÆÕÊºÅÐÅÏ¢]]></item>
+                <item id="connect_get_access_token_failed"><![CDATA[±§Ç¸£¬µ±Ç°´æÔÚÍøÂçÎÊÌâ»ò·þÎñÆ÷·±Ã¦£¬ÇëÄúÉÔºòÔÙÊÔ¡£Ð»Ð»¡£]]></item>
+				<item id="connect_get_access_token_failed_code"><![CDATA[±§Ç¸£¬µ±Ç°´æÔÚÍøÂçÎÊÌâ»ò·þÎñÆ÷·±Ã¦£¬ÏêÏ¸´íÎó£º{codeMessage}£¬´íÎó´úÂë£º<a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>£¬ÇëÄúÉÔºòÔÙÊÔ¡£Ð»Ð»¡£]]></item>
+				<item id="connect_get_request_token_failed"><![CDATA[±§Ç¸£¬µ±Ç°´æÔÚÍøÂçÎÊÌâ»ò·þÎñÆ÷·±Ã¦£¬ÇëÄúÉÔºòÔÙÊÔ¡£Ð»Ð»¡£]]></item>
+                <item id="connect_get_request_token_failed_code"><![CDATA[±§Ç¸£¬µ±Ç°´æÔÚÍøÂçÎÊÌâ»ò·þÎñÆ÷·±Ã¦£¬ÏêÏ¸´íÎó£º{codeMessage}£¬´íÎó´úÂë£º<a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>£¬ÇëÄúÉÔºòÔÙÊÔ¡£Ð»Ð»¡£]]></item>
+				<item id="connect_register_bind_uin_already"><![CDATA[±§Ç¸£¬¸ÃQQÓÃ»§ÒÑ°ó¶¨ÁË±¾Õ¾µÄÁíÒ»¸öÓÃ»§£¬ÎÞ·¨ÔÙ´Î°ó¶¨]]></item>
+				<item id="connect_config_success"><![CDATA[QQ»¥ÁªÉèÖÃ¸üÐÂ³É¹¦]]></item>
+				<item id="connect_login_first"><![CDATA[ÇëÏÈÊ¹ÓÃQQ»¥ÁªµÇÂ¼ÔÙ½øÐÐ´Ë²Ù×÷]]></item>
+				<item id="connect_config_unbind_failed"><![CDATA[±§Ç¸£¬½â°óÊ§°Ü£¬ÇëÖØÊÔÊ¹ÓÃQQµÇÂ¼ºóÔÙ½øÐÐ½â°ó²Ù×÷]]></item>
+                <item id="connect_config_unbind_busy"><![CDATA[±§Ç¸£¬µ±Ç°´æÔÚÍøÂçÎÊÌâ»ò·þÎñÆ÷·±Ã¦£¬ÇëÄúÉÔºòÔÙ³¢ÊÔ½â°ó¡£Ð»Ð»¡£]]></item>
+				<item id="connect_config_unbind_busy_code"><![CDATA[±§Ç¸£¬µ±Ç°´æÔÚÍøÂçÎÊÌâ»ò·þÎñÆ÷·±Ã¦£¬ÏêÏ¸´íÎó£º{codeMessage}£¬´íÎó´úÂë£º<a target=_blank href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E5%85%AC%E5%85%B1%E8%BF%94%E5%9B%9E%E7%A0%81%E8%AF%B4%E6%98%8E">{code}</a>£¬ÇëÄúÉÔºòÔÙ³¢ÊÔ½â°ó¡£Ð»Ð»¡£]]></item>
+				<item id="connect_config_unbind_success"><![CDATA[ÄúµÄÂÛÌ³ÕÊºÅºÍQQÕÊºÅ½â³ý°ó¶¨³É¹¦¡£]]></item>
+				<item id="connect_uin_in_blacklist"><![CDATA[±§Ç¸£¬´ËQQÕÊºÅÒÑ±»±¾Õ¾ÆÁ±Î£¬Äú¿ÉÒÔ<a href="{changeqqurl}">¸ü»»ÆäËûQQÕËºÅµÇÂ¼</a>]]></item>
+				<item id="connect_reauth_success"><![CDATA[QQ»¥ÁªÊÚÈ¨ÐÞ¸Ä³É¹¦]]></item>
+				<item id="connect_register_bind_success"><![CDATA[ÄúµÄÕÊºÅÓëQQÕÊºÅ°ó¶¨³É¹¦]]></item>
+				<item id="connect_register_bind_need_inactive"><![CDATA[±§Ç¸£¬ÄúµÄÕÊºÅÉÐÎ´¼¤»î£¬ÇëÏÈ¼¤»îºóÔÙ°ó¶¨QQÕÊºÅ]]></item>
+				<item id="connect_qqshow_open"><![CDATA[ÉèÖÃ³É¹¦£¬ÄúÒÑÔÚÉçÇøÊ¹ÓÃQQÐãÐÎÏó]]></item>
+				<item id="connect_qqshow_close"><![CDATA[ÉèÖÃ³É¹¦£¬ÄúÒÑÈ¡ÏûÔÚÉçÇøÊ¹ÓÃQQÐãÐÎÏó]]></item>
+				<item id="connect_reply_filter_smiley"><![CDATA[/Î¢Ð¦ /Æ²×ì /É« /·¢´ô /µÃÒâ /Á÷Àá /º¦Ðß /±Õ×ì /Ë¯ /´ó¿Þ /ÞÏÞÎ /·¢Å­ /µ÷Æ¤ /ßÚÑÀ /¾ªÑÈ /ÄÑ¹ý /¿á /Àäº¹ /×¥¿ñ /ÍÂ /ÍµÐ¦ /¿É°® /°×ÑÛ /°ÁÂý /¼¢¶ö /À§ /¾ª¿Ö /Á÷º¹ /º©Ð¦ /´ó±ø /·Ü¶· /ÖäÂî /ÒÉÎÊ /Ðê /ÔÎ /ÕÛÄ¥ /Ë¥ /÷¼÷Ã /ÇÃ´ò /ÔÙ¼û /²Áº¹ /¿Ù±Ç /¹ÄÕÆ /ôÜ´óÁË /»µÐ¦ /×óºßºß /ÓÒºßºß /¹þÇ· /±ÉÊÓ /Î¯Çü /¿ì¿ÞÁË /ÒõÏÕ /Ç×Ç× /ÏÅ /¿ÉÁ¯ /²Ëµ¶ /Î÷¹Ï /Æ¡¾Æ /ÀºÇò /Æ¹ÅÒ /¿§·È /·¹ /ÖíÍ· /Ãµ¹å /µòÐ» /Ê¾°® /°®ÐÄ /ÐÄËé /µ°¸â /ÉÁµç /Õ¨µ¯ /µ¶ /×ãÇò /Æ°³æ /±ã±ã /ÔÂÁÁ /Ì«Ñô /ÀñÎï /Óµ±§ /Ç¿ /Èõ /ÎÕÊÖ /Ê¤Àû /±§È­ /¹´Òý /È­Í· /²î¾¢ /°®Äã /NO /OK /°®Çé /·ÉÎÇ /ÌøÌø /·¢¶¶ /âæ»ð /×ªÈ¦ /¿ÄÍ· /»ØÍ· /ÌøÉþ /»ÓÊÖ /¼¤¶¯ /½ÖÎè /Ï×ÎÇ /×óÌ«¼« /ÓÒÌ«¼«]]></item>
+				<item id="connect_register_mobile_bind_error"><![CDATA[ÄúÐèÒªÔÚµçÄÔ°æÍêÉÆ×ÊÁÏ»ò°ó¶¨ÒÑÓÐÕÊºÅ£¬²ÅÄÜ¼ÌÐø±¾²Ù×÷]]></item>
+				<item id="connect_broadcast_success"><![CDATA[×ª²¥³É¹¦]]></item>
+				<item id="connect_feed_sync_success"><![CDATA[Í¬²½·¢ Feed ³É¹¦]]></item>
+				<item id="connect_share_token_outofdate"><![CDATA[ÎªÁËÄúµÄÕËºÅ°²È«£¬ÇëÊ¹ÓÃQQÕÊºÅÖØÐÂµÇÂ¼£¬½«ÎªÄúÉý¼¶ÕÊºÅ°²È«»úÖÆ<br/><br/>µã»÷<a href={login_url}><img src=static/image/common/qq_login.gif class=vm alt=QQµÇÂ¼ /></a>Ò³Ãæ½«·¢ÉúÌø×ª]]></item>
+				<item id="connect_share_success"><![CDATA[·ÖÏí³É¹¦]]></item>
+				<item id="connect_qzone_share_same_url"><![CDATA[¸ÃÌû×ÓÄúÒÑ¾­·ÖÏí¹ý£¬²»ÐèÒªÖØ¸´·ÖÏí]]></item>
+				<item id="connect_qzone_weibo_same_content"><![CDATA[¸ÃÌû×ÓÄúÒÑ¾­×ª²¥¹ý£¬²»ÐèÒªÖØ¸´×ª²¥]]></item>
+				<item id="connect_weibo_account_not_signup"><![CDATA[±§Ç¸£¬Äú»¹Î´¿ªÍ¨Î¢²©ÕËºÅ£¬ÎÞ·¨·ÖÏíÄÚÈÝ£¬<a href=http://t.qq.com/reg/index.php target=_blank style=color:#336699>µã»÷ÕâÀïÂíÉÏ¿ªÍ¨</a>]]></item>
+				<item id="connect_user_unauthorized"><![CDATA[±§Ç¸£¬ÄúÎ´ÊÚÈ¨·ÖÏíÖ÷Ìâµ½QQ¿Õ¼ä¡¢ÌÚÑ¶Î¢²©ºÍÌÚÑ¶ÅóÓÑ£¬µã»÷<a href={login_url}><img src=static/image/common/qq_login.gif class=vm alt=QQµÇÂ¼ /></a>£¬ÂíÉÏÍêÉÆÊÚÈ¨]]></item>
+				<item id="connect_errlog_server_no_response"><![CDATA[·þÎñÆ÷ÎÞÏìÓ¦]]></item>
+				<item id="connect_tthread_broadcast"><![CDATA[×ª²¥Î¢²©]]></item>
+				<item id="connect_tthread_message"><![CDATA[<br><br><img class="vm" src="static/image/common/weibo.png">&nbsp;<a href="http://t.qq.com/{username}" target="_blank">À´×Ô {nick} µÄÌÚÑ¶Î¢²©</a>]]></item>
+				<item id="connect_tthread_comment"><![CDATA[Î¢²©ÆÀÂÛ]]></item>
+                <item id="connect_server_busy"><![CDATA[±§Ç¸£¬µ±Ç°´æÔÚÍøÂçÎÊÌâ»ò·þÎñÆ÷·±Ã¦£¬ÇëÄúÉÔºòÔÙÊÔ¡£Ð»Ð»¡£]]></item>
+				<item id="connect_server_busy_code"><![CDATA[±§Ç¸£¬µ±Ç°´æÔÚÍøÂçÎÊÌâ»ò·þÎñÆ÷·±Ã¦£¬ÏêÏ¸´íÎó£º{codeMessage}£¬´íÎó´úÂë£º{code}£¬ÇëÄúÉÔºòÔÙÊÔ¡£Ð»Ð»¡£]]></item>
+				<item id="connectguest_message_complete_or_bind"><![CDATA[±§Ç¸£¬ÄúÉÐÎ´ <a href="member.php?mod=connect" class="xi2">ÍêÉÆÕÊºÅÐÅÏ¢</a> »ò <a href="member.php?mod=connect&ac=bind" class="xi2">°ó¶¨ÒÑÓÐÕÊºÅ</a>£¬ÎÞ·¨½øÐÐ´Ë²Ù×÷]]></item>
+				<item id="connect_error_code_999"><![CDATA[ÇëÇóÊ§°Ü]]></item>
+				<item id="connect_error_code_10001"><![CDATA[QQ »¥Áª APPID ÎÞÐ§]]></item>
+				<item id="connect_error_code_10002"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]></item>
+				<item id="connect_error_code_10003"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]></item>
+				<item id="connect_error_code_10004"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]></item>
+				<item id="connect_error_code_10005"><![CDATA[ÍøÕ¾·þÎñÆ÷Ê±¼äÎó²î³¬¹ý 5 ·ÖÖÓ]]></item>
+				<item id="connect_error_code_10006"><![CDATA[QQ »¥Áª APPID ÎÞÐ§]]></item>
+				<item id="connect_error_code_11000"><![CDATA[QQ »¥Áª APPKEY ÎÞÐ§]]></item>
+				<item id="connect_error_code_11001"><![CDATA[QQ »¥Áª APPID ±»½ûÓÃ]]></item>
+				<item id="connect_error_code_30001"><![CDATA[QQ »¥Áª APPID ÎÞÐ§]]></item>
+				<item id="connect_error_code_30002"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]></item>
+				<item id="connect_error_code_30003"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]></item>
+				<item id="connect_error_code_30004"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]></item>
+				<item id="connect_error_code_30005"><![CDATA[ÍøÕ¾·þÎñÆ÷Ê±¼äÎó²î³¬¹ý 5 ·ÖÖÓ]]></item>
+				<item id="connect_error_code_30006"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]></item>
+				<item id="connect_error_code_30007"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]></item>
+				<item id="connect_error_code_30008"><![CDATA[APPID Î´×¢²á£¬ÇëÖØÐÂ¿ªÍ¨ QQ »¥Áª·þÎñ]]></item>
+				<item id="connect_error_code_31000"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]]></item>
+				<item id="connect_error_code_31001"><![CDATA[QQ »¥Áª²å¼þÒì³££¬Çë¸üÐÂ³ÌÐòºóÖØÐÂ°²×°]]]></item>
+				<item id="connect_error_code_31002"><![CDATA[QQ »¥Áª APPID ±»½ûÓÃ]]></item>
+				<item id="connect_feed_iam"><![CDATA[ÎÒÔÚ]]></item>
+				<item id="connect_feed_published_thread"><![CDATA[·¢±íÁË¡¶{subject}¡·£º]]></item>
+				<item id="connect_feed_published_post"><![CDATA[²ÎÓëÁË¡¶{subject}¡·µÄÌÖÂÛ£º]]></item>
+				<item id="connect_spacecp_share_a_post"><![CDATA[·ÖÏíÒ»¸öºÃÌû#{bbname}#¡¶{subject}¡·£º{message}]]></item>
+				<item id="connect_spacecp_share_qq_default"><![CDATA[¿´¿´Õâ¸ö°É£¬»¹²»´íÅ¶£¬Ò²ÐíÄã»áÏ²»¶^_^]]></item>
+				<item id="connect_post_sync_method"><![CDATA[½«´Ë»Ø¸´Í¬²½µ½]]></item>
+			</item>
+			<item id="templatelang">
+				<item id="connect_header_login"><![CDATA[QQµÇÂ¼]]></item>
+				<item id="connect_header_login_tip"><![CDATA[Ö»ÐèÒ»²½£¬¿ìËÙ¿ªÊ¼]]></item>
+				<item id="connect_register_by"><![CDATA[ÄúÒ²¿ÉÒÔÍ¨¹ý]]></item>
+				<item id="connect_or"><![CDATA[»òÕß]]></item>
+				<item id="connect_publish_feed"><![CDATA[½«´ËÖ÷Ìâ·¢ËÍµ½QQ¿Õ¼ä¶¯Ì¬]]></item>
+				<item id="connect_publish_t"><![CDATA[½«´ËÖ÷Ìâ×ª²¥µ½ÌÚÑ¶Î¢²©]]></item>
+				<item id="connect_register_complete"><![CDATA[ÍêÉÆÒ»µãÐÅÏ¢£¬ÂíÉÏ¿ªÊ¼ä¯ÀÀ]]></item>
+				<item id="connect_register_bind"><![CDATA[°ó¶¨ÒÑÓÐÕÊºÅ]]></item>
+				<item id="connect_register_profile"><![CDATA[ÍêÉÆÕÊºÅÐÅÏ¢]]></item>
+				<item id="connect_register_has_id"><![CDATA[ÒÑÓÐÕÊºÅ£¿]]></item>
+				<item id="connect_register_new_username"><![CDATA[ÊäÈëÐÂÓÃ»§Ãû]]></item>
+				<item id="connect_register_used_usernames"><![CDATA[³£ÓÃÃû]]></item>
+				<item id="connect_register_available_usernames_count"><![CDATA[¸ö¿ÉÓÃ]]></item>
+				<item id="connect_register_email"><![CDATA[ÓÊÏä]]></item>
+				<item id="connect_register_birthday"><![CDATA[ÉúÈÕ]]></item>
+				<item id="connect_register_sex"><![CDATA[ÐÔ±ð]]></item>
+				<item id="connect_register_noid"><![CDATA[Ã»ÓÐÕÊºÅ£¿]]></item>
+				<item id="connect_register_new"><![CDATA[×¢²áÐÂÕÊºÅ]]></item>
+				<item id="connect_register_avatar"><![CDATA[Í·Ïñ]]></item>
+				<item id="connect_register_sex_male"><![CDATA[ÄÐ]]></item>
+				<item id="connect_register_sex_female"><![CDATA[Å®]]></item>
+				<item id="connect_register_sex_secret"><![CDATA[±£ÃÜ]]></item>
+				<item id="connect_register_public_email"><![CDATA[¹«¿ªÓÊÏäµØÖ·]]></item>
+				<item id="connect_register_use_qzone_avatar"><![CDATA[Ê¹ÓÃQQÍ·Ïñ]]></item>
+				<item id="connect_register_use_qzone_avatar_qqshow"><![CDATA[Ê¹ÓÃQQÍ·ÏñºÍQQÐã]]></item>
+				<item id="connect_register_use_qqshow"><![CDATA[<span title="QQÐã½«Õ¹Ê¾ÔÚÂÛÌ³Ìû×Ó×ó²àºÍ¸öÈË¿Õ¼äÊ×Ò³">Ê¹ÓÃQQÐãÐÎÏó</span>]]></item>
+				<item id="connect_register_agree"><![CDATA[Í¬Òâ·þÎñÌõ¿î]]></item>
+				<item id="connect_register_must_agree"><![CDATA[Äú±ØÐëÍ¬Òâ·þÎñÌõ¿îºó²ÅÄÜ×¢²á]]></item>
+				<item id="connect_register_finish"><![CDATA[Íê³É£¬¼ÌÐøä¯ÀÀ]]></item>
+				<item id="connect_register_bind_window_button"><![CDATA[°ó¶¨ÕÊºÅ]]></item>
+				<item id="connect_register_bind_title"><![CDATA[ÊäÈëÒÑÓÐµÄ±¾Õ¾ÕÊºÅ£¬½«ÓëÄúµÄQQÕÊºÅ½øÐÐ°ó¶¨]]></item>
+				<item id="connect_register_bind_success"><![CDATA[ÄúµÄÕÊºÅÓëQQÕÊºÅ°ó¶¨³É¹¦]]></item>
+				<item id="connect_register_bind_need_inactive"><![CDATA[ÄúµÄÕÊºÅ»¹Î´¼¤»î£¬ÇëÏÈ¼¤»îºóÔÙ°ó¶¨QQÕÊºÅ]]></item>
+				<item id="connect_config"><![CDATA[QQ°ó¶¨]]></item>
+				<item id="connect_config_bind"><![CDATA[µã»÷°´Å¥£¬Á¢¿Ì°ó¶¨QQÕÊºÅ]]></item>
+				<item id="connect_config_bindinfo"><![CDATA[ÄúÒÑ½«±¾Õ¾ÕÊºÅ <strong>{$_G[member][username]}</strong> ÓëQQºÅÂë°ó¶¨]]></item>
+				<item id="connect_config_bind_setting"><![CDATA[°ó¶¨ÉèÖÃ]]></item>
+				<item id="connect_config_title"><![CDATA[Ê¹ÓÃQQÕÊºÅ°ó¶¨±¾Õ¾£¬Äú¿ÉÒÔ...]]></item>
+				<item id="connect_config_desc_title1"><![CDATA[ÓÃQQÕÊºÅÇáËÉµÇÂ¼]]></item>
+				<item id="connect_config_desc_content1"><![CDATA[ÎÞÐè¼Ç×¡±¾Õ¾µÄÕÊºÅºÍÃÜÂë£¬ËæÊ±Ê¹ÓÃQQÕÊºÅÃÜÂëÇáËÉµÇÂ¼]]></item>
+				<item id="connect_config_newpassword_comment"><![CDATA[ÄúÄ¿Ç°Ê¹ÓÃµÄÊÇQQÕÊºÅ°ó¶¨±¾Õ¾£¬Äú¿ÉÒÔÔÚÕâÀïÉèÖÃ¶ÀÁ¢ÃÜÂë£¬Ö»ÓÐÉèÖÃÁË¶ÀÁ¢ÃÜÂëºó±¾Õ¾ÐèÒªÌîÐ´ÃÜÂëµÄÏàÓ¦¹¦ÄÜ²Å¿ÉÊ¹ÓÃ]]></item>
+				<item id="connect_config_desc_title2"><![CDATA[·¢±íÖ÷ÌâÍ¬Ê±ÍÆËÍµ½ÌÚÑ¶Î¢²©]]></item>
+				<item id="connect_config_desc_content2"><![CDATA[½«ÄúµÄÂÛÌ³Ö÷ÌâÍÆËÍµ½ÌÚÑ¶Î¢²©£¬ÈÃºÃÓÑÈ«·½ÃæÁË½âÄú]]></item>
+				<item id="connect_config_desc_title3"><![CDATA[°Ñ±¾Õ¾¾«²ÊÄÚÈÝ·ÖÏíµ½QQ¿Õ¼ä¡¢ÌÚÑ¶Î¢²©ºÍÌÚÑ¶ÅóÓÑ]]></item>
+				<item id="connect_config_desc_content3"><![CDATA[Ã¿Ò»¸ö¾«²ÊÄÚÈÝ¾ø²»·Å¹ý£¬¼òµ¥¿ì½ÝµÄ½«ÂÛÌ³Ö÷Ìâ·ÖÏí¸øºÃÓÑºÍÌýÖÚ]]></item>
+				<item id="connect_config_profile"><![CDATA[¸öÈË×ÊÁÏ]]></item>
+				<item id="connect_config_link_name"><![CDATA[QQ°ó¶¨ÉèÖÃ]]></item>
+				<item id="connect_config_default_pulish_feed_title"><![CDATA[·¢±íÖ÷ÌâÊ±Ä¬ÈÏ·¢ËÍ¶¯Ì¬µ½QQ¿Õ¼ä]]></item>
+				<item id="connect_config_default_pulish_t_title"><![CDATA[·¢±íÖ÷ÌâºÍ»Ø¸´Ê±Ä¬ÈÏ×ª²¥µ½ÌÚÑ¶Î¢²©]]></item>
+				<item id="connect_config_save"><![CDATA[±£´æÉèÖÃ]]></item>
+				<item id="connect_config_newpassword"><![CDATA[Îªµ¥¶ÀµÇÂ¼Õ¾µã´´½¨µÇÂ¼ÃÜÂë]]></item>
+				<item id="connect_config_new_password"><![CDATA[ÐÂÃÜÂë]]></item>
+				<item id="connect_config_new_password_confirm"><![CDATA[È·ÈÏÃÜÂë]]></item>
+				<item id="connect_config_unbind"><![CDATA[½â³ýÒÑ°ó¶¨ÕÊºÅ£¿]]></item>
+				<item id="connect_config_modify_authorization"><![CDATA[ÐÞ¸Ä±¾Õ¾µÄÊÚÈ¨£¿]]></item>
+				<item id="connect_config_modify_authorization_desc"><![CDATA[Äú¿É¸ù¾Ý×Ô¼ºµÄÐèÒªËæÊ±Ôö¼Ó¡¢È¡ÏûQQÕÊºÅ¶Ô±¾Õ¾µÄÊÚÈ¨£¬ÔÚÈ·±£ÒþË½µÄÇ°ÌáÏÂÊ¹ÓÃ¸÷Ïî¹¦ÄÜºÍ·þÎñ¡£]]></item>
+				<item id="connect_config_set_password"><![CDATA[ÉèÖÃ±¾Õ¾ÃÜÂë£¿]]></item>
+				<item id="connect_config_sync_post"><![CDATA[Í¬²½¶¯Ì¬µ½ÌÚÑ¶Î¢²©£¿]]></item>
+				<item id="connect_config_sync_post_desc1"><![CDATA[ÄúµÄºÃÓÑ»òÌýÖÚÄÜ¹»¿´µ½Äú·¢±íµÄÖ÷ÌâºÍ¼ÇÂ¼¡£]]></item>
+				<item id="connect_config_sync_post_desc2"><![CDATA[ÂíÉÏÍêÉÆÊÚÈ¨£¬Äú½«¿ÉÒÔ°Ñ±¾Õ¾¾«²ÊÄÚÈÝ·ÖÏíµ½QQ¿Õ¼ä¡¢ÌÚÑ¶Î¢²©ºÍÌÚÑ¶ÅóÓÑ£¬¸ú´ó¼Ò·ÖÏíÃ¿¸ö¾«²ÊË²¼ä¡£]]></item>
+				<item id="connect_config_unbind_desc1"><![CDATA[Äúµ±Ç°ÊÇÊ¹ÓÃQQÕÊºÅ°ó¶¨µ½ {$_G[setting][bbname]}]]></item>
+				<item id="connect_config_unbind_desc2"><![CDATA[ÎªÁËÄú¿ÉÒÔ¼ÌÐøÊ¹ÓÃ±¾Õ¾ÕÊºÅ <strong>$_G[member][username]</strong>£¬ÇëÉèÖÃ±¾Õ¾µÇÂ¼ÃÜÂë]]></item>
+				<item id="connect_config_unbind_desc3"><![CDATA[ÄúÈ·ÈÏÒª½â³ýÓë±¾Õ¾ÕÊºÅµÄ°ó¶¨¹ØÏµ£¿]]></item>
+				<item id="connect_config_unbind_desc4"><![CDATA[ÄúÐèÒªÊ¹ÓÃQQÕÊºÅµÇÂ¼²ÅÄÜ½â³ýÕÊºÅ°ó¶¨¹ØÏµ£¬Çëµã»÷<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">ÕâÀïÍË³ö</a>ºó]]></item>
+				<item id="connect_config_unbind_desc5"><![CDATA[ÖØÐÂÊ¹ÓÃQQÕÊºÅµÇÂ¼]]></item>
+				<item id="connect_config_bind_confirm"><![CDATA[È·ÈÏ½â³ý]]></item>
+				<item id="connect_config_password_comment"><![CDATA[µÇÂ¼±¾Õ¾Ê¹ÓÃ]]></item>
+				<item id="connect_config_set_password_desc"><![CDATA[ÒòÎª°²È«ÒòËØ¿¼ÂÇ£¬ÔÚ²Ù×÷¶Ò»»»ý·Ö¡¢°æÖ÷¹ÜÀíµÈÐÐÎªÊ±ÐèÒªÉèÖÃ±¾Õ¾ÃÜÂë]]></item>
+				<item id="connect_config_qqshow_btn_open"><![CDATA[Ê¹ÓÃQQÐãÐÎÏó]]></item>
+				<item id="connect_config_qqshow_btn_close"><![CDATA[È¡ Ïû]]></item>
+				<item id="connect_config_qqshow_btn_tips"><![CDATA[Ãâ·Ñ»ñÈ¡¾«ÃÀQQÐã]]></item>
+				<item id="connect_config_qqshow_title"><![CDATA[ÔÚÉçÇøÊ¹ÓÃÎÒµÄQQÐã]]></item>
+				<item id="connect_config_qqshow_desc1"><![CDATA[¿ªÆôºó£¬ÂÛÌ³Ìû×Ó×ó²àºÍ¸öÈË¿Õ¼äÊ×Ò³½«Õ¹Ê¾ÄúµÄQQÐã£¬²¢ÇÒÉçÇøÄÚQQÐãÐÎÏó½«ËæÄúµÄQQÐãÐÎÏó¸üÐÂ¶øÍ¬²½±ä»¯]]></item>
+				<item id="connect_config_qqshow_desc2"><![CDATA[ÏÖÔÚÊ¹ÓÃQQÐãÐÎÏóÃâ·Ñ»ñÈ¡QQÐã´óÀñ°ü]]></item>
+				<item id="connect_config_qqshow_desc3"><![CDATA[ÄúÐèÒª°ó¶¨QQÕÊºÅ²ÅÄÜÔÚÉçÇøÊ¹ÓÃQQÐãÐÎÏó]]></item>
+				<item id="connect_modify_authorization_button"><![CDATA[ÐÞ¸ÄÊÚÈ¨]]></item>
+				<item id="connect_post_by_readperm"><![CDATA[¾ßÓÐÌØÊâÔÄ¶ÁÈ¨ÏÞÌû×ÓÎÞ·¨·¢ËÍQQ¿Õ¼ä¶¯Ì¬]]></item>
+				<item id="connect_post_by_price"><![CDATA[¾ßÓÐÊÛ¼ÛµÄÌû×ÓÎÞ·¨·¢ËÍQQ¿Õ¼ä¶¯Ì¬]]></item>
+				<item id="connect_post_by_invisible_forum"><![CDATA[¸Ã°å¿éµÄÌû×ÓÎÞ·¨·¢ËÍQQ¿Õ¼ä¶¯Ì¬]]></item>
+				<item id="connect_post_unbind"><![CDATA[°ó¶¨QQÕÊºÅ£¬ÇáËÉ·ÖÏíµ½QQ¿Õ¼äÓëÌÚÑ¶Î¢²©]]></item>
+				<item id="connect_post_sync_tip"><![CDATA[´ËÖ÷Ìâ½«Í¬²½µ½ÌÚÑ¶Î¢²©£¬ÄúµÄÌýÖÚÄÜ¹»¿´µ½Äú·¢±íµÄÖ÷Ìâ¡£]]></item>
+				<item id="connect_post_sync_tip_close"><![CDATA[¹Ø±ÕÍ¬²½·¢ÌûÌáÊ¾]]></item>
+				<item id="connect_post_sync_cancel"><![CDATA[ÔÝ²»Í¬²½]]></item>
+				<item id="connect_post_sync_cancel_tip"><![CDATA[È¡Ïû·¢±íÖ÷ÌâÊ±Í¬²½µ½ÌÚÑ¶Î¢²©£¬½«À´Äú¿ÉÒÔµ½¡°ÉèÖÃ-QQ°ó¶¨¡±Ò³ÃæÖØÐÂÉèÖÃ¡£]]></item>
+				<item id="connect_post_sync_qzone1"><![CDATA[ÒÑÉèÖÃÍ¬²½ÖÁQQ¿Õ¼ä]]></item>
+				<item id="connect_post_sync_t1"><![CDATA[ÒÑÉèÖÃÍ¬²½ÖÁÌÚÑ¶Î¢²©]]></item>
+				<item id="connect_post_sync_qzone2"><![CDATA[Î´ÉèÖÃÍ¬²½ÖÁQQ¿Õ¼ä]]></item>
+				<item id="connect_post_sync_t2"><![CDATA[Î´ÉèÖÃÍ¬²½ÖÁÌÚÑ¶Î¢²©]]></item>
+				<item id="connect_post_sync_yes"><![CDATA[ÒÑ]]></item>
+				<item id="connect_post_sync_no"><![CDATA[Î´]]></item>
+				<item id="connect_post_sync_unauthorized_title"><![CDATA[ÊÚÈ¨ÌáÊ¾]]></item>
+				<item id="connect_post_sync_unauthorized_desc"><![CDATA[ÂíÉÏÍêÉÆÊÚÈ¨£¬Äú½«¿ÉÒÔ·¢±íÖ÷ÌâÊ±Í¬²½µ½QQ¿Õ¼äºÍÌÚÑ¶Î¢²©£¬µÚÒ»Ê±¼äºÍ´ó¼Ò·ÖÏíÄúÔÚÂÛÌ³ÖÐµÄÐÂÏÊÊÂ¶ù¡£]]></item>
+				<item id="connect_access_token_out_of_date_feed"><![CDATA[ÎªÁËÄúµÄÕËºÅ°²È«£¬ÇëÊ¹ÓÃQQÕÊºÅÖØÐÂµÇÂ¼£¬½«ÎªÄúÉý¼¶ÕÊºÅ°²È«»úÖÆ<br/><br/>µã»÷<a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQµÇÂ¼" /></a>Ò³Ãæ½«·¢ÉúÌø×ª£¬ÇëÈ·±£ÄúÒÑ±£´æºÃÌû×ÓÊý¾Ý]]></item>
+				<item id="connect_access_token_out_of_date_share"><![CDATA[ÎªÁËÄúµÄÕËºÅ°²È«£¬ÇëÊ¹ÓÃQQÕÊºÅÖØÐÂµÇÂ¼£¬½«ÎªÄúÉý¼¶ÕÊºÅ°²È«»úÖÆ<br/><br/>µã»÷<a href="{$_G[connect][login_url]}"><img src="static/image/common/qq_login.gif" class="vm" alt="QQµÇÂ¼" /></a>Ò³Ãæ½«·¢ÉúÌø×ª]]></item>
+				<item id="connect_access_token_outofdate_button"><![CDATA[ÎÒÖªµÀÁË]]></item>
+				<item id="connect_post_sync_not_bind_desc"><![CDATA[ÂíÉÏ°ó¶¨QQÕËºÅ£¬Äú½«¿ÉÒÔ·¢±íÖ÷ÌâÊ±Í¬²½µ½QQ¿Õ¼äºÍÌÚÑ¶Î¢²©£¬µÚÒ»Ê±¼äºÍ´ó¼Ò·ÖÏíÄúÔÚÂÛÌ³ÖÐµÄÐÂÏÊÊÂ¶ù¡£]]></item>
+				<item id="connect_viewthread_share_to_qzone"><![CDATA[QQ¿Õ¼ä]]></item>
+				<item id="connect_viewthread_share_to_t"><![CDATA[ÌÚÑ¶Î¢²©]]></item>
+				<item id="connect_viewthread_share_to_qq"><![CDATA[QQºÃÓÑºÍÈº]]></item>
+				<item id="connect_viewthread_share_to_pengyou"><![CDATA[ÌÚÑ¶ÅóÓÑ]]></item>
+				<item id="connect_createpassword"><![CDATA[<b>´´½¨ÃÜÂë</b>]]></item>
+				<item id="connect_uin_limit"><![CDATA[ÄúµÄQQÕÊºÅÔÚ±¾Õ¾×¢²áµÄÕÊºÅÊýÁ¿´ïµ½ÉÏÏÞ£¬Çë°ó¶¨ÒÑÓÐÕÊºÅ£¬»ò<a href="{$change_qq_url}">¸ü»»ÆäËûQQÕËºÅ</a>]]></item>
+				<item id="connect_thread_id_miss"><![CDATA[Ìû×Óid²»´æÔÚ]]></item>
+				<item id="connect_get_request_token_failed"><![CDATA[·þÎñÆ÷·±Ã¦£¬ÇëÉÔºóÔÙÊÔ¡£]]></item>
+				<item id="connect_get_access_token_failed"><![CDATA[·þÎñÆ÷·±Ã¦£¬ÇëÉÔºóÔÙÊÔ¡£]]></item>
+				<item id="connect_spacecp_qzone_to"><![CDATA[·ÖÏíµ½QQ¿Õ¼ä]]></item>
+				<item id="connect_spacecp_pengyou_to"><![CDATA[·ÖÏíµ½ÌÚÑ¶ÅóÓÑ]]></item>
+				<item id="connect_spacecp_qzone_subject"><![CDATA[·ÖÏí±êÌâ]]></item>
+				<item id="connect_spacecp_qzone_reason"><![CDATA[·ÖÏíÀíÓÉ]]></item>
+				<item id="connect_spacecp_qzone_picture"><![CDATA[·ÖÏíÍ¼Æ¬]]></item>
+				<item id="connect_spacecp_qzone_cancel_picture"><![CDATA[È¡Ïû·ÖÏíÍ¼Æ¬]]></item>
+				<item id="connect_spacecp_qzone_select_picture"><![CDATA[·ÖÏíÍ¼Æ¬]]></item>
+				<item id="connect_spacecp_qzone_to_friend"><![CDATA[·ÖÏí¸øºÃÓÑ]]></item>
+				<item id="connect_spacecp_qzone_reason_default"><![CDATA[¿ÉÒÔÔÚÕâÀïÊäÈë·ÖÏíÔ­Òò»òÏêÏ¸ÄÚÈÝ]]></item>
+				<item id="connect_spacecp_qzone_space"><![CDATA[¡¡]]></item>
+				<item id="connect_spacecp_qzone_subject_is_empty"><![CDATA[ÇëÊäÈë·ÖÏí±êÌâ]]></item>
+				<item id="connect_spacecp_qzone_subject_is_long"><![CDATA[·ÖÏí±êÌâ³¬¹ýÁË³¤¶ÈÏÞÖÆ]]></item>
+				<item id="connect_spacecp_qzone_reason_is_long"><![CDATA[·ÖÏíÀíÓÉ³¬¹ýÁË³¤¶ÈÏÞÖÆ]]></item>
+				<item id="connect_share_unauthorized"><![CDATA[¶ÀÀÖÀÖ²»ÈçÖÚÀÖÀÖ£¬ÂíÉÏÍêÉÆÊÚÈ¨£¬Äú½«¿ÉÒÔ°Ñ±¾Õ¾¾«²ÊÄÚÈÝ·ÖÏíµ½QQ¿Õ¼ä¡¢ÌÚÑ¶Î¢²©ºÍÌÚÑ¶ÅóÓÑ£¬¸ú´ó¼Ò·ÖÏíÃ¿¸ö¾«²ÊË²¼ä¡£]]></item>
+				<item id="connect_share_unbind"><![CDATA[ºÜ±§Ç¸£¬ÓÉÓÚ·ÖÏí¹¦ÄÜÉý¼¶£¬ÄúÐèÒªÊ¹ÓÃQQÕÊºÅÖØÐÂµÇÂ¼±¾Õ¾£¬¼´¿ÉÂíÉÏÌåÑéÈ«ÐÂµÄ·ÖÏíµ½QQ¿Õ¼ä¡¢ÌÚÑ¶Î¢²©ºÍÌÚÑ¶ÅóÓÑ¹¦ÄÜ¡£<br /><span style="font-size: 12px;">ÌáÊ¾£ºµã»÷<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}" class="xi2">ÕâÀïÍË³ö</a>ºó£¬ÖØÐÂÊ¹ÓÃQQÕËºÅµÇÂ¼¡£</span>]]></item>
+				<item id="connect_share_unbind_know_button"><![CDATA[ÎÒÖªµÀÁË]]></item>
+				<item id="connect_spacecp_weibo_to"><![CDATA[×ª²¥µ½ÌÚÑ¶Î¢²©]]></item>
+				<item id="connect_spacecp_weibo_input"><![CDATA[»¹ÄÜÊäÈë<strong id="checklen"></strong>×Ö]]></item>
+				<item id="connect_spacecp_weibo_input_over"><![CDATA[³¬³ö<strong id="checklen" style="color:#E56C0A;"></strong>×Ö]]></item>
+				<item id="connect_spacecp_weibo_reason"><![CDATA[Î¢²©ÄÚÈÝ]]></item>
+				<item id="connect_spacecp_weibo_share"><![CDATA[×ª²¥]]></item>
+				<item id="connect_spacecp_weibo_reason_is_long"><![CDATA[Î¢²©ÄÚÈÝ³¬¹ýÁË³¤¶ÈÏÞÖÆ]]></item>
+				<item id="connect_spacecp_weibo_reason_is_short"><![CDATA[ÇëÊäÈëÄúÒª×ª²¥µÄÎ¢²©ÄÚÈÝ]]></item>
+				<item id="connect_member_register_tip"><![CDATA[ÍêÉÆÕÊºÅÐÅÏ¢¿ÉÌåÑé±¾Õ¾¸ü¶à¹¦ÄÜ]]></item>
+				<item id="connect_member_loginbind_tip"><![CDATA[°ó¶¨ÒÑÓÐÕÊºÅ¿ÉÊ¹ÓÃQQÕÊºÅ¿ìËÙµÇÂ¼±¾Õ¾]]></item>
+				<item id="connect_member_register_button_tip"><![CDATA[ÌåÑé±¾Õ¾¸ü¶à¹¦ÄÜ]]></item>
+				<item id="connect_member_loginbind_button_tip"><![CDATA[Ê¹ÓÃQQÕÊºÅ¿ìËÙµÇÂ¼±¾Õ¾]]></item>
+				<item id="connect_wbsign_no_account"><![CDATA[ÍøÂç·±Ã¦£¬ÔÝÊ±ÎÞ·¨Ê¹ÓÃÌÚÑ¶Î¢²©Ç©Ãûµµ¹¦ÄÜ]]></item>
+				<item id="connect_wbsign_no_bind"><![CDATA[ÄúÐèÒª°ó¶¨QQÕÊºÅ£¬²Å¿ÉÊ¹ÓÃÌÚÑ¶Î¢²©Ç©Ãûµµ¹¦ÄÜ]]></item>
+				<item id="connect_wbsign_tip"><![CDATA[²åÈëÌÚÑ¶Î¢²©×öÎªÂÛÌ³Ç©Ãû£¬¿ÉµÚÒ»Ê±¼ä½«ÄúµÄÎ¢²©×îÐÂÐÅÏ¢Õ¹Ê¾¸ø±¾Õ¾µÄ»áÔ±ºÍÓÎ¿Í]]></item>
+				<item id="connect_mobile_login"><![CDATA[Ê¹ÓÃQQÕÊºÅµÇÂ¼]]></item>
+			</item>
+			<item id="installlang">
+				<item id="connect_guest_group_name"><![CDATA[QQÓÎ¿Í]]></item>
+			</item>
+		</item>
+	</item>
+</root>

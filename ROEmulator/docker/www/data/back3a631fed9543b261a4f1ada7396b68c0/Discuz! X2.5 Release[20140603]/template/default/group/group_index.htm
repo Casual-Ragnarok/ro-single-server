@@ -1,0 +1,140 @@
+<!--{if $status != 2}-->
+	<!--{if helper_access::check_module('group')}-->
+	<div id="pgt" class="bm bw0 pgs cl">
+		<div class="pg">
+			<a href="forum.php?mod=forumdisplay&action=list&fid=$_G[fid]" class="nxt">{lang view_all_threads}</a>
+		</div>
+		<a href="javascript:;" id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" onclick="showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=$_G[fid]')" title="{lang send_posts}"><img src="{IMGDIR}/pn_post.png" alt="{lang send_posts}" /></a>
+	</div>
+	<!--{/if}-->
+	<div class="tl bm bml">
+		<div class="th">
+			<table cellpadding="0" cellspacing="0" border="0">
+			<thead>
+				<tr>
+					<td class="icn">&nbsp;</td>
+					<th>{lang latest_threads}</th>
+					<td class="by">{lang author}/{lang dateline_range}</td>
+					<td class="num">{lang replies}</td>
+					<td class="by">{lang lastpost}</td>
+				</tr>
+			</thead>
+			</table>
+		</div>
+		<div class="bm_c">
+		<!--{if $newthreadlist['dateline']['data']}-->
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tbody id="$thread[id]">
+				<!--{loop $newthreadlist['dateline']['data'] $thread}-->
+						<tr>
+							<td class="icn">
+								<a href="forum.php?mod=viewthread&tid=$thread[tid]" title="{lang target_blank}" target="_blank">
+								<!--{if $thread[folder] == 'lock'}-->
+									<img src="{IMGDIR}/folder_lock.gif" />
+								<!--{elseif $thread['special'] == 1}-->
+									<img src="{IMGDIR}/pollsmall.gif" alt="{lang thread_poll}" />
+								<!--{elseif $thread['special'] == 2}-->
+									<img src="{IMGDIR}/tradesmall.gif" alt="{lang thread_trade}" />
+								<!--{elseif $thread['special'] == 3}-->
+									<img src="{IMGDIR}/rewardsmall.gif" alt="{lang thread_reward}" />
+								<!--{elseif $thread['special'] == 4}-->
+									<img src="{IMGDIR}/activitysmall.gif" alt="{lang thread_activity}" />
+								<!--{elseif $thread['special'] == 5}-->
+									<img src="{IMGDIR}/debatesmall.gif" alt="{lang thread_debate}" />
+								<!--{elseif in_array($thread['displayorder'], array(1, 2, 3, 4))}-->
+								<img src="{IMGDIR}/pin_$thread[displayorder].gif" alt="$_G[setting][threadsticky][3-$thread[displayorder]]" />
+								<!--{else}-->
+									<img src="{IMGDIR}/folder_$thread[folder].gif" />
+								<!--{/if}-->
+								</a>
+							</td>
+							<th>
+								<span id="thread_$thread[tid]"><a href="forum.php?mod=viewthread&tid=$thread[tid]" class="xst">$thread[subject]</a></span>
+							</th>
+							<td class="by">
+								<cite>
+								<!--{if $thread['authorid'] && $thread['author']}-->
+									<a href="home.php?mod=space&uid=$thread[authorid]">$thread[author]</a>
+								<!--{else}-->
+									<!--{if $_G['forum']['ismoderator']}-->
+										<a href="home.php?mod=space&uid=$thread[authorid]">{lang anonymous}</a>
+									<!--{else}-->
+										{lang anonymous}
+									<!--{/if}-->
+								<!--{/if}-->
+								</cite>
+								<em>$thread[dateline]</em>
+							</td>
+							<td class="num">
+								<a class="xi2" href="forum.php?mod=viewthread&tid=$thread[tid]">$thread[replies]</a><em>$thread[views]</em>
+							</td>
+							<td class="by">
+								<cite>
+									<!--{if $thread['lastposterenc']}-->
+										<a href="{if $thread[digest] != -2}home.php?mod=space&username=$thread[lastposterenc]{else}forum.php?mod=viewthread&tid=$thread[tid]&page={echo max(1, $thread[pages]);}{/if}">$thread[lastposter]</a>
+									<!--{else}-->
+										{lang anonymous}
+									<!--{/if}-->
+								</cite>
+								<em><a href="{if $thread[digest] != -2}forum.php?mod=redirect&tid=$thread[tid]&goto=lastpost#lastpost{else}forum.php?mod=viewthread&tid=$thread[tid]&page={echo max(1, $thread[pages]);}{/if}">$thread[lastpost]</a></em>
+							</td>
+						</tr>
+				<!--{/loop}-->
+				</tbody>
+				<!--{if $_G['forum']['threads'] > 10}-->
+					<tbody>
+						<tr class="bw0_all">
+							<td colspan="5" class="ptm"><a href="forum.php?mod=forumdisplay&action=list&fid=$_G[fid]#groupnav" class="y xi2">{lang click_to_readmore}</a></td>
+						</tr>
+					</tbody>
+				<!--{/if}-->
+			</table>
+		<!--{else}-->
+			<p class="emp">{lang forum_nothreads}</p>
+		<!--{/if}-->
+		</div>
+	</div>
+	<div class="bm bml">
+		<div class="bm_h cl">
+			<h2>{lang group_member_status}</h2>
+		</div>
+		<div class="bm_c">
+			<!--{if $groupfeedlist}-->
+				<ul class="el">
+					<!--{loop $groupfeedlist $feed}-->
+						<li>
+							<img src="$feed[icon_image]" class="t" />
+							<!--{if !empty($feed[title_template])}-->$feed[title_template]<!--{/if}--> <!--{if !empty($feed[body_data][subject])}-->$feed[body_data][subject]<!--{/if}-->
+						</li>
+					<!--{/loop}-->
+				</ul>
+			<!--{else}-->
+				<p class="emp">{lang group_no_latest_feeds}</p>
+			<!--{/if}-->
+		</div>
+	</div>
+	<!--{if $_G['group']['allowpost'] && ($_G['group']['allowposttrade'] || $_G['group']['allowpostpoll'] || $_G['group']['allowpostreward'] || $_G['group']['allowpostactivity'] || $_G['group']['allowpostdebate'] || $_G['setting']['threadplugins'] || $_G['forum']['threadsorts'])}-->
+		<ul class="p_pop" id="newspecial_menu" style="display: none">
+			<!--{if !$_G['forum']['allowspecialonly']}--><li><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]" onclick="showWindow('newthread', this.href);doane(event)">{lang post_newthread}</a></li><!--{/if}-->
+			<!--{if $_G['group']['allowpostpoll']}--><li class="poll"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=1">{lang post_newthreadpoll}</a></li><!--{/if}-->
+			<!--{if $_G['group']['allowpostreward']}--><li class="reward"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=3">{lang post_newthreadreward}</a></li><!--{/if}-->
+			<!--{if $_G['group']['allowpostdebate']}--><li class="debate"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=5">{lang post_newthreaddebate}</a></li><!--{/if}-->
+			<!--{if $_G['group']['allowpostactivity']}--><li class="activity"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=4">{lang post_newthreadactivity}</a></li><!--{/if}-->
+			<!--{if $_G['group']['allowposttrade']}--><li class="trade"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&special=2">{lang post_newthreadtrade}</a></li><!--{/if}-->
+			<!--{if $_G['setting']['threadplugins']}-->
+				<!--{loop $_G['forum']['threadplugin'] $tpid}-->
+					<!--{if array_key_exists($tpid, $_G['setting']['threadplugins']) && @in_array($tpid, $_G['group']['allowthreadplugin'])}-->
+						<li class="popupmenu_option"{if $_G['setting']['threadplugins'][$tpid][icon]} style="background-image:url($_G[setting][threadplugins][$tpid][icon])"{/if}><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&specialextra=$tpid">{$_G[setting][threadplugins][$tpid][name]}</a></li>
+					<!--{/if}-->
+				<!--{/loop}-->
+			<!--{/if}-->
+			<!--{if $_G['forum']['threadsorts'] && !$_G['forum']['allowspecialonly']}-->
+				<!--{loop $_G['forum']['threadsorts']['types'] $id $threadsorts}-->
+					<!--{if $_G['forum']['threadsorts']['show'][$id]}-->
+						<li class="popupmenu_option"><a href="forum.php?mod=post&action=newthread&fid=$_G[fid]&extra=$extra&sortid=$id">$threadsorts</a></li>
+					<!--{/if}-->
+				<!--{/loop}-->
+			<!--{/if}-->
+		</ul>
+	<!--{/if}-->
+<!--{/if}-->

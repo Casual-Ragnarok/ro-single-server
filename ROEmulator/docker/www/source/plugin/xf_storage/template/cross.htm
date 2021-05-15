@@ -1,0 +1,13 @@
+<!--{template common/header}-->
+<!--{if $allowUpdate}-->
+<script type="text/javascript">
+	top.document.getElementById('ftn_over').disabled = false;
+	top.document.getElementById('ftn_over').className = 'pn pnc';
+</script>
+<!--{else}-->
+<script type="text/javascript">
+	top.document.getElementById('ftn_over').disabled = true;
+	top.document.getElementById('ftn_over').className = 'pn';
+</script>
+<!--{/if}-->
+<!--{template common/footer}-->

@@ -7,7 +7,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_LOG_CONSOLE=true
     volumes:
-      - ./ROEmulator/usr/local/mysqlmy.cnf:/etc/mysql/conf.d/ro.cnf
+      - ./ROEmulator/usr/local/mysql/my.cnf:/etc/mysql/my.cnf
       - ./ROEmulator/usr/local/mysql/data:/var/lib/mysql
     ports: 
       - 3306:3306
@@ -18,6 +18,32 @@ services:
         test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
         timeout: 20s
         retries: 10
+
+
+  apache:
+    # image: php:5.6.11-apache
+    container_name: RO_WEB
+    build: 
+      context: ./ROEmulator
+      dockerfile: ./Dockerfile
+    # environment: 
+    #   - TZ=Asia/Shanghai
+    #   - LANG=C.UTF-8
+    volumes:
+      - ./ROEmulator/docker/apache2.conf:/etc/apache2/apache2.conf
+      # - ./ROEmulator/usr/local/apache2/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      # - ./ROEmulator/usr/local/apache2/conf/mime.types:/usr/local/apache2/conf/mime.types
+      # - ./ROEmulator/usr/local/apache2/logs:/usr/local/apache2/logs
+      - ./ROEmulator/docker/www:/www
+    ports: 
+      - 8096:8096
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks: 
+      vpn:
+        ipv4_address: 172.168.99.3
+# /usr/local/bin/docker-php-ext-install mysql mysqli
 
 
 networks:

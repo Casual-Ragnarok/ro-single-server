@@ -1,0 +1,157 @@
+<!--{eval $_G['home_tpl_titles'] = array($_G[setting][navs][5][navname]);}-->
+<!--{template common/header}-->
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>$_G[setting][navs][5][navname]
+	</div>
+</div>
+<div id="ct" class="{if $_G['uid'] || !empty($_G['cache']['userapp'])}ct2_a {/if}wp cl">
+	<!--{if $_G['uid'] || !empty($_G['cache']['userapp'])}-->
+	<div class="appl">
+		<!--{subtemplate userapp/userapp_menu_list}-->
+	</div>
+	<!--{/if}-->
+	<div class="mn">
+		<div class="bm bw0">
+			<h1 class="mt"><img src="{IMGDIR}/appsetting.gif" alt="app" class="vm" /> $_G[setting][navs][5][navname]</h1>
+			<!--{hook/userapp_index_top}-->
+			<ul class="tb cl">
+				<li$actives[top]><a href="userapp.php">{lang app_index}</a></li>
+				<li$actives[all]><a href="userapp.php?view=all">{lang what_everybody_playing}</a></li>
+				<!--{if $_G[uid]}-->
+				<!--{if !empty($space[feedfriend])}-->
+				<li$actives[we]><a href="userapp.php?view=we">{lang what_friend_playing}</a></li>
+				<!--{/if}-->
+				<li$actives[me]><a href="userapp.php?view=me">{lang own}</a></li>
+				<!--{/if}-->
+				<li class="o"><a href="userapp.php?mod=manage&my_suffix=%2Fapp%2Flist">{lang add_app}</a></li>
+			</ul>
+			<!--{if $_GET['view'] != 'top'}-->
+			<div id="feed_div">
+				<!--{if $list}-->
+					<div class="xld xlda mtm">
+					<!--{loop $list $appicon $values}-->
+						<dl class="bbda cl">
+							<dd class="m avt">
+								<a href="userapp.php?mod=app&id=$appicon"><img src="http://appicon.manyou.com/logos/$appicon" alt="" /></a>
+							</dd>
+							<dd class="cl">
+								<ul class="el">
+									<!--{loop $values $value}-->
+									<li class="cl">
+										<a class="t" href="userapp.php?icon=$value[icon]" title="{lang just_look_dynamic}">
+											<img width="16" height="16" {if $_G[cache][myapp][$value[icon]][icon]}src="$_G[cache][myapp][$value[icon]][icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$value[icon]'"{else} src="http://appicon.manyou.com/icons/$value[icon]"{/if} />
+										</a>
+										$value[title_template]
+										<span class="xg1"><!--{date($value[dateline], 'n-j H:i')}--></span>
+
+										<div class="ec">
+											<!--{if $value['image_1']}-->
+											<a href="$value[image_1_link]"{$value[target]}><img src="$value[image_1]" class="tn" /></a>
+											<!--{/if}-->
+											<!--{if $value['image_2']}-->
+											<a href="$value[image_2_link]"{$value[target]}><img src="$value[image_2]" class="tn" /></a>
+											<!--{/if}-->
+											<!--{if $value['image_3']}-->
+											<a href="$value[image_3_link]"{$value[target]}><img src="$value[image_3]" class="tn" /></a>
+											<!--{/if}-->
+											<!--{if $value['image_4']}-->
+											<a href="$value[image_4_link]"{$value[target]}><img src="$value[image_4]" class="tn" /></a>
+											<!--{/if}-->
+
+											<!--{if $value['body_template']}-->
+											<div class="detail"{if $value['image_3']} style="clear: both; zoom: 1;"{/if}>
+												$value[body_template]
+											</div>
+											<!--{/if}-->
+
+											<!--{if $value['body_general']}-->
+											<div class="quote"><blockquote>$value[body_general]</blockquote></div>
+											<!--{/if}-->
+										</div>
+									</li>
+								<!--{/loop}-->
+								</ul>
+							</dd>
+						</dl>
+						<!--{/loop}-->
+					</div>
+				<!--{else}-->
+					<p class="emp">{lang no_feed}</p>
+				<!--{/if}-->
+			</div>
+			<!--{if $multi}-->
+				<div class="pgs cl mtm">$multi</div>
+			<!--{/if}-->
+
+			<!--{else}-->
+
+			<!--{if $todayhot}-->
+				<p class="tbmu">{lang today_active_app}</p>
+				<div class="bbda pbm ptm cl">
+					<ul class="ml cl">
+						<!--{loop $todayhot $value}-->
+						<li style="width: 100px; height: 105px;">
+							<a href="userapp.php?mod=app&id=$value[appid]"><img src="http://appicon.manyou.com/logos/$value[appid]" alt="$value[appname]" /></a>
+							<p class="mtn"><a href="userapp.php?mod=app&id=$value[appid]">$value[appname]</a></p>
+						</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			<!--{/if}-->
+
+			<div class="bm bm2 bw0 appmaxh mtm cl">
+				<div class="bm2_b">
+					<div class="bm_h cl"><h2>{lang latest_release}</h2></div>
+					<div class="bm_c">
+						<ul class="xl xl2 apl cl">
+							<!--{loop $newapp $value}-->
+							<li><img width="16" height="16" {if $value[icon]}src="$value[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$value[appid]'"{else} src="http://appicon.manyou.com/icons/$value[appid]"{/if} alt="$value[appname]" class="vm" /> <a href="userapp.php?mod=app&id=$value[appid]">$value[appname]</a></li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+				</div>
+
+				<div class="bm2_b bm2_b_y">
+					<div class="bm_h cl"><h2>{lang popular_app}</h2></div>
+					<div class="bm_c">
+						<ul class="xl xl2 apl cl">
+							<!--{loop $hotapp $value}-->
+							<li><img width="16" height="16" {if $value[icon]}src="$value[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$value[appid]'"{else} src="http://appicon.manyou.com/icons/$value[appid]"{/if} alt="$value[appname]" class="vm" /> <a href="userapp.php?mod=app&id=$value[appid]">$value[appname]</a></li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="bm bm2 bw0 appmaxh cl">
+				<div class="bm2_b">
+					<div class="bm_h cl"><h2>{lang girl_like}</h2></div>
+					<div class="bm_c">
+						<ul class="xl xl2 apl cl">
+							<!--{loop $girluseapp $value}-->
+							<li><img width="16" height="16" {if $value[icon]}src="$value[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$value[appid]'"{else} src="http://appicon.manyou.com/icons/$value[appid]"{/if} alt="$value[appname]" class="vm" /> <a href="userapp.php?mod=app&id=$value[appid]">$value[appname]</a></li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+				</div>
+				<div class="bm2_b bm2_b_y">
+					<div class="bm_h cl"><h2>{lang boy_like}</h2></div>
+					<div class="bm_c">
+						<ul class="xl xl2 apl cl">
+							<!--{loop $boyuseapp $value}-->
+							<li><img width="16" height="16" {if $value[icon]}src="$value[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$value[appid]'"{else} src="http://appicon.manyou.com/icons/$value[appid]"{/if} alt="$value[appname]" class="vm" /> <a href="userapp.php?mod=app&id=$value[appid]">$value[appname]</a></li>
+							<!--{/loop}-->
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!--{/if}-->
+
+			<!--{hook/userapp_index_bottom}-->
+			<div id="ajax_wait"></div>
+		</div>
+	</div>
+</div>
+<!--{template common/footer}-->

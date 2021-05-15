@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[Ðý·ç´æ´¢]]></item>
+			<item id="identifier"><![CDATA[xf_storage]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[xf_storage/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[1.04]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[xf_storage]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3.2]]></item>
+		<item id="language">
+			<item id="templatelang">
+				<item id="sava_attachlist"><![CDATA[Íê±Ï£¬±£´æµ½¸½¼þÁÐ±í]]></item>
+				<item id="xf_storage_tips"><![CDATA[Äú¿ÉÒÔÔÚÉÏ´«¹ý³ÌÖÐ¹Ø±ÕÕâ¸öÐ¡´°¿Ú£¬ÉÏ´«Íê±Ïºó»áÍ¨ÖªÄú]]></item>
+				<item id="wait_for_url"><![CDATA[Ò³Ãæ¼ÓÔØÖÐ£¬ÇëÉÔµÈ...]]></item>
+				<item id="timeout_tips"><![CDATA[³¬´ó¸½¼þÉÏ´«Ò³Ãæ¼ÓÔØÊ§°Ü£¬ÊÇ·ñÇÐ»»µ½ÅúÁ¿ÉÏ´«£¿]]></item>
+				<item id="filesize_limit"><![CDATA[ÎÄ¼þ³ß´ç: Ð¡ÓÚ 2GB]]></item>
+				<item id="xf_storage_btn"><![CDATA[´ó¸½¼þÉÏ´«]]></item>
+				<item id="update_tips"><![CDATA[¸Ã¸½¼þÊÇÍ¨¹ýQQÐý·ç·½Ê½ÉÏ´«µÄ´ó¸½¼þ£¬²»Ö§³ÖÖ±½Ó¸üÐÂ·½Ê½ÐÞ¸Ä¡£]]></item>
+				<item id="notice_name"><![CDATA[Í¨ÖªÐÅÏ¢]]></item>
+				<item id="download_xf"><![CDATA[Ðý·ç¸ßËÙÏÂÔØ]]></item>
+				<item id="attachlist"><![CDATA[¸½¼þÁÐ±í]]></item>
+			</item>
+		</item>
+	</item>
+</root>
