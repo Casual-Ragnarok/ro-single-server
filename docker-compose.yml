@@ -1,0 +1,29 @@
+version: '2.1'
+services:
+  mariadb:
+    image: mariadb:10.1
+    container_name: RO_DB
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_LOG_CONSOLE=true
+    # volumes:
+    #   - ./ROEmulator/usr/local/mysql/data:/var/lib/mysql
+    ports: 
+      - 3306:3306
+    networks: 
+      vpn:
+        ipv4_address: 172.168.99.2
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 20s
+        retries: 10
+
+
+networks:
+  vpn:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet:  172.168.99.0/24
+          gateway: 172.168.99.1
