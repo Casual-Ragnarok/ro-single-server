@@ -1,13 +1,14 @@
 version: '2.1'
 services:
   mariadb:
-    image: mariadb:10.1
+    image: mariadb:5.5.60
     container_name: RO_DB
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_LOG_CONSOLE=true
-    # volumes:
-    #   - ./ROEmulator/usr/local/mysql/data:/var/lib/mysql
+    volumes:
+      - ./ROEmulator/usr/local/mysqlmy.cnf:/etc/mysql/conf.d/ro.cnf
+      - ./ROEmulator/usr/local/mysql/data:/var/lib/mysql
     ports: 
       - 3306:3306
     networks: 
