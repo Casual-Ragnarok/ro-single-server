@@ -180,7 +180,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 安装 git，执行命令 `git clone https://github.com/lyy289065406/ro-single-server` 下载 EA 服务端
 - 不懂 git 的同学可以直接点击本 [Github](https://github.com/lyy289065406/ro-single-server) 仓库的 【Clone and download】 ，解压后也是一样的
 - 服务端可放到任意位置（<b>路径不要有中文</b>）
-- 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）
+- 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）。【若熟悉 Docker 可以使用 `01-Run_Env_Docker.ps1` 代替】
 - 双击运行 `02-启动RO服务端.bat`，会依次自动启动：
 <br/>　○ 角色服务器 `char-server.exe`
 <br/>　○ 登陆服务器 `login-server.exe`
@@ -202,7 +202,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ### 停止服务端
 
 - 手动关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe` 窗口
-- 双击运行 `03-关闭架设环境.bat`
+- 双击运行 `03-关闭架设环境.bat`。【若熟悉 Docker 可以使用 `03-Stop_Env_Docker.ps1` 代替】
 - 双击运行 `04-重置试用时间.bat` （可选，只要未过期都可以不执行）
 
 > 注：重置试用时间并不会影响存档，存档是在 mysql 数据库中的
