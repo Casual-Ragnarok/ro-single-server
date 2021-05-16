@@ -28,7 +28,7 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./ROEmulator/docker/apache2/httpd.conf:/etc/apache2/apache2.config
-      - ./ROEmulator/docker/apache2/logs:/var/log/apache2/
+      - ./ROEmulator/docker/apache2/logs/:/var/log/apache2/
       - ./ROEmulator/docker/apache2/www/:/var/www/html/
     ports: 
       - 8096:8096
