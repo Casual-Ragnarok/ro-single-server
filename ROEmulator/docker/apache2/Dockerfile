@@ -1,4 +1,4 @@
-FROM php:5.6.11-apache
+FROM php:5.6.40-apache
 
 RUN apt-get update -y
 RUN apt-get install -y libjpeg-dev libpng-dev
