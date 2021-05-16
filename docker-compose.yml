@@ -21,15 +21,14 @@ services:
 
 
   apache:
-    # image: php:5.6.11-apache
     container_name: RO_WEB
     build: 
       context: ./ROEmulator/docker/apache2
       dockerfile: ./Dockerfile
     volumes:
-      - ./ROEmulator/docker/apache2/httpd.conf:/etc/apache2/apache2.config
-      - ./ROEmulator/docker/apache2/logs/:/var/log/apache2/
-      - ./ROEmulator/docker/apache2/www/:/var/www/html/
+      - ./ROEmulator/docker/apache2/httpd.conf:/etc/apache2/apache2.conf
+      - ./ROEmulator/docker/apache2/logs:/var/log/apache2/logs
+      - ./ROEmulator/docker/apache2/www:/var/www/html
     ports: 
       - 8096:8096
     depends_on:
