@@ -324,12 +324,34 @@ function	script	F_MANUAL	{
 // - param: 无参数
 // - return: （达成修炼条件后）是否破坏当前装备
 function	script	F_TRAIN_GOD_POWER_01	{
+
+	.@cnt = 0;
+
 	// 被攻击时计数器 + 1
 	// TODO autobonus2 有 BUG, 当多个装备都设置了autobonus2脚本且 同时受到攻击时，计数器会脏读，第一件装备被攻击计数为1，后一件为2
 	// TODO 如何判断是什么魔物发起攻击？
-	autobonus2 "{ set #aaa,(#aaa + 1);  }",1000,BF_NORMAL|BF_SKILL,0;
+	autobonus2 "{ #iiii++;  }",1000,BF_NORMAL|BF_SKILL,0;
+
+	set #xxxx,(.@cnt > 0 ? 1 : 0);
 
 
 	// Todo 关于体质高速移动，可以在迷宫入口设触发点计时，1小时内攻破迷宫深处 BOSS
+	return;
+}
+
+
+function	script	F_TRAIN_GOD_POWER_02	{
+
+	.@cnt = #jjjj;
+	#jjjj++;
+	if (#jjjj > .@cnt) {
+		#jjjj = .@cnt + 1;
+	}
+	autobonus2 "{ #iiii++;  }",1000,BF_NORMAL|BF_SKILL,0;
+
+	// Todo 关于体质高速移动，可以在迷宫入口设触发点计时，1小时内攻破迷宫深处 BOSS
+
+	// 绝对防御： VIT*2。 持续一小时被攻击，且没有受到伤害，同时也没有赋予伤害。
+	// 冥想：每10秒恢复最大HP 1%. 持续不动被攻击3小时
 	return;
 }

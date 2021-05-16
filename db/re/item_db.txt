@@ -12617,7 +12617,7 @@
 62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{},{},{}
 62101,Ancient_Guard,古老的 破裂的硬壳,4,1,,50,,10,,0,0xFFFFFFFF,63,2,32,,0,1,1,{},{},{}
 62401,Ancient_Sandals,古老的 被盗的凉鞋,4,1,,50,,10,,0,0xFFFFFFFF,63,2,64,,0,1,0,{},{},{}
-62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,0,0,0,{},{},{}
-62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,1,0,0,{},{},{}
-62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,50,,10,,0,0xFFFFFFFF,63,2,256,,0,1,6,{},{},{}
+62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,0,0,0,{ callfunc "F_TRAIN_GOD_POWER_02"; },{},{}
+62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,1,0,0,{ autobonus2 "{ #aaaa++;  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}
+62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,50,,10,,0,0xFFFFFFFF,63,2,256,,0,1,6,{ autobonus2 "{ #bbbb++;  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}
 62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,,0,0,82,{},{},{}
