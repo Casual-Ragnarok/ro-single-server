@@ -115,7 +115,7 @@ echo "
 					<TD width='14%' height=30><DIV class=txt align=center><A href='".$config_patch_url1."' target=_blank>v4.3-度盘(iav5)</A></DIV></TD>
 					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url2."' target=_blank>v3.7-度盘(fy43)</A></SPAN></DIV></TD>
 					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url3."' target=_blank>v3.0-度盘(rc8s)</A></SPAN></DIV></TD>
-					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url4."' target=_blank>本地下载</A></SPAN></DIV></TD>
+					<TD width='14%'><DIV align=center><SPAN class=txt><A href='".$config_patch_url4."' target=_blank>Github 下载</A></SPAN></DIV></TD>
 					</TR>
 					</TBODY>
 					</TABLE>

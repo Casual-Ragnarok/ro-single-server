@@ -59,7 +59,7 @@ $config_cilent_url4=		"http://ro.gnjoy.com/pds/down/";
 $config_patch_url1=		"https://pan.baidu.com/s/1F3XLwqDDwebvUNIYIKPlXQ&shfl=sharepset";
 $config_patch_url2=		"https://pan.baidu.com/s/1FuR9bpqaVhuSxcgHkZbmmQ&shfl=sharepset";
 $config_patch_url3=		"https://pan.baidu.com/s/1tMkj46v2Lm2RVqINb2XW_g&shfl=sharepset";
-$config_patch_url4=		"http://127.0.0.1/ro/download/RO_Singel_Patch_v4.3 CHS 登录补丁.zip";
+$config_patch_url4=		"https://github.com/lyy289065406/ro-single-client";
 /***********************************************************************************************\
 *************************************************************************************************
 *************************************************************************************************
