@@ -39,6 +39,23 @@ services:
         ipv4_address: 172.168.99.3
 
 
+  metabase:
+    image: metabase/metabase:v0.39.2
+    container_name: RO_DB_UI
+    environment:
+      - MB_DB_FILE=/metabase-data
+    volumes:
+      - ./ROEmulator/docker/metabase/data:/metabase-data
+    ports: 
+      - 3000:3000
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks: 
+      vpn:
+        ipv4_address: 172.168.99.4
+
+
 networks:
   vpn:
     driver: bridge
