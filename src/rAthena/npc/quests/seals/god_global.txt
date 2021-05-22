@@ -102,6 +102,7 @@ L_Var:
 
 OnInit:
 	// Seals roll at 25/50 in Renewal and 50/100 in Pre-Renewal.
+	// 根据服务器运行模式设置目标值
 	if (checkre(0)) {
 		set $@god_check1,25;
 		set $@god_check2,50;
