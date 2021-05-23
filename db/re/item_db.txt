@@ -1682,7 +1682,6 @@
 2459,Upg_Shoes,[强化]长靴,4,20,,200,,15,,1,0xFFFFFFFE,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
 2460,Upg_Boots,[强化]战士长靴,4,20,,300,,21,,1,0x416E5CEA,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
 2461,Upg_Greave,[强化]重靴,4,20,,400,,32,,1,0x00004080,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
-2462,Sleipnir_C,史雷普尼尔之靴 1S,4,20,,0,,40,,1,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,15; bonus bSpeedRate,100; bonus bInt,25; },{},{}
 2463,Feral_Boots,狂野长靴,4,20,,0,,12,,0,0xFFFFFFFF,63,2,64,,75,0,0,{},{},{}
 2464,No_Fear_Shoes,无畏之靴,4,0,,0,,6,,0,0xFFFFFFFF,63,2,64,,20,0,0,{ bonus bStr,1; bonus bInt,1; bonus bDex,1; },{},{}
 2465,Dance_Shoes,舞鞋,4,20,,300,,15,,1,0x00080000,63,2,64,,105,1,0,{ bonus bAgi,1; bonus bAspdRate,2; bonus2 bSkillUseSP,"WA_SWING_DANCE",32; },{},{}

@@ -3145,7 +3145,7 @@ que_qsch01,252,340,3	script	Wish Maiden#sch01_gift	403,{
 		else {
 			cutin "wish_maiden12",1;
 			mes "[Wish Maiden]";
-			mes "¸ All of you worked together as a team...";
+			mes "All of you worked together as a team...";
 			mes "Humans are strong when they are united, but are easily swayed by lust.";
 			next;
 			mes "[Wish Maiden]";
