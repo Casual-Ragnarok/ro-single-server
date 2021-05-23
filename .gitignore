@@ -1,5 +1,6 @@
 # 日志文件
 ROEmulator/docker/apache2/logs/*
+ROEmulator/docker/metabase/data/metabase-data.trace.db
 ROEmulator/usr/local/apache2/logs/*
 ROEmulator/www/data/log/*
 
