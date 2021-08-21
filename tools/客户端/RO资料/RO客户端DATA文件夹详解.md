@@ -1,57 +1,65 @@
 # RO 客户端 DATA 文件夹详解
 
-> http://bbs.rohome.net/thread-881030-1-1.html
+> 来源：http://bbs.rohome.net/thread-881030-1-1.html
 
 ------
 
-data\wav   为怪物叫声和技能效果音
+## data 的子目录介绍
 
-palette\赣府  里面的.pal为发型染色，每个职业为0~8种不同的发型颜色。
+| 路径 | 说明 |
+|:---|:---|
+| `wav` | 为怪物叫声和技能效果音 |
+| `palette\赣府` | 里面的 `.pal` 为发型染色，每个职业为 `0~8` 种不同的发型颜色。 |
+| `palette\个` | 里面的 `.pal` 为职业装染色，每个职业为 `0~4` 种不同的职业装颜色。 |
+| `sprite` | 里面的 `.spr` 和 `.act` 为游戏所需基本补丁不要动它。 |
+| `sprite\book` | 里面的 `.spr` 和 `.act` 为游戏所需基本补丁不要动它。 |
+| `sprite\homun` | 里面的 `.spr` 和 `.act` 为炼金术士人工生命体外观补丁，可以把自己喜欢的外观替换上去（命名要一致才被数据读取） |
+| `sprite\npc` | 里面的 `.spr` 和 `.act` 为游戏 NPC 外观补丁，可以把自己喜欢的外观替换上去（命名要一致才被数据读取） |
+| `sprite\阁胶磐` | 里面的 `.spr` 和 `.act` 为游戏怪物外观补丁，可以把自己喜欢的外观替换上去（命名要一致才被数据读取） |
+| `sprite\规菩` | 里面有很多文件夹，里面的 `.spr` 和 `.act` 为人物举盾时外观补丁可以把喜欢的外观替换上去（命名要一致才被数据读取） |
+| `sprite\酒捞袍` | 里面的 `.spr` 和 `.act` 分2种一种是技能（英文的）补丁一种是物品（乱码）补丁可以把喜欢的外观替换上去（命名要一致才被数据读取） |
+| `sprite\厩技荤府` | 里面分别为 `巢`（男）和 `咯`（女）的头饰外观补丁可以把喜欢的外观替换上去（命名要一致才被数据读取）<br/>注：要男的显示外观放在 `巢` 文件夹里，要女的显示外观放在 `咯` 文件夹里。 |
+| `sprite\捞蒲飘` | 里面的 `.spr` 和 `.act` 为游戏部分场景效果补丁，可以把自己喜欢的外观替换上去（命名要一致才被数据读取） |
+| `sprite\牢埃练` | 为人物数据文件夹。职业外观、选择发型、武器装备动作全在这个文件夹内。 |
+| `sprite\牢埃练\赣府烹` | 为男女发型外观补丁，可以把自己喜欢的外观替换上去（命名要一致才被数据读取） |
+| `sprite\牢埃练\个烹` | 为男女职业装外观补丁，可以把喜欢的外观替换上去（命名要一致才被数据读取） |
 
-palette\个  里面的.pal为职业装染色，每个职业为0~4种不同的职业装颜色。
 
-sprite    里面的.spr和.act为游戏所需基本补丁不要动它。
+## 关于 data 内的 texture 子目录
 
-sprite\book    里面的.spr和.act为游戏所需基本补丁不要动它。
+`texture` 里面分别为图片格式外观补丁，大多为MAP界面图、效果图、登入界面图和物品外观图和解释图（右击物品所见的图）。
 
-sprite\homun    里面的.spr和.act为炼金术士人工生命体外观补丁。可以把自己喜欢的外观替换上去。（命名要一致才被数据读取）
+在这里只要介绍效果图、登入界面图和物品外观图和解释图位置在哪个文件夹里：
 
-sprite\npc    里面的.spr和.act为游戏NPC外观补丁，可以把自己喜欢的外观替换上去。（命名要一致才被数据读取）
+- `texture\effect`： 为效果图目录。
+- `texture\蜡历牢磐其捞胶`： 为登入界面图和物品外观图和解释图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
+- `texture\蜡历牢磐其捞胶\cardbmp`： 为卡片图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
+- `texture\蜡历牢磐其捞胶\collection`： 为解释图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
+- `texture\蜡历牢磐其捞胶\illust`： 为游戏 NPC 图目录。可以用 Photoshop 修改自己个性图。
+- `texture\蜡历牢磐其捞胶\item`： 为物品外观图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
+- `texture\蜡历牢磐其捞胶\map`： 为地图目录。如果不是自己做新的地图不推荐修改。
+- `texture\蜡历牢磐其捞胶`： 文件夹里从 `loading00.jpg` 开始的图为进出地图的 LOGO 图。可以代替自己喜欢的 LOGO 界面。
 
-sprite\阁胶磐  里面的.spr和.act为游戏怪物外观补丁，可以把自己喜欢的外观替换上去。（命名要一致才被数据读取）
 
-sprite\规菩  里面有很多文件夹，里面的.spr和.act为人物举盾时外观补丁可以把喜欢的外观替换上去。（命名要一致才被数据读取）
+## 关于 data 内的 .txt 文件
 
-sprite\酒捞袍  里面的.spr和.act分2种一种是技能（英文的）补丁一种是物品（乱码）补丁可以把喜欢的外观替换上去。（命名要一致才被数据读取）
+在 `data` 文件夹里有很多 `.txt` 文件，分别都有各自的作用：
 
-sprite\厩技荤府  里面分别为巢（男）和咯（女）的头饰外观补丁可以把喜欢的外观替换上去。（命名要一致才被数据读取）
-注：要男的显示外观放在巢文件夹里，要女的显示外观放在咯文件夹里。
-
-sprite\捞蒲飘   里面的.spr和.act为游戏部分场景效果补丁，可以把自己喜欢的外观替换上去。（命名要一致才被数据读取）
-
-sprite\牢埃练   为人物数据文件夹。职业外观、选择发型、武器装备动作全在这个文件夹内。
-
-sprite\牢埃练\赣府烹   为男女发型外观补丁，可以把自己喜欢的外观替换上去。（命名要一致才被数据读取）
-
-sprite\牢埃练\个烹   为男女职业装外观补丁可以把喜欢的外观替换上去。（命名要一致才被数据读取）
-
-data\texture   里面分别为图片格式外观补丁，大多为MAP界面图、效果图、登入界面图和物品外观图和解释图（右击物品所见的图）。在这里只要介绍效果图、登入界面图和物品外观图和解释图位置在那个文件夹里：
-texture\effect 为效果图目录。
-texture\蜡历牢磐其捞胶 为登入界面图和物品外观图和解释图目录。可以按图的大小对应修改（修改工具推荐Photoshop）
-texture\蜡历牢磐其捞胶\cardbmp 为卡片图目录。可以按图的大小对应修改（修改工具推荐Photoshop）
-texture\蜡历牢磐其捞胶\collection 为解释图目录。可以按图的大小对应修改（修改工具推荐Photoshop）
-texture\蜡历牢磐其捞胶\illust 为游戏NPC图目录。可以用Photoshop修改自己个性图。
-texture\蜡历牢磐其捞胶\item 为物品外观图目录。可以按图的大小对应修改（修改工具推荐Photoshop）
-texture\蜡历牢磐其捞胶\map 为地图目录。如果不是自己做新的地图不推荐修改。
-texture\蜡历牢磐其捞胶文件夹里从loading00.jpg开始的图为进出地图的LOGO图。可以代替自己喜欢的LOGO界面。
-
-在data文件夹里有很多.txt文件，分别都有各自的作用。
-ba_frostjoke.txt为诗人剧本
-dc_scream.txt为舞娘剧本
-cardprefixnametable.txt为卡片插到装备上的解释
-etcinfo.txt为个城市天气效果的设定
-
-格式如下：
+- `skilldesctable.txt`： 为技能解释
+- `skillnametable.txt`： 为技能名字
+- `ba_frostjoke.txt`： 为诗人剧本
+- `dc_scream.txt`： 为舞娘剧本
+- `cardprefixnametable.txt`： 为卡片插到装备上的解释
+- `ndoorrswtable.txt`： 为室内平视角限制
+- `manner.txt`： 为禁语限制
+- `mapnametable.txt`： 为地图名称（也就是打/where所见的信息）
+- `mp3nametable.txt`： 为地图背景音乐管理
+- `msgstringtable.txt`： 为游戏基本信息
+- `num2itemdesctable.txt`： 为未鉴定物品解释
+- `num2itemdisplaynametable.txt`： 为未鉴定物品名字
+- `num2itemresnametable.txt`： 为未鉴定物品连接根据
+- `num2cardillustnametable.txt`： 为卡片连接根据（相对的连接为 `data\texture\蜡历牢磐其捞胶\cardbmp` 里的图）
+- `etcinfo.txt`： 为个城市天气效果的设定，其内容格式如下：
 
 ```
 loadingscreen#
@@ -78,14 +86,17 @@ pokjuk
 sakura
 ```
 
-idnum2itemdesctable.txt 为物品解释
-idnum2itemdisplaynametable.txt 为物品名字
-idnum2itemresnametable.txt 为物品连接根据
+### 修改物品说明示例
+
+- `idnum2itemdesctable.txt`： 为物品解释
+- `idnum2itemdisplaynametable.txt`： 为物品名字
+- `idnum2itemresnametable.txt`： 为物品连接根据
 
 如：一个红色药水组成。
-在idnum2itemdisplaynametable.txt里修改他的名字：`501#红色药水#`
 
-在idnum2itemdesctable.txt里修改他的解释：
+在 `idnum2itemdisplaynametable.txt` 里修改他的名字：`501#红色药水#`
+
+在 `idnum2itemdesctable.txt` 里修改他的解释：
 
 ```
 501#
@@ -95,55 +106,51 @@ idnum2itemresnametable.txt 为物品连接根据
 #
 ```
 
-在idnum2itemresnametable.txt里修改他的连接根据：`501#弧埃器记#`
+在 `idnum2itemresnametable.txt` 里修改他的连接根据：`501#弧埃器记#`
 
-相对的修改有:
-Data\sprite\酒捞袍 里要加个弧埃器记.spr和弧埃器记.act补丁
-Data\texture\蜡历牢磐其捞胶\collection 里要加个弧埃器记.bmp的解释图
-Data\texture\蜡历牢磐其捞胶\item 里要加个弧埃器记.bmp的物品图
+且还需对应修改:
 
-ndoorrswtable.txt为室内平视角限制
-manner.txt为禁语限制
-mapnametable.txt为地图名称（也就是打/where所见的信息）
-mp3nametable.txt为地图背景音乐管理
-msgstringtable.txt为游戏基本信息
-num2cardillustnametable.txt为卡片连接根据
+- `data\sprite\酒捞袍` 里要加个 `弧埃器记.spr` 和 `弧埃器记.act` 补丁
+- `data\texture\蜡历牢磐其捞胶\collection` 里要加个 `弧埃器记.bmp` 的解释图
+- `data\texture\蜡历牢磐其捞胶\item` 里要加个 `弧埃器记.bmp` 的物品图
 
-> 相对的连接为Data\texture\蜡历牢磐其捞胶\cardbmp里的图
 
-num2itemdesctable.txt为未鉴定物品解释
-num2itemdisplaynametable.txt为未鉴定物品名字
-num2itemresnametable.txt为未鉴定物品连接根据
-skilldesctable.txt为技能解释
-skillnametable.txt为技能名字
 
-在data文件夹里有很多.xml文件，分别都有各自的作用。
-monstertalktable.xml为怪物的对话
-pettalktable.xml为宠物的对话
-sclientinfo.xml为服务器登入设置
+## 关于 data 内的 .xml 文件
 
-DATA文件夹里的乱码含义（人物篇）
-注：其中韩文部分必须在安装韩文显示之后才能正常显示
-简体中文 韩文 繁体乱码 简体乱码
-人物的设定文件在：\data\sprite\牢埃练\个烹
-男：\data\sprite\牢埃练\个烹\巢
-女：\data\sprite\牢埃练\个烹\咯
+在 `data` 文件夹里有很多 `.xml` 文件，分别都有各自的作用：
+
+- `monstertalktable.xml`： 为怪物的对话
+- `pettalktable.xml`： 为宠物的对话
+- `sclientinfo.xml`： 为服务器登入设置
+
+
+## data 文件夹里的乱码含义（人物篇）
+
+> 注：其中韩文部分必须在安装韩文显示之后才能正常显示
+
+| 简体中文 | 韩文 | 繁体乱码 | 简体乱码 |
+
+- 人物的设定文件在： `data\sprite\牢埃练\个烹`
+- 男： `data\sprite\牢埃练\个烹\巢`
+- 女： `data\sprite\牢埃练\个烹\咯`
 
 替换方法：
-找到你需要替换的外观的文件（含.act和.spr各一个），复制到对应的性别目录中，然后改变文件名为你需要替换的职业
 
-需要寻找的文件和需要替换的文件名字可以通过ctrl+f在下表查找，另如果看到的文件名都是钢管纹，就需要用转换器转换成乱码才行。
+- 找到你需要替换的外观的文件（含 `.act` 和 `.spr` 各一个），复制到对应的性别目录中，然后改变文件名为你需要替换的职业。
+- 需要寻找的文件和需要替换的文件名字可以在下表查找，另如果看到的文件名都是钢管纹，就需要用转换器转换成乱码才行。
 
-列表：
-一转的部分：
+### 一转
 
-檬焊磊_巢        初心者        檬焊磊_咯        初心者
-八荤_巢        剑士        八荤_咯        剑士
-档迪_巢        盗贼        档迪_咯        盗贼
-惑牢_巢        商人        惑牢_咯        商人
-泵荐_巢        弓箭手        泵荐_咯        弓箭手
-付过荤_巢        法师        付过荤_咯        法师
-己流磊_巢        服侍        己流磊_咯        服侍
+
+|:----:|:----:|:----:|:----:|
+| 檬焊磊_巢 | 初心者 | 檬焊磊_咯 | 初心者 |
+| 八荤_巢 | 剑士 | 八荤_咯 | 剑士 |
+| 档迪_巢 | 盗贼 | 档迪_咯 | 盗贼 |
+| 惑牢_巢 | 商人 | 惑牢_咯 | 商人 |
+| 泵荐_巢 | 弓箭手 | 泵荐_咯 | 弓箭手 |
+| 付过荤_巢 | 法师 | 付过荤_咯 | 法师 |
+| 己流磊_巢 | 服侍 | 己流磊_咯 | 服侍 |
 
 二转的部分：
 
@@ -355,34 +362,34 @@ thunder_center.bmp
 
 
 卡片放大补丁
-\data\sprite\酒捞袍\捞抚绝绰墨靛.act（不必备）
-\data\sprite\酒捞袍\捞抚绝绰墨靛.spr
+\data\sprite\酒捞袍\捞抚绝绰墨靛 `.act` （不必备）
+\data\sprite\酒捞袍\捞抚绝绰墨靛 `.spr` 
 
 
 生体研究所魔物染色补丁
-\data\sprite\阁胶磐\armaia.act
-\data\sprite\阁胶磐\eremes.act
-\data\sprite\阁胶磐\erend.act
-\data\sprite\阁胶磐\harword.act
-\data\sprite\阁胶磐\katrinn.act
-\data\sprite\阁胶磐\kavac.act
-\data\sprite\阁胶磐\magaleta.act
-\data\sprite\阁胶磐\rawrel.act
-\data\sprite\阁胶磐\seyren.act
-\data\sprite\阁胶磐\shecil.act
-\data\sprite\阁胶磐\whikebain.act
-\data\sprite\阁胶磐\ygnizem.act
+\data\sprite\阁胶磐\armaia `.act` 
+\data\sprite\阁胶磐\eremes `.act` 
+\data\sprite\阁胶磐\erend `.act` 
+\data\sprite\阁胶磐\harword `.act` 
+\data\sprite\阁胶磐\katrinn `.act` 
+\data\sprite\阁胶磐\kavac `.act` 
+\data\sprite\阁胶磐\magaleta `.act` 
+\data\sprite\阁胶磐\rawrel `.act` 
+\data\sprite\阁胶磐\seyren `.act` 
+\data\sprite\阁胶磐\shecil `.act` 
+\data\sprite\阁胶磐\whikebain `.act` 
+\data\sprite\阁胶磐\ygnizem `.act` 
 
 
 天使赐福简化补丁
-\data\sprite\捞蒲飘\particle1.spr
-\data\sprite\捞蒲飘\particle3.spr
-\data\sprite\捞蒲飘\particle4.spr
-\data\sprite\捞蒲飘\particle5.spr
-\data\sprite\捞蒲飘\particle6.spr
-\data\sprite\捞蒲飘\particle7.spr
-\data\sprite\捞蒲飘\status-sleep.spr
-\data\sprite\捞蒲飘\绵汗.spr
+\data\sprite\捞蒲飘\particle1 `.spr` 
+\data\sprite\捞蒲飘\particle3 `.spr` 
+\data\sprite\捞蒲飘\particle4 `.spr` 
+\data\sprite\捞蒲飘\particle5 `.spr` 
+\data\sprite\捞蒲飘\particle6 `.spr` 
+\data\sprite\捞蒲飘\particle7 `.spr` 
+\data\sprite\捞蒲飘\status-sleep `.spr` 
+\data\sprite\捞蒲飘\绵汗 `.spr` 
 
 
 暴风雪效果简化补丁
@@ -523,7 +530,7 @@ thunder_center.bmp
 
 
 火焰阵简化
-\data\sprite\捞蒲飘\拳堪柳.spr
+\data\sprite\捞蒲飘\拳堪柳 `.spr` 
 
 
 
@@ -535,9 +542,9 @@ thunder_center.bmp
 
 
 data\sprite\捞蒲飘
-                   emotion.ACT   韩国新表情（小站MAKIYO大大发过）
-                            emotion.spr 韩国新表情
-                   status-sleep.spr 睡眠状态ZZZ改为红色
+                   emotion `.act`    韩国新表情（小站MAKIYO大大发过）
+                            emotion `.spr`  韩国新表情
+                   status-sleep `.spr`  睡眠状态ZZZ改为红色
 data\texture\郴何家前
                    arch.BMP    下水道去顶棚（SD区特别有用）
                             BAK_arch.BMP   下水道去顶棚（SD区特别有用）
