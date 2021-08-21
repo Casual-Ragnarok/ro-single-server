@@ -9,6 +9,8 @@
 | 路径 | 说明 |
 |:---|:---|
 | `wav` | 为怪物叫声和技能效果音 |
+| `wav\effect` | 游戏中各种技能的效果声音，包括舞蹈等 |
+| `texture\effect` | 各种游戏技能效果 |
 | `palette\赣府` | 里面的 `.pal` 为发型染色，每个职业为 `0~8` 种不同的发型颜色。 |
 | `palette\个` | 里面的 `.pal` 为职业装染色，每个职业为 `0~4` 种不同的职业装颜色。 |
 | `sprite` | 里面的 `.spr` 和 `.act` 为游戏所需基本补丁不要动它。 |
@@ -18,7 +20,7 @@
 | `sprite\阁胶磐` | 里面的 `.spr` 和 `.act` 为游戏怪物外观补丁，可以把自己喜欢的外观替换上去（命名要一致才被数据读取） |
 | `sprite\规菩` | 里面有很多文件夹，里面的 `.spr` 和 `.act` 为人物举盾时外观补丁可以把喜欢的外观替换上去（命名要一致才被数据读取） |
 | `sprite\酒捞袍` | 里面的 `.spr` 和 `.act` 分2种一种是技能（英文的）补丁一种是物品（乱码）补丁可以把喜欢的外观替换上去（命名要一致才被数据读取） |
-| `sprite\厩技荤府` | 里面分别为 `巢`（男）和 `咯`（女）的头饰外观补丁可以把喜欢的外观替换上去（命名要一致才被数据读取）<br/>注：要男的显示外观放在 `巢` 文件夹里，要女的显示外观放在 `咯` 文件夹里。 |
+| `sprite\厩技荤府` | 里面分别为 `巢`（男）和 `咯`（女）的头饰外观补丁可以把喜欢的外观替换上去（命名要一致才被数据读取）。<br/>注：要男的显示外观放在 `巢` 文件夹里，要女的显示外观放在 `咯` 文件夹里。 |
 | `sprite\捞蒲飘` | 里面的 `.spr` 和 `.act` 为游戏部分场景效果补丁，可以把自己喜欢的外观替换上去（命名要一致才被数据读取） |
 | `sprite\牢埃练` | 为人物数据文件夹。职业外观、选择发型、武器装备动作全在这个文件夹内。 |
 | `sprite\牢埃练\赣府烹` | 为男女发型外观补丁，可以把自己喜欢的外观替换上去（命名要一致才被数据读取） |
@@ -27,18 +29,18 @@
 
 ## 关于 data 内的 texture 子目录
 
-`texture` 里面分别为图片格式外观补丁，大多为MAP界面图、效果图、登入界面图和物品外观图和解释图（右击物品所见的图）。
+`data\texture` 里面分别为图片格式外观补丁，大多为MAP界面图、效果图、登入界面图和物品外观图和解释图（右击物品所见的图）。
 
 在这里只要介绍效果图、登入界面图和物品外观图和解释图位置在哪个文件夹里：
 
-- `texture\effect`： 为效果图目录。
-- `texture\蜡历牢磐其捞胶`： 为登入界面图和物品外观图和解释图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
-- `texture\蜡历牢磐其捞胶\cardbmp`： 为卡片图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
-- `texture\蜡历牢磐其捞胶\collection`： 为解释图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
-- `texture\蜡历牢磐其捞胶\illust`： 为游戏 NPC 图目录。可以用 Photoshop 修改自己个性图。
-- `texture\蜡历牢磐其捞胶\item`： 为物品外观图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
-- `texture\蜡历牢磐其捞胶\map`： 为地图目录。如果不是自己做新的地图不推荐修改。
-- `texture\蜡历牢磐其捞胶`： 文件夹里从 `loading00.jpg` 开始的图为进出地图的 LOGO 图。可以代替自己喜欢的 LOGO 界面。
+- `data\texture\effect`： 为效果图目录。
+- `data\texture\蜡历牢磐其捞胶`： 为登入界面图和物品外观图和解释图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
+- `data\texture\蜡历牢磐其捞胶\cardbmp`： 为卡片图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
+- `data\texture\蜡历牢磐其捞胶\collection`： 为解释图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
+- `data\texture\蜡历牢磐其捞胶\illust`： 为游戏 NPC 图目录。可以用 Photoshop 修改自己个性图。
+- `data\texture\蜡历牢磐其捞胶\item`： 为物品外观图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
+- `data\texture\蜡历牢磐其捞胶\map`： 为地图目录。如果不是自己做新的地图不推荐修改。
+- `data\exture\蜡历牢磐其捞胶`： 文件夹里从 `loading00.jpg` 开始的图为进出地图的 LOGO 图。可以代替自己喜欢的 LOGO 界面。
 
 
 ## 关于 data 内的 .txt 文件
@@ -286,10 +288,13 @@ sakura
 | 拳套 | (不明) | (不明) | (不明) |
 
 
+------
 
-## 自定义效果补丁的相关修改位置
+<details>
+<summary>自定义补丁示例</summary>
+<br/>
 
-为了方便大家自己修改，这里收集了部分效果补丁的关联文件。
+为了方便大家自己修改，这里收集了部分效果补丁的相关修改位置：
 
 ### 尸人不透明效果
 
@@ -309,7 +314,7 @@ sakura
 - `meteor3.str`
 - `meteor4.str`
 
-### 技能效果简化
+### 技能效果修改
 
 `data\texture\effect\`:
 
@@ -350,6 +355,21 @@ sakura
     - `asura1.tga~asura16.tga`
 - 和尚气弹：
     - `thunder_center.bmp`
+- 蛛网效果增强：
+    - `spiderweb.tga`
+- 黑暗效果弱化：
+    - `white02.bmp`
+    - `fullb.tga`
+- 暗影效果补强：
+    - `oot_l_b.tga`
+    - `foot_r_b.tga`
+- AB 爆气效果修改：
+    - `super1.bmp~super5.bmp`
+- 大地之击效果关闭：
+    - `crashearth.str`
+- 泥沼技能效果改变为贴在地上的绿色小泡泡：
+    - `lord_blast_2_small.bmp`
+    - `quagmire.str`
 - 死塔小地图：
     - `tha_t03.bmp`
     - `tha_t04.bmp`
@@ -490,17 +510,19 @@ sakura
 
 ### 魔法阵简化补丁
 
-- `data\texture\effect\magic_target.tga`
+`data\texture\effect\magic_target.tga`
 
 ### 魔法锁定效果
 
-- `data\texture\effect\lockon128.tga`
+`data\texture\effect\lockon128.tga`
 
 ### 99级光环补丁
 
 - `data\texture\effect\auraring.bmp`
-- `data\texture\effect\freezing_circle.bmp（2转）`
-- `data\texture\effect\whitelight.tga（3转）`
+- `data\texture\effect\freezing_circle.bmp`（2转）
+- `data\texture\effect\whitelight.tga`（3转）
+- `data\texture\effect\pikapika2.bmp`
+- `data\texture\effect\ring_blue.tga`
 
 ### 塔罗纸牌补丁
 
@@ -521,7 +543,7 @@ sakura
 
 ### 蛛网视觉效果补强
 
-- `data\texture\effect\spiderweb.tga`
+`data\texture\effect\spiderweb.tga`
 
 ### 光之障壁视觉效果补强
 
@@ -538,48 +560,36 @@ sakura
 
 - `data\sprite\捞蒲飘\拳堪柳.spr`
 
+### 下水道去顶棚
 
+- `data\texture\郴何家前\arch.BMP`
+- `data\texture\郴何家前\BAK_arch.BMP`
 
+> 史汀区特别有用
 
+### 火山石头柱子去顶
 
+`data\texture\郴何家前\thor_column02.BMP`
 
+### 缩小游戏窗口右下角商城图标
 
+`data\texture\蜡历牢磐其捞胶\basic_interface\ro_shop.BMP`
 
+### 登陆画面
 
+`data\texture\蜡历牢磐其捞胶\login_interface\warning.BMP`
 
-data\sprite\捞蒲飘
-                   emotion.act    韩国新表情（小站MAKIYO大大发过）
-                            emotion.spr  韩国新表情
-                   status-sleep.spr  睡眠状态ZZZ改为红色
-data\texture\郴何家前
-                   arch.BMP    下水道去顶棚（SD区特别有用）
-                            BAK_arch.BMP   下水道去顶棚（SD区特别有用）
-                   thor_column02.BMP  火山石头柱子去顶
-data\texture\蜡历牢磐其捞胶\basic_interface
-                            ro_shop.BMP 缩小游戏窗口右下角商城图标
-data\texture\蜡历牢磐其捞胶\login_interface
-                           warning.BMP 登陆画面
-                  win_select.BMP 人物选择画面
-data\wav\effect   游戏中各种技能的效果声音，包括舞蹈等
+### 人物选择画面
 
-data\texture\effect 各种游戏技能效果
-蛛网效果增强
-spiderweb.tga
-黑暗效果弱化
-white02.bmp
-fullb.tga
-暗影效果补强
-foot_l_b.tga
-foot_r_b.tga
-AB爆气效果修改
-super1.bmp~super5.bmp
-大地之击效果关闭
-crashearth.str
-泥沼技能效果改变为贴在地上的绿色小泡泡
-lord_blast_2_small.bmp
-quagmire.str
-99级人物光环效果修改
-freezing_circle.bmp
-pikapika2.bmp
-ring_blue.tga
-whitelight.tga
+`data\texture\蜡历牢磐其捞胶\login_interface\win_select.BMP`
+
+### 韩国新表情
+
+- `data\sprite\捞蒲飘\emotion.act`
+- `data\sprite\捞蒲飘\emotion.spr`
+
+### 睡眠状态 .zZ 改为红色
+
+`data\sprite\捞蒲飘\status-sleep.spr`
+
+</details>
