@@ -263,10 +263,10 @@ bonus2 bSkillCooldown,sk,t;		sk 技能冷却时间 + t 毫秒（1000毫秒=1秒|
 伤害修正
 ----------------
 bonus2 bAddEle,e,x;       		物理攻击时，对属性 e 增加 x% 的伤害
-bonus3 bAddEle,e,x,bf;    		物理攻击时，对属性 e 增加 x% 的伤害（在bf条件下）
+bonus3 bAddEle,e,x,bf;    		物理攻击时，对属性 e 增加 x% 的伤害（在 bf 条件下）
 bonus2 bMagicAddEle,e,x;  		魔法攻击时，对属性 e 增加 x% 的伤害
 bonus2 bSubEle,e,x;       		减少来自属性 e 的伤害 x%
-bonus3 bSubEle,e,x,bf;    		减少来自属性 e 的伤害 x%（在bf条件下）
+bonus3 bSubEle,e,x,bf;    		减少来自属性 e 的伤害 x%（在 bf 条件下）
 bonus2 bSubDefEle,e,x;    		减少来自属性 e 魔物造成的伤害 x%
 
 bonus2 bAddRace,r,x;      		物理攻击时，对种族 r 增加 x% 的伤害
