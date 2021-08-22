@@ -7,7 +7,6 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_LOG_CONSOLE=true
     volumes:
-      - ./ROEmulator/usr/local/mysql/my.cnf:/etc/mysql/conf.d/ro.cnf
       - ./ROEmulator/usr/local/mysql/data:/var/lib/mysql
     ports: 
       - 3306:3306
