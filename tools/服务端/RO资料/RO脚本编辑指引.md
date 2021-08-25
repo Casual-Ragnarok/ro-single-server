@@ -276,108 +276,136 @@ prontera,167,204,6 script 测试脚本     96,10,10,{
 - 示例 `setoption 3;`： 变成 “火狩 + 隐匿” 状态（3 = 1 + 2）
 
 
-### sc_start "iii" 
-特殊状态开启
-三个参数分别为:类型,参数1(技能等级),参数2(暂时未用)
-例如
-sc_start SC_FREEZE,1,0; //变成冰冻状态
-支持的状态表另外再发,可以先参看skill_db,状态都是把_前面改成SC
+### sc_start
 
-### sc_end "i"
-特殊状态关闭 
-### resetstatus 
-resetstatus; 
-重置所有属性点 
-### resetskill 
-resetskill; 
-重置所有技能点 
-### changebase "i" 
-改变人物显示的职业,但实际职业不变,可用于结婚系统 
-如:changebase 22; //变成结婚人物形象
+开启特殊状态，它有三个参数分别为：类型，参数1(技能等级)，参数2(暂时未用)
+
+示例 `sc_start SC_FREEZE,1,0;`： 变成冰冻状态
+
+> 支持的状态表见 [SC 技能状态一览](./SC状态一览表.md)
+
+
+### sc_end
+
+特殊状态关闭
+
+
+### 重置所有属性点或技能点
+
+- `resetstatus;`： 重置所有属性点 
+- `resetskill;`： 重置所有技能点 
+
+
+```
+// 示例：重置辅助人员
+prontera.gat,146,192,4 script 重置辅助人员 763,{
+    mes "[重置辅助人员]";
+    mes "我专门负责重置点数";
+    mes "你想重置什么呢？";
+    next;
+    menu "^FF3355技能点(费用50w)^000000",L1,"^FF3355属性点(费用50w)^000000",L2,"^FF3355技能点和属性点(费用80w)^000000",L3,"取消",LEnd;
+    L1:
+        if (Zeny<500000) goto NeedZenys;
+        mes "[重置辅助人员]";
+        mes "已经重置好了";
+        mes "^FF3355请好好分配^000000";
+        set Zeny,Zeny-500000;
+        resetskill;
+        close;
+    L2:
+        if (Zeny<500000) goto NeedZenys;
+        mes "[重置辅助人员]";
+        mes "已经重置好了";
+        mes "^FF3355请好好分配^000000";
+        set Zeny,Zeny-500000;
+        resetstatus;
+        close;
+    L3:
+        if (Zeny<800000) goto NeedZenys;
+        mes "[重置辅助人员]";
+        mes "已经重置好了";
+        mes "^FF3355请好好分配^000000";
+        set Zeny,Zeny-800000;
+        resetstatus;
+        resetskill;
+        close;
+    NeedZenys:
+        mes "[重置辅助人员]";
+        mes "穷人不要来凑热闹！影响我做生意";
+        close;
+    LEnd:
+        close; 
+}
+```
+
+
+### changebase
+
+改变人物显示的职业，但实际职业不变，可用于结婚系统 
+
+示例 `changebase 22;`： 变成结婚人物形象
+
 
 ### 人物属性提升
-statusup i
-statusup2 ii
-参数提升指令(str,vit,agi,dex,agi,luk)
-statusup bStr; 参数提升1点
-statusup bStr,10;参数提升10点
-bStr,bAgi,bVit,bInt,bDex,bLuk其他可查看const.txt
-例1:重置辅助人员(已包括在npc目录中)
-//By GeisHa
-prontera.gat,146,192,4 script 重置辅助人员 763,{
-mes "[重置辅助人员]";
-mes "我专门负责重置点数";
-mes "你想重置什么呢？";
-next;
-menu "^FF3355技能点(费用50w)^000000",L1,"^FF3355属性点(费用50w)^000000",L2,"^FF3355技能点和属性点(费用80w)^000000",L3,"取消",LEnd;
-L1:
-if (Zeny<500000) goto NeedZenys;
-mes "[重置辅助人员]";
-mes "已经重置好了";
-mes "^FF3355请好好分配^000000";
-set Zeny,Zeny-500000;
-resetskill;
-close;
-L2:
-if (Zeny<500000) goto NeedZenys;
-mes "[重置辅助人员]";
-mes "已经重置好了";
-mes "^FF3355请好好分配^000000";
-set Zeny,Zeny-500000;
-resetstatus;
-close;
-L3:
-if (Zeny<800000) goto NeedZenys;
-mes "[重置辅助人员]";
-mes "已经重置好了";
-mes "^FF3355请好好分配^000000";
-set Zeny,Zeny-800000;
-resetstatus;
-resetskill;
-close;
-NeedZenys:
-mes "[重置辅助人员]";
-mes "穷人不要来凑热闹！影响我做生意";
-close;
-LEnd:
-close; 
-}
+
+- 示例 `statusup bStr;`： 参数提升 1 点
+- 示例 `statusup bStr,10;`： 参数提升 10 点
+
+常用可选参数 `bStr`，`bAgi`，`bVit`，`bInt`，`bDex`，`bLuk`，其他可查看 [db/const.txt](../../../db/const.txt)。
+
+
 
 ## 流程控制
-1、next      刷新指令 
-next; 
-产生按钮"下一步" 点击后重新输出
-2、close 关闭指令
-close; 
-产生按钮"关闭" 点击后关闭对话框
-3、menu 菜单指令
-menu "好的",L_YES,"不好",L_NO;
-产生选择列表,有2个选项"好的"、"不好",选择后即发生跳转
-选择"好的"跳转至L_YES这个标签,选择"不好"跳转至L_NO这个标签
-4、goto 跳转指令
-goto L_YES;直接跳转至L_YES标签
-平时使用时,常跟在if等条件判断语句后，也可以单独使用。
-5、if 条件判断指令
-if(@value==1) goto L_YES;
-如果@value=1,跳转到L_YES,否则继续执行下一行。
-用于判断的条件必须放置在()之中。
-常用的比较符号
-<：小于
->：大于
-==：等于
-!=：不等于
->=：大于或等于
-<=：小于或等于
-多个条件判断
-||：或
-&&：和
-if (@value1==1 || @value2==1) goto L_YES;
-如果@value1=1或者@value2=1满足其中一个条件跳转到L_YES
-if (@value1==1 && @value2==1) goto L_YES;
-需要@value1=1以及@value2=1同时满足条件跳转到L_YES
-6、end 结束指令
-end; 
-强制结束脚本运行
+
+### next 刷新指令 
+
+示例 `next;`： 产生按钮 "下一步"，点击后重新输出
+
+
+### close 关闭指令
+
+示例 `close;`： 产生按钮 "关闭"，点击后关闭对话框
+
+
+### menu 菜单指令
+
+示例 `menu "好的",L_YES,"不好",L_NO;`： 
+
+- 产生选择列表，有2个选项 "好的"、"不好"，选择后即发生跳转
+- 选择 "好的" 跳转至 `L_YES` 这个标签，选择 "不好" 跳转至 `L_NO` 这个标签
+
+
+### goto 跳转指令
+
+示例 `goto L_YES;`： 直接跳转至 `L_YES` 标签。
+
+平时使用时，常跟在if等条件判断语句后，也可以单独使用。
+
+
+### if 条件判断指令
+
+- 示例 A `if(@value==1) goto L_YES;`： 如果 `@value=1`，跳转到 `L_YES`，否则继续执行下一行（用于判断的条件必须放置在`()`之中）。
+- 示例 B `if (@value1==1 || @value2==1) goto L_YES;`： 如果 `@value1=1` 或者 `@value2=1` 满足其中一个条件跳转到 `L_YES`
+- 示例 C `if (@value1==1 && @value2==1) goto L_YES;`： 需要 `@value1=1` 以及 `@value2=1` 同时满足条件跳转到 `L_YES`
+
+常用的比较符号：
+- `<`：小于
+- `>`：大于
+- `==`：等于
+- `!=`：不等于
+- `>=`：大于或等于
+- `<=`：小于或等于
+
+多个条件判断：
+
+- `||`：或
+- `&&`：和
+
+
+### end 结束指令
+
+示例 `end;`： 强制结束脚本运行
+
 
 ## 输入输出
 1、mes 发送消息
