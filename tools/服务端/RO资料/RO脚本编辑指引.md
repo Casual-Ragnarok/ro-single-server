@@ -379,7 +379,9 @@ prontera.gat,146,192,4 script 重置辅助人员 763,{
 
 示例 `goto L_YES;`： 直接跳转至 `L_YES` 标签。
 
-平时使用时，常跟在if等条件判断语句后，也可以单独使用。
+平时使用时，常跟在 `if` 等条件判断语句后，也可以单独使用。
+
+> `goto` 语句后的标签是区分大小写的，若出错则会使 `map-server` 进程挂起，且不会自动重启。
 
 
 ### if 条件判断指令
@@ -416,6 +418,134 @@ prontera.gat,146,192,4 script 重置辅助人员 763,{
 - 示例 `mes @value1+@value2;`： 在 NPC 对话框中显示 `@value1+@value2` 的值
 - 示例 `mes @value+"你好";`： 在 NPC 对话框中显示 `@value` 的值后加上 “你好”
 
+注意：
+
+- 一行显示一般为 37 个字符，超出的话会自动滚屏增加一行。
+- `^123456` 为色彩定义，用 16 进制表示，顺序为红绿蓝三原色，每 2 个定义一种颜色，`FF` 为最亮，`00` 为最暗。
+- 色彩定义必须放置在 `""` 之中，而且只能在 `mes` 后的消息中使用。
+
+阅读以下范例，以加强对基本流程及mes语句使用方法的了解：
+
+```
+// 发钱的hack
+//   里面有几个命令是我们还没有学过的，不过没有关系，很容易理解
+//   delitem 2278,1; 表示删除2278号物品1个
+//   set Zeny,Zeny+200000; 表示增加200000块钱
+//   特别需要注意的是你的 goto 语句，如果出现错误可能会使服务器当机，特别要注意大小写
+
+prontera.gat,155,174,4 script 发钱的hack 706,{
+    mes "[发钱的hack]";
+    mes "嘿嘿！哇呀呀！";
+    mes "我是^5577FF发钱的hack^000000。";
+    mes "我愿意拿钱和你换一些东西。";
+    next;
+    
+    menu "询问 ^3355FF笑脸面具^000000 换钱的一些信息",Case1,"拿 ^3355FF笑脸面具^000000 换钱",Case2,"拿 ^3355FF兔耳发圈^000000 换钱",Case4,"取消",Case3;
+    Case1:
+        mes "[发钱的hack]";
+        mes "你有笑脸面具吗？ ";
+        mes "我朋友^5577FF乖宝宝^000000想要几个面具来玩。";
+        mes "可是我没有材料去制作啊。";
+        mes "你有已经制成的面具吗？";
+        mes "我可以拿很多钱跟你换哦！";
+        next;
+        mes "[发钱的hack]";
+        mes "制作^3355FF笑脸面具^000000";
+        mes "需要搜集一些物品.";
+        mes "你如果能搜集到这些材料";
+        mes "就可以去找微笑小姐做成笑脸面具";
+        mes "下面是制作^3355FF笑脸面具^000000所需要的一些道具.";
+        next;
+        mes "[发钱的hack]";
+        mes "10个^3355FF杰比勒结晶^000000";
+        mes "10个^3355FF毛^000000";
+        mes "10个^3355FF三叶幸运草^000000";
+        next;
+        mes "[发钱的hack]";
+        mes "做好了拿来给我，我就给你大把大把的钱！ ";
+        close;
+    Case2:
+        if(countitem(2278)<1) goto Case2NOT;
+        mes "[发钱的hack]";
+        mes "哈哈，^5577FF乖宝宝^000000一定会很高兴的~:)";
+        mes "那么^3355FF笑脸面具^000000。我拿走了!.";
+        next;
+        delitem 2278,1;
+        set Zeny,Zeny+200000;
+        mes "[发钱的hack]";
+        mes "拿好咯！";
+        mes "这里是答应你的^5577FF200000Z^000000";
+        mes "如果你还有笑脸面具，还可以拿过来和我换。";
+        mes "好东西我不嫌多！";
+        close;
+    Case2NOT:
+        mes "[发钱的hack]";
+        mes "我";
+        next;
+        mes "[发钱的hack]";
+        mes "要";
+        next;
+        mes "[发钱的hack]";
+        mes "笑";
+        next;
+        mes "[发钱的hack]";
+        mes "脸";
+        next;
+        mes "[发钱的hack]";
+        mes "面";
+        next;
+        mes "[发钱的hack]";
+        mes "具";
+        close;
+    Case4:
+        if(countitem(2214)<1) goto Case4NOT;
+        mes "[hack]";
+        mes "哈哈，高兴~:)";
+        mes "那么^3355FF兔耳发圈^000000。我拿走了!.";
+        next;
+        delitem 2214,1;
+        set Zeny,Zeny+20000000;
+        mes "[发钱的hack]";
+        mes "拿好咯！";
+        mes "这里是答应你的^5577FF20000000Z^000000";
+        mes "如果你还有兔耳发圈，还可以拿过来和我换。";
+        mes "好东西我不嫌多！";
+        close;
+    Case4NOT:
+        mes "[发钱的hack]";
+        mes "我";
+        next;
+        mes "[发钱的hack]";
+        mes "要";
+        next;
+        mes "[发钱的hack]";
+        mes "的";
+        next;
+        mes "[发钱的hack]";
+        mes "是";
+        next;
+        mes "[发钱的hack]";
+        mes "兔";
+        next;
+        mes "[发钱的hack]";
+        mes "耳";
+        next;
+        mes "[发钱的hack]";
+        mes "发";
+        next;
+        mes "[发钱的hack]";
+        mes "圈";
+        close;
+    Case3:
+        mes "[发钱的hack]";
+        mes "再见，再见";
+        next;
+        mes "[发钱的hack]";
+        mes "白白，白白";
+        close;
+}
+```
+
 
 ### input 输入命令
 
@@ -449,132 +579,8 @@ prontera.gat,146,192,4 script 重置辅助人员 763,{
 
 区域广播，可以使得特定区域的玩家看到系统消息。
 
-示例 `areaannounce "prontera.gat",100,100,10,10,"你好",3;`： 在普隆德拉地图坐标 `X100,Y100,X+-10,Y+-10` 的区域内内用黄色字体广播 “你好”。
+示例 `areaannounce "prontera.gat",100,100,10,10,"你好",3;`： 在普隆德拉地图坐标 `X100,Y100,X10,Y+-10` 的区域内内用黄色字体广播 “你好”。
 
-
-## 注意事项
-1、goto语句后的标签是区分大小写的，若出错则会使map-server死掉，且不会自动重启。
-2、一行显示一般为37个字符，超出的话会自动滚屏增加一行。
-3、^123456为色彩定义，用16进制表示，顺序为红绿蓝三原色，
-每2个定义一种颜色，FF为最亮，00为最暗。色彩定义必须放置在""之中，
-而且只能在mes 后的消息中使用。
-请阅读以下范例，以加强对基本流程及mes语句使用方法的了解。
-例1，发钱的hack
-// 里面有几个命令是偶们还没有学过的，不过没有关系，很容易理解，
-// delitem 2278,1; 表示删除2278号物品1个
-// set Zeny,Zeny+200000; 表示增加200000块钱
-// 特别需要注意的是你的Goto语句，如果出现错误可能会使服务器当机，特别要注意大小写
-prontera.gat,155,174,4 script 发钱的hack 706,{
-mes "[发钱的hack]";
-mes "嘿嘿！哇呀呀！";
-mes "我是^5577FF发钱的hack^000000。";
-mes "我愿意拿钱和你换一些东西。";
-next;
-menu "询问 ^3355FF笑脸面具^000000 换钱的一些信息",Case1,"拿 ^3355FF笑脸面具^000000 换钱",Case2,"拿 ^3355FF兔耳发圈^000000 换钱",Case4,"取消",Case3;
-Case1:
-mes "[发钱的hack]";
-mes "你有笑脸面具吗？ ";
-mes "我朋友^5577FF乖宝宝^000000想要几个面具来玩。";
-mes "可是我没有材料去制作啊。";
-mes "你有已经制成的面具吗？";
-mes "我可以拿很多钱跟你换哦！";
-next;
-mes "[发钱的hack]";
-mes "制作^3355FF笑脸面具^000000";
-mes "需要搜集一些物品.";
-mes "你如果能搜集到这些材料";
-mes "就可以去找微笑小姐做成笑脸面具";
-mes "下面是制作^3355FF笑脸面具^000000所需要的一些道具.";
-next;
-mes "[发钱的hack]";
-mes "10个^3355FF杰比勒结晶^000000";
-mes "10个^3355FF毛^000000";
-mes "10个^3355FF三叶幸运草^000000";
-next;
-mes "[发钱的hack]";
-mes "做好了拿来给我，我就给你大把大把的钱！ ";
-close;
-Case2:
-if(countitem(2278)<1) goto Case2NOT;
-mes "[发钱的hack]";
-mes "哈哈，^5577FF乖宝宝^000000一定会很高兴的~:)";
-mes "那么^3355FF笑脸面具^000000。我拿走了!.";
-next;
-delitem 2278,1;
-set Zeny,Zeny+200000;
-mes "[发钱的hack]";
-mes "拿好咯！";
-mes "这里是答应你的^5577FF200000Z^000000";
-mes "如果你还有笑脸面具，还可以拿过来和我换。";
-mes "好东西我不嫌多！";
-close;
-Case2NOT:
-mes "[发钱的hack]";
-mes "我";
-next;
-mes "[发钱的hack]";
-mes "要";
-next;
-mes "[发钱的hack]";
-mes "笑";
-next;
-mes "[发钱的hack]";
-mes "脸";
-next;
-mes "[发钱的hack]";
-mes "面";
-next;
-mes "[发钱的hack]";
-mes "具";
-close;
-//狸猫的猫耳发圈掉落率是2
-Case4:
-if(countitem(2214)<1) goto Case4NOT;
-mes "[hack]";
-mes "哈哈，高兴~:)";
-mes "那么^3355FF兔耳发圈^000000。我拿走了!.";
-next;
-delitem 2214,1;
-set Zeny,Zeny+20000000;
-mes "[发钱的hack]";
-mes "拿好咯！";
-mes "这里是答应你的^5577FF20000000Z^000000";
-mes "如果你还有兔耳发圈，还可以拿过来和我换。";
-mes "好东西我不嫌多！";
-close;
-Case4NOT:
-mes "[发钱的hack]";
-mes "我";
-next;
-mes "[发钱的hack]";
-mes "要";
-next;
-mes "[发钱的hack]";
-mes "的";
-next;
-mes "[发钱的hack]";
-mes "是";
-next;
-mes "[发钱的hack]";
-mes "兔";
-next;
-mes "[发钱的hack]";
-mes "耳";
-next;
-mes "[发钱的hack]";
-mes "发";
-next;
-mes "[发钱的hack]";
-mes "圈";
-close;
-Case3:
-mes "[发钱的hack]";
-mes "再见，再见";
-next;
-mes "[发钱的hack]";
-mes "白白，白白";
-close;
-}
 
 
 ## 物品相关指令
