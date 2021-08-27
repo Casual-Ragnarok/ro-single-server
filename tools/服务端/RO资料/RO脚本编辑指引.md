@@ -584,36 +584,55 @@ prontera.gat,155,174,4 script 发钱的hack 706,{
 
 
 ## 物品相关指令
-13、getitem "ii" 
+
+### getitem "ii" 
 getitem 501,1;取得红色药水1个 
 道具代码请查看item_db.txt 
-14、delitem "ii" 
+
+
+### delitem "ii" 
 delitem 501,1;删除红色药水1个 
 请在执行这条语句前确定是否有该项物品 不然可能发生未知错误 
-18、itemheal "ii" 
+
+
+### itemheal "ii" 
 可能与道具损坏有关 
 具体用法不明,武器损坏还没开放 
-21、countitem "i" 
+
+
+### countitem "i" 
 if(countitem(501)==1) goto L_YES; 
 如果红色药水数量为1,跳转到L_YES 否则顺序执行 
 物品语句统计命令,在()内填入想检查的物品代码 
-24、getequipname","i" 
+
+
+### getequipname","i" 
 getequipname(1); 
 按照精练时列出的装备顺序取第1个(头1),以次类推 取得装备名,一般用于判断 
-25、getequipisequiped "i" 
+
+
+### getequipisequiped "i" 
 getequipisequiped(1); 
 判断头1是否有装备 序号同上 
-26、getequipisenableref "i" 
+
+
+### getequipisenableref "i" 
 getequipisenableref(1); 
 判断头1上的装备是否可精练 序号同上 
-27、getequipisidentify "i" 
+
+
+### getequipisidentify "i" 
 getequipisidentify(1); 
 判断头1的装备是否鉴定过 
 有些奇怪的命令,没鉴定的装备怎么装备呢 
-28、getequiprefinerycnt "i" 
+
+
+### getequiprefinerycnt "i" 
 if(getequiprefinerycnt(1)<10) goto L_YES; 
 如果头1的精练<10,跳转到L_YES 判断装备是否达到预定精练值 
-29、getequipweaponlv "i" 
+
+
+### getequipweaponlv "i" 
 if(getequipweaponlv(1)>0) goto L_YES; 
 判断头1是否是武器 判断武器等级,小于1为防具,1为1级武器,2为2级武器,依此类推 
 30、getequippercentrefinery "i" 
