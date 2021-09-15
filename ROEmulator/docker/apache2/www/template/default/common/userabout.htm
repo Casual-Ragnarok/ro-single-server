@@ -1,0 +1,57 @@
+<!--{hook/global_userabout_top $_G['basescript'].'::'.CURMODULE}-->
+<!--{eval getuserapp(1);}-->
+<ul>
+	<!--{loop $_G['setting']['spacenavs'] $nav}-->
+		<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->
+			<!--{if in_array($nav['code'], array('userpanelarea1', 'userpanelarea2'))}-->
+				<!--{if !empty($_G[my_panelapp]) && $_G['setting']['my_app_status']}-->
+					<!--{if $nav['code']=='userpanelarea1' && !empty($_G[my_panelapp][1])}-->
+						<!--{loop $_G[my_panelapp][1] $appid $app}-->
+							<li>
+								<a href="userapp.php?mod=app&id=$app[appid]" title="$app[appname]"><img {if $app[icon]}src="$app[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$app[appid]'"{else} src="http://appicon.manyou.com/icons/$app[appid]"{/if} name="$appid" alt="$app[appname]" />$app[appname]</a>
+							</li>
+						<!--{/loop}-->
+					<!--{elseif $nav['code']=='userpanelarea2' && !empty($_G[my_panelapp][2])}-->
+						<!--{loop $_G[my_panelapp][2] $appid $app}-->
+							<li>
+								<a href="userapp.php?mod=app&id=$app[appid]" title="$app[appname]"><img {if $app[icon]}src="$app[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$app[appid]'"{else} src="http://appicon.manyou.com/icons/$app[appid]"{/if} name="$appid" alt="$app[appname]" />$app[appname]</a>
+							</li>
+						<!--{/loop}-->
+					<!--{/if}-->
+				<!--{/if}-->
+			<!--{else}-->
+			$nav[code]
+			<!--{/if}-->
+		<!--{/if}-->
+	<!--{/loop}-->
+</ul>
+<!--{if $_G['setting']['my_app_status']}-->
+	<!--{if !empty($_G['cache']['userapp'])}-->
+	<ul id="my_defaultapp">
+		<!--{loop $_G['cache']['userapp'] $value}-->
+			<li><a href="userapp.php?mod=app&id=$value[appid]" title="$value[appname]"><img {if $value[icon]}src="$value[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$value[appid]'"{else} src="http://appicon.manyou.com/icons/$value[appid]"{/if} alt="$value[appname]" />$value[appname]</a></li>
+		<!--{/loop}-->
+		<!--{hook/userapp_menu_top}-->
+	</ul>
+	<!--{/if}-->
+
+	<!--{if $_G['my_menu']}-->
+	<ul id="my_userapp">
+		<!--{loop $_G['my_menu'] $value}-->
+			<li id="userapp_li_$value[appid]"><a href="userapp.php?mod=app&id=$value[appid]" title="$value[appname]"><img {if $value[icon]}src="$value[icon]" onerror="this.onerror=null;this.src='http://appicon.manyou.com/icons/$value[appid]'"{else} src="http://appicon.manyou.com/icons/$value[appid]"{/if} alt="$value[appname]" />$value[appname]</a></li>
+		<!--{/loop}-->
+		<!--{hook/userapp_menu_middle}-->
+	</ul>
+	<!--{/if}-->
+
+	<!--{if $_G['my_menu_more']}-->
+		<p class="pbm bbda xg1 cl"><a href="javascript:;" class="unfold" id="a_app_more" onclick="userapp_open();">{lang open}</a></p>
+	<!--{/if}-->
+	<!--{if checkperm('allowmyop')}-->
+		<ul class="myo mtm">
+			<li><a href="userapp.php?mod=manage&my_suffix=%2Fapp%2Flist%3Fsort%3Dtime"><img src="{IMGDIR}/app_add.gif" alt="app_add" />{lang app_add}</a></li>
+			<li><a href="userapp.php?mod=manage&ac=menu"><img src="{IMGDIR}/app_set.gif" alt="app_set" />{lang app_management}</a></li>
+		</ul>
+	<!--{/if}-->
+<!--{/if}-->
+<!--{hook/global_userabout_bottom $_G['basescript'].'::'.CURMODULE}-->

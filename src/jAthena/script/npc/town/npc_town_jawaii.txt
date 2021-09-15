@@ -1,0 +1,271 @@
+//==============================================================================
+//Ragnarok Online EPx Jawaii land Script(From KsakRO)	by Kalen
+//==============================================================================
+//--------------------------------------Mob-------------------------------------
+
+jawaii.gat,0,0,0,0	monster	黒いきのこ	1084,10,600000,300000
+jawaii_in.gat,0,0,0,0	monster	盗蟲	1051,5,600000,300000
+jawaii.gat,194,299,224,286	monster	フェン	1158,1,600000,300000
+jawaii.gat,168,257,251,228	monster フェン	1158,5,600000,300000
+//--------------------------------------Mapflag---------------------------------
+jawaii.gat	mapflag	nomemo	dummy
+jawaii.gat	mapflag	nopenalty	dummy
+jawaii.gat	mapflag	nozenypenalty	dummy
+jawaii_in.gat	mapflag	noteleport	dummy
+jawaii_in.gat	mapflag	nopenalty	dummy
+jawaii_in.gat	mapflag	nozenypenalty	dummy
+jawaii_in.gat	mapflag	nobranch	dummy
+
+//--------------------------------------Shop------------------------------------
+jawaii.gat,186,174,2	shop	アイスクリームダンティー	85,536:150
+
+//--------------------------------------Warp------------------------------------
+//Pub
+jawaii.gat,192,214,0	warp	jawaii	1,1,jawaii_in.gat,27,94
+jawaii_in.gat,27,91,0	warp	jawaii	1,1,jawaii.gat,192,217
+
+//家１(左下入り口)本来入り口なし
+jawaii.gat,139,202,0	warp	jawaii	1,1,jawaii_in.gat,115,63
+jawaii_in.gat,113,61,0	warp	jawaii	1,1,jawaii.gat,137,201
+
+//家２(右下入り口)本来入り口なし
+jawaii.gat,110,200,0	warp	jawaii	1,1,jawaii_in.gat,130,109
+jawaii_in.gat,132,107,0	warp	jawaii	1,1,jawaii.gat,111,198
+
+//家３(右上入り口)本来入り口なし
+jawaii.gat,114,171,0	warp	jawaii	1,1,jawaii_in.gat,88,76
+jawaii_in.gat,90,78,0	warp	jawaii	1,1,jawaii.gat,116,172
+
+//家４(左上入り口)本来入り口なし
+jawaii.gat,108,186,0	warp	jawaii	1,1,jawaii_in.gat,85,117
+jawaii_in.gat,88,117,0	warp	jawaii	1,1,jawaii.gat,110,186
+//---------------------------------Izlude <-> Jawaii----------------------------
+izlude.gat,171,185,4	script	新婚コンパニオン	71,{
+	mes "[ウェディング ハッピー]";
+	mes "新婚であられる方, 結婚された方...";
+	mes "いつも舞い上がれる 幻想の 休養地,";
+	mes "^3355ffザワイ^000000に、皆様を招待します!";
+	next;
+	menu "^3355ffザワイ^000000って？",-,"^3355ffザワイ^000000に出発～",Lwarp,"キャンセル",Lend;
+		mes "[ウェディング ハッピー]";
+		mes "ミッドガルド大陸からかけ離れた...";
+		mes "とても遠い島があるんです。";
+		mes "誰でも行きたくなるようなバカンスで";
+		mes "素敵な休養地なんですよ。";
+		mes "そこは新婚旅行地で有名な所で、";
+		mes "結婚された方のみ行くことができます。";
+		next;
+		mes "[ウェディング ハッピー]";
+		mes "特別な旅行であるので、料金が高いのです。";
+		mes "…価格は 100,000Zeny!!";
+		mes "もちろんそのかわりに平和で静かな新婚旅行を";
+		mes "楽しむことができるということです…";
+		next;
+	Lend:
+		mes "[ウェディング ハッピー]";
+		mes "幸福な旅行をどうぞ!!";
+		mes "ザワイでお待ちしております…!!";
+		close;
+Lwarp:
+//結婚してるか？if () goto LError2;
+	if (Zeny < 100000) goto LError1;
+	set Zeny,Zeny-100000;
+	warp "jawaii.gat",241,116;end;
+LError1:
+	mes "[ウェディング ハッピー]";
+	mes "お金が足りないようですわ";
+	close;
+//LError2:
+//mes "[ウェディング ハッピー]";
+//mes "結婚なさっていない方は";
+//mes "ザワイに行くことができません。";
+//mes "よいパートナーが見つかったら";
+//mes "また来てくださいね～";
+//close;
+}
+//---------------------------------Jawaii <-> Other----------------------------
+jawaii.gat,239,112,7	script	船員	100,{
+	mes "[船員]";
+	mes "この船はイズルードに戻ります。";
+	mes "ザワイで楽しい時を過ごされたかな？";
+	mes "ひょっとして忘れ物してないかい？";
+	mes "もう一度確かめるといいよ";
+	next;
+	menu "イズルードへ帰る",-,"やっぱやめる",Lend;
+		warp "izlude.gat",176,182;end;
+Lend:
+	close;
+}
+jawaii.gat,122,263,4	script	船員	100,{
+	mes "[船員]";
+	mes "この船はアルベルタに戻ります。";
+	mes "ザワイで楽しい時を過ごされたかな？";
+	mes "ひょっとして忘れ物してないかい？";
+	mes "もう一度確かめるといいよ";
+	next;
+	menu "アルベルタへ帰る",-,"やっぱやめる",Lend;
+		warp "alberta.gat",192,169;end;
+Lend:
+	close;
+}
+//-------------------------------------Jawaii-----------------------------------
+jawaii.gat,240,146,4	script	ザワイ住民	724,{
+	mes "[ワイワイ]";
+	mes "ザワイへようこそ！";
+	mes "結婚といえばやはり新婚旅行を";
+	mes "抜かすわけにはいかないでしょう？";
+	mes "怖いソロたちの目線を気にすることなく";
+	mes "のびのびとしていってください。";
+	next;
+	mes "[ワイワイ]";
+	mes "時々モンスターに会うかも";
+	mes "しれませんが、こちらから攻撃";
+	mes "しなければ大丈夫！";
+	mes "はじめからここに住んでいたモンスター";
+	mes "達が生き残っていると思ってください。";
+	close;
+}
+jawaii.gat,214,168,4	script	新婚コンパニオン	71,{
+	mes "[ウェディング ハッピー]";
+	mes "またウェディングマーチの中を";
+	mes "歩くことはできませんが、";
+	mes "アルバムを捲って結婚の追憶を";
+	mes "今一度再確認することができます。";
+	mes "そんな魔法を望む方のために";
+	mes "私が特別に準備いたしました。";
+	next;
+	mes "[ウェディング ハッピー]";
+	mes "どんなに時が流れたとしても";
+	mes "その記憶はとても価値があるものです。";
+	mes "初めて着たタキシードとドレスの";
+	mes "感じ、そんな感じが本当に大切です。";
+	next;
+	mes "[ウェディング ハッピー]";
+	mes "ザワイほど新婚旅行に良い所は";
+	mes "ないでしょう。せっかくここまで";
+	mes "来たのですから、たくさんの良い記憶";
+	mes "を残していくべきですよ？";
+	next;
+	mes "[ウェディング ハッピー]";
+	mes "名付けて…^3355ff結婚の追憶^000000!!";
+	mes "魔法の力で少しの間結婚式の";
+	mes "気分をまた感じることができます。";
+	mes "価格は…50000zです。いかかでしょう？";
+	next;
+	menu "買う",L1,"買わない",-;
+		close;
+	L1:
+	if (Zeny < 50000) goto LError;
+		set Zeny,Zeny-50000;
+		getitem 681,1;
+		mes "[ウェディング ハッピー]";
+		mes "またどうぞ～";
+		close;
+LError:
+	mes "[ウェディング ハッピー]";
+	mes "お金が足りないようです";
+	close;
+}
+
+jawaii.gat,165,120,0	script	ダンサー	724,{
+	mes "[ダンサー]";
+	mes "データなし";
+	close;
+}
+jawaii.gat,112,173,0	script	宿屋	93,{
+	mes "(sakRO情報)";
+	mes "1000Zenyで二人きりに";
+	mes "なれるらしい";
+	mes "スイートルーム";
+	mes "ヴィラルーム";
+	mes "ハニールーム";
+	mes "エンティクルーム";
+	close;
+}
+//------------------------------------Pub---------------------------------------
+jawaii_in.gat,25,100,0	script	ダンサー#1	724,{
+	mes "[ダンサー]";
+	mes "いらっしゃいませー";
+	donpcevent "::On_jemo";
+	close;
+On_jemo:
+	emotion 30;
+	end;
+}
+jawaii_in.gat,25,98,0	script	ダンサー#2	724,{
+	mes "[ダンサー]";
+	mes "いらっしゃいませー";
+	donpcevent "::On_jemo";
+	close;
+On_jemo:
+	emotion 30;
+	end;
+}
+jawaii_in.gat,25,96,0	script	ダンサー#3	724,{
+	mes "[ダンサー]";
+	mes "いらっしゃいませー";
+	donpcevent "::On_jemo";
+	close;
+On_jemo:
+	emotion 30;
+	end;
+}
+jawaii_in.gat,25,94,0	script	ダンサー#4	724,{
+	mes "[ダンサー]";
+	mes "いらっしゃいませー";
+	donpcevent "::On_jemo";
+	close;
+On_jemo:
+	emotion 30;
+	end;
+}
+jawaii_in.gat,30,100,4	script	ダンサー#5	724,{
+	mes "[ダンサー]";
+	mes "いらっしゃいませー";
+	donpcevent "::On_jemo";
+	close;
+On_jemo:
+	emotion 30;
+	end;
+}
+jawaii_in.gat,30,98,4	script	ダンサー#6	724,{
+	mes "[ダンサー]";
+	mes "いらっしゃいませー";
+	donpcevent "::On_jemo";
+	close;
+On_jemo:
+	emotion 30;
+	end;
+}
+jawaii_in.gat,30,96,4	script	ダンサー#7	724,{
+	mes "[ダンサー]";
+	mes "いらっしゃいませー";
+	donpcevent "::On_jemo";
+	close;
+On_jemo:
+	emotion 30;
+	end;
+}
+jawaii_in.gat,30,94,4	script	ダンサー#8	724,{
+	mes "[ダンサー]";
+	mes "いらっしゃいませー";
+	donpcevent "::On_jemo";
+	close;
+On_jemo:
+	emotion 30;
+	end;
+}
+
+jawaii_in.gat,27,124,0	script	マスター	46,{
+	mes "[マスター]";
+	mes "(sakRO情報)";
+	mes "即死する酒を";
+	mes "勧められるらしい";
+	close;
+}
+
+jawaii_in.gat,15,104,4	script	ウェイトレス	80,{
+	mes "[ウェイトレス]";
+	mes "データなし";
+	close;
+}

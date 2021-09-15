@@ -1,0 +1,1 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); echo output_ajax(); ?>]]></root><?php exit;?>

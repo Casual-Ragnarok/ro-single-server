@@ -1,0 +1,99 @@
+//script: 稀枝(kohri.net) rev. 1.3 //
+
+prontera.gat,148,187,4	script	砦管理委員会員	105,{
+	mes "[砦管理委員会員]";
+	mes "私たちはルーンミッドガルドの砦を";
+	mes "常に調査し、最新の情報をお伝えし";
+	mes "ております。どの地域の砦についで";
+	mes "お調べですか？";
+	next;
+	menu "アルデバラン",L_alde,"ゲフェン",L_gef,"フェイヨン",L_pay,"プロンテラ",L_prt;
+	close;
+
+	L_alde:
+	set @GIDn1$,GetCastleName("aldeg_cas01.gat"); 
+	set @GIDn2$,GetCastleName("aldeg_cas02.gat"); 
+	set @GIDn3$,GetCastleName("aldeg_cas03.gat"); 
+	set @GIDn4$,GetCastleName("aldeg_cas04.gat"); 
+	set @GIDn5$,GetCastleName("aldeg_cas05.gat"); 
+	set @GIDp1,getcastledata("aldeg_cas01.gat",1);
+	set @GIDp2,getcastledata("aldeg_cas02.gat",1);
+	set @GIDp3,getcastledata("aldeg_cas03.gat",1);
+	set @GIDp4,getcastledata("aldeg_cas04.gat",1);
+	set @GIDp5,getcastledata("aldeg_cas05.gat",1);
+	goto L_start1;
+	end;
+
+
+	L_gef:
+	set @GIDn1$,GetCastleName("gefg_cas01.gat"); 
+	set @GIDn2$,GetCastleName("gefg_cas02.gat"); 
+	set @GIDn3$,GetCastleName("gefg_cas03.gat"); 
+	set @GIDn4$,GetCastleName("gefg_cas04.gat"); 
+	set @GIDn5$,GetCastleName("gefg_cas05.gat"); 
+	set @GIDp1,getcastledata("gefg_cas01.gat",1);
+	set @GIDp2,getcastledata("gefg_cas02.gat",1);
+	set @GIDp3,getcastledata("gefg_cas03.gat",1);
+	set @GIDp4,getcastledata("gefg_cas04.gat",1);
+	set @GIDp5,getcastledata("gefg_cas05.gat",1);
+	goto L_start1;
+	end;
+
+	L_pay:
+	set @GIDn1$,GetCastleName("payg_cas01.gat"); 
+	set @GIDn2$,GetCastleName("payg_cas02.gat"); 
+	set @GIDn3$,GetCastleName("payg_cas03.gat"); 
+	set @GIDn4$,GetCastleName("payg_cas04.gat"); 
+	set @GIDn5$,GetCastleName("payg_cas05.gat"); 
+	set @GIDp1,getcastledata("payg_cas01.gat",1);
+	set @GIDp2,getcastledata("payg_cas02.gat",1);
+	set @GIDp3,getcastledata("payg_cas03.gat",1);
+	set @GIDp4,getcastledata("payg_cas04.gat",1);
+	set @GIDp5,getcastledata("payg_cas05.gat",1);
+	goto L_start1;
+	end;
+
+	L_prt:
+	set @GIDn1$,GetCastleName("prtg_cas01.gat"); 
+	set @GIDn2$,GetCastleName("prtg_cas02.gat"); 
+	set @GIDn3$,GetCastleName("prtg_cas03.gat"); 
+	set @GIDn4$,GetCastleName("prtg_cas04.gat"); 
+	set @GIDn5$,GetCastleName("prtg_cas05.gat"); 
+	set @GIDp1,getcastledata("prtg_cas01.gat",1);
+	set @GIDp2,getcastledata("prtg_cas02.gat",1);
+	set @GIDp3,getcastledata("prtg_cas03.gat",1);
+	set @GIDp4,getcastledata("prtg_cas04.gat",1);
+	set @GIDp5,getcastledata("prtg_cas05.gat",1);
+	goto L_start1;
+	end;
+
+	L_start1:
+
+	if (@GIDp1 == 0) set @GLDo1$,"なし";
+	if (@GIDp1 != 0) set @GLDo1$, GetGuildName(@GIDp1) + "(" + getguildmaster(@GIDp1) + ")";
+	if (@GIDp2 == 0) set @GLDo2$,"なし";
+	if (@GIDp2 != 0) set @GLDo2$, GetGuildName(@GIDp2) + "(" + getguildmaster(@GIDp2) + ")";
+	if (@GIDp3 == 0) set @GLDo3$,"なし";
+	if (@GIDp3 != 0) set @GLDo3$, GetGuildName(@GIDp3) + "(" + getguildmaster(@GIDp3) + ")";
+	if (@GIDp4 == 0) set @GLDo4$,"なし";
+	if (@GIDp4 != 0) set @GLDo4$, GetGuildName(@GIDp4) + "(" + getguildmaster(@GIDp4) + ")";
+	if (@GIDp5 == 0) set @GLDo5$,"なし";
+	if (@GIDp5 != 0) set @GLDo5$, GetGuildName(@GIDp5) + "(" + getguildmaster(@GIDp5) + ")";
+
+
+	mes "[砦管理委員会員]";
+	mes "現時点では、";
+	mes @GIDn1$;
+	mes "^CE2AEA所有：^000000" + @GLDo1$;
+	mes @GIDn2$;
+	mes "^CE2AEA所有：^000000" + @GLDo2$;
+	mes @GIDn3$;
+	mes "^CE2AEA所有：^000000" + @GLDo3$;
+	mes @GIDn4$;
+	mes "^CE2AEA所有：^000000" + @GLDo4$;
+	mes @GIDn5$;
+	mes "^CE2AEA所有：^000000" + @GLDo5$;
+	mes "^000000となっております。";
+	close;
+
+}

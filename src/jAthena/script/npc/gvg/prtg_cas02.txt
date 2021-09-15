@@ -1,0 +1,79 @@
+//===================================================================
+//Ragnarok Online EP2.5 GVG Script	prtg_cas02         by kalen
+//===================================================================
+-	script	gfproB	722,{
+callfunc "flagsc","prtg_cas02.gat",2,0,0,0;
+OnRecvCastleP02:
+	FlagEmblem getcastledata("prtg_cas02.gat",1);
+	end;
+}
+prt_gld.gat,244,126,8	duplicate(gfproB)	ギルドフラッグ#p2-1	722
+prt_gld.gat,244,128,8	duplicate(gfproB)	ギルドフラッグ#p2-2	722
+prt_gld.gat,236,126,8	duplicate(gfproB)	ギルドフラッグ#p2-3	722
+prt_gld.gat,236,128,8	duplicate(gfproB)	ギルドフラッグ#p2-4	722
+prtg_cas02.gat,40,227,4	duplicate(gfproB)	ギルドフラッグ#p2-5	722
+prtg_cas02.gat,46,227,4	duplicate(gfproB)	ギルドフラッグ#p2-6	722
+prtg_cas02.gat,11,219,4	duplicate(gfproB)	ギルドフラッグ#p2-7	722
+prtg_cas02.gat,11,214,4	duplicate(gfproB)	ギルドフラッグ#p2-8	722
+prtg_cas02.gat,20,219,4	duplicate(gfproB)	ギルドフラッグ#p2-9	722
+prtg_cas02.gat,20,214,4	duplicate(gfproB)	ギルドフラッグ#p2-10	722
+prtg_cas02.gat,79,227,8	duplicate(gfproB)	ギルドフラッグ#p2-11	722
+prtg_cas02.gat,70,227,8	duplicate(gfproB)	ギルドフラッグ#p2-12	722
+prtg_cas02.gat,38,189,8	duplicate(gfproB)	ギルドフラッグ#p2-13	722
+prtg_cas02.gat,34,189,8	duplicate(gfproB)	ギルドフラッグ#p2-14	722
+prtg_cas02.gat,153,161,4	duplicate(gfproB)	ギルドフラッグ#p2-15	722
+prtg_cas02.gat,162,161,4	duplicate(gfproB)	ギルドフラッグ#p2-16	722
+//------------------------------カプラ--------------------------------
+prtg_cas02.gat,71,36,4	script	カプラ職員::kapra_prtg02	117,{
+	callfunc "gkfmenu","prtg_cas02.gat";
+	menu "倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"終了",L7;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	callfunc "gkfwarp","プロンテラ","prontera.gat",278,211;
+L4:
+	callfunc "kfcart",800;
+L7:
+	callfunc "kfend";
+}
+//-------------------------------執事---------------------------------
+prtg_cas02.gat,94,61,4	script	ルエ	55,{
+	callfunc "Steward_menu0","prtg_cas02.gat","ルエ";
+	menu "砦の状態を表示",L1,"商業発展に投資",L2,"砦の防衛に投資",L3,"ガーディアン設置",L4,"カプラとの契約 / 解雇",L5,"マスターの部屋に入る",L6,"アジトを放棄する",L7;
+L1:
+	callfunc "Steward_menu1","prtg_cas02.gat","ルエ";
+L2:
+	callfunc "Steward_menu2","prtg_cas02.gat","ルエ";
+L3:
+	callfunc "Steward_menu3","prtg_cas02.gat","ルエ";
+L4:
+	callfunc "Steward_menu4","prtg_cas02.gat","ルエ";
+	if (@GDnum == 10) monster "prtg_cas02.gat",188,175,"--ja--",1286,1,"Agit_D02::On_GDp21";
+	if (@GDnum == 11) monster "prtg_cas02.gat",198,175,"--ja--",1286,1,"Agit_D02::On_GDp22";
+	if (@GDnum == 12) monster "prtg_cas02.gat",178,44,"--ja--",1286,1,"Agit_D02::On_GDp23";
+	if (@GDnum == 13) monster "prtg_cas02.gat",71,75,"--ja--",1287,1,"Agit_D02::On_GDp24";
+	if (@GDnum == 14) monster "prtg_cas02.gat",49,28,"--ja--",1287,1,"Agit_D02::On_GDp25";
+	if (@GDnum == 15) monster "prtg_cas02.gat",64,186,"--ja--",1285,1,"Agit_D02::On_GDp26";
+	if (@GDnum == 16) monster "prtg_cas02.gat",76,196,"--ja--",1285,1,"Agit_D02::On_GDp27";
+	if (@GDnum == 17) monster "prtg_cas02.gat",75,175,"--ja--",1285,1,"Agit_D02::On_GDp28";
+	mes "[執事ルエ]";
+	mes "ガーディアンが設置されました。";
+	mes "ガーディアンは私達の城を";
+	mes "敵から守ってくれるでしょう。";
+	close;
+L5:
+	callfunc "Steward_menu5","prtg_cas02.gat","ルエ","kapra_prtg02";
+L6:
+	callfunc "Steward_menu6","prtg_cas02.gat","ルエ",199,225;
+L7:
+	callfunc "Steward_menu7","prtg_cas02.gat","ルエ";
+	callfunc "resetcastledata","prtg_cas02.gat","::OnRecvCastleP02","kapra_prtg02",@GID;
+}
+//-----------------------------スイッチ-------------------------------
+prtg_cas02.gat,206,228,0	script	　	111,{
+callfunc "gdswitch","prtg_cas02.gat",94,62;
+}
+//-----------------------------スイッチ2------------------------------
+prtg_cas02.gat,84,72,0	script	　	111,{
+callfunc "gdswitch2","prtg_cas02.gat","gld_dun03.gat",164,268;
+}

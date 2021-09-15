@@ -1,0 +1,576 @@
+//====================================================================
+//Ragnarok Online Magician jobchange script
+//====================================================================
+geffen_in.gat,164,124,4	script	ギルド関係者	123,{
+	mes "[魔術師ギルド関係者]";
+	mes "はい、何の用で来ましたの？";
+	next;
+	menu "マジシャンに転職",L1,"マジシャンの転職条件を聞く",-,"やめる",Lend;
+		mes "[魔術師ギルド関係者]";
+		mes "マジシャンになりたいって？";
+		mes "兄ちゃんみたいな可愛いタイプが、";
+		mes "ギルドの一員になって";
+		mes "くれるんだったら、";
+		mes "当然大歓迎～。";
+		next;
+		mes "[魔術師ギルド関係者]";
+		mes "まずは、初心者スキルレベル９以上に";
+		mes "ならなければならない。";
+		mes "その次は、マジシャン転職試験用の";
+		mes "公式混合液を作ること。";
+		next;
+		mes "[魔術師ギルド関係者]";
+		mes "どんな混合液を作ればいいのかは、";
+		mes "マジシャン転職申請をしたら、";
+		mes "教えてあ･げ･る。";
+		next;
+		mes "[魔術師ギルド関係者]";
+		mes "この二つの転職条件を満たしたら、";
+		mes "私に話し掛けること。";
+		close;
+L1:
+	if (Class == 2) goto Ltwice;
+	if (Class != 0) goto LError;
+	if (change_magic >= 1) goto Lcheck;
+	mes "[魔術師ギルド関係者]";
+	mes "マジシャンに転職したいと？";
+	mes "うん……。";
+	next;
+	mes "[魔術師ギルド関係者]";
+	if (Sex == 0) mes "……よく見ると姉ちゃん、可愛いね。";
+	if (Sex == 0) mes "私は姉ちゃんみたいなタイプが大好き！";
+	if (Sex == 1) mes "……よく見たら兄ちゃん、可愛いね。";
+	if (Sex == 1) mes "私のタイプじゃないけど……。";
+	mes "まあ、それはそれとして、";
+	mes "マジシャンに転職したいと言ったよね？";
+	mes "だったら、ここのマジシャン";
+	mes "転職申請書にサインをお願い。";
+	next;
+	menu "マジシャン転職申請をする",-,"やっぱりやめる",Lend2;
+//転生ノビ処理
+	callfunc "jobchanger","魔術師ギルド関係者",2;
+		mes "[魔術師ギルド関係者]";
+		mes "うん、そこにサインして……";
+		mes "うわー字が綺麗ねー。";
+		mes "うん、うん、そこまで。";
+		mes "名前は……" + strcharinfo(0) + "ね。";
+		next;
+		set @magerand,rand(4);
+		set change_magic,@magerand+1;
+		mes "[魔術師ギルド関係者]";
+		mes "マジシャン転職試験として……";
+		mes "マジシャン転職試験用の";
+		if (change_magic == 1) mes "公式混合液<１>を作って";
+		if (change_magic == 2) mes "公式混合液<２>を作って";
+		if (change_magic == 3) mes "公式混合液<３>を作って";
+		if (change_magic == 4) mes "公式混合液<４>を作って";
+		mes "いただきますー！";
+		next;
+		getitem 1092,1;
+		mes "[魔術師ギルド関係者]";
+		mes "混合液を作る方法は、本に書いて";
+		mes "あるから、自分で調べて。";
+		mes "アイテムを合成するには";
+		mes "あの中央の機械を使うんだ。";
+		mes "じゃ、頑張ってね～。";
+		close;
+Lcheck:
+	if (getskilllv(1) < 9) goto Llowlv;
+		mes "[魔術師ギルド関係者]";
+		mes "……そうなの？準備は全部終わった？";
+		mes "" + strcharinfo(0) + "の転職試験は……";
+		mes "マジシャン転職試験用の公式";
+		if (change_magic == 1) mes "混合液<１>を作ることだったよね？";
+		if (change_magic == 2) mes "混合液<２>を作ることだったよね？";
+		if (change_magic == 3) mes "混合液<３>を作ることだったよね？";
+		if (change_magic == 4) mes "混合液<４>を作ることだったよね？";
+		mes "じゃ、そうしたら、確認しようか？";
+		next;
+	if (countitem(1090)>=1) goto Lwrong;
+	if ((countitem(1071)>=1) && (change_magic == 1)) goto Lsucsess;
+	if ((countitem(1085)>=1) && (change_magic == 2)) goto Lsucsess;
+	if ((countitem(1086)>=1) && (change_magic == 3)) goto Lsucsess;
+	if ((countitem(1087)>=1) && (change_magic == 4)) goto Lsucsess;
+		mes "[魔術師ギルド関係者]";
+		mes "その前に、混合液が入っている";
+		mes "試験管はどこにあるの……？";
+		mes "持ってこないと評価できないよ。";
+		close;
+Lsucsess:
+	if (countitem(1071)>=1) delitem 1071,1;
+	if (countitem(1085)>=1) delitem 1085,1;
+	if (countitem(1086)>=1) delitem 1086,1;
+	if (countitem(1087)>=1) delitem 1087,1;
+	mes "[魔術師ギルド関係者]";
+	mes "……ふん、思ってた以上に頑張った";
+	mes "みたいね。まあ、完璧ではないけれど、";
+	mes "このくらいなら……まあ……いいよ。";
+	mes "マジシャン転職試験は、合格ね。";
+	mes "あなたが望んだマジシャンになれー！";
+	next;
+	set change_magic,0;
+	jobchange 2;
+	mes "[魔術師ギルド関係者]";
+	mes "魔術師ギルドへようこそ！";
+	mes "まあ、改めて挨拶しただけだから、";
+	mes "そんなに照れなくてもいいのにー。";
+	mes "言ってみただけなのよ、もー。";
+	next;
+	mes "[魔術師ギルド関係者]";
+	mes "とりあえず、私達魔術師ギルドの";
+	mes "一員になったね。おめでとうー！";
+	mes "これからもよろしくぅー！えへへ～。";
+	close;
+Lwrong:
+	if (countitem(1090)>=1) delitem 1090,1;
+	if (countitem(1071)>=1) delitem 1071,1;
+	if (countitem(1085)>=1) delitem 1085,1;
+	if (countitem(1086)>=1) delitem 1086,1;
+	if (countitem(1087)>=1) delitem 1087,1;
+	mes "[魔術師ギルド関係者]";
+	mes "……違うの。これを作ってという";
+	mes "話ではなくて……あなたの試験は……";
+	mes "マジシャン転職用の公式";
+	if (change_magic == 1) mes "混合液<１>を作ることだったの。";
+	if (change_magic == 2) mes "混合液<２>を作ることだったの。";
+	if (change_magic == 3) mes "混合液<３>を作ることだったの。";
+	if (change_magic == 4) mes "混合液<４>を作ることだったの。";
+	mes "最初からやり直すしかないわね……。";
+	close;
+Llowlv:
+	mes "[魔術師ギルド関係者]";
+	mes "……そうなの？準備は全部終わった？";
+	mes "……何よ。準備どころか、";
+	mes "初心者スキルレベルもまだまだ";
+	mes "じゃないの。まず、初心者スキルレベル";
+	mes "を上げてから来てよ。";
+	close;
+Lend:
+	mes "[魔術師ギルド関係者]";
+	mes "うん……？何ー？";
+	close;
+Lend2:
+	mes "[魔術師ギルド関係者]";
+	mes "なによ！さっきはマジシャンに";
+	mes "なりたいって言ったんじゃないの？";
+	mes "ぷんぷん！";
+	close;
+Ltwice:
+	mes "[魔術師ギルド関係者]";
+	mes "えー。あなたはもうマジシャンでしょ？";
+	mes "自分の事もわからないの？";
+	mes "まあ、いつか素手で焚き火を";
+	mes "作れる日が来たら。自ら";
+	mes "マジシャンの運命というものが、";
+	mes "わかってくるんじゃないの？";
+	close;
+LError:
+	mes "[魔術師ギルド関係者]";
+	mes "えー。あなたは、";
+	mes "マジシャンに転職できないよ。";
+	mes "既に他の職業に就いているでしょ？";
+	close;
+}
+//==============================================================================
+geffen_in.gat,177,112,0	script	本棚	111,{
+	mes "[アイテム合成書]";
+	mes "この本は、ゲフェン魔法学校の";
+	mes "財産です。綺麗に使って下さい。";
+	next;
+	menu "混合液＜１＞",L1,"混合液＜２＞",L2,"混合液＜３＞",L3,"混合液＜４＞",L4,"やめる",Lend;
+L1:
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<１>]";
+	mes "* 材料リスト *";
+	mes " - ゼロピー２個";
+	mes " - 綿毛３個";
+	mes " - ミルク１個";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<１>]";
+	mes "* 溶媒 *";
+	mes "フェイヨン水溶液";
+	mes "発見場所:";
+	mes "フェイヨン弓手村の小さな泉";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<１>]";
+	mes "* 魔法の粉 *";
+	mes " - 8472";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<１>]";
+	mes "* 触媒物質 *";
+	mes " - イエロージェムストーン";
+	mes "(アイテム合成機に内臓されています)";
+	close;
+L2:
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<２>]";
+	mes "* 材料リスト *";
+	mes " - ゼロピー３個";
+	mes " - 綿毛１個";
+	mes " - ミルク１個";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<２>]";
+	mes "* 溶媒 *";
+	mes " - 必要なし";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<２>]";
+	mes "* 魔法の粉 *";
+	mes " - 3735";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<２>]";
+	mes "* 触媒物質 *";
+	mes " - レッドジェムストーン";
+	mes "(アイテム合成機に内臓されています)";
+	close;
+L3:
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<３>]";
+	mes "* 材料リスト *";
+	mes " - ゼロピー６個";
+	mes " - 綿毛１個";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<３>]";
+	mes "* 溶媒 *";
+	mes "フェイヨン水溶液";
+	mes "発見場所:";
+	mes "フェイヨン弓手村の小さな泉";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<３>]";
+	mes "* 魔法の粉 *";
+	mes " - 2750";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<３>]";
+	mes "* 触媒物質 *";
+	mes " - ブルージェムストーン";
+	mes "(アイテム合成機に内臓されています)";
+	close;
+L4:
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<４>]";
+	mes "* 材料リスト *";
+	mes " - ゼロピー２個";
+	mes " - 綿毛３個";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<４>]";
+	mes "* 溶媒 *";
+	mes "モロク水溶液";
+	mes "発見場所:";
+	mes "モロクピラミッド入り口辺りの";
+	mes "小さなオアシス";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<４>]";
+	mes "* 魔法の粉 *";
+	mes " - 5429";
+	next;
+	mes "[マジシャン転職試験用の";
+	mes "公式混合液<４>]";
+	mes "* 触媒物質 *";
+	mes " - 透明な宝石";
+	mes "(アイテム合成機に内臓されています)";
+Lend:
+	close;
+}
+//==============================================================================
+geffen_in.gat,164,109,2	script	魔導師	64,{
+	mes "[魔導師]";
+	mes "魔法の強力な力は因果律によって";
+	mes "調節されているのじゃ。";
+	next;
+	mes "[魔導師]";
+	mes "要するに、誰かに害を与えたり、";
+	mes "または自然の流れに反する魔法を";
+	mes "使った場合、必ずその使用者に";
+	mes "反作用が戻ってくるのじゃ。";
+	next;
+	mes "[魔導師]";
+	mes "しかし、その術者の代わりに";
+	mes "その反作用を受けてくれる物があれば、";
+	mes "安全に魔法が使えるのじゃ。";
+	mes "それが｢ジェムストーン｣と呼ばれる";
+	mes "神秘の鉱石なのじゃ。";
+	close;
+}
+//==============================================================================
+geffen_in.gat,164,112,0	script	アイテム合成機	111,{
+	mes "[アイテム合成機]";
+	mes "マジシャン転職試験用アイテム合成機。";
+	mes "この機器は、ゲフェン魔法学校の";
+	mes "財産です。綺麗に使って下さい。";
+	next;
+	menu "合成機を使う",-,"やめる",Lend;
+	set @water,0;set @zeronum,0;set @mennnum,0;set @milknum,0;
+		mes "[アイテム合成機]";
+		mes "合成する水溶液を";
+		mes "選んでください。";
+		next;
+		menu "フェイヨン水溶液",Lpay,"モロク水溶液",Lmoc,"スキップ",Litem;
+			Lpay: if (countitem(1089) < 1) goto LError2;set @water,1;goto Litem;
+			Lmoc: if (countitem(1088) < 1) goto LError2;set @water,2;goto Litem;
+	Litem:
+		mes "[アイテム合成機]";
+		mes "合成するアイテムを";
+		mes "選択してください";
+		next;
+	Lchooseitem:
+		menu "ゼロピー",Lzero,"綿毛",Lmenn,"ミルク",Lmilk,"設定したアイテムリストを見る",Ltasc;
+			Lzero: set @choose,1;input @zeronum;if (@zeronum > 10000) goto LError;goto Lchooseitem;
+			Lmenn: set @choose,2;input @mennnum;if (@menonum > 10000) goto LError;goto Lchooseitem;
+			Lmilk: set @choose,3;input @milknum;if (@milknum > 10000) goto LError;goto Lchooseitem;
+Ltasc:
+		next;
+		mes "[アイテム合成機]";
+		if (@zeronum >= 1) mes "ゼロピー: " + @zeronum + " 個";
+		if (@mennnum >= 1) mes "綿毛: " + @mennnum + " 個";
+		if (@milknum >= 1) mes "ミルク: " + @milknum + " 個";
+		if (@water == 0) mes "溶媒液 : なし";
+		if (@water == 1) mes "溶媒液 : フェイヨン水溶液";
+		if (@water == 2) mes "溶媒液 : モロク水溶液";
+		next;
+		mes "[アイテム合成機]";
+		mes "アイテムを合成しますか？";
+		mes "または、アイテム設定を続けますか？";
+		next;
+		menu "アイテムを合成する",Lgousei,"アイテム設定を続ける",Litem,"初期化する",Lreset;
+	Lreset:
+			set @zeronum,0;set @mennnum,0;set @milknum,0;
+			mes "[アイテム合成機]";
+			mes "アイテム設定が初期化されました。";
+			mes "合成機を引き続き、";
+			mes "お使いになりますか？";
+			next;
+			menu "はい",Litem,"いいえ",Lend2;
+	Lgousei:
+			mes "[アイテム合成機]";
+			mes "合成のため、設定したアイテムを";
+			mes "合成箱に入れて下さい。";
+			mes "1回入れたアイテムは、二度と数などを";
+			mes "調節したり、取り戻す事が";
+			mes "出来ませんので、ご注意下さい。";
+			next;
+			mes "[アイテム合成機]";
+			mes "もう一度確認した上、確実だと";
+			mes "判断したなら<合成開始>ボタンを、";
+			mes "やめるなら<終了>ボタンを";
+			mes "押して下さい。";
+			next;
+			menu "<合成開始>",Ldelitem,"<終了>",Lend;
+		Ldelitem:
+			mes "[アイテム合成機]";
+			mes "設定されたアイテムを";
+			mes "合成機に入れています。";
+			mes "しばらくお待ち下さい。";
+			next;
+			if (countitem(909) < @zeronum) goto LError3;
+			if (countitem(914) < @mennnum) goto LError4;
+			if (countitem(519) < @milknum) goto LError5;
+			if (@water == 1) delitem 1089,1;
+			if (@water == 2) delitem 1088,1;
+			delitem 909,@zeronum;
+			delitem 914,@mennnum;
+			delitem 519,@milknum;
+			mes "[アイテム合成機]";
+			mes "設定通りのアイテムを合成箱に";
+			mes "入れました。合成箱を閉めます。";
+			next;
+			mes "[アイテム合成機]";
+			mes "合成する魔法の粉の一連番号を";
+			mes "入力して下さい。";
+			next;
+		Lmagicinput:
+			input @magic;
+			if (@magic == 0) goto Lmagicskip;
+			if ((@magic > 1000) && (@magic < 10000)) goto Lmagicask;
+			if ((@magic < 1000) || (@magic > 10000)) goto LError6;
+		Lmagicskip:
+				mes "[アイテム合成機]";
+				mes "魔法の粉を入れずにスキップしますか？";
+				next;
+				menu "はい",Lchoosestone,"いいえ",Lmagicinput;
+		Lmagicask:
+				mes "[アイテム合成機]";
+				mes "一連番号 #" + @magic + " 魔法の粉。";
+				mes "よろしいですか？";
+				next;
+				menu "はい",-,"いいえ",Lmagicinput;
+		Lchoosestone:
+					mes "[アイテム合成機]";
+					mes "最後に、触媒石を選択してください。";
+					next;
+					menu "レッドジェムストーン",Lred,"イエロージェムストーン",Lyel,"ブルージェムストーン",Lblu,"透明な宝石",Lcle,"スキップ",Lnostone;
+						Lred: set @stone,1;goto Lnostone;
+						Lyel: set @stone,2;goto Lnostone;
+						Lblu: set @stone,3;goto Lnostone;
+						Lcle: set @stone,4;goto Lnostone;
+						Lnostone:
+							mes "[アイテム合成機]";
+							mes "全ての準備が終わったので、";
+							mes "これから合成を開始します。";
+							mes "しばらくお待ちください。";
+							next;
+							mes "[アイテム合成機]";
+							mes "- 今日のことわざ -";
+							set @kotowaza,rand(3);
+							if (@kotowaza == 1) goto Lkotowaza2;
+							if (@kotowaza == 2) goto Lkotowaza3;
+								mes "｢横槍を入れる｣";
+								mes "”人の話や仕事に、第三者が横から口を";
+								mes "出して妨げる”という意味です。";
+								goto Lkotowazaend;
+							Lkotowaza2:
+								mes "｢ただより高い物はない｣";
+								mes "”ただで物をもらうと、その代わりに";
+								mes "何かを頼まれたり、お礼にお金が";
+								mes "かかったりして、かえって高くつく”";
+								mes "という意味です。";
+								goto Lkotowazaend;
+							Lkotowaza3:
+								mes "｢一寸先は闇｣";
+								mes "”未来のことは、全く予測することが";
+								mes "出来ない”という意味です。";
+							Lkotowazaend:
+								next;
+								if ((@water == 1) && (@zeronum == 2) && (@mennnum == 3) && (@milknum == 1) && (@magic == 8472) && (@stone == 2)) goto Lsucsess1;
+								if ((@zeronum == 3) && (@mennnum == 1) && (@milknum == 1) && (@magic == 3735) && (@stone == 1)) goto Lsucsess2;
+								if ((@water == 1) && (@zeronum == 6) && (@mennnum == 1) && (@magic == 2750) && (@stone == 3)) goto Lsucsess3;
+								if ((@water == 2) && (@zeronum == 2) && (@mennnum == 3) && (@magic == 5429) && (@stone == 4)) goto Lsucsess4;
+									getitem 1090,1;
+									mes "マジシャン転職試験用の公式";
+									mes "混合液に何かの問題が発生しました。";
+									goto Lfinale;
+								Lsucsess1:
+									getitem 1071,1;
+									mes "マジシャン転職試験用の";
+									mes "公式混合液 <１>";
+									goto Lfinale;
+								Lsucsess2:
+									getitem 1085,1;
+									mes "マジシャン転職試験用の";
+									mes "公式混合液 <２>";
+									goto Lfinale;
+								Lsucsess3:
+									getitem 1086,1;
+									mes "マジシャン転職試験用の";
+									mes "公式混合液 <３>";
+									goto Lfinale;
+								Lsucsess4:
+									getitem 1087,1;
+									mes "マジシャン転職試験用の";
+									mes "公式混合液 <４>";
+								Lfinale:
+									next;
+									mes "[アイテム合成機]";
+									mes "合成が完了しました。";
+									mes "合成を終了します。";
+									mes "ご利用ありがとうございます。";
+									close;
+LError:
+		mes "[アイテム合成機]";
+		mes "アイテムを入れる限度を超えました。";
+		mes "10000個以下に設定して下さい。";
+		next;
+		if (@choose == 1) goto Lzero;
+		if (@choose == 2) goto Lmenn;
+		if (@choose == 3) goto Lmilk;
+LError2:
+	mes "[アイテム合成機]";
+	mes "アイテムが見つかりません。試験管が";
+	mes "正常にセッティングされたか確認して";
+	goto LErrorend;
+LError3:
+	mes "[アイテム合成機]";
+	mes "設定されたアイテムの<ゼロピー>の";
+	mes "数が足りません。もう一度確認して";
+	goto LErrorend;
+LError4:
+	mes "[アイテム合成機]";
+	mes "設定されたアイテムの<綿毛>の";
+	mes "数が足りません。もう一度確認して";
+	goto LErrorend;
+LError5:
+	mes "[アイテム合成機]";
+	mes "設定されたアイテムの<ミルク>の";
+	mes "数が足りません。もう一度確認して";
+LErrorend:
+	mes "下さい。合成を終了します。";
+	mes "ご利用ありがとうございます。";
+	close;
+LError6:
+	mes "[アイテム合成機]";
+	mes "一連番号の入力範囲を超えました。";
+	mes "もう一度入力してください。";
+	next;
+	goto Lmagicinput;
+Lend2:
+	mes "[アイテム合成機]";
+	mes "合成を終了します。";
+	mes "ご利用ありがとうございます。";
+Lend:
+	close;
+}
+//==============================================================================
+pay_arche.gat,121,100,0	script	水溶液アルバイト	88,{
+	mes "[魔術師ギルド関係者]";
+	mes "水溶液を買いますか？";
+	mes "50 Zenyと空の試験管一つ以上が";
+	mes "必要です。";
+	next;
+	menu "水溶液を買う",-,"やめる",Lclose;
+	if (countitem(1092) >= 1) goto Lok;
+		mes "[魔術師ギルド関係者]";
+		mes "水溶液をどうやって";
+		mes "持っていきますか？";
+		mes "空の試験管を持ってきて下さい。";
+		close;
+Lok:
+	if (Zeny >= 50) goto Lok2;
+		mes "[魔術師ギルド関係者]";
+		mes "お金が足りませんよ。";
+		close;
+Lok2:
+	set Zeny,Zeny-50;
+	delitem 1092,1;
+	getitem 1089,1;
+	mes "[魔術師ギルド関係者]";
+	mes "ありがとうございました。";
+Lclose:
+	close;
+}
+//==============================================================================
+moc_ruins.gat,91,150,0	script	水溶液アルバイト	93,{
+	mes "[魔術師ギルド関係者]";
+	mes "水溶液を買いますか？";
+	mes "50 Zenyと空の試験管1つ以上が";
+	mes "必要です。";
+	next;
+	menu "水溶液を買う",-,"やめる",Lclose;
+	if (countitem(1092) >= 1) goto Lok;
+		mes "[魔術師ギルド関係者]";
+		mes "水溶液をどうやって";
+		mes "持っていきますか？";
+		mes "空の試験管を持ってきて下さい。";
+		close;
+Lok:
+	if (Zeny >= 50) goto Lok2;
+		mes "[魔術師ギルド関係者]";
+		mes "お金が足りませんよ。";
+		close;
+Lok2:
+	set Zeny,Zeny-50;
+	delitem 1092,1;
+	getitem 1088,1;
+	mes "[魔術師ギルド関係者]";
+	mes "ありがとうございました。";
+Lclose:
+	close;
+}

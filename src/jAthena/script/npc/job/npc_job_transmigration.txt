@@ -1,0 +1,322 @@
+//==============================================================================
+//Ragnarok Online EPxx - Transmigration NPC Script	by kalen
+//==============================================================================
+//会話は超脳内、合ってるとすればNPC配置くらいかも
+//TESTスクリプトとします。欠陥言わないように('A`)ﾉ
+//------------------------Warp------------------------------
+valkyrie.gat,49,7,0	warp	warpv00	1,1,yuno_in05.gat,49,61
+valkyrie.gat,49,66,0	warp	warpv01	1,1,valkyrie.gat,49,76
+valkyrie.gat,49,73,0	warp	warpv02	1,1,valkyrie.gat,49,63
+//------------------------MAPFlag---------------------------
+valkyrie.gat	mapflag	nomemo	dummy
+valkyrie.gat	mapflag	nobranch	dummy
+valkyrie.gat	mapflag	nosave	SavePoint
+//------------------------NPC-------------------------------
+yuno_in02.gat,88,164,4	script	メテウスシルプ	742,{
+	if (job_transmigration >= 1) goto Ltwice;
+	mes "[メテウスシルプ]";
+	mes "いらっしゃいませ";
+	mes "シュバイチェル魔法学校";
+	mes "図書館です。ここまで来た目的は";
+	mes "^3355ffイミルの本^000000を見るためでしょう?";
+	next;
+	mes "[メテウスシルプ]";
+	mes "^3355ffイミルの本^000000の観覧は皆に公開";
+	mes "しているのですが、直接読みたい";
+	mes "と願う方もたくさんいます、しかし";
+	mes "原本の状態があまり良くないので";
+	mes "閲覧をしたい方には特別に";
+	mes "寄付金を受けて許可しております。";
+	next;
+	mes "[メテウスシルプ]";
+	mes "寄付金は^3355ff128,500^000000Zenyです。";
+	mes "書籍の安全な保存と古書籍研究を";
+	mes "ため、閲覧を望むならば今すぐ";
+	mes "納めていただけると助かります。";
+	mes "寄付金を寄付しますか？";
+	next;
+	menu "寄付する",L1,"しない",-;
+		mes "[メテウスシルプ]";
+		mes "それでは、イミルの本の閲覧は";
+		mes "出来ませんが、本は沢山あります。";
+		mes "どうぞゆっくりしていって下さい。";
+		close;
+	L1:
+		if (Zeny < 128500) goto LError;
+		set Zeny,Zeny-128500;
+		set job_transmigration,1;
+		mes "[メテウスシルプ]";
+		mes "ありがとうございます。";
+		mes "それではこちらになります。";
+		next;
+		mes "^3355ff許可証を獲得^000000";
+		next;
+		mes "[メテウスシルプ]";
+		mes "それでは、奥にお進みください。";
+		close;
+Ltwice:
+	mes "[メテウスシルプ]";
+	mes "いらっしゃいませ";
+	mes "シュバイチェル魔法学校";
+	mes "図書館です。";
+	mes "図書館内では静かにお願いします。";
+	close;
+LError:
+	mes "[メテウスシルプ]";
+	mes "お客様、お金が足りないようです。";
+	close;
+}
+
+//----------------------------------------------------------
+yuno_in02.gat,93,207,0	script	イミルの本	111,{
+	if (job_transmigration >= 1) goto L1;
+	mes "ずいぶんと古い本だ。";
+	mes "所々破れかかっている";
+	close;
+L1:
+	mes "ずいぶんと古い本だ。";
+	mes "所々破れかかっている";
+	mes " ";
+	mes "あなたは、係員に従い";
+	mes "慎重にその本を紐解いた。";
+	next;
+	mes "[イミルの本]";
+	mes "...そして先代の幾多の業績等と";
+	mes "一緒に疑問視になることは,英雄たちに";
+	mes "不可欠で迫って来る'死'に関する";
+	mes "問題だった,英雄の呼称と呼ばれる";
+	mes "その誰も最後の瞬間はあるから.";
+	next;
+	mes "[イミルの本]";
+	mes "しかしそのどんな英雄に対する歌や";
+	mes "記録たち,口頭で伝わる話さえ";
+	mes "その最後の記録は残っていなかった.";
+	mes "これについて一つ注目する点がある.";
+	mes "それは'ラグナロク'に技術された";
+	mes "バルキリに関する内容だ.";
+	next;
+	mes "[イミルの本]";
+	mes "人間として最高のスンガルに偉い";
+	mes "資質を持ったからは,最後の聖典で";
+	mes "戦死として争ってその魂はバルキリの";
+	mes "導くによってバルハルラでのだ.";
+	mes "これは一般的なすべての人々の最後と";
+	mes "ダリ,英雄たちのユンフィに関することであり";
+	next;
+	mes "[イミルの本]";
+	mes "真正な英雄で生まれ変わって新しい";
+	mes "時代の光明を照らす者になろう,";
+	mes "倒れた肉身はまた起きるソッで";
+	mes "魂は新しい能力を悟らせよう.";
+	mes "しかしブルヘングヒもイミルの心臓は";
+	mes "戦乱以後大陸に消失したし";
+	next;
+	mes "[イミルの本]";
+	mes "少しずつ発見されたソッでは私たちの";
+	mes "研究に許可されなかった,検証されるの";
+	mes "ないその何も試みることができなかった.";
+	mes "そして私はこの記録を残して,";
+	mes "後代に誰かがこの欺惑を見付けて";
+	mes "その意志と希望,時代の最後の光を";
+	next;
+	mes "[イミルの本]";
+	mes "明らかにする英雄で生まれ変わるのを";
+	mes "バラであり,再び金バルキリの神殿で";
+	mes "英雄たちを導く者が現われるのを";
+	mes "待ちこがれるところだ,またその後に...";
+	mes "..........";
+	if (job_transmigration == 1) set job_transmigration,2;
+	close;
+}
+//----------------------------------------------------------
+yuno_in05.gat,49,43,0	script	イミルの心臓	111,{
+	if (job_transmigration == 2) goto Lwarp;
+	close;
+Lwarp:
+	mes "なにやら、怪しい影が見える。";
+	mes "あなたは深くそこを覗き込んでみた";
+	next;
+	mes "ゴゴゴゴゴ……";
+	close2;
+	warp "valkyrie.gat",49,14;
+	end;
+}
+//----------------------------------------------------------
+valkyrie.gat,48,86,4	script	バルキリー	811,{
+	if (Class == 23) goto LSuperNovice;
+	if (Upper == 1) goto LUpper1;
+	if ((BaseLevel < 99) || (JobLevel < 50)) goto LError2;
+	if ((Weight > 0) || (Zeny > 0)) goto LError;
+	mes "[バルキリ]";
+	mes "栄誉のバルハルラに";
+	mes "ようこそおいでくださいました。";
+	mes "あなたは今、現在までの記憶を整理して";
+	mes "新しい生命をもう一度得るように";
+	mes "なります。";
+	mes "戦士たちに栄光を!";
+	next;
+	mes "[バルキリ]";
+	mes "身と心を留守にしましたよね。";
+	mes "これで準備OKです。名誉というのは";
+	mes "身と心を留守にする時に出る";
+	mes "のですね。";
+	next;
+	mes "[バルキリ]";
+	mes "さあ…もうあなたの身で過去の";
+	mes "記憶を消して、";
+	mes "あなたの精神に現在までの栄光の";
+	mes "瞬間たちのみを記憶させます。";
+	next;
+	mes "[バルキリ]";
+	mes "さあ…今,";
+	mes "一つのウルドにあなたの過去の記憶を";
+	mes "残すようになって";
+	mes "ふたつのベルダンディに現在の栄光の";
+	mes "瞬間たちのみを憶えて、";
+	mes "三つのカウント後に未来への";
+	mes "生を暮すようになります。";
+	next;
+	mes "[バルキリ]";
+	mes "一つ";
+	next;
+	mes "[バルキリ]";
+	mes "二つ…";
+	next;
+	mes "[バルキリ]";
+	mes "三つ……";
+	next;
+	set oldjob,Class;
+	jobchange 0,1;
+	set BaseLevel,1;
+	resetstatus;
+	resetskill;
+	setoption 0x0000;
+	skill 143,1,0;
+	skill 142,1,0;
+	set skill_nov,6;
+	getitem 1202,1;
+	getitem 2302,1;
+	set SkillPoint,0;
+	set StatusPoint,100;
+	set job_transmigration,0;
+	mes "[バルキリ]";
+	mes "さあ、おめでとうございます。";
+	mes "すべての過程が終了しました。";
+	mes "これで、新しい道を開いて行こうとする";
+	mes "戦士に私の差し上げる物は";
+	mes "ありません。";
+	next;
+	mes "[バルキリ]";
+	mes "出来るだけ、過去のウルドにあなたの";
+	mes "生が無駄ではないようにして欲しいし";
+	mes "現在のベルダンディにあなたの";
+	mes "栄光をまた再現するように願って";
+	mes "未来のスクルドに記録されるあなたの鳥";
+	mes "生に栄光があるように願います。";
+	next;
+	if ((oldjob ==7) || (oldjob ==14)) goto Lkni;
+	if ((oldjob ==8) || (oldjob ==15)) goto Lpri;
+	if ((oldjob ==9) || (oldjob ==16)) goto Lwiz;
+	if ((oldjob ==10) || (oldjob ==18)) goto Lbla;
+	if ((oldjob ==11) || (oldjob ==19) || (oldjob ==20)) goto Lhun;
+	if ((oldjob ==12) || (oldjob ==17)) goto Lass;
+Lkni:
+	savepoint "izlude.gat",94,103;
+	warp "izlude",94,103;
+	end;
+Lwiz:
+	savepoint "geffen.gat",120,100;
+	warp "geffen",120,100;
+	end;
+Lpri:
+	savepoint "prontera.gat",273,354;
+	warp "prontera",273,354;
+	end;
+Lbla:
+	savepoint "alberta.gat",116,57;
+	warp "alberta",116,57;
+	end;
+Lhun:
+	savepoint "payon.gat",87,117;
+	warp "payon",87,117;
+	end;
+Lass:
+	savepoint "morocc.gat",160,94;
+	warp "morocc",160,94;
+	end;
+LError:
+	mes "[バルキリ]";
+	mes "あなたはまだ過去を捨てる";
+	mes "準備が出来ていないようです。";
+	mes "お金と重量を0にして下さい。";
+	close;
+LError2:
+	mes "[バルキリ]";
+	mes "あなたはまだ過去を捨てる";
+	mes "準備が出来ていないようです。";
+	mes "BaseLv99、JobLv50になってから";
+	mes "また訪ねてください";
+	close;
+LSuperNovice:
+	mes "[バルキリ]";
+	mes "あなたは過去を捨てる";
+	mes "ことは出来ません。";
+	close;
+LUpper1:
+	mes "[バルキリ]";
+	mes "あなたはすでに転生しています。";
+	close;
+}
+
+//----------------------------------------------------------
+valkyrie.gat,44,39,4	script	Load Knight	56,{
+	callfunc "jobchanger2","Load Knight",7,1;
+}
+//----------------------------------------------------------
+valkyrie.gat,53,39,4	script	Paladin	752,{
+	callfunc "jobchanger2","Paladin",14,1;
+}
+//----------------------------------------------------------
+valkyrie.gat,44,42,4	script	High Priest	60,{
+	callfunc "jobchanger2","High Priest",8,4;
+}
+//----------------------------------------------------------
+valkyrie.gat,53,42,4	script	Champion	52,{
+	callfunc "jobchanger2","Champion",15,4;
+}
+//----------------------------------------------------------
+valkyrie.gat,44,47,4	script	High Wizard	735,{
+	callfunc "jobchanger2","High Wizard",9,2;
+}
+//----------------------------------------------------------
+valkyrie.gat,53,47,4	script	Professor	743,{
+	callfunc "jobchanger2","Professor",16,2;
+}
+//----------------------------------------------------------
+valkyrie.gat,44,50,4	script	Whitesmith	731,{
+	callfunc "jobchanger2","Whitesmith",10,5;
+}
+//----------------------------------------------------------
+valkyrie.gat,53,50,4	script	Creator	122,{
+	callfunc "jobchanger2","Creator",18,5;
+}
+//SS死角----------------------------------------------------
+valkyrie.gat,44,55,4	script	Sniper	732,{
+	callfunc "jobchanger2","Sniper",11,3;
+}
+//----------------------------------------------------------
+valkyrie.gat,53,54,4	script	Clown	741,{
+	callfunc "jobchanger2","Clown",19,3;
+}
+//----------------------------------------------------------
+valkyrie.gat,53,56,4	script	Gypsy	101,{
+	callfunc "jobchanger2","Gypsy",20,3;
+}
+//----------------------------------------------------------
+valkyrie.gat,44,58,4	script	Assassin Closs	725,{
+	callfunc "jobchanger2","Assassin Closs",12,6;
+}
+//----------------------------------------------------------
+valkyrie.gat,53,58,4	script	Stalker	747,{
+	callfunc "jobchanger2","Stalker",17,6;
+}

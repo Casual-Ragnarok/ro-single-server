@@ -1,0 +1,59 @@
+//S付きすべてをチェックする場合のID一覧
+//"ナイフ"		set @checkid1 1201; set @checkid2 1202; set @checkid3 1203;
+//"カッター"		set @checkid1 1204; set @checkid2 1205; set @checkid3 1206;
+//"マインゴーシュ"	set @checkid1 1207; set @checkid2 1208; set @checkid3 1209;
+//"ダーク"		set @checkid1 1210; set @checkid2 1211; set @checkid3 1212;
+//"ダガー"		set @checkid1 1213; set @checkid2 1214; set @checkid3 1215;
+//"スティレット"	set @checkid1 1216; set @checkid2 1217; set @checkid3 1218;
+//"グラディウス"	set @checkid1 1219; set @checkid2 1220; set @checkid3 1221;
+//"ダマスカス"		set @checkid1 1222; set @checkid2 1226;
+//L2:
+//"ソード"		set @checkid1 1101; set @checkid2 1102; set @checkid3 1103;
+//"ファルシオン"	set @checkid1 1104; set @checkid2 1105; set @checkid3 1106;
+//"ブレイド"		set @checkid1 1107; set @checkid2 1108; set @checkid3 1109;
+//"レイピア"		set @checkid1 1110; set @checkid2 1111; set @checkid3 1112;
+//"シミター"		set @checkid1 1113; set @checkid2 1114; set @checkid3 1115;
+//"環頭太刀"		set @checkid1 1122; set @checkid2 1125;
+//"ツルギ"		set @checkid1 1119; set @checkid2 1120; set @checkid3 1121;
+//"海東剣"		set @checkid1 1123; set @checkid2 1128;
+//"サーベル"		set @checkid1 1126; set @checkid2 1127;
+//"フランベルジェ"	set @checkid1 1129;
+//L3:
+//"カタナ"		set @checkid1 1116; set @checkid2 1117; set @checkid3 1118;
+//"スレイヤー"		set @checkid1 1151; set @checkid2 1152; set @checkid3 1153;
+//"バスタードソード"	set @checkid1 1154; set @checkid2 1155; set @checkid3 1156;
+//"ツーハンドソード"	set @checkid1 1157; set @checkid2 1158; set @checkid3 1159;
+//"ブロードソード"	set @checkid1 1160; set @checkid2 1162;
+//"クレイモア"		set @checkid1 1163;
+//L4:;
+//"アックス"		set @checkid1 1301; set @checkid2 1302; set @checkid3 1303;
+//"バトルアックス"	set @checkid1 1351; set @checkid2 1352; set @checkid3 1353;
+//"ハンマー"		set @checkid1 1354; set @checkid2 1355; set @checkid3 1356;
+//"バスター"		set @checkid1 1357; set @checkid2 1358; set @checkid3 1359;
+//"ツーハンドアックス"	set @checkid1 1360; set @checkid2 1361; set @checkid3 1362;
+//L5:
+//"クラブ"		set @checkid1 1501; set @checkid2 1502; set @checkid3 1503;
+//"メイス"		set @checkid1 1504; set @checkid2 1505; set @checkid3 1506;
+//"スマッシャ"		set @checkid1 1507; set @checkid2 1508; set @checkid3 1509;
+//"フレイル"		set @checkid1 1510; set @checkid2 1511; set @checkid3 1512;
+//"チェイン"		set @checkid1 1519; set @checkid2 1520; set @checkid3 1521;
+//"モニングスター"	set @checkid1 1513; set @checkid2 1514; set @checkid3 1515;
+//"ソードメイス"	set @checkid1 1516; set @checkid2 1517; set @checkid3 1518;
+//"スタナー"		set @checkid1 1522;
+//L6:
+//"バグナウ"		set @checkid1 1801; set @checkid2 1802;
+//"ナックルダスター"	set @checkid1 1803; set @checkid2 1804;
+//"ホラ"		set @checkid1 1805; set @checkid2 1806;
+//"フィスト"		set @checkid1 1807; set @checkid2 1808;
+//"クロー"		set @checkid1 1809; set @checkid2 1810;
+//"フィンガー"		set @checkid1 1811; set @checkid2 1812;
+//L7:
+//"ジャベリン"		set @checkid1 1401; set @checkid2 1402; set @checkid3 1403;
+//"スピアー"		set @checkid1 1404; set @checkid2 1405; set @checkid3 1406;
+//"パイク"		set @checkid1 1407; set @checkid2 1408; set @checkid3 1409;
+//"ギザルム"		set @checkid1 1451; set @checkid2 1452; set @checkid3 1453;
+//"グレイヴ"		set @checkid1 1454; set @checkid2 1455; set @checkid3 1456;
+//"パルチザン"		set @checkid1 1457; set @checkid2 1458; set @checkid3 1459;
+//"トライデント"	set @checkid1 1460; set @checkid2 1461; set @checkid3 1462;
+//"ハルバード"		set @checkid1 1463; set @checkid2 1464; set @checkid3 1465;
+//"ランス";		set @checkid1 1410; set @checkid2 1411; set @checkid3 1412;

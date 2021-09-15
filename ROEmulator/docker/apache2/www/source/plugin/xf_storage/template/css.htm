@@ -1,0 +1,39 @@
+<!--{block return}-->
+<style type="text/css">
+	a.ftn_qqdl{
+		color:#369 !important;
+		text-decoration:none;
+	}
+	.ftn_qqdl {
+		font-size:12px;
+		padding:1px 0 3px 20px;
+		margin:2px 0 0 4px;
+		background:url("./source/plugin/xf_storage/template/ftn.png") no-repeat 0 1px;
+	}
+	.ftn_buttondiv {
+		text-align:left;margin:5px 0 5px 22px;
+	}
+</style>
+<script type='text/javascript'>
+	appendscript('http://x.soso.com/js/xf/xflib.js','','','utf-8');
+    try {
+        changeOrigin();
+    } catch(e) {
+
+    }
+
+	function updateDownload(aidEncode, obj) {
+		date = new Date();
+		imgLink = 'forum.php?mod=attachment&aid=' + aidEncode + 't=' + date.getTime();
+		imgCode = '<img width="0" height="0" src="' + imgLink + '" />';
+		$('ft').innerHTML = $('ft').innerHTML + imgCode;
+		setTimeout(function() {OnDownloadClick_Simple(obj, window.event, 21504);}, 100);
+	}
+
+	function changeOrigin() {
+		$('e_btn_attachlist').getElementsByTagName('a')[0].innerText = '{lang xf_storage:attachlist}';
+		$('e_attachlist').getElementsByTagName('div')[0].parentNode.removeChild($('e_attachlist').getElementsByTagName('div')[0]);
+		$('attach_confirms').style.display='none';
+	}
+</script>
+<!--{/block}-->

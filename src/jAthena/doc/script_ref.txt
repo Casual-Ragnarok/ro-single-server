@@ -1,0 +1,1731 @@
+AthenaNPCScript
+
+・目次
+	０．はじめに
+	１．NPCの定義
+	２．スクリプトの説明と基本的な規則
+	３．命令文及び関数及び定数ラベル
+	４．エラーメッセージ
+	５．あとがき
+
+０．はじめに
+	この文章に含まれる関数や書式は最新のsnapshotに含まれるnpc_sample.txtを参考にし、記述されています。
+	この文章を表示しているエディターの都合を考え、タブ文字は<tab>、任意の値は<n>等と表記します。
+	座標系ですが下の図を参考にしてください。
+	↑Yの増加
+	(  0,200)--(200,200)
+	    |          |
+	    |          |
+	    |          |
+	    |          |
+	    |          |
+	(  0,  0)--(200,  0)→Xの増加
+
+１．NPCの定義
+	athenaディレクトリ以下ならどこでもよい（できればathena/script以下）ので、とりあえずtxtを作成してください。
+	まずそのNPCが何を示すのか記述します（場合によってはNPCという言い方は不適切）。
+
+	＊ワープポイント：MAP間の移動を行います。
+		<gatname>,<x>,<y><tab>warp<tab><displayname><tab><dx>,<dy>,<destination_gatname>,<destination_x>,<destination_y>
+
+		gatname			ワープポイントの置かれるMAPファイル名を指定します。.gatは忘れないでください。
+		x			ワープポイントの置かれる横座標を指定します。
+		y			ワープポイントの置かれる縦座標を指定します。
+		displayname		ワープポイント識別子です。重複しても構いません。デバッグで使います。
+		dx			ワープポイントの横効果範囲です。
+		dy			ワープポイントの縦効果範囲です。たぶん円を書かずリージョンになっていると思います。
+			dx,dyの例（●がx,y）：
+				0,0	1,0		2,2
+				　＊	＊＊＊＊＊	＊＊＊＊＊＊＊
+				＊●＊	＊＊●＊＊	＊＊＊＊＊＊＊
+				　＊	＊＊＊＊＊	＊＊＊＊＊＊＊
+				　			＊＊＊●＊＊＊
+				　			＊＊＊＊＊＊＊
+				　			＊＊＊＊＊＊＊
+				　			＊＊＊＊＊＊＊
+
+				＊及び●のセルを踏めば、ワープするということです。
+
+		destination_gatname	ワープ先です。.gatはあってもなくても構いません。
+		destination_x		ワープ先横座標です。
+		destination_y		ワープ先縦座標です。
+
+		注意事項：
+		ワープポイントが同位置に複数は位置されている場合、最後に記述されているもののみ表示します。
+		ワープ先の座標が移動禁止セルだった場合、そのMAPのどこかにワープします。
+
+	＊モンスター：モンスターの出現を管理します。
+		<gatname>,<x>,<y>,<xs>,<ys><tab>monster<tab><displayname><tab><npcid>,<number>,<spawn_delay1>,<spawn_delay2>[,<event>]
+
+		gatname			出現するMAPファイル名を指定します。
+		x			出現する横座標を指定します。0でランダム。
+		y			出現する縦座標を指定します。0でランダム。
+		xs			出現する横範囲を指定します。
+		ys			出現する縦範囲を指定します。
+			xs,ysの例（●がx,y）：
+				0,0	2,1
+				　●	＊＊＊＊＊
+				　	＊＊●＊＊
+				　	＊＊＊＊＊
+
+				＊及び●のセルからモンスターが出現します。
+
+		displayname		出現するモンスターの表示名です。
+		npcid			mob_db.txtを参照してください。出現させるモンスターのidを指定します。
+		number			そのMAP及び出現範囲での最大出現数です。
+		spawn_delay1		出現してから指定されたミリ秒待って再出現します。
+		spawn_delay2		死亡してから指定されたミリ秒待って再出現します。
+		event			指定したイベントを発生させます。省略可。
+
+		注意事項：
+		spawn_delay1とspawn_delay2は、結果としてどちらを基準にした方が最も遅く再出現するかを判断し、優先します。
+
+	＊店：アイテムの販売を行います。
+		<gatname>,<x>,<y>,<direction><tab>shop<tab><displayname><tab><npcid>,<item_id>:<price>
+
+		gatname			配置するMAPファイル名を指定します。
+		x			配置する横座標を指定します。
+		y			配置する縦座標を指定します。
+		direction		向きを指定します。
+			directionの詳細：
+				７０１
+				６　２
+				５４３
+
+		displayname		配置する店の表示名を指定します。
+		npcid			配置する店の表示スプライトIDを指定します。
+		item_id			配置する店に置くアイテムIDを指定します。item_dbを参照してください。
+		price			item_idで指定したアイテムの値段を設定します。
+						負数を指定するとitem_db.txtで設定された値段になります。
+			<item_id>:<price>は,（カンマ）区切りで複数指定できます。
+
+	＊スクリプト：NPCを作成します。
+		<gatname>,<x>,<y>,<direction><tab>script<tab><displayname><tab><npcid>,<xs>,<ys>,{ <script> ... }
+
+		gatname			配置するMAPファイル名を指定します。
+		x			配置する横座標を指定する。
+		y			配置する縦座標を指定する。
+		direction		向きを指定します。
+		displayname		配置するNPCの表示名を指定します。npcidが-1の場合、イベント名となります。
+					同表示名別動作イベントを作る場合、表示名::識別子と記述することができます。
+		npcid			配置するNPCの表示スプライトIDを指定します。-1を指定するとmap内イベントになります。
+		xs			スクリプトを自動実行する横範囲を指定します。
+		ys			スクリプトを自動実行する縦範囲を指定します。ワープと同じです。
+
+		{}（中カッコ）の中についての説明。
+		一行で纏めたりするのはお勧めできません。できれば
+		gatname等,
+		{
+			//コメント
+			script;
+		label:
+			script;
+		}
+		と言った感じで書きましょう。コメントアウトは//、コメントエリアは/*,*/、
+		スクリプト語尾には;（セミコロン）を忘れずに。
+
+		「<gatname>,<x>,<y>,<direction><tab>」の部分を、「-<tab>」とすることで、
+		マップサーバー内には存在していても、実際のマップには配置されないNPCを作成できます。
+		これは後述のデュプリケートスクリプトでコピー元として使用します。
+
+	＊デュプリケートスクリプト：既存のNPC（のスクリプト）をコピーします。
+		<gatname>,<x>,<y>,<direction><tab>duplicate(<source>)<tab><displayname><tab><npcid>,<xs><ys>
+
+		source以外のパラメータは通常のスクリプトと同じです。
+		sourceにはコピー元となるNPCの識別名を入力します。
+
+		コピー元のNPCがマップ上に配置されている場合、同じマップである必要があります。
+		マップ上に配置されていない場合は、どのマップへもコピー可能です。
+
+	＊ユーザー定義関数スクリプト：スクリプトから呼び出されるユーザー定義関数を作成します。
+		function<tab>script<tab><name><tab>{ <script> ... }
+
+		callfunc命令で呼び出すことの出来る関数を作成します。
+		関数呼び出しの引数はgetarg関数で所得することが出来ます。
+		関数の最後には必ずreturn命令を入れてください。
+
+	＊マップフラグ：MAPのルールを管理します。
+		<gatname><tab>mapflag<tab><const>
+
+		gatname			ルールを設定するMAPファイル名を指定します。
+		const			ルールの内容を指定します。
+
+		constの一覧。
+			nosave<tab><gatname>,<x>,<y>
+				リログインした際<gatname>の座標<x>,<y>に移動します。
+			nomemo<tab>dummy
+				メモを取ることを禁止します。
+			notereport<tab>dummy
+				SavePointまたはRandomを指定したwarp文、ワープポータル、テレポートを禁止します。
+			nobranch<tab>dummy
+				古木の枝の使用を禁止します。
+			pvp<tab>dummy
+				PVP可能MAPになります。
+			nopenalty<tab>dummy
+				デスペナルティ無しになります。
+			pvp_noparty<tab>dummy
+				PVPにおいて、同パーティー攻撃不可になります。
+			pvp_noguild<tab>dummy
+				PVPにおいて、同ギルド攻撃不可になります。
+			gvg<tab>dummy
+				シーズモードになります。
+			gvg_noparty<tab>dummy
+				シーズモードにおいて、同パーティー攻撃不可になります。
+
+２．スクリプトの説明と基本的な規則
+	＊数字
+		符号付の整数と１６進数表記整数を使用することができます。
+		符合付整数は半角数字で123456等と記述します。
+		１６進数表記整数は0x12等0xを付けて記述します。
+
+	＊文字列
+		"（ダブルクォーテーション）で囲んだ文字は文字列として評価されます。
+		"（ダブルクォーテーション）記号を扱いたい場合は\"と記述します。
+		\記号を扱いたい場合は\\と記述します。
+		なお表示関係の物に関しては^000000等の色変更を使うことができます。
+		変数 + "文字列"といった文字列結合もできます。
+
+	＊単項演算子
+		以下の数値専用の単項演算子が用意されています。
+			-	符号逆転（２の補数）
+			~	ビット論理否定（１の補数）
+			!	論理否定
+
+	＊２項演算子
+		以下２項演算子は数値と文字列で動作が異なります。
+			+	加算/結合
+			数値どうしの場合は加算します。
+			それ以外の場合は文字列とみなして結合します。
+
+		以下の２項演算子は数値専用です。
+			-	減算
+			*	乗算
+			/	除算
+			%	剰余
+			&	ビット論理積
+			|	ビット論理和
+			^	ビット排他的論理和
+			&&	論理積
+			||	論理和
+			>>	右シフト
+			<<	左シフト
+
+		以下の２項演算子は数値どうし、または文字列どうしの比較を行います。
+		これらの関係演算子は関係が成り立つと1、成り立たないと0を返します。
+			==	等しい
+			!=	等しくない
+			>	より大きい
+			>=	より大きいか等しい（以上）
+			<	より小さい（未満）
+			<=	より小さいか等しい（以下）
+
+	＊変数
+		半角英数字を使用することができます。
+		変数のスコープとライフタイムはプレフィックスにより指定します。
+		小文字のエルはプレフィックスとして扱われるので注意してください。
+		(小文字のエルは今後の動作を保障されないので使用しないで下さい)
+
+			プレフィックス	スコープ		ライフタイム
+				(なし)	キャラクター		永続的
+				@	キャラクター		一時的
+				l	同上			同上（推奨されない）
+				$	マップサーバー		永続的
+				$@	マップサーバー		一時的
+				#	アカウント		永続的
+				##	アカウント(全ワールド)	永続的
+
+		つまり、普通の一時的な変数は@, 保存する必要のある変数は
+		プレフィックスなし、全てのキャラクターで共有すべき変数は $、
+		同一アカウントで共有すべき変数は # や ## を使用することになります。
+
+		また、変数の型はポストフィックスにより指定します。
+		ただし、文字列型はキャラクター一時変数、および、
+		永続的/一時的マップサーバー変数でのみ使用できます。
+		（プレフィックス @、$、$@ ）
+
+			ポストフィックス	型
+				(なし)		整数
+				$		文字列
+
+		<例>	@hoge$	文字列型一時的キャラクター変数
+			hoge	数値型永続的キャラクター変数
+			$hoge	数値型永続的全キャラクター共有変数
+
+		一時的でない変数は多用すべきではありません。
+		保存する必要のないものは極力一時変数で済ませるべきです。
+		保存する必要があるのかないのかはよく考慮してください。
+		特に永続的なキャラクター/アカウント変数は、数に制限があります。
+		使用が終わって二度と使用することがないとわかっている変数は
+		値を0に設定することで削除することが出来ます。
+
+	＊配列変数
+		変数名の後に括弧 [ ] で括った式を指定することで配列変数になります。
+		変数名と"["の間に空白文字を入れることはできません。
+
+		<例>	hoge[10]	fuga[ @temp ]
+
+		配列の要素番号は0～127が指定できますが、番号0は同名の変数と
+		値を共有します。たとえば、hoge[0] と hoge は同じ変数です。
+
+		配列変数は一時的キャラクター変数、一時的/永続的マップサーバー変数で使用できます。
+		変数の型は数値、文字列両方とも利用できます。
+
+	＊ラベル
+		半角英数およびアンダーバーが使用できます。
+		変数や命令などと区別するため L_ を先頭につけることが推奨されます。
+		L_hoge: といった風に使用します。
+		if文やmenu文のジャンプ先に指定されます。
+
+	＊定数
+		athenaはdb/const.txtに準拠した定数を提供します。
+		スクリプト内でのみ使用可能です。
+
+	＊埋め込み変数
+		話かけたプレイヤーのステータスなどを参照できます。
+		db/const.txtに記述されています。
+		スクリプト内でのみ使用可能です。
+		なお、一部を除いて値の代入はできません。
+
+	＊式
+		命令文の引数が数値だった場合、そこで利用することができます。
+		スペースは要らないようですがあった方が見易いです。
+		比較演算子及び論理演算子は値が真であったとき数値の1、偽であったとき0を返します。
+
+	＊イベント
+		形を持たないスクリプトです。
+		タイムアタックなどの作成に使います。
+		イベント名を記述する部分では、イベント名::ラベル名とすることでそのイベントの指定したラベルから
+		スクリプトを開始させることができます。
+
+	＊命令構文
+		引数は半角スペースを空けて記述してください。
+
+３．命令文及び関数及び定数ラベル
+	＊基本構文
+		C 言語の構文に準拠してます。分からなければ、C 言語の解説を読んでください。
+
+		if - else if - else 構文
+			if( <cond> ) <cmd_1> [ [else if(<cond_n>) <cmd_n> ]* else <cmd_z>]
+
+			<conf>が真の時には、<cmd1> を実行して、if構文を抜けます。
+			次に "else if(<cond_n>)" があれば、それを先頭から順番に評価して、
+			それが真であれば<cmd_n>を実行して、if構文を抜けます。
+			最後に、"else" があれば、それを実行してif構文を抜けます。
+
+			また、<cmd_n> は { , } を用いてブロックにすることができます。
+
+			例；
+			// @input が0 の場合、ラベルHOGEに飛びます。
+			if(@input == 0) goto HOGE;
+
+			// @input が0 の場合、ラベルHOGEに飛び、それ以外の場合FUGAに飛びます。
+			if(@input == 0) goto HOGE; else goto FUGA; 
+
+			if(@input == 0)
+				mes "zero";
+			else if(@input == 1)
+				mes "one";
+			else if(@input == 2) {
+				mes "two";
+			} else {
+				mes "??unknown";
+				mes "0,1,2 のいずれかの値を入力してください。";
+			}
+
+			中かっこが無い複数のif の後にelseが続くと、else は else が無い
+			最後のif文と結びつきます。例えば、
+
+			if(@temp <= 1) if(@temp <= 0) mes "<= 0"; else mes "1"; else mes ">= 2";
+
+			という構文は、
+
+			if(@temp <= 1) { if(@temp <= 0) mes "<= 0"; else mes "1"; } else mes ">= 2";
+
+			と同じように処理されます。
+
+		for構文
+			for(<cmd_1>; <cond>; <cmd_2>) <cmd_3>
+
+			<cmd_1>を実行した後、<cond> が真である間、<cmd_3> を実行してから、
+			<cmd_2>を実行します。
+
+			for(set @i,0;@i < 5;set @i,@i+1) mes @i;
+
+			for(set @i,0;@i < 5;set @i,@i+1) {
+				mes @i;
+				next;
+			}
+
+		while構文
+			while( <cond> ) <cmd>
+
+			<cond>が真の間<cmd> を実行します。
+
+			set @temp,5;
+			while(@temp > 0) {
+				mes @temp;
+				set @temp,@temp-1;
+			}
+
+		switch構文
+			switch(<val_1>) { [case <val_n>: ....] [ default: ...] }
+
+			<val> と同じ値を持つ"case <val_n>"の所に移動します。一致する値が無い時は、
+			default 構文がある場合はそこに飛び、無い場合はswitch 構文を抜けます。
+
+			また、fall throughになっているので、switch 構文からは自動的に抜けません。
+			switch 構文を抜けるには、break; 命令を用います。
+
+			switch(@temp) {
+			default: mes("unknown FALLTHRU"); // "break" が無いので実行が継続される
+			case 0: mes("零"); break;
+			case 1: mes("壱"); break;
+			case 2: mes("弐 FALLTHRU"); // "break" が無いので実行が継続される
+			case 3: mes("参"); break;
+			case 4: mes("四"); break;
+			case 5: mes("伍"); break;
+			}
+
+		do - while 構文
+			do <cmd> while(<val>);
+
+			"<cmd> while(<val>) <cmd>;" ど同じ構文で、最初に<cmd> を実行します。
+			その後、<val> が真の間<cmd> を実行します。
+
+		break 命令
+			一番内側にある for , while , switch , do - while 構文を抜けます。
+
+		continue 命令
+			一番内側にある for , while , do - while 構文の次の繰り返し位置に移動します。
+
+	＊命令文
+		mes命令
+			mes <string>;
+
+			string		文字列
+
+			<string>に記述された文字列をメッセージウィンドウに出力します。
+
+		next命令
+			next;
+
+			メッセージウィンドウにnextボタンを表示し、待機します。
+
+		close命令
+			close;
+
+			メッセージウィンドウにcloseボタンを表示し、スクリプトを終了します。
+
+		close2命令
+			close2;
+
+			メッセージウィンドウにcloseボタンを表示し、待機します。
+			スクリプトを終了するためにはend命令と併用してください。
+			closeボタンが押された後の処理を実行することが出来ます。
+
+		menu命令
+			menu <string1>,<label1>[,<stringN>,<labelN>...];
+
+			stringN		文字列
+			labelN		ラベル
+
+			メニューを表示します。<stringN>に記述された文字列を選択すると<labelN>からスクリプトを開始します。
+			また、選ばれたラベルの番号は変数@menuに代入されます。
+			(l15にも代入されますが、こちらは今後動作が保障されないのでl15は使用しないで下さい）
+
+		goto命令
+			goto <label>;
+
+			label		ラベル
+
+			<label>からスクリプトを開始します。
+
+		cutin命令
+			cutin <filename>,<position>;
+
+			filename	文字列
+			position	数値
+
+			カプラ職員などのカットインを表示します。<filename>は表示したいファイル名、<position>は表示位置を指定します。
+			position：0,左下、1,中央下、2,右下、255,カットイン消去
+
+		cutincard命令
+			cutincard <item id>;
+
+			item id		数値
+
+			アイテムIDに対応するカードの画像を表示します。
+
+		jobchange命令
+			jobchange <job>[, <upper>];
+
+			job		数値
+			upper		数値
+
+			職業を変更します。<job>はdb/const.txtを参照してください。
+			<upper>は0=通常,1=転生,2=養子,-1 or 無し=現在の<upper>になります。
+			jobLvは自動で１になります。
+			バードとダンサーには注意してください。
+
+		changebase命令
+			changebase <job>[, <id>];
+			
+			job		数値
+			char id	見た目を変更する対象のIDです。省略時は自分の見た目が変更されます。
+			
+			見た目を変更します。<job>はdb/const.txtを参照してください。
+			jobを22にしたときは自動的に装備が外れます。
+			
+		input命令
+			input [<variable>];
+
+			variable	変数、省略可
+
+			入力ウィンドウを開き、入力データを<variable>に代入します。
+			変数の型が文字列型のときは文字列入力ウィンドウ、整数型のときは数値入力ウィンドウになります。
+			<variable>を省略した場合には数値入力ウィンドウを出し、データは変数l14 (小文字のエル+14)に代入されます。
+			（l14は今後の動作が保障されないので、引数は省略しないで下さい）
+
+		warp命令
+			warp <gatname>,<x>,<y>;
+
+			gatname		文字列
+			x,y		数値
+
+			<gatname>に指定されたMAPの座標<x>,<y>にワープします。
+			<gatname>をSavePointにした場合、セーブポイントに移動します。
+			Randomにした場合、そのMAP内のどこかに移動します。即ち<x><y>は無視。
+
+		setlook命令
+			setlook <n1>,<n2>;
+
+			n1,n2		数値
+
+			外見を変更します。<n1>は部品を、<n2>は種類を指定します。
+			n1：1,髪型、2,武器、3,頭上段、4,頭中段、5,頭下段、6,髪色、7,服色、8,盾
+			装備品は変更されません。アサシン男とローグ男に関しては服の色がありません。
+
+
+		set命令
+			set <variable>,<n>;
+
+			variable	変数
+			n		数値/文字列
+
+			<variable>に<n>を代入します。
+			文字列型を使用するときは変数名にポストフィックスを忘れないで下さい。
+
+		setarray命令
+			setarray <variable>[,<n0>[,<n1>…]];
+
+			variable	変数
+			nx		数値/文字列
+
+			配列<variable>に値<n0>,<n1>,…のリストを代入します。
+			<variable>は配列名を指定すると最初から、要素番号も指定すれば途中から代入できます。
+			<例> setarray @hoge[2],16,24,32;  @hogeの要素2から4までを16,24,32にする。
+
+		cleararray命令
+			cleararray <variable>,<n>,<count>;
+
+			variable	変数
+			n		数値/文字列
+			count		数値
+
+			配列<variable>に値<n>を<count>個分代入します。
+			<variable>は配列名を指定すると最初から、要素番号も指定すれば途中から代入できます。
+			<例> cleararray @hoge[3],0,6;  @hogeの要素3から8までを0にセットする
+
+		copyarray命令
+			copyarray <var1>,<var2>,<n>;
+
+			<var1>,<var2>	変数
+			n		個数
+
+			配列<var1>に配列<var2>の要素<n>個をコピーします。
+			<var1>,<var2>は配列名を指定すると最初から、要素番号も指定すれば途中からコピーできます。
+
+		deletearray命令
+
+			deletearray <variable>,<n>;
+
+			variable	変数
+			n		数値
+
+			配列<variable>から<n>個の要素を削除し、後ろの要素を前に詰める
+			<variable>は配列名を指定すると最初から、要素番号も指定すれば途中から削除できます。
+
+		getitem命令
+			getitem <itemid>,<num>[,<identify>,<account_id>];
+
+			itemid		数値または文字列
+			num		数値
+			identify	数値(省略可)
+			account_id	数値(省略可)
+
+			<itemid>に指定されたアイテムIDを持つアイテムを<num>個分入手します。
+			<itemid>が文字列の場合、その名前(name,jname)を持つアイテムのIDを使用します。
+			ただし、アイテム名はitem_db.txtなどに依存するため、テスト目的以外では使用すべきではありません。
+			<identify> 鑑定状態(0で未鑑定、1で鑑定)
+			<account_id>アイテムを渡す相手を指定(省略すると自分)
+
+		getitem2命令
+			getitem <itemid>,<num>,<identify>,<refine>,<attribute>,<card1>,
+			<card2>,<card3>,<card4>[,<account_id>]
+
+			itemid		数値または文字列
+			num,identify,refine,attribute,card1,card2,card3,card4	数値
+			account_id	数値(省略可)
+
+			<itemid>に指定されたアイテムIDを持つアイテムを<num>個分入手します。
+			<identify> 鑑定状態(0で未鑑定、1で鑑定)
+			<refine> 精錬値
+			<attribute> アイテムの状態
+			<card1> 差さているカード、製造武器なら255で装備以外のアイテムでキャラの名前を入れたい時は254
+			<card2> 差さているカード、製造武器なら属性と星のかけらの数を設定。星のかけらの数(範囲:0~3)*5*256 + 属性(無:0、火:3、水:1、風:4、土:2)
+			<card3> 差さているカード、製造武器やキャラの名前が入るアイテムはキャラIDの下の2バイト
+			<card4> 差さているカード、製造武器やキャラの名前が入るアイテムはキャラIDの上の2バイト
+			<account_id>アイテムを渡す相手を指定(省略すると自分)
+
+			<itemid>が文字列の場合、その名前(name,jname)を持つアイテムのIDを使用します。
+			ただし、アイテム名はitem_db.txtなどに依存するため、テスト目的以外では使用すべきではありません。
+
+		delitem命令
+			delitem <itemid>,<num>;
+
+			itemid_num	数値
+
+			<itemid>に指定されたアイテムIDを持つアイテムを<num>個分失います。
+
+		makepet命令
+			makepet <petid>;
+
+			petid	数値
+
+			<petid>に指定されたアイテムIDを持つペットの卵を作成します。
+
+		viewpoint命令
+			viewpoint <type>,<x>,<y>,<id>,<color>;
+
+			type,x,y,id	数値
+			color		不明
+
+			資料不足なので詳しい説明はできませんが、ミニMAPに点滅する点を表示、削除します。
+			type:1,表示、2,削除
+
+		heal命令
+			heal <hp>,<sp>;
+
+			hp,sp		数値
+
+			<hp>分HPを、<sp>分SPを回復します。
+
+		itemheal命令
+			itemheal <hp>,<sp>;
+
+			hp,sp		数値
+
+			<hp>分HPを、<sp>分SPを回復します。healとは違い回復するHPとSPの量にVIT(SPの場合INT)とスキルによる補正が付きます。
+
+		end命令
+			end;
+
+			スクリプトの実行を終了します。
+
+		setoption命令
+			setoption <string>;
+
+			string		文字列
+
+			引用：
+			PCに以下で示す付属品(?)を付けます。
+			0x0000	- 付属品削除
+			0x0001	- ?
+			0x0002	- ハイド(影付き)
+			0x0004	- ??
+			0x0008	- カート
+			0x0010	- 鷹
+			0x0020	- ペコペコ(ナイト,クルセイダーの時のみ有効)
+			0x0040	- ハイド(影無し)
+			0x0080	- カート2
+			0x0100	- カート3
+			0x0200	- カート4
+			0x0400	- カート5
+			0x0800	- 頭がオーク(Sageのスキル、リバースオーキッシュがかかった状態になる)
+
+			一端すべて消されてから付け直すので、複数指定したい場合には合計を指定してください。
+
+		savepoint命令
+			savepoint <gatname>,<x>,<y>;
+
+			gatname		文字列
+			x,y		数値
+
+			<gatname>の座標<x>,<y>をセーブポイントに設定します。
+
+		openstorage命令
+			openstorage;
+
+			倉庫を開きます。
+
+		setcart命令
+			setcart;
+
+			カートを付けます。
+
+		successrefitem命令
+			successrefitem <n>;
+
+			n		数値
+
+			精錬成功エフェクトを表示します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		failedrefitem命令
+			failedrefitem <n>;
+
+			n		数値
+
+			精錬失敗エフェクトを表示します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		repairitem命令
+			repairitem;
+			
+			所有している修理可能(＝破壊された)アイテムをすべて修理します。
+			
+		setfalcon命令
+			setfalcon;
+
+			鷹を付けます。
+
+		setriding命令
+			setriding;
+
+			ペコペコに乗ります。
+
+		monster命令
+			monster <gatname>,<x>,<y>,<mobname>,<mobid>,<num>[,<event>];
+
+			gatname,mobname	文字列
+			x,y,mobid,num	数値
+			event		文字列、省略可
+
+			<gatname>の座標<x>,<y>に<mobname>を持つ<mobid>に指定されたIDを持つモンスターを<num>体出現させます。
+			<gatname>がthisの場合スクリプトを実行したプレイヤーがいるMAP、
+			<x><y>が-1の場合、スクリプトを実行したプレイヤーの座標、
+			<mobname>が--en--の場合英語名、--ja--の場合日本語名、<mobid>が-1の場合ランダム。
+			そのモンスターを倒したとき<event>を開始します。
+
+		announce命令
+			announce <string>,<flag>;
+
+			string		文字列
+			flag		数値
+
+			<string>をＧＭアナウンスで表示します。
+			<flag>は以下に示す通りです。
+			エリアフラグ
+			0x00 すべてのＭＡＰに送信
+			0x01 同じＭＡＰ
+			0x02 画面内
+			0x03 自分のみ
+			0x04 同じＭＡＰ鯖
+			色フラグ
+			0x00 黄色
+			0x10 青色
+			特殊フラグ
+			0x00 特に無し
+			0x08 イベント用
+
+			エリアフラグと色フラグと特殊フラグの合計を指定してください。
+
+		killmonster命令
+			killmonster <gatname>[,<event>];
+
+			gatname		文字列
+			event		文字列、省略可
+
+			<gatname>に存在するモンスターをすべて殺します。
+			<event>によって呼び出されたモンスターのみ殺すことも可能です。<event>をAllにするとそのマップにある一時的に召喚されたモンスターを全て殺します。
+
+		killmonsterall命令
+			killmonsterall <gatname>
+
+			gatname		文字列
+
+			<gatname>に存在するモンスターをすべて殺します。killmonsterとは違ってそのマップに始めから配置されていたモンスターまで全て殺すことができます。
+
+
+		addtimer命令
+			addtimer <ms>,<event>;
+
+			ms		数値
+			event		文字列
+
+			現在のプレイヤーに、<ms>ミリ秒経過した後<event>を開始するタイマーを作成します。
+			このタイマーによって実行されるイベントは、このプレイヤーの情報にアクセスできます。
+			プレイヤーがログアウトするとタイマーは無効になるため注意してください。
+			アリーナマップなどで使用する場合はこれではなくNPCタイマーを使用してください。
+
+		deltimer命令
+			deltimer <event>;
+
+			event		文字列
+
+			現在のプレイヤーの<event>を開始するタイマーを消去します。
+
+		addtimercount命令
+			addtimercount <event>,<ms>;
+
+			event		文字列
+			ms		数値
+
+			現在のプレイヤーの<event>を開始するタイマーの開始までの時間を<ms>ミリ秒追加します。
+
+		initnpctimer命令
+			initnpctimer [<name>];
+
+			<name>で指定されたNPCが持つNPCタイマーの値を０にし、カウントを開始します。
+			nameを省略すると、命令を実行したNPCが対象になります。
+
+			このNPCタイマーはミリ秒単位でOnTimerXXXXというラベルイベントを実行します。
+			<例> OnTimer1000: <= 1秒後, OnTimer30000: <= 30秒後
+
+		stopnpctimer命令
+			stopnpctimer [<name>];
+
+			<name>で指定されたNPCが持つNPCタイマーのカウントを停止します。
+			nameを省略すると、命令を実行したNPCが対象になります。
+
+		startnpctimer命令
+			stopnpctimer [<name>];
+
+			<name>で指定されたNPCが持つNPCタイマーのカウントを再開します。
+			nameを省略すると、命令を実行したNPCが対象になります。
+			こちらはinitnpctimerと違い、カウントを0にリセットしません。
+			stopnpctimerとセットで使用します。
+
+		setnpctimer命令
+			setnpctimer <tick>[,<name>]
+
+			<name>で指定されたNPCが持つNPCタイマーのカウントを変更します。
+			nameを省略すると、命令を実行したNPCが対象になります。
+			getnpctimerを利用すれば、カウントを増減できます。
+
+		disablenpc命令
+			disablenpc <npcname>;
+
+			npcname		文字列
+
+			<npcname>を無効にします。
+
+		enablenpc命令
+			enablenpc <npcname>;
+
+			npcname		文字列
+
+			<npcname>を有効にします。
+			<npcname>に範囲が指定されている場合は、同時に範囲内PCに対してOnTouchイベントを実行します。
+
+		hideonnpc命令
+			hideonnpc <npcname>;
+			
+			npcname		文字列
+			
+			<npcname>をハイディング状態にします。
+			同時に<npcname>を無効にします。
+
+		hideoffnpc命令
+			hideoffnpc <npcname>;
+			
+			npcname		文字列
+			
+			ハイディング状態の<npcname>を表示します。
+			<npcname>を有効にし、さらに範囲が指定されている場合は、同時に範囲内PCに対してOnTouchイベントを実行します。
+			
+
+		mapannounce命令
+			mapannounce <gatname>,<string>,<flag>;
+
+			gatname,string	文字列
+			flag		数値
+
+			<gatname>全体に<string>をＧＭアナウンスで表示します。
+			flag:0,黄色文字、16,青文字
+
+		areaannounce命令
+			areannounce <gatname>,<x0>,<y0>,<x1>,<y1>,<string>,<flag>;
+
+			gatname,string		文字列
+			x0,y0,x1,y1,flag	数値
+
+			<gatname>の<x0>,<y0>から<x1>,<y1>の範囲内に対し<string>をＧＭアナウンスで表示します。
+			flag:0,黄色文字、16,青文字
+
+		areawarp命令
+			areawarp <gatname>,<x0>,<y0>,<x1>,<y1>,<gatname2>,<x>,<y>;
+
+			gatname,gatname2	文字列
+			x0,y0,x1,y1,x,y		数値
+
+			<gatname>の<x0>,<y0>から<x1>,<y1>の範囲内にいるPCを<gatname2>の座標<x>,<y>に移動させます。
+
+		areamonster命令
+			areamonster <gatname>,<x0>,<y0>,<x1>,<y1>,<mobname>,<mobid>,<num>[,<event>];
+
+			gatname,mobname		文字列
+			x0,y0,x1,y1,mobid,num	数値
+			event			文字列、省略可
+
+			<gatname>の<x0>,<y0>から<x1>,<y1>の範囲内に<mobname>を持つ<mobid>に指定されたIDを持つモンスターを<num>体出現させます。
+			<gatname>がthisの場合スクリプト実行MAP、<x><y>が-1の場合ランダム座標、
+			<mobname>が--en--の場合英語名、--ja--の場合日本語名、<mobid>が-1の場合ランダム。
+			そのモンスターを倒したとき<event>を開始します。
+
+		percentheal命令
+			percentheal <hp>,<sp>;
+
+			hp,sp		数値
+
+			HPとSPを<hp>%、<sp>%分回復します。
+
+		resetstatus命令
+			resetstatus;
+
+			ステータスポイントをリセットします。
+
+		resetskill命令
+			resetskill;
+
+			スキルポイントをリセットします。
+
+		statusup命令
+			statusup <st>;
+
+			st	数値
+
+			<st>で指定された基本ステータス値を、ステータスポイントを消費して1上げる。
+			<st>は bStr, bVit, bInt, bAgi, bDex, bLuk で指定する。
+
+		statusup2命令
+			statusup2 <st>,<n>;
+
+			st,n	数値
+
+			<st>で指定された基本ステータス値を、ステータスポイントを消費せずに<n>上げる。
+			<st>は bStr, bVit, bInt, bAgi, bDex, bLuk で指定する。
+
+		skill命令
+			skill <skillid>,<skilllv>,<flag>;
+
+			skillid,skilllv,flag	数値
+
+			<skillid>に指定されたIDを持つLV<skilllv>スキルを習得します。
+			flag:0,恒久的なスキル取得(スキルツリーにない物は無効)、1,一時的(範囲は不明)な取得、
+			<skilllv>を0にするとこでそのスキルを忘れさせることも可能です。
+
+		guildskill命令
+			guildskill <skillid>,<skilllv>,<flag>;
+
+			skillid,skilllv,flag	数値
+
+			<skillid>に指定されたIDを持つLV<skilllv>スキルを習得します。
+			flag:0,ギルドスキルポイントを消費します、1,ギルドスキルポイントを消費しません
+			<skilllv>を0にするとこでそのスキルを忘れさせることも可能です。
+			
+		waitingroom命令
+			waitingroom <title>,<limit>[,<event>[,<trigger>]];
+
+			title		文字列
+			limit		数値
+			event		文字列、省略可
+			trigger		数値、省略可
+
+			<title>をタイトルとしてチャットルームを表示させます。
+			<trigger>を満たしたとき、<event>を動作させることが可能です。
+			<trigger>を省略すると<limit>の数値が使用されます。
+
+		delwaitingroom命令
+			delewaitingroom [<name>]
+
+			name	文字列、省略可
+
+			指定したNPCのチャットルームを閉じます。
+			<name>を省略すると、命令を実行したNPCが対象になります。
+
+		disablewaitingroomevent命令
+			disablewaitingroomevent [<name>]
+
+			name	文字列、省略可
+
+			<name>で指定したNPCのチャットルームのイベントを無効にします。
+			<name>を省略すると、命令を実行したNPCが対象になります。
+
+		enablewaitingroomevent命令
+			enablewaitingroomevent [<name>]
+
+			name	文字列、省略可
+
+			<name>で指定したNPCのチャットルームのイベントを有効にします。
+			<name>を省略すると、命令を実行したNPCが対象になります。
+			また、既にイベントが起こる人数に達している場合、
+			即座にイベントを実行します。
+
+		warpwaitingpc命令
+			warpwaitingpc <gatname>,<x>,<y>[,<num>];
+
+			gatname		文字列
+			x,y,num		数値
+
+			命令を実行したNPCのチャットルームに入っているPCのうち、
+			<num>で指定した人数を、<gatname>の座標<x>,<y>に移動させます。
+			<num>を省略すると waitingroomの<trigger>で指定した人数を使用します。
+
+			ワープさせた人数を $@warpwaitingpcnum に、ワープさせた人のアカウントIDを
+			配列 $@warpwaitingpc にセットします(先頭から人数分)。
+
+
+		emotion命令
+			emotion <n>;
+
+			n		数値
+
+			<n>エモーションを出します。
+
+		classchange命令
+			classchange <class>, <type>;
+
+			class	数値
+			type	数値
+
+			<class>で指定したClassにクラスチェンジします。
+
+		misceffect命令
+			misceffect <type>;
+
+			type	数値
+
+		soundeffect命令
+			soundeffect <name>, <type>;
+
+			name	文字列(24文字まで)
+			type	数値
+
+			<name>で指定したエフェクト音を発生させます。
+			<type>
+				0	1回鳴らす
+				1	繰り返し鳴らす
+				2	繰り返しの停止
+
+		setmapflag命令
+			setmapflag <gatname>,<flag>;
+
+			gatname		文字列
+			flag		数値
+
+			<gatname>のmapflagを追加します。
+			<flag>はdb/const.txtを参照してください。
+
+		removemapflag命令
+			removemapflag <gatname>,<flag>;
+
+			gatname		文字列
+			flag		数値
+
+			<gatname>のmapflagを消去します。
+			<flag>はdb/const.txtを参照してください。
+
+		pvpon命令
+			pvpon <gatname>;
+
+			gatname		文字列
+
+			<gatname>をPVP可能MAPにします。
+
+		pvpoff命令
+			pvpoff <gatname>;
+
+			gatname		文字列
+
+			<gatname>をPVP不可MAPにします。
+
+		gvgon命令
+			gvgon <gatname>;
+
+			gatname		文字列
+
+			<gatname>をシーズモードにします。
+
+		gvgoff命令
+			gvgoff <gatname>;
+
+			gatname		文字列
+
+			<gatname>を非シーズモードにします。
+
+		setmapflagnosave命令
+			setmapflagnosave <gatname>,<savegatname>,<x>,<y>;
+
+			gatname,nosavegat	文字列
+			x,y			数値
+
+			<gatname>のmapflagにnosave、引数として<savegatname>,<x>,<y>を設定します。
+
+		detachrid命令
+			detachrid;
+
+			NPCにアタッチされているIDをクリアします。
+			以後、キャラクター情報を必要とする命令が実行できなくなります。
+
+		doevent命令
+			doevent <name>;
+
+			name	文字列
+
+			プレイヤー主体のイベントを起こします。<name>にはイベント名を指定します。
+			プレイヤーが他のNPCと会話中などで実行できない場合、キューに入り、実行可能になるまで待って実行されます。
+			キューのサイズはとても小さいので、連続で起こるとイベントが無視されるかもしれません。
+			ラベル付きイベントも指定できますが、NPC名を省略できないので注意してください。
+
+		donpcevent命令
+			donpcevent <name>;
+
+			name	文字列
+
+			プレイヤーがアタッチされていない(NPC主体の)イベントを起こします。
+			<name>にはイベント名を指定します。イベントは即座に実行されます。
+			ラベル付きイベントも指定でき、NPC名を省略することで、イベントをブロードキャストできます。
+			（複数のNPCの同じ名前のラベルを実行できる。 例＞"::OnEvent"）
+
+		callsub命令
+			callsub <label>[,<arg0>[,<arg1> …]]
+
+			label		ラベル
+			arg0,arg1…	変数、文字列、数値など、省略可
+
+			同一スクリプト内のラベル<label>をサブルーティンとして実行します。
+			arg0,arg1…は引数で、サブルーティン内においてgetarg関数で所得できます。
+			サブルーティンから復帰するときはreturn命令を使用してください。
+			この命令はreturn命令の実行状況によっては関数として使用することも出来ます。
+
+			引数は変数については参照渡し、数値や文字列については値渡しになります。
+			（つまり、変数を渡す場合、 set getarg(0), 1; と使うことも出来ます。）
+
+		callfunc命令
+			callfunc <func>[,<arg0>[,<arg1> …]]
+
+			func		文字列
+			arg0,arg1…	変数、文字列、数値など、省略可
+
+			<func>で定義されたユーザー定義関数を実行します。
+			arg0,arg1…は引数で、ユーザー定義関数内においてgetarg関数で所得できます。
+			ユーザー定義関数から復帰するときはreturn命令を使用してください。
+			この命令はreturn命令の実行状況によっては関数として使用することも出来ます。
+
+			引数は変数については参照渡し、数値や文字列については値渡しになります。
+			（つまり、変数を渡す場合、 set getarg(0), 1; と使うことも出来ます。）
+
+		return命令
+			return <retval>
+
+			retval	変数、文字列、数値など、省略可
+
+			直ちにサブルーティンもしくはユーザー定義関数を抜け、呼び出し元に戻ります。
+			<retval>は戻り値で、callsubまたはcallfuncが関数として呼び出されているとき、この戻り値が使用されます。
+			callsubまたはfuncが命令として呼ばれているときは、<retval>は省略してください。
+			戻り値は変数については参照返し、数値や文字列については値返しになります。
+			（つまり、変数を返す場合、 set callfunc("func"), 1; と使うことも出来ます。）
+
+		recovery命令
+			recovery
+
+			接続者全員を、蘇生＋HP・SP全回復させます。
+
+		gmcommand命令
+			gmcommand <command>
+
+			command		文字列
+
+			文字列に@コマンドを入れると、GMレベル99のキャラが実行したのと
+			同じ動作をします。
+
+	＊関数
+		rand関数
+			rand(<n1>[,<n2>])
+
+			n1		数値
+			n2		数値、省略可
+
+			<n1>のみ指定されていた場合、0から<n1>-1までの数値をランダムに選んで返します。
+			<n2>を指定した場合、<n1>から<n2>までの数チをランダムに選んで返します。
+
+		getitemname関数
+			getitemname(<itemid>)
+
+			itemid		数値
+
+			<itemid>に指定されたIDを持つアイテムのjnameを文字列で返します。
+			なお、アイテム名はitem_db.txtを参照します
+
+		countitem関数
+			countitem(<itemid>)
+
+			itemid		数値または文字列
+
+			<itemid>に指定されたIDを持つアイテムの所持数を返します。
+			<itemid>が文字列の場合、その名前(name,jname)を持つアイテムのIDを使用します。
+			ただし、アイテム名はitem_db.txtなどに依存するため、テスト目的以外では使用すべきではありません。
+
+		checkweight関数
+			checkweight(<itemid>,<num>)
+
+			itemid		数値または文字列
+			num		数値
+
+			<itemid>に指定されたIDを持つアイテムを<num>個持つことができるのならば1を、
+			できなければ0を返します。
+			<itemid>が文字列の場合、その名前(name,jname)を持つアイテムのIDを使用します。
+			ただし、アイテム名はitem_db.txtなどに依存するため、テスト目的以外では使用すべきではありません。
+
+		strcharinfo関数
+			strcharinfo(<n>)
+
+			n		数値
+
+			キャラ情報を返します。
+			n:0,キャラ名、1,パーティー名、2,ギルド名
+
+		getequipname関数
+			strcharinfo(<n>)
+
+			n		数値
+
+			装備品名を返します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		getequipisequiped関数
+			getequipisequiped(<n>)
+
+			n		数値
+
+			装備していたら1、していなかったら0を返します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		getequipisenableref関数
+			getequipisenableref(<n>)
+
+			n		数値
+
+			精錬できる場合は1、できない場合は0を返します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		getequipisidentify関数
+			getequipisidentify(<n>)
+
+			n		数値
+
+			鑑定済みの場合1、未鑑定の場合0を返します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		getequiprefinerycnt関数
+			getequiprefinerycnt(<n>)
+
+			n		数値
+
+			精錬の度合いを返します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		getequipweaponlv関数
+			getequipweaponlv(<n>)
+
+			n		数値
+
+			武器LVを返します。防具の場合には0、あとは武器LVに対応します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		getequippercentrefinery関数
+			getequippercentrefinery(<n>)
+
+			n		数値
+
+			精錬成功率を返します。
+			n:1,頭装備、2,鎧、3,左手、4,右手、5,かけるもの、6,靴、7,アクセ１、8,アクセ２、9,頭中段、10,頭下段
+
+		getrepairableitemcount関数
+			getrepairableitemcount(<n>)
+
+			n		数値(ダミーなのでなんでもよい)
+			
+			所有アイテムで修理可能(＝破壊された)アイテムの数を返します。
+			
+		getusers関数
+			getusers(<n>)
+
+			n		数値
+
+			人数を返します。
+			n:0,PCのいるMAPの総人数、1,全MAPの総人数（即ちログイン人数）、8,NPCの存在するMAPの総人数
+
+		getmapusers関数
+			getmapusers(<gatname>)
+
+			gatname		文字列
+
+			<gatname>に存在する総人数を返します。
+
+		getareausers関数
+			getareausers(<gatname>,<x0>,<y0>,<x1>,<y1>)
+
+			gatname		文字列
+			x0,y0,x1,y1	数値
+
+			<gatname>の<x0>,<y0>から<x1>,<y1>の範囲内にいる人数を返します。
+
+		getskilllv関数
+			getskilllv(<skillid>)
+
+			skillid		数値
+
+			<skillid>で指定したIDを持つスキルのLVを返します。習得していない場合は0を返します。
+
+		getgdskilllv命令
+			getgdskilllv(<guild_id>,<skillid>)
+			
+			guild_id,skillid	数値
+			
+			<skillid>で指定したIDを持つスキルのLVを返します。習得していない場合は0を返します。
+
+		readparam関数
+			readparam(<param>[,<charname>])
+			
+			param		パラメータ(const.txt参照、でも記述は数字で)
+			charname	キャラクタ名(省略可)
+			
+			<param>で指定されたキャラクタのパラメータを返します
+			<charname>が指定されている場合は対象キャラクタのパラメータが返ります
+
+		getcharid関数
+			getcharid(<n>[,<charname>])
+
+			n		数値
+			charname	キャラクタ名(省略可)
+
+			キャラ情報をIDで返します(charnameが指定されていない場合は自分)。
+			n=0	キャラID
+			n=1	パーティー
+			n=2	ギルド
+			n=3	アカウントID
+
+		getpartymember関数
+			getpartymember(<n>)
+			
+			n		数値
+			
+			<n>で指定したIDを持つパーティーの人数を $@partymembercount に返します。
+			配列 $@partymembername$ にパーティメンバーの名前をセットします。
+
+		getpartyname関数
+			getpartyname(<n>)
+
+			n		数値
+
+			<n>で指定したIDを持つパーティー名を返します。
+
+		getguildname関数
+			getguildname(<n>)
+
+			n		数値
+
+			<n>で指定したIDを持つギルド名を返します。
+
+		getguildmaster関数
+			getguildname(<n>)
+
+			n		数値
+
+			<n>で指定したIDを持つギルドのマスターの名前を返します。
+
+		getguildmasterid関数
+			getguildmasterid(<n>)
+
+			n		数値
+
+			<n>で指定したIDを持つギルドのマスターのキャラクターIDを返します。
+
+		basicskillcheck関数
+			basicskillcheck(0);
+
+			battle_athena.confのbasic_skill_checkの設定値を返します。0は意味はありませんが何も入れなかった場合エラーになります。
+			basic_skill_checkとカプラの倉庫利用を合わせる為に作った物でそれ以外の機能はありません。戻った数値が0ならbasic_skill_checkがno、1ならyesです。
+
+		getgmlevel関数
+			getgmlevel(0);
+
+			プレイヤーのGMレベルを返します。
+
+		guildopenstorage関数
+			guildopenstorage(0);
+
+			ギルド倉庫を開きます。
+			返た数値が2ならギルドに所属してないキャラと言う意味で
+			1なら他のギルドメンバーが倉庫を使用中の意味です。
+			0なら成功的にギルド倉庫が開いたとのことです。
+
+		getwaitingroomstate関数
+			getwaitingroomstate(<num>,[<name>])
+
+			num	数値
+			name	文字列、省略可
+
+			<name>で指定したNPCのチャットルームの状態を返します。
+			<name>を省略すると、命令を実行したNPCが対象になります。
+			<num>で得たい情報を指定します。
+
+			num=0	現在チャットルームに入っている人数（数値）
+			num=1	チャットルームの限界人数（数値）
+			num=2	チャットルームのイベントを起こす人数（数値）
+			num=3	チャットルームのイベントが有効かどうか（数値）
+			num=4	チャットルームのタイトル（文字列）
+			num=5	チャットルームのパスワード（文字列）
+			num=16	チャットルームのイベント名（文字列）
+			num=32	チャットルームが満員かどうか（数値）
+			num=33	チャットルームでイベントが起こる人数かどうか（数値）
+
+		getinventorylist関数
+			getinventorylist(引数無し)
+
+			現在アタッチされているプレイヤーの装備品含むアイテムデータを
+			配列変数@inventorylist_***にロードします。
+			以下変数の説明
+			@inventorylist_id : アイテムのID
+			@inventorylist_amount : アイテムの量
+			@inventorylist_equip : 装備している場合の装備箇所
+			@inventorylist_refine : アイテムの精錬値
+			@inventorylist_identify : アイテムの鑑定状態
+			@inventorylist_attribute : アイテムの破損の有無
+			@inventorylist_card1 : アイテムに挿しているカードデータ(1枚目)
+			@inventorylist_card2 : アイテムに挿しているカードデータ(2枚目)
+			@inventorylist_card3 : アイテムに挿しているカードデータ(3枚目)
+			@inventorylist_card4 : アイテムに挿しているカードデータ(4枚目)
+			@inventorylist_count : プレイヤーの所持している総アイテム種類数
+
+		getskilllist関数
+			getskilllist(引数無し)
+
+			現在アタッチされているプレイヤーのスキルデータを
+			配列変数@skilllist_***にロードします。
+			以下変数の説明
+			@skilllist_id : スキルのID
+			@skilllist_lv : スキルの最大レベル
+			@skilllist_flag : スキルの種別フラグ
+			@skilllist_count : プレイヤーの覚えているスキルの最大数
+
+		getnpctimer関数
+			getnpctimer(<num>[,<name>])
+
+			num	数値
+
+			<name>で指定されたNPCが持つNPCタイマーの情報を得ます。
+			nameを省略すると、命令を実行したNPCが対象になります。
+			<num>で得たい情報を指定します。
+
+			num=0	現在のNPCタイマーのカウント値
+			num=1	現在NPCタイマーが動作しているかどうか
+			num=2	指定NPCのタイマーイベントラベルの総数
+
+		attachrid関数
+			attachrid(<num>)
+
+			num	数値
+
+			<num>で指定されたIDのキャラクターを実行したスクリプトにアタッチします。
+			以後、キャラクターに関する命令や関数/変数などは全て新しいキャラクターが対象になります。
+			これはスクリプトが終了/中断する(close,end,menu,next,inputなどの実行)まで有効です。
+			主にイベントで起動されたスクリプト内でマップ変数を使って別キャラクターを
+			アタッチするのに使用します。getcharid(3)で所得したアカウントIDを使ってください。
+			なお、デタッチにはdetachrid命令を使います。
+
+			注意すべき点としては、この命令でPCをアタッチした場合、mes,menu,nextなどの
+			ウィンドウ(やボタン)が出る命令を実行してはいけません。
+			相手が他のNPCと会話中の場合、これらの命令は正しく動作しません。
+			情報所得命令などだけで済ませるべきです。
+
+			この関数はアタッチに成功したかどうかを返します。
+			偽(0)が返って来た場合は、該当キャラクターが存在していません。
+
+		isloggedin関数
+			isloggedin(<num>)
+
+			num	数値
+
+			<num>で指定されたIDのキャラクターがこのマップサーバーに
+			ログインしているかどうか調べます。
+
+		getarraysize関数
+			getarraysize(<variable>)
+
+			variable	変数
+
+			配列<variable>の有効なサイズを調べます。
+			ここでのサイズは要素が0（文字列変数では"")でない、
+			最大の要素番号+1 になります。
+			配列名ではなく要素番号付きで指定すると、
+			少なくともその要素までは全て有効であると仮定します。
+			<例> 配列@hogeが 1,2,3,4,5 だとすると、
+			     getarraysize(@hoge)=5, getarraysize(@hoge[10])=10;
+
+		callsub関数
+			callsub(<label>[,<arg0>[,<arg1>…]])
+
+			callsub命令を関数として実行します。詳しくはcallsub命令を見てください。
+
+		callfunc関数
+			callfunc(<func>[,<arg0>[,<arg1>…]])
+
+			callfunc命令を関数として実行します。詳しくはcallfunc命令を見てください。
+
+		getarg関数
+			getarg(<num>)
+
+			num	数値
+
+			ユーザー定義関数内またはサブルーティン内で、それらを呼び出した引数を所得します。
+			数値は0からです。
+			<例> callsub L_SUB01,"hoge",500,999; と呼ばれた場合、
+			     getarg(0)="hoge", getarg(1)=500, getarg(2)=999 になります。
+
+		getusersname関数
+			getusersname
+
+			接続者の名前を、putstrで列挙します。@whoと似た関数です。
+
+		dispbottom関数
+			dispbottom(<message>)
+
+			message		文字列
+
+			NPCに話しかけた本人にのみコメント欄に文字列を表示します。
+
+		getpetinfo関数
+			getpetinfo(<num>)
+
+			num	数字
+
+			numに対応した孵化させて連れ歩いているペットの情報を取得します。
+			0:pet_id 1:pet_class 2:pet_name 3:friendly 4:hungry
+			連れてない時は、いずれの場合も0を返します。
+
+		checkequipedcard関数
+			checkequipedcard(<num>)
+
+			num	数字
+
+			numで指定したidを持つカードを挿した装備品を、
+			装備、または所持品欄にあるかどうかを探します。
+			見つかった場合1を。見つからなかった場合は0を返します。
+
+		select関数
+			select(<string1>[,<string2>,<string3>...])
+
+			stringN	文字列
+
+			メニューを表示し、1から始まるユーザーが選択した番号を返します(menu 命令の関数版)。
+			また、選ばれたラベルの番号は変数@menuに代入されます。
+			(l15にも代入されますが、こちらは今後動作が保障されないのでl15は使用しないで下さい）
+
+	＊定数ラベル
+		-ラベル
+			if文やmenu文で使用します。次の行からスクリプトを開始します。
+
+		OnInitラベル
+			MAPがロードされたときスクリプトを開始します。
+
+		OnInterIfInitラベル
+			MAPサーバーがInterサーバーに接続したときに実行します。
+
+		OnCharIfInitラベル
+			MAPサーバーがCharサーバーに接続したときに実行します。
+
+		OnMinuteXXラベル
+			毎時XX分に実行します。数値は十進数２桁です。
+
+		OnClockXXXXラベル
+			毎日XX時XX分に実行します。数値は十進数４桁です。
+
+		OnHourXXラベル
+			毎日XX時00分に実行します。数値は十進数２桁です。
+
+		OnDayXXラベル
+			毎月XX日00時00分に実行します。数値は十進数２桁です。
+
+		OnTimerXラベル
+			NPCタイマーのカウントがXになったときに実行されます。
+			このXはミリ秒単位です。桁数は関係ありません。
+
+		OnAgitInitラベル
+			ギルド城データと占拠ギルド情報がマップサーバー内に
+			所得されたときに実行されます。
+			ギルド城関係のNPCの初期化に使用します。
+
+		OnAgitStartラベル
+			ギルド攻城戦が始まったときに実行されます。
+
+		OnAgitEndラベル
+			ギルド攻城戦が終わったときに実行されます。
+
+		OnAgitBreakラベル
+			エンペリウムを破壊したときに実行されます。
+			このラベルは破壊したプレイヤーを主体にして実行されます。
+
+		OnAgitEliminateラベル
+			エンペリウム破壊後、ギルドの所有者が書き換わるときに
+			呼ばれます。
+
+		OnGuildBreakラベル
+			ギルドを解体したときに実行されます。
+
+		OnTouchラベル
+			範囲NPCの有効範囲にPCが入った場合に実行されます。
+			OnTouchを設定するNPCの名前はサーバー内でユニークな物にしなければなりません。
+
+	＊注意事項
+		文字列と説明されている引数は""で囲ってください。
+
+４．エラーメッセージ
+
+	＊コンパイル時エラー（mapサーバー起動時のことです）
+		エラーの行番号を場所を表示します。
+
+		unexpected expr end
+			予期しない式の終了です
+			式の最初に','や';'があります。
+
+		unmatch ')'
+			')'が合いません
+			括弧'(' ')'の対応がおかしいです。
+
+		unexpected newline @ string
+			文字列に予期しない改行です
+			文字列('"'で囲まれる)の途中に改行があります。
+			おそらく'"'の閉じ忘れです。
+
+		unexpected eof @ string
+			文字列に予期しないファイル終端です
+			文字列の途中でファイルが終わりました。
+			おそらく'"'の閉じ忘れです。
+
+		unexpected charactor
+		unexpected char
+			予期しない文字です
+			変数などが命名規則に則っていないと思われます。
+
+		l14 and l15 is DEPRECATED. use @menu instead of l15.
+			l14とl15は推奨されません。l15の代わりに@menuを使ってください
+
+		prefix 'l' is DEPRECATED. use prefix '@' instead.
+			プレフィックス'l'は推奨されません。かわりに'@'を使ってください。
+
+		unmatch ']'
+			']'があいません。
+			括弧']'の対応がおかしいです。
+
+		expect function
+			関数を期待していました
+			関数呼び出し演算子'('の前に関数以外のシンボルがあります。
+			おそらく関数名を間違えています。
+
+		expect ',' or ')' at func params
+			関数の引数において','か')'を期待していました
+			おそらく引数区切りの','か')'を忘れています。
+
+		func request '(' ')'
+			関数呼び出しの括弧対応問題
+			おそらく引数の数が128を超えました。
+
+		illeagal number of parameters
+			パラメータの数が不正です
+			関数/命令パラメータの個数が異なります。
+			引数の個数を確認してください。
+			エラー位置は全ての引数の後になります。
+
+		expect command
+			命令を期待していました
+			命令以外のシンボルが突然出現しています。
+			おそらく命令名を間違えています。
+
+		expect ',' or ';' at cmd params
+			命令の引数において','か';'を期待していました
+			おそらく引数区切りの','か';'を忘れています。
+
+		need ';'
+			';'が必要です
+			おそらく引数の数が128を超えました。
+
+	実行時のエラー
+		fatal error ! player not attached!
+			致命的エラー！プレイヤーがアタッチされていません！
+
+			キャラクターを特定できないイベントで実行されている
+			スクリプトの中でキャラクター情報が必要な命令や関数、
+			変数へアクセスしました。attachrid関数を使うか、
+			キャラクター情報が不要な命令を使用してください。
+			もしくは、attachrid関数で設定された情報が不正です。
+			なお、このエラーが起こると直後にコアを吐くと思われます。
+
+			NPC主体イベントでannounceしたときにフラグ0x08を指定していない
+			場合もこのエラーがでます。
+
+
+		illeagal scope string variable.
+			文字列変数のスコープが不正です。
+			未対応のプレフィックスで文字列変数が使用されました。
+			プレフィックスを確認してください。
+
+		illeagal scope
+			スコープが不正です。配列変数未対応のプレフィックスを
+			持つ変数に配列変数系の命令を実行した場合など。
+
+		not label !
+			goto/menu命令でラベルが指定されるべきところに
+			ラベル以外のシンボルが指定されています。
+			もしくは、ラベル名と変数名がバッティングしています。
+
+		buildin_set: not name
+			set命令で第一引数が変数名ではありません。
+
+		getelementofarray (operator[]): param2 illeagal number
+			配列変数で[]内の値が不正です
+			[]内の値が0未満か128以上になりました
+
+		getelementofarray (operator[]): param1 not name
+			配列変数で[]の前のシンボルが変数名ではありません。
+
+		op_2: int&str, str&int not allow.
+			関係演算子（比較演算子）で、数値と文字列、もしくは
+			文字列と数値が指定されました。
+
+		infinity loop !
+			スクリプトの実行命令数か、goto/menu命令実行回数が
+			多すぎるので、無限ループと判断しました。
+			スクリプトの実行は強制的に中断されました。
+
+		not function and command !
+			関数実行/命令実行部分で、関数でも命令でもない
+			シンボルがありました。
+			if文のなかである可能性が高いです。
+
+		return without callfunc or callsub !
+			callfuncやcallsubされていないのにreturn命令を実行しました。
+
+		stack.sp(?) != default(?)
+			スタックポインタが基準スタックポインタと異なっています。
+			命令を実行した結果、スタックポインタが狂いました。
+			関数を命令として実行した可能性があります。
+
+
+５．あとがき
+	この文章を作成するにあたり、snapshotに含まれるNPCを参考にしました。
+	NPCを作成した方々に感謝します。
+
+text by asong(2004/3/1) をベースに修正

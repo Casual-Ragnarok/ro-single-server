@@ -1,0 +1,717 @@
+//==============================================================================
+//カプラ「倉庫」
+//callfunc "kfstorage",Price;
+function	script	kfstorage	{
+	if(basicskillcheck(0) > 0 && getskilllv(1) < 6) goto Lerror2_1;
+	if (Zeny < getarg(0)) goto Lerror2_2;
+		set Zeny,Zeny-getarg(0);
+		openstorage;
+		cutin "kafra_01",255;
+		close;
+	Lerror2_1:
+		mes "[カプラ職員]";
+		mes "倉庫は基本スキルレベル6を";
+		mes "習得してから利用可能となります。";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	Lerror2_2:
+		mes "[カプラ職員]";
+		mes "お客様、お金が足りません。";
+		mes "倉庫利用料金は"+getarg(0)+"Zenyです。";
+		close2;
+		cutin "kafra_01",255;
+		return;
+}
+//==============================================================================
+//カプラ「カート」
+//callfunc "kfcart",Price;
+function	script	kfcart	{
+	if (!((Class == 5) || (Class == 10) || (Class == 18))) goto Lerror4_1;
+	if (Cart != 0) goto LError4_3;
+	mes "[カプラ職員]";
+	mes "カート利用料金は"+getarg(0)+"Zenyです。";
+	mes "また、カートを利用するには";
+	mes "｢プッシュカート｣スキルが必要です。";
+	mes "そのスキルがないとカートを利用";
+	mes "できずにお金だけ消えてしまいます。";
+	mes "準備はよろしいですか？";
+	next;
+	menu "利用する",L4_1,"取り消し",-;
+		mes "[カプラ職員]";
+		mes "ありがとうございました。";
+		mes "またご利用くださいませ。";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	L4_1:
+		if (Zeny < getarg(0)) goto Lerror4_2;
+		set Zeny,Zeny-getarg(0);
+		setcart;
+		close2;
+		cutin "kafra_01",255;
+		end;
+	Lerror4_1:
+		mes "[カプラ職員]";
+		mes "申し訳ございません。";
+		mes "カートは商人とブラックスミス、";
+		mes "そしてアルケミスト専用の";
+		mes "サービスです。";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	Lerror4_2:
+		mes "[カプラ職員]";
+		mes "お客様、お金が足りません。";
+		mes "カート利用料金は"+getarg(0)+"Zenyです。";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	Lerror4_3:
+		mes "[カプラ職員]";
+		mes "お客様は現在カートを";
+		mes "利用されています。";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	return;
+}
+//==============================================================================
+//カプラ「ポイントチェック」
+//callfunc "kfpoint";
+function	script	kfpoint	{
+	mes "[カプラ職員]";
+	mes strcharinfo(0) + " 様の獲得ポイントは、";
+	mes "" + KF_PIT + " 点です。";
+	next;
+	mes "[カプラ職員]";
+	mes "カプラポイントは当カプラサービスの";
+	mes "本社で賞品と引き換えが可能です。";
+	mes "今後ともカプラサービスをよろしく";
+	mes "お願い致します。";
+	close2;
+	cutin "kafra_01",255;
+	end;
+	return;
+}
+//==============================================================================
+//カプラ「ラスト」
+//callfunc "kfend";
+function	script	kfend	{
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+	close2;
+	cutin "kafra_01",255;
+	end;
+	return;
+}
+//==============================================================================
+//PVPガイド全部
+//callfunc "pvpguide","SAVEMAP",X,Y;
+function	script	pvpguide	{
+	mes "[PVPガイド]";
+	mes "こんにちは！！";
+	mes "PVPモードの";
+	mes "説明を担当している";
+	mes "PVP ガイドです！";
+	next;
+	menu "^3355ff｢PVPモード｣^000000って何？",L1,"PVPモードの参加方法は？",L2,"PVPモードのルールは？",L3,"現在位置でセーブする",L4,"会話をやめる",LEnd;
+L1:
+	mes "[PVPガイド]";
+	mes "PVPモードは";
+	mes "「Player VS Player Mode」";
+	mes "の略で、";
+	mes "仮想の世界でプレイヤー同士の";
+	mes "対戦をするシステムです。";
+	next;
+	mes "[PVPガイド]";
+	mes "ピリピリする緊張感の中で";
+	mes "真剣勝負を味わえる";
+	mes "一種のアリーナモードですね。";
+	mes "私の隣の";
+	mes "^3355FFドアマン^000000 に話かけると";
+	next;
+	mes "[PVPガイド]";
+	mes "PVPモードの";
+	mes "控え室に入ることができます。";
+	mes "PVPモードはLv31以上の";
+	mes "キャラクターしか参加できません。";
+	next;
+	mes "[PVPガイド]";
+	mes "そして、PVPモードは";
+	mes "大きく２つに分けて";
+	mes "「ナイトメアモード」と";
+	mes "「ヨーヨーモード」が";
+	mes "あります。";
+	next;
+	mes "[PVPガイド]";
+	mes "ナイトメアモードでは";
+	mes "ダンジョンと同じルールが";
+	mes "そのまま適用されており、";
+	mes "倒された場合は経験値を";
+	mes "失います。";
+	next;
+	mes "[PVPガイド]";
+	mes "この点に気をつけて";
+	mes "ご入場ください。";
+	close;
+L2:
+	mes "[PVPガイド]";
+	mes "私の隣にいる「PVPドアマン」";
+	mes "に話かけましたら";
+	mes "500 Zenyで";
+	mes "PVPモードの控え室に";
+	mes "移動されます。";
+	next;
+	mes "[PVPガイド]";
+	mes "控え室はヨーヨーモード、";
+	mes "ナイトメアモードそれぞれに";
+	mes "用意されており、";
+	mes "各部屋にはPVPモードの";
+	mes "エリアにご案内する";
+	mes "案内人が立っております。";
+	next;
+	mes "[PVPガイド]";
+	mes "簡単に説明しますと、";
+	mes "Lv31以上から10Lvずつ";
+	mes "段階をおって担当者が";
+	mes "おります。";
+	next;
+	mes "[PVPガイド]";
+	mes "各レベルの担当者の上に";
+	mes "参加可能Lvが記載されて";
+	mes "おりますので、そちらを参照";
+	mes "してください。";
+	next;
+	mes "[PVPガイド]";
+	mes "また、担当者に話しかけますと";
+	mes "各MAPでの参加人数が";
+	mes "確認できます。";
+	next;
+	mes "[PVPガイド]";
+	mes "「参加人数 / 参加可能最大数」";
+	mes "となっております。";
+	next;
+	mes "[PVPガイド]";
+	mes "ここで一点注意。";
+	mes "PVP専用MAPは勿論、";
+	mes "控え室でも位置セーブは";
+	mes "不可能となっておりますので";
+	mes "ご注意ください。以上です。";
+	close;
+L3:
+	mes "[PVPガイド]";
+	mes "PVPモードに進入すると";
+	mes "画面右下にカウンターが";
+	mes "出てきますが、これは";
+	mes "現在ログインMAPでの";
+	mes "自分の順位 / MAP内人数 を";
+	next;
+	mes "[PVPガイド]";
+	mes "表す数値です。";
+	mes "PVPモードでのポイントは";
+	mes "PVPモードにのみ";
+	mes "適用されており、";
+	mes "初めに持っている";
+	next;
+	mes "[PVPガイド]";
+	mes "基本値は 5 です。";
+	mes "マップの中で対戦し";
+	mes "勝利した場合得られるポイントは";
+	mes "1 で、負けた場合";
+	mes "-5 ポイントとなります。";
+	next;
+	mes "[PVPガイド]";
+	mes "所持ポイントが";
+	mes "0 以下になった場合";
+	next;
+	mes "[PVPガイド]";
+	mes "PVPモードが解除され";
+	mes "外に出されます。";
+	mes "しかし数値が 0 以上の時";
+	mes "戦闘不能になった場合は";
+	mes "仲間や他のプレイヤーに";
+	next;
+	mes "[PVPガイド]";
+	mes "助けて貰い続行することが";
+	mes "できます。";
+	next;
+	mes "[PVPガイド]";
+	mes "プレイヤーとの対戦ルールは";
+	mes "モンスターとの戦闘ルールと";
+	mes "基本的には同じです。";
+	close;
+L4:
+	savepoint getarg(0),getarg(1),getarg(2);
+	mes "[PVPガイド]";
+	mes "こちらでセーブできました。";
+	mes "ご利用ありがとうございます。";
+	close;
+LEnd:
+	mes "[PVPガイド]";
+	mes "プレイヤー同士の真剣勝負を";
+	mes "味わえるPVPモード！";
+	mes "勇気溢れる皆様を";
+	mes "お待ちしております。";
+	close;
+	return;
+}
+//==============================================================================
+//PVPドアマン全部
+//callfunc "pvpdoor";
+function	script	pvpdoor	{
+	mes "[PVPドアマン]";
+	mes "PVP控え室にご案内する";
+	mes "PVPドアマンです。";
+	mes "PVPモードについての説明は";
+	mes "隣のガイドに";
+	mes "お問い合わせください。";
+	next;
+	menu "^ff3355PVP ナイトメアモード^000000 控え室へ",L1,"^3355FFPVP ヨーヨーモード^000000 控え室へ",L2,"会話をやめる",LEnd;
+L1:
+		mes "[PVPドアマン]";
+		mes "ナイトメアモードでは";
+		mes "ダンジョンと同じルールが";
+		mes "そのまま適用されており、";
+		mes "倒された場合は経験値を";
+		mes "失います。";
+		next;
+		mes "[PVPドアマン]";
+		mes "参加費は 500Zeny です。";
+		mes "ナイトメアモード控え室へ";
+		mes "移動されますか？";
+		next;
+		menu "移動",Ln,"取り消し",LEnd;
+Ln:
+		if ((Zeny < 500) || (BaseLevel < 30)) goto LError;
+			set Zeny,Zeny-500;
+			warp "pvp_n_room",51,23;
+			end;
+L2:
+		mes "[PVPドアマン]";
+		mes "参加費は 500Zeny です。";
+		mes "ヨーヨーモード控え室へ";
+		mes "移動されますか？";
+		next;
+		menu "移動",Ly,"取り消し",LEnd;
+Ly:
+		if ((Zeny < 500) || (BaseLevel < 30)) goto LError;
+			set Zeny,Zeny-500;
+			warp "pvp_y_room",51,23;
+			end;
+LError:
+	mes "[PVP ドアマン]";
+	mes "お客様 !";
+	mes "Zenyが足りないか、基本レベルが";
+	mes "31になっていないようです。";
+	close;
+LEnd:
+	mes "[PVPドアマン]";
+	mes "プレイヤー同士の真剣勝負を";
+	mes "味わえるPVPモード！";
+	mes "勇気溢れる皆様を";
+	mes "お待ちしております。";
+	close;
+	return;
+}
+//==============================================================================
+//町内限定アナウンス
+//callfunc "townannounce","TEXT",op;
+function	script	townannounce	{
+	mapannounce "prontera.gat",getarg(0),getarg(1);
+	mapannounce "payon.gat",getarg(0),getarg(1);
+	mapannounce "alberta.gat",getarg(0),getarg(1);
+	mapannounce "geffen.gat",getarg(0),getarg(1);
+	mapannounce "morocc.gat",getarg(0),getarg(1);
+	mapannounce "aldebaran.gat",getarg(0),getarg(1);
+	mapannounce "izlude.gat",getarg(0),getarg(1);
+	mapannounce "yuno.gat",getarg(0),getarg(1);
+	mapannounce "comodo.gat",getarg(0),getarg(1);
+	mapannounce "amatsu.gat",getarg(0),getarg(1);
+	mapannounce "gonryun.gat",getarg(0),getarg(1);
+	mapannounce "umbala.gat",getarg(0),getarg(1);
+	mapannounce "niflheim.gat",getarg(0),getarg(1);
+	mapannounce "louyang.gat",getarg(0),getarg(1);
+	mapannounce "jawaii.gat",getarg(0),getarg(1);
+	return;
+}
+//==============================================================================
+//転職共通Script
+//callfunc "jobchanger3","JOBNAME",JOBID,oJobID;
+function	script	jobchanger3	{
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "こんにちは、";
+	mes "何をお手伝いしましょうか？";
+	next;
+	menu getarg(0)+"に転職",L1,getarg(0)+"の転職条件は？",L2,"なんでもありません。",Lend;
+	L1:
+		if (Upper == 1) goto LUpper1;
+		if (Class == getarg(1)) goto Ltwice;
+		if (Class != getarg(2)) goto LError;
+		if (JobLevel < 40) goto LError3;
+		if (SkillPoint != 0) goto LError2;
+		mes "["+getarg(0)+"ギルド関係者]";
+		mes "あなたは、";
+		mes "転職の条件を満たしているようです";
+		mes getarg(0)+"に転職しますか？";
+		next;
+		menu "はい",-,"いいえ",Lend;
+		jobchange getarg(1);
+		mes "["+getarg(0)+"ギルド関係者]";
+		mes getarg(0)+"への転職、";
+		mes "おめでとうございます！そして、";
+		mes "これからも"+getarg(0)+"ギルドの";
+		mes "復興のため、頑張ってください！";
+		close;
+	L2:
+		mes "["+getarg(0)+"ギルド関係者]";
+		mes getarg(0)+"に転職するには";
+		mes "・一次職JovLv40以上である事";
+		mes "・転職試験に合格すること(未実装)";
+		mes "が条件となっています。";
+		next;
+		mes "["+getarg(0)+"ギルド関係者]";
+		mes "なお転職の際はスキルポイントを";
+		mes "使い切ってから来てください。";
+		close;
+Lend:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "またお越しください";
+	close;
+LError:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "あなたは転職できません";
+	mes "転職条件を良く確かめてから";
+	mes "お願いします。";
+	close;
+LError2:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "スキルポイントを使い切ってから";
+	mes "また来てください。";
+	close;
+LError3:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "JobLvが足りません。";
+	mes "Lvを上げてまたお越しください";
+	close;
+Ltwice:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "あなたは既に"+getarg(0);
+	mes "に転職しています。";
+	close;
+LUpper1:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "あなたは転生されていますので";
+	mes "ここでは転職案内できません。";
+	close;
+	return;
+}
+//==============================================================================
+//転生職転職共通Script
+//callfunc "jobchanger","NPCNAME",JOBID;
+function	script	jobchanger	{
+	if (Upper == 0) return;
+	if (Class != 0) goto LError2;
+	if ((oldjob ==7) || (oldjob ==14)) set @chkjob,1;
+	if ((oldjob ==8) || (oldjob ==15)) set @chkjob,4;
+	if ((oldjob ==9) || (oldjob ==16)) set @chkjob,2;
+	if ((oldjob ==10) || (oldjob ==18)) set @chkjob,5;
+	if ((oldjob ==11) || (oldjob ==19) || (oldjob ==20)) set @chkjob,3;
+	if ((oldjob ==12) || (oldjob ==17)) set @chkjob,6;
+	if (getarg(1) != @chkjob) goto LError;
+	if (getskilllv(1) < 9) goto Llowlv;
+	mes "["+getarg(0)+"]";
+	mes "あなたは、既に転生した身";
+	mes "転職試験はいりませんね";
+	next;
+	jobchange getarg(1),1;
+	mes "["+getarg(0)+"]";
+	mes "転職おめでとうございます！";
+	mes "これからもギルドの";
+	mes "復興のため、頑張ってください！";
+	close;
+LError:
+	mes "["+getarg(0)+"]";
+	mes "あなたはこの職に転職できません。";
+	mes "転生前の系列一次職にのみ";
+	mes "転職可能です。";
+	close;
+LError2:
+	mes "["+getarg(0)+"]";
+	mes "あなたは既に転職しています";
+	close;
+Llowlv:
+	mes "["+getarg(0)+"]";
+	mes "まだ初心者スキルレベルが足りません。";
+	mes "転職条件をもう一度確認した上で、";
+	mes "初心者スキルレベル９まで";
+	mes "マスターして下さい。";
+	close;
+	return;
+}
+//==============================================================================
+//転生職転職共通Script転生二次
+//callfunc "jobchanger2","JOBNAME",JOBID,oJobID;
+function	script	jobchanger2	{
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "こんにちは、";
+	mes "何をお手伝いしましょうか？";
+	next;
+	menu getarg(0)+"に転職",L1,getarg(0)+"の転職条件は？",L2,"なんでもありません。",Lend;
+	L1:
+		if ((Upper == 1) && (Class >= 7)) goto LTwice;
+		if ((Upper != 1) || (Class != getarg(2))) goto LError;
+		if (oldjob != getarg(1)) goto LError3;
+		if (JobLevel < 40) goto LError;
+		if (SkillPoint != 0) goto LError2;
+		mes "["+getarg(0)+"ギルド関係者]";
+		mes "あなたは、";
+		mes "転職の条件を満たしているようです";
+		mes getarg(0)+"に転職しますか？";
+		next;
+		menu "はい",-,"いいえ",Lend;
+		jobchange getarg(1),1;
+		mes "["+getarg(0)+"ギルド関係者]";
+		mes getarg(0)+"への転職、";
+		mes "おめでとうございます！そして、";
+		mes "これからも"+getarg(0)+"ギルドの";
+		mes "復興のため、頑張ってください！";
+		close;
+	L2:
+		mes "["+getarg(0)+"ギルド関係者]";
+		mes getarg(0)+"に転職するには";
+		mes "・転生をしていること";
+		mes "・転生一次職JovLv40以上である事";
+		mes "・転生前職の系列職への転職であること";
+		mes "が条件となっています。";
+		next;
+		mes "["+getarg(0)+"ギルド関係者]";
+		mes "なお転職の際はスキルポイントを";
+		mes "使い切ってから来てください。";
+		close;
+Lend:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "またお越しください";
+	close;
+LError:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "あなたは転職できません";
+	mes "転職条件を良く確かめてから";
+	mes "お願いします。";
+	close;
+LError2:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "スキルポイントを使い切ってから";
+	mes "また来てください。";
+	close;
+LError3:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "転生前の職と流れが違うので";
+	mes "あなたはこの職になれません";
+	close;
+LTwice:
+	mes "["+getarg(0)+"ギルド関係者]";
+	mes "あなたは、既に転生二次職に";
+	mes "なっています。";
+	close;
+	return;
+}
+//==============================================================================
+//精錬石販売NPC
+//callfunc "buystone","NPCNAME";
+function	script	buystone	{
+	mes "["+getarg(0)+"]";
+	mes "鉄や鋼鉄の武器を精錬する時に";
+	mes "使える金属を売っています。";
+	mes "1レベルの武器精錬に使える";
+	mes "^007777プラコン^000000 と";
+	mes "2レベルの武器精錬に使える";
+	mes "^007777エンベルタコン^000000 があります。";
+	next;
+	mes "["+getarg(0)+"]";
+	mes "プラコンは1個200Zeny、";
+	mes "エンベルタコンは";
+	mes "1個1000Zenyです。";
+	next;
+	menu "プラコン購入",L1,"エンベルタコン購入",L2,"他の金属はないか聞いてみる",-;
+		mes "["+getarg(0)+"]";
+		mes "1レベルと2レベルの武器より";
+		mes "レベルが高い武器を精錬するための";
+		mes "金属ですね。";
+		mes "もうご存知かもしれませんが､ ";
+		mes "オリデオコンとエルニウムは";
+		mes "手に入れるのがすごく難しくてね…";
+		close;
+L1:
+	set @buyid,1010;
+	set @buypri,200;
+	goto Lbuy;
+L2:
+	set @buyid,1011;
+	set @buypri,1000;
+	goto Lbuy;
+Lbuy:
+	mes "["+getarg(0)+"]";
+	mes "いくつ購入しますか？";
+	mes "取り引きを中止したければ";
+	mes "「0」でお願いします。";
+	next;
+Linput:
+	input @num;
+	if (@num <= 0) goto Lend;
+	if (@num > 500) goto LError;
+	set @sprice,@buypri*@num;
+	if (Zeny < @sprice) goto LError3;
+	if (!(checkweight(@buyid,@num))) goto LError2;
+	set Zeny,Zeny-@sprice;
+	getitem @buyid,@num;
+	mes "["+getarg(0)+"]";
+	mes "ご購入、ありがとうございました。";
+	close;
+LError:
+	mes "["+getarg(0)+"]";
+	mes "500個以下で決めてください";
+	next;
+	goto Linput;
+LError2:
+	mes "["+getarg(0)+"]";
+	mes "荷物が多いですね。";
+	mes "持ち物を整理してから";
+	mes "またおこしください。";
+	close;
+LError3:
+	mes "["+getarg(0)+"]";
+	mes "あれ？お客さん…";
+	mes "お金が足りませんね。";
+	mes "すみませんが、うちも商売だから";
+	mes "損するわけにはいかないんですよ。";
+	close;
+Lend:
+	mes "["+getarg(0)+"]";
+	mes "取引中止ですね。";
+	close;
+	return;
+}
+//==============================================================================
+//精錬石交換NPC
+//callfunc "chgstone","NPCNAME";
+function	script	chgstone	{
+	mes "["+getarg(0)+"]";
+	mes "オリデオコンやエルニウムの原石を";
+	mes "私に持ってきたら、すぐに";
+	mes "オリデオコンとエルニウムに";
+	mes "してやる。但し、原石は";
+	mes "各5つずつ持ってくるように。";
+	next;
+	menu "オリデオコンを作る",L1,"エルニウムを作る",L2,"属性石について聞く",-;
+		mes "["+getarg(0)+"]";
+		mes "属性石か…";
+		mes "私の金属精錬人生20年で";
+		mes "話はよく聞いたが実際には";
+		mes "見たことはない。";
+		mes "聞くところによると、金属が";
+		mes "火、水、地、風の属性を持つらしい。";
+		next;
+		mes "["+getarg(0)+"]";
+		mes "その属性石を武器を作る時に";
+		mes "混入すれば、属性を持つ武器を";
+		mes "作れるという…";
+		mes "はは…そんなことができるのは";
+		mes "相当な精錬職人だろうな。";
+		close;
+	L1:
+		if (countitem(756) < 5) goto LError1;
+			delitem 756,5;
+			getitem 984,1;
+			mes "["+getarg(0)+"]";
+			mes "ほら、約束のオリデオコンだ。";
+			mes "いつでもまた来てくれ。";
+			close;
+		LError1:
+			mes "["+getarg(0)+"]";
+			mes "ハハハハ、冗談だろ？";
+			mes "オリデオコン原石が5つ無いと";
+			mes "オリデオコンが作れないと";
+			mes "言ったじゃないか。";
+			close;
+	L2:
+		if (countitem(757) < 5) goto LError2;
+			delitem 757,5;
+			getitem 985,1;
+			mes "["+getarg(0)+"]";
+			mes "ほら、約束のエルニウムだ。";
+			mes "いつでもまた来てくれ。";
+			close;
+		LError2:
+			mes "["+getarg(0)+"]";
+			mes "ハハハハ、冗談だろ？";
+			mes "エルニウム原石が5つ無いと";
+			mes "エルニウムが作れないと";
+			mes "言ったじゃないか。";
+			close;
+			return;
+}
+//==============================================================================
+//武具修理NPC
+//callfunc "repairer";
+function	script	repairer	{
+	mes "[修理工]";
+	mes "そこの旅人、";
+	mes "修理したいアイテムはあるか？";
+	mes "アイテムの修理は俺に任せてくれ！";
+	next;
+	menu "実は修理して欲しいアイテムが……",-,"今は特に無いです",L2;
+	set @breaknum,getrepairableitemcount(0);
+if (@breaknum > 0) goto Lbitem;
+		mes "[修理工]";
+		mes "おいおい……";
+		mes "修理する必要のあるものなんて";
+		mes "一つも持っていないじゃないか。";
+		mes "はぁ……";
+		mes "お前のようなヤツが増えると";
+		mes "俺の商売もあがったりだよ……";
+		close;
+	L2:
+		mes "[修理工]";
+		mes "ふむ……";
+		mes "なら俺に用は無いな。";
+		close;
+	Lbitem:
+		set @Repair,@breaknum*5000;
+		mes "[修理工]";
+		mes "ふむ……";
+		mes "お前が持っているアイテムで";
+		mes "損傷しているアイテムは";
+		mes ""+ @breaknum +"だな。";
+		mes "一つ修理するのに 5000 Zenyだから";
+		mes "全て直すと"+@Repair+"Zenyとなる。";
+		mes "修理するか？";
+		next;
+		menu "お願いします",L1_1,"いいえ",-;
+			mes "[修理工]";
+			mes "俺は、アイテムが傷ついたまま";
+			mes "放って置かれるのが";
+			mes "たまらなく嫌いなんだ。";
+			mes "損傷したアイテムはすぐ直そうぜ。";
+			close;
+		L1_1:
+			if (Zeny < @Repair) goto LError;
+			set Zeny,Zeny-@Repair;
+			repairitem;
+			mes "[修理工]";
+			mes "OK！";
+			mes "直ったな。";
+			mes "アイテムにも寿命があるってことを";
+			mes "覚えておくんだな。";
+			close;
+LError:
+	mes "[修理工]";
+	mes "お金が足りないようだ";
+	close;
+	return;
+}

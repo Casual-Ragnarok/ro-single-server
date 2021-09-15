@@ -1,0 +1,35 @@
+// for mobs
+// mob_id,sprite_id,equip #
+// Use another mob's sprite for a monster.  0 for sprite will disable mob.
+// Mob must have an equipment it's pet counterpart can use or it will cause problems.  If no equip use 0.
+// The following if a player sprite is used
+// MobID,SpriteID,Sex,Hair,Hair_Color,Weapon,Shield,Head_Top,Head_Middle,Head_Bottom,Option,Dye_Color
+// Use Item ID for weapons and shields, not View ID.
+
+//1002,1039	//Poring,Baphomet (Make Porings look like Baphomet)
+//1970,1002,10013	// new mob that looks like a Poring with a backpack
+
+// Easter Event Monsters
+//1920,1047,0
+//1921,1093,0
+
+// eAthena Dev Team
+// Valaris
+//1900,4013,1,1,1,1254,0,67,12,54,16,1
+// Valaris Worshiper
+//1901,6,1,1,1,1219,2101,67,12,54,0,1
+// MC Cameri
+//1902,14,1,6,6,1101,2105,0,0,0,32,3
+// Poki#3
+//1903,4012,1,21,0,1720,0,102,184,57,16,0
+// Sentry
+//1904,1286,0
+
+// iRO Halloween Event 2008
+//3000,1015,0
+//3001,1036,0
+//3002,1298,0
+
+// iRO Halloween Event 2009
+//3014,1179,0
+//3015,1272,0

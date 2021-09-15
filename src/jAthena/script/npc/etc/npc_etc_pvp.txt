@@ -1,0 +1,739 @@
+//==============================================================================
+//Ragnarok Online EP1.5  Player vs Player(PVP) Script
+//==============================================================================
+alberta_in.gat,62,145,4	script	PVPガイド	84,{
+	callfunc "pvpguide","alberta_in",61,143;
+}
+geffen_in.gat,67,63,4	script	PVPガイド	84,{
+	callfunc "pvpguide","geffen_in",69,59;
+}
+morocc_in.gat,144,138,4	script	PVPガイド	84,{
+	callfunc "pvpguide","morocc_in",142,140;
+}
+payon_in01.gat,172,109,4	script	PVPガイド	84,{
+	callfunc "pvpguide","payon_in01",166,107;
+}
+prt_in.gat,56,140,4	script	PVPガイド	84,{
+	callfunc "pvpguide","prt_in",54,136;
+}
+//=======================================================
+alberta_in.gat,58,145,4	script	PVPドアマン	83,{
+	callfunc "pvpdoor";
+}
+geffen_in.gat,63,63,4	script	PVPドアマン	83,{
+	callfunc "pvpdoor";
+}
+morocc_in.gat,144,142,4	script	PVPドアマン	83,{
+	callfunc "pvpdoor";
+}
+payon_in01.gat,176,107,4	script	PVPドアマン	83,{
+	callfunc "pvpdoor";
+}
+prt_in.gat,52,140,4	script	PVPドアマン	83,{
+	callfunc "pvpdoor";
+}
+//=======================================================
+pvp_y_room.gat,30,85,4	script	試合場 受付::pvpy1r	105,{
+	if ((BaseLevel < 31) || (BaseLevel > 40)) goto LVNG;
+	menu "プロンテラ　[" + getmapusers("pvp_y_1-1.gat") + " / 128]",Lpro,
+	"イズルード　[" + getmapusers("pvp_y_1-2.gat") + " / 128]",Lizu,
+	"フェイヨン　[" + getmapusers("pvp_y_1-3.gat") + " / 128]",Lpay,
+	"アルベルタ　[" + getmapusers("pvp_y_1-4.gat") + " / 128]",Lalb,
+	"モロク　[" + getmapusers("pvp_y_1-5.gat") + " / 128]",Lmoc,
+	"取り消し",Lcancel;
+Lpro:
+	if(getmapusers("pvp_y_1-1.gat") >= 128 ) goto LError;
+	warp "pvp_y_1-1",0,0;
+	end;
+Lizu:
+	if(getmapusers("pvp_y_1-2.gat") >= 128 ) goto LError;
+	warp "pvp_y_1-2",0,0;
+	end;
+Lpay:
+	if(getmapusers("pvp_y_1-3.gat") >= 128 ) goto LError;
+	warp "pvp_y_1-3",0,0;
+	end;
+Lalb:
+	if(getmapusers("pvp_y_1-4.gat") >= 128 ) goto LError;
+	warp "pvp_y_1-4",0,0;
+	end;
+Lmoc:
+	if(getmapusers("pvp_y_1-5.gat") >= 128 ) goto LError;
+	warp "pvp_y_1-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv31からLv40までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 31 ~ LV 40",0;
+	end;
+}
+pvp_y_room.gat,38,85,4	script	試合場 受付::pvpy2r	105,{
+	if ((BaseLevel < 41) || (BaseLevel > 50)) goto LVNG;
+	menu "プロンテラ　[" + getmapusers("pvp_y_2-1.gat") + " / 128]",Lpro,
+	"イズルード　[" + getmapusers("pvp_y_2-2.gat") + " / 128]",Lizu,
+	"フェイヨン　[" + getmapusers("pvp_y_2-3.gat") + " / 128]",Lpay,
+	"アルベルタ　[" + getmapusers("pvp_y_2-4.gat") + " / 128]",Lalb,
+	"モロク　[" + getmapusers("pvp_y_2-5.gat") + " / 128]",Lmoc,
+	"取り消し",Lcancel;
+Lpro:
+	if(getmapusers("pvp_y_2-1.gat") >= 128 ) goto LError;
+	warp "pvp_y_2-1",0,0;
+	end;
+Lizu:
+	if(getmapusers("pvp_y_2-2.gat") >= 128 ) goto LError;
+	warp "pvp_y_2-2",0,0;
+	end;
+Lpay:
+	if(getmapusers("pvp_y_2-3.gat") >= 128 ) goto LError;
+	warp "pvp_y_2-3",0,0;
+	end;
+Lalb:
+	if(getmapusers("pvp_y_2-4.gat") >= 128 ) goto LError;
+	warp "pvp_y_2-4",0,0;
+	end;
+Lmoc:
+	if(getmapusers("pvp_y_2-5.gat") >= 128 ) goto LError;
+	warp "pvp_y_2-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv41からLv50までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 40 ~ LV 50",0;
+	end;
+}
+pvp_y_room.gat,46,85,4	script	試合場 受付::pvpy3r	105,{
+	if ((BaseLevel < 51) || (BaseLevel > 60)) goto LVNG;
+	menu "プロンテラ　[" + getmapusers("pvp_y_3-1.gat") + " / 128]",Lpro,
+	"イズルード　[" + getmapusers("pvp_y_3-2.gat") + " / 128]",Lizu,
+	"フェイヨン　[" + getmapusers("pvp_y_3-3.gat") + " / 128]",Lpay,
+	"アルベルタ　[" + getmapusers("pvp_y_3-4.gat") + " / 128]",Lalb,
+	"モロク　[" + getmapusers("pvp_y_3-5.gat") + " / 128]",Lmoc,
+	"取り消し",Lcancel;
+Lpro:
+	if(getmapusers("pvp_y_3-1.gat") >= 128 ) goto LError;
+	warp "pvp_y_3-1",0,0;
+	end;
+Lizu:
+	if(getmapusers("pvp_y_3-2.gat") >= 128 ) goto LError;
+	warp "pvp_y_3-2",0,0;
+	end;
+Lpay:
+	if(getmapusers("pvp_y_3-3.gat") >= 128 ) goto LError;
+	warp "pvp_y_3-3",0,0;
+	end;
+Lalb:
+	if(getmapusers("pvp_y_3-4.gat") >= 128 ) goto LError;
+	warp "pvp_y_3-4",0,0;
+	end;
+Lmoc:
+	if(getmapusers("pvp_y_3-5.gat") >= 128 ) goto LError;
+	warp "pvp_y_3-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv51からLv60までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 51 ~ LV 60",0;
+	end;
+}
+pvp_y_room.gat,54,85,4	script	試合場 受付::pvpy4r	105,{
+	if ((BaseLevel < 61) || (BaseLevel > 70)) goto LVNG;
+	menu "プロンテラ　[" + getmapusers("pvp_y_4-1.gat") + " / 128]",Lpro,
+	"イズルード　[" + getmapusers("pvp_y_4-2.gat") + " / 128]",Lizu,
+	"フェイヨン　[" + getmapusers("pvp_y_4-3.gat") + " / 128]",Lpay,
+	"アルベルタ　[" + getmapusers("pvp_y_4-4.gat") + " / 128]",Lalb,
+	"モロク　[" + getmapusers("pvp_y_4-5.gat") + " / 128]",Lmoc,
+	"取り消し",Lcancel;
+Lpro:
+	if(getmapusers("pvp_y_4-1.gat") >= 128 ) goto LError;
+	warp "pvp_y_4-1",0,0;
+	end;
+Lizu:
+	if(getmapusers("pvp_y_4-2.gat") >= 128 ) goto LError;
+	warp "pvp_y_4-2",0,0;
+	end;
+Lpay:
+	if(getmapusers("pvp_y_4-3.gat") >= 128 ) goto LError;
+	warp "pvp_y_4-3",0,0;
+	end;
+Lalb:
+	if(getmapusers("pvp_y_4-4.gat") >= 128 ) goto LError;
+	warp "pvp_y_4-4",0,0;
+	end;
+Lmoc:
+	if(getmapusers("pvp_y_4-5.gat") >= 128 ) goto LError;
+	warp "pvp_y_4-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv61からLv70までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 61 ~ LV 70",0;
+	end;
+}
+pvp_y_room.gat,62,85,4	script	試合場 受付::pvpy5r	105,{
+	if ((BaseLevel < 71) || (BaseLevel > 80)) goto LVNG;
+	menu "プロンテラ　[" + getmapusers("pvp_y_5-1.gat") + " / 128]",Lpro,
+	"イズルード　[" + getmapusers("pvp_y_5-2.gat") + " / 128]",Lizu,
+	"フェイヨン　[" + getmapusers("pvp_y_5-3.gat") + " / 128]",Lpay,
+	"アルベルタ　[" + getmapusers("pvp_y_5-4.gat") + " / 128]",Lalb,
+	"モロク　[" + getmapusers("pvp_y_5-5.gat") + " / 128]",Lmoc,
+	"取り消し",Lcancel;
+Lpro:
+	if(getmapusers("pvp_y_5-1.gat") >= 128 ) goto LError;
+	warp "pvp_y_5-1",0,0;
+	end;
+Lizu:
+	if(getmapusers("pvp_y_5-2.gat") >= 128 ) goto LError;
+	warp "pvp_y_5-2",0,0;
+	end;
+Lpay:
+	if(getmapusers("pvp_y_5-3.gat") >= 128 ) goto LError;
+	warp "pvp_y_5-3",0,0;
+	end;
+Lalb:
+	if(getmapusers("pvp_y_5-4.gat") >= 128 ) goto LError;
+	warp "pvp_y_5-4",0,0;
+	end;
+Lmoc:
+	if(getmapusers("pvp_y_5-5.gat") >= 128 ) goto LError;
+	warp "pvp_y_5-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv71からLv80までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 71 ~ LV 80",0;
+	end;
+}
+pvp_y_room.gat,70,85,4	script	試合場 受付::pvpy6r	105,{
+	if ((BaseLevel < 81) || (BaseLevel > 90)) goto LVNG;
+	menu "プロンテラ　[" + getmapusers("pvp_y_6-1.gat") + " / 128]",Lpro,
+	"イズルード　[" + getmapusers("pvp_y_6-2.gat") + " / 128]",Lizu,
+	"フェイヨン　[" + getmapusers("pvp_y_6-3.gat") + " / 128]",Lpay,
+	"アルベルタ　[" + getmapusers("pvp_y_6-4.gat") + " / 128]",Lalb,
+	"モロク　[" + getmapusers("pvp_y_6-5.gat") + " / 128]",Lmoc,
+	"取り消し",Lcancel;
+Lpro:
+	if(getmapusers("pvp_y_6-1.gat") >= 128 ) goto LError;
+	warp "pvp_y_6-1",0,0;
+	end;
+Lizu:
+	if(getmapusers("pvp_y_6-2.gat") >= 128 ) goto LError;
+	warp "pvp_y_6-2",0,0;
+	end;
+Lpay:
+	if(getmapusers("pvp_y_6-3.gat") >= 128 ) goto LError;
+	warp "pvp_y_6-3",0,0;
+	end;
+Lalb:
+	if(getmapusers("pvp_y_6-4.gat") >= 128 ) goto LError;
+	warp "pvp_y_6-4",0,0;
+	end;
+Lmoc:
+	if(getmapusers("pvp_y_6-5.gat") >= 128 ) goto LError;
+	warp "pvp_y_6-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv81からLv90までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 81 ~ LV 90",0;
+	end;
+}
+pvp_y_room.gat,78,85,4	script	試合場 受付::pvpy7r	105,{
+	if (BaseLevel < 91) goto LVNG;
+	menu "プロンテラ　[" + getmapusers("pvp_y_7-1.gat") + " / 128]",Lpro,
+	"イズルード　[" + getmapusers("pvp_y_7-2.gat") + " / 128]",Lizu,
+	"フェイヨン　[" + getmapusers("pvp_y_7-3.gat") + " / 128]",Lpay,
+	"アルベルタ　[" + getmapusers("pvp_y_7-4.gat") + " / 128]",Lalb,
+	"モロク　[" + getmapusers("pvp_y_7-5.gat") + " / 128]",Lmoc,
+	"取り消し",Lcancel;
+Lpro:
+	if(getmapusers("pvp_y_7-1.gat") >= 128 ) goto LError;
+	warp "pvp_y_7-1",0,0;
+	end;
+Lizu:
+	if(getmapusers("pvp_y_7-2.gat") >= 128 ) goto LError;
+	warp "pvp_y_7-2",0,0;
+	end;
+Lpay:
+	if(getmapusers("pvp_y_7-3.gat") >= 128 ) goto LError;
+	warp "pvp_y_7-3",0,0;
+	end;
+Lalb:
+	if(getmapusers("pvp_y_7-4.gat") >= 128 ) goto LError;
+	warp "pvp_y_7-4",0,0;
+	end;
+Lmoc:
+	if(getmapusers("pvp_y_7-5.gat") >= 128 ) goto LError;
+	warp "pvp_y_7-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv91以上の方しか入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 91 ~",0;
+	end;
+}
+pvp_y_room.gat,86,85,4	script	試合場 受付::pvpy8r	105,{
+	menu "プロンテラ　[" + getmapusers("pvp_y_8-1.gat") + " / 128]",Lpro,
+	"イズルード　[" + getmapusers("pvp_y_8-2.gat") + " / 128]",Lizu,
+	"フェイヨン　[" + getmapusers("pvp_y_8-3.gat") + " / 128]",Lpay,
+	"アルベルタ　[" + getmapusers("pvp_y_8-4.gat") + " / 128]",Lalb,
+	"モロク　[" + getmapusers("pvp_y_8-5.gat") + " / 128]",Lmoc,
+	"取り消し",Lcancel;
+Lpro:
+	if(getmapusers("pvp_y_8-1.gat") >= 128 ) goto LError;
+	warp "pvp_y_8-1",0,0;
+	end;
+Lizu:
+	if(getmapusers("pvp_y_8-2.gat") >= 128 ) goto LError;
+	warp "pvp_y_8-2",0,0;
+	end;
+Lpay:
+	if(getmapusers("pvp_y_8-3.gat") >= 128 ) goto LError;
+	warp "pvp_y_8-3",0,0;
+	end;
+Lalb:
+	if(getmapusers("pvp_y_8-4.gat") >= 128 ) goto LError;
+	warp "pvp_y_8-4",0,0;
+	end;
+Lmoc:
+	if(getmapusers("pvp_y_8-5.gat") >= 128 ) goto LError;
+	warp "pvp_y_8-5",0,0;
+	end;
+Lcancel:
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "無制限",0;
+	end;
+}
+
+//---------------------------------------------------------------------------------------
+pvp_n_room.gat,30,85,4	script	試合場 受付::pvpn1r	105,{
+	if ((BaseLevel < 31) || (BaseLevel > 40)) goto LVNG;
+	menu "サンドイッチ　[" + getmapusers("pvp_n_1-1.gat") + " / 64]",Lsand,
+	"ロック オン　[" + getmapusers("pvp_n_1-2.gat") + " / 32]",Llock,
+	"ポルーム　[" + getmapusers("pvp_n_1-3.gat") + " / 32]",Lpolu,
+	"アンダークロス　[" + getmapusers("pvp_n_1-4.gat") + " / 32]",Lunder,
+	"コンパス ルーム　[" + getmapusers("pvp_n_1-5.gat") + " / 32]",Lcom,
+	"取り消し",Lcancel;
+Lsand:
+	if(getmapusers("pvp_n_1-1.gat") >= 64 ) goto LError;
+	warp "pvp_n_1-1",0,0;
+	end;
+Llock:
+	if(getmapusers("pvp_n_1-2.gat") >= 32 ) goto LError;
+	warp "pvp_n_1-2",0,0;
+	end;
+Lpolu:
+	if(getmapusers("pvp_n_1-3.gat") >= 32 ) goto LError;
+	warp "pvp_n_1-3",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_1-4.gat") >= 32 ) goto LError;
+	warp "pvp_n_1-4",0,0;
+	end;
+Lcom:
+	if(getmapusers("pvp_n_1-5.gat") >= 32 ) goto LError;
+	warp "pvp_n_1-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv31からLv40までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 31 ~ LV 40",0;
+	end;
+}
+pvp_n_room.gat,38,85,4	script	試合場 受付::pvpn2r	105,{
+	if ((BaseLevel < 41) || (BaseLevel > 50)) goto LVNG;
+	menu "サンドイッチ　[" + getmapusers("pvp_n_2-1.gat") + " / 64]",Lsand,
+	"ロック オン　[" + getmapusers("pvp_n_2-2.gat") + " / 32]",Llock,
+	"ポルーム　[" + getmapusers("pvp_n_2-3.gat") + " / 32]",Lpolu,
+	"アンダークロス　[" + getmapusers("pvp_n_2-4.gat") + " / 32]",Lunder,
+	"コンパス ルーム　[" + getmapusers("pvp_n_2-5.gat") + " / 32]",Lcom,
+	"取り消し",Lcancel;
+Lsand:
+	if(getmapusers("pvp_n_2-1.gat") >= 64 ) goto LError;
+	warp "pvp_n_2-1",0,0;
+	end;
+Llock:
+	if(getmapusers("pvp_n_2-2.gat") >= 32 ) goto LError;
+	warp "pvp_n_2-2",0,0;
+	end;
+Lpolu:
+	if(getmapusers("pvp_n_2-3.gat") >= 32 ) goto LError;
+	warp "pvp_n_2-3",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_2-4.gat") >= 32 ) goto LError;
+	warp "pvp_n_2-4",0,0;
+	end;
+Lcom:
+	if(getmapusers("pvp_n_2-5.gat") >= 32 ) goto LError;
+	warp "pvp_n_2-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv41からLv50までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 41 ~ LV 50",0;
+	end;
+}
+pvp_n_room.gat,46,85,4	script	試合場 受付::pvpn3r	105,{
+	if ((BaseLevel < 51) || (BaseLevel > 60)) goto LVNG;
+	menu "サンドイッチ　[" + getmapusers("pvp_n_3-1.gat") + " / 64]",Lsand,
+	"ロック オン　[" + getmapusers("pvp_n_3-2.gat") + " / 32]",Llock,
+	"ポルーム　[" + getmapusers("pvp_n_3-3.gat") + " / 32]",Lpolu,
+	"アンダークロス　[" + getmapusers("pvp_n_3-4.gat") + " / 32]",Lunder,
+	"コンパス ルーム　[" + getmapusers("pvp_n_3-5.gat") + " / 32]",Lcom,
+	"取り消し",Lcancel;
+Lsand:
+	if(getmapusers("pvp_n_3-1.gat") >= 64 ) goto LError;
+	warp "pvp_n_3-1",0,0;
+	end;
+Llock:
+	if(getmapusers("pvp_n_3-2.gat") >= 32 ) goto LError;
+	warp "pvp_n_3-2",0,0;
+	end;
+Lpolu:
+	if(getmapusers("pvp_n_3-3.gat") >= 32 ) goto LError;
+	warp "pvp_n_3-3",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_3-4.gat") >= 32 ) goto LError;
+	warp "pvp_n_3-4",0,0;
+	end;
+Lcom:
+	if(getmapusers("pvp_n_3-5.gat") >= 32 ) goto LError;
+	warp "pvp_n_3-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv51からLv60までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 51 ~ LV 60",0;
+	end;
+}
+pvp_n_room.gat,54,85,4	script	試合場 受付::pvpn4r	105,{
+	if ((BaseLevel < 61) || (BaseLevel > 70)) goto LVNG;
+	menu "サンドイッチ　[" + getmapusers("pvp_n_4-1.gat") + " / 64]",Lsand,
+	"ロック オン　[" + getmapusers("pvp_n_4-2.gat") + " / 32]",Llock,
+	"ポルーム　[" + getmapusers("pvp_n_4-3.gat") + " / 32]",Lpolu,
+	"アンダークロス　[" + getmapusers("pvp_n_4-4.gat") + " / 32]",Lunder,
+	"コンパス ルーム　[" + getmapusers("pvp_n_4-5.gat") + " / 32]",Lcom,
+	"取り消し",Lcancel;
+Lsand:
+	if(getmapusers("pvp_n_4-1.gat") >= 64 ) goto LError;
+	warp "pvp_n_4-1",0,0;
+	end;
+Llock:
+	if(getmapusers("pvp_n_4-2.gat") >= 32 ) goto LError;
+	warp "pvp_n_4-2",0,0;
+	end;
+Lpolu:
+	if(getmapusers("pvp_n_4-3.gat") >= 32 ) goto LError;
+	warp "pvp_n_4-3",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_4-4.gat") >= 32 ) goto LError;
+	warp "pvp_n_4-4",0,0;
+	end;
+Lcom:
+	if(getmapusers("pvp_n_4-5.gat") >= 32 ) goto LError;
+	warp "pvp_n_4-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv61からLv70までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 61 ~ LV 70",0;
+	end;
+}
+pvp_n_room.gat,62,85,4	script	試合場 受付::pvpn5r	105,{
+	if ((BaseLevel < 71) || (BaseLevel > 80)) goto LVNG;
+	menu "サンドイッチ　[" + getmapusers("pvp_n_5-1.gat") + " / 64]",Lsand,
+	"ロック オン　[" + getmapusers("pvp_n_5-2.gat") + " / 32]",Llock,
+	"ポルーム　[" + getmapusers("pvp_n_5-3.gat") + " / 32]",Lpolu,
+	"アンダークロス　[" + getmapusers("pvp_n_5-4.gat") + " / 32]",Lunder,
+	"コンパス ルーム　[" + getmapusers("pvp_n_5-5.gat") + " / 32]",Lcom,
+	"取り消し",Lcancel;
+Lsand:
+	if(getmapusers("pvp_n_5-1.gat") >= 64 ) goto LError;
+	warp "pvp_n_5-1",0,0;
+	end;
+Llock:
+	if(getmapusers("pvp_n_5-2.gat") >= 32 ) goto LError;
+	warp "pvp_n_5-2",0,0;
+	end;
+Lpolu:
+	if(getmapusers("pvp_n_5-3.gat") >= 32 ) goto LError;
+	warp "pvp_n_5-3",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_5-4.gat") >= 32 ) goto LError;
+	warp "pvp_n_5-4",0,0;
+	end;
+Lcom:
+	if(getmapusers("pvp_n_5-5.gat") >= 32 ) goto LError;
+	warp "pvp_n_5-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv71からLv80までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 71 ~ LV 80",0;
+	end;
+}
+pvp_n_room.gat,70,85,4	script	試合場 受付::pvpn6r	105,{
+	if ((BaseLevel < 81) || (BaseLevel > 90)) goto LVNG;
+	menu "サンドイッチ　[" + getmapusers("pvp_n_6-1.gat") + " / 64]",Lsand,
+	"ロック オン　[" + getmapusers("pvp_n_6-2.gat") + " / 32]",Llock,
+	"ポルーム　[" + getmapusers("pvp_n_6-3.gat") + " / 32]",Lpolu,
+	"アンダークロス　[" + getmapusers("pvp_n_6-4.gat") + " / 32]",Lunder,
+	"コンパス ルーム　[" + getmapusers("pvp_n_6-5.gat") + " / 32]",Lcom,
+	"取り消し",Lcancel;
+Lsand:
+	if(getmapusers("pvp_n_6-1.gat") >= 64 ) goto LError;
+	warp "pvp_n_6-1",0,0;
+	end;
+Llock:
+	if(getmapusers("pvp_n_6-2.gat") >= 32 ) goto LError;
+	warp "pvp_n_6-2",0,0;
+	end;
+Lpolu:
+	if(getmapusers("pvp_n_6-3.gat") >= 32 ) goto LError;
+	warp "pvp_n_6-3",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_6-4.gat") >= 32 ) goto LError;
+	warp "pvp_n_6-4",0,0;
+	end;
+Lcom:
+	if(getmapusers("pvp_n_6-5.gat") >= 32 ) goto LError;
+	warp "pvp_n_6-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv81からLv90までの方しか";
+	mes "入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 81 ~ LV 90",0;
+	end;
+}
+pvp_n_room.gat,78,85,4	script	試合場 受付::pvpn7r	105,{
+	if (BaseLevel < 91) goto LVNG;
+	menu "サンドイッチ　[" + getmapusers("pvp_n_7-1.gat") + " / 64]",Lsand,
+	"ロック オン　[" + getmapusers("pvp_n_7-2.gat") + " / 32]",Llock,
+	"ポルーム　[" + getmapusers("pvp_n_7-3.gat") + " / 32]",Lpolu,
+	"アンダークロス　[" + getmapusers("pvp_n_7-4.gat") + " / 32]",Lunder,
+	"コンパス ルーム　[" + getmapusers("pvp_n_7-5.gat") + " / 32]",Lcom,
+	"取り消し",Lcancel;
+Lsand:
+	if(getmapusers("pvp_n_7-1.gat") >= 64 ) goto LError;
+	warp "pvp_n_7-1",0,0;
+	end;
+Llock:
+	if(getmapusers("pvp_n_7-2.gat") >= 32 ) goto LError;
+	warp "pvp_n_7-2",0,0;
+	end;
+Lpolu:
+	if(getmapusers("pvp_n_7-3.gat") >= 32 ) goto LError;
+	warp "pvp_n_7-3",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_7-4.gat") >= 32 ) goto LError;
+	warp "pvp_n_7-4",0,0;
+	end;
+Lcom:
+	if(getmapusers("pvp_n_7-5.gat") >= 32 ) goto LError;
+	warp "pvp_n_7-5",0,0;
+	end;
+Lcancel:
+	close;
+LVNG:
+	mes "[PVP 試合場 受付]";
+	mes "申し訳ありません。";
+	mes "この試合場は";
+	mes "Lv91以上の方しか入場できません。";
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "LV 91 ~",0;
+	end;
+}
+pvp_n_room.gat,86,85,4	script	試合場 受付::pvpn8r	105,{
+	menu "サンドイッチ　[" + getmapusers("pvp_n_8-1.gat") + " / 64]",Lsand,
+	"ロック オン　[" + getmapusers("pvp_n_8-2.gat") + " / 32]",Llock,
+	"ポルーム　[" + getmapusers("pvp_n_8-3.gat") + " / 32]",Lpolu,
+	"アンダークロス　[" + getmapusers("pvp_n_8-4.gat") + " / 32]",Lunder,
+	"コンパス ルーム　[" + getmapusers("pvp_n_8-5.gat") + " / 32]",Lcom,
+	"取り消し",Lcancel;
+Lsand:
+	if(getmapusers("pvp_n_8-1.gat") >= 64 ) goto LError;
+	warp "pvp_n_8-1",0,0;
+	end;
+Llock:
+	if(getmapusers("pvp_n_8-2.gat") >= 32 ) goto LError;
+	warp "pvp_n_8-2",0,0;
+	end;
+Lpolu:
+	if(getmapusers("pvp_n_8-3.gat") >= 32 ) goto LError;
+	warp "pvp_n_8-3",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_8-4.gat") >= 32 ) goto LError;
+	warp "pvp_n_8-4",0,0;
+	end;
+Lcom:
+	if(getmapusers("pvp_n_8-5.gat") >= 32 ) goto LError;
+	warp "pvp_n_8-5",0,0;
+	end;
+Lcancel:
+	close;
+LError:
+	mes "[PVP 試合場 受付]";
+	mes "満員です。";
+	close;
+OnInit:
+	waitingroom "制限無し",0;
+	end;
+}

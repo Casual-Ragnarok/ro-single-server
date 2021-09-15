@@ -1,0 +1,776 @@
+//===================================================================
+//Ragnarok Online EP2.5 GVG Script	ev_agit_common      by kalen
+//===================================================================
+prontera.gat,152,208,0	script	GVG Control	111,{
+	if (getgmlevel(0)>0) goto Lgmmode;
+	close;
+Lgmmode:
+	mes "[GVG Control^ff0000(GM専用)^000000]";
+	mes "攻城戦モード設定";
+	mes "^3355ff仕様上Closeがでないので";
+	mes "選択後";
+	mes "リログしてください^000000";
+	next;
+	menu "開始",LGvGStart,"停止",LGvGEnd,"キャンセル",-;
+	close;
+//----------GVGの開始設定(Const.txtで設定可能)-------------
+OnMinute00:
+	if (GvGWeekDay == 7) goto LTimeCheck;
+	if (GetTime(4) != GvGWeekDay) end;
+LTimeCheck:
+	if (GetTime(3) == GvGTimeST) goto LGvGStart;
+	if (GetTime(3) == GvGTimeED) goto LGvGEnd;
+	end;
+LGvGStart:
+	Announce "攻城戦開始",8;
+	AgitStart;
+	End;
+LGvGEnd:
+	Announce "攻城戦終了",8;
+	AgitEnd;
+	End;
+//----------時間中再起動時の再開処理(再起動1分後に判断)-----------
+OnInit:
+	initnpctimer;
+	end;
+OnTimer60000:
+	if (((GetTime(3) >= GvGTimeST) && (GetTime(3) < GvGTimeED) && (GetTime(4) == GvGWeekDay)) || ((GetTime(3) >= GvGTimeST) && (GetTime(3) < GvGTimeED) && (GvGWeekDay == 7))) AgitStart;
+	if (((GetTime(3) >= GvGTimeST) && (GetTime(3) < GvGTimeED) && (GetTime(4) == GvGWeekDay)) || ((GetTime(3) >= GvGTimeST) && (GetTime(3) < GvGTimeED) && (GvGWeekDay == 7))) Announce "攻城戦再開",8;
+	stopnpctimer;
+	End;
+}
+//--------------------------------------------------------------------
+prontera.gat,159,208,0	script	TBOX Control	111,{
+	if (getgmlevel(0)>0) goto Lgmmode;
+	close;
+Lgmmode:
+	mes "[TBOX Control^ff0000(GM専用)^000000]";
+	mes "宝箱を発生させますか？";
+	mes "^3355ff仕様上Closeがでないので";
+	mes "はいを選んだ場合は";
+	mes "リログしてください^000000";
+	next;
+	menu "はい",Linit,"いいえ",-;
+	close;
+OnClock0000:
+Linit:
+	callfunc "make_t_box","aldeg_cas01.gat",114,218,123,227,1324,1325;
+	callfunc "make_t_box","aldeg_cas02.gat",130,226,139,235,1326,1327;
+	callfunc "make_t_box","aldeg_cas03.gat",220,264,229,273,1328,1329;
+	callfunc "make_t_box","aldeg_cas04.gat",80,8,89,17,1330,1331;
+	callfunc "make_t_box","aldeg_cas05.gat",58,8,67,17,1332,1333;
+	callfunc "make_t_box","gefg_cas01.gat",150,108,159,117,1334,1335;
+	callfunc "make_t_box","gefg_cas02.gat",136,112,145,121,1336,1337;
+	callfunc "make_t_box","gefg_cas03.gat",266,286,275,295,1338,1339;
+	callfunc "make_t_box","gefg_cas04.gat",112,114,121,123,1340,1341;
+	callfunc "make_t_box","gefg_cas05.gat",140,106,149,115,1342,1343;
+	callfunc "make_t_box","payg_cas01.gat",295,8,304,17,1344,1345;
+	callfunc "make_t_box","payg_cas02.gat",140,140,149,149,1346,1347;
+	callfunc "make_t_box","payg_cas03.gat",154,164,163,173,1348,1349;
+	callfunc "make_t_box","payg_cas04.gat",142,44,151,53,1350,1351;
+	callfunc "make_t_box","payg_cas05.gat",152,128,161,137,1352,1353;
+	callfunc "make_t_box","prtg_cas01.gat",6,204,15,213,1354,1355;
+	callfunc "make_t_box","prtg_cas02.gat",198,224,207,233,1356,1357;
+	callfunc "make_t_box","prtg_cas03.gat",184,128,193,137,1358,1359;
+	callfunc "make_t_box","prtg_cas04.gat",266,158,275,167,1360,1361;
+	callfunc "make_t_box","prtg_cas05.gat",272,174,281,183,1362,1363;
+	end;
+}
+
+//====================================================================
+//Function
+//====================================================================
+//---------------------------------------------------------------
+//執事による城データ消去およびMob召還
+//callfunc "resetcastledata",MAP名,"::OnRecvCastleYYY","kapra_XXXgYY",@GIDXX;
+function	script	resetcastledata	{
+	killmonsterall getarg(0);
+	disablenpc getarg(2);
+	SetCastleData getarg(0),1,0;
+	SetCastleData getarg(0),2,10;
+	SetCastleData getarg(0),3,10;
+	SetCastleData getarg(0),4,0;
+	SetCastleData getarg(0),5,0;
+	SetCastleData getarg(0),6,0;
+	SetCastleData getarg(0),7,0;
+	SetCastleData getarg(0),8,0;
+	SetCastleData getarg(0),9,0;
+	SetCastleData getarg(0),10,0;
+	SetCastleData getarg(0),11,0;
+	SetCastleData getarg(0),12,0;
+	SetCastleData getarg(0),13,0;
+	SetCastleData getarg(0),14,0;
+	SetCastleData getarg(0),15,0;
+	SetCastleData getarg(0),16,0;
+	SetCastleData getarg(0),17,0;
+	GetCastleData getarg(0),0,getarg(1);
+	Announce "砦 [" + GetCastleName(getarg(0)) + "]を [" + GetGuildName(getarg(3)) + "]ギルドが破棄しました。",0;
+	MapRespawnGuildID getarg(0),GetCastleData(getarg(0),1),7;
+	end;
+	return;
+}
+//---------------------------------------------------------------
+//エンペリウム破壊による城データ更新
+//callfunc "resetcastledata2","MAP","::OnRecvCastleYYY";
+function	script	resetcastledata2	{
+	killmonsterall getarg(0);
+	set @WinGuildID,getcharid(2);
+	if (@WinGuildID <= 0) end;
+	SetCastleData getarg(0),1,@WinGuildID;
+	set @Economy,GetCastleData(getarg(0),2)-5;
+	if (@Economy<0) set @Economy,0;
+	SetCastleData getarg(0),2,@Economy;
+	set @Deffence,GetCastleData(getarg(0),3)-5;
+	if (@Deffence<0) set @Deffence,0;
+	SetCastleData getarg(0),3,@Deffence;
+	SetCastleData getarg(0),4,0;
+	SetCastleData getarg(0),5,0;
+	SetCastleData getarg(0),6,0;
+	SetCastleData getarg(0),7,0;
+	SetCastleData getarg(0),8,0;
+	SetCastleData getarg(0),9,0;
+	SetCastleData getarg(0),10,0;
+	SetCastleData getarg(0),11,0;
+	SetCastleData getarg(0),12,0;
+	SetCastleData getarg(0),13,0;
+	SetCastleData getarg(0),14,0;
+	SetCastleData getarg(0),15,0;
+	SetCastleData getarg(0),16,0;
+	SetCastleData getarg(0),17,0;
+	Announce "砦 [" + GetCastleName(getarg(0)) + "]を [" + GetGuildName(@WinGuildID) + "]ギルドが占領しました",0;
+	MapAnnounce getarg(0),"エンペリウムが破壊されました",17;
+	GetCastleData getarg(0),0,getarg(1);
+	return;
+}
+//---------------------------------------------------------------
+//ギルド解体による城データ更新
+//callfunc "resetcastledata3","MAP","::OnRecvCastleYYY";
+function	script	resetcastledata3	{
+	killmonsterall getarg(0);
+	SetCastleData getarg(0),1,0;
+	SetCastleData getarg(0),2,0;
+	SetCastleData getarg(0),3,0;
+	SetCastleData getarg(0),4,0;
+	SetCastleData getarg(0),5,0;
+	SetCastleData getarg(0),6,0;
+	SetCastleData getarg(0),7,0;
+	SetCastleData getarg(0),8,0;
+	SetCastleData getarg(0),9,0;
+	SetCastleData getarg(0),10,0;
+	SetCastleData getarg(0),11,0;
+	SetCastleData getarg(0),12,0;
+	SetCastleData getarg(0),13,0;
+	SetCastleData getarg(0),14,0;
+	SetCastleData getarg(0),15,0;
+	SetCastleData getarg(0),16,0;
+	SetCastleData getarg(0),17,0;
+	GetCastleData getarg(0),0,getarg(1);
+	MapRespawnGuildID getarg(0),GetCastleData(getarg(0),1),7;
+	end;
+	return;
+}
+//---------------------------------------------------------------
+//宝箱発生処理
+//callfunc "make_t_box","MAP",x0,y0,x1,y1,MobID1,MobID2;
+function	script	make_t_box	{
+	killmonster getarg(0),"TresureBox";
+	set $@boxnum1,2+(getcastledata(getarg(0),2)+5)/10;
+	set $@boxnum2,2+getcastledata(getarg(0),2)/10;
+	if ($@boxnum1 > 12)	set $@boxnum1,12;
+	if ($@boxnum2 > 12)	set $@boxnum2,12;
+	areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"宝箱",getarg(5),$@boxnum1,"TresureBox";
+	areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"宝箱",getarg(6),$@boxnum2,"TresureBox";
+	SetCastleData getarg(0),2,GetCastleData(getarg(0),2)+GetCastleData(getarg(0),4);
+	SetCastleData getarg(0),3,GetCastleData(getarg(0),3)+GetCastleData(getarg(0),5);
+	SetCastleData getarg(0),4,0;//商業投資回数リセット
+	SetCastleData getarg(0),5,0;//防衛投資回数リセット
+	return;
+}
+//---------------------------------------------------------------
+//攻城戦開始処理
+//callfunc "agitstarting","MAP","OnGDEMPSetYYY";
+function	script	agitstarting	{
+	MapRespawnGuildID getarg(0),GetCastleData(getarg(0),1),2;
+	if (getcastledata(getarg(0),1) != 0) donpcevent getarg(1);
+	GvgOn getarg(0);
+	return;
+}
+//---------------------------------------------------------------
+//旗
+//callfunc "flagsc","MAP",AreaFlag,ReturnFlag,X,Y;
+//*AreaFlag 1=Aldebaran,2=Other
+//*ReturnFlag 1=Allow,2=Deny
+function	script	flagsc	{
+	set @GID,getcastledata(getarg(0),1);
+	if (@GID != 0) goto LStartg;
+		mes "[ ルーンミッドガッツ王国領 ]";
+		mes " ";
+		mes "1.";
+		if (getarg(1) == 1) mes "こちらはルーンミッドガッツ王国と";
+		if (getarg(1) == 1) mes "シュバルツバルド共和国の協定により、";
+		if (getarg(1) == 2) mes "こちらはルーンミッドガッツ王国に";
+		if (getarg(1) == 2) mes "よって";
+		mes "正式所有者がないアジトであることを";
+		mes "公表する。";
+		next;
+		mes " ";
+		mes "2.";
+		mes "こちらを守っている凄じい";
+		mes "試練に勝って、エンペリウムを";
+		mes "破壊する勇者には国王が";
+		mes "認定するアジト所有権が附与される";
+		close;
+LStartg:
+		if ((getcharid(2) == @GID) && (getarg(2) == 1)) goto LStartg2;
+		mes "[ ルーンミッドガッツ王国領 ]";
+		mes " ";
+		mes "1.";
+		if (getarg(1) == 1) mes "こちらはルーンミッドガッツ王国と";
+		if (getarg(1) == 1) mes "シュバルツバルド共和国の協定により、";
+		if (getarg(1) == 2) mes "こちらはルーンミッドガッツ王国に";
+		if (getarg(1) == 2) mes "よって";
+		mes "ギルド ^ff0000 " + GetGuildName(@GID) + " ^000000の";
+		mes "所有であることを認められている。";
+		next;
+		mes " ";
+		mes "2.";
+		mes "^ff0000 " + GetGuildName(@GID) + " ^000000 のマスターは";
+		mes "^ff0000 " + getguildmaster(@GID) + " ^000000である。";
+		mes "これに異議のある者は、剣を取り";
+		mes "力を以って名誉を勝ち取りなさい。";
+Lclose:
+		close;
+LStartg2:
+		mes "[ 声 ]";
+		mes "勇者よ…";
+		mes "君の地に帰るか？";
+		next;
+		menu "砦に帰る",-,"やめる",Lclose;
+			warp getarg(0),getarg(3),getarg(4);end;
+		return;
+}
+//==============================================================================
+//-------------------------------------------------------
+//執事メニュー
+//callfunc "Steward_menu0","MAP","NAME";
+function	script	Steward_menu0	{
+	set @GID,getcastledata(getarg(0),1);
+	if (@GID == 0) goto LStart;
+	if (getcharid(2) != @GID) goto LStart2;
+	if (getcharid(0) == getguildmasterid(@GID)) goto LStart3;
+	goto LStart2;
+LStart:
+	mes "[執事"+getarg(1)+"]";
+	mes "私は運命に導かれるまま、";
+	mes "私の主人になる方を待っております。";
+	mes "勇気ある方は、一度ご自分の運命を";
+	mes "お試しになってはいかがでしょう。";
+	close;
+LStart2:
+	mes "[執事"+getarg(1)+"]";
+	mes "あなた方がいくら脅そうとも、";
+	mes "私は私のマスターである";
+	mes "^ff0000" + getguildmaster(@GID) + "^000000様にのみ";
+	mes "お仕えする身である。";
+	mes "ガーディアンたちはどこか！";
+	mes "早くこの無礼な者等を追放しなさい！";
+	close;
+LStart3:
+	mes "[執事"+getarg(1)+"]";
+	mes "お帰りなさいませ、 ^ff0000"+getguildmaster(@GID)+"^000000 様。";
+	mes "何なりとお申し付けくださいませ。";
+	next;
+	return;
+}
+//-------------------------------------------------------
+//執事メニュー1「砦情報」(完全) 台詞2004/08/05jRO
+//callfunc "Steward_menu1","MAP","NAME";
+function	script	Steward_menu1	{
+	mes "[執事"+getarg(1)+"]";
+	mes "砦の状態をご報告します。";
+	mes " ";
+	mes "^0000ff現在の商業発展値は"+GetCastleData(getarg(0),2)+" です。";
+	if (GetCastleData(getarg(0),4) != 0) mes "- 1日以内に "+GetCastleData(getarg(0),4)+"の投資をしました。";
+	mes "現在の防御値は"+GetCastleData(getarg(0),3)+" です。^000000";
+	if (GetCastleData(getarg(0),5) != 0) mes "^0000ff- 1日以内に "+GetCastleData(getarg(0),5)+"の投資をしました。^000000";
+	mes " ";
+	mes "以上です。";
+	close;
+	return;
+}
+//-------------------------------------------------------
+//執事メニュー２「商業投資」(完全) 台詞2004/08/25jRO
+//callfunc "Steward_menu2","MAP","NAME";
+function	script	Steward_menu2	{
+	mes "[執事"+getarg(1)+"]";
+	mes "商業発展値を高めれば、";
+	mes "ギルドで生産される物流品の数が";
+	mes "増えますので、先々のために";
+	mes "投資をされるのもよろしいでしょう。";
+	next;
+	mes "[執事"+getarg(1)+"]";
+	mes "通常一日に一回のみ投資可能ですが、";
+	mes "追加金額を払うことにより";
+	mes "2回目の投資も可能となります。";
+	next;
+	set @TriggerE,GetCastleData(getarg(0),4);
+	set @Economy,GetCastleData(getarg(0),2);
+	if(@Economy == 100) goto L2_error2;
+	set @tmp,(@Economy-@TriggerE)/5;
+	set @InvestE,5000*(1+(1+@tmp)*@tmp/2)*(1+3*@TriggerE);
+	if (@TriggerE == 0) goto L2_1;
+	if (@TriggerE == 1) goto L2_2;
+		mes "[執事ビオル]";
+		mes "^ff0000しかし、今日はすでに2回の";
+		mes "投資をしたので、これ以上の投資は";
+		mes "できません。";
+		mes "^000000ますますのご発展を";
+		mes "期待しております。";
+		close;
+L2_1:
+	mes "[執事"+getarg(1)+"]";
+	mes "現在必要な投資金は";
+	mes "^ff0000"+ @InvestE +"^000000 Zenyです。";
+	mes "投資致しますか？";
+	next;
+	menu "商業発展に投資する",L2_1_1,"取り消す",L2_1_0;
+L2_2:
+	mes "[執事"+getarg(1)+"]";
+	mes "現在1回投資なさってますが、";
+	mes "追加投資なさいますか？";
+	mes "その場合は ^ff0000"+ @InvestE +"^000000 Zenyが";
+	mes "必要となります。";
+	next;
+	menu "商業発展に投資する",L2_1_1,"取り消す",L2_1_0;
+	L2_1_0:
+		mes "[執事"+getarg(1)+"]";
+		mes "かしこまりました。";
+		mes "焦る必要はございません。";
+		mes "またいつでもお声をかけてください。";
+		close;
+	L2_1_1:
+		if(Zeny < @InvestE) goto L2_error;
+		set Zeny,Zeny-@InvestE;
+		SetCastleData getarg(0),4,@TriggerE+1;
+		mes "[執事"+getarg(1)+"]";
+		mes "無事に投資できました！";
+		mes "今後がますます楽しみですね。";
+		mes "明日から発展値が上がるでしょう。";
+		close;
+L2_error:/*適当*/
+	mes "[執事"+getarg(1)+"]";
+	mes "マスター！";
+	mes "投資に必要なお金がありません。";
+	mes "投資を取り消しました。";
+	close;
+L2_error2:/*適当*/
+	mes "[執事"+getarg(1)+"]";
+	mes "^ff0000商業発展値は";
+	mes "現在最大値となっております。";
+	mes "今は投資する必要がありません。^000000";
+ 	close;
+	return;
+}
+
+//-------------------------------------------------------
+//執事メニュー３「防衛投資」(完全) 台詞2004/08/25jRO
+//callfunc "Steward_menu3","MAP","NAME";
+function	script	Steward_menu3	{
+	mes "[執事"+getarg(1)+"]";
+	mes "防衛値を高めれば、";
+	mes "ガーディアンとエンペリウムの";
+	mes "耐久度が向上します。";
+	mes "先々の戦闘に備え、";
+	mes "強化しておくのが賢明かと思われます。";
+	next;
+	mes "[執事"+getarg(1)+"]";
+	mes "通常一日に一回のみ投資可能ですが、";
+	mes "追加金額を払うことにより";
+	mes "2回目の投資も可能となります。";
+	next;
+	set @TriggerD,GetCastleData(getarg(0),5);
+	set @Deffence,GetCastleData(getarg(0),3);
+	if(@Deffence == 100) goto L3_error2;
+	set @tmp,(@Deffence-@TriggerD)/5;
+	set @InvestD,10000*(1+(1+@tmp)*@tmp/2)*(1+3*@TriggerD);
+	if (@TriggerD == 0) goto L3_1;
+	if (@TriggerD == 1) goto L3_2;
+		mes "[執事ビオル]";
+		mes "^ff0000しかし、今日はすでに2回の";
+		mes "投資をしたので、これ以上の投資は";
+		mes "できません。";
+		mes "^000000ますますのご発展を";
+		mes "期待しております。";
+		close;
+L3_1:
+	mes "[執事"+getarg(1)+"]";
+	mes "現在必要な投資金は";
+	mes "^ff0000"+ @InvestD +"^000000 Zenyです。";
+	mes "投資致しますか？";
+	next;
+	menu "防衛に投資する",L3_1_1,"取り消し",L3_1_0;
+L3_2:
+	mes "[執事"+getarg(1)+"]";
+	mes "現在1回投資なさってますが、";
+	mes "追加投資なさいますか？";
+	mes "その場合は ^ff0000"+ @InvestD +"^000000 Zenyが";
+	mes "必要となります。";
+	next;
+	menu "防衛に投資する",L3_1_1,"取り消し",L3_1_0;
+	L3_1_0:
+		mes "[執事"+getarg(1)+"]";
+		mes "かしこまりました。";
+		mes "焦る必要はございません。";
+		mes "またいつでもお声をかけてください。";
+		close;
+	L3_1_1:
+		if(Zeny < @InvestD) goto L3_error;
+		set Zeny,Zeny-@InvestD;
+		SetCastleData getarg(0),5,@TriggerD+1;
+		mes "[執事"+getarg(1)+"]";
+		mes "無事に投資できました！";
+		mes "今後がますます楽しみですね。";
+		mes "明日から防衛値が上がるでしょう。";
+		close;
+L3_error:/*適当*/
+	mes "[執事"+getarg(1)+"]";
+	mes "マスター！";
+	mes "投資に必要なお金がありません。";
+	mes "投資を取り消しました。";
+	close;
+L3_error2:/*適当*/
+	mes "[執事"+getarg(1)+"]";
+	mes "^ff0000防衛投資値は現在100%です。";
+	mes "今は投資する必要がありません。^000000";
+	close;
+	return;
+}
+//-------------------------------------------------------
+//執事メニュー４「ガーディアン配置」(補助)
+//callfunc "Steward_menu4","MAP","NAME";
+function	script	Steward_menu4	{
+	mes "[執事"+getarg(1)+"]";
+	mes "ガーディアンを設置しますか？";
+	mes "ガーディアンは私たちの砦を護る";
+	mes "守護者となります。";
+	mes "設置するガーディアンを";
+	mes "選択してください。";
+	next;
+	menu "Gurdian 1",L4_1,"Gurdian 2",L4_2,"Gurdian 3",L4_3,"Gurdian 4",L4_4,"Gurdian 5",L4_5,"Gurdian 6",L4_6,"Gurdian 7",L4_7,"Gurdian 8",L4_8;
+
+//実際のMenu(B5参考)
+//menu "アーチャーガーディアン - 設置できます",L_MENU_1,"アーチャーガーディアン - 設置できます",L_MENU_2,"ソルジャーガーディアン - 設置できます",L_MENU_3,"ソルジャーガーディアン - 設置できます",L_MENU_4,"ナイトガーディアン - 設置できます",L_MENU_5,"ソルジャーガーディアン - 設置できます",L_MENU_6,"ナイトガーディアン - 設置できます",L_MENU_7,"マスターガーディアン - 設置できません (31214 / 31214)",L_MENU_8;
+//
+//設置できるか出来ないかの表示と、居た場合HPが表示される。
+//また、居た場合でも設置動作可能であり、その場合HPを回復させることが出来る。
+		L4_1:
+			if (GetCastleData(getarg(0),10) == 1) goto L4Error2;
+			set @GDnum,10;goto L4_9;
+		L4_2:
+			if (GetCastleData(getarg(0),11) == 1) goto L4Error2;
+			set @GDnum,11;goto L4_9;
+		L4_3:
+			if (GetCastleData(getarg(0),12) == 1) goto L4Error2;
+			set @GDnum,12;goto L4_9;
+		L4_4:
+			if (GetCastleData(getarg(0),13) == 1) goto L4Error2;
+			set @GDnum,13;goto L4_9;
+		L4_5:
+			if (GetCastleData(getarg(0),14) == 1) goto L4Error2;
+			set @GDnum,14;goto L4_9;
+		L4_6:
+			if (GetCastleData(getarg(0),15) == 1) goto L4Error2;
+			set @GDnum,15;goto L4_9;
+		L4_7:
+			if (GetCastleData(getarg(0),16) == 1) goto L4Error2;
+			set @GDnum,16;goto L4_9;
+		L4_8:
+			if (GetCastleData(getarg(0),17) == 1) goto L4Error2;
+			set @GDnum,17;goto L4_9;
+L4Error:
+	mes "[執事"+getarg(1)+"]";
+	mes "マスター…ガーディアン設置に";
+	mes "必要な研究知識が不足しています。";
+	mes "ガーディアン設置に関する知識を";
+	mes "得るためには、ギルドスキルの";
+	mes "^ff0000ガーディアン製作研究^000000を";
+	mes "習得しなければなりません。";
+	close;
+L4Error2:/*適当*/
+	mes "[執事"+getarg(1)+"]";
+	mes "マスター！";
+	mes "既にガーディアンが設置されています。";
+	mes " ";
+	mes "ガーディアン設置が取り消されました。";
+	close;
+L4Error3:/*適当*/
+	mes "[執事"+getarg(1)+"]";
+	mes "マスター！";
+	mes "投資に必要なお金がありません。";
+	mes "投資を取り消しました。";
+	close;
+	L4_9:
+		mes "[執事"+getarg(1)+"]";
+		mes "選択したガーディアンを";
+		mes "本当に設置しますか？設置には";
+		mes "^ff000010000^000000Zenyが必要です。";
+		next;
+		menu "設置する",L4_9_1,"やめる",-;
+			mes "[執事"+getarg(1)+"]";
+			mes "かしこまりました。";
+			mes "資金に余裕ができた時は、";
+			mes "ぜひ設置されることを";
+			mes "お勧め致します。";
+			close;
+		L4_9_1:
+		if (getgdskilllv(@GID,GD_GUARDIANRESEARCH) == 0) goto L4Error;
+		if (Zeny < 10000) goto L4Error3;
+		set Zeny,Zeny-10000;
+		setcastledata getarg(0),@GDnum,1;
+	return;
+}
+//-------------------------------------------------------
+//執事メニュー５「カプラ契約」(完全)
+//callfunc "Steward_menu5","MAP","NAME","Kapra_xxx";
+function	script	Steward_menu5	{
+	if (GetCastleData(getarg(0),9) == 1) goto Lkafra_dimi;
+//(When Karfa off) Employment
+	mes "[執事"+getarg(1)+"]";
+	mes "カプラ本社との契約をして、";
+	mes "砦内にカプラ職員を雇いますか？";
+	mes "雇用には^ff000010000^000000Zenyが必要ですが…";
+	next;
+	menu "雇う",-,"取り消す",L_k_e;
+		if (getgdskilllv(@GID,GD_KAFRACONTACT) != 0) goto L_k_0;
+		mes "[執事"+getarg(1)+"]";
+		mes "マスター…まだカプラ本社との";
+		mes "契約が結ばれていません。";
+		mes "契約を締結しなければ、";
+		mes "カプラ職員を雇うことができません。";
+		next;
+		mes "[執事"+getarg(1)+"]";
+		mes "カプラ本社との契約をお望みなら、";
+		mes "ギルドスキルの";
+		mes " ^ff0000カプラ契約^000000 スキルを";
+		mes "習得しなければなりません。";
+		close;
+	L_k_0:/*適当*/
+		if (Zeny > 10000) goto L_k_1;
+		mes "[執事"+getarg(1)+"]";
+		mes "マスター！お金が足りませんよ！";
+		close;
+	L_k_1:/*適当*/
+		set Zeny,Zeny-10000;
+		enablenpc getarg(2);
+		setcastledata getarg(0),9,1;
+		mes "[執事"+getarg(1)+"]";
+		mes "カプラとの契約が完了しました";
+		next;
+		cutin "kafra_01",2;
+		mes "[カプラ職員]";
+		mes "初めまして、";
+		mes "カプラディフォルテと申します。";
+		mes "最善を尽くしますので宜しくおねがいします！";
+		next;
+		cutin "kafra_01",255;
+		mes "[執事"+getarg(1)+"]";
+		mes "ギルドベースでカプラとの契約を維持するために";
+		mes "毎月Zenyを払わなければなりません。";
+		mes "(未実装)";
+		close;
+L_k_e:
+		mes "[執事"+getarg(1)+"]";
+		mes "かしこまりました。";
+		mes "しかし、ギルド員のためにも";
+		mes "利便性の向上を忘れては";
+		mes "なりません。";
+		close;
+//(When karfa ON) Dismissal
+Lkafra_dimi:
+	mes "[執事"+getarg(1)+"]";
+	mes "カプラ職員との契約を破棄しますか？";
+	next;
+	menu "解雇する",-,"キャンセル",L_D_1;
+		cutin "kafra_01",2;
+		mes "[カプラ職員]";
+		mes "私…何か間違っていましたか？";
+		mes "これからは気をつけますから…";
+		mes "許してはもらえませんか…";
+		next;
+		menu "解雇する",-,"キャンセル",L_D_2;
+				mes "[カプラ職員]";
+				mes "ああ、解雇なさるんですね…";
+				next;
+				disablenpc getarg(2);
+				setcastledata getarg(0),9,0;
+				cutin "kafra_01",255;
+				mes "[執事"+getarg(1)+"]";
+				mes "…";
+				mes "カプラとの契約が破棄されました。";
+				close;
+			L_D_2:
+				mes "[カプラ職員]";
+				mes "ありがとうございます。";
+				mes "全力を尽くして執務につきます！";
+				close2;
+				cutin "kafra_01",255;
+				end;
+		L_D_1:
+			mes "[執事"+getarg(1)+"]";
+			mes "わかりました。";
+			close;
+	return;
+}
+//-------------------------------------------------------
+//執事メニュー6「マスタールームへ行く」(完全) 台詞2004/08/25jRO
+//callfunc "Steward_menu6","MAP","Name",x,y;
+function	script	Steward_menu6	{
+	mes "[執事"+getarg(1)+"]";
+	mes "私たちの貴重な生産品の数々が";
+	mes "蓄えられている部屋に";
+	mes "入られるのですね？";
+	mes "そこは、マスターにのみ";
+	mes "入室が許された部屋でございます。";
+	next;
+	menu "マスターの部屋に入る",-,"取り消す",L6_1;
+		mes "[執事"+getarg(1)+"]";
+		mes "それではご案内致します。";
+		mes "私についていらしてください。";
+		mes "帰って来る時は隠しスイッチを";
+		mes "操作すれば帰れます。";
+		close2;
+		warp getarg(0),getarg(2),getarg(3);
+		end;
+	L6_1:
+		mes "[執事"+getarg(1)+"]";
+		mes "生産品は一日に一回生産可能ですが、";
+		mes "ある程度まで貯蓄されるとそれ以上";
+		mes "生産されなくなります。ですから、";
+		mes "私達のギルドの発展のためにも";
+		mes "適度に取り出さなければなりません。";
+		close;
+		return;
+}
+//-------------------------------------------------------
+//執事メニュー7「砦解体」(補助)
+//callfunc "Steward_menu7","MAP","NAME";
+function	script	Steward_menu7	{
+	mes "[執事"+getarg(1)+"]";
+	mes "マスター！";
+	mes "アジトを放棄するんですか！？";
+	mes " ";
+	mes "どうか考え直してください、マスター！";
+	next;
+	menu "アジトを放棄する",L7_1,"キャンセル",L7_2;
+	L7_1:
+		mes "[執事"+getarg(1)+"]";
+		mes "マスター！";
+		mes "どうかもう一度考え直してください…";
+		mes "どうか、、お願い!!!!!!!!";
+		next;
+		menu "やめる",-,"アジトを放棄する",L7_2;
+			mes "[執事"+getarg(1)+"]";
+			mes "イエッサー！マスター^^!";
+			mes "もう、そんな冗談よしてくださいよ^^.";
+			close;
+		L7_2:
+			mes "[執事"+getarg(1)+"]";
+			mes "マスター!!…";
+			mes "…い……やだ……ぁ……";
+			next;
+			return;
+}
+//-------------------------------------------------------
+//ギルドスイッチ
+//callfunc "gdswitch","MAP",x,y;
+function	script	gdswitch	{
+	mes "小さなレバーがあります。";
+	mes "引きますか？";
+	next;
+	menu "引く",-,"引かない",L2;
+	warp getarg(0),getarg(1),getarg(2);
+	end;
+L2:
+	close;
+	return;
+}
+//-------------------------------------------------------
+//ギルドスイッチ
+//callfunc "gdswitch2","MAP1","MAP2",x,y;
+function	script	gdswitch2	{
+	mes "[声]";
+	mes "試練に挑むならば先へ進むがよい";
+	next;
+	mes " ";
+	mes "小さなレバーがあります。";
+	mes "引きますか？";
+	next;
+	menu "引く",-,"引かない",L2;
+	getcastledata getarg(0),1,@GID;
+	if (getcharid(2) != @GID) goto L1n;
+	if (0 == @GID) goto L1n;
+	warp getarg(1),getarg(2),getarg(3);
+	end;
+L1n:
+	mes " ";
+	mes "しかし何も起こらなかった。";
+L2:
+	close;
+	return;
+}
+//==============================================================================
+//-------------------------------------------------------
+/ギルドカプラ「メニュー」
+//callfunc "gkfmenu","MAP";
+function	script	gkfmenu	{
+	cutin "kafra_01",2;
+	set @GID,getcastledata(getarg(0),1);
+	if (getcharid(2) == @GID) goto LStartg;
+	mes "[カプラ職員]";
+	mes "私は、ギルド";
+	mes "^ff0000" + GetGuildName(@GID) + "^000000";
+	mes "の皆様にだけお仕えするように";
+	mes "契約されております。";
+	mes "他のカプラサービスを";
+	mes "ご利用くださいませ。";
+	close2;
+	cutin "kafra_01",255;
+	end;
+LStartg:
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ^ff0000" + GetGuildName(@GID) + "^000000の皆さん";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	return;
+}
+//-------------------------------------------------------
+/ギルドカプラ「ワープ」
+//callfunc "gkfwarp","JMAPNAME","MAP",x,y;
+function	script	gkfwarp	{
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu ""+getarg(0)+" -> 200 z",L3_1,"取り消し",L3_2;
+		L3_1:
+			if (Zeny < 200) goto Lerror3;
+			set Zeny,Zeny-200;set KF_PIT,KF_PIT+20;
+			warp getarg(1),getarg(2),getarg(3);
+			end;
+		L3_2:
+				mes "[カプラ職員]";
+				mes "ありがとうございました。";
+				mes "またご利用くださいませ。";
+				close2;
+				cutin "kafra_01",255;
+				end;
+		Lerror3:
+				mes "[カプラ職員]";
+  				mes "お客様、お金が足りません。";
+   				mes "所持金をお確かめください。";
+				cutin "kafra_01",255;
+				close2;
+				cutin "kafra_01",255;
+				end;
+	return;
+}

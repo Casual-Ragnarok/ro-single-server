@@ -1,0 +1,404 @@
+//====================================================================
+//Ragnarok Online Acolyte jobchange script
+//====================================================================
+prt_church.gat,184,41,4	script	聖堂神父	60,{
+	mes "[マルシス神父]";
+	mes "どのようなご用件で";
+	mes "いらっしゃいましたか？";
+	next;
+	menu "アコライトに転職",L1,"アコライト転職条件を聞く",-,"やめる",Lend;
+		mes "[マルシス神父]";
+		mes "貴方はアコライトになりたいのですか？";
+		mes "では、私がこれから言う2つの条件を、";
+		mes "神様からの試練だと思って克服する";
+		mes "のです。";
+		next;
+		mes "[マルシス神父]";
+		mes "まず、初心者スキルを９までに";
+		mes "しなければなりません。";
+		mes "この世界で生きて行く為の基本的な";
+		mes "修行で、自分のためでもあります。";
+		next;
+		mes "[マルシス神父]";
+		mes "次、修行者として試練を";
+		mes "克服してください。";
+		mes "修行地は、アコライトへの転職を";
+		mes "申し込んだら言い渡されます。";
+		next;
+		mes "[マルシス神父]";
+		mes "この３つを完全に遂行しましたら、";
+		mes "ここに戻ってください。";
+		mes "その時、神の御使いたる聖なる";
+		mes "職業に就くことができるでしょう。";
+		close;
+L1:
+	if (Class == 4) goto Laco;
+	if (Class != 0) goto LError;
+	if (change_acolyte >= 1) goto Lcheck;
+	mes "[マルシス神父]";
+	mes "貴方は心から神様のお使いに";
+	mes "なるおつもりですか？";
+	next;
+	menu "はい。",L1_1,"やっぱり、やめます。",-;
+		mes "[マルシス神父]";
+		mes "それでは。";
+		close;
+	L1_1:
+//転生ノビ処理
+		callfunc "jobchanger","マルシス神父",4;
+		mes "[マルシス神父]";
+		mes "いいでしょう。"+strcharinfo(0)+" …";
+		mes "貴方のアコライト転職申請書を";
+		mes "受諾します。";
+		mes "貴方は神様のしもべとなるために、";
+		mes "ある修練をしなければなりません。";
+		next;
+		mes "[マルシス神父]";
+		mes "貴方は……";
+		set @acorand,rand(3);
+	if (@acorand == 1) goto Lmati;
+	if (@acorand == 2) goto Lruba;
+		set change_acolyte,1;
+		mes "^3355ffプロンテラ北西^000000の^3355ff橋の辺り^000000で";
+		mes "修行中の ^3355ff洋介神父^000000 に";
+		goto Lrandend;
+	Lmati:
+		set change_acolyte,2;
+		mes "^3355ffプロンテラ南西^000000の^3355ffモロク辺り^000000で";
+		mes "修行中の ^3355ffマチルダ^000000 シスターに";
+		goto Lrandend;
+	Lruba:
+		set change_acolyte,3;
+		mes "^3355ffプロンテラ北東^000000の^3355ff聖カピトーリナ修道院前^000000で";
+		mes "修行中の ^3355ffルバルカバラ神父^000000 に";
+Lrandend:
+		mes "会ってきてください。";
+		next;
+		mes "[マルシス神父]";
+		mes "あの人は、アコライトになるために修行";
+		mes "している者を待っているのです。";
+		mes "さあ、早く貴方の意志を伝えに行って";
+		mes "ください。";
+		close;
+Lcheck:
+	mes "[マルシス神父]";
+	mes "おお、また来てくださいましたか。";
+	mes "神様の志を遂行できるだけの準備は";
+	mes "できていますか…？";
+	next;
+	if (getskilllv(1) < 9) goto Llowlv;
+	if (change_acolyte == 1) goto Lmeet1;
+	if (change_acolyte == 2) goto Lmeet2;
+	if (change_acolyte == 3) goto Lmeet3;
+	if (change_acolyte >= 10) goto Ljobchange;
+//Error
+	mes "[マルシス神父]";
+	mes "Script Error";
+	mes "change_acolyte : "+change_acolyte;
+	mes "Class : "+Class;
+	close;
+Lmeet1:
+	mes "[マルシス神父]";
+	mes "修行完了者名簿にはまだ貴方の";
+	mes "名前が載っておりませんが…。";
+	mes "^000077プロンテラ北西のどこかの橋^000000で";
+	mes "修行中の ^000077洋介^000000 神父に";
+	mes "会ってきてください。";
+	goto Lmeetend;
+Lmeet2:
+	mes "[マルシス神父]";
+	mes "修行完了者名簿にはまだ貴方の";
+	mes "名前が載っておりませんが…。";
+	mes "^000077プロンテラ南西のモロクの辺り^000000で";
+	mes "修行中の ^000077マチルダ^000000 シスターに";
+	mes "会ってきてください。";
+	goto Lmeetend;
+Lmeet3:
+	mes "[マルシス神父]";
+	mes "修行完了者名簿にはまだ貴方の";
+	mes "名前が載っておりませんが…。";
+	mes "^000077プロンテラ北東の聖カピトーリナ修道院前^000000で";
+	mes "修行中の ^000077ルバルカバラ^000000 神父に";
+	mes "会ってきてください。";
+Lmeetend:
+	next;
+	mes "[マルシス神父]";
+	mes "あの人は、アコライトになるために修行";
+	mes "している者を待っているのです。";
+	mes "さあ、早く貴方の意志を伝えに行って";
+	mes "ください。";
+	close;
+Ljobchange:
+	mes "[マルシス神父]";
+	mes "うむ。職業レベルも十分ですし、";
+	mes "修行完了者名簿にも名前が載って";
+	mes "います。いいでしょう。";
+	mes "貴方の意志を認め、アコライトたる";
+	mes "資格を与えましょう。";
+	jobchange 4;
+	set change_acolyte,0;
+	next;
+	mes "[マルシス神父]";
+	mes "いつも我々を見守ってくださる神様に";
+	mes "感謝して、これからどのような苦難と";
+	mes "試練が迫って来ても一層信仰を守って";
+	mes "神様に身をささげるのです。";
+	next;
+	mes "[マルシス神父]";
+	mes "あと、貴方が最後まであきらめないで";
+	mes "試練を乗り越え、修行を終わらせ、";
+	mes "アコライトになった事を心から";
+	mes "お祝いします。";
+	close;
+Llowlv:
+	mes "[マルシス神父]";
+	mes "なに？！まだ基本的な修練も";
+	mes "できていないではありませんか！";
+	mes "まだまだです。もっと高い職業レベルが必要です！";
+	close;
+Laco:
+	mes "[マルシス神父]";
+	mes "貴方はもしやどこか体の具合が";
+	mes "悪いのでは…？その格好は…";
+	mes "すでにアコライトではありませんか？";
+	mes "まさか今のは冗談でしたと？";
+	close;
+LError:
+	mes "[マルシス神父]";
+	mes "貴方はもう他の職業を";
+	mes "お持ちでは？";
+Lend:
+	close;
+}
+
+//==============================================================================
+prt_fild00.gat,208,218,4	script	修行中の神父	98,{
+	if (Class == 4) goto Laco;
+	if ((Class == 0) && (change_acolyte == 0)) goto Lnovice;
+	if ((Class == 0) && (change_acolyte == 1)) goto Lok;
+	if ((Class == 0) && (change_acolyte == 10)) goto Ltwice;
+	if ((Class == 0) && (change_acolyte != 1)) goto Lno;
+	mes "[洋介神父]";
+	mes "……";
+	close;
+Lok:
+	mes "[洋介神父]";
+	mes "そこの君、アコライト修行者か？";
+	next;
+	mes "[洋介神父]";
+	mes "弱いくせによく俺の所にきてくれたな。";
+	mes "名前は？　"+strcharinfo(0)+" か。";
+	next;
+	set change_acolyte,10;
+	savepoint "prt_fild00.gat",206,231;
+	mes "[洋介神父]";
+	mes "いいだろう。 "+strcharinfo(0)+"。";
+	mes "君がここに来たという証明書を送る。";
+	mes "聖堂に戻ってマルシス神父に";
+	mes "確認したらいい。";
+	close;
+Lno:
+	mes "[洋介神父]";
+	mes "そこの君、";
+	mes "アコライト修行者か？";
+	next;
+	mes "[洋介神父]";
+	mes "弱いくせによく俺の所にきてくれたな。";
+	mes "名前は？ "+strcharinfo(0)+" だと…？";
+	mes "君の名前はここには書いてない。";
+	next;
+	mes "[洋介神父]";
+	mes "人違いみたいだな。";
+	mes "…どうせ君の間違いだから、戻って";
+	mes "マルシス神父にもう一度聞いてくれ。";
+	close;
+Ltwice:
+	mes "[洋介神父]";
+	mes "なんだ？私にはもう用はないだろう？";
+	mes "用がなかったらさっさと聖堂に戻れ！";
+	close;
+Laco:
+	if ((change_priest >= 1) && (change_priest <= 3)) goto Lchgpri;
+	mes "[洋介神父]";
+	mes "アコライトか。久しぶりだなー";
+	close;
+Lnovice:
+	mes "[洋介神父]";
+	mes "そこの初心者、私に言いたい事でも";
+	mes "あるのか？";
+	close;
+Lchgpri:/*適当*/
+	if (priest_meet1 == 1) goto Lptwice;
+	mes "[洋介神父]";
+	mes "今度はプリースト転職か";
+	mes "あんたも好きだね～。";
+	mes "まぁご苦労なこった";
+	next;
+	set change_priest,change_priest+1;
+	set priest_meet1,1;
+	savepoint "prt_fild00.gat",206,231;
+	mes "[洋介神父]";
+	mes "ほらよ、これで完了だ";
+	mes "聖堂のほうに伝えておくからな";
+	close;
+Lptwice:/*適当*/
+	mes "[洋介神父]";
+	mes "なんだ？私にはもう用はないだろう？";
+	mes "用がなかったらさっさと聖堂に戻れ！";
+	close;
+}
+//==============================================================================
+moc_fild07.gat,41,355,4	script	修行中のシスター	95,{
+	if (Class == 4) goto Laco;
+	if ((Class == 0) && (change_acolyte == 0)) goto Lnovice;
+	if ((Class == 0) && (change_acolyte == 2)) goto Lok;
+	if ((Class == 0) && (change_acolyte == 20)) goto Ltwice;
+	if ((Class == 0) && (change_acolyte != 2)) goto Lno;
+Lnovice:/*他職と同じ応答*/
+	mes "[マチルダ]";
+	mes "……";
+	close;
+Lok:
+	mes "[マチルダ]";
+	mes "あ、アコライト修行者ですね。";
+	mes "ここまでお疲れ様でした。";
+	next;
+	set change_acolyte,20;
+	savepoint "moc_fild07.gat",36,355;
+	mes "[マチルダ]";
+	mes "お名前は何ですか？えっと…";
+	mes "あ、ここにありますね！";
+	mes strcharinfo(0)+"さんがここに";
+	mes "来たことを証明する証明書を送ります。";
+	mes "聖堂に戻ってマルシス神父に";
+	mes "確認を取ってください。";
+	close;
+Lno:
+	mes "[マチルダ]";
+	mes "あ、アコライト修行者ですね。";
+	mes "ここまでお疲れ様でした。";
+	mes "お名前は何ですか？えっと…";
+	mes "あれ？見つからない…";
+	mes "あの…ここには貴方のお名前が";
+	mes "載っていません…";
+	next;
+	mes "[マチルダ]";
+	mes "聖堂に戻ってもう一度確認してきて";
+	mes "いただけますか？";
+	close;
+Ltwice:
+	mes "[マチルダ]";
+	mes "鳩を使って聖堂に証明書を送りました。";
+	mes "貴方が聖堂に着く頃にはもう確認が";
+	mes "取れているでしょう。";
+	mes "貴方が無事、望んだアコライトへ";
+	mes "なれるよう心からお祈りいたします。";
+	close;
+Laco:
+	if ((change_priest >= 1) && (change_priest <= 3)) goto Lchgpri;
+	mes "[マチルダ]";
+	mes "貴方に神のご加護がありますように…";
+	close;
+Lchgpri:
+	if (priest_meet2 == 1) goto Lptwice;
+	mes "[マチルダ]";
+	mes "今度はプリースト転職ですか";
+	mes "お疲れ様です。";
+	next;
+	set change_priest,change_priest+1;
+	set priest_meet2,1;
+	savepoint "moc_fild07.gat",36,355;
+	mes "[マチルダ]";
+	mes "…はい。OKです。";
+	mes "鳩を使って聖堂に証明書を送りますね。";
+	close;
+Lptwice:
+	mes "[マチルダ]";
+	mes "鳩を使って聖堂に証明書を送りました。";
+	mes "貴方が聖堂に着く頃にはもう確認が";
+	mes "取れているでしょう。";
+	mes "貴方が無事、望んだプリーストへ";
+	mes "なれるよう心からお祈りいたします。";
+	close;
+}
+//==============================================================================
+prt_fild03.gat,365,255,1	script	修行中の神父	89,{
+	if (Class == 4) goto Laco;
+	if ((Class == 0) && (change_acolyte == 0)) goto Lnovice;
+	if ((Class == 0) && (change_acolyte == 3)) goto Lok;
+	if ((Class == 0) && (change_acolyte == 30)) goto Ltwice;
+	if ((Class == 0) && (change_acolyte != 3)) goto Lno;
+	mes "[ルバルカバラ神父]";
+	mes "おお？こんな奥地にまで修行に";
+	mes "来たのか？それとも旅人か？";
+	mes "ここのモンスターは見かけと違い";
+	mes "結構強いから気をつけることだ。";
+	close;
+Lok:/*log未取得*/
+	mes "[ルバルカバラ神父]";
+	mes "あ、もし、";
+	mes "貴方がアコライトになりたいという";
+	mes "若者か？";
+	next;
+	set change_acolyte,30;
+	savepoint "prt_fild03.gat",360,256;
+	mes "[ルバルカバラ神父]";
+	mes "お名前は何ですか？えっと…";
+	mes "あ、ここにありますね！";
+	mes strcharinfo(0)+"さんがここに";
+	mes "来たことを証明する証明書を送ります。";
+	mes "聖堂に戻ってマルシス神父に";
+	mes "確認を取ってください。";
+	close;
+Lno:
+	mes "[ルバルカバラ神父]";
+	mes "あ、もし、";
+	mes "貴方がアコライトになりたいという";
+	mes "若者か？";
+	mes "連絡はもう聖堂側から頂いている。";
+	mes "貴方の名前は… "+strcharinfo(0)+"…";
+	mes "あれ…ないぞ…";
+	next;
+	mes "[ルバルカバラ神父]";
+	mes "……聖堂に戻って";
+	mes "もう一度確認したらどうかな…？";
+	close;
+Ltwice:/*log未取得*/
+	mes "[ルバルカバラ神父]";
+	mes "すでに聖堂のほうに";
+	mes "伝えましたので、貴方が着く頃";
+	mes "には確認ができているでしょう。";
+	close;
+Laco:
+	if ((change_priest >= 1) && (change_priest <= 3)) goto Lchgpri;
+	mes "[ルバルカバラ神父]";
+	mes "ごめんなさい。私は今修行中の身。";
+	mes "人とお話できません。";
+	close;
+Lnovice:
+	mes "[ルバルカバラ神父]";
+	mes "うん？どうしてこのような場所まで";
+	mes "来たのか？アコライト修行者や旅人なら";
+	mes "ともかく、初心者には危険な所だから";
+	mes "早く帰ったほうがいい。";
+	close;
+Lchgpri:/*適当*/
+	if (priest_meet3 == 1) goto Lptwice;
+	mes "[ルバルカバラ神父]";
+	mes "今度はプリースト転職ですか";
+	mes "お疲れ様です。";
+	next;
+	set change_priest,change_priest+1;
+	set priest_meet3,1;
+	savepoint "prt_fild03.gat",360,256;
+	mes "[ルバルカバラ神父]";
+	mes "…はい。OKです。";
+	mes "聖堂に証明書を送りますね。";
+	close;
+Lptwice:/*適当*/
+	mes "[ルバルカバラ神父]";
+	mes "すでに聖堂のほうに";
+	mes "伝えましたので、貴方が着く頃";
+	mes "には確認ができているでしょう。";
+	close;
+}

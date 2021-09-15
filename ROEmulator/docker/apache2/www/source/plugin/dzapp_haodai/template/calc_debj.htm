@@ -1,0 +1,181 @@
+<!--{template common/header}-->
+<link href="source/plugin/dzapp_haodai/images/public.css" rel="stylesheet" type="text/css" />
+<link href="source/plugin/dzapp_haodai/images/jisuanqi.css?v=201305071657" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="source/plugin/dzapp_haodai/images/jquery-1.8.0.min.js"></script>
+<script language="javascript" type="text/javascript" src="source/plugin/dzapp_haodai/images/jsqall.js"></script> 
+<!-[if IE 6]>
+<script src="source/plugin/dzapp_haodai/images/iepng.js" type="text/javascript"></script>
+<script type="text/javascript">
+   EvPNG.fix('img,div,a,span');
+</script>
+<![endif]->
+<style type="text/css">
+	.main {padding: 0; max-height: 600px;}
+	.jsaul {margin-top: 0;}
+	.jsr {height: auto;}
+	.jsb {padding: 5px 15px 5px 50px;}
+	.jsbb {margin-bottom: 9px;}
+	.jgsc {padding: 9px 15px;}
+	.jsaul li {padding-bottom: 6px;}
+	.jsx {border: 0; height: auto; margin: 0; padding-bottom: 5px;}
+	.jg_tab {margin-top: 0;}
+	.jsaul, .jsx, .jsf {padding-bottom: 0;}
+	.jg_tab th, .jg_tab td {line-height: inherit;  padding: 6px;}
+	.jsrtab {margin-bottom: 10px;}
+	h3 ,.jsrtabt {height: 27px; line-height: 27px;}
+	.btwo {height: auto;}
+	.jsba {padding: 0; height: 25px;}
+	.jsx {padding-top: 0px;}
+</style>
+<style>
+    #wp .wp {
+        width: 983px !important;
+    }
+    .wp {
+        width: 983px !important;
+    }
+</style>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> <a href="{echo rewrite_index();}">{lang dzapp_haodai:apply_htm_1}</a> <em>&rsaquo;</em> {lang dzapp_haodai:calc_chedai_htm_2}
+	</div>
+	<div class="y">
+		{$zones[$city]}<a href="plugin.php?id=dzapp_haodai:city" title="{lang dzapp_haodai:switch_city}">[{lang dzapp_haodai:switch_city}]</a>
+	</div>
+</div>
+<div id="ct" class="wp cl mtn">
+   <div class="main">
+		<div class="jisuanqi">
+			<div class="jsl">
+				<ul class="jsaul">
+					<li class="jsaoff"><a href="{echo rewrite_calc('fd');}">{lang dzapp_haodai:calc_chedai_htm_3}</a></li>
+					<li class="jsaoff"><a href="{echo rewrite_calc('chedai');}">{lang dzapp_haodai:calc_chedai_htm_4}</a></li>
+					<li class="jsaoff"><a href="{echo rewrite_calc('gjj');}">{lang dzapp_haodai:calc_chedai_htm_5}</a></li>
+					<li class="jsaoff"><a href="{echo rewrite_calc('debx');}">{lang dzapp_haodai:calc_chedai_htm_6}</a></li>
+					<li class="jsaon"><a href="{echo rewrite_calc('debj');}">{lang dzapp_haodai:calc_chedai_htm_7}</a></li>
+					<li class="jsaoff"><a href="{echo rewrite_calc('zhdk');}">{lang dzapp_haodai:calc_chedai_htm_8}</a></li>
+					<li class="jsaoff"><a href="{echo rewrite_calc('secondhand');}">{lang dzapp_haodai:calc_chedai_htm_9}</a></li>
+					<li class="jsaoff"><a href="{echo rewrite_calc('esjys');}">{lang dzapp_haodai:calc_chedai_htm_10}</a></li>
+				</ul>
+				<div class="jsb">
+					<div>
+
+						<form>
+							<div class="jsba">
+								<span class="jspan1">{lang dzapp_haodai:calc_debj_htm_11}</span>
+								<span class="jsele"><input name="test" type="radio" class="inputcheckbox" value="" id="jsstyle_0"> <label>{lang dzapp_haodai:calc_debj_htm_12}</label></span>
+								<span class="jsele"><input name="test" type="radio" class="inputcheckbox" id="jsstyle_1" value=""> <label>{lang dzapp_haodai:calc_debj_htm_13}</label></span>
+							</div>
+							<div class="jsbb fdj_01">
+								<span class="jspan1">{lang dzapp_haodai:calc_debj_htm_14}</span>
+								<span><input class="jsinp1 ipt_val" id="gjj_price" name="" type="text" value="20"/></span>
+								<span class="wy">{lang dzapp_haodai:apply_htm_7}</span>
+								<span class="js_error red none">{lang dzapp_haodai:calc_chedai_htm_13}</span>
+							</div>
+							<div class="jsbb fdj_02 none">
+								<span class="jspan1">{lang dzapp_haodai:calc_debj_htm_17}</span>
+								<span><input class="jsinp1 ipt_val" id="gjj_pmdj" name="" type="text" value="10000"/></span>
+								<span class="wy">{lang dzapp_haodai:apply_htm_39}/ {lang dzapp_haodai:calc_debj_htm_19}</span>
+								<span class="js_error red none">{lang dzapp_haodai:calc_chedai_htm_13}</span>
+							</div>
+							<div class="jsbb fdj_02 none">
+								<span class="jspan1">{lang dzapp_haodai:calc_debj_htm_21}</span>
+								<span><input class="jsinp1 ipt_val" id="gjj_mj" name="" type="text" value="200"/></span>
+								<span class="wy">{lang dzapp_haodai:calc_debj_htm_19}</span>
+								<span class="js_error red none">{lang dzapp_haodai:calc_chedai_htm_13}</span>
+							</div> 
+							<div class="jsbb se3 fdj_02 none">
+								<span class="jspan1">{lang dzapp_haodai:calc_debj_htm_24}</span>
+								<div class="jsbbin" id="gjj_nature_list">
+									<div class="jsbbin1 change_val" id="gjj_nature_show" reval ="1">{lang dzapp_haodai:calc_debj_htm_25}</div>
+									<input class="jsbbin2" name="" type="button" />
+								</div>
+								<ul class="xiala2 none" id="gjj_nature_options">
+									<li><a class="mo" onclick="gjjnature(this)" href="javascript:void(0);" reval ="1">{lang dzapp_haodai:calc_debj_htm_25}</a></li>
+									<li><a onclick="gjjnature(this)" href="javascript:void(0);" reval ="2">{lang dzapp_haodai:calc_debj_htm_27}</a></li>
+								</ul>
+							</div>
+							<div class="jsbb se1">
+								<span class="jspan1">{lang dzapp_haodai:calc_chedai_htm_14}</span>
+								<div class="jsbbin" id="gjj_pop_list">
+									<div class="jsbbin1 change_val" id="gjj_dktime" reval ="36">3{lang dzapp_haodai:apply_htm_197}</div>
+									<input class="jsbbin2" name="" type="button" />
+								</div>
+								<ul class="xiala2 none" id="gjj_list_options">
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="6">6{lang dzapp_haodai:apply_htm_9}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="12">1{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="24">2{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a class="mo" onclick="gjjmonth(this)" href="javascript:void(0);" reval ="36">3{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="48">4{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="60">5{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="120">10{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="180">15{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="240">20{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="300">25{lang dzapp_haodai:apply_htm_197}</a></li>
+									<li><a onclick="gjjmonth(this)" href="javascript:void(0);" reval ="360">30{lang dzapp_haodai:apply_htm_197}</a></li>
+								</ul>
+							</div>
+
+							<div class="jsbb se2">
+								<span class="jspan1">{lang dzapp_haodai:calc_chedai_htm_22}</span>
+								<span><input class="jsinp1" id="gjj_nll" name="" type="text" value="5.4"/></span>
+								<span class="wy" style="width: 22px;">%</span>
+								<span class="js_error red none">{lang dzapp_haodai:calc_chedai_htm_13}</span>
+							</div>
+							<div class="jsc">
+								<input class="jsc1 jsbtn" id="gjj_jsbtn" name="" type="button" value="{lang dzapp_haodai:calc_chedai_htm_24}"/>
+							</div>
+						</form> 
+						
+						
+					</div>
+
+				</div>
+
+
+				<div class="jgsc">
+					<table class="jg_tab" width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<th colspan="2" style="text-align:center; color:#006ec2;">{lang dzapp_haodai:calc_debj_htm_44}</th>
+						</tr>
+						<tr>
+							<th width="18%" style="text-align:right;">{lang dzapp_haodai:calc_debj_htm_45}:</th>
+							<td width="82%" align="left"><span id="js_Rtotal" class="js_total">0</span>{lang dzapp_haodai:apply_htm_7}</td>
+						</tr>
+						<tr>
+							<th width="18%" style="text-align:right;">{lang dzapp_haodai:calc_debj_htm_47}:</th>
+							<td width="82%"><span id="js_Rtime" class="js_time">0</span>{lang dzapp_haodai:apply_htm_199}</td>
+						</tr>
+						<tr>
+							<th width="18%" style="text-align:right;">{lang dzapp_haodai:calc_debj_htm_49}:</th>
+							<td width="82%">
+							  <span id="js_Rsy" class="js_Rsy">0</span>{lang dzapp_haodai:calc_debj_htm_50}:<span id="js_Rdj" class="js_Rdj">0</span>{lang dzapp_haodai:apply_htm_7}
+							</td>
+						</tr>
+						<tr>
+							<th width="18%" style="text-align:right;">{lang dzapp_haodai:calc_debj_htm_52}:</th>
+							<td width="82%"><span id="js_Rzlx" class="js_Rzlx">0</span>{lang dzapp_haodai:apply_htm_7}</td>
+						</tr>
+						<tr>
+							<th width="18%" style="text-align:right;">{lang dzapp_haodai:calc_debj_htm_54}:</th>
+							<td width="82%"><span id="js_Rbxhj" class="js_Rbxhj">0</span>{lang dzapp_haodai:apply_htm_7}</td>
+						</tr>
+					</table>
+				</div> 
+				<div class="jsx">{lang dzapp_haodai:calc_chedai_htm_37}</div>
+			</div>
+			<div class="jsr">                
+				<div class="box fr btwo">
+					<h3>{lang dzapp_haodai:calc_chedai_htm_54}</h3>
+					<ul class="btli">
+						<!--{loop reset(array_chunk($dkgl_article[items],10)) $value}-->
+						<li><a href="{echo rewrite_news($value[id]);}" target="_blank">{echo cutstr($value[title], 36)}</a></li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+</div>
+<!--{template common/footer}-->

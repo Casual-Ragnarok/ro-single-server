@@ -1,0 +1,1619 @@
+//====================================================================
+//Ragnarok Online Alchemist jobchange script  by Kalen
+//====================================================================
+//change_alchemist
+////////////////////////////////////////////////////////////////
+//1	第一試験(携帯溶鉱炉)
+//2	第一試験(バーサークポーション)
+//3	第一試験合格、グレゴリーに話す前
+//4	第二試験失格経験あり、グレゴリー合格値に影響。
+//5	第二試験合格、ダルシアに話す前。
+//6	第三試験中、材料を聞いた後
+//7	第三試験合格、ヴァン＝ヘルモントに話す前。
+//8	ヴァン＝ヘルモントに話した。溶液イベントをやってくる。
+//9	溶液の材料を答えられた。ニコラスに話す前。
+//10	第四試験失敗、再挑戦中
+//11	第四試験合格。再びニコラスに話す前。
+//12	Yunoで実験の手伝いを頼まれる。材料をもらう。
+//13	実験お手伝い終了。転職可能
+//14	(欠番)
+//15	幻想の花による短縮転職
+////////////////////////////////////////////////////////////////
+alde_alche.gat,27,185,5	script	錬金術師ギルド員	744,{
+	if (Class==5) goto Lmerchant;
+	if (Class==18) goto Ltwice;
+	mes "[バルミジャニーノ]";
+	mes "ようこそ。ここは錬金術師ギルドです。";
+	mes "私達はいつでも、才能溢れる";
+	mes "フレッシュな人材を求めています。";
+	next;
+	mes "[バルミジャニーノ]";
+	mes "もし優れた商人をご存知でしたら、";
+	mes "是非我がギルドにお知らせ下さいませ。";
+	mes "錬金術師の才能がある方を";
+	mes "我々は常に求めております。";
+	close;
+Lmerchant:
+	if (Upper == 1) goto LUpper1;
+	if ((change_alchemist == 1) || (change_alchemist == 2)) goto LStart2;
+	if (change_alchemist == 3) goto LStart3;
+	if (change_alchemist >= 4) goto LStart4;
+	mes "[パルミジァニーノ]";
+	mes "ようこそ。ここは錬金術師ギルドです。";
+	mes "何か御用ですか？";
+	next;
+	menu "錬金術師ってなんですか？",-,"錬金術師になりたいです。",L2,"特に用はないです。",L1;
+		mes "[パルミジァニーノ]";
+		mes "錬金術師と言うのは様々な物質を用いて";
+		mes "新しい物質を作りあげる研究をする";
+		mes "人達です。";
+		mes "化学的な物質を利用し、元素を探求して";
+		mes "その性質を変えることから始めます。";
+		next;
+		mes "[パルミジァニーノ]";
+		mes "究極の目的は金を作り上げる事だと";
+		mes "言われていますが、それだけでは";
+		mes "ありません。簡単な薬品製造や、";
+		mes "他の物質を作ったりもします。";
+		next;
+		mes "[パルミジァニーノ]";
+		mes "時には神の領域とも言える";
+		mes "生命創造を研究したりもしますが……";
+		mes "あまりにも難しい分野ですから";
+		mes "まだ皆さん研究中です。";
+		next;
+		mes "[パルミジァニーノ]";
+		mes "錬金術師は商売より、実験と研究に";
+		mes "取り組まなければならないので";
+		mes "とても大変です。";
+		next;
+		mes "[パルミジァニーノ]";
+		mes "もし錬金術師に興味があるのなら";
+		mes "商人となって経験を積む事を";
+		mes "お勧めいたします。";
+		mes "多くの品物を扱ってみることで";
+		mes "多くの知識を得ることが出来ますから。";
+		close;
+L1:
+		mes "[パルミジァニーノ]";
+		mes "では、用件がありましたら";
+		mes "またお越しくださいませ。";
+		close;
+L2:
+		mes "[パルミジァニーノ]";
+		mes "そうですか、嬉しいですわ。";
+		mes "私は錬金術師ギルドの";
+		mes "パルミジァニーノと申します。";
+		next;
+		mes "[パルミジァニーノ]";
+		mes "うちのギルドに加入して所定の教育を";
+		mes "受ければ、錬金術師として認知され";
+		mes "正式に研究活動に参加することが";
+		mes "できます。";
+		next;
+		mes "[パルミジァニーノ]";
+		mes "しかし、誰でも認知するわけでは";
+		mes "ありません。努力と好奇心、そして";
+		mes "研究に夢中になれる方でなければ";
+		mes "なりません。";
+		next;
+		mes "[パルミジァニーノ]";
+		mes "ギルドに加入するためには";
+		mes "いくつかの条件がございます。";
+		mes "それは申し込み後にご説明いたします。";
+		next;
+		mes "[パルミジァニーノ]";
+		mes "それでは、加入申し込みを";
+		mes "なさいますか？";
+		next;
+		menu "申し込みます。",L2_1,"後で申し込みます。",-;
+			mes "[パルミジァニーノ]";
+			mes "才能ある商人を";
+			mes "我がギルドではいつでも歓迎いたします。";
+			mes "是非、またいらしてくださいませ。";
+			close;
+		L2_1:
+			if (JobLevel < 40) goto Llowlv;
+			if (JobLevel == 50) goto Lskip;
+			mes "[パルミジァニーノ]";
+			mes "申し込み、ありがとうございました。";
+			mes "ギルドに加入するためには";
+			mes "^3355FF50,000Zeny^000000 払っていただきます。";
+			mes "それと、いくつかの品物を";
+			mes "持参していただく必要がございます。";
+			next;
+			mes "[パルミジァニーノ]";
+			mes "ただし、^3355FF古い魔法書^000000と^3355FF鍛冶屋の金槌^000000を";
+			mes "準備していただければ";
+			mes "必要物品を兔除いたします。";
+			next;
+			mes "[パルミジァニーノ]";
+			mes "では加入申込書に署名してください。";
+			next;
+			menu strcharinfo(0),-;
+			mes "[パルミジァニーノ]";
+			mes "それでは加入費をお願いいたします。";
+			mes "必要物品は正確に揃えていただく";
+			mes "必要がありますので、ご注意を。";
+			next;
+			if (Zeny < 50000) goto LError;
+			set Zeny,Zeny-50000;
+			set @rand,rand(2);
+			mes "[パルミジァニーノ]";
+			mes "どれどれ…… "+strcharinfo(0)+"様は……";
+			if (@rand == 0) mes "^3355FF携帯用溶鉱炉^000000 100個を";
+			if (@rand == 0) set change_alchemist,1;
+			if (@rand == 1) mes "^3355FFバーサークポーション^000000 7個を";
+			if (@rand == 1) set change_alchemist,2;
+			mes "準備して来て下さい。";
+			next;
+			mes "[パルミジァニーノ]";
+			mes "では、申し込み書は受け取りました。";
+			mes "ではでは、いってらっしゃいませ。";
+			close;
+		Lskip:/*会話適当*/
+			mes "[パルミジァニーノ]";
+			mes "申し込み、ありがとうございました。";
+			mes "あなたは、ジョブマスターされて";
+			mes "いますので、試験免除です。";
+			next;
+			set change_alchemist,3;
+			mes "[パルミジァニーノ]";
+			mes "それでは錬金術の基本を学びましょう。";
+			mes "まず、薬品を組み合わせる過程を";
+			mes "お教えします。";
+			next;
+			mes "[パルミジァニーノ]";
+			mes "あ、その前に……";
+			mes "グレゴリーがお呼びのようです。";
+			mes "一体、何の用事でしょうか……";
+			mes "行ってみてくださいませんか？";
+			close;
+LStart2:
+	if ((countitem(1005) >= 1) && (countitem(1006) >= 1)) goto Lok2;
+	if ((change_alchemist == 1) && (countitem(612)<100)) goto LError2;
+	if ((change_alchemist == 2) && (countitem(657)<7)) goto LError2;
+	mes "[パルミジァニーノ]";
+	mes "おかえりなさいませ。";
+	mes "準備が整ったようですね。";
+	mes "持って来た物品はギルドで有効に";
+	mes "使わせていただきますね。";
+	next;
+	if (change_alchemist == 1) delitem 612,100;
+	if (change_alchemist == 2) delitem 657,7;
+Lok:
+	set change_alchemist,3;
+	mes "[パルミジァニーノ]";
+	mes "それでは錬金術の基本を学びましょう。";
+	mes "まず、薬品を組み合わせる過程を";
+	mes "お教えします。";
+	next;
+	mes "[パルミジァニーノ]";
+	mes "あ、その前に……";
+	mes "グレゴリーがお呼びのようです。";
+	mes "一体、何の用事でしょうか……";
+	mes "行ってみてくださいませんか？";
+	close;
+Lok2:/*適当*/
+	mes "[バルミジァニーノ]";
+	mes "おかえりなさいませ。";
+	mes "古い魔法書と鍛冶屋の金槌を";
+	mes "お持ちになったようですね。";
+	mes "では一次試験は免除いたします";
+	next;
+	delitem 1005,1;
+	delitem 1006,1;
+	goto Lok;
+LStart3:
+	mes "[パルミジァニーノ]";
+	mes "グレゴリーがお待ちです。";
+	mes "行って話を聞いてみてください。";
+	close;
+LStart4:
+	mes "[パルミジァニーノ]";
+	mes "あ、申し訳ありません。";
+	mes "今、少々立て込んでおります。";
+	next;
+	mes "[パルミジァニーノ]";
+	mes "他の方にお伺いしてくださいませ。";
+	mes "それでは。";
+	close;
+LError:/*適当*/
+	mes "[パルミジァニーノ]";
+	mes "お金が足りないようです。";
+	close;
+LError2:
+	mes "[パルミジァニーノ]";
+	mes "まだ準備が整っておりませんか？";
+	mes "ギルドに加入するには";
+	if (change_alchemist == 1) mes "^3355FF携帯用溶鉱炉^000000 100個を";
+	if (change_alchemist == 2) mes "^3355FFバーサークポーション^000000 7個を";
+	mes "持って来ていただく必要がございます。";
+	next;
+	mes "[パルミジァニーノ]";
+	mes "準備が終わりましたら";
+	mes "またいらしてくださいませ。";
+	close;
+Llowlv:
+	mes "[パルミジァニーノ]";
+	mes "少々お待ちください……";
+	mes "レベルが足りないようですね。";
+	mes "錬金術師になりたいのでしたら";
+	mes "ジョブレベルが40以上必要です。";
+	close;
+Ltwice:
+	mes "[パルミジァニーノ]";
+	mes "いらっしゃいませ";
+	mes strcharinfo(0)+"様。";
+	mes "今日も錬金術師ギルドは";
+	mes "とっても忙しいです。";
+	next;
+	mes "[パルミジァニーノ]";
+	mes "ここでは、人形に生命を入れる研究とか";
+	mes "生命工学に対する研究が盛んなんです。";
+	next;
+	mes "[パルミジァニーノ]";
+	mes "誰もが研究の成功を待っているんです。";
+	mes "複雑な研究ですから、";
+	mes "皆さん忙しいのですよ。";
+	close;
+LUpper1:
+	mes "[パルミジァニーノ]";
+	mes "あなたは転生されていますので";
+	mes "ここでは転職案内できません。";
+	close;
+}
+//==============================================================================
+alde_alche.gat,101,184,4	script	マスターアルケミスト	122,{
+	if (Class==0) goto Lnovice;
+	if (Class==5) goto Lmerchant;
+	if (Class==18) goto Ltwice;
+	mes "[ビンセント=カーシャル]";
+	mes "民間人がこんな所に";
+	mes "何の用事で来たのかね。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "ここは見世物小屋じゃないよ。";
+	mes "うろうろしてないで、";
+	mes "どっかに行きなさい。";
+	close;
+Lmerchant:
+	if ((change_alchemist >= 1) && (change_alchemist <= 12)) goto LStart2;
+	if (change_alchemist >= 13) goto LStart3;
+	mes "[ビンセント=カーシャル]";
+	mes "うん商人だな。";
+	mes "錬金術に関心があるのか。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "私達、錬金術師ギルドでは";
+	mes "さまざまな物質の研究を行っている。";
+	mes "魔法とは違う方法で新しい";
+	mes "結果を得るのが目的だ。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "新しい生命を創造し、老いや不死を";
+	mes "研究し、平凡な物質から新しい物質を";
+	mes "作ったりする研究をしているのさ。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "商人として長い間暮してみると";
+	mes "万物に対しての関心が高くなる。";
+	mes "もし錬金術を学びたければ";
+	mes "私達のギルドに加入してみなさい。";
+	close;
+LStart2:
+	mes "[ビンセント=カーシャル]";
+	mes "加入申し込みをしたようだな……";
+	mes "研究に励み、常に高い志を持つように。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "先の錬金術師たちに助言を求める事も";
+	mes "忘れなきよう。他人の知識からも";
+	mes "得るものは多々あることだろう。";
+	close;
+LStart3:
+	if (SkillPoint != 0) goto LErrorpoint;
+	if (Upper != 0) goto LErrorUpper;
+	mes "[ビンセント=カーシャル]";
+	mes "ほうほう。 加入して必要な基礎知識も";
+	mes "学んで来たかね。ご苦労。";
+	next;
+	jobchange 18,0;
+	set change_alchemist,0;
+	mes "[ビンセント=カーシャル]";
+	mes "これからお前も錬金術師として";
+	mes "私たちギルドの一員だ。";
+	mes "研究に励み、常に高い志を持つように。";
+	next;
+	getitem 7127,1;
+	mes "[ビンセント=カーシャル]";
+	mes "お前には特別にこれを授けよう。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "それでは、また会おうじゃないか。";
+	mes "錬金術師として、腕を磨くことを";
+	mes "忘れるでないぞ！";
+	close;
+Lnovice:
+	mes "[ビンセント=カーシャル]";
+	mes "子供はあっちへ行きなさい。";
+	mes "こんな所で遊んでいたら怪我をするよ。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "ここは危ないものがたくさんある。";
+	mes "ほらほら、外で遊びなさい。";
+	close;
+LErrorpoint:
+	mes "[ビンセント=カーシャル]";
+	mes "まだ使っていない";
+	mes "スキルポイントがあるようだ。";
+	mes "全部使ってから、また来るがいい。";
+	close;
+LErrorUpper:
+	close;
+Ltwice:
+	mes "[ビンセント=カーシャル]";
+	mes "研究は進んでいるかね？";
+	mes "薬品を扱う時は十分";
+	mes "注意するようにな。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "時には予想出来なかった結果が";
+	mes "実験からもたらされる場合もある！";
+	mes "多くの実験をこなすことも必要なのだ。";
+	next;
+	mes "[ビンセント=カーシャル]";
+	mes "新しい生命を作り上げることが";
+	mes "出来たなら、必ずギルドに知らせてくれ。";
+	mes "他の皆も熱心に研究中なのだ。";
+	mes "君も頑張ってくれたまえ！";
+	close;
+}
+//==============================================================================
+alde_alche.gat,175,107,4	script	気むずかしい錬金術師	749,{
+	if (Class==5) goto Lmerchant;
+	if (Class==18) goto Ltwice;
+	mes "[グレゴリー]";
+	mes "キキキキ、何か用か？";
+	mes "私の仕事が知りたいか……";
+	mes "特別にお前にだけ教えてやろう。";
+	mes "私は言葉だ……そう、ケケケケ……";
+	next;
+	mes "[グレゴリー]";
+	mes "このポーションが完成されたら……";
+	mes "一国を操ることも可能じゃ！";
+	next;
+	mes "[グレゴリー]";
+	mes "キキキ　ケケケケ……";
+	mes "プロンテラの奴等には秘密じゃぞ……";
+	close;
+Lmerchant:
+	if ((change_alchemist == 1) || (change_alchemist == 2)) goto LStart2;
+	if (change_alchemist == 3) goto LStart3;
+	if (change_alchemist == 4) goto LStart4;
+	if (change_alchemist == 5) goto LStart5;
+	if (change_alchemist >= 6) goto LStart6;
+	mes "[グレゴリー]";
+	mes "キキキ　ケケケケ";
+	mes "ん、なんじゃ貴様は?!";
+	next;
+	mes "[グレゴリー]";
+	mes "商人は露店を開くもんじゃろう……";
+	mes "このような場所に何用じゃ？";
+	next;
+	mes "[グレゴリー]";
+	mes "キキキキ……出て行きなさい。";
+	mes "貴様に与えるようなものは";
+	mes "何もないわい……ケケケケケ";
+	close;
+LStart2:
+	mes "[グレゴリー]";
+	mes "キキキ　ケケケケ";
+	mes "ん、なんじゃ貴様は?!";
+	next;
+	mes "[グレゴリー]";
+	mes "錬金術を学びたいじゃと?!";
+	mes "寝言は寝ている時だけに";
+	mes "したらどうじゃ!!";
+	next;
+	mes "[グレゴリー]";
+	mes "ケケケケ!! 千年万年して来るがいい！";
+	mes "さぁ、とっとと出て行け！";
+	close;
+LStart3:
+	if (JobLevel == 50) goto Lskip;
+	mes "[グレゴリー]";
+	mes "キキキ……またどこぞの馬の骨が";
+	mes "ギルドに転がり込んで来おったな！";
+	next;
+	mes "[グレゴリー]";
+	mes "気に入らん……まったく気に入らん……";
+	mes "どういつもこいつも、金を払えば";
+	mes "錬金術師になれると思いおって!!";
+	next;
+	mes "[グレゴリー]";
+	mes "キキキキ……私がちょいと";
+	mes "面接をしてやろうではないか！";
+	mes "根性のないやつは";
+	mes "追い仏ってくれるわ!!";
+	next;
+	mes "[グレゴリー]";
+	mes "呆然としておるな…よきかなよきかな。";
+	mes "大人しく座って説明を受ければよいと";
+	mes "思っておったのなら、甘い考えじゃ！";
+	mes "キキキキキ……";
+	next;
+	mes "[グレゴリー]";
+	mes "それでは私が出す問題に答えるがいい！";
+	mes "どれだけ貴様が出来るか見てやろう！";
+	next;
+	set @alcheQP,0;
+	goto Lquestion1;
+LStart4:
+	mes "[グレゴリー]";
+	mes "何、またやって来たか。";
+	mes "出て行けと言ったじゃろうが！";
+	next;
+	mes "[グレゴリー]";
+	mes "気に入らん……気に入らんな……!";
+	mes "こそこそ入り込んで来て……";
+	mes "何をするつもりじゃったか!?";
+	next;
+	mes "[グレゴリー]";
+	mes "ふん、まぁ良かろう。";
+	mes "このグレゴリーが";
+	mes "今一度貴様を試してやろう……";
+	next;
+	mes "[グレゴリー]";
+	mes "それでは私が出す問題に答えるがいい！";
+	mes "どれだけ貴様が出来るか見てやろう！";
+	next;
+	set @alcheQP,0;
+	goto Lquestion1;
+//---------------------------------------------------------
+Lquestion1:
+	set @alrand,rand(2);
+	if (@alrand == 1) goto Lquestion1_2;
+	mes "[グレゴリー]";
+	mes "12 + 23 + 34 + 45 =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 114) set @alcheQP,@alcheQP+10;
+		goto Lquestion2;
+Lquestion1_2:
+	mes "[グレゴリー]";
+	mes "13 + 25 + 37 + 48 =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 123) set @alcheQP,@alcheQP+10;
+		goto Lquestion2;
+//---------------------------------------------------------
+Lquestion2:
+	set @alrand,rand(2);
+	if (@alrand == 1) goto Lquestion2_2;
+	mes "[グレゴリー]";
+	mes "1000 - 36 - 227 - 348 =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 389) set @alcheQP,@alcheQP+10;
+		goto Lquestion3;
+Lquestion2_2:
+	mes "[グレゴリー]";
+	mes "1000 - 58 - 214 - 416 =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 312) set @alcheQP,@alcheQP+10;
+		goto Lquestion3;
+//---------------------------------------------------------
+Lquestion3:
+	set @alrand,rand(2);
+	if (@alrand == 1) goto Lquestion3_2;
+	mes "[グレゴリー]";
+	mes "14 ｘ 17 ｘ 3 =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 714) set @alcheQP,@alcheQP+10;
+		goto Lquestion4;
+Lquestion3_2:
+	mes "[グレゴリー]";
+	mes "12 ｘ 24 ｘ 3 =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 864) set @alcheQP,@alcheQP+10;
+		goto Lquestion4;
+//---------------------------------------------------------
+Lquestion4:
+	set @alrand,rand(2);
+	if (@alrand == 1) goto Lquestion4_2;
+	mes "[グレゴリー]";
+	mes "9765 / 3 / 5 / 7 =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 93) set @alcheQP,@alcheQP+10;
+		goto Lquestion5;
+Lquestion4_2:
+	mes "[グレゴリー]";
+	mes "10530 / 3 / 5 / 2 =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 351) set @alcheQP,@alcheQP+10;
+		goto Lquestion5;
+//---------------------------------------------------------
+Lquestion5:
+	set @alrand,rand(2);
+	if (@alrand == 1) goto Lquestion5_2;
+	mes "[グレゴリー]";
+	mes "(47 ｘ 28) - (1376 / 4) =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 972) set @alcheQP,@alcheQP+10;
+		goto Lquestion6;
+Lquestion5_2:
+	mes "[グレゴリー]";
+	mes "(35 ｘ 19) - (1792 / 7) =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 409) set @alcheQP,@alcheQP+10;
+		goto Lquestion6;
+//---------------------------------------------------------
+Lquestion6:
+	set @alrand,rand(2);
+	if (@alrand == 1) goto Lquestion6_2;
+	mes "[グレゴリー]";
+	mes "(2646 / 7) + (13 ｘ 28) =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 742) set @alcheQP,@alcheQP+10;
+		goto Lquestion7;
+Lquestion6_2:
+	mes "[グレゴリー]";
+	mes "(2368 / 8) + (24 ｘ 17) =";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 704) set @alcheQP,@alcheQP+10;
+		goto Lquestion7;
+//---------------------------------------------------------
+Lquestion7:
+	set @alrand,rand(4);
+	if (@alrand == 1) goto Lquestion7_2;
+	if (@alrand == 2) goto Lquestion7_3;
+	if (@alrand == 3) goto Lquestion7_4;
+	mes "[グレゴリー]";
+	mes "ディスカウント24％で";
+	mes "赤ポーション 12個";
+	mes "ハエの羽 5個";
+	mes "蝶の羽 1個";
+	mes "買った時の総額は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 909) set @alcheQP,@alcheQP+10;
+		goto Lquestion8;
+Lquestion7_2:
+	mes "[グレゴリー]";
+	mes "ディスカウント24％で";
+	mes "赤ポーション 6個";
+	mes "緑ポーション 7個";
+	mes "ハエの羽 8個";
+	mes "買った時の総額は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 798) set @alcheQP,@alcheQP+10;
+		goto Lquestion8;
+Lquestion7_3:
+	mes "[グレゴリー]";
+	mes "ディスカウント24％で";
+	mes "緑ポーション 15個";
+	mes "拡大鏡 6個";
+	mes "設置用トラップ 4個";
+	mes "買った時の総額は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 934) set @alcheQP,@alcheQP+10;
+		goto Lquestion8;
+Lquestion7_4:
+	mes "[グレゴリー]";
+	mes "ディスカウント24％の場合";
+	mes "赤ポーション 6個";
+	mes "緑ポーション 7個";
+	mes "買った時の総額は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 438) set @alcheQP,@alcheQP+10;
+		goto Lquestion8;
+
+//---------------------------------------------------------
+Lquestion8:
+	set @alrand,rand(3);
+	if (@alrand == 1) goto Lquestion8_2;
+	if (@alrand == 2) goto Lquestion8_3;
+	mes "[グレゴリー]";
+	mes "環頭太刀 2個";
+	mes "キャップ 3個";
+	mes "ブーツ 3個";
+	mes "重さの合計は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 480) set @alcheQP,@alcheQP+10;
+		goto Lquestion9;
+Lquestion8_2:
+	mes "[グレゴリー]";
+	mes "環頭太刀 3個";
+	mes "キャップ 4個";
+	mes "ブーツ 2個";
+	mes "重さの合計は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 550) set @alcheQP,@alcheQP+10;
+		goto Lquestion9;
+Lquestion8_3:
+	mes "[グレゴリー]";
+	mes "シミター 3個";
+	mes "ヘルム 2個";
+	mes "ロングコート 1個";
+	mes "重さの合計は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 450) set @alcheQP,@alcheQP+10;
+		goto Lquestion9;
+//---------------------------------------------------------
+Lquestion9:
+	set @alrand,rand(3);
+	if (@alrand == 1) goto Lquestion9_2;
+	if (@alrand == 2) goto Lquestion9_3;
+	mes "[グレゴリー]";
+	mes "ミラーシールド、レザージャケット";
+	mes "スマイル、シルクローブ、ヴェール";
+	mes "マフラー、眼帯";
+	mes "防御値の合計は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 12) set @alcheQP,@alcheQP+10;
+		goto Lquestion10;
+Lquestion9_2:
+	mes "[グレゴリー]";
+	mes "ビレタ、メントル、オペラ仮面";
+	mes "リボン、マフラー、ブーツ、耳当て";
+	mes "防御値の合計は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 20) set @alcheQP,@alcheQP+10;
+		goto Lquestion10;
+Lquestion9_3:
+	mes "[グレゴリー]";
+	mes "バックラー、ロングコート、マスク";
+	mes "大きなリボン、リボンのヘアバンド";
+	mes "笠、グラス";
+	mes "防御値の合計は？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 15) set @alcheQP,@alcheQP+10;
+		goto Lquestion10;
+//---------------------------------------------------------
+Lquestion10:
+	set @alrand,rand(3);
+	if (@alrand == 1) goto Lquestion10_2;
+	if (@alrand == 2) goto Lquestion10_3;
+	mes "[グレゴリー]";
+	mes "ヘルム 5個を";
+	mes "ディスカウント24％で買った場合と";
+	mes "ディスカウント20％で買った場合の";
+	mes "差はいくらか？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 8800) set @alcheQP,@alcheQP+10;
+		goto LcheckQP;
+Lquestion10_2:
+	mes "[グレゴリー]";
+	mes "アーマーを 4個";
+	mes "ディスカウント24％で買った場合と";
+	mes "ディスカウント20％で買った場合の";
+	mes "差はいくらか？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 7680) set @alcheQP,@alcheQP+10;
+		goto LcheckQP;
+Lquestion10_3:
+	mes "[グレゴリー]";
+	mes "タイツを 3個";
+	mes "ディスカウント24％で買った場合と";
+	mes "ディスカウント20％で買った場合の";
+	mes "差はいくらか？";
+	next;
+		input @alcheQ;
+		if (@alcheQ == 8520) set @alcheQP,@alcheQP+10;
+		goto LcheckQP;
+LcheckQP:
+	if ((change_alchemist == 3) && (@alcheQP >= 90)) goto Lgoukaku;
+	if ((change_alchemist == 4) && (@alcheQP >= 80)) goto Lgoukaku;
+	mes "[グレゴリー]";
+	mes "……あほらしい！";
+	mes "最後まで付き合った私が馬鹿じゃった！";
+	mes "貴様など不合格じゃ!!!";
+	next;
+	mes "[グレゴリー]";
+	mes "こんな計算さえ出来ない奴が";
+	mes "錬金術師になろうとは片腹痛いわ！";
+	next;
+	mes "[グレゴリー]";
+	mes "お門違いもいいところじゃわい！";
+	mes "出て行け！出て行け！";
+	mes "さっさと出て行かんかい!!!!";
+	set change_alchemist,4;
+	close;
+Lgoukaku:
+	mes "[グレゴリー]";
+	if (@alcheQP == 100) mes "ふむふむ…";
+	if (@alcheQP == 90) mes "ケケケ……途中、一問間違えおったな。";
+	if (@alcheQP == 80) mes "ケケケ……途中、二問間違えおったな。";
+	mes "まぁ良い。このグレゴリーが";
+	mes "特別に貴様を認めてくれよう……";
+	next;
+	mes "[グレゴリー]";
+	mes "キキキ…… それでは行くが良い。";
+	mes "熱心に研究史、我輩の役に立てるように";
+	mes "なるがよい。キキキ……";
+	next;
+	mes "[グレゴリー]";
+	mes "それでは行け！ダルシアに会いなさい。";
+	mes "彼奴が貴様に実験実習を教えよう。";
+	mes "私が送ったと言ってやりなさい。";
+	set change_alchemist,5;
+	close;
+Lskip:
+	mes "[グレゴリー]";
+	mes "お、お前はジョブマスターだな。";
+	mes "ならば用はねぇ。";
+	next;
+	mes "[グレゴリー]";
+	mes "それでは行け！ダルシアに会いなさい。";
+	mes "彼奴が貴様に実験実習を教えよう。";
+	mes "私が送ったと言ってやりなさい。";
+	set change_alchemist,5;
+	close;
+LStart5:
+	mes "[グレゴリー]";
+	mes "何をしている。ちっとは勉強せんか！";
+	next;
+LStart6:
+	mes "[グレゴリー]";
+	mes "キキキ　ケケケケ";
+	mes "これで終わったと思うでないぞ！";
+	close;
+Ltwice:
+	mes "[グレゴリー]";
+	mes "キキキ　ケケケケ";
+	mes "ん、なんじゃ貴様は?!";
+	next;
+	mes "[グレゴリー]";
+	mes "私の研究成果を盗もうと言うのか！";
+	mes "どこで聞きつけてきた!!";
+	next;
+	mes "[グレゴリー]";
+	mes "こいつ、浅知恵を使いおるか……";
+	mes "しかし、貴様の思い通りにはさせんぞ。";
+	mes "キキキキ　ケケケケケ……";
+	close;
+}
+//==============================================================================
+alde_alche.gat,13,15,7	script	研究者	750,{
+	if (Class==18) goto Ltwice;
+	if ((Class==5) && (change_alchemist == 5) && (countitem(710) >= 1)) goto Lshort;
+	if ((Class==5) && (change_alchemist == 5)) goto LStart2;
+	if ((Class==5) && (change_alchemist == 6)) goto LStart3;
+	if ((Class==5) && (change_alchemist == 7)) goto LStart4;
+	mes "[ダルシア]";
+	mes "これ以上失うことも得ることも";
+	mes "ない……何も、ないんだ……";
+	next;
+	mes "[ダルシア]";
+	mes "私の呪われた瞳に映るのは";
+	mes "ずいぶん前に忘れてしまった幻だけ";
+	mes "アハハハハ……";
+	next;
+	mes "[ダルシア]";
+	mes "楽園なんかない……そう……";
+	mes "愛しいハンナ……ああ……";
+	close;
+LStart2:
+	mes "[ダルシア]";
+	mes "…………………………";
+	mes "…………………………";
+	mes "………………あぁ……";
+	next;
+	mes "[ダルシア]";
+	mes "オオカミかな？いや人間か……";
+	mes "君も何かを捜しているのだね。";
+	next;
+	mes "[ダルシア]";
+	mes "大切な物があるなら、気を付けなさい。";
+	mes "何かを得る為に、自分の全てを";
+	mes "失うこともあるから……";
+	next;
+	mes "[ダルシア]";
+	mes "…………………………";
+	next;
+	mes "[ダルシア]";
+	mes "……ところで何事かな。";
+	mes "こんな所まで来るなんて。";
+	next;
+	menu "実験実習をお願いします。",L1,"花の話を聞かせてください。",L2,"何でもないです。",-;
+		mes "[ダルシア]";
+		mes "…………………………";
+		mes "…………………………";
+		mes "大切なものは何か……";
+		mes "忘れてはいけませんよ……";
+		close;
+	L2:
+		mes "[ダルシア]";
+		mes "花……記憶の中から…";
+		mes "微かに消えかかっている……";
+		mes "そんな花がある……";
+		next;
+		mes "[ダルシア]";
+		mes "私は、愛する人のため";
+		mes "たった一つの研究のみ";
+		mes "成し遂げようとした……";
+		next;
+		mes "[ダルシア]";
+		mes "それはオオカミと花に関係する";
+		mes "話だとだけ、言っておくよ……";
+		mes "詳しくは、教えられないけれど、ね……";
+		next;
+		mes "[ダルシア]";
+		mes "そう…… それは一輪の花だ。";
+		mes "楽園を垣間見るような、そんな……";
+		mes "そんな気分にしてくれる^3355FF幻想の花^000000……";
+		next;
+		mes "[ダルシア]";
+		mes "私はホムンクルスを作った。";
+		mes "花から新しい生命を誕生させたんだ！";
+		mes "誰も、私の研究を信じなかったけれどね。";
+		next;
+		mes "[ダルシア]";
+		mes "しかし、私には何も残されなかった……";
+		mes "その後、私の時間は止まってしまった…";
+		mes "何も残らなかったんだ……";
+		mes "止まってしまったんだ……";
+		next;
+		mes "[ダルシア]";
+		mes "ああ……ハンナ……";
+		mes "果てしなく広がった";
+		mes "あの美しい花畑でのあなたは";
+		mes "どこに行ってしまったんです……";
+		close;
+	L1:
+		mes "[ダルシア]";
+		mes "錬金術を学びに来たのか……";
+		mes "私の持った知識は、すべて";
+		mes "私の希望を成し遂げるために";
+		mes "編み出したもの……";
+		next;
+		mes "[ダルシア]";
+		mes "基本的なことは教えられるが……";
+		mes "何をしたいかは、最終的に自分で";
+		mes "判断しなければならない事だから……";
+		next;
+		mes "[ダルシア]";
+		mes "基礎は教えてあげよう……";
+		mes "簡単な薬を作る方法だ……";
+		mes "いくつか準備をして来るように……";
+		next;
+		mes "[ダルシア]";
+		mes "^3355FF乳鉢^000000 3個";
+		mes "^3355FF空きビン^000000 3個";
+		mes "^3355FF赤ハーブ^000000 1個";
+		mes "^3355FF黄ハーブ^000000 1個";
+		mes "^3355FF白ハーブ^000000 1個";
+		next;
+		mes "[ダルシア]";
+		mes "準備が出来たら……また来なさい。";
+		set change_alchemist,6;
+		close;
+LStart3:
+	mes "[ダルシア]";
+	mes "…………………………";
+	mes "…………………………";
+	mes "………………あぁ……";
+	next;
+	mes "[ダルシア]";
+	mes "錬金術を学びたいと言ってた人だね……";
+	mes "そう、準備して来たのか……";
+	next;
+	if ((countitem(7134) < 3) || (countitem(713) < 3) || (countitem(507) < 1) || (countitem(508) < 1) || (countitem(509) < 1)) goto LErroritem;
+	mes "[ダルシア]";
+	mes "材料を揃えてきたようだね……";
+	mes "約束どおり薬を作る方法を";
+	mes "教えてあげよう……";
+	next;
+	mes "[ダルシア]";
+	mes "まず、乳鉢を準備して……";
+	mes "その中にハーブを入れる……";
+	mes "そしてゆっくりとハーブをつぶす……";
+	next;
+	mes "[ダルシア]";
+	mes "きれいな水を少しずつ入れながら……";
+	mes "そっと掻きまぜて、どろどろにさせる……";
+	mes "少しずつハーブを足して、またつぶす……";
+	next;
+	mes "[ダルシア]";
+	mes "このようにして……";
+	mes "適量になったら……";
+	mes "空きビンにそっと入れなさい……";
+	next;
+	delitem 7134,3;
+	delitem 713,3;
+	delitem 507,1;
+	delitem 508,1;
+	delitem 509,1;
+	mes "[ダルシア]";
+	mes "そう、完成だ。今度は";
+	mes "私がやったそのまま、真似してみなさい。";
+	mes "簡単だから……できる。";
+	next;
+	set @potionPT,0;
+//------------------------------
+Ltest1:
+	menu "乳鉢を準備する。",-,"乳鉢を頭に使う。",Lt1_1,"乳鉢を足で蹴る。",Lt1_1;
+		set @potionPT,@potionPT+1;
+		goto Ltest2;
+	Lt1_1:
+		mes "[ダルシア]";
+		mes "……うーん";
+		next;
+//------------------------------
+Ltest2:
+	menu "乳鉢に土を入れる。",Lt2_1,"乳鉢にハーブを入れる。",-,"乳鉢にハープを入れる。",Lt2_1;
+		set @potionPT,@potionPT+1;
+		goto Ltest3;
+	Lt2_1:
+		mes "[ダルシア]";
+		mes "……あぁ！";
+		next;
+//------------------------------
+Ltest3:
+	menu "ハーブをつぶす。",-,"乳鉢をつぶす。",Lt3_1,"ダルシアの足をつぶす。",Lt3_2;
+		set @potionPT,@potionPT+1;
+		goto Ltest4;
+	Lt3_1:
+		mes "[ダルシア]";
+		mes "……何を！";
+		next;
+		goto Ltest4;
+	Lt3_2:
+		mes "[ダルシア]";
+		mes "……痛っ！何の真似だい?!";
+		next;
+//------------------------------
+Ltest4:
+	menu "きれいな水を振り撤く。",Lt4_1,"きれいな水を飲む。",Lt4_2,"きれいな水を入れる。",-;
+		set @potionPT,@potionPT+1;
+		goto Ltest5;
+	Lt4_1:
+		mes "[ダルシア]";
+		mes "……何をしている?!";
+		next;
+		goto Ltest5;
+	Lt4_2:
+		mes "[ダルシア]";
+		mes "……喉が渇いたのかい？";
+		next;
+//------------------------------
+Ltest5:
+	menu "ハーブをつぶす。",-,"ハーブを食べる。",Lt5_1,"踊りながら歌う。",Lt5_2;
+		set @potionPT,@potionPT+1;
+		goto Ltest6;
+	Lt5_1:
+		mes "[ダルシア]";
+		mes "……お腹が空いたのかい？";
+		next;
+		goto Ltest6;
+	Lt5_2:
+		mes "[ダルシア]";
+		mes "……狂ってしまったのかい？";
+		next;
+//------------------------------
+Ltest6:
+	menu "麺を入れて炒める。",Lt6_1,"空きビンに入れる。",-,"乳鉢を持って飲む。",Lt6_2;
+		set @potionPT,@potionPT+1;
+		goto Ltestend;
+	Lt6_1:
+		mes "[ダルシア]";
+		mes "……お腹が空いたのかい？";
+		next;
+		goto Ltestend;
+	Lt6_2:
+		mes "[ダルシア]";
+		mes "……回復できたかい？";
+		next;
+//------------------------------
+Ltestend:
+	if (@potionPT==6) goto Ltestok;
+	mes "[ダルシア]";
+	mes "………………";
+	next;
+	mes "[ダルシア]";
+	mes "……材料が全部なくなってしまったね。";
+	mes "……また準備して来なさい。";
+	close;
+Ltestok:
+	getitem 501,1;
+	getitem 503,1;
+	getitem 504,1;
+	set change_alchemist,7;
+	mes "[ダルシア]";
+	mes "……よくやった。初めてのわりには";
+	mes "よく出来たね……記念にこれは";
+	mes "持っていきなさい。";
+	next;
+	mes "[ダルシア]";
+	mes "隣の部屋のヴァン=ヘルモントに";
+	mes "会いに行きなさい……";
+	mes "もう少し……教えてくれるでしょう。";
+	mes "彼に更なる教えを請いなさい……";
+	next;
+	mes "[ダルシア]";
+	mes "忘れないように……";
+	mes "自分にとって一番……";
+	mes "大切なものは何か……";
+	mes "守らなければいけないものは何か……";
+	close;
+LStart4:
+	mes "[ダルシア]";
+	mes "ヴァン=ヘルモントに……";
+	mes "会いに行きなさい……";
+	next;
+	mes "[ダルシア]";
+	mes "ああ、ハンナ……愛しい人。";
+	mes "これからは、その花すら見られずに……";
+	mes "私の魂は静かに時を待つだけだね……";
+	close;
+LErroritem:
+	mes "[ダルシア]";
+	mes "……準備してくる物を";
+	mes "忘れてしまったのか……";
+	mes "もう一度、ゆっくり言うから";
+	mes "今度は忘れせずに揃えてくるように……";
+	next;
+	mes "[ダルシア]";
+	mes "^3355FF乳鉢^000000 3個";
+	mes "^3355FF空きビン^000000 3個";
+	mes "^3355FF赤ハーブ^000000 1個";
+	mes "^3355FF黄ハーブ^000000 1個";
+	mes "^3355FF白ハーブ^000000 1個";
+	next;
+	mes "[ダルシア]";
+	mes "準備が出来たら……また来なさい。";
+	close;
+Lshort:
+	mes "[ダルシア]";
+	mes "その花を……私にくれないか？";
+	mes "これは、私が研究していた、あの……";
+	mes "月の光の!!";
+	next;
+	menu "差し上げることはできません。",-,"差し上げようと持って来ました。",Ls1;
+		mes "[ダルシア]";
+		mes "そうか…";
+		close;
+	Ls1:
+		mes "[ダルシア]";
+		mes "そうだ……礼を受け取ってくれ……";
+		mes "私の錬金術に関するすべての知識を";
+		mes "君に授けよう!!";
+		next;
+		delitem 710,1;
+		mes "^3355ff- あなたはダルシアから -";
+		mes "- 錬金術に関する様々な -";
+		mes "- 知識を叩き込まれた -^000000";
+		next;
+		mes "[ダルシア]";/*ここから脳内*/
+		mes "さあ……";
+		mes "あとはマスターアルケミストに";
+		mes "会いに行くだけだ……";
+		set change_alchemist,15;
+		close;
+Ltwice:
+	mes "[ダルシア]";
+	mes "あ……君か。来たのか……そうだね。";
+	mes "立派な錬金術師になりに来たんだね……";
+	next;
+	mes "[ダルシア]";
+	mes "しかし、幻想の花はまだか……";
+	mes "美しい月明りの花……ああ……";
+	next;
+	mes "[ダルシア]";
+	mes "その光を見ることさえできたら";
+	mes "愛しいハンナ……";
+	mes "アハハハハ……";
+	close;
+}
+//==============================================================================
+alde_alche.gat,79,19,5	script	実験専門家	748,{
+	if (Class==18) goto Ltwice;
+	if ((Class==5) && (change_alchemist==7)) goto LStart2;
+	if ((Class==5) && (change_alchemist==8)) goto LStart3;
+	if ((Class==5) && (change_alchemist==9)) goto LStart4;
+	mes "[ヴァン=ヘルモント]";
+	mes "あと少し…あと少しで……";
+	mes "あぁ、あと少しで完成するのに！";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "どうして、どうして失敗したんだ!!";
+	mes "間違ったことは何一つもしていないのに！";
+	mes "いったい！なぜ!!";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "また材料を揃えなければならないか……";
+	mes "しかし、いつかは完成するだろう";
+	mes "フフフ……";
+	close;
+LStart2:
+	set change_alchemist,8;
+	mes "[ヴァン=ヘルモント]";
+	mes "ウウウ……一体何がいけないのだ……";
+	mes "どうすれば…ここがこうで、ああで……";
+	mes "理論上では確かに合っているのに……";
+	mes "何故止まってしまうんだ。";
+	mes "何が間違っているというのだ……";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "そうだ、ここで溶液を注いだら";
+	mes "止まらなくてはならないのに……";
+	mes "止まらない…………";
+	mes "こんな初心者的な間違いを……あぁ";
+	mes "たまには方法を変えてみるか……";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "そう、この部分を直せば良い。";
+	mes "始めからやり直す必要はなどないんだ！";
+	mes "うん、結果良ければ……";
+	mes "……ちょっと、ちょっと、あぁ!!!!";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "…………………………";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "………なんだお前は？";
+	next;
+	goto Lchoose;
+LStart3:
+	mes "[ヴァン=ヘルモント]";
+	mes "そう、ここで触手を切り捨てて";
+	mes "べとべとする液体を少し交ぜて";
+	mes "試験管に準備したゼロピー溶液に";
+	mes "……あれ？";
+	mes "乳鉢がどこに行ったか……";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "あぁ最後の一個を使ってしまったか。";
+	mes "ニコラスのやつ、持っているかな……";
+	mes "借りに行くのも面倒だが……";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "…………………………";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "…………何だお前は？";
+	next;
+Lchoose:
+	menu "錬金術師志望生です。",L1,"…………",-;
+		mes "[ヴァン=ヘルモント]";
+		mes "見物でもしに来たのか……";
+		mes "見物するつもりならそこで";
+		mes "じっとしてておくれ。";
+		next;
+		mes "[ヴァン=ヘルモント]";
+		mes "訳もなくあれこれ触られては困るから。";
+		mes "邪魔だけはしないでくれよ。";
+		next;
+		menu "何かちょっと教えてください。",L0_1,"…………",-;
+			mes "[ヴァン=ヘルモント]";
+			mes "…………………………";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "…………………………";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "…………………………";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "……何だお前は？";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "誰だか知らないが、こんな所にいないで";
+			mes "さっさと出て行きなさい！";
+			mes "ここは私の部屋なんだから。";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "ほら、さっさと行った！";
+			mes "フォイ!!!";
+			close;
+		L0_1:
+			mes "[ヴァン=ヘルモント]";
+			mes "私はたった今邪魔をするなと";
+			mes "言ったのではなかったかな。";
+			mes "まったく、話を聞くだけでも";
+			mes "時間を取られるというのに…ブツブツ。";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "よし、課題だ。";
+			mes "外でちょっと勉強して来なさい。";
+			mes "そうだね……う～ん……";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "そうだ、モルゲンシュタインに会って";
+			mes "中和剤と混合剤を作る方法を";
+			mes "学んできなさい。";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "品物は持って来なくていいから。";
+			mes "やつがその薬品を扱うところを";
+			mes "良く見てきなさい。分かったね。";
+			next;
+			mes "[ヴァン=ヘルモント]";
+			mes "それでは、行って来なさい。";
+			mes "ほら、さっさと行った！";
+			mes "フォイ!!!";
+			close;
+	L1:
+		mes "[ヴァン=ヘルモント]";
+		mes "あぁ、この間来た商人か。";
+		mes "ちゃんと学んできたかな？";
+		mes "遊んで来たのではないだろうね……";
+		next;
+		mes "[ヴァン=ヘルモント]";
+		mes "それならいくつか聞いて見るとするか。";
+		mes "見てきた通り、答えてみるがいい。";
+		next;
+		if (MOLGENSTAIN==3) goto L1_other;
+		mes "[ヴァン=ヘルモント]";
+		mes "中和剤を作る時必要なアイテムは ";
+		next;
+		menu "やわらかな毛",-,"べとべとする液体",-,"家畜の血",-;
+		mes "[ヴァン=ヘルモント]";
+		mes "混合剤を作る時必要なアイテムは ";
+		next;
+		menu "化け物のエサ",L1end,"古代魚の唇",L1end,"くさった包帯",L1end;
+	L1_other:
+		set @count,0;
+		mes "[ヴァン=ヘルモント]";
+		mes "中和剤を作る時必要ないアイテムは";
+		next;
+		menu "カルボーディル",-,"ディトリミン",L1_o2,"アルコール",L1_o2;
+			set @count,@count+1;
+	L1_o2:
+		mes "[ヴァン=ヘルモント]";
+		mes "混合剤を作る時必要ないアイテムは";
+		next;
+		menu "カルボーディル",L1end,"ディトリミン",-,"アルコール",L1end;
+			set @count,@count+1;
+	L1end:
+		if (@count==2) goto Lgoukaku;
+		mes "[ヴァン=ヘルモント]";
+		mes "……率直に言って不愉快だ。";
+		mes "モルゲンシュタインに学んで来なさいと";
+		mes "確かに言ったのに……";
+		next;
+		mes "[ヴァン=ヘルモント]";
+		mes "まったく、言葉もないね！";
+		mes "なに一つ覚えず、考えもなしに";
+		mes "帰ってくるなんて！";
+		mes "邪魔だ、さっさと立ち去れ！";
+		close;
+	Lgoukaku:
+		mes "[ヴァン=ヘルモント]";
+		mes "うん、よく分かったな。";
+		mes "そう、薬品を理解するのは大切な事だ。";
+		mes "そういった事が、ずっと研究を";
+		mes "続けていく上で、身を守って";
+		mes "くれるものなのさ。";
+		next;
+		mes "[ヴァン=ヘルモント]";
+		mes "このままの外に出て、隣の部屋の";
+		mes "ニコラスに会いにいきなさい。";
+		mes "もっと色々と教えてくれるだろう。";
+		next;
+		mes "[ヴァン=ヘルモント]";
+		mes "何をしている、さっさと行け。";
+		mes "私から教えることはもう何もない。";
+		set change_alchemist,9;
+		close;
+LStart4:
+	mes "[ヴァン=ヘルモント]";
+	mes "何をしている、さっさと行け。";
+	mes "私から教えることはもう何もない。";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "隣の部屋のニコラスに会いなさい。";
+	mes "私は研究を続けなくちゃいけないんだ。";
+	close;
+Ltwice:
+	mes "[ヴァン=ヘルモント]";
+	mes "なんだっ、私は今忙しいんだ!!";
+	mes "とっとと用件を言ったらどうだ。";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "あっそう、錬金術師になれて嬉しいのは";
+	mes "分かるが……はしゃいでばかりだと";
+	mes "発展も向上もありえないぞ。";
+	next;
+	mes "[ヴァン=ヘルモント]";
+	mes "そう、だから熱心に励み、";
+	mes "生命工学を研究したまえ。";
+	mes "良いか、驕るんじゃないぞ。";
+	close;
+}
+//==============================================================================
+alde_alche.gat,145,19,1	script	首席研究員	57,{
+	if ((Class==5) && (change_alchemist == 9)) goto LStart2;
+	if ((Class==5) && (change_alchemist == 10)) goto Lshort;
+	if ((Class==5) && (change_alchemist == 11)) goto LStart3;
+	if ((Class==5) && (change_alchemist == 12)) goto LStart4;
+	if ((Class==5) && (change_alchemist == 13)) goto LStart5;
+	mes "[ニコラス=プラメール]";
+	mes "ここがこうなるとこうなって……";
+	mes "あれをここに代入するとこうだから";
+	mes "こっちにこれを入れると……";
+	mes "ということはここは……";
+	mes "……ブツブツ……";
+	close;
+LStart2:
+	mes "[ニコラス=プラメール]";
+	mes "君が錬金術師になりたいという商人か。";
+	mes "しかしね……誰でも錬金術師に";
+	mes "なれるわけじゃないんだ。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "中途半端な気持ちで錬金術に";
+	mes "手を出すことは許されない。";
+	mes "そんな訳で、ギルドでは君の頭脳を";
+	mes "試しているのだよ。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "今までの過程で分かったと思うが";
+	mes "錬金術に必要とされる公式や化学式の";
+	mes "知識は並大抵のものじゃない。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "実験の失敗を繰り返えすばかりで";
+	mes "ギルドの利益にもならない錬金術師を";
+	mes "育てる訳にもいかないしな。";
+	mes "はっはっはっー！";
+	set change_alchemist,10;
+	next;
+Lshort:
+	mes "[ニコラス=プラメール]";
+	mes "さて、錬金術師には色々な";
+	mes "能力が必要となる。";
+	mes "記憶力・集中力・計算力……";
+	mes "そして発想力だ。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "これから、君にどれだけ";
+	mes "錬金術師としての素質が";
+	mes "あるかを試させてもらう。";
+	mes "まずは次の表を見てもらおう。";
+	next;
+	mes "";
+	mes "15.15.15.15";
+	mes "15.□.□.□";
+	mes "15.□.□.□";
+	mes "15.□.□.□";
+	mes "15";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "15の数字が縦横一列、";
+	mes "□が縦横3マスずつ";
+	mes "並んでいたな。";
+	mes "このマスに、1から9までの";
+	mes "数字を一つづつあてはめ、";
+	mes "表を完成させてもらう。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "ただしルールがあって、";
+	mes "あてはめた数字を縦・横・斜め";
+	mes "の列でそれぞれ足し算し、";
+	mes "全て合計が15になるように";
+	mes "しなければならない。";
+	mes "回答のしかたは次の通りだ。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "１. ２. ３";
+	mes "４. ５. ６";
+	mes "７. ８. ９";
+	mes "もし君がこのようにあてはめた場合、";
+	mes "回答欄には123456789";
+	mes "という順番で数字を記入しろ。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "あまり時間をかけると";
+	mes "中止にするから注意してくれ。";
+	mes "では、やってもらおう。";
+	mes "もう一度表を見せる。";
+	next;
+	mes "";
+	mes "15.15.15.15";
+	mes "15.□.□.□";
+	mes "15.□.□.□";
+	mes "15.□.□.□";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "では答えてもらおう。";
+	next;
+	input @num;
+	if (@num <= 0) goto LError;
+	if ((@num == 618753294) || (@num == 816357492) || (@num == 276951438) || (@num == 672159834) || (@num == 492357816) || (@num == 294753618) || (@num == 834159672) || (@num == 438951276)) goto Lgoukaku;
+		mes "[ニコラス=プラメール]";
+		mes "ん～ん……";
+		mes "不正解。";
+		mes "ゆっくり考えてみるといい。";
+		close;
+Lgoukaku:
+		mes "[ニコラス=プラメール]";
+		mes "正解だ。";
+		mes "次の試験に移ってもらうが、";
+		mes "準備があるから";
+		mes "少ししたらまた話しかけてくれ。";
+		set change_alchemist,11;
+		close;
+LError:
+		mes "[ニコラス=プラメール]";
+		mes "それでは回答になっていない。";
+		close;
+LStart3:
+	mes "[ニコラス=プラメール]";
+	mes "次に、行ってもらわねば";
+	mes "ならない場所がある。";
+	mes "「賢者の都市ジュノー」にセージ達と";
+	mes "共に錬金術を研究中の「バーン」か";
+	mes "「バジン」の兄弟を訪ねなさい。";
+	mes "行って、研究を手伝ってくるように。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "さあ、これを持って行きなさい。";
+	mes "彼らと親しくなるのに役に立つだろう。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "混合剤 1個";
+	mes "燃えた木 5個";
+	mes "きれいな砂 5個";
+	mes "オリデオコン、エルニウム 各3個ずつ";
+	getitem 974,1;
+	getitem 7068,5;
+	getitem 7043,5;
+	getitem 756,3;
+	getitem 757,3;
+	set change_alchemist,12;
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "無事ジュノーに着けるよう祈って";
+	mes "いるよ。では、いってらっしゃい。";
+	close;
+LStart4:
+	if (npc_yunoalc==2) goto L4_ok;
+	mes "[ニコラス=プラメール]";
+	mes "「賢者の都市ジュノー」にセージ達と";
+	mes "共に錬金術を研究中の「バーン」か";
+	mes "「バジン」の兄弟を訪ねなさい。";
+	mes "行って、研究を手伝ってくるように。";
+	close;
+L4_ok:
+	mes "[ニコラス=プラメール]";
+	mes "長旅、ご苦労だったね。";
+	mes "「バーン」「バジン」兄弟から";
+	mes "とても助かったとの書簡が届いているよ。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "研究を成功させてきたようだね。";
+	mes "彼ら兄弟の研究を手伝える程なら……";
+	mes "うむ、充分に資格があると思って";
+	mes "間違いないだろう。";
+	next;
+	mes "[ニコラス=プラメール]";
+	mes "2階のギルド長に会いに行くと良い。";
+	mes "喜べ！転職まで後残りわずかだよ！";
+	set change_alchemist,13;
+	close;
+LStart5:
+	mes "[ニコラス=プラメール]";
+	mes "2階のギルド長に会いに行くと良い。";
+	mes "喜べ！転職まで後残りわずかだよ！";
+	close;
+
+}
+//==============================================================================
+alde_alche.gat,24,188,2	script	ギルド商人	740,{
+	mes "[アルシャープ]";
+	mes "いらっしゃいませ！";
+	next;
+	menu "乳鉢を購入する。",L1,"製造の書を購入する。",L2,"やめる",Lend;
+L1:
+		mes "[アルシャープ]";
+		mes "何をお求めですか？";
+		next;
+		menu "乳鉢 - 8z",-,"取り引きを中断する。",Lend;
+		mes "[アルシャープ]";
+		mes "いくつ要りようですか？";
+		mes "取り引きを中止する場合は";
+		mes "｢0｣と書いてください。";
+Lnyuinp:
+		next;
+		input @nyunum;
+		if (@nyunum <= 0) goto Lend2;
+		if (@nyunum > 100) goto LError1;
+		set @nyupri,@nyunum*8;
+		if (Zeny < @nyupri) goto LError2;
+		getitem 7134,@nyunum;
+		set Zeny,Zeny-@nyupri;
+		goto Lfin;
+L2:
+	mes "[アルシャープ]";
+	mes "どの品をご希望ですか？";
+	mes "製造の書は、";
+	mes "スリムポーション製造の書が";
+	mes "240,000 Zeny。他の書は";
+	mes "100,000 Zeny となります。";
+	next;
+	menu "ポーション製造の書",L2_1,"アルコール製造の書",L2_2,"ファイアーボトル製造の書",L2_3,"アシッドボトル製造の書",L2_4,"プラントボトル製造の書",L2_5,"マインボトル製造の書",L2_6,"コーティング薬製造の書",L2_7,"スリムポーション製造の書",L2_8,"取り引きを中断する",Lend;
+L2_1:
+	if (Zeny < 100000) goto LError2;
+	set Zeny,Zeny-100000;
+	getitem 7144,1;
+	goto Lfin;
+L2_2:
+	if (Zeny < 100000) goto LError2;
+	set Zeny,Zeny-100000;
+	getitem 7127,1;
+	goto Lfin;
+L2_3:
+	if (Zeny < 100000) goto LError2;
+	set Zeny,Zeny-100000;
+	getitem 7128,1;
+	goto Lfin;
+L2_4:
+	if (Zeny < 100000) goto LError2;
+	set Zeny,Zeny-100000;
+	getitem 7129,1;
+	goto Lfin;
+L2_5:
+	if (Zeny < 100000) goto LError2;
+	set Zeny,Zeny-100000;
+	getitem 7130,1;
+	goto Lfin;
+L2_6:
+	if (Zeny < 100000) goto LError2;
+	set Zeny,Zeny-100000;
+	getitem 7131,1;
+	goto Lfin;
+L2_7:
+	if (Zeny < 100000) goto LError2;
+	set Zeny,Zeny-100000;
+	getitem 7132,1;
+	goto Lfin;
+L2_8:
+	if (Zeny < 240000) goto LError2;
+	set Zeny,Zeny-240000;
+	getitem 7133,1;
+	goto Lfin;
+Lfin:
+		mes "[アルシャープ]";
+		mes "ご利用、ありがとうございました。";
+		close;
+LError1:
+	mes "[アルシャープ]";
+	mes "100 個以下でお願いします。";
+	goto Lnyuinp;
+LError2:
+	mes "[アルシャープ]";
+	mes "お金が足りません";
+	close;
+Lend:
+	mes "[アルシャープ]";
+	mes "また後程よろしくお願いします。";
+	close;
+Lend2:
+	mes "[アルシャープ]";
+	mes "取り引きが中止されました。";
+	mes "要りようの時は、また是非";
+	mes "いらしてください。";
+	close;
+}

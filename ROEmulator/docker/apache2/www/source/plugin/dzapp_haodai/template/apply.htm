@@ -1,0 +1,393 @@
+<!--{subtemplate common/header}-->
+<link rel="stylesheet" type="text/css" href="source/plugin/dzapp_haodai/images/apply.css">
+<style>
+    #wp .wp {
+        width: 960px !important;
+    }
+    .wp {
+        width: 960px !important;
+    }
+</style>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> <a href="{echo rewrite_index();}">{lang dzapp_haodai:apply_htm_1}</a> <em>&rsaquo;</em> {lang dzapp_haodai:apply_htm_2}
+	</div>
+	<div class="y">
+		{$zones[$city]}<a href="plugin.php?id=dzapp_haodai:city" title="{lang dzapp_haodai:switch_city}">[{lang dzapp_haodai:switch_city}]</a>
+	</div>
+</div>
+<div id="ct" class="wp cl">
+    <div class="mn">
+        <div class="bm">
+<div class="bm_h bbs">
+<h3 class="xs2">{lang dzapp_haodai:apply_htm_3}</h3>
+</div>
+<form method="post" name="apply" action="plugin.php?id=dzapp_haodai&action=apply">
+<div class="bm_c" style="padding:20px;">
+<input type="hidden" name="month" value="{$_GET[month]}" />
+<input type="hidden" name="money" value="{$_GET[money]}" />
+<input type="hidden" name="xd_id" value="{$_GET[xd_id]}" />
+<input type="hidden" name="xd_type" value="{$_GET[xd_type]}" />
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<table width="100%" cellpadding="0" cellspacing="0" align="center" class="tfm">
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_4}</th>
+		<td>
+			{lang dzapp_haodai:apply_htm_5}: {$xd[bank_name]} | {$xd[name]}<br>
+			{lang dzapp_haodai:apply_htm_6}: {$_GET[money]} {lang dzapp_haodai:apply_htm_7}<br>
+			{lang dzapp_haodai:apply_htm_8}: {$_GET[month]} {lang dzapp_haodai:apply_htm_9}<br>
+		</td>
+	</tr>
+		<!--{if $_GET[xd_type] == 'goufang'}-->
+	<tr>
+	<th colspan="2" class="answer xs2 xw1">1.{lang dzapp_haodai:apply_htm_10}</th>
+	</tr>
+    
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_11} <font color="red">*</font></th>
+		<td>
+			<select name="house_type" id="house_type" class="ps" tabindex="1">
+				<option value="">-{lang dzapp_haodai:apply_htm_12}-</option>
+				<option value="{lang dzapp_haodai:apply_htm_13}90m<sup>2</sup>{lang dzapp_haodai:apply_htm_14}">{lang dzapp_haodai:apply_htm_13}90m<sup>2</sup>{lang dzapp_haodai:apply_htm_14}</option>
+				<option value="{lang dzapp_haodai:apply_htm_17}90m<sup>2</sup>{lang dzapp_haodai:apply_htm_14}">{lang dzapp_haodai:apply_htm_17}90m<sup>2</sup>{lang dzapp_haodai:apply_htm_14}</option>
+				<option value="{lang dzapp_haodai:apply_htm_21}">{lang dzapp_haodai:apply_htm_21}</option>
+				<option value="{lang dzapp_haodai:apply_htm_23}" selected="selected">{lang dzapp_haodai:apply_htm_23}</option>
+				<option value="{lang dzapp_haodai:apply_htm_25}">{lang dzapp_haodai:apply_htm_25}</option>
+				<option value="{lang dzapp_haodai:apply_htm_27}">{lang dzapp_haodai:apply_htm_27}</option>
+				<option value="{lang dzapp_haodai:apply_htm_29}">{lang dzapp_haodai:apply_htm_29}</option>
+				<option value="{lang dzapp_haodai:apply_htm_31}">{lang dzapp_haodai:apply_htm_31}</option>
+				<option value="{lang dzapp_haodai:apply_htm_33}">{lang dzapp_haodai:apply_htm_33}</option>
+				<option value="{lang dzapp_haodai:apply_htm_35}">{lang dzapp_haodai:apply_htm_35}</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_37} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_38}:5000" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="monthly" id="monthly" class="px" size="40" />&nbsp;&nbsp;{lang dzapp_haodai:apply_htm_39}
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_141} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="hukou" value="{lang dzapp_haodai:apply_htm_76}" checked="checked" >&nbsp;{lang dzapp_haodai:apply_htm_76}</label>&nbsp;&nbsp;<label><input type="radio" name="hukou" value="{lang dzapp_haodai:apply_htm_78}" >&nbsp;{lang dzapp_haodai:apply_htm_78}</label>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_47} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="has_secondhandhouse" value="{lang dzapp_haodai:apply_htm_48}" checked="checked" >&nbsp;{lang dzapp_haodai:apply_htm_48}</label>&nbsp;&nbsp;<label><input type="radio" name="has_secondhandhouse" value="{lang dzapp_haodai:apply_htm_50}" >&nbsp;{lang dzapp_haodai:apply_htm_50}</label>
+		</td>
+	</tr>
+	<tr>
+	<th colspan="2" class="answer xs2 xw1">2.{lang dzapp_haodai:apply_htm_52}</th>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_53} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_54}" name="nickname" id="nickname" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_55} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_56}" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="mobile" id="mobile" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_57}&nbsp;&nbsp;&nbsp;</th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_58}({lang dzapp_haodai:apply_htm_59})" name="email" id="email" class="px" />
+		</td>
+	</tr>
+	<tr>
+	<td colspan="2" class="answer xs2 xw1">3.{lang dzapp_haodai:apply_htm_60}({lang dzapp_haodai:apply_htm_61})</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="answer2">{lang dzapp_haodai:apply_htm_62}<br>{lang dzapp_haodai:apply_htm_63}</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_64}({lang dzapp_haodai:apply_htm_65})</th>
+		<td>
+			<textarea id="details" name="details" cols="40" rows="5" placeholder="{lang dzapp_haodai:apply_htm_66}" onpaste="return false" class="pt"></textarea>
+		</td>
+	</tr>
+		<!--{elseif $_GET[xd_type] == 'gouche'}-->
+	<tr>
+	<th colspan="2" class="answer xs2 xw1">1.{lang dzapp_haodai:apply_htm_10}</th>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_68} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="has_house" checked="checked"  value="{lang dzapp_haodai:apply_htm_69}"  >&nbsp;{lang dzapp_haodai:apply_htm_69}</label><br><label><input type="radio" name="has_house" value="{lang dzapp_haodai:apply_htm_71}" >&nbsp;{lang dzapp_haodai:apply_htm_71}</label><br><label><input type="radio" name="has_house" value="{lang dzapp_haodai:apply_htm_73}" >&nbsp;{lang dzapp_haodai:apply_htm_73}</label>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_85} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="car_step" value="{lang dzapp_haodai:apply_htm_86}" checked="checked">&nbsp;{lang dzapp_haodai:apply_htm_86}</label><br><label><input type="radio" name="car_step" value="{lang dzapp_haodai:apply_htm_88}" >&nbsp;{lang dzapp_haodai:apply_htm_88}</label><br><label><input type="radio" name="car_step" value="{lang dzapp_haodai:apply_htm_90}" >&nbsp;{lang dzapp_haodai:apply_htm_90}</label>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_133} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_134}10000" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="monthly" id="monthly" class="px" size="40" />&nbsp;&nbsp;{lang dzapp_haodai:apply_htm_39}
+		</td>
+	</tr>
+	<tr>
+	<th colspan="2" class="answer xs2 xw1">2.{lang dzapp_haodai:apply_htm_52}</th>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_53} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_54}" name="nickname" id="nickname" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_55} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_56}" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="mobile" id="mobile" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_57}&nbsp;&nbsp;&nbsp;</th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_58}({lang dzapp_haodai:apply_htm_59})" name="email" id="email" class="px" />
+		</td>
+	</tr>
+	<tr>
+	<td colspan="2" class="answer xs2 xw1">3.{lang dzapp_haodai:apply_htm_60}({lang dzapp_haodai:apply_htm_61})</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="answer2">{lang dzapp_haodai:apply_htm_62}<br>{lang dzapp_haodai:apply_htm_108}</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_64}({lang dzapp_haodai:apply_htm_65})</th>
+		<td>
+			<textarea id="details" name="details" cols="40" rows="5" placeholder="{lang dzapp_haodai:apply_htm_66}" onpaste="return false" class="pt"></textarea>
+		</td>
+	</tr>
+		<!--{elseif $_GET[xd_type] == 'qiye'}-->
+	<tr>
+	<th colspan="2" class="answer xs2 xw1">1.{lang dzapp_haodai:apply_htm_10}</th>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_113} <font color="red">*</font></th>
+		<td>
+			<select name="company_type" id="company_type" class="ps" tabindex="1">
+				<option value="">-{lang dzapp_haodai:apply_htm_12}-</option>
+				<option value="{lang dzapp_haodai:apply_htm_115}">{lang dzapp_haodai:apply_htm_115}</option>
+				<option value="{lang dzapp_haodai:apply_htm_117}">{lang dzapp_haodai:apply_htm_117}</option>
+				<option value="{lang dzapp_haodai:apply_htm_119}/{lang dzapp_haodai:apply_htm_120}">{lang dzapp_haodai:apply_htm_119}/{lang dzapp_haodai:apply_htm_120}</option>
+				<option value="{lang dzapp_haodai:apply_htm_123}">{lang dzapp_haodai:apply_htm_123}</option>
+				<option value="{lang dzapp_haodai:apply_htm_125}">{lang dzapp_haodai:apply_htm_125}</option>
+				<option value="{lang dzapp_haodai:apply_htm_127}">{lang dzapp_haodai:apply_htm_127}</option>
+				<option value="{lang dzapp_haodai:apply_htm_129}">{lang dzapp_haodai:apply_htm_129}</option>
+				<option value="{lang dzapp_haodai:apply_htm_131}">{lang dzapp_haodai:apply_htm_131}</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_133} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_134}10000" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="monthly" id="monthly" class="px" size="40" />&nbsp;&nbsp;{lang dzapp_haodai:apply_htm_39}
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_68} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="has_house" value="{lang dzapp_haodai:apply_htm_69}"  checked="checked">&nbsp;{lang dzapp_haodai:apply_htm_69}</label><br><label><input type="radio" name="has_house" value="{lang dzapp_haodai:apply_htm_71}" >&nbsp;{lang dzapp_haodai:apply_htm_71}</label>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:mobile_70} <font color="red">*</font></th>
+		<td>
+			<select class="select" id="business_time" name="business_time">  
+				<option value="">-{lang dzapp_haodai:apply_htm_12}-</option>
+				<option value="{lang dzapp_haodai:mobile_72}">{lang dzapp_haodai:mobile_72}</option>
+				<option value="{lang dzapp_haodai:mobile_73}">{lang dzapp_haodai:mobile_73}</option>
+				<option value="1{lang dzapp_haodai:mobile_74}">1{lang dzapp_haodai:mobile_74}</option>
+				<option value="2{lang dzapp_haodai:mobile_74}">2{lang dzapp_haodai:mobile_74}</option>
+				<option value="3{lang dzapp_haodai:mobile_74}">3{lang dzapp_haodai:mobile_74}</option>
+				<option value="4{lang dzapp_haodai:mobile_74}">4{lang dzapp_haodai:mobile_74}</option>
+				<option value="{lang dzapp_haodai:mobile_75}">{lang dzapp_haodai:mobile_75}</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+	<th colspan="2" class="answer xs2 xw1">2.{lang dzapp_haodai:apply_htm_52}</th>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_53} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_54}" name="nickname" id="nickname" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_55} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_56}" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="mobile" id="mobile" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_57}&nbsp;&nbsp;&nbsp;</th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_58}({lang dzapp_haodai:apply_htm_59})" name="email" id="email" class="px" />
+		</td>
+	</tr>
+	<tr>
+	<td colspan="2" class="answer xs2 xw1">3.{lang dzapp_haodai:apply_htm_60}({lang dzapp_haodai:apply_htm_61})</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="answer2">{lang dzapp_haodai:apply_htm_62}<br>{lang dzapp_haodai:apply_htm_157}/{lang dzapp_haodai:apply_htm_158}</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_64}({lang dzapp_haodai:apply_htm_65})</th>
+		<td>
+			<textarea id="details" name="details" cols="40" rows="5" placeholder="{lang dzapp_haodai:apply_htm_66}" onpaste="return false" class="pt"></textarea>
+		</td>
+	</tr>
+		<!--{elseif $_GET[xd_type] == 'xiaofei'}-->
+	<tr>
+	<td colspan="2" class="answer xs2 xw1">1.{lang dzapp_haodai:apply_htm_162}</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_113} <font color="red">*</font></th>
+		<td>
+			<select name="company_type" id="company_type" class="ps" tabindex="1">
+				<option value="">-{lang dzapp_haodai:apply_htm_12}-</option>
+				<option value="{lang dzapp_haodai:apply_htm_115}">{lang dzapp_haodai:apply_htm_115}</option>
+				<option value="{lang dzapp_haodai:apply_htm_117}">{lang dzapp_haodai:apply_htm_117}</option>
+				<option value="{lang dzapp_haodai:apply_htm_119}/{lang dzapp_haodai:apply_htm_120}">{lang dzapp_haodai:apply_htm_119}/{lang dzapp_haodai:apply_htm_120}</option>
+				<option value="{lang dzapp_haodai:apply_htm_123}">{lang dzapp_haodai:apply_htm_123}</option>
+				<option value="{lang dzapp_haodai:apply_htm_125}">{lang dzapp_haodai:apply_htm_125}</option>
+				<option value="{lang dzapp_haodai:apply_htm_127}">{lang dzapp_haodai:apply_htm_127}</option>
+				<option value="{lang dzapp_haodai:apply_htm_129}">{lang dzapp_haodai:apply_htm_129}</option>
+				<option value="{lang dzapp_haodai:apply_htm_131}">{lang dzapp_haodai:apply_htm_131}</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_183} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_184}:1980" onkeyup="this.value = this.value.replace(/\D/g, '');this.value=this.value.substr(0,4)" onpaste="return false" name="year_born" id="year_born" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_185} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="salary_type" value="{lang dzapp_haodai:apply_htm_186}" checked="checked" >&nbsp;{lang dzapp_haodai:apply_htm_186}</label><br><label><input type="radio" name="salary_type" value="{lang dzapp_haodai:apply_htm_188}" >&nbsp;{lang dzapp_haodai:apply_htm_188}</label><br><label><input type="radio" name="salary_type" value="{lang dzapp_haodai:apply_htm_190}" >&nbsp;{lang dzapp_haodai:apply_htm_190}</label>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_37} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_38}:5000" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="salary" id="salary" class="px" size="40" />&nbsp;&nbsp;{lang dzapp_haodai:apply_htm_39}
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_195} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="1{lang dzapp_haodai:apply_htm_196}1" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" name="job_year" id="job_year" class="px" size="40" style="width:80px;" />&nbsp;{lang dzapp_haodai:apply_htm_197}&nbsp;&nbsp;<input type="text" placeholder="6{lang dzapp_haodai:apply_htm_198}6" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" name="job_month" id="job_month" class="px" size="40" style="width:80px;" />&nbsp;{lang dzapp_haodai:apply_htm_199}
+		</td>
+	</tr>
+	<tr>
+	<td colspan="2" class="answer xs2 xw1">2.{lang dzapp_haodai:apply_htm_200}</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_201} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="has_creditcard" value="{lang dzapp_haodai:apply_htm_202}"  onclick="if(checked == true){document.getElementById('creditcard_num_display').style.display='';document.getElementById('creditcard_money_display').style.display='';}">&nbsp;{lang dzapp_haodai:apply_htm_202}</label>&nbsp;&nbsp;<label><input type="radio" name="has_creditcard" value="{lang dzapp_haodai:apply_htm_204}" checked="checked" onclick="if(checked == true){document.getElementById('creditcard_num_display').style.display='none';document.getElementById('creditcard_money_display').style.display='none';}">&nbsp;{lang dzapp_haodai:apply_htm_204}</label>
+		</td>
+	</tr>
+	<tr id="creditcard_num_display" style="display:none;">
+		<th>{lang dzapp_haodai:apply_htm_206} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="1{lang dzapp_haodai:apply_htm_207}1" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="creditcard_num" id="creditcard_num" class="px" size="40" />&nbsp;&nbsp;{lang dzapp_haodai:apply_htm_208}
+		</td>
+	</tr>
+	<tr id="creditcard_money_display" style="display:none;">
+		<th>{lang dzapp_haodai:apply_htm_209} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_210}:10000" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="creditcard_money" id="creditcard_money" class="px" size="40" />&nbsp;&nbsp;{lang dzapp_haodai:apply_htm_39}
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_212} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="has_debt" value="{lang dzapp_haodai:apply_htm_202}"  onclick="if(checked == true){document.getElementById('debt_money_display').style.display='';}">&nbsp;{lang dzapp_haodai:apply_htm_202}</label>&nbsp;&nbsp;<label><input type="radio" name="has_debt" value="{lang dzapp_haodai:apply_htm_204}" checked="checked"  onclick="if(checked == true){document.getElementById('debt_money_display').style.display='none';}">&nbsp;{lang dzapp_haodai:apply_htm_204}</label>
+		</td>
+	</tr>
+	<tr id="debt_money_display" style="display:none;">
+		<th>{lang dzapp_haodai:apply_htm_217} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_210}:10000" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="debt_money" id="debt_money" class="px" size="40" />&nbsp;&nbsp;{lang dzapp_haodai:apply_htm_39}
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_220} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="has_succ_apply" value="{lang dzapp_haodai:apply_htm_202}"  >&nbsp;{lang dzapp_haodai:apply_htm_202}</label>&nbsp;&nbsp;<label><input type="radio" name="has_succ_apply" value="{lang dzapp_haodai:apply_htm_204}" checked="checked" >&nbsp;{lang dzapp_haodai:apply_htm_204}</label>
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_225} <font color="red">*</font></th>
+		<td>
+			<label><input type="radio" name="has_debt_loan" value="{lang dzapp_haodai:apply_htm_202}"  onclick="if(checked == true){document.getElementById('debt_loan_money_display').style.display='';}">&nbsp;{lang dzapp_haodai:apply_htm_202}</label>&nbsp;&nbsp;<label><input type="radio" name="has_debt_loan" value="{lang dzapp_haodai:apply_htm_204}" checked="checked"  onclick="if(checked == true){document.getElementById('debt_loan_money_display').style.display='none';}">&nbsp;{lang dzapp_haodai:apply_htm_204}</label>
+		</td>
+	</tr>
+	<tr id="debt_loan_money_display" style="display:none;">
+		<th>{lang dzapp_haodai:apply_htm_217} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_210}:10000" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="debt_loan_money" id="debt_loan_money" class="px" size="40" />&nbsp;&nbsp;{lang dzapp_haodai:apply_htm_39}
+		</td>
+	</tr>
+	<tr>
+	<td colspan="2" class="answer xs2 xw1">3.{lang dzapp_haodai:apply_htm_52}</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_53} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_54}" name="nickname" id="nickname" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_55} <font color="red">*</font></th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_56}" onkeyup="this.value = this.value.replace(/[^\d\-]/g, '')" onpaste="return false" name="mobile" id="mobile" class="px" size="40" />
+		</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_57}&nbsp;&nbsp;&nbsp;</th>
+		<td>
+			<input type="text" placeholder="{lang dzapp_haodai:apply_htm_58}({lang dzapp_haodai:apply_htm_59})" name="email" id="email" class="px" />
+		</td>
+	</tr>
+	<tr>
+	<td colspan="2" class="answer xs2 xw1">4.{lang dzapp_haodai:apply_htm_60}({lang dzapp_haodai:apply_htm_61})</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="answer2">{lang dzapp_haodai:apply_htm_62}<br>{lang dzapp_haodai:apply_htm_244}</td>
+	</tr>
+	<tr>
+		<th>{lang dzapp_haodai:apply_htm_64}({lang dzapp_haodai:apply_htm_65})</th>
+		<td>
+			<textarea id="details" name="details" cols="40" rows="5" placeholder="{lang dzapp_haodai:apply_htm_66}" onpaste="return false" class="pt"></textarea>
+		</td>
+	</tr>
+		<!--{/if}-->
+	<th colspan="2" class=" answer xs2 xw1">{lang dzapp_haodai:apply_htm_248}</th>
+	<tr>
+		<td colspan="2" class="answer2"><br>{lang dzapp_haodai:apply_htm_249}<br>{lang dzapp_haodai:apply_htm_250}<b>400-8055-855</b></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td><button type="submit" name="applysubmit" id="applysubmit" value="true" class="dakuang pn pnc"><strong>{lang dzapp_haodai:apply_htm_251}</strong></button></td>
+	</tr>
+</table>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!--{subtemplate common/footer}-->

@@ -3,7 +3,7 @@
 //=============================================================
 //
 // 数据库的格式说明:
-// ID,AegisName,Name,Type,Buy,Sell,Weight,ATK[:MATK],DEF,Range,Slots,Job,Class,Gender,Loc,wLV,eLV[:maxLevel],Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
+// ID,AegisName,Name,Type,Buy,Sell,Weight,ATK[:MATK],DEF,Range,Slots,Job,Class,Gender,Location,wLV,eLV[:maxLevel],Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
 //
 // 关于ATK字段的提示：
 // - 在复兴后版本(RE)中，这个字段能够多存放一个可选数值，用来表示一个武器的matk是多少
@@ -34,7 +34,7 @@
 519,Milk,牛奶,0,25,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(27,37),0; },{},{}
 520,Leaflet_Of_Hinal,西纳雷叶子,0,150,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(175,235),0; },{},{}
 521,Leaflet_Of_Aloe,芦荟叶子,0,360,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(325,405),0; },{},{}
-522,Fruit_Of_Mastela,玛丝黛拉果实,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 15,15; },{},{}
+522,Fruit_Of_Mastela,玛丝黛拉果实,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 5,5; },{},{}
 523,Holy_Water,圣水,0,20,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_end SC_CURSE; },{},{}
 525,Panacea,万能药,0,500,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE; sc_end SC_Hallucination; },{},{}
 526,Royal_Jelly,蜂胶,0,7000,,150,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(325,405),rand(40,60); sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE; sc_end SC_Hallucination; },{},{}
@@ -46,8 +46,8 @@
 533,Grape_Juice,葡萄汁,0,250,,40,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 0,rand(15,25); },{},{}
 534,Carrot_Juice,红萝卜汁,0,20,,40,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(27,33),0; },{},{}
 535,Pumpkin,南瓜,0,15,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 19,0; },{},{}
-536,Ice_Cream,冰淇淋,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,20; sc_start SC_FREEZE,10000,0,2500,0; },{},{}
-537,Pet_Food,宠物饲料,0,500,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 50,50; },{},{}
+536,Ice_Cream,冰淇淋,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 10,10; sc_start SC_FREEZE,10000,0,2500,0; },{},{}
+537,Pet_Food,宠物饲料,0,500,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,20; },{},{}
 538,Well_Baked_Cookie,姜饼,0,1000,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(160,200),0; },{},{}
 539,Piece_Of_Cake,小蛋糕,0,3000,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(270,330),0; },{},{}
 540,Falcon's_Feed,猎鹰饲料,0,2000,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(185,225),0; },{},{}
@@ -114,7 +114,7 @@
 // Usable Items
 //===================================================================
 601,Wing_Of_Fly,苍蝇翅膀,11,10,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",1; if(countitem(601) <= 1) getitem 601,1; },{},{}
-602,Wing_Of_Butterfly,蝴蝶翅膀,11,100,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",3; getitem 602,1; },{},{}
+602,Wing_Of_Butterfly,蝴蝶翅膀,11,100,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "AL_TELEPORT",3; if(countitem(602) <= 1) getitem 602,1; },{},{}
 603,Old_Blue_Box,神秘箱子,2,10000,,200,,,,,0xFFFFFFFF,63,2,,,,,,{ getrandgroupitem(IG_BlueBox,1); },{},{}
 604,Branch_Of_Dead_Tree,枯树枝,2,50,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ monster "this",-1,-1,"--ja--",-1-MOBG_Branch_Of_Dead_Tree,1,""; },{},{}
 605,Anodyne,曼特疗伤药,11,2000,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemskill "SM_ENDURE",1; },{},{}
@@ -1111,7 +1111,7 @@
 //===================================================================
 // Arrows
 //===================================================================
-1750,Arrow,箭矢,10,1,,1,25,,,,0x000A1848,63,2,32768,,1,,1,{},{},{}
+1750,Arrow,箭矢,10,1,,1,25,,,,0xFFFFFFFF,63,2,32768,,1,,1,{},{},{}
 1751,Silver_Arrow,银箭矢,10,3,,2,30,,,,0x000A1848,63,2,32768,,1,,1,{ bonus bAtkEle,Ele_Holy; },{},{}
 1752,Fire_Arrow,火箭矢,10,3,,2,30,,,,0x000A1848,63,2,32768,,1,,1,{ bonus bAtkEle,Ele_Fire; },{},{}
 1753,Steel_Arrow,钢铁箭矢,10,4,,2,40,,,,0x000A1848,63,2,32768,,1,,1,{},{},{}
@@ -1682,7 +1682,6 @@
 2459,Upg_Shoes,[强化]长靴,4,20,,200,,15,,1,0xFFFFFFFE,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
 2460,Upg_Boots,[强化]战士长靴,4,20,,300,,21,,1,0x416E5CEA,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
 2461,Upg_Greave,[强化]重靴,4,20,,400,,32,,1,0x00004080,63,2,64,,0,1,0,{ bonus bMaxHPrate,3; },{},{}
-2462,Sleipnir_C,史雷普尼尔之靴 1S,4,20,,0,,40,,1,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,15; bonus bSpeedRate,100; bonus bInt,25; },{},{}
 2463,Feral_Boots,狂野长靴,4,20,,0,,12,,0,0xFFFFFFFF,63,2,64,,75,0,0,{},{},{}
 2464,No_Fear_Shoes,无畏之靴,4,0,,0,,6,,0,0xFFFFFFFF,63,2,64,,20,0,0,{ bonus bStr,1; bonus bInt,1; bonus bDex,1; },{},{}
 2465,Dance_Shoes,舞鞋,4,20,,300,,15,,1,0x00080000,63,2,64,,105,1,0,{ bonus bAgi,1; bonus bAspdRate,2; bonus2 bSkillUseSP,"WA_SWING_DANCE",32; },{},{}
@@ -7404,7 +7403,7 @@
 //===================================================================
 // Bullets
 //===================================================================
-13200,Bullet,子弹,10,1,,1,25,,,,0x41000000,63,2,32768,,1,,3,{},{},{}
+13200,Bullet,子弹,10,1,,1,25,,,,0xFFFFFFFF,63,2,32768,,1,,3,{},{},{}
 13201,Silver_Bullet,银色子弹,10,15,,2,15,,,,0x41000000,63,2,32768,,1,,3,{ bonus bAtkEle,Ele_Holy; },{},{}
 13202,Shell_Of_Blood,血波枪子弹,10,30,,2,30,,,,0x41000000,63,2,32768,,1,,3,{ bonus2 bAddEff,Eff_Bleeding,100; },{},{}
 13203,Flare_Sphere,火枪子弹,10,80,,5,50,,,,,,,32768,,,,5,{ bonus bAtkEle,Ele_Fire; },{},{}
@@ -11979,7 +11978,7 @@
 28354,City_Map,街市地图,4,0,,100,,0,,1,0xFFFFFFFF,63,2,136,,1,0,0,{ /* todo */ },{},{}
 28355,Shining_Holy_Water_,闪耀的圣水,4,0,,100,,0,,1,0xFFFFFFFF,63,2,136,,1,0,0,{ /* todo */ },{},{}
 28356,Prontera_Badge,普隆德拉徽章,4,0,,100,,0,,0,0xFFFFFFFF,63,2,136,,1,0,0,{ /*warp "prontera",159,192;  15 mins cooldown */ },{},{}
-28358,Cursed_Lucky_Clover,呪われた幸撙违愆`バー,4,0,,100,,,,1,0xFFFFFFFF,63,2,136,,100,0,,{ bonus bLuk,2; bonus bFlee,3; bonus2 bAddEff2,Eff_Curse,5; },{},{ sc_end SC_CLOAKING; /*FIXME: Because the combo has Cloaking skill*/ }
+28358,Cursed_Lucky_Clover,呪われた幸撙违ローバー,4,0,,100,,,,1,0xFFFFFFFF,63,2,136,,100,0,,{ bonus bLuk,2; bonus bFlee,3; bonus2 bAddEff2,Eff_Curse,5; },{},{ sc_end SC_CLOAKING; /*FIXME: Because the combo has Cloaking skill*/ }
 28372,Imperial_Ring,王国戒指,4,0,,500,,3,,1,0xFFFFFFFF,63,2,136,,50,0,,{ bonus bStr,1; bonus bInt,1; bonus bMaxHPRate,3; bonus bMaxSPRate,3; },{},{}
 28374,Foxtail_Ring,狐尾草戒指,4,20,,100,,0,,0,0x80000000,7,2,136,,1,0,,{ bonus2 bExpAddRace,RC_All,5; .@lvl = min(BaseLevel/5,10); bonus bAtk,2*.@lvl; bonus bMatk,2*.@lvl; bonus bMaxHP,10*.@lvl; bonus bMaxSP,5*.@lvl; },{},{}
 28377,Magical_Ring,魔铃戒指,4,0,,100,,,,1,0xFFFFFFFF,63,2,136,,20,0,,{ bonus2 bMagicAtkEle,Ele_Fire,5; bonus2 bMagicAtkEle,Ele_Water,5; bonus2 bMagicAtkEle,Ele_Earth,5; bonus2 bMagicAtkEle,Ele_Wind,5; if (BaseLevel > 4) { bonus2 bSkillAtk,"MG_FIREBOLT",BaseLevel/5; bonus2 bSkillAtk,"MG_COLDBOLT",BaseLevel/5; bonus2 bSkillAtk,"MG_LIGHTNINGBOLT",BaseLevel/5; bonus2 bSkillAtk,"WZ_EARTHSPIKE",BaseLevel/5; } },{},{}
@@ -12208,7 +12207,7 @@
 // More Costumes
 //===================================================================
 31027,C_Pretty_Bear,[衣装] プリティーベア,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1480,{},{},{}
-31028,C_Black_Cat_Hood,[衣装] à违诈`ド,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1481,{},{},{}
+31028,C_Black_Cat_Hood,[衣装] 猫のフード,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1481,{},{},{}
 31029,C_Pig_Nose,[衣装] サベージベベマスク,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,1482,{},{},{}
 31030,C_Tiger_Face,[衣装] タイガーフェイス,4,0,,0,,,,0,0xFFFFFFFF,63,2,7168,,1,0,483,{},{},{}
 31031,C_Drooping_Pope_Casual,[衣装] たれ教皇(私服),4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1483,{},{},{}
@@ -12228,7 +12227,7 @@
 31045,C_Blue_Rear_Ribbon,[衣装] 蒼のリアリボン,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,1492,{},{},{}
 31046,C_White_Rose_Princess,[衣装] ホワイトローズプリンセス,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1493,{},{},{}
 31047,C_First_Love_Cheek,[衣装] 初恋ほっぺ,4,0,,0,,,,0,0xFFFFFFFF,63,2,2048,,1,0,1494,{},{},{}
-31048,C_White_Lily_Black_Ribbon,[衣装] ホワイトリリー(辚堀?,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1495,{},{},{}
+31048,C_White_Lily_Black_Ribbon,[衣装] ホワイトリリー(リボ),4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1495,{},{},{}
 31049,C_Marin_Hat,[衣装] マーリンの帽子,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,948,{},{},{}
 31050,C_Golden_Poring_Hat,[衣装] ゴールデンポリンの帽子,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1236,{},{},{}
 31051,C_Poring_Sun_Visor,[衣装] ポリンサンバイザー,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1496,{},{},{}
@@ -12591,14 +12590,3 @@
 32301,Illusion_Gold_Lux,幻影金色勒克司,5,20,,1800,160,,7,2,0x41000000,63,2,34,4,120,1,17,{ .@r = getrefine(); bonus bHit,10; bonus bLongAtkRate,3*(.@r/2); if (.@r >= 7) { bonus2 bSkillAtk,"GS_DESPERADO",40; if (.@r >= 9) { bonus2 bSkillCooldown,"RL_HEAT_BARREL",-2000; if (.@r >= 11) { bonus2 bSkillAtk,"RL_FIREDANCE",30; } } } },{},{}
 32302,Crimson_Rose,Crimson Rose,5,20,,700,150,,7,2,0x40000000,63,2,34,4,100,1,17,{ .@r = getrefine(); bonus bBaseAtk,10*(.@r/2); bonus bAspdRate,3*(.@r/3); if (.@r >= 7) { bonus bAspd,1; bonus2 bAddClass,Class_All,5; if (.@r >= 9) { bonus bCritAtkRate,20; if (.@r >= 11) { autobonus3 "{ bonus bCritical,20; bonus bLongAtkRate,15; }",1000,60000,"RL_HEAT_BARREL"; } } } },{},{}
 
-
-
-
-50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 50000,1; callfunc "F_MANUAL"; },{},{}
-
-
-51530,Mjolnir_,雷神之锤 1S,5,20,,6000,350,,1,1,0x000444A2,63,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,50; bonus bStr,20; bonus bAspdRate,200; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000; },{},{}
-52383,Brynhild_,布伦希尔德 1S,4,20,,400,,120,,1,0xFFFFFFFF,63,2,16,,94,0,0,{ bonus bMdef,10; bonus bMaxHP,20*BaseLevel; bonus bMaxSP,5*BaseLevel; bonus2 bAddClass,Class_All,10; bonus bMatkRate,10; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
-52541,Asprika_,阿斯普利卡 1S,4,20,,400,,40,,1,0xFFFFFFFF,63,2,4,,94,0,0,{ bonus bMdef,5; bonus3 bSubEle,Ele_Neutral,30,BF_SHORT; bonus3 bSubEle,Ele_Water,30,BF_SHORT; bonus3 bSubEle,Ele_Earth,30,BF_SHORT; bonus3 bSubEle,Ele_Fire,30,BF_SHORT; bonus3 bSubEle,Ele_Wind,30,BF_SHORT; bonus3 bSubEle,Ele_Poison,30,BF_SHORT; bonus3 bSubEle,Ele_Holy,30,BF_SHORT; bonus3 bSubEle,Ele_Dark,30,BF_SHORT; bonus3 bSubEle,Ele_Ghost,30,BF_SHORT; bonus3 bSubEle,Ele_Undead,30,BF_SHORT; bonus bFlee,30; skill "AL_TELEPORT",1; bonus bUnbreakableGarment; },{},{}
-52629,Magingiorde_,雷神腰带 1S,4,20,,8000,,2,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,40+BaseLevel/5; bonus bMdef,7; if(readparam(bStr)>=120) bonus2 bAddClass,Class_Boss,10; },{},{}
-52630,Brysinggamen_,女神项链 1S,4,20,,1500,,1,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,6; bonus bAgi,6; bonus bVit,6; bonus bInt,10; bonus bLuk,10; bonus bMdef,5; bonus bHealPower,6; },{},{}

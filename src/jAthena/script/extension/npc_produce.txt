@@ -1,0 +1,178 @@
+//Produce NPC by kalen
+//仕様書
+//
+//・デフォルトの材料
+//作りたい属性武器の元武器を２個
+//属性を入れるなら属性石５個
+//星１つにつきかけらを１０個
+//
+//・元武器については、チェックが複雑になるのでS最低(店売り？)のみカウントします。
+//作成する武器もS最低(チェックしたIDと同一)なので、同じ武器を連続作成したり、
+//手持ちで既に属性武器があったりすると、材料として使われてしまう可能性があります。
+//・getitem2の最後の２項目を自分の鯖の特定のキャラIDにあわせて使用してください。
+//「NPC作成」とかのキャラを作成しそれにあわせて使うといいでしょう。
+prontera.gat,129,191,0	script	作成NPC	726,{
+	set @ProduceID,0;
+	set @ProduceOP,0;
+	set @attr,0;
+	set @star,0;
+	mes "[作成NPC]";
+	mes "こちらでは、属性武器の作成をしております。";
+	mes "材料は作りたい装備が2つで、";
+	mes "属性入りの場合は^0000ff属性石5つ^000000";
+	mes "★入りの場合は^0000ff星のかけら10つ^000000";
+	mes "で★1個となります。";
+	next;
+	menu "^ff0000必ずお読み下さい。^000000",L0,"短剣系列",L1,"剣系列",L2,"両手剣系列",L3,"槍系列",L7,"斧系列列",L4,"鈍器系列",L5,"ナックル系列",L6;
+L0:
+	mes "[作成NPC]";
+	mes "基本的に全部Sが最低のものでないと";
+	mes "カウントされません。";
+	mes "同じ武器を連続して作成すると";
+	mes "一つ前に作ったものを";
+	mes "材料にしてしまう事があります。";
+	next;
+	mes "[作成NPC]";
+	mes "重要なItemや、作ったものは、";
+	mes "かならず預けるか";
+	mes "カートに入れてからお願いします";
+	mes "尚Itemが消えても補償はいたしません";
+	mes "(´ー｀)ﾁﾗﾈｰﾖ";
+	close;
+L1:
+menu "ナイフ",L1_1,"カッター",L1_2,"マインゴーシュ",L1_3,"ダーク",L1_4,"ダガー",L1_5,"スティレット",L1_6,"グラディウス",L1_7,"ダマスカス",L1_8;
+L2:
+menu "ソード",L2_1,"ファルシオン",L2_2,"ブレイド",L2_3,"レイピア",L2_4,"シミター",L2_5,"環頭太刀",L2_6,"ツルギ",L2_7,"海東剣",L2_8,"サーベル",L2_9,"フランベルジェ",L2_10;
+L3:
+menu "カタナ",L3_1,"スレイヤー",L3_2,"バスタードソード",L3_3,"ツーハンドソード",L3_4,"ブロードソード",L3_5,"クレイモア",L3_6;
+L4:
+menu "アックス",L4_1,"バトルアックス",L4_2,"ハンマー",L4_3,"バスター",L4_4,"ツーハンドアックス",L4_5;
+L5:
+menu "クラブ",L5_1,"メイス",L5_2,"スマッシャ",L5_3,"フレイル",L5_4,"チェイン",L5_5,"モニングスター",L5_6,"ソードメイス",L5_7,"スタナー",L5_8;
+L6:
+menu "バグナウ",L6_1,"ナックルダスター",L6_2,"ホラ",L6_3,"フィスト",L6_4,"クロー",L6_5,"フィンガー",L6_6;
+L7:
+menu "ジャベリン",L7_1,"スピアー",L7_2,"パイク",L7_3,"ギザルム",L7_4,"グレイヴ",L7_5,"パルチザン",L7_6,"トライデント",L7_7,"ハルバード",L7_8,"ランス",L7_9;
+L1_1: set @ProduceID,1201; goto Lcheck;
+L1_2: set @ProduceID,1204; goto Lcheck;
+L1_3: set @ProduceID,1207; goto Lcheck;
+L1_4: set @ProduceID,1210; goto Lcheck;
+L1_5: set @ProduceID,1213; goto Lcheck;
+L1_6: set @ProduceID,1216; goto Lcheck;
+L1_7: set @ProduceID,1219; goto Lcheck;
+L1_8: set @ProduceID,1222; goto Lcheck;
+L2_1: set @ProduceID,1101; goto Lcheck;
+L2_2: set @ProduceID,1104; goto Lcheck;
+L2_3: set @ProduceID,1107; goto Lcheck;
+L2_4: set @ProduceID,1110; goto Lcheck;
+L2_5: set @ProduceID,1113; goto Lcheck;
+L2_6: set @ProduceID,1122; goto Lcheck;
+L2_7: set @ProduceID,1119; goto Lcheck;
+L2_8: set @ProduceID,1123; goto Lcheck;
+L2_9: set @ProduceID,1126; goto Lcheck;
+L2_10: set @ProduceID,1129; goto Lcheck;
+L3_1: set @ProduceID,1116; goto Lcheck;
+L3_2: set @ProduceID,1151; goto Lcheck;
+L3_3: set @ProduceID,1154; goto Lcheck;
+L3_4: set @ProduceID,1157; goto Lcheck;
+L3_5: set @ProduceID,1160; goto Lcheck;
+L3_6: set @ProduceID,1163; goto Lcheck;
+L4_1: set @ProduceID,1301; goto Lcheck;
+L4_2: set @ProduceID,1351; goto Lcheck;
+L4_3: set @ProduceID,1354; goto Lcheck;
+L4_4: set @ProduceID,1357; goto Lcheck;
+L4_5: set @ProduceID,1360; goto Lcheck;
+L5_1: set @ProduceID,1501; goto Lcheck;
+L5_2: set @ProduceID,1504; goto Lcheck;
+L5_3: set @ProduceID,1507; goto Lcheck;
+L5_4: set @ProduceID,1510; goto Lcheck;
+L5_5: set @ProduceID,1519; goto Lcheck;
+L5_6: set @ProduceID,1513; goto Lcheck;
+L5_7: set @ProduceID,1516; goto Lcheck;
+L5_8: set @ProduceID,1522; goto Lcheck;
+L6_1: set @ProduceID,1801; goto Lcheck;
+L6_2: set @ProduceID,1803; goto Lcheck;
+L6_3: set @ProduceID,1805; goto Lcheck;
+L6_4: set @ProduceID,1807; goto Lcheck;
+L6_5: set @ProduceID,1809; goto Lcheck;
+L6_6: set @ProduceID,1811; goto Lcheck;
+L7_1: set @ProduceID,1401; goto Lcheck;
+L7_2: set @ProduceID,1404; goto Lcheck;
+L7_3: set @ProduceID,1407; goto Lcheck;
+L7_4: set @ProduceID,1451; goto Lcheck;
+L7_5: set @ProduceID,1454; goto Lcheck;
+L7_6: set @ProduceID,1457; goto Lcheck;
+L7_7: set @ProduceID,1460; goto Lcheck;
+L7_8: set @ProduceID,1463; goto Lcheck;
+L7_9: set @ProduceID,1410; goto Lcheck;
+Lcheck:
+if (countitem(@ProduceID) < 2) goto LError;
+	mes "[作成NPC]";
+	mes "属性はどうしますか？";
+	mes "属性を付与したい場合、";
+	mes "^3355ff属性石5つ^000000が必要となります。";
+	next;
+	menu "いらない",Loption2,"^ff0000火属性^000000",LFire,"^0033ff水属性^000000",LIce,"^996600土属性^000000",LEarth,"^00cc66風属性^000000",LWind;
+		LFire:
+			if (countitem(994)<5) goto LError;
+				set @ProduceOP,3;
+				set @attr,994;
+				goto Loption2;
+		LIce:
+			if (countitem(995)<5) goto LError;
+				set @ProduceOP,1;
+				set @attr,995;
+				goto Loption2;
+		LEarth:
+			if (countitem(997)<5) goto LError;
+				set @ProduceOP,2;
+				set @attr,997;
+				goto Loption2;
+		LWind:
+			if (countitem(996)<5) goto LError;
+				set @ProduceOP,4;
+				set @attr,996;
+				goto Loption2;
+Loption2:
+	mes "[作成NPC]";
+	mes "★はどうしますか？";
+	mes "★を付与したい場合、";
+	mes "^3355ff星のかけら10つ^000000が必要となります。";
+	next;
+	if (@ProduceOP == 0) menu "いらない",Lproduce,"★一つ",LStar1,"★二つ",LStar2,"★三つ",LStar3;
+	menu "いらない",Lproduce,"★一つ",LStar1,"★二つ",LStar2;
+		LStar1:
+			if (countitem(1000)<10) goto LError;
+				set @ProduceOP,@ProduceOP+1280;
+				set @star,10;
+				goto Lproduce;
+		LStar2:
+			if (countitem(1000)<20) goto LError;
+				set @ProduceOP,@ProduceOP+2560;
+				set @star,20;
+				goto Lproduce;
+		LStar3:
+			if (countitem(1000)<30) goto LError;
+				set @ProduceOP,@ProduceOP+3840;
+				set @star,30;
+				goto Lproduce;
+Lproduce:
+	mes "[作成NPC]";
+	mes "それでは、作成します。";
+	next;
+	delitem @ProduceID,2;
+	delitem 1000,@star;
+	delitem @attr,5;
+	getitem2 @ProduceID,1,1,0,0,255,@ProduceOP,19051,2;
+	mes "[作成NPC]";
+	mes "完了しました。";
+	close;
+LError:
+	mes "[作成NPC]";
+	mes "材料が足りないようです";
+	close;
+Lend:
+	mes "[作成NPC]";
+	mes "有難うございました";
+	close;
+}

@@ -1,0 +1,180 @@
+gefg_cas01.gat,198,182,0	script	Agit_B01	-1,{
+OnInterIfInit:
+	GetCastleData "gefg_cas01.gat",0,"::OnRecvCastleG01";
+	End;
+OnRecvCastleG01:
+	if (getcastledata("gefg_cas01.gat",9) == 1) enablenpc "kapra_gefg01";
+	RequestGuildInfo GetCastleData("gefg_cas01.gat",1);
+	End;
+OnAgitStart:
+	callfunc "agitstarting","gefg_cas01.gat","::OnGDEMPSetG01";
+	End;
+OnAgitBreak:
+	callfunc "resetcastledata2","gefg_cas01.gat","::OnRecvCastleG01";
+	End;
+OnGuildBreak:
+	callfunc "resetcastledata3","gefg_cas01.gat","::OnRecvCastleG01";
+	End;
+OnAgitEliminate:
+	MapRespawnGuildID "gefg_cas01.gat",GetCastleData("gefg_cas01.gat",1),6;
+	Monster "gefg_cas01.gat",198,182,"エンペリウム",1288,1,"Agit_B01::OnAgitBreak";
+	End;
+OnAgitEnd:
+	MapRespawnGuildID "gefg_cas01.gat",GetCastleData("gefg_cas01.gat",1),4;
+	KillMonster "gefg_cas01.gat","Agit_B01::OnAgitBreak";
+	GvgOff "gefg_cas01.gat";
+	End;
+On_GDg11:SetCastleData "gefg_cas01.gat",10,0; end;
+On_GDg12:SetCastleData "gefg_cas01.gat",11,0; end;
+On_GDg13:SetCastleData "gefg_cas01.gat",12,0; end;
+On_GDg14:SetCastleData "gefg_cas01.gat",13,0; end;
+On_GDg15:SetCastleData "gefg_cas01.gat",14,0; end;
+On_GDg16:SetCastleData "gefg_cas01.gat",15,0; end;
+On_GDg17:SetCastleData "gefg_cas01.gat",16,0; end;
+On_GDg18:SetCastleData "gefg_cas01.gat",17,0; end;
+}
+//--------------------------------------------------------------------------------------------------------------------------
+gefg_cas02.gat,176,178,0	script	Agit_B02	-1,{
+OnInterIfInit:
+	GetCastleData "gefg_cas02.gat",0,"::OnRecvCastleG02";
+	End;
+OnRecvCastleG02:
+	if (getcastledata("gefg_cas02.gat",9) == 1) enablenpc "kapra_gefg02";
+	RequestGuildInfo GetCastleData("gefg_cas02.gat",1);
+	End;
+OnAgitStart:
+	callfunc "agitstarting","gefg_cas02.gat","::OnGDEMPSetG02";
+	End;
+OnAgitBreak:
+	callfunc "resetcastledata2","gefg_cas02.gat","::OnRecvCastleG02";
+	End;
+OnGuildBreak:
+	callfunc "resetcastledata3","gefg_cas02.gat","::OnRecvCastleG02";
+	End;
+OnAgitEliminate:
+	MapRespawnGuildID "gefg_cas02.gat",GetCastleData("gefg_cas02.gat",1),6;
+	Monster "gefg_cas02.gat",176,178,"エンペリウム",1288,1,"Agit_B02::OnAgitBreak";
+	End;
+OnAgitEnd:
+	MapRespawnGuildID "gefg_cas02.gat",GetCastleData("gefg_cas02.gat",1),4;
+	KillMonster "gefg_cas02.gat","Agit_B02::OnAgitBreak";
+	GvgOff "gefg_cas02.gat";
+	End;
+On_GDg21:SetCastleData "gefg_cas02.gat",10,0; end;
+On_GDg22:SetCastleData "gefg_cas02.gat",11,0; end;
+On_GDg23:SetCastleData "gefg_cas02.gat",12,0; end;
+On_GDg24:SetCastleData "gefg_cas02.gat",13,0; end;
+On_GDg25:SetCastleData "gefg_cas02.gat",14,0; end;
+On_GDg26:SetCastleData "gefg_cas02.gat",15,0; end;
+On_GDg27:SetCastleData "gefg_cas02.gat",16,0; end;
+On_GDg28:SetCastleData "gefg_cas02.gat",17,0; end;
+}
+//--------------------------------------------------------------------------------------------------------------------------
+gefg_cas03.gat,245,167,0	script	Agit_B03	-1,{
+OnInterIfInit:
+	GetCastleData "gefg_cas03.gat",0,"::OnRecvCastleG03";
+	End;
+OnRecvCastleG03:
+	if (getcastledata("gefg_cas03.gat",9) == 1) enablenpc "kapra_gefg03";
+	RequestGuildInfo GetCastleData("gefg_cas03.gat",1);
+	End;
+OnAgitStart:
+	callfunc "agitstarting","gefg_cas03.gat","::OnGDEMPSetG03";
+	End;
+OnAgitBreak:
+	callfunc "resetcastledata2","gefg_cas03.gat","::OnRecvCastleG03";
+	End;
+OnGuildBreak:
+	callfunc "resetcastledata3","gefg_cas03.gat","::OnRecvCastleG03";
+	End;
+OnAgitEliminate:
+	MapRespawnGuildID "gefg_cas03.gat",GetCastleData("gefg_cas03.gat",1),6;
+	Monster "gefg_cas03.gat",245,167,"エンペリウム",1288,1,"Agit_B03::OnAgitBreak";
+	End;
+OnAgitEnd:
+	MapRespawnGuildID "gefg_cas03.gat",GetCastleData("gefg_cas03.gat",1),4;
+	KillMonster "gefg_cas03.gat","Agit_B03::OnAgitBreak";
+	GvgOff "gefg_cas03.gat";
+	End;
+On_GDg31:SetCastleData "gefg_cas03.gat",10,0; end;
+On_GDg32:SetCastleData "gefg_cas03.gat",11,0; end;
+On_GDg33:SetCastleData "gefg_cas03.gat",12,0; end;
+On_GDg34:SetCastleData "gefg_cas03.gat",13,0; end;
+On_GDg35:SetCastleData "gefg_cas03.gat",14,0; end;
+On_GDg36:SetCastleData "gefg_cas03.gat",15,0; end;
+On_GDg37:SetCastleData "gefg_cas03.gat",16,0; end;
+On_GDg38:SetCastleData "gefg_cas03.gat",17,0; end;
+}
+//--------------------------------------------------------------------------------------------------------------------------
+gefg_cas04.gat,174,178,0	script	Agit_B04	-1,{
+OnInterIfInit:
+	GetCastleData "gefg_cas04.gat",0,"::OnRecvCastleG04";
+	End;
+OnRecvCastleG04:
+	if (getcastledata("gefg_cas04.gat",9) == 1) enablenpc "kapra_gefg04";
+	RequestGuildInfo GetCastleData("gefg_cas04.gat",1);
+	End;
+OnAgitStart:
+	callfunc "agitstarting","gefg_cas04.gat","::OnGDEMPSetG04";
+	End;
+OnAgitBreak:
+	callfunc "resetcastledata2","gefg_cas04.gat","::OnRecvCastleG04";
+	End;
+OnGuildBreak:
+	callfunc "resetcastledata3","gefg_cas04.gat","::OnRecvCastleG04";
+	End;
+OnAgitEliminate:
+	MapRespawnGuildID "gefg_cas04.gat",GetCastleData("gefg_cas04.gat",1),6;
+	Monster "gefg_cas04.gat",174,178,"エンペリウム",1288,1,"Agit_B04::OnAgitBreak";
+	End;
+OnAgitEnd:
+	MapRespawnGuildID "gefg_cas04.gat",GetCastleData("gefg_cas04.gat",1),4;
+	KillMonster "gefg_cas04.gat","Agit_B04::OnAgitBreak";
+	GvgOff "gefg_cas04.gat";
+	End;
+On_GDg41:SetCastleData "gefg_cas04.gat",10,0; end;
+On_GDg42:SetCastleData "gefg_cas04.gat",11,0; end;
+On_GDg43:SetCastleData "gefg_cas04.gat",12,0; end;
+On_GDg44:SetCastleData "gefg_cas04.gat",13,0; end;
+On_GDg45:SetCastleData "gefg_cas04.gat",14,0; end;
+On_GDg46:SetCastleData "gefg_cas04.gat",15,0; end;
+On_GDg47:SetCastleData "gefg_cas04.gat",16,0; end;
+On_GDg48:SetCastleData "gefg_cas04.gat",17,0; end;
+}
+//--------------------------------------------------------------------------------------------------------------------------
+gefg_cas05.gat,194,184,0	script	Agit_B05	-1,{
+OnInterIfInit:
+	GetCastleData "gefg_cas05.gat",0,"::OnRecvCastleG05";
+	End;
+OnRecvCastleG05:
+	if (getcastledata("gefg_cas05.gat",9) == 1) enablenpc "kapra_gefg05";
+	RequestGuildInfo GetCastleData("gefg_cas05.gat",1);
+	End;
+OnAgitStart:
+	callfunc "agitstarting","gefg_cas05.gat","::OnGDEMPSetG05";
+	End;
+OnAgitBreak:
+	callfunc "resetcastledata2","gefg_cas05.gat","::OnRecvCastleG05";
+	End;
+OnGuildBreak:
+	callfunc "resetcastledata3","gefg_cas05.gat","::OnRecvCastleG05";
+	End;
+OnAgitEliminate:
+	MapRespawnGuildID "gefg_cas05.gat",GetCastleData("gefg_cas05.gat",1),6;
+	Monster "gefg_cas05.gat",194,184,"エンペリウム",1288,1,"Agit_B05::OnAgitBreak";
+	End;
+OnAgitEnd:
+	MapRespawnGuildID "gefg_cas05.gat",GetCastleData("gefg_cas05.gat",1),4;
+	KillMonster "gefg_cas05.gat","Agit_B05::OnAgitBreak";
+	GvgOff "gefg_cas05.gat";
+	End;
+On_GDg51:SetCastleData "gefg_cas05.gat",10,0; end;
+On_GDg52:SetCastleData "gefg_cas05.gat",11,0; end;
+On_GDg53:SetCastleData "gefg_cas05.gat",12,0; end;
+On_GDg54:SetCastleData "gefg_cas05.gat",13,0; end;
+On_GDg55:SetCastleData "gefg_cas05.gat",14,0; end;
+On_GDg56:SetCastleData "gefg_cas05.gat",15,0; end;
+On_GDg57:SetCastleData "gefg_cas05.gat",16,0; end;
+On_GDg58:SetCastleData "gefg_cas05.gat",17,0; end;
+}
+//--------------------------------------------------------------------------------------------------------------------------

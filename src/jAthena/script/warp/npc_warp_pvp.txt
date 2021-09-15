@@ -1,0 +1,74 @@
+// warp point
+// pvp_nightmare
+
+pvp_n_1-4.gat,100,181,0	warp	pvp4_01	1,1,pvp_n_1-4.gat,139,82
+pvp_n_1-4.gat,137,84,0	warp	pvp4_01-1	1,1,pvp_n_1-4.gat,100,177
+pvp_n_1-4.gat,150,71,0	warp	pvp4_02	1,1,pvp_n_1-4.gat,142,164
+pvp_n_1-4.gat,144,166,0	warp	pvp4_02-1	1,1,pvp_n_1-4.gat,148,73
+pvp_n_1-4.gat,32,122,0	warp	pvp4_03	1,1,pvp_n_1-4.gat,60,82
+pvp_n_1-4.gat,62,84,0	warp	pvp4_03-1	1,1,pvp_n_1-4.gat,36,122
+pvp_n_1-4.gat,49,71,0	warp	pvp4_04	1,1,pvp_n_1-4.gat,54,164
+pvp_n_1-4.gat,56,166,0	warp	pvp4_04-1	1,1,pvp_n_1-4.gat,51,73
+
+pvp_n_2-4.gat,100,181,0	warp	pvp4_01	1,1,pvp_n_2-4.gat,139,82
+pvp_n_2-4.gat,137,84,0	warp	pvp4_01-1	1,1,pvp_n_2-4.gat,100,177
+pvp_n_2-4.gat,150,71,0	warp	pvp4_02	1,1,pvp_n_2-4.gat,142,164
+pvp_n_2-4.gat,144,166,0	warp	pvp4_02-1	1,1,pvp_n_2-4.gat,148,73
+pvp_n_2-4.gat,32,122,0	warp	pvp4_03	1,1,pvp_n_2-4.gat,60,82
+pvp_n_2-4.gat,62,84,0	warp	pvp4_03-1	1,1,pvp_n_2-4.gat,36,122
+pvp_n_2-4.gat,49,71,0	warp	pvp4_04	1,1,pvp_n_2-4.gat,54,164
+pvp_n_2-4.gat,56,166,0	warp	pvp4_04-1	1,1,pvp_n_2-4.gat,51,73
+
+pvp_n_3-4.gat,100,181,0	warp	pvp4_01	1,1,pvp_n_3-4.gat,139,82
+pvp_n_3-4.gat,137,84,0	warp	pvp4_01-1	1,1,pvp_n_3-4.gat,100,177
+pvp_n_3-4.gat,150,71,0	warp	pvp4_02	1,1,pvp_n_3-4.gat,142,164
+pvp_n_3-4.gat,144,166,0	warp	pvp4_02-1	1,1,pvp_n_3-4.gat,148,73
+pvp_n_3-4.gat,32,122,0	warp	pvp4_03	1,1,pvp_n_3-4.gat,60,82
+pvp_n_3-4.gat,62,84,0	warp	pvp4_03-1	1,1,pvp_n_3-4.gat,36,122
+pvp_n_3-4.gat,49,71,0	warp	pvp4_04	1,1,pvp_n_3-4.gat,54,164
+pvp_n_3-4.gat,56,166,0	warp	pvp4_04-1	1,1,pvp_n_3-4.gat,51,73
+
+pvp_n_4-4.gat,100,181,0	warp	pvp4_01	1,1,pvp_n_4-4.gat,139,82
+pvp_n_4-4.gat,137,84,0	warp	pvp4_01-1	1,1,pvp_n_4-4.gat,100,177
+pvp_n_4-4.gat,150,71,0	warp	pvp4_02	1,1,pvp_n_4-4.gat,142,164
+pvp_n_4-4.gat,144,166,0	warp	pvp4_02-1	1,1,pvp_n_4-4.gat,148,73
+pvp_n_4-4.gat,32,122,0	warp	pvp4_03	1,1,pvp_n_4-4.gat,60,82
+pvp_n_4-4.gat,62,84,0	warp	pvp4_03-1	1,1,pvp_n_4-4.gat,36,122
+pvp_n_4-4.gat,49,71,0	warp	pvp4_04	1,1,pvp_n_4-4.gat,54,164
+pvp_n_4-4.gat,56,166,0	warp	pvp4_04-1	1,1,pvp_n_4-4.gat,51,73
+
+pvp_n_5-4.gat,100,181,0	warp	pvp4_01	1,1,pvp_n_5-4.gat,139,82
+pvp_n_5-4.gat,137,84,0	warp	pvp4_01-1	1,1,pvp_n_5-4.gat,100,177
+pvp_n_5-4.gat,150,71,0	warp	pvp4_02	1,1,pvp_n_5-4.gat,142,164
+pvp_n_5-4.gat,144,166,0	warp	pvp4_02-1	1,1,pvp_n_5-4.gat,148,73
+pvp_n_5-4.gat,32,122,0	warp	pvp4_03	1,1,pvp_n_5-4.gat,60,82
+pvp_n_5-4.gat,62,84,0	warp	pvp4_03-1	1,1,pvp_n_5-4.gat,36,122
+pvp_n_5-4.gat,49,71,0	warp	pvp4_04	1,1,pvp_n_5-4.gat,54,164
+pvp_n_5-4.gat,56,166,0	warp	pvp4_04-1	1,1,pvp_n_5-4.gat,51,73
+
+pvp_n_6-4.gat,100,181,0	warp	pvp4_01	1,1,pvp_n_6-4.gat,139,82
+pvp_n_6-4.gat,137,84,0	warp	pvp4_01-1	1,1,pvp_n_6-4.gat,100,177
+pvp_n_6-4.gat,150,71,0	warp	pvp4_02	1,1,pvp_n_6-4.gat,142,164
+pvp_n_6-4.gat,144,166,0	warp	pvp4_02-1	1,1,pvp_n_6-4.gat,148,73
+pvp_n_6-4.gat,32,122,0	warp	pvp4_03	1,1,pvp_n_6-4.gat,60,82
+pvp_n_6-4.gat,62,84,0	warp	pvp4_03-1	1,1,pvp_n_6-4.gat,36,122
+pvp_n_6-4.gat,49,71,0	warp	pvp4_04	1,1,pvp_n_6-4.gat,54,164
+pvp_n_6-4.gat,56,166,0	warp	pvp4_04-1	1,1,pvp_n_6-4.gat,51,73
+
+pvp_n_7-4.gat,100,181,0	warp	pvp4_01	1,1,pvp_n_7-4.gat,139,82
+pvp_n_7-4.gat,137,84,0	warp	pvp4_01-1	1,1,pvp_n_7-4.gat,100,177
+pvp_n_7-4.gat,150,71,0	warp	pvp4_02	1,1,pvp_n_7-4.gat,142,164
+pvp_n_7-4.gat,144,166,0	warp	pvp4_02-1	1,1,pvp_n_7-4.gat,148,73
+pvp_n_7-4.gat,32,122,0	warp	pvp4_03	1,1,pvp_n_7-4.gat,60,82
+pvp_n_7-4.gat,62,84,0	warp	pvp4_03-1	1,1,pvp_n_7-4.gat,36,122
+pvp_n_7-4.gat,49,71,0	warp	pvp4_04	1,1,pvp_n_7-4.gat,54,164
+pvp_n_7-4.gat,56,166,0	warp	pvp4_04-1	1,1,pvp_n_7-4.gat,51,73
+
+pvp_n_8-4.gat,100,181,0	warp	pvp4_01	1,1,pvp_n_8-4.gat,139,82
+pvp_n_8-4.gat,137,84,0	warp	pvp4_01-1	1,1,pvp_n_8-4.gat,100,177
+pvp_n_8-4.gat,150,71,0	warp	pvp4_02	1,1,pvp_n_8-4.gat,142,164
+pvp_n_8-4.gat,144,166,0	warp	pvp4_02-1	1,1,pvp_n_8-4.gat,148,73
+pvp_n_8-4.gat,32,122,0	warp	pvp4_03	1,1,pvp_n_8-4.gat,60,82
+pvp_n_8-4.gat,62,84,0	warp	pvp4_03-1	1,1,pvp_n_8-4.gat,36,122
+pvp_n_8-4.gat,49,71,0	warp	pvp4_04	1,1,pvp_n_8-4.gat,54,164
+pvp_n_8-4.gat,56,166,0	warp	pvp4_04-1	1,1,pvp_n_8-4.gat,51,73

@@ -1,0 +1,2049 @@
+//----------------------------------------------------------------------
+// スクリプト : Town_Kafra v2.1
+//----------------------------------------------------------------------
+
+//----------------------------------
+// < プロンテラ - 昔の剣士ギルド >
+//----------------------------------
+
+prontera.gat,248,42,0	script	カプラ職員	116,{
+	cutin "kafra_02",2;
+	if (FIRST_JOB_QUEST == 1) goto L_START_1;
+   		mes "[カプラ職員]";
+		mes "いらっしゃいませ、（株）カプラです。";
+		mes "ご覧のとおり剣士ギルドは";
+		mes "首都プロンテラから";
+		mes "衛星都市「イズルード」に";
+		mes "移転しました。";
+   		next;
+   		mes "[カプラ職員]";
+		mes "我々（株）カプラでは";
+		mes "ここプロンテラからイズルードまで";
+		mes "利用料 900 Zenyで移動サービスを";
+		mes "行っています。";
+   		next;
+   		menu "利用する",-,"カプラポイント確認",L1,"終了",L2;
+			if (Zeny < 900) goto Lerror1;
+			set Zeny,Zeny-900;
+			set KF_PIT,KF_PIT+90;
+			warp "izlude",94,103;
+			end;
+		Lerror1:
+	   		mes "[カプラ職員]";
+			mes "お客様、お金が足りないようですが。";
+			goto L_EXIT;
+L1:
+	callfunc "kfpoint";
+L2:
+	mes "[カプラ職員]";
+	mes "ありがとうございました。";
+	goto L_EXIT;
+//===========Marchant Jobchange Event=============
+	L_START_1:
+		if (JOB_MERCHANT_Q > 8) goto L_SUB_2;
+		if (JOB_MERCHANT_Q < 7) goto L_SUB_2;
+			if (NOV_3_MERCHANT != 0) goto L_EXIT;
+			mes "[カプラ職員]";
+	   		mes "こんにちは";
+	   		mes "ここに何かご用ですか？";
+			goto L_EXIT;
+	L_SUB_2:
+		if (JOB_MERCHANT_Q > 6) goto L_SUB_2;
+		if (JOB_MERCHANT_Q < 5) goto L_SUB_2;
+		mes "[カプラ職員]";
+		mes "商人ギルドから荷物を届けに？";
+		mes "あ、はい！では荷物はここに…";
+			if (countitem(1081)>=1) goto L_SUB_3;
+			if (countitem(1082)>=1) goto L_SUB_3;
+			if (countitem(1091)>=1) goto L_SUB_3;
+			goto L_SUB_4;
+	L_SUB_3:
+			mes "こんなに重いものを…";
+			mes "ここまでご苦労様でした。";
+			goto L_SUB_5;
+	L_SUB_4:
+			mes "あの…品物はどこですか…？";
+			goto L_EXIT;
+	L_SUB_5:
+		next;
+		mes "[カプラ職員]";
+		mes "品物の伝票番号を確認してみます。";
+		mes "えっと…";
+		if (JOB_MERCHANT_Q2 != 1) goto L_SUB_7;
+			if (countitem(1081)<1) goto L_START_2;
+			mes "2485741… はい。";
+			mes "確かに注文した品物です。";
+			mes "配達領収書が必要ですね？";
+			mes "すぐ発行致します。";
+			delitem 1081,1;
+			getitem 1073,1;
+			goto L_START_3;
+	L_SUB_7:
+		if (JOB_MERCHANT_Q2 != 2) goto L_START_2;
+			if (countitem(1082)<1) goto L_START_2;
+			mes "2328137… はい。";
+			mes "確かに注文した品物です。";
+			mes "配達領収書が必要ですね？";
+			mes "すぐ発行致します。";
+			delitem 1082,1;
+			getitem 1074,1;
+			goto L_START_3;
+	L_START_2:
+		mes "……え？";
+		mes "この番号は……？";
+		next;
+		mes "[カプラ職員]";
+		mes "あの、この品物は";
+		mes "こちらのものではございません。";
+		mes "商人ギルドからここに来る品物の";
+		mes "伝票番号は2485741又は2328137です。";
+		mes "何かの間違いではないでしょうか？";
+		goto L_EXIT;
+	L_START_3:
+		if (JOB_MERCHANT_Q != 6) goto L_SUB_3_1;
+		set JOB_MERCHANT_Q,8;
+		goto L_SUB_3_2;
+	L_SUB_3_1:
+		set JOB_MERCHANT_Q,7;
+	L_SUB_3_2:
+		set FIRST_JOB_QUEST,5;
+   		next;
+		mes "[カプラ職員]";
+		mes "こんなに遠くまでご苦労さまでした。";
+	L_EXIT:
+		close2;
+		cutin "kafra_02",255;
+		end;
+}
+
+//----------------------------------
+// < プロンテラ - 中央 >
+//----------------------------------
+
+prontera.gat,146,89,6	script	カプラ職員	117,{
+	cutin "kafra_01",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+		savepoint "prontera.gat",116,72;
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu "イズルード -> 900 z",L3_1,"ゲフェン -> 1400 z",L3_2,"フェイヨン -> 1700 z",L3_3,"モロク -> 1800 z",L3_4,"コモド -> 2000 z",L3_5,"オークダンジョン -> 1700 z",L3_6,"取り消し",L3_7;
+		L3_1:
+			if (Zeny < 900) goto Lerror3;
+			set Zeny,Zeny-900;set KF_PIT,KF_PIT+90;warp "izlude",91,105;end;
+		L3_2:
+			if (Zeny < 1400) goto Lerror3;
+			set Zeny,Zeny-1400;set KF_PIT,KF_PIT+140;warp "geffen",120,39;end;
+		L3_3:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "payon",69,100;end;
+		L3_4:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "morocc",156,46;end;
+		L3_5:
+			if (Zeny < 2000) goto Lerror3;
+			set Zeny,Zeny-2000;set KF_PIT,KF_PIT+200;warp "comodo",209,143;end;
+		L3_6:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "gef_fild10",52,326;end;
+		L3_7:
+				mes "[カプラ職員]";
+				mes "ありがとうございました。";
+				mes "またご利用くださいませ。";
+				goto L_EXIT;
+		Lerror3:
+				mes "[カプラ職員]";
+  				mes "お客様、お金が足りません。";
+   				mes "所持金をお確かめください。";
+				goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,146,89,1,0x0000FF;
+	viewpoint 1,282,200,2,0x0000FF;
+	viewpoint 1,151,29,3,0x0000FF;
+	viewpoint 1,29,207,4,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_01",255;
+	end;
+}
+
+//----------------------------------
+// < プロンテラ - 東カプラ >
+//----------------------------------
+
+prontera.gat,282,200,2	script	カプラ職員	114,{
+	cutin "kafra_04",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	menu "町の外でセーブ",-,"町の中でセーブ",L1_2;
+		savepoint "prt_fild06.gat",33,192;
+		goto Lend1;
+	L1_2:
+		savepoint "prontera.gat",279,200;
+	Lend1:
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu "イズルード -> 900 z",L3_1,"ゲフェン -> 1400 z",L3_2,"フェイヨン -> 1700 z",L3_3,"モロク -> 1800 z",L3_4,"コモド -> 2000 z",L3_5,"オークダンジョン -> 1700 z",L3_6,"取り消し",L3_7;
+		L3_1:
+			if (Zeny < 900) goto Lerror3;
+			set Zeny,Zeny-900;set KF_PIT,KF_PIT+90;warp "izlude",91,105;end;
+		L3_2:
+			if (Zeny < 1400) goto Lerror3;
+			set Zeny,Zeny-1400;set KF_PIT,KF_PIT+140;warp "geffen",120,39;end;
+		L3_3:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "payon",69,100;end;
+		L3_4:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "morocc",156,46;end;
+		L3_5:
+			if (Zeny < 2000) goto Lerror3;
+			set Zeny,Zeny-2000;set KF_PIT,KF_PIT+200;warp "comodo",209,143;end;
+		L3_6:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "gef_fild10",52,326;end;
+		L3_7:
+				mes "[カプラ職員]";
+				mes "ありがとうございました。";
+				mes "またご利用くださいませ。";
+				goto L_EXIT;
+		Lerror3:
+				mes "[カプラ職員]";
+  				mes "お客様、お金が足りません。";
+   				mes "所持金をお確かめください。";
+				goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,146,89,1,0x0000FF;
+	viewpoint 1,282,200,2,0x0000FF;
+	viewpoint 1,151,29,3,0x0000FF;
+	viewpoint 1,29,207,4,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_04",255;
+	end;
+}
+
+//----------------------------------
+// < プロンテラ - 南カプラ >
+//----------------------------------
+
+prontera.gat,151,29,0	script	カプラ職員	115,{
+	cutin "kafra_03",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	menu "町の外でセーブ",-,"町の中でセーブ",L1_2;
+		savepoint "prt_fild08.gat",170,368;
+		goto Lend1;
+	L1_2:
+		savepoint "prontera.gat",151,33;
+	Lend1:
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu "イズルード -> 900 z",L3_1,"ゲフェン -> 1400 z",L3_2,"フェイヨン -> 1700 z",L3_3,"モロク -> 1800 z",L3_4,"コモド -> 2000 z",L3_5,"オークダンジョン -> 1700 z",L3_6,"取り消し",L3_7;
+		L3_1:
+			if (Zeny < 900) goto Lerror3;
+			set Zeny,Zeny-900;set KF_PIT,KF_PIT+90;warp "izlude",91,105;end;
+		L3_2:
+			if (Zeny < 1400) goto Lerror3;
+			set Zeny,Zeny-1400;set KF_PIT,KF_PIT+140;warp "geffen",120,39;end;
+		L3_3:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "payon",69,100;end;
+		L3_4:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "morocc",156,46;end;
+		L3_5:
+			if (Zeny < 2000) goto Lerror3;
+			set Zeny,Zeny-2000;set KF_PIT,KF_PIT+200;warp "comodo",209,143;end;
+		L3_6:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "gef_fild10",52,326;end;
+		L3_7:
+				mes "[カプラ職員]";
+				mes "ありがとうございました。";
+				mes "またご利用くださいませ。";
+				goto L_EXIT;
+		Lerror3:
+				mes "[カプラ職員]";
+  				mes "お客様、お金が足りません。";
+   				mes "所持金をお確かめください。";
+				goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,146,89,1,0x0000FF;
+	viewpoint 1,282,200,2,0x0000FF;
+	viewpoint 1,151,29,3,0x0000FF;
+	viewpoint 1,29,207,4,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_03",255;
+	end;
+}
+
+//----------------------------------
+// < プロンテラ - 西カプラ >
+//----------------------------------
+
+prontera.gat,29,207,6	script	カプラ職員	113,{
+	cutin "kafra_05",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	menu "町の外でセーブ",-,"町の中でセーブ",L1_3;
+		savepoint "prt_fild05.gat",368,205;
+		goto Lend1;
+	L1_3:
+		savepoint "prontera.gat",33,207;
+	Lend1:
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu "イズルード -> 900 z",L3_1,"ゲフェン -> 1400 z",L3_2,"フェイヨン -> 1700 z",L3_3,"モロク -> 1800 z",L3_4,"コモド -> 2000 z",L3_5,"オークダンジョン -> 1700 z",L3_6,"取り消し",L3_7;
+		L3_1:
+			if (Zeny < 900) goto Lerror3;
+			set Zeny,Zeny-900;set KF_PIT,KF_PIT+90;warp "izlude",91,105;end;
+		L3_2:
+			if (Zeny < 1400) goto Lerror3;
+			set Zeny,Zeny-1400;set KF_PIT,KF_PIT+140;warp "geffen",120,39;end;
+		L3_3:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "payon",69,100;end;
+		L3_4:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "morocc",156,46;end;
+		L3_5:
+			if (Zeny < 2000) goto Lerror3;
+			set Zeny,Zeny-2000;set KF_PIT,KF_PIT+200;warp "comodo",209,143;end;
+		L3_6:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "gef_fild10",52,326;end;
+		L3_7:
+				mes "[カプラ職員]";
+				mes "ありがとうございました。";
+				mes "またご利用くださいませ。";
+				goto L_EXIT;
+		Lerror3:
+				mes "[カプラ職員]";
+  				mes "お客様、お金が足りません。";
+   				mes "所持金をお確かめください。";
+				goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,146,89,1,0x0000FF;
+	viewpoint 1,282,200,2,0x0000FF;
+	viewpoint 1,151,29,3,0x0000FF;
+	viewpoint 1,29,207,4,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_05",255;
+	end;
+}
+
+//----------------------------------
+// < プロンテラ - 北カプラ >
+//----------------------------------
+
+prt_fild01.gat,198,47,0	script	カプラ職員	112,{
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "prt_fild01.gat",198,51;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu "イズルード -> 900 z",L3_1,"ゲフェン -> 1400 z",L3_2,"フェイヨン -> 1700 z",L3_3,"モロク -> 1800 z",L3_4,"コモド -> 2000 z",L3_5,"オークダンジョン -> 1700 z",L3_6,"取り消し",L3_7;
+		L3_1:
+			if (Zeny < 900) goto Lerror3;
+			set Zeny,Zeny-900;set KF_PIT,KF_PIT+90;warp "izlude",91,105;end;
+		L3_2:
+			if (Zeny < 1400) goto Lerror3;
+			set Zeny,Zeny-1400;set KF_PIT,KF_PIT+140;warp "geffen",120,39;end;
+		L3_3:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "payon",69,100;end;
+		L3_4:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "morocc",156,46;end;
+		L3_5:
+			if (Zeny < 2000) goto Lerror3;
+			set Zeny,Zeny-2000;set KF_PIT,KF_PIT+200;warp "comodo",209,143;end;
+		L3_6:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "gef_fild10",52,326;end;
+		L3_7:
+				mes "[カプラ職員]";
+				mes "ありがとうございました。";
+				mes "またご利用くださいませ。";
+				goto L_EXIT;
+		Lerror3:
+				mes "[カプラ職員]";
+  				mes "お客様、お金が足りません。";
+   				mes "所持金をお確かめください。";
+				goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_06",255;
+	end;
+}
+
+//----------------------------------
+// < プロンテラ - 地下水路前のカプラ >
+//----------------------------------
+
+prt_fild05.gat,290,224,4	script	カプラ職員	114,{
+	cutin "kafra_04",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "prt_fild05.gat",274,244;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",30;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_04",255;
+	end;
+}
+
+//----------------------------------
+// < イズルード - 町の中 >
+//----------------------------------
+
+izlude.gat,136,88,2	script	カプラ職員	115,{
+	cutin "kafra_03",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	menu "町の外でセーブ",-,"町の中でセーブ",L1_3;
+		savepoint "prt_fild08.gat",350,202;
+		goto Lend1;
+	L1_3:
+		savepoint "izlude.gat",94,103;
+	Lend1:
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",30;
+L3:
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu "プロンテラ -> 900 z",L3_1,"フェイヨン -> 1700 z",L3_2,"ゲフェン -> 1800 z",L3_3,"取り消し",L3_4;
+		L3_1:
+			if (Zeny < 900) goto Lerror3;
+			set Zeny,Zeny-900;set KF_PIT,KF_PIT+90;warp "prontera",116,72;end;
+		L3_2:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "payon",69,100;end;
+		L3_3:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "geffen",120,39;end;
+		L3_4:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,136,88,1,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_03",255;
+	end;
+}
+
+//----------------------------------
+// < イズルード - バイラン島 >
+//----------------------------------
+
+izlu2dun.gat,106,58,4	script	カプラ職員	116,{
+	cutin "kafra_02",2;
+	if (FIRST_JOB_QUEST == 4) goto L_QUEST;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "izlu2dun.gat",87,170;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+		goto L_EXIT;
+ L_QUEST:
+	if (JOB_MERCHANT_Q > 8) goto L_Q_START_1;
+	if (JOB_MERCHANT_Q < 7) goto L_Q_START_1;
+		if (countitem(1072)<1) goto L_EXIT;
+			mes "[カプラ職員]";
+      		mes "はい、何のご用ですか？";
+			goto L_EXIT;
+ L_Q_START_1:
+	if (JOB_MERCHANT_Q > 6) goto L_EXIT;
+	if (JOB_MERCHANT_Q < 5) goto L_EXIT;
+       	mes "[カプラ職員]";
+       	mes "え？商人ギルドからいらしたんですか？ ";
+       	mes "……あ！そうだ！わたしったら～ ";
+       	mes "じゃ、品物はここに…";
+		if (countitem(1081)>=1) goto L_Q_START_2;
+		if (countitem(1082)>=1) goto L_Q_START_2;
+		if (countitem(1091)>=1) goto L_Q_START_2;
+        	mes "ここに配達される品物は";
+        	mes "箱1個のはずですが…。";
+			goto L_EXIT;
+ L_Q_START_2:
+		mes "はい、おつかれさま～。";
+		next;
+    	mes "[カプラ職員]";
+       	mes "領収書発行のため";
+       	mes "品物の伝票番号を確認してみます。";
+		next;
+		if (JOB_MERCHANT_Q2 != 7) goto L_Q_SUB_1;
+			if (countitem(1081)<1) goto L_EXIT;
+           		mes "えっと…3012685…はい！";
+           		mes "確かに注文した品物ですね。";
+           		mes "では、こちらが領収書です。";
+				delitem 1081,1;
+				getitem 1079,1;
+				next;
+				goto L_Q_START_3;
+	L_Q_SUB_1:
+		if (JOB_MERCHANT_Q2 != 8) goto L_Q_SUB_2;
+			if (countitem(1082)<1) goto L_EXIT;
+           		mes "えっと…3543625…はい！";
+           		mes "確かに注文した品物ですね。";
+           		mes "では、こちらが領収書です。";
+				delitem 1082,1;
+				getitem 1080,1;
+				next;
+				goto L_Q_START_3;
+	L_Q_SUB_2:
+	    mes "[カプラ職員]";
+       	mes "……？…あの…";
+       	mes "配達先を間違えてるみたいですよ？";
+       	mes "商人ギルドから、ここに来る品物の";
+       	mes "伝票番号は3318702又は3543625ですが…";
+		goto L_EXIT;
+ L_Q_START_3:
+		if (JOB_MERCHANT_Q != 6) goto L_Q_SUB_3;
+        	set JOB_MERCHANT_Q,8;
+			goto L_Q_SUB_4;
+	L_Q_SUB_3:
+        	set JOB_MERCHANT_Q,7;
+	L_Q_SUB_4:
+        set FIRST_JOB_QUEST,5;
+		if (countitem(1072)<1) goto L_Q_START_4;
+			delitem 1072,1;
+			set NOV_3_MERCHANT,11;
+			next;
+		    mes "[カプラ職員]";
+		    mes "あら！マンスさんからの手紙？キャ～";
+		    mes "商人ギルドの職員様！ありがとう～";
+		    mes "すぐ手紙が来るとは思っていたけど";
+		    mes "こんなに早いなんて。";
+	      	next;
+ L_Q_START_4:
+        mes "[カプラ職員]";
+        mes "こんなに遠い所まで、ご苦労様でした。";
+        mes "つまらない物ですが、どうぞ！";
+        mes "では、これからも";
+        mes "よろしくお願いします。";
+		set @MERCHANT_JOB2,rand(2);
+		if (@MERCHANT_JOB2 != 0) goto L_Q_START_5;
+			getitem 513,3;
+			goto L_EXIT;
+ L_Q_START_5:
+			getitem 512,3;
+L_EXIT:
+	close2;
+	cutin "kafra_02",255;
+	end;
+}
+
+//----------------------------------
+// < ゲフェン - 南噴水 >
+//----------------------------------
+
+geffen.gat,120,62,0	script	カプラ職員	115,{
+	cutin "kafra_03",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	savepoint "geffen.gat",120,38;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",30;
+L3:
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu "プロンテラ -> 1400 z",L3_1,"イズルード -> 1800 z",L3_2,"アルデバラン -> 2100 z",L3_3,"モロク -> 2200 z",L3_4,"取り消し",L3_5;
+		L3_1:
+			if (Zeny < 1400) goto Lerror3;
+			set Zeny,Zeny-1400;set KF_PIT,KF_PIT+140;warp "prontera",116,72;end;
+		L3_2:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "izlude",91,105;end;
+		L3_3:
+			if (Zeny < 2100) goto Lerror3;
+			set Zeny,Zeny-2100;set KF_PIT,KF_PIT+210;warp "aldebaran",143,110;end;
+		L3_4:
+			if (Zeny < 2200) goto Lerror3;
+			set Zeny,Zeny-2200;set KF_PIT,KF_PIT+220;warp "morocc",156,46;end;
+		L3_5:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,120,62,1,0x0000FF;
+	viewpoint 1,203,123,2,0x0000FF;
+	goto L_EXIT;
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_03",255;
+	end;
+}
+
+//----------------------------------
+// < ゲフェン - 東入り口 >
+//----------------------------------
+
+geffen.gat,203,123,4	script	カプラ職員	114,{
+	cutin "kafra_04",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	menu "町の外でセーブ",-,"町の中でセーブ",L1_3;
+		savepoint "gef_fild00.gat",55,222;
+		goto L_SUB_1_1;
+	L1_3:
+		savepoint "geffen.gat",120,38;
+	L_SUB_1_1:
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",30;
+L3:
+	mes "[カプラ職員]";
+	mes "目的地をお選び下さい。";
+	next;
+	menu "プロンテラ -> 1400 z",L3_1,"イズルード -> 1800 z",L3_2,"アルデバラン -> 2100 z",L3_3,"モロク -> 2200 z",L3_4,"取り消し",L3_5;
+		L3_1:
+			if (Zeny < 1400) goto Lerror3;
+			set Zeny,Zeny-1400;set KF_PIT,KF_PIT+140;warp "prontera",116,72;end;
+		L3_2:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "izlude",91,105;end;
+		L3_3:
+			if (Zeny < 2100) goto Lerror3;
+			set Zeny,Zeny-2100;set KF_PIT,KF_PIT+210;warp "aldebaran",143,110;end;
+		L3_4:
+			if (Zeny < 2200) goto Lerror3;
+			set Zeny,Zeny-2200;set KF_PIT,KF_PIT+220;warp "morocc",156,46;end;
+		L3_5:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,120,62,1,0x0000FF;
+	viewpoint 1,203,123,2,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_04",255;
+	end;
+}
+
+//----------------------------------
+// < モロク - 南 >
+//----------------------------------
+
+morocc.gat,156,97,4	script	カプラ職員	113,{
+	cutin "kafra_05",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	savepoint "morocc.gat",156,46;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "コモド -> 1500 z",L3_1,"プロンテラ -> 1800 z",L3_2,"フェイヨン -> 1800 z",L3_3,"アルベルタ -> 2200 z",L3_4,"ゲフェン -> 2200 z",L3_5,"取り消し",L3_6;
+		L3_1:
+			if (Zeny < 1500) goto Lerror3;
+			set Zeny,Zeny-1500;set KF_PIT,KF_PIT+150;warp "comodo",209,143;end;
+		L3_2:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "prontera",116,72;end;
+		L3_3:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "payon",69,100;end;
+		L3_4:
+			if (Zeny < 2200) goto Lerror3;
+			set Zeny,Zeny-2200;set KF_PIT,KF_PIT+220;warp "alberta",117,56;end;
+		L3_5:
+			if (Zeny < 2200) goto Lerror3;
+			set Zeny,Zeny-2200;set KF_PIT,KF_PIT+220;warp "geffen",120,39;end;
+		L3_6:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,160,258,1,0x0000FF;
+	viewpoint 1,159,97,2,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_05",255;
+	end;
+}
+
+//----------------------------------
+// < モロク - 北入り口 >
+//----------------------------------
+
+morocc.gat,160,258,4	script	カプラ職員	114,{
+	cutin "kafra_04",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	menu "町の外でセーブ",-,"町の中でセーブ",L1_3;
+		savepoint "moc_fild07.gat",211,29;
+		goto L_SUB_1_1;
+	L1_3:
+		savepoint "morocc.gat",160,283;
+	L_SUB_1_1:
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "コモド -> 1500 z",L3_1,"プロンテラ -> 1800 z",L3_2,"フェイヨン -> 1800 z",L3_3,"アルベルタ -> 2200 z",L3_4,"ゲフェン -> 2200 z",L3_5,"取り消し",L3_6;
+		L3_1:
+			if (Zeny < 1500) goto Lerror3;
+			set Zeny,Zeny-1500;set KF_PIT,KF_PIT+150;warp "comodo",209,143;end;
+		L3_2:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "prontera",116,72;end;
+		L3_3:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "payon",69,100;end;
+		L3_4:
+			if (Zeny < 2200) goto Lerror3;
+			set Zeny,Zeny-2200;set KF_PIT,KF_PIT+220;warp "alberta",117,56;end;
+		L3_5:
+			if (Zeny < 2200) goto Lerror3;
+			set Zeny,Zeny-2200;set KF_PIT,KF_PIT+220;warp "geffen",120,39;end;
+		L3_6:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,160,258,1,0x0000FF;
+	viewpoint 1,159,97,2,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_04",255;
+	end;
+}
+
+//----------------------------------
+// < モロク - ピラミッド入り口 >
+//----------------------------------
+
+moc_ruins.gat,59,157,6	script	カプラ職員	117,{
+	cutin "kafra_01",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "moc_ruins.gat",41,141;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",50;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_01",255;
+	end;
+}
+
+//----------------------------------
+// < アルベルタ - 北入り口 >
+//----------------------------------
+
+alberta.gat,28,229,0	script	カプラ職員	116,{
+	cutin "kafra_02",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	menu "町の外でセーブ",-,"町の中でセーブ",L1_3;
+		savepoint "pay_fild03.gat",387,76;
+		goto L_SUB_1_1;
+	L1_3:
+		savepoint "alberta.gat",31,231;
+	L_SUB_1_1:
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",50;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "フェイヨン -> 1300 z",L3_1,"プロンテラ -> 2100 z",L3_2,"モロク -> 2200 z",L3_3,"取り消し",L3_4;
+		L3_1:
+			if (Zeny < 1300) goto Lerror3;
+			set Zeny,Zeny-1300;set KF_PIT,KF_PIT+130;warp "payon",69,100;end;
+		L3_2:
+			if (Zeny < 2100) goto Lerror3;
+			set Zeny,Zeny-2100;set KF_PIT,KF_PIT+210;warp "prontera",116,72;end;
+		L3_3:
+			if (Zeny < 2200) goto Lerror3;
+			set Zeny,Zeny-2200;set KF_PIT,KF_PIT+220;warp "morocc",156,46;end;
+		L3_4:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,28,229,1,0x0000FF;
+	viewpoint 1,113,60,2,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_02",255;
+	end;
+}
+
+//----------------------------------
+// < アルベルタ - 南噴水 >
+//----------------------------------
+
+alberta.gat,113,60,6	script	カプラ職員#alberta2	112,{
+	cutin "kafra_06",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	savepoint "alberta.gat",117,56;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",50;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "フェイヨン -> 1300 z",L3_1,"プロンテラ -> 2100 z",L3_2,"モロク -> 2200 z",L3_3,"取り消し",L3_4;
+		L3_1:
+			if (Zeny < 1300) goto Lerror3;
+			set Zeny,Zeny-1300;set KF_PIT,KF_PIT+130;warp "payon",69,100;end;
+		L3_2:
+			if (Zeny < 2100) goto Lerror3;
+			set Zeny,Zeny-2100;set KF_PIT,KF_PIT+210;warp "prontera",116,72;end;
+		L3_3:
+			if (Zeny < 2200) goto Lerror3;
+			set Zeny,Zeny-2200;set KF_PIT,KF_PIT+220;warp "morocc",156,46;end;
+		L3_4:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	mes "[カプラ職員]";
+	mes "ミニMAP表示地点に";
+	mes "カプラ職員がいます。";
+	viewpoint 1,28,229,1,0x0000FF;
+	viewpoint 1,113,60,2,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_06",255;
+	end;
+}
+
+//----------------------------------
+// < アルベルタ - 島 >
+//----------------------------------
+
+alb2trea.gat,59,69,6	script	カプラ職員	117,{
+	cutin "kafra_01",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "alb2trea.gat",91,63;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",50;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_01",255;
+	end;
+}
+
+//----------------------------------
+// < フェイヨン - 中央 >
+//----------------------------------
+
+payon.gat,99,116,4	script	カプラ職員	113,{
+	cutin "kafra_05",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	menu "町の外でセーブ",-,"町の中でセーブ",L1_3;
+		savepoint "pay_fild01.gat",342,348;
+		goto L_SUB_1_1;
+	L1_3:
+		savepoint "payon.gat",69,100;
+	L_SUB_1_1:
+		mes "[カプラ職員]";
+		mes "セーブしました。";
+		mes "ご利用ありがとうございます。";
+		goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "アルベルタ -> 1300 z",L3_1,"プロンテラ -> 1800 z",L3_2,"モロク -> 1800 z",L3_3,"取り消し",L3_4;
+		L3_1:
+			if (Zeny < 1300) goto Lerror3;
+			set Zeny,Zeny-1300;set KF_PIT,KF_PIT+130;warp "alberta",117,56;end;
+		L3_2:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "prontera",116,72;end;
+		L3_3:
+			if (Zeny < 1800) goto Lerror3;
+			set Zeny,Zeny-1800;set KF_PIT,KF_PIT+180;warp "morocc",156,46;end;
+		L3_4:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_05",255;
+	end;
+}
+
+//----------------------------------
+// < フェイヨン - アーチャー村 >
+//----------------------------------
+
+pay_arche.gat,55,123,4	script	カプラ職員	114,{
+	cutin "kafra_04",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "pay_arche.gat",50,145;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_04",255;
+	end;
+}
+
+//----------------------------------
+// < アルデバラン >
+//----------------------------------
+
+aldebaran.gat,143,119,4	script	カプラ職員	113,{
+	cutin "kafra_05",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブ",L1,"倉庫を利用する",L2,"空間移動サービス",L3,"カートを利用する",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "aldebaran.gat",143,110;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "ゲフェン -> 1600 z",L3_1,"ミョルニール廃鉱 -> 1700 z",L3_2,"取り消し",L3_3;
+		L3_1:
+			if (Zeny < 1600) goto Lerror3;
+			set Zeny,Zeny-1600;set KF_PIT,KF_PIT+160;warp "geffen",120,39;end;
+		L3_2:
+			if (Zeny < 1700) goto Lerror3;
+			set Zeny,Zeny-1700;set KF_PIT,KF_PIT+170;warp "mjolnir_02",99,351;end;
+		L3_3:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_05",255;
+	end;
+}
+
+//----------------------------------
+// < コモド 室内 >
+//----------------------------------
+
+cmd_in02.gat,146,180,4	script	カプラ職員	721,{
+	cutin "kafra_07",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "当、カプラサービス西部支部は";
+	mes "サービスプログラム改良により";
+	mes "より高品質のサービスをお約束します。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "comodo.gat",209,143;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "コモドファロス燈台 -> 800 z",L3_1,"モロク -> 2000 z",L3_2,"取り消し",L3_3;
+		L3_1:
+			if (Zeny < 800) goto Lerror3;
+			set Zeny,Zeny-800;set KF_PIT,KF_PIT+80;warp "cmd_fild07",127,134;end;
+		L3_2:
+			if (Zeny < 2000) goto Lerror3;
+			set Zeny,Zeny-2000;set KF_PIT,KF_PIT+200;warp "morocc",156,46;end;
+		L3_3:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_07",255;
+	end;
+}
+
+//----------------------------------
+// < コモド ファロス 燈台 >
+//----------------------------------
+
+cmd_fild07.gat,136,134,4	script	カプラ職員	721,{
+	cutin "kafra_07",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "当、カプラサービス西部支部は";
+	mes "サービスプログラム改良により";
+	mes "より高品質のサービスをお約束します。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "cmd_fild07.gat",127,134;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",80;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "コモド -> 500 z",L3_1,"モロク -> 2500 z",L3_2,"取り消し",L3_3;
+		L3_1:
+			if (Zeny < 500) goto Lerror3;
+			set Zeny,Zeny-500;set KF_PIT,KF_PIT+50;warp "comodo",209,143;end;
+		L3_2:
+			if (Zeny < 2500) goto Lerror3;
+			set Zeny,Zeny-2500;set KF_PIT,KF_PIT+250;warp "morocc",156,46;end;
+		L3_3:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",1000;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_07",255;
+	end;
+}
+
+//----------------------------------
+// < コモド > 
+//----------------------------------
+
+comodo.gat,195,150,4	script	カプラ職員	721,{
+	cutin "kafra_07",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "当、カプラサービス西部支部は";
+	mes "サービスプログラム改良により";
+	mes "より高品質のサービスをお約束します。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "comodo.gat",180,151;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",80;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "コモドファロス燈台 -> 800 z",L3_1,"モロク -> 1500 z",L3_2,"取り消し",L3_3;
+		L3_1:
+			if (Zeny < 800) goto Lerror3;
+			set Zeny,Zeny-800;set KF_PIT,KF_PIT+80;warp "cmd_fild07",127,134;end;
+		L3_2:
+			if (Zeny < 1500) goto Lerror3;
+			set Zeny,Zeny-1500;set KF_PIT,KF_PIT+150;warp "morocc",156,46;end;
+		L3_3:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",1000;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_07",255;
+	end;
+}
+
+//----------------------------------
+// < オークダンジョン前 >
+//----------------------------------
+
+gef_fild10.gat,73,340,5	script	カプラ職員	117,{
+	cutin "kafra_01",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "gef_fild10.gat",54,320;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",130;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_01",255;
+	end;
+}
+
+//----------------------------------
+// < ミョルニール廃鉱前 >
+//----------------------------------
+
+mjolnir_02.gat,84,362,4	script	カプラ職員	117,{
+	cutin "kafra_01",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "mjolnir_02.gat",98,351;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",100;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L7:
+		mes "[カプラ職員]";
+		mes "我々カプラサービスは、より完璧な";
+		mes "サービスと管理業務を目指し";
+		mes "お客様が安心してご利用いただけるよう";
+		mes "いつも最善を尽くしています。";
+		mes "（株）カプラサービスをご利用いただき";
+		mes "ありがとうございました。";
+ L_EXIT:
+	close2;
+	cutin "kafra_01",255;
+	end;
+}
+
+//----------------------------------
+// < ジュノー > 南入り口
+//----------------------------------
+
+yuno.gat,152,187,4	script	カプラ職員	113,{
+	cutin "kafra_05",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	savepoint "yuno.gat",158,124;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "アルデバラン -> 1000 z",L3_1,"イズルード -> 3000 z",L3_2,"取り消し",L3_3;
+		L3_1:
+			if (Zeny < 1000) goto Lerror3;
+			set Zeny,Zeny-1000;set KF_PIT,KF_PIT+100;warp "aldebaran",143,110;end;
+		L3_2:
+			if (Zeny < 3000) goto Lerror3;
+			set Zeny,Zeny-3000;set KF_PIT,KF_PIT+300;warp "izlude",94,103;end;
+		L3_3:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	viewpoint 1,327,109,2,0x0000FF;
+	viewpoint 1,277,221,3,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_05",255;
+	end;
+}
+
+//----------------------------------
+// < ジュノー > 南東
+//----------------------------------
+
+yuno.gat,327,109,4	script	カプラ職員	113,{
+	cutin "kafra_05",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	savepoint "yuno.gat",327,100;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "アルデバラン -> 1000 z",L3_1,"イズルード -> 3000 z",L3_2,"取り消し",L3_3;
+		L3_1:
+			if (Zeny < 1000) goto Lerror3;
+			set Zeny,Zeny-1000;set KF_PIT,KF_PIT+100;warp "aldebaran",143,110;end;
+		L3_2:
+			if (Zeny < 3000) goto Lerror3;
+			set Zeny,Zeny-3000;set KF_PIT,KF_PIT+300;warp "izlude",94,103;end;
+		L3_3:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	viewpoint 1,152,187,1,0x0000FF;
+	viewpoint 1,277,221,3,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_05",255;
+	end;
+}
+
+//----------------------------------
+// < ジュノー >　北東
+//----------------------------------
+
+yuno.gat,277,221,4	script	カプラ職員	113,{
+	cutin "kafra_05",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"カプラポイント確認",L5,"カプラ職員配置案内",L6,"終了",L7;
+L1:
+	savepoint "yuno.gat",275,229;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",40;
+L3:
+		mes "[カプラ職員]";
+		mes "目的地をお選び下さい。";
+		next;
+		menu "アルデバラン -> 1000 z",L3_1,"イズルード -> 3000 z",L3_2,"取り消し",L3_3;
+		L3_1:
+			if (Zeny < 1000) goto Lerror3;
+			set Zeny,Zeny-1000;set KF_PIT,KF_PIT+100;warp "aldebaran",143,110;end;
+		L3_2:
+			if (Zeny < 3000) goto Lerror3;
+			set Zeny,Zeny-3000;set KF_PIT,KF_PIT+300;warp "izlude",94,103;end;
+		L3_3:
+			mes "[カプラ職員]";
+			mes "ありがとうございました。";
+			mes "またご利用くださいませ。";
+			goto L_EXIT;
+		Lerror3:
+			mes "[カプラ職員]";
+			mes "お客様、お金が足りません。";
+			mes "所持金をお確かめください。";
+			goto L_EXIT;
+L4:
+	callfunc "kfcart",800;
+L5:
+	callfunc "kfpoint";
+L6:
+	viewpoint 1,152,187,1,0x0000FF;
+	viewpoint 1,327,109,2,0x0000FF;
+	goto L_EXIT;
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_05",255;
+	end;
+}
+
+//----------------------------------
+// < アマツ >
+//----------------------------------
+
+amatsu.gat,102,149,4	script	カプラ職員#amatsunomal	116,{
+	cutin "kafra_02",2;
+	mes "[カプラ職員]";
+	mes "まったくもう、研修に送ったコは";
+	mes "どこにいっちゃったのかしら……";
+	mes "お客様もこんなに遠くまで観光ですか？";
+	mes "私もせっかく来たんだからゆっくり";
+	mes "していこっと。";
+	mes "空気は良いし、お花も綺麗ですしね。";
+	next;
+	mes "[カプラ職員]";
+	mes "さて、カプラサービスはたとえ";
+	mes "異国の地でもお客様のために";
+	mes "サービスを欠かしません。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "amatsu.gat",116,94;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",80;
+L4:
+	callfunc "kfcart",700;
+L5:
+	callfunc "kfpoint";
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_02",255;
+	end;
+}
+
+//----------------------------------
+// < コンロン >
+//----------------------------------
+
+gonryun.gat,159,122,4	script	カプラ職員	116,{
+	cutin "kafra_02",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	mes "何をお手伝いいたしましょう？";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カートサービス",L4,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "gonryun.gat",160,62;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",80;
+L4:
+	callfunc "kfcart",700;
+L5:
+	callfunc "kfpoint";
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_02",255;
+	end;
+}
+
+//----------------------------------
+// < ウンバラ >
+//----------------------------------
+
+umbala.gat,87,160,5	script	カプラ職員	721,{
+	cutin "kafra_07",2;
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ";
+	mes "カプラサービスは";
+	mes "いつも皆様のそばにいます。";
+	next;
+	menu "位置セーブサービス",L1,"倉庫サービス",L2,"カプラポイント確認",L5,"終了",L7;
+L1:
+	savepoint "umbala.gat",100,154;
+	mes "[カプラ職員]";
+	mes "セーブしました。";
+	mes "ご利用ありがとうございます。";
+	goto L_EXIT;
+L2:
+	callfunc "kfstorage",80;
+L5:
+	callfunc "kfpoint";
+L7:
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは、より完璧な";
+	mes "サービスと管理業務を目指し";
+	mes "お客様が安心してご利用いただけるよう";
+	mes "いつも最善を尽くしています。";
+	mes "（株）カプラサービスをご利用いただき";
+	mes "ありがとうございました。";
+L_EXIT:
+	close2;
+	cutin "kafra_07",255;
+	end;
+}
+
+//----------------------------------
+// < ニフルヘイム >
+//----------------------------------
+
+niflheim.gat,202,180,3	script	カプラ職員	791,{
+	mes "[カプラ職員]";
+	mes "いらっしゃいませ……";
+	mes "カプラサービスは……";
+	mes "死んでも皆様のそばにいます。";
+	mes "何をお手伝いしましょう？";
+	next;
+	menu "倉庫サービス",L2,"終了",L7;
+L2:
+	percentheal 0,-10;
+	callfunc "kfstorage",150;
+L7:
+	percentheal 0,-10;
+	mes "[カプラ職員]";
+	mes "我々カプラサービスは…… ";
+	mes "いつでもどこででも…… ";
+	mes "お客様のそばに……います。";
+	mes "……ですから決して……";
+	mes "忘れないでください……";
+	close;
+}

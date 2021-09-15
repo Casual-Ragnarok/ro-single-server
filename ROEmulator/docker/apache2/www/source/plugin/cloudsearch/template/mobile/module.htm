@@ -1,0 +1,56 @@
+{eval
+
+function tpl_global_header_mobile($searchparams, $srchotquery) {
+global $_G;
+}
+<!--{block return}-->
+	<!--{if !empty($searchparams[url])}-->
+	<div id="scbar" class="{if $_G['setting']['srchhotkeywords'] && count($_G['setting']['srchhotkeywords']) > 5}scbar_narrow {/if}cl">
+		<form id="scbar_form" method="get" autocomplete="off" onsubmit="searchFocus($('scbar_txt'))" action="$searchparams[url]" target="_blank">
+			<input type="hidden" name="mod" id="scbar_mod" value="search" />
+			<input type="hidden" name="formhash" value="{FORMHASH}" />
+			<input type="hidden" name="srchtype" value="title" />
+			<input type="hidden" name="srhfid" value="$_G[fid]" />
+			<input type="hidden" name="srhlocality" value="$_G['basescript']::{CURMODULE}" />
+			<!--{loop $searchparams[params] $key $value}-->
+			<input type="hidden" name="$key" value="$value" />
+			<!--{/loop}-->
+			<input type="hidden" name="source" value="txt.form_{if $_G['setting']['mobile']['mobilesimpletype']}sim{else}nor{/if}.a" />
+			<input type="hidden" name="wap" value="yes" />
+			<input type="hidden" name="fId" value="$_G[fid]" />
+			<div style="display: none; position: absolute; top:37px; left:44px;" id="sg">
+				<div id="st_box" cellpadding="2" cellspacing="0"></div>
+			</div>
+			<table width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td><input type="text" class="txt xg1" name="q" id="scbar_txt" value="" autocomplete="off" /></td>
+					<td align="center" width="46" class="scbar_btn_td"><input type="submit" name="btnsubmit" id="scbar_btn" class="pn pnc" value="{lang search}"></td>
+				</tr>
+				<tr>
+				<!--{if $_G['setting']['srchhotkeywords'] && CURMODULE == 'index'}-->
+				<td class="scbar_hot_td" colspan="3">
+					<div id="scbar_hot">
+						<strong class="xw1">{lang hot_search}: </strong>
+						<!--{loop $_G['setting']['srchhotkeywords'] $val}-->
+							<!--{if $encodeval=rawurlencode(trim($val))}-->
+								<!--{if !empty($searchparams[url])}-->
+									<a href="$searchparams[url]?q=$encodeval&source=txt.hotsearch_{if $_G['setting']['mobile']['mobilesimpletype']}sim{else}nor{/if}.a{$srchotquery}&wap=yes" target="_blank" class="xi2" sc="1">$val</a>
+								<!--{else}-->
+									<a href="search.php?mod=forum&srchtxt=$encodeval&formhash={FORMHASH}&searchsubmit=true&source=txt.hotsearch_{if $_G['setting']['mobile']['mobilesimpletype']}sim{else}nor{/if}.a&wap=yes" target="_blank" class="xi2" sc="1">$val</a>
+								<!--{/if}-->
+							<!--{/if}-->
+						<!--{/loop}-->
+					</div>
+				</td>
+				<!--{/if}-->
+				</tr>
+			</table>
+		</form>
+	</div>
+	<ul id="scbar_type_menu" class="p_pop" style="display: none;"><!--{echo implode('', $slist);}--></ul>
+	<!--{/if}-->
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+}

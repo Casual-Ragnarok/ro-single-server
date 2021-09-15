@@ -1,0 +1,73 @@
+//===================================================================
+//Ragnarok Online EP2.5 GVG Script	payg_cas02         by kalen
+//===================================================================
+-	script	gfpayB	722,{
+callfunc "flagsc","payg_cas02.gat",2,0,0,0;
+OnRecvCastleF02:
+	FlagEmblem getcastledata("payg_cas02.gat",1);
+	end;
+}
+pay_gld.gat,292,112,6	duplicate(gfpayB)	ギルドフラッグ#f2-1	722
+pay_gld.gat,292,120,6	duplicate(gfpayB)	ギルドフラッグ#f2-2	722
+pay_gld.gat,291,135,6	duplicate(gfpayB)	ギルドフラッグ#f2-3	722
+pay_gld.gat,271,163,0	duplicate(gfpayB)	ギルドフラッグ#f2-4	722
+payg_cas02.gat,254,40,6	duplicate(gfpayB)	ギルドフラッグ#f2-5	722
+payg_cas02.gat,254,48,6	duplicate(gfpayB)	ギルドフラッグ#f2-6	722
+payg_cas02.gat,202,49,0	duplicate(gfpayB)	ギルドフラッグ#f2-7	722
+payg_cas02.gat,209,49,0	duplicate(gfpayB)	ギルドフラッグ#f2-8	722
+payg_cas02.gat,59,282,4	duplicate(gfpayB)	ギルドフラッグ#f2-9	722
+payg_cas02.gat,70,282,4	duplicate(gfpayB)	ギルドフラッグ#f2-10	722
+//------------------------------カプラ--------------------------------
+payg_cas02.gat,22,275,5	script	カプラ職員::kapra_payg02	117,{
+	callfunc "gkfmenu","payg_cas02.gat";
+	menu "倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"終了",L7;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	callfunc "gkfwarp","フェイヨン","payon.gat",82,128;
+L4:
+	callfunc "kfcart",800;
+L7:
+	callfunc "kfend";
+}
+//-------------------------------執事---------------------------------
+payg_cas02.gat,22,260,7	script	チェリオス	55,{
+	callfunc "Steward_menu0","payg_cas02.gat","チェリオス";
+	menu "砦の状態を表示",L1,"商業発展に投資",L2,"砦の防衛に投資",L3,"ガーディアン設置",L4,"カプラとの契約 / 解雇",L5,"マスターの部屋に入る",L6,"アジトを放棄する",L7;
+L1:
+	callfunc "Steward_menu1","payg_cas02.gat","チェリオス";
+L2:
+	callfunc "Steward_menu2","payg_cas02.gat","チェリオス";
+L3:
+	callfunc "Steward_menu3","payg_cas02.gat","チェリオス";
+L4:
+	callfunc "Steward_menu4","payg_cas02.gat","チェリオス";
+	if (@GDnum == 10) monster "payg_cas02.gat",237,54,"--ja--",1285,1,"Agit_C02::On_GDf21";
+	if (@GDnum == 11) monster "payg_cas02.gat",228,72,"--ja--",1285,1,"Agit_C02::On_GDf22";
+	if (@GDnum == 12) monster "payg_cas02.gat",210,41,"--ja--",1285,1,"Agit_C02::On_GDf23";
+	if (@GDnum == 13) monster "payg_cas02.gat",57,241,"--ja--",1285,1,"Agit_C02::On_GDf24";
+	if (@GDnum == 14) monster "payg_cas02.gat",42,241,"--ja--",1285,1,"Agit_C02::On_GDf25";
+	if (@GDnum == 15) monster "payg_cas02.gat",287,257,"--ja--",1285,1,"Agit_C02::On_GDf26";
+	if (@GDnum == 16) monster "payg_cas02.gat",264,272,"--ja--",1285,1,"Agit_C02::On_GDf27";
+	if (@GDnum == 17) monster "payg_cas02.gat",27,20,"--ja--",1286,1,"Agit_C02::On_GDf28";
+	mes "[執事チェリオス]";
+	mes "ガーディアンが設置されました。";
+	mes "ガーディアンは私達の城を";
+	mes "敵から守ってくれるでしょう。";
+	close;
+L5:
+	callfunc "Steward_menu5","payg_cas02.gat","チェリオス","kapra_payg02";
+L6:
+	callfunc "Steward_menu6","payg_cas02.gat","チェリオス",141,141;
+L7:
+	callfunc "Steward_menu7","payg_cas02.gat","チェリオス";
+	callfunc "resetcastledata","payg_cas02.gat","::OnRecvCastleF02","kapra_payg02",@GID;
+}
+//-----------------------------スイッチ-------------------------------
+payg_cas02.gat,149,149,0	script	　	111,{
+callfunc "gdswitch","payg_cas02.gat",22,261;
+}
+//-----------------------------スイッチ2------------------------------
+payg_cas02.gat,278,247,0	script	　	111,{
+callfunc "gdswitch2","payg_cas02.gat","gld_dun01.gat",54,165;
+}

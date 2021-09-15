@@ -1,0 +1,53 @@
+//========================================================================================
+//=================枝プロンテラNPC改造版(個数制限あり)====================================
+//========================================================================================
+prontera.gat,166,125,4	script	モンスター召還屋	738,{
+	if(Zeny >= 50000) goto Lmob_1;
+		mes "[モンスター召還屋]";
+		mes "お金が足りません。";
+		close;
+Lmob_1:
+	if ($@prtmob >= 5) goto LError;
+	set Zeny,Zeny-50000;
+	set @rann,rand(4);
+		if (@rann == 0)	monster "this",162,126,"--en--",-1,1,"prtmobdie";
+		if (@rann == 1)	monster "this",162,112,"--en--",-1,1,"prtmobdie";
+		if (@rann == 2)	monster "this",149,126,"--en--",-1,1,"prtmobdie";
+		if (@rann == 3)	monster "this",149,112,"--en--",-1,1,"prtmobdie";
+	set $@prtmob,$@prtmob+1;
+	waitingroom "[" + $@prtmob + "/5匹]1回 50,000z",0;
+	end;
+LError:
+	mes "[モンスター召還屋]";
+	mes "一度に出せるのは5匹までです。";
+OnCount:
+	waitingroom "[" + $@prtmob + "/5匹]1回 50,000z",0;
+	close;
+OnInit:
+	waitingroom "[0/5匹]1回 50,000z",0;
+	end;
+}
+//=====================カウント部===============================
+prontera.gat,139,173,4	script	prtmobdie	-1,{
+	set $@prtmob,$@prtmob-1;
+	doevent "モンスター召還屋::OnCount";
+	end;
+}
+//=====================リセット(デビルチより召喚されたMobのみリセット)=================================
+prontera.gat,168,125,4	script	モンスターリセット屋	81,{
+		mes "[モンスターリセット屋]";
+		mes "モンスターをリセットします。";
+		next;
+		menu "はい",-,"いいえ",Lclose;
+			killmonster "prontera.gat","prtmobdie";
+			mes "[モンスターリセット屋]";
+			mes "Mobdelete完了";
+			next;
+			set $@prtmob,0;
+			mapannounce "prontera.gat","[南十字路情報] " + strcharinfo(0) + "によりMobリセットされました。",20;
+			mes "[モンスターリセット屋]";
+			mes "FlagReset完了";
+		Lclose:
+			doevent "モンスター召還屋::OnCount";
+			close;
+}

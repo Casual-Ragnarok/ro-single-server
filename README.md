@@ -54,13 +54,13 @@ RO 在网游中算是一个比较典型的存在，它的服务端只有逻辑�
 
 RO 的模拟器种类有很多，最主流的是 Athena（雅典娜） 系列。
 
-Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 jAthena ，现在还勉强活着的 eAthena 等等...
+Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 [jAthena](https://github.com/shellTeMP/jAthena) ，现在还勉强活着的 [rAthena](https://github.com/rathena/rathena)、[eAthena](https://github.com/eathena/eathena) 等等...
 
-<b>本单机服务器使用的正正就是 eAthena （下文简称 EA ）</b>。
+<b>本单机服务器使用的正正就是 [eAthena](https://github.com/eathena/eathena)  （下文简称 EA ）</b>。
 
 [EA](https://github.com/eathena/eathena) 是在 Github 上的一个免费开源项目，所以使用 EA 做 RO 模拟器，只要不涉及商业利益就是合法的。 
 
-> 注： EA 的源码是 C 语言写的，需编译使用。 但它的官方域名 eathena.ws 已过期并被挟持，就不要随便打开了
+> 注： [EA](https://github.com/eathena/eathena) 的源码是 C 语言写的，需编译使用。 但它的官方域名 eathena.ws 已过期并被挟持，就不要随便打开了
 
 ------
 
@@ -123,7 +123,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　注册表地址 `HKCU` 是 `HKEY_CURRENT_USER` 的缩写
 <br/>　由于没有从根本上破解，每隔 1 小时服务端会弹出一次激活框，可以不管，也可以点击【继续试用】，不影响游戏
 
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/00.png)
+![](./img/00.png)
 
 
 </details>
@@ -143,9 +143,9 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 客户端补丁（登陆器）：v4.3 【[Github](https://github.com/lyy289065406/ro-single-client)】【[百度网盘(iav5)](https://pan.baidu.com/s/1F3XLwqDDwebvUNIYIKPlXQ&shfl=sharepset)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
  
 > 备注：
-<br/>　服务端脚本更新记录（游戏内公示）: [view](https://github.com/lyy289065406/ro-single-server/blob/master/npc/re/%E5%8A%9F%E8%83%BD%E8%84%9A%E6%9C%AC/update.txt)
-<br/>　服务端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-server.md)
-<br/>　客户端历史版本更新内容: [view](https://github.com/lyy289065406/ro-single-server/tree/master/history/version-client.md)
+<br/>　服务端脚本更新记录（游戏内公示）: [view](./npc/re/%E5%8A%9F%E8%83%BD%E8%84%9A%E6%9C%AC/update.txt)
+<br/>　服务端历史版本更新内容: [view](./history/version-server.md)
+<br/>　客户端历史版本更新内容: [view](./history/version-client.md)
 
 
 ## 版本特色
@@ -161,13 +161,13 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <summary>展开查看更多</summary>
 <br/>
 
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/03.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/04.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/05.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/06.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/07.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/09.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/10.png)
+![](./img/03.png)
+![](./img/04.png)
+![](./img/05.png)
+![](./img/06.png)
+![](./img/07.png)
+![](./img/09.png)
+![](./img/10.png)
 
 </details>
 
@@ -180,7 +180,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 安装 git，执行命令 `git clone https://github.com/lyy289065406/ro-single-server` 下载 EA 服务端
 - 不懂 git 的同学可以直接点击本 [Github](https://github.com/lyy289065406/ro-single-server) 仓库的 【Clone and download】 ，解压后也是一样的
 - 服务端可放到任意位置（<b>路径不要有中文</b>）
-- 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）
+- 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）。【若熟悉 Docker 可以使用 `01-Run_Env_Docker.ps1` 代替】
 - 双击运行 `02-启动RO服务端.bat`，会依次自动启动：
 <br/>　○ 角色服务器 `char-server.exe`
 <br/>　○ 登陆服务器 `login-server.exe`
@@ -195,14 +195,14 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <summary>展开查看更多</summary>
 <br/>
 
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/01.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/02.png)
+![](./img/01.png)
+![](./img/02.png)
 
 
 ### 停止服务端
 
 - 手动关闭 `login-server.exe`、 `char-server.exe`、 `map-server.exe` 窗口
-- 双击运行 `03-关闭架设环境.bat`
+- 双击运行 `03-关闭架设环境.bat`。【若熟悉 Docker 可以使用 `03-Stop_Env_Docker.ps1` 代替】
 - 双击运行 `04-重置试用时间.bat` （可选，只要未过期都可以不执行）
 
 > 注：重置试用时间并不会影响存档，存档是在 mysql 数据库中的
@@ -241,8 +241,8 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 <br/>　第二次登陆时，把后面的 \_M/\_F 去掉，即可正常登陆
 
 
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/13.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/12.png)
+![](./img/13.png)
+![](./img/12.png)
 
 </details>
 
@@ -262,6 +262,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ### 服务器数据库
 
 - 类型： mysql
+- 版本： 5.0.67-community-nt
 - IP： 127.0.0.1
 - 端口： 3306
 - 账号： root
@@ -272,7 +273,18 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 > 注：
 <br/>　mysql 的 root 账号只允许本地连接
-<br/>　若需要通过联网访问，需增加新的 mysql 账号并授权（具体方法自行搜索）
+<br/>　若需要通过联网访问，需更改 root 授权、或增加新的 mysql 账号并授权（具体方法自行搜索）
+
+
+### MetaBase 数据库 UI
+
+- IP： 127.0.0.1
+- 端口： 3000
+- 管理员账号： ro@123.com
+- 管理员密码： ro@123
+- 普通用户账号： ro@456.com
+- 普通用户密码： ro@456
+
 
 ### 添加 GM 账号
 
@@ -281,33 +293,33 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 - 打开账号管理表 login ，找到刚刚注册的普通账号
 - 修改 group_id 列为 99 即可赋予其 GM 权限
 
-> 注：group_id 表示 GM 等级，各个等级权限详见 [conf/groups.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/groups.conf) 文件
+> 注：group_id 表示 GM 等级，各个等级权限详见 [conf/groups.conf](./conf/groups.conf) 文件
 
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/14.png)
+![](./img/14.png)
 
 
 ### GM 常用配置
 
 - GM 指令辅助工具： [`tools/GM命令菜单/GM命令快捷菜单.exe`](https://github.com/lyy289065406/ro-single-server/blob/staging/tools/GM%E5%91%BD%E4%BB%A4%E8%8F%9C%E5%8D%95/GM%E5%91%BD%E4%BB%A4%E5%BF%AB%E6%8D%B7%E8%8F%9C%E5%8D%95.exe)
-- GM 指令大全： [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
-- 角色指令大全：  [`conf/charhelp.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/charhelp.txt)
-- 修改服务器参数：  [`conf/char_athena.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
-- 修改经验倍率：  [`conf/battle/exp.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/exp.conf)
-- 修改掉落倍率：  [`conf/battle/drops.conf`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/battle/drops.conf)
-- 修改物品属性：  [`db/re/item_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_db.txt)
-- 修改魔物属性：  [`db/re/mob_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/mob_db.txt)
-- 修改在线商城：  [`db/re/item_cash_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_cash_db.txt)
-- 修改交易限制：  [`db/re/item_trade.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/item_trade.txt)
-- 修改宠物属性：  [`db/re/pet_db.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/db/re/pet_db.txt)
+- GM 指令大全： [`conf/help.txt`](./conf/help.txt)
+- 角色指令大全：  [`conf/charhelp.txt`](./conf/charhelp.txt)
+- 修改服务器参数：  [`conf/char_athena.conf`](./conf/char_athena.conf)
+- 修改经验倍率：  [`conf/battle/exp.conf`](./conf/battle/exp.conf)
+- 修改掉落倍率：  [`conf/battle/drops.conf`](./conf/battle/drops.conf)
+- 修改物品属性：  [`db/re/item_db.txt`](./db/re/item_db.txt)
+- 修改魔物属性：  [`db/re/mob_db.txt`](./db/re/mob_db.txt)
+- 修改在线商城：  [`db/re/item_cash_db.txt`](./db/re/item_cash_db.txt)
+- 修改交易限制：  [`db/re/item_trade.txt`](./db/re/item_trade.txt)
+- 修改宠物属性：  [`db/re/pet_db.txt`](./db/re/pet_db.txt)
 
 > 注：
-<br/>　"GM指令辅助工具" 因为很长时间没更新, 新的 GM 指令已经不支持了，建议直接查看 [`conf/help.txt`](https://github.com/lyy289065406/ro-single-server/blob/master/conf/help.txt)
+<br/>　"GM指令辅助工具" 因为很长时间没更新, 新的 GM 指令已经不支持了，建议直接查看 [`conf/help.txt`](./conf/help.txt)
 <br/>　若对自己使用 GM 指令，则使用 `@` 符号, 如 `@cash 50000`
 <br/>　若对玩家使用 GM 指令，则使用 `#` 符号, 如 `#cash 玩家名字 50000`
 <br/>　GM 指令大全在服务端目录下的 help.txt 文件, 聊天栏内输入
 
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/08.png)
-![](https://github.com/lyy289065406/ro-single-server/blob/master/img/11.png)
+![](./img/08.png)
+![](./img/11.png)
 
 
 </details>
@@ -383,13 +395,13 @@ RO 服务端启动后，会开启 5 个服务：
 
 在 <b>单机</b> 情况下，服务端配置是这样的：
 
-- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+- 登录服务器配置文件： [conf/login_athena.conf](./conf/login_athena.conf)
 <br/>　○ bind_ip: 127.0.0.1 （默认被注释）
-- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+- 角色服务器配置文件： [conf/char_athena.conf](./conf/char_athena.conf)
 <br/>　○ char_ip: 127.0.0.1
 <br/>　○ login_ip: 127.0.0.1
 <br/>　○ bind_ip: 127.0.0.1 （默认被注释）
-- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+- 地图服务器配置文件： [conf/map_athena.conf](./conf/map_athena.conf)
 <br/>　○ map_ip: 127.0.0.1
 <br/>　○ char_ip: 127.0.0.1
 <br/>　○ bind_ip: 127.0.0.1 （默认被注释）
@@ -400,30 +412,30 @@ RO 服务端启动后，会开启 5 个服务：
 
 若<b>仅需 局域网 联机</b>，服务端配置修改为（共修改 4 处）：
 
-- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+- 登录服务器配置文件： [conf/login_athena.conf](./conf/login_athena.conf)
 <br/>　○ bind_ip: 127.0.0.1 （保持被注释）
-- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+- 角色服务器配置文件： [conf/char_athena.conf](./conf/char_athena.conf)
 <br/>　○ char_ip: 192.168.1.2
 <br/>　○ login_ip: 192.168.1.2
 <br/>　○ bind_ip: 127.0.0.1 （保持被注释）
-- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+- 地图服务器配置文件： [conf/map_athena.conf](./conf/map_athena.conf)
 <br/>　○ map_ip: 192.168.1.2
 <br/>　○ char_ip: 192.168.1.2
 <br/>　○ bind_ip: 127.0.0.1 （保持被注释）
 
-> 注：局域网下，子网掩码配置文件 [conf/subnet_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf) 可能会影响客户端登录。该文件通过子网掩码计算客户端所配置的服务端 IP ，只要结果和服务器的真实局域网 IP 一致就允许服务端登录（换言之允许客户端配置服务端的 IP 段）。
+> 注：局域网下，子网掩码配置文件 [conf/subnet_athena.conf](./conf/login_athena.conf) 可能会影响客户端登录。该文件通过子网掩码计算客户端所配置的服务端 IP ，只要结果和服务器的真实局域网 IP 一致就允许服务端登录（换言之允许客户端配置服务端的 IP 段）。
 
 ------
 
 若<b>仅需 公网 联机</b>，服务端配置修改为（共修改 4 处）：
 
-- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+- 登录服务器配置文件： [conf/login_athena.conf](./conf/login_athena.conf)
 <br/>　○ bind_ip: 127.0.0.1 （保持被注释）
-- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+- 角色服务器配置文件： [conf/char_athena.conf](./conf/char_athena.conf)
 <br/>　○ char_ip: 9.8.7.6
 <br/>　○ login_ip: 9.8.7.6
 <br/>　○ bind_ip: 127.0.0.1 （保持被注释）
-- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+- 地图服务器配置文件： [conf/map_athena.conf](./conf/map_athena.conf)
 <br/>　○ map_ip: 9.8.7.6
 <br/>　○ char_ip: 9.8.7.6
 <br/>　○ bind_ip: 127.0.0.1 （保持被注释）
@@ -432,13 +444,13 @@ RO 服务端启动后，会开启 5 个服务：
 
 若<b>同时需 局域网+公网 联机</b>，服务端配置修改为（共修改 7 处）：
 
-- 登录服务器配置文件： [conf/login_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/login_athena.conf)
+- 登录服务器配置文件： [conf/login_athena.conf](./conf/login_athena.conf)
 <br/>　○ bind_ip: 192.168.1.2
-- 角色服务器配置文件： [conf/char_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/char_athena.conf)
+- 角色服务器配置文件： [conf/char_athena.conf](./conf/char_athena.conf)
 <br/>　○ char_ip: 9.8.7.6
 <br/>　○ login_ip: 9.8.7.6
 <br/>　○ bind_ip: 192.168.1.2
-- 地图服务器配置文件： [conf/map_athena.conf](https://github.com/lyy289065406/ro-single-server/blob/master/conf/map_athena.conf)
+- 地图服务器配置文件： [conf/map_athena.conf](./conf/map_athena.conf)
 <br/>　○ map_ip: 9.8.7.6
 <br/>　○ char_ip: 9.8.7.6
 <br/>　○ bind_ip: 192.168.1.2
@@ -497,7 +509,7 @@ RO 服务端启动后，会开启 5 个服务：
 
 ### 0x99 更多资料
 
-> [传送门](https://github.com/lyy289065406/ro-single-server/tree/master/tools/RO%E8%B5%84%E6%96%99)
+> [传送门](./tools/RO%E8%B5%84%E6%96%99)
 
 
 
@@ -515,10 +527,10 @@ RO 服务端启动后，会开启 5 个服务：
 
 ```
 ro-single-server
-|-- 01-启动架设环境.bat  ......................  [启动 mysql 存档数据库和 Apache 门户网站]
-|-- 02-启动RO服务端.bat  ......................  [启动 RO 服务端（含登录、角色、地图服务器）]
-|-- 03-关闭架设环境.bat  ......................  [停止 mysql 存档数据库和 Apache 门户网站]
-|-- 04-重置试用时间.bat  ......................  [服务端试用期破解脚本]
+|-- 01-启动架设环境.bat  .....................  [启动 mysql 存档数据库和 Apache 门户网站]
+|-- 02-启动RO服务端.bat  .....................  [启动 RO 服务端（含登录、角色、地图服务器）]
+|-- 03-关闭架设环境.bat  .....................  [停止 mysql 存档数据库和 Apache 门户网站]
+|-- 04-重置试用时间.bat  .....................  [服务端试用期破解脚本]
 |-- serv.bat  ...............................  [调用脚本 logserv.bat、 charserv.bat、 mapserv.bat 的前置脚本]
 |-- logserv.bat  ............................  [启用登录服务器 login-server.exe 的脚本]
 |-- login-server.exe  .......................  [登录服务器]
@@ -637,7 +649,7 @@ ro-single-server
 |   |   |-- item_buyingstore.txt  ...........  [采购系统物品限定数据库]
 |   |   |-- item_cardalbum.txt  .............  [老旧收集册能开启到的物品数据库]
 |   |   |-- item_cash_db.txt  ...............  [在线商城]
-|   |   |-- item_combo_db.txt  ..............  [套装产生额外效果数据库]
+|   |   |-- item_combo_db.txt  ..............  [※ 套装产生额外效果数据库]
 |   |   |-- item_db.txt  ....................  [※ 物品数据库（编号、名称、价格、重量、使用效果等）]
 |   |   |-- item_delay.txt  .................  [物品使用延迟数据库]
 |   |   |-- item_flag.txt

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[ÔÆÑéÖ¤Âë]]></item>
+			<item id="identifier"><![CDATA[cloudcaptcha]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[cloudcaptcha/]]></item>
+			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="version"><![CDATA[1.0]]></item>
+		</item>
+		<item id="version"><![CDATA[X3.2]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="cloudcaptcha_name"><![CDATA[ÔÆÑéÖ¤Âë]]></item>
+				<item id="switch_error"><![CDATA[ÄúÐèÒªÏÈ¿ªÆôÆäËûÔÆÆ½Ì¨²å¼þ£¬²ÅÄÜÊ¹ÓÃ±¾²å¼þ]]></item>
+			</item>
+		</item>
+		<item id="enablefile"><![CDATA[switch.php]]></item>
+	</item>
+</root>

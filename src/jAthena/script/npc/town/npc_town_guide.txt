@@ -1,0 +1,1417 @@
+//----------------------------------------------------------------------
+//Ragnarok Online   Town Guide Script
+//----------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+//[案内要員 - プロンテラ]
+prontera.gat,154,187,4	script	案内要員#prontera	105,{
+	cutin "prt_soldier",2;
+	mes "[プロンテラ 案内要員]";
+	mes "ようこそ、ルーンミッドガッツ王国の";
+	mes "美しい首都プロンテラへ";
+	mes "私達はここプロンテラにいらした";
+	mes "旅人達の為に街の道案内をしています。";
+	mes "分からない事があれば、いつでも私達";
+	mes "案内要員に聞いてください。";
+	next;
+	mes "[プロンテラ 案内要員]";
+	mes "私達の道案内を初めて聞く方は";
+	mes "｢告知事項｣メニューを";
+	mes "選んでください。";
+L_START_1:
+	next;
+	menu "街の案内を受ける",L_MENU_1,"ミニMAP上の位置表示を消す",L_MENU_2,"告知事項",L_MENU_3,"やめる",L_MENU_4;
+	L_MENU_1:
+		if (@COMPASS_CHECK != 0) goto L_MENU_1_ROOT;
+		mes "[プロンテラ 案内要員]";
+		mes "それではご案内いたしましょう。";
+		mes "ミニMAPに位置表示を残しますか？";
+		next;
+		menu "はい",-,"いいえ",L_MENU_1_ROOT;
+			set @COMPASS_CHECK,1;
+	L_MENU_1_ROOT:
+		mes "[プロンテラ 案内要員]";
+		mes "案内を受けたい場所を選んでください。";
+	L_SUB_1:
+		next;
+		menu "剣士ギルド",L_MENU_1_1,"^0000FF大聖堂^000000",L_MENU_1_2,"騎士団",L_MENU_1_3,"武器屋",L_MENU_1_4,"道具屋",L_MENU_1_5,"旅館",L_MENU_1_6,"精錬所",L_MENU_1_7,"酒場",L_MENU_1_8,"図書館",L_MENU_1_9,"研究所",L_MENU_1_10,"プロンテラ城",L_MENU_1_11,"事務所",L_MENU_1_12,"取り消し",L_MENU_1_13;
+		L_MENU_1_1:
+			mes "[プロンテラ 案内要員]";
+			mes "剣士転職の業務を扱う";
+			mes "｢剣士ギルド｣は";
+			mes "衛星都市イズルードへ移って";
+			mes "現在のプロンテラには";
+			mes "空家が残っています。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,237,41,1,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_2:
+			mes "[プロンテラ 案内要員]";
+			mes "アコライトへの転職業務を扱う";
+			mes "｢大聖堂｣は街の北東";
+			mes "外周街にあります。";
+			mes "時計方向では2時の方向です。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,236,316,2,0xFF0000;
+			goto L_SUB_1;
+		L_MENU_1_3:
+			mes "[プロンテラ 案内要員]";
+			mes "ルーンミッドガッツ王国の";
+			mes "首都プロンテラを守る";
+			mes "｢騎士団｣の本部は街の北西";
+			mes "外周街にあります。";
+			mes "時計方向では10時の方向です。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,46,345,3,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_4:
+			mes "[プロンテラ 案内要員]";
+			mes "｢武器屋｣は噴水広場の";
+			mes "北東部にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,175,220,4,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_5:
+			mes "[プロンテラ 案内要員]";
+			mes "｢道具屋｣は噴水広場の";
+			mes "北西部にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,134,221,5,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_6:
+			mes "[プロンテラ 案内要員]";
+			mes "｢旅館｣は噴水広場の";
+			mes "東側と西側にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,204,214,6,0xFF00FF;
+			viewpoint 1,107,192,7,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_7:
+			mes "[プロンテラ 案内要員]";
+			mes "｢精錬所｣は噴水広場の";
+			mes "南東部にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,179,184,8,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_8:
+			mes "[プロンテラ 案内要員]";
+			mes "｢酒場｣は噴水広場の";
+			mes "南東部、精錬所の後側にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,208,154,9,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_9:
+			mes "[プロンテラ 案内要員]";
+			mes "｢図書館｣は噴水広場から";
+			mes "北へ進む道の東側と西側にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,120,267,10,0x00FF00;
+			viewpoint 1,192,267,11,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_10:
+			mes "[プロンテラ 案内要員]";
+			mes "｢研究所｣は噴水広場の";
+			mes "南西部にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,133,183,12,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_11:
+			mes "[プロンテラ 案内要員]";
+			mes "｢プロンテラ城｣は街の北";
+			mes "橋を渡ったところにあります。";
+			mes "時計方向では12時の方向です。";
+			mes "城の後門から外へ出ると";
+			mes "北プロンテラ地方へ繋がっています。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,156,360,13,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_12:
+			mes "[プロンテラ 案内要員]";
+			mes "｢事務所｣は街の南東";
+			mes "外周街にあります。";
+			mes "時計方向では7時の方向です。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,75,91,14,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_13:
+			mes "[プロンテラ 案内要員]";
+			mes "位置標識を消したい時は";
+			mes "｢ミニMAP上の位置表示を消す｣を";
+			mes "選んでください。";
+			goto L_START_1;
+	L_MENU_2:
+		viewpoint 2,237,41,1,0x00FF00;
+		viewpoint 2,236,316,2,0xFF0000;
+		viewpoint 2,46,345,3,0x00FF00;
+		viewpoint 2,175,220,4,0xFF00FF;
+		viewpoint 2,8,134,5,0xFF00FF;
+		viewpoint 2,204,214,6,0xFF00FF;
+		viewpoint 2,107,192,7,0xFF00FF;
+		viewpoint 2,179,184,8,0x00FF00;
+		viewpoint 2,208,154,9,0x00FF00;
+		viewpoint 2,120,267,10,0x00FF00;
+		viewpoint 2,192,267,11,0x00FF00;
+		viewpoint 2,133,183,12,0x00FF00;
+		viewpoint 2,156,360,13,0x00FF00;
+		viewpoint 2,75,91,14,0x00FF00;
+		set @COMPASS_CHECK,0;
+		goto L_START_1;
+	L_MENU_3:
+		mes "[プロンテラ 案内要員]";
+		mes "既存のアナログ案内方式から";
+		mes "知りたい場所をミニMAPに";
+		mes "表示してくれる、広域案内システムを";
+		mes "利用した最先端デジタル案内方式に";
+		mes "進化しました。";
+		next;
+		mes "[プロンテラ 案内要員]";
+		mes "ルーンミッドガッツ王国の";
+		mes "すばらしい魔法と、科学技術の";
+		mes "組み合わせで作り出した";
+		mes "この広域案内システムの性能を";
+		mes "ぜひご覧ください。";
+		next;
+		mes "[プロンテラ 案内要員]";
+		mes "本案内をご利用いただく前に";
+		mes "まずモニター右上にある";
+		mes "ミニMAPをご覧ください。";
+		next;
+		mes "[プロンテラ 案内要員]";
+		mes "ミニMAPが表示されていない場合は";
+		mes "ショートカットキー「Ctrl + Tab」";
+		mes "または基本情報ウインドウの";
+		mes "「map」ボタンをクリックしてください。";
+		next;
+		mes "[プロンテラ 案内要員]";
+		mes "ミニMAPが表示されたら";
+		mes " - ボタンをクリックして";
+		mes "マップの全体が見えるように";
+		mes "設定してください。";
+		goto L_START_1;
+	L_MENU_4:
+		mes "[プロンテラ 案内要員]";
+		mes "それではよい旅を！";
+		close2;
+		cutin "prt_soldier",255;
+		end;
+}
+prontera.gat,282,208,2	duplicate(案内要員#prontera)	東門-案内要員	105
+prontera.gat,29,200,6	duplicate(案内要員#prontera)	西門-案内要員	105
+prontera.gat,160,29,0	duplicate(案内要員#prontera)	南門-案内要員	105
+prontera.gat,151,330,4	duplicate(案内要員#prontera)	北門-案内要員	105
+
+//----------------------------------------------------------------------
+//[案内要員 - イズルード]
+
+izlude.gat,123,87,6	script	案内要員	105,{
+	mes "[イズルード案内要員]";
+	mes "衛星都市イズルードにようこそ！";
+	mes "私はこのイズルードの道案内を";
+	mes "担当している公益公務員だ。";
+	mes "建物の位置について知りたいなら";
+	mes "いつでも聞いてくれ。";
+L_START_1:
+	next;
+	menu "街の案内を受ける",L_MENU_1,"ミニMAP上の位置表示を消す",L_MENU_2,"告知事項",L_MENU_3,"やめる",L_MENU_4;
+	L_MENU_1:
+		if (@COMPASS_CHECK != 0) goto L_MENU_1_ROOT;
+		mes "[イズルード案内要員]";
+		mes "それでは案内しよう。";
+		mes "ミニMAPに位置表示を残す？";
+		next;
+		menu "はい",-,"いいえ",L_SUB_1;
+			set @COMPASS_CHECK,1;
+	L_MENU_1_ROOT:
+	L_SUB_1:
+		next;
+		menu "^FF0000剣士ギルド^000000",L_MENU_1_1,"剣士協会",L_MENU_1_2,"アリーナ",L_MENU_1_3,"船着場",L_MENU_1_4,"武器屋",L_MENU_1_5,"道具屋",L_MENU_1_6,"取り消し",L_MENU_1_7;
+		L_MENU_1_1:
+			mes "[イズルード案内要員]";
+			mes "剣士に転職したいのか？";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,52,140,1,0xFF0000;
+			goto L_SUB_1;
+		L_MENU_1_2:
+			mes "[イズルード案内要員]";
+			mes "剣士関連の仕事を処理する";
+			mes "剣士協会は南側にある。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,214,130,2,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_3:
+			mes "[イズルード案内要員]";
+			mes "イズルードの名物｢アリーナ｣は";
+			mes "北にある。12時方向だ。";
+			mes "私の兄貴がそこの関係者なんだけど、";
+			mes "アリーナはまだ未公開らしい。";
+			mes "今行っても無駄だぞ。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,128,225,3,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_4:
+			mes "[イズルード案内要員]";
+			mes "｢アルベルタ｣や｢バイラン島｣に";
+			mes "行くことができる船着場は";
+			mes "北東にある。MAPでは2時方向だ。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,200,180,4,0xFF0000;
+			goto L_SUB_1;
+		L_MENU_1_5:
+			mes "[イズルード案内要員]";
+			mes "武器屋は北西にある。";
+			mes "近い所だからすぐ見つかるだろう。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,111,149,5,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_6:
+			mes "[イズルード案内要員]";
+			mes "道具屋は北東にある。";
+			mes "近いからすぐ見つかるだろう。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,148,148,6,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_7:
+			mes "[イズルード 案内要員]";
+			mes "表示位置を消したいなら";
+			mes "｢ミニMAP上の位置表示を消す｣";
+			mes "を選択してくれ。";
+			goto L_START_1;
+	L_MENU_2:
+		mes "[イズルード 案内要員]";
+		mes "ミニマップの標識を全て消します";
+		viewpoint 2,52,140,1,0xFF0000;
+		viewpoint 2,214,130,2,0x00FF00;
+		viewpoint 2,128,225,3,0x00FF00;
+		viewpoint 2,200,180,4,0xFF0000;
+		viewpoint 2,111,149,5,0xFF00FF;
+		viewpoint 2,148,148,6,0xFF00FF;
+		set @COMPASS_CHECK,0;
+		goto L_START_1;
+	L_MENU_3:
+		mes "[イズルード案内要員]";
+		mes "既存のアナログ案内方式を廃止し、";
+		mes "知りたい場所をミニMAPに表示して";
+		mes "くれる、広域検索システムを利用した";
+		mes "最先端デジタル案内方式に";
+		mes "変わったんだ。";
+		next;
+		mes "[イズルード案内要員]";
+		mes "ルーンミッドガッツ王国に存在する";
+		mes "すばらしい魔法と、科学技術の粋で";
+		mes "あるこの広組域検索システムの性能を";
+		mes "直接その目で見てほしい。";
+		next;
+		mes "[イズルード案内要員]";
+		mes "案内の前に、画面右上にある";
+		mes "ミニMAPを確認してくれ。";
+		mes "ミニMAPが見えなかったら、";
+		mes "｢ctrl+tab｣または";
+		mes "基本ウインドウで｢map｣";
+		mes "ボタンをクリックするんだ";
+		next;
+		mes "[イズルード案内要員]";
+		mes "ミニMAPが見えたら";
+		mes "｢-｣ボタンを再度クリックして、";
+		mes "街全体が見えるように設定した方が";
+		mes "いいぞ。";
+		goto L_START_1;
+	L_MENU_4:
+		mes "[イズルード案内要員]";
+		mes "聞きたい場所があったら";
+		mes "いつでも言ってくれ。";
+		close;
+}
+
+//----------------------------------------------------------------------
+//[案内要員 - ゲフェン]
+
+geffen.gat,203,116,0	script	案内要員#geffen	705,{
+		cutin "gef_soldier",2;
+		mes "[ゲフェン案内要員]";
+		mes "魔法の都市ゲフェンによくぞ参られた。";
+		mes "我らはここ、ゲフェンに参った";
+		mes "旅人の為に街の案内をしておる。";
+		mes "街の事なら何でも聞かれよ。";
+L_START_1:
+	next;
+	menu "街の案内を受ける",L_MENU_1,"ミニMAP上の位置表示を消す",L_MENU_2,"告知事項",L_MENU_3,"やめる",L_MENU_4;
+	L_MENU_1:
+		if (@COMPASS_CHECK != 0) goto L_MENU_1_ROOT;
+			mes "[ゲフェン案内要員]";
+			mes "それでは案内いたそう。";
+			mes "ミニMAPに位置表示を残すか？";
+		next;
+		menu "はい",-,"いいえ",L_MENU_1_ROOT;
+			set @COMPASS_CHECK,1;
+	L_MENU_1_ROOT:
+	L_SUB_1:
+		next;
+		menu "^FF0000魔法学校^000000",L_MENU_1_1,"鍛冶屋",L_MENU_1_2,"武器屋",L_MENU_1_3,"道具屋",L_MENU_1_4,"酒場",L_MENU_1_5,"旅館",L_MENU_1_6,"取り消し",L_MENU_1_7;
+		L_MENU_1_1:
+			mes "[ゲフェン案内要員]";
+				mes "マジシャンの転職業務を";
+				mes "処理する「魔法学校」である。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,61,180,1,0xFF0000;
+			goto L_SUB_1;
+		L_MENU_1_2:
+			mes "[ゲフェン案内要員]";
+				mes "「ブラックスミスギルド」は";
+				mes "MAPの中心から南東方向に";
+				mes "位置しておる。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,182,59,2,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_3:
+				mes "[ゲフェン案内要員]";
+				mes "「武器屋」はMAPの中心から";
+				mes "北西方向に位置しておる。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,99,140,3,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_4:
+			mes "[ゲフェン案内要員]";
+				mes "「道具屋」はMAPの中心から";
+				mes "南西方向に位置しておる。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,44,86,4,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_5:
+			mes "[ゲフェン案内要員]";
+				mes "「酒場」はMAPの中心から";
+				mes "北東方向に位置しておる。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,138,138,5,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_6:
+			mes "[ゲフェン案内要員]";
+				mes "「旅館」はMAPの中心から";
+				mes "北東方向に位置しておる。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,172,174,6,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_7:
+			mes "[ゲフェン案内要員]";
+				mes "位置表示を消したい場合は";
+				mes "「ミニMAP上の位置表示を消す」";
+				mes "を選択するが宜しい。";
+			goto L_START_1;
+	L_MENU_2:
+		viewpoint 2,61,180,1,0xFF0000;
+		viewpoint 2,182,59,2,0x00FF00;
+		viewpoint 2,99,140,3,0xFF00FF;
+		viewpoint 2,44,86,4,0xFF00FF;
+		viewpoint 2,138,138,5,0xFF00FF;
+		viewpoint 2,172,174,6,0xFF00FF;
+		set @COMPASS_CHECK,0;
+		goto L_START_1;
+	L_MENU_3:
+			mes "[ゲフェン 案内要員]";
+			mes "既存のアナログ案内方式を廃止し";
+			mes "知りたい場所がミニMAPに表示される";
+			mes "よう、広域案内システムを利用した";
+			mes "最先端デジタル案内方式に";
+			mes "変更されたのだ。";
+			next;
+			mes "[ゲフェン 案内要員]";
+			mes "ルーンミッドガッツ王国に存在する";
+			mes "すばらしい魔法と、科学技術の粋で";
+			mes "あるこの広域案内システムの性能を";
+			mes "しかとご覧になると宜しい。";
+			next;
+			mes "[ゲフェン 案内要員]";
+			mes "案内の前に、画面右上にある";
+			mes "ミニMAPを確認していただきたい。";
+			mes "「Ctrl + Tab」、または";
+			mes "基本ウインドウで「map」";
+			mes "ボタンをクリックすれば良い。";
+			next;
+			mes "[ゲフェン 案内要員]";
+			mes "ミニMAPが見えたら";
+			mes " - ボタンを再度クリックし、";
+			mes "街全体が見えるように設定するが";
+			mes "良かろう。";
+		goto L_START_1;
+	L_MENU_4:
+		mes "[ゲフェン案内要員]";
+		mes "良い旅を……";
+		close2;
+		cutin "gef_soldier",255;
+		end;
+}
+geffen.gat,118,62,0	duplicate(案内要員#geffen)	案内要員	705
+
+//----------------------------------------------------------------------
+//[案内要員 - フェイヨン]
+
+payon.gat,82,116,4	script	案内要員	708,{
+	cutin "pay_soldier",2;
+	mes "[フェイヨン案内要員]";
+	mes "山岳都市フェイヨンにようこそ。";
+	mes "私達はここフェイヨンにいらした";
+	mes "旅人さん達のために、街の案内を";
+	mes "しております。";
+L_START_1:
+	next;
+	menu "街の案内を受ける",L_MENU_1,"ミニMAP上の位置表示を消す",L_MENU_2,"告知事項",L_MENU_3,"やめる",L_MENU_4;
+	L_MENU_1:
+		if (@COMPASS_CHECK != 0) goto L_MENU_1_ROOT;
+		mes "[フェイヨン案内要員]";
+		mes "それではご案内します。";
+		mes "ミニMAPに位置表示を残しますか？";
+		next;
+		menu "はい",-,"いいえ",L_MENU_1_ROOT;
+			set @COMPASS_CHECK,1;
+	L_MENU_1_ROOT:
+	L_SUB_1:
+		next;
+		menu "^FF0000アーチャーギルド^000000",L_MENU_1_1,"武器屋",L_MENU_1_2,"道具屋",L_MENU_1_3,"旅館",L_MENU_1_4,"中央宮",L_MENU_1_5,"取り消し",L_MENU_1_6;
+		L_MENU_1_1:
+			mes "[フェイヨン案内要員]";
+			mes "アーチャー転職業務を処理する";
+			mes "｢アーチャーギルド｣です。";
+			mes "弓手村の北東方面にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,174,189,1,0xFF0000;
+			goto L_SUB_1;
+		L_MENU_1_2:
+			mes "[フェイヨン案内要員]";
+			mes "｢武器屋｣は村の北西の";
+			mes "端にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,30,176,2,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_3:
+			mes "[フェイヨン案内要員]";
+			mes "｢道具商人｣でしたら";
+			mes "私のすぐ後ろにおります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,174,189,3,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_4:
+			mes "[フェイヨン案内要員]";
+			mes "｢旅館｣はMAPの中心から";
+			mes "東方向にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,172,134,4,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_5:
+			mes "[フェイヨン案内要員]";
+			mes "｢中央宮｣はMAPの中心から";
+			mes "北側にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,89,166,5,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_6:
+			mes "[フェイヨン案内要員]";
+			mes "位置表示を消したいなら";
+			mes "｢ミニMAP上の位置表示を消す｣";
+			mes "を選択してください。";
+			goto L_START_1;
+	L_MENU_2:
+		viewpoint 2,174,189,1,0xFF0000;
+		viewpoint 2,30,176,2,0xFF00FF;
+		viewpoint 2,174,189,3,0xFF00FF;
+		viewpoint 2,172,134,4,0xFF00FF;
+		viewpoint 2,89,166,5,0x00FF00;
+		set @COMPASS_CHECK,0;
+		goto L_START_1;
+	L_MENU_3:
+		mes "[フェイヨン案内要員]";
+		mes "既存のアナログ案内方式を廃止し、";
+		mes "知りたい場所をミニMAPに表示して";
+		mes "くれる、広域検索システムを利用した";
+		mes "最先端デジタル案内方式に";
+		mes "変わったんです。";
+		next;
+		mes "[フェイヨン案内要員]";
+		mes "ルーンミッドガッツ王国に存在する";
+		mes "すばらしい魔法と、科学技術の粋で";
+		mes "あるこの広組域検索システムの性能を";
+		mes "直接その目で見てください。";
+		next;
+		mes "[フェイヨン案内要員]";
+		mes "案内の前に、画面右上にある";
+		mes "ミニMAPを確認してください。";
+		mes "ミニMAPが見えなかったら、";
+		mes "｢ctrl+tab｣または";
+		mes "基本ウインドウで｢map｣";
+		mes "ボタンをクリックします。";
+		next;
+		mes "[フェイヨン案内要員]";
+		mes "ミニMAPが見えたら";
+		mes "｢-｣ボタンを再度クリックして、";
+		mes "街全体が見えるように設定した方が";
+		mes "良いでしょう。";
+		goto L_START_1;
+	L_MENU_4:
+		mes "[フェイヨン案内要員]";
+		mes "良い旅になりますように。";
+		close2;
+		cutin "pay_soldier",255;
+		end;
+}
+
+pay_arche.gat,85,30,2	script	案内要員	708,{
+	mes "[フェイヨン案内要員]";
+	mes "山岳都市フェイヨンにようこそ。";
+	mes "私達はここフェイヨンにいらした";
+	mes "旅人さん達のために、街の案内を";
+	mes "しております。";
+L_START_1:
+	next;
+	menu "街の案内を受ける",L_MENU_1,"ミニMAP上の位置表示を消す",L_MENU_2,"告知事項",L_MENU_3,"やめる",L_MENU_4;
+	L_MENU_1:
+		if (@COMPASS_CHECK != 0) goto L_MENU_1_ROOT;
+		mes "[フェイヨン案内要員]";
+		mes "ミニマップに位置表示を残しますか？";
+		next;
+		menu "はい",-,"いいえ",L_MENU_1_ROOT;
+			set @COMPASS_CHECK,1;
+	L_MENU_1_ROOT:
+	L_SUB_1:
+		next;
+		menu "^FF0000アーチャーギルド^000000",L_MENU_1_1,"道具屋",L_MENU_1_2,"フェイヨンダンジョン",L_MENU_1_3,"取り消し",L_MENU_1_4;
+		L_MENU_1_1:
+			mes "[フェイヨン案内要員]";
+			mes "アーチャー転職業務を処理する";
+			mes "｢アーチャーギルド｣です。";
+			mes "弓手村の北東方面にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,144,164,1,0xFF0000;
+			goto L_SUB_1;
+		L_MENU_1_2:
+			mes "[フェイヨン案内要員]";
+			mes "｢道具屋｣はMAPの中心から";
+			mes "北方向にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,71,156,2,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_3:
+			mes "[フェイヨン案内要員]";
+			mes "｢フェイヨンダンジョン｣はMAPの";
+			mes "中心から北西方面にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,34,132,3,0xFFFFFF;
+			goto L_SUB_1;
+		L_MENU_1_4:
+			mes "[フェイヨン案内要員]";
+			mes "位置表示を消したいなら";
+			mes "｢ミニMAP上の位置表示を消す｣";
+			mes "を選択してください。";
+			goto L_START_1;
+	L_MENU_2:
+		viewpoint 2,144,164,1,0xFF0000;
+		viewpoint 2,71,156,2,0xFF00FF;
+		viewpoint 2,34,132,3,0xFFFFFF;
+		set @COMPASS_CHECK,0;
+		goto L_START_1;
+	L_MENU_3:
+		mes "[フェイヨン案内要員]";
+		mes "既存のアナログ案内方式を廃止し、";
+		mes "知りたい場所をミニMAPに表示して";
+		mes "くれる、広域検索システムを利用した";
+		mes "最先端デジタル案内方式に";
+		mes "変わったんです。";
+		next;
+		mes "[フェイヨン案内要員]";
+		mes "ルーンミッドガッツ王国に存在する";
+		mes "すばらしい魔法と、科学技術の粋で";
+		mes "あるこの広域検索システムの性能を";
+		mes "直接その目で見てください。";
+		next;
+		mes "[フェイヨン案内要員]";
+		mes "案内の前に、画面右上にある";
+		mes "ミニMAPを確認してください。";
+		mes "ミニMAPが見えなかったら、";
+		mes "｢ctrl+tab｣または";
+		mes "基本ウインドウで｢map｣";
+		mes "ボタンをクリックします。";
+		next;
+		mes "[フェイヨン案内要員]";
+		mes "ミニMAPが見えたら";
+		mes "｢-｣ボタンを再度クリックして、";
+		mes "街全体が見えるように設定した方が";
+		mes "良いでしょう。";
+		goto L_START_1;
+	L_MENU_4:
+		mes "[フェイヨン案内要員]";
+		mes "良い旅になりますように。";
+		close2;
+		cutin "pay_soldier",255;
+		end;
+}
+
+//----------------------------------------------------------------------
+//[案内要員 - アルベルタ]
+
+alberta.gat,23,238,4	script	案内要員#alberta	105,{
+	mes "[アルベルタ案内要員]";
+	mes "港の都市アルベルタにようこそ。";
+	mes "私達はここアルベルタに訪れた";
+	mes "旅人達のために、街の案内をして";
+	mes "おります。";
+	mes "街の各所について知りたかったら";
+	mes "いつでも聞いてください。";
+L_START_1:
+	next;
+	menu "街の案内を受ける",L_MENU_1,"ミニMAP上の位置表示を消す",L_MENU_2,"告知事項",L_MENU_3,"やめる",L_MENU_4;
+	L_MENU_1:
+		if (@COMPASS_CHECK != 0) goto L_SUB_1;
+		mes "[アルベルタ案内要員]";
+		mes "ミニマップに位置表示を残しますか？";
+		next;
+		menu "はい",-,"いいえ",L_MENU_1_ROOT;
+			set @COMPASS_CHECK,1;
+	L_MENU_1_ROOT:
+		mes "[アルベルタ案内要員]";
+		mes "知りたい場所を選んで下さい。";
+	L_SUB_1:
+		next;
+		menu "^FF0000商人協会^000000",L_MENU_1_1,"武器屋",L_MENU_1_2,"道具屋",L_MENU_1_3,"旅館",L_MENU_1_4,"取り消し",L_MENU_1_5;
+		L_MENU_1_1:
+			mes "[アルベルタ案内要員]";
+			mes "商人転職業務を処理する";
+			mes "｢商人協会｣です。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,33,41,1,0xFF0000;
+			goto L_SUB_1;
+		L_MENU_1_2:
+			mes "[アルベルタ案内要員]";
+			mes "｢武器屋｣はMAPの南端に";
+			mes "あります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,117,37,2,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_3:
+			mes "[アルベルタ案内要員]";
+			mes "｢道具屋｣はMAPの中心付近に";
+			mes "あります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,98,154,3,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_4:
+			mes "[アルベルタ案内要員]";
+			mes "｢旅館｣はMAPの北側にあります。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,65,233,4,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_5:
+			mes "[アルベルタ案内要員]";
+			mes "位置表示を消したいなら";
+			mes "｢ミニMAP上の位置表示を消す｣";
+			mes "を選択してください。";
+			goto L_START_1;
+	L_MENU_2:
+		mes "[アルベルタ 案内要員]";
+		mes "ミニマップの標識を全て消します";
+		viewpoint 2,33,41,1,0xFF0000;
+		viewpoint 2,117,37,2,0xFF00FF;
+		viewpoint 2,98,154,3,0xFF00FF;
+		viewpoint 2,65,233,4,0xFF00FF;
+		set @COMPASS_CHECK,0;
+		goto L_START_1;
+	L_MENU_3:
+		mes "[アルベルタ案内要員]";
+		mes "既存のアナログ案内方式を廃止し、";
+		mes "知りたい場所をミニMAPに表示して";
+		mes "くれる、広域検索システムを利用した";
+		mes "最先端デジタル案内方式に";
+		mes "変わったんです。";
+		next;
+		mes "[アルベルタ案内要員]";
+		mes "ルーンミッドガッツ王国に存在する";
+		mes "すばらしい魔法と、科学技術の粋で";
+		mes "あるこの広組域検索システムの性能を";
+		mes "直接その目で見てください。";
+		next;
+		mes "[アルベルタ案内要員]";
+		mes "案内の前に、画面右上にある";
+		mes "ミニMAPを確認してください。";
+		mes "ミニMAPが見えなかったら、";
+		mes "｢ctrl+tab｣または";
+		mes "基本ウインドウで｢map｣";
+		mes "ボタンをクリックします。";
+		next;
+		mes "[アルベルタ案内要員]";
+		mes "ミニMAPが見えたら";
+		mes "｢-｣ボタンを再度クリックして、";
+		mes "街全体が見えるように設定した方が";
+		mes "良いでしょう。";
+		goto L_START_1;
+	L_MENU_4:
+		mes "[アルベルタ案内要員]";
+		mes "良い旅を。";
+		close;
+}
+alberta.gat,120,60,3	duplicate(案内要員#alberta)	案内要員	105
+
+//----------------------------------------------------------------------
+//[案内要員 - モロク]
+
+morocc.gat,153,286,6	script	案内要員#morocc	707,{
+		cutin "moc_soldier",2;
+		mes "[モロク案内要員]";
+		mes "……ようこそ、辺境の地モロクへ。";
+		mes "私はここモロクに来た旅人の為に";
+		mes "街の案内をしている者。";
+		mes "聞きたい事があれば、どうぞ。";
+L_START_1:
+	next;
+	menu "街の案内を受ける",L_MENU_1,"ミニMAP上の位置表示を消す",L_MENU_2,"告知事項",L_MENU_3,"やめる",L_MENU_4;
+	L_MENU_1:
+		if (@COMPASS_CHECK != 0) goto L_SUB_1;
+			mes "[モロク案内要員]";
+			mes "……知りたい場所は？";
+			mes "ミニMAPに位置表示を残すか？";
+		next;
+		menu "はい",-,"いいえ",L_MENU_1_ROOT;
+			set @COMPASS_CHECK,1;
+	L_MENU_1_ROOT:
+	L_SUB_1:
+		next;
+		menu "^FF0000シーフギルド^000000",L_MENU_1_1,"武器屋",L_MENU_1_2,"旅館",L_MENU_1_3,"酒場",L_MENU_1_4,"傭兵ギルド",L_MENU_1_5,"取り消し",L_MENU_1_6;
+		L_MENU_1_1:
+			mes "[モロク案内要員]";
+			mes "シーフ転職業務を処理する";
+			mes "｢シーフギルド｣は、ピラミッドの中に";
+			mes "ある……";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,24,297,1,0xFF0000;
+			goto L_SUB_1;
+		L_MENU_1_2:
+			mes "[モロク案内要員]";
+			mes "｢武器屋｣は街の南東にある。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,253,56,2,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_3:
+			mes "[モロク案内要員]";
+			mes "｢旅館｣は街の南と北東にある。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,197,66,3,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_4:
+			mes "[モロク案内要員]";
+			mes "｢酒場｣は街の北西にある。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,52,259,4,0xFF00FF;
+			goto L_SUB_1;
+		L_MENU_1_5:
+			mes "[モロク案内要員]";
+			mes "｢傭兵ギルド｣は街の東側にある。";
+			if (@COMPASS_CHECK != 1) goto L_SUB_1;
+			viewpoint 1,284,171,5,0x00FF00;
+			goto L_SUB_1;
+		L_MENU_1_6:
+				mes "[モロク案内要員]";
+				mes "位置表示を消したい場合は";
+				mes "「ミニMAP上の位置表示を消す」";
+				mes "を選択すればいい。";
+			goto L_START_1;
+	L_MENU_2:
+		viewpoint 2,24,297,1,0xFF0000;
+		viewpoint 2,253,56,2,0xFF00FF;
+		viewpoint 2,197,66,3,0xFF00FF;
+		viewpoint 2,52,259,4,0xFF00FF;
+		viewpoint 2,284,171,5,0x00FF00;
+		set @COMPASS_CHECK,0;
+		goto L_START_1;
+	L_MENU_3:
+			mes "[モロク案内要員]";
+			mes "既存のアナログ案内方式を廃止し";
+			mes "知りたい場所をミニMAPに表示する";
+			mes "広域案内システムを利用した";
+			mes "最先端デジタル案内方式に";
+			mes "変更された。";
+			next;
+			mes "[モロク案内要員]";
+			mes "ルーンミッドガッツ王国に存在する";
+			mes "魔法と科学技術の粋である";
+			mes "この広域案内システムの性能を";
+			mes "直接その目で確かめてほしい。";
+			next;
+			mes "[モロク案内要員]";
+			mes "まず、画面右上にある";
+			mes "ミニMAPを確認してくれ。";
+			mes "ミニMAPが見えない場合、";
+			mes "「Ctrl + Tab」、または";
+			mes "基本ウインドウで「map」";
+			mes "ボタンをクリックすればいい。";
+			next;
+			mes "[モロク案内要員]";
+			mes "ミニMAPが見えたら";
+			mes " - ボタンを再度クリックし、";
+			mes "街全体が見えるように設定すれば";
+			mes "良いだろう。";
+			goto L_START_1;
+		L_MENU_4:
+			mes "[モロク案内要員]";
+			mes "良い、旅を……";
+			close2;
+			cutin "moc_soldier",255;
+			end;
+}
+morocc.gat,54,97,6	duplicate(案内要員#morocc)	案内要員	707
+
+
+//----------------------------------------------------------------------
+//[案内要員 - アルデバラン]
+
+aldebaran.gat,139,63,4	script	兵士	105,{
+	cutin "prt_soldier",2;
+	mes "[アルデバラン守備兵]";
+	mes "私は、どこにでもいる平凡な";
+	mes "守備兵ではありません。";
+	mes "名前は「名無し」ですけど……";
+	mes "とにかく、お望みとあれば";
+	mes "街のご案内をしてさしあげ";
+	mes "ますよ。";
+	next;
+	menu "案内してもらう",-,"やめる",L_MENU_1;
+		viewpoint 1,57,222,1,0xFF6633;
+		viewpoint 1,73,196,2,0x0000FF;
+		viewpoint 1,224,224,3,0x00FFFF;
+		viewpoint 1,233,106,4,0x515151;
+		viewpoint 1,197,71,5,0x3355FF;
+		viewpoint 1,60,60,6,0xFF5555;
+		mes "^FF6633+^000000 -> カプラ本社";
+		mes "^0000FF+^000000 -> 武器屋";
+		mes "^00FFFF+^000000 -> ソーサラーギルド (Closed)";
+		mes "^515151+^000000 -> 酒場";
+		mes "^3355FF+^000000 -> 道具屋";
+		mes "^FF5555+^000000 -> 錬金術師ギルド";
+		close2;
+		cutin "prt_soldier",255;
+		end;
+	L_MENU_1:
+			mes "[アルデバラン守備兵]";
+			mes "アルデバランは";
+			mes "私たちが守ります！";
+			close2;
+			cutin "prt_soldier",255;
+			end;
+}
+
+aldebaran.gat,241,136,2	script	兵士	105,{
+	cutin "prt_soldier",2;
+	mes "[アルデバラン守備兵]";
+	mes "私は、どこにでもいる平凡な";
+	mes "守備兵ではありません。";
+	mes "名前は「名無し」ですけど……";
+	mes "とにかく、お望みとあれば";
+	mes "街のご案内をしてさしあげ";
+	mes "ますよ。";
+	next;
+	menu "カプラ本社",-,"武器屋",L_MENU_1,"ソーサラーギルド",L_MENU_2,"酒場",L_MENU_3,"道具屋",L_MENU_4,"錬金術師ギルド",L_MENU_5,"やめる",L_MENU_6;
+		viewpoint 1,57,222,1,0xFF6633;
+		mes "^FF6633+^000000 -> カプラ本社";
+		goto Lclose;
+	L_MENU_1:
+		viewpoint 1,73,196,2,0x0000FF;
+		mes "^0000FF+^000000 -> 武器屋";
+		goto Lclose;
+	L_MENU_2:
+		viewpoint 1,224,224,3,0x00FFFF;
+		mes "^00FFFF+^000000 -> ソーサラーギルド (Closed)";
+		goto Lclose;
+	L_MENU_3:
+		viewpoint 1,233,106,4,0x515151;
+		mes "^515151+^000000 -> 酒場";
+		goto Lclose;
+	L_MENU_4:
+		viewpoint 1,197,71,5,0x3355FF;
+		mes "^3355FF+^000000 -> 道具屋";
+		goto Lclose;
+	L_MENU_5:
+		viewpoint 1,60,60,6,0xFF5555;
+		mes "^FF5555+^000000 -> 錬金術師ギルド";
+		goto Lclose;
+	L_MENU_6:
+			mes "[アルデバラン守備兵]";
+			mes "アルデバランは";
+			mes "私たちが守ります！";
+Lclose:
+	close2;
+	cutin "prt_soldier",255;
+	end;
+}
+
+//----------------------------------------------------------------------
+//[案内要員 - コモド]
+function	script	comodoguide	{
+	mes "[原住民"+getarg(0)+"]";
+ 	mes "歓楽の夜が24時間続く";
+	mes "夢と幻想の村コモドへようこそ！";
+	mes "私がご案内してさしあげます。";
+	mes "位置情報を知りたかったら";
+	mes "いつでも聞いてくださいね。";
+	next;
+	menu "カジノ",L_MENU_1,"フラダンスステージ ^3355FF(ダンサー転職所)^000000",L_MENU_2,"武器店",L_MENU_3,"道具店",L_MENU_4,"特産物品店",L_MENU_5,"カプラサービス西部支部",L_MENU_6,"村長の家",L_MENU_7,"酒場 (PUB)",L_MENU_8,"キャンプ村",L_MENU_9,"会話をやめる",L_MENU_10;
+	L_MENU_1:
+		viewpoint 1,140,98,1,0xFF6633;
+		mes "^FF6633+^000000 -> カジノ";
+		mes "コモドをもっとコモドらしく !";
+		mes "旅人たちの疲れを癒す安息所…";
+		mes "しかしスリリングな勝負の場。";
+		mes "それが「カジノ」！";
+		close;
+	L_MENU_2:
+		viewpoint 1,188,168,2,0x0000FF;
+		mes "^0000FF+^000000 -> フラダンスステージ";
+		mes "フラフラ～ フラフラ～";
+		mes "舞台に慣れたらダンサーへの転職も";
+		mes "考えてみてはいかがでしょう。";
+		mes "「フラダンスステージ」";
+		mes "^3355FF(ダンサー転職所)^000000";
+		close;
+	L_MENU_3:
+		viewpoint 1,266,70,3,0x00FFFF;
+		mes "^00FFFF+^000000 -> 武器店";
+		mes "コモドにはコモドだけの";
+		mes "アイテムがあります。";
+		mes "「コモド武器店」";
+		close;
+	L_MENU_4:
+		viewpoint 1,86,128,4,0x515151;
+		mes "^515151+^000000 -> 道具店";
+		mes "コモドにはコモドだけの";
+		mes "アイテムがあります。";
+		mes "「コモド道具店」";
+		close;
+	L_MENU_5:
+		viewpoint 1,298,124,5,0x3355FF;
+		mes "^3355FF+^000000 -> 特産物品店";
+		mes "コモドにはコモドだけの";
+		mes "アイテムがあります";
+		mes "「コモド特産物品店」";
+		close;
+	L_MENU_6:
+		viewpoint 1,136,202,6,0xFF5555;
+		mes "^FF5555+^000000 -> カプラサービス西部支部センター";
+		mes "ミッドガルド大陸西部を担当する";
+		mes "「カプラサービス西部支部センター」";
+		mes "がコモドにあります。";
+		close;
+	L_MENU_7:
+		viewpoint 1,114,294,7,0xFF5555;
+		mes "^FF5555+^000000 -> 村長の家";
+		mes "コモド村長様がいらっしゃる所です。";
+		mes "もしあなたがコモドに深い興味を";
+		mes "お持ちでしたら、是非村長様と";
+		mes "お会いしてみてはいかがでしょう。";
+		close;
+	L_MENU_8:
+		viewpoint 1,166,298,8,0xFF5555;
+		mes "^FF5555+^000000 -> 酒場 (PUB)";
+		mes "世界各地の旅人たちが情報と";
+		mes "意見を交換する酒場です。";
+		mes "コモドの民俗パブは、";
+		mes "格別の雰囲気を醸し出していますよ。";
+		close;
+	L_MENU_9:
+		viewpoint 1,210,308,9,0xFF5555;
+		mes "^FF5555+^000000 -> キャンプ村";
+		mes "時には家族同士…時には恋人同士…";
+		mes "楽しいひとときを創り上げる";
+		mes "バーベキューキャンプ村。";
+		mes "コモド民俗料理「野生猪バーベキュー」";
+		mes "を味わうことができる唯一の場所 !";
+		close;
+	L_MENU_10:
+		mes "[原住民"+getarg(0)+"]";
+		mes "コモドは洞窟の中に存在していて";
+		mes "日差しが入らないので、";
+		mes "24時間、1日中暗いんです。";
+		mes "コモドの住民たちはこのような特性を";
+		mes "利用した観光商品で商売して";
+		mes "生活しているんです。";
+		close;
+		return;
+}
+
+comodo.gat,322,178,4	script	コモドガイド	700,{
+	callfunc "comodoguide","ココモ";
+}
+
+comodo.gat,176,350,4	script	コモドガイド	700,{
+	callfunc "comodoguide","ノッココ";
+}
+
+comodo.gat,37,219,4	script	コモドガイド	700,{
+	callfunc "comodoguide","パパヤ";
+}
+
+//----------------------------------------------------------------------
+//[案内要員 - ジュノー]
+
+yuno.gat,153,47,4	script	"ジュノーガイド"	700,{
+	mes "[ジュノーガイド]";
+	mes "過去を知り……";
+	mes "現在を見つめ……";
+	mes "未来を予知する……";
+	mes "ここは賢者たちの都市";
+	mes "- ジュノー -";
+	mes "ジュノーにようこそ";
+	next;
+	menu "武器防具店",L1,"道具店",L2,"セージキャッスル (セージ転職所)",L3,"書店通り",L4,"中央広場",L5,"共和国図書館",L6,"シュバイチェル魔法アカデミー",L7,"モンスター博物館",L8,"会話をやめる",LEnd;
+L1:
+	mes "[ジュノーガイド]";
+	viewpoint 1,120,138,1,0xFF3355;
+	mes "^FF3355+^000000 -> 武器防具店";
+	goto Lgo;
+L2:
+	mes "[ジュノーガイド]";
+	viewpoint 1,193,142,2,0x3355FF;
+	mes "^3355FF+^000000 -> 道具店";
+	goto Lgo;
+L3:
+	mes "[ジュノーガイド]";
+	viewpoint 1,90,318,3,0x33FF55;
+	mes "^33FF55+^000000 -> セージキャッスル";
+	mes "(セージ転職所)";
+	goto Lgo;
+L4:
+	mes "[ジュノーガイド]";
+	viewpoint 1,257,102,4,0xFF3355;
+	mes "^FF3355+^000000 -> 書店通り";
+	goto Lgo;
+L5:
+	mes "[ジュノーガイド]";
+	viewpoint 1,157,170,5,0x3355FF;
+	mes "^3355FF+^000000 -> 中央広場";
+	goto Lgo;
+L6:
+	mes "[ジュノーガイド]";
+	viewpoint 1,336,204,6,0x33FF55;
+	mes "^33FF55+^000000 -> 共和国図書館";
+	goto Lgo;
+L7:
+	mes "[ジュノーガイド]";
+	viewpoint 1,323,281,7,0xFF3355;
+	mes "^FF3355+^000000 -> シュバイチェル魔法アカデミー";
+	goto Lgo;
+L8:
+	mes "[ジュノーガイド]";
+	viewpoint 1,278,288,8,0x3355FF;
+	mes "^3355FF+^000000 -> モンスター博物館";
+	goto Lgo;
+Lgo:
+	mes "になります。";
+	mes "良い時をお過ごしください。";
+	close;
+LEnd:
+	mes "[ジュノーガイド]";
+	mes "賢者たちの大都市";
+	mes "そして知識の宝庫";
+	mes "ジュノーへようこそ！";
+	close;
+}
+
+//----------------------------------------------------------------------
+//[案内要員 - アマツ]
+
+amatsu.gat,207,91,4	script	ミス・アマツ#nomal	758,{
+	mes "[蛍ちゃん]";
+	mes "私は、第13代ミス・アマツ";
+	mes "｢蛍｣と申します。";
+	mes "アマツ代表として";
+	mes "村の案内を仰せつかっております。";
+	mes "なにかご質問がありましたら";
+	mes "なんなりとおっしゃってくださいませ。";
+	next;
+	menu "城",L1,"道具店",L2,"武器店",L3,"居酒屋",L4;
+L1:
+		viewpoint 1,85,235,0,0xFF3355;
+		mes "[蛍ちゃん]";
+		mes "ミニマップの";
+		mes "^FF3355+^000000部分が";
+		mes "城でございます。";
+		goto LEnd;
+L2:
+		viewpoint 1,96,118,1,0xCE6300;
+		mes "[蛍ちゃん]";
+		mes "ミニマップの";
+		mes "^CE6300+^000000部分が";
+		mes "道具店になります。";
+		goto LEnd;
+L3:
+		viewpoint 1,132,117,2,0x55FF33;
+		mes "[蛍ちゃん]";
+		mes "ミニマップの";
+		mes "^55FF33+^000000部分が";
+		mes "武器店になります。";
+		goto LEnd;
+L4:
+		viewpoint 1,217,116,3,0x3355FF;
+		mes "[蛍ちゃん]";
+		mes "ミニマップの";
+		mes "^3355FF+^000000部分が";
+		mes "居酒屋になります。";
+LEnd:
+		mes "それでは、アマツで";
+		mes "楽しい時間をお過ごし下さいませ。";
+		close;
+
+}
+
+amatsu.gat,251,283,4	script	案内人	767,{
+	mes "[案内人]";
+	mes "ようこそ。";
+	mes "旅をするには良い季節ですね。";
+	mes "私はこのアマツの";
+	mes "案内を引き受けておる者です。";
+	next;
+	mes "[案内人]";
+	mes "何をお探しですか？";
+	next;
+	menu "城",L1,"道具店",L2,"武器店",L3,"居酒屋",L4;
+L1:
+		viewpoint 1,85,235,0,0xFF3355;
+		mes "[案内人]";
+		mes "ミニマップの";
+		mes "^FF3355+^000000部分が";
+		mes "城でございます。";
+		goto LEnd;
+L2:
+		viewpoint 1,96,118,1,0xCE6300;
+		mes "[案内人]";
+		mes "ミニマップの";
+		mes "^CE6300+^000000部分が";
+		mes "道具店になります。";
+		goto LEnd;
+L3:
+		viewpoint 1,132,117,2,0x55FF33;
+		mes "[案内人]";
+		mes "ミニマップの";
+		mes "^55FF33+^000000部分が";
+		mes "武器店になります。";
+		goto LEnd;
+L4:
+		viewpoint 1,217,116,3,0x3355FF;
+		mes "[案内人]";
+		mes "ミニマップの";
+		mes "^3355FF+^000000部分が";
+		mes "居酒屋になります。";
+LEnd:
+		mes "それでは、アマツで";
+		mes "楽しい時間をお過ごし下さいませ。";
+		close;
+}
+
+//----------------------------------------------------------------------
+//[案内要員 - コンロン]
+
+gonryun.gat,163,60,4	script	コンロンガイド	780,{
+	mes "[ハ ウォンチ]";
+	mes "いつも活気に満ちて、熱気があふれ";
+	mes "毎日人々が行き交っている";
+	mes "コンロンにいらっしゃいませ!";
+	next;
+	mes "[ハ ウォンチ]";
+	mes "商売がら、村の案内をして";
+	mes "います。知りたいことがあれば";
+	mes "何でも聞いてください。";
+	next;
+	menu "村長の家",L1,"道具商人",L2,"武器商人",L3,"防具商人",L4,"旅館",L5;
+L1:
+	viewpoint 1,109,131,0,0xff3355;
+	mes "[ハ ウォンチ]";
+	mes "ミニマップの";
+	mes "^ff3355+^000000の位置に";
+	mes "村長の家があります。";
+	goto Lend;
+L2:
+	viewpoint 1,147,84,1,0xce6300;
+	mes "[ハ ウォンチ]";
+	mes "ミニマップの";
+	mes "^ce6300+^000000の位置に";
+	mes "道具商人がいます。";
+	goto Lend;
+L3:
+	viewpoint 1,174,101,2,0x55ff33;
+	mes "[ハ ウォンチ]";
+	mes "ミニマップの";
+	mes "^55ff33+^000000の位置に";
+	mes "武器商人がいます。";
+	goto Lend;
+L4:
+	viewpoint 1,173,84,3,0x3355ff;
+	mes "[ハ ウォンチ]";
+	mes "ミニマップの";
+	mes "^3355ff+^000000の位置に";
+	mes "防具商人がいます。";
+	goto Lend;
+L5:
+	viewpoint 1,215,114,4,0xffffff;
+	mes "[ハ ウォンチ]";
+	mes "ミニマップの";
+	mes "^ffffff+^000000の位置に";
+	mes "旅館があります。";
+	goto Lend;
+Lend:
+	mes "私達の楽しいコンロンを";
+	mes "思いっきり楽しんでください！";
+	close;
+}
+
+//----------------------------------------------------------------------
+//[案内要員 - ウンバラ]
+
+umbala.gat,128,94,4	script	探険家	702,{
+	mes "[探険家]";
+	mes "ここはとても変な所です。";
+	mes "未開拓のためなのか、";
+	mes "道もとても複雑です。";
+	next;
+	mes "[探険家]";
+	mes "しかし私は、ここで何ヶ月も探険を";
+	mes "続けています。だから村の地理を良く";
+	mes "知っていますので、どこに何があるか";
+	mes "知りたいなら、遠慮なく聞いて下さい。";
+	next;
+	menu "村の案内を受ける",-,"ミニマップの表示を全て消す",L2,"やめる",Lend;
+		mes "[探険家]";
+		mes "何を知りたいですか？";
+		next;
+		menu "酋長の家",-,"シャーマンの家",L1_2,"武器屋",L1_3,"道具屋",L1_4,"バンジージャンプ台",L1_5,"取り消し",L1_6;
+		mes "[探険家]";
+		mes "酋長様のお宅は、^FF3355+^000000の位置にあります。";
+		mes "酋長様だけが、外部の言葉を話せます。";
+		mes "なので、まず酋長様にお会いすると";
+		mes "良いでしょう。";
+		viewpoint 0,66,250,2,0xFF3355;
+		close;
+	L1_2:
+		mes "[探険家]";
+		mes "シャーマンの力は神秘ですね。";
+		mes "シャーマンの家は、^CE6300+^000000の位置にあります。";
+		mes "彼女は、自然の属性の結合や分解が";
+		mes "できるそうです。";
+		viewpoint 0,217,186,3,0xCE6300;
+		close;
+	L1_3:
+		mes "[探険家]";
+		mes "武器屋は、^55FF33+^000000の位置にあります。";
+		mes "外部からの侵入が多いので、様々な";
+		mes "武器が用意されているみたいです。";
+		viewpoint 0,126,154,4,0x55FF33;
+		close;
+	L1_4:
+		mes "[探険家]";
+		mes "道具屋は、^3355FF+^000000の位置にあります。";
+		mes "旅行に必要な物を売っていますから、";
+		mes "旅に出る前に立ち寄ってみてください。";
+		viewpoint 0,136,127,5,0x3355FF;
+		close;
+	L1_5:
+		mes "[探険家]";
+		mes "ウンバラには、他の所では見られない";
+		mes "「バンジージャンプ台」というものが";
+		mes "あります。バンジージャンプ台は、";
+		mes "^00FF00+^000000の位置にあります。";
+		mes "自分の勇気を試してみたければ、是非";
+		mes "挑戦してみてください。";
+		viewpoint 0,139,198,6,0x00FF00;
+		close;
+	L1_6:
+		mes "[探険家]";
+		mes "位置表示を消したければ、";
+		mes "「ミニマップの表示を全て消す」";
+		mes "を選択してください。";
+		close;
+L2:
+	viewpoint 2,66,250,2,0x00FF00;
+	viewpoint 2,217,186,3,0x00FF00;
+	viewpoint 2,126,154,4,0x00FF00;
+	viewpoint 2,136,127,5,0x00FF00;
+	viewpoint 2,139,198,6,0x00FF00;
+	mes "[探険家]";
+	mes "ミニマップの表示を全て消しました。";
+	mes "ミニマップにまた表示したければ、";
+	mes "いつでも言ってください。";
+	close;
+Lend:
+	mes "[探険家]";
+	mes "直接、歩き回りながら見るのも";
+	mes "面白いですね。それではごきげんよう。";
+	close;
+}
+
+//----------------------------------------------------------------------
+//[案内要員 - ニブルヘイム]
+
+niflheim.gat,186,190,6	script	迷い人	798,{
+	mes "[リカエル]";
+	mes "こんなに恐ろしい街へ";
+	mes "いらっしゃるなんて……";
+	mes "あなたも道に迷われたのですね。";
+	mes "僕は巨大な樹に導かれて、ここへ";
+	mes "来ました。けれども長い間、";
+	mes "脱出することができません。";
+	next;
+	mes "[リカエル]";
+	mes "それでもずっと出口を捜していたので、";
+	mes "街の地理だけはよく解っています。";
+	mes "外へ出るのに役立つかもしれないので、";
+	mes "遠慮なくお尋ねください。";
+	next;
+	menu "街の地理を尋ねる",L1,"ミニマップの表示を全て消す",L2,"話をやめる",-;
+		mes "[リカエル]";
+		mes "直接、歩いて見るのはとても";
+		mes "危ないのに……気をつけて";
+		mes "行ってらっしゃい。";
+		close;
+	L1:
+		mes "[リカエル]";
+		mes "何を知りたいですか？";
+		next;
+		menu "魔女の城",-,"道具屋",L1_2,"武器屋",L1_3,"酒屋",L1_4,"取り消し",L1_5;
+			mes "[リカエル]";
+			mes "ニブルヘイムには恐ろしい魔女が";
+			mes "います。 ^FF3355+^000000 の位置に、その魔女が";
+			mes "住むお城があります。私は一度だけ";
+			mes "行ったことがありますが、とても";
+			mes "恐ろしかったので、すぐに逃げ出して";
+			mes "きました。";
+			viewpoint 0,253,191,2,0xFF3355;
+			close;
+		L1_2:
+			mes "[リカエル]";
+			mes "道具屋は ^CE6300+^000000 の位置にあります。";
+			mes "外の世界では売られていない";
+			mes "珍しい物もありますので、是非一度、";
+			mes "行ってみてください。";
+			viewpoint 0,217,196,3,0xCE6300;
+			close;
+		L1_3:
+			mes "[リカエル]";
+			mes "武器屋は ^55FF33+^000000 の位置にあります。";
+			mes "他の所では見かけない物もありますので";
+			mes "是非一度、行ってみてください。";
+			viewpoint 0,216,171,4,0x55FF33;
+			close;
+		L1_4:
+			mes "[リカエル]";
+			mes "酒屋は ^3355FF+^000000 の位置にあります。";
+			mes "ここではたまに、死者達が集まって";
+			mes "パーティーをしていますね。";
+			viewpoint 0,189,207,5,0x3355FF;
+			close;
+		L1_5:
+			mes "[リカエル]";
+			mes "位置表示を消したければ";
+			mes "「ミニマップの表示を全て消す」";
+			mes "を選択してください。";
+			close;
+	L2:
+		viewpoint 2,253,191,2,0x00FF00;
+		viewpoint 2,217,196,3,0x00FF00;
+		viewpoint 2,216,171,4,0x00FF00;
+		viewpoint 2,189,207,5,0x00FF00;
+		mes "[リカエル]";
+		mes "ミニマップの表示を全て消しました。";
+		mes "またミニマップの表示を消したければ、";
+		mes "いつでも声をかけてください。";
+		close;
+}

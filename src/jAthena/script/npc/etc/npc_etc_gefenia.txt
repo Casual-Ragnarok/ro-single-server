@@ -1,0 +1,111 @@
+//==============================================================================
+//Ragnarok Online EPx Gefenia Script(From ASB ソース信頼度：極低)	by Kalen
+//==============================================================================
+//--------------------------------------Mob-------------------------------------
+gefenia01.gat,0,0,0,0	monster	ファミリアー	1005,20,0,0,0
+gefenia01.gat,0,0,0,0	monster	ダスティネス	1114,20,0,0,0
+gefenia01.gat,0,0,0,0	monster	ポイズンスポア	1077,40,0,0,0
+gefenia01.gat,0,0,0,0	monster	アルゴス	1100,25,0,0,0
+gefenia01.gat,0,0,0,0	monster	ウィスパー	1179,30,0,0,0
+
+gefenia02.gat,0,0,0,0	monster	ファミリアー	1005,10,0,0,0
+gefenia02.gat,0,0,0,0	monster	ダスティネス	1114,10,0,0,0
+gefenia02.gat,0,0,0,0	monster	ポイズンスポア	1077,20,0,0,0
+gefenia02.gat,0,0,0,0	monster	アルゴス	1100,15,0,0,0
+gefenia02.gat,0,0,0,0	monster	ウィスパー	1179,30,0,0,0
+gefenia02.gat,0,0,0,0	monster	ザック	1130,20,300000,100000,0
+gefenia02.gat,0,0,0,0	monster	青い草	1079,10,300000,100000,0
+gefenia02.gat,0,0,0,0	monster	ミスト	1151,10,0,0,0
+gefenia02.gat,0,0,0,0	monster	ナイトメア	1061,8,300000,100000,0
+
+gefenia03.gat,0,0,0,0	monster	ドッペルゲンガー	1046,1,7200000,3600000,0
+gefenia03.gat,0,0,0,0	monster	デビルチ	1109,15,0,0,0
+gefenia03.gat,0,0,0,0	monster	レイドリック	1163,15,0,0,0
+gefenia03.gat,0,0,0,0	monster	レイドリックアーチャー	1276,20,0,0,0
+gefenia03.gat,0,0,0,0	monster	ジョーカー	1131,15,300000,100000,0
+gefenia03.gat,0,0,0,0	monster	ポイズンスポア	1077,20,0,0,0
+gefenia03.gat,0,0,0,0	monster	ウィスパー	1179,20,0,0,0
+
+gefenia04.gat,0,0,0,0	monster	ファミリアー	1005,20,0,0,0
+gefenia04.gat,0,0,0,0	monster	ダスティネス	1114,20,0,0,0
+gefenia04.gat,0,0,0,0	monster	ポイズンスポア	1077,20,0,0,0
+gefenia04.gat,0,0,0,0	monster	アルゴス	1100,25,0,0,0
+gefenia04.gat,0,0,0,0	monster	ウィスパー	1179,10,0,0,0
+gefenia04.gat,0,0,0,0	monster	ザック	1130,10,300000,100000,0
+gefenia04.gat,0,0,0,0	monster	青い草	1079,10,300000,100000,0
+gefenia04.gat,0,0,0,0	monster	ミスト	1151,10,0,0,0
+gefenia04.gat,0,0,0,0	monster	ナイトメア	1061,8,300000,100000,0
+
+//--------------------------------------Mapflag---------------------------------
+gefenia01.gat	mapflag	nomemo	dummy
+gefenia02.gat	mapflag	nomemo	dummy
+gefenia03.gat	mapflag	nomemo	dummy
+gefenia04.gat	mapflag	nomemo	dummy
+
+//--------------------------------------Warp------------------------------------
+//gefenia01-04
+gefenia01.gat,38,103,0	warp	gef01-gef04	3,3,gefenia04.gat,279,93
+gefenia04.gat,287,93,0	warp	gef04-gef01	3,3,gefenia01.gat,44,103
+
+//gefenia04-03
+gefenia04.gat,35,273,0	warp	gef04-gef03-l	3,3,gefenia03.gat,58,23
+gefenia04.gat,131,275,0	warp	gef04-gef03-r	3,3,gefenia03.gat,145,34
+gefenia03.gat,58,26,0	warp	gef03-gef04-l	3,3,gefenia04.gat,35,266
+gefenia03.gat,145,28,0	warp	gef03-gef04-r	3,3,gefenia04.gat,130,271
+
+//gefenia03-02
+gefenia03.gat,269,235,0	warp	gef03-gef02-t	3,3,gefenia02.gat,22,236
+gefenia03.gat,258,170,0	warp	gef03-gef02-b	3,3,gefenia02.gat,24,173
+gefenia02.gat,18,239,0	warp	gef02-gef03-t	3,3,gefenia03.gat,263,235
+gefenia02.gat,17,174,0	warp	gef02-gef03-b	3,3,gefenia03.gat,252,170
+
+//gefenia02-01
+gefenia02.gat,241,19,0	warp	gef02-gef01-r	3,3,gefenia01.gat,236,251
+gefenia02.gat,204,29,0	warp	gef02-gef01-l	3,3,gefenia01.gat,199,261
+gefenia01.gat,236,259,0	warp	gef01-gef02-r	3,3,gefenia02.gat,242,24
+gefenia01.gat,199,269,0	warp	gef01-gef02-l	3,3,gefenia02.gat,204,35
+//--------------------------------------NPC-------------------------------------
+gefenia01.gat,61,169,5	script	探検家	702,{
+	mes "[探検家]";
+	mes "戻りますか？";
+	next;
+	menu "はい",Lgo,"いいえ",-;
+		close;
+	Lgo:
+		warp "gef_dun03.gat",138,117; end;
+}
+//超脳内
+gef_dun03.gat,131,118,6	script	探検家	702,{
+	mes "[探検家]";
+	mes "こんにちはー";
+	mes "私はミッドガッツ王国国王からの";
+	mes "依頼を受けてこのゲフェンダンジョン";
+	mes "の調査をしている者です。";
+	next;
+	mes "[探検家]";
+	mes "実は最近、この先で";
+	mes "あるものを発見したのです。";
+	mes "そう、それは長年幻と言われていた";
+	mes "^3355ffゲフェニア^000000を発見したのです。";
+	next;
+	mes "[探検家]";
+	mes "国王からの指示により";
+	mes "ここまで狩りに来ている冒険者を";
+	mes "連れて調査せよとの事で、";
+	mes "一緒に行ってくれる冒険者を";
+	mes "探しているのですが…";
+	next;
+	menu "行きます",Lgo,"頑張って下さい",-;
+		mes "[探検家]";
+		mes "あ…そうですか。";
+		mes "…はい";
+		close;
+	Lgo:
+		mes "[探検家]";
+		mes "一緒に行ってくれますか！";
+		mes "ありがとうございます～";
+		mes "それでは早速参りましょう";
+		close2;
+		warp "gefenia01.gat",58,169;
+		end;
+}

@@ -1,0 +1,14 @@
+/* CSS Document */
+
+
+/***********************answer***************************/
+.answer{ background:#f2f2f2; text-indent:8px; text-align:left;}
+.alllist th{ text-align:right;}
+table tr th{text-align:right; }
+.answer1{ text-align:left;}
+.tfm td.answer2{ padding-left:14px;}
+.tfm th{ padding-right:60px; width:144px;}
+/*table tr{ line-height:30px;}
+*/
+.tfm td{ padding:10px 0;}
+.dakuang{ background:url(fgg_05.jpg) no-repeat; width:104px; height:29px; border:0;}

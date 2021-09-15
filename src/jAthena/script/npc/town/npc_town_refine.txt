@@ -1,0 +1,1294 @@
+// 精錬NPC
+
+// ----- アルベルタ -----
+alberta_in.gat,28,58,4	script	フレドリック	85,{
+	mes "[フレドリックヘルマンソン]";
+	mes "俺は武器と防具を精錬する鍛冶屋だ。";
+	mes "君が装備しているアイテムの中で";
+	mes "好きなものを精錬できるのだ。";
+	mes "どの装備アイテムを";
+	mes "精錬したいのかい？";
+	next;
+	menu getequipname(1),L_MENU_1,getequipname(2),L_MENU_2,getequipname(3),L_MENU_3,getequipname(4),L_MENU_4,getequipname(5),L_MENU_5,getequipname(6),L_MENU_6,getequipname(7),L_MENU_7,getequipname(8),L_MENU_8,getequipname(9),L_MENU_9,getequipname(10),L_MENU_10;
+	L_MENU_1:
+		set @part,1;
+		if (getequipisequiped(1)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "君の足りない脳みそを";
+			mes "精錬してあげようか？";
+			goto L_CLOSE;
+	L_MENU_2:
+		set @part,2;
+		if (getequipisequiped(2)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "俺の熱い体で君の体を";
+			mes "精錬してあげるわ！";
+			goto L_CLOSE;
+	L_MENU_3:
+		set @part,3;
+		if (getequipisequiped(3)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "君の左手をロケットパンチに";
+			mes "する腕はないな。";
+			goto L_CLOSE;
+	L_MENU_4:
+		set @part,4;
+		if (getequipisequiped(4)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "現代科学技術でも君の右手を";
+			mes "ドリルにすることは";
+			mes "できないね。";
+			goto L_CLOSE;
+	L_MENU_5:
+		set @part,5;
+		if (getequipisequiped(5)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "ローブを持ってないじゃないか！";
+			goto L_CLOSE;
+	L_MENU_6:
+		set @part,6;
+		if (getequipisequiped(6)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "君の足の臭いすごいぜ！";
+			goto L_CLOSE;
+	L_MENU_7:
+		set @part,7;
+		if (getequipisequiped(7)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "どこにアクセサリーがあるのかい？";
+			goto L_CLOSE;
+	L_MENU_8:
+		set @part,8;
+		if (getequipisequiped(8)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "どこにアクセサリーがあるのかい？";
+			goto L_CLOSE;
+	L_MENU_9:
+		set @part,9;
+		if (getequipisequiped(9)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "何を精錬しろと言うんだ？";
+			mes "他のアイテムの事かい？";
+			goto L_CLOSE;
+	L_MENU_10:
+		set @part,10;
+		if (getequipisequiped(10)) goto L_START_1;
+			mes "[フレドリックヘルマンソン]";
+			mes "何を精錬しろと言うんだ？";
+			mes "他のアイテムの事かい？";
+			goto L_CLOSE;
+L_START_1:
+	if (getequipisenableref(@part)) goto L_START_2;
+		mes "[フレドリックヘルマンソン]";
+		mes "このアイテムは精錬不可能だ。";
+		goto L_CLOSE;
+L_START_2:
+	if (getequipisidentify(@part)) goto L_START_3;
+		mes "[フレドリックヘルマンソン]";
+		mes "これは未鑑定だから精錬できない。";
+		goto L_CLOSE;
+L_START_3:
+	if (getequiprefinerycnt(@part) < 10) goto L_REFINE_0;
+		mes "[フレドリックヘルマンソン]";
+		mes "これ以上は精錬できないぞ。";
+		goto L_CLOSE;
+L_REFINE_0:
+	if (getequipweaponlv(@part) > 0) goto L_REFINE_1;
+		mes "[フレドリックヘルマンソン]";
+		mes "君が選んだ装備を精錬するには";
+		mes "^ff9999エルニウム^000000と ";
+		mes "手数料20000Zenyが必要だな。";
+		mes "続けるかい？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_0_SUB;
+				mes "[フレドリックヘルマンソン]";
+				mes "おおっと！この防具はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら防具が壊れるかも";
+				mes "しれないぞ。防具が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_0_SUB:
+		if ((countitem(985) < 1) || (Zeny < 20000)) goto L_CANCEL_2;
+			delitem 985,1;
+			set Zeny,Zeny-20000;
+			goto L_REFINE_5;
+L_REFINE_1:
+	if (getequipweaponlv(@part) > 1) goto L_REFINE_2;
+		mes "[フレドリックヘルマンソン]";
+		mes "レベル１の武器を精錬したいのかい？";
+		mes "精錬するため、 ^ff9999プラコン^000000と";
+		mes "手数料500Zenyが必要だな。";
+		mes "続けるのか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_1_SUB;
+				mes "[フレドリックヘルマンソン]";
+				mes "おおっと！この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれないぞ。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_1_SUB:
+		if ((countitem(1010) < 1) || (Zeny < 500)) goto L_CANCEL_2;
+			delitem 1010,1;
+			set Zeny,Zeny-500;
+			goto L_REFINE_5;
+L_REFINE_2:
+	if (getequipweaponlv(@part) > 2) goto L_REFINE_3;
+		mes "[フレドリックヘルマンソン]";
+		mes "レベル2の武器を精錬したいのかい？";
+		mes "精錬するため、 ^ff9999エンベルタコン^000000と";
+		mes "手数料2000Zenyが必要だな。";
+		mes "続けるのか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_2_SUB;
+				mes "[フレドリックヘルマンソン]";
+				mes "おおっと！この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれないぞ。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_2_SUB:
+		if ((countitem(1011) < 1) || (Zeny < 2000)) goto L_CANCEL_2;
+			delitem 1011,1;
+			set Zeny,Zeny-2000;
+			goto L_REFINE_5;
+L_REFINE_3:
+	if (getequipweaponlv(@part) > 3) goto L_REFINE_4;
+		mes "[フレドリックヘルマンソン]";
+		mes "レベル3の武器を精錬したいのかい？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料25000Zenyが必要だな。";
+		mes "続けるのか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_3_SUB;
+				mes "[フレドリックヘルマンソン]";
+				mes "おおっと！この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれないぞ。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_3_SUB:
+		if ((countitem(984) < 1) || (Zeny < 25000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-25000;
+			goto L_REFINE_5;
+L_REFINE_4:
+		mes "[フレドリックヘルマンソン]";
+		mes "レベル4の武器を精錬したいのかい？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料50000Zenyが必要だな。";
+		mes "続けるのか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_4_SUB;
+				mes "[フレドリックヘルマンソン]";
+				mes "おおっと！この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれないぞ。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_4_SUB:
+		if ((countitem(984) < 1) || (Zeny < 50000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-50000;
+L_REFINE_5:
+	if (getequippercentrefinery(@part)<=rand(100)) goto L_REFINE_6;
+		mes "[フレドリックヘルマンソン]";
+		mes "カン！ カン！ カン!!";
+		successrefitem @part;
+		next;
+		emotion 18;
+		mes "[フレドリックヘルマンソン]";
+		mes "さあ、出来上ったよ！";
+		mes "久々に良い物ができた。";
+		mes "武具が強くなって君も嬉しいだろ？";
+		goto L_CLOSE;
+L_REFINE_6:
+	mes "[フレドリックヘルマンソン]";
+	mes "カン！ カン！ カン!!";
+	failedrefitem @part;
+	next;
+	emotion 4;
+	mes "[フレドリックヘルマンソン]";
+	mes "クホホホホ…";
+	next;
+	mes "[フレドリックヘルマンソン]";
+	mes "すまん！";
+	mes "精錬中に武具が壊れてしまったな…";
+	mes "ほ、ほら、俺がやめろって";
+	mes "最初に言っただろう？";
+	goto L_CLOSE;
+L_CANCEL_1:
+	mes "[フレドリックヘルマンソン]";
+	mes "良い選択だな。";
+	mes "俺も無理して他人の武器を壊したら";
+	mes "気分が悪くなるからさ…";
+	goto L_CLOSE;
+L_CANCEL_2:
+	mes "[フレドリックヘルマンソン]";
+	mes "それが君が持ってる全部かい？";
+	mes "残念だが、材料が足りないんじゃ";
+	mes "仕方がないな。";
+	mes "俺はただでやってやるほど";
+	mes "心が広くないからな。";
+	goto L_CLOSE;
+L_CANCEL_3:
+	mes "[フレドリックヘルマンソン]";
+	mes "君が嫌なら仕方がないだろう…";
+L_CLOSE:
+	close;
+}
+
+// ----- プロンテラ -----
+prt_in.gat,63,60,4	script	ホルグレン	85,{
+	mes "[ホルグレン]";
+	mes "俺は武器と防具を精錬する鍛冶屋だ。";
+	mes "君が装備しているアイテムの中で";
+	mes "好きなものを精錬できるのだ。";
+	mes "どの装備アイテムを";
+	mes "精錬したいのかい？";
+	next;
+	menu getequipname(1),L_MENU_1,getequipname(2),L_MENU_2,getequipname(3),L_MENU_3,getequipname(4),L_MENU_4,getequipname(5),L_MENU_5,getequipname(6),L_MENU_6,getequipname(7),L_MENU_7,getequipname(8),L_MENU_8,getequipname(9),L_MENU_9,getequipname(10),L_MENU_10;
+	L_MENU_1:
+		set @part,1;
+		if (getequipisequiped(1)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "君の足りない脳みそを";
+			mes "精錬してあげようか？";
+			goto L_CLOSE;
+	L_MENU_2:
+		set @part,2;
+		if (getequipisequiped(2)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "俺の熱い体で君の体を";
+			mes "精錬してあげるわ！";
+			goto L_CLOSE;
+	L_MENU_3:
+		set @part,3;
+		if (getequipisequiped(3)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "君の左手をロケットパンチに";
+			mes "する腕はないな。";
+			goto L_CLOSE;
+	L_MENU_4:
+		set @part,4;
+		if (getequipisequiped(4)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "現代科学技術でも君の右手を";
+			mes "ドリルにすることは";
+			mes "できないね。";
+			goto L_CLOSE;
+	L_MENU_5:
+		set @part,5;
+		if (getequipisequiped(5)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "ローブを持ってないじゃないか！";
+			goto L_CLOSE;
+	L_MENU_6:
+		set @part,6;
+		if (getequipisequiped(6)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "君の足の臭いすごいぜ！";
+			goto L_CLOSE;
+	L_MENU_7:
+		set @part,7;
+		if (getequipisequiped(7)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "どこにアクセサリーがあるのかい？";
+			goto L_CLOSE;
+	L_MENU_8:
+		set @part,8;
+		if (getequipisequiped(8)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "どこにアクセサリーがあるのかい？";
+			goto L_CLOSE;
+	L_MENU_9:
+		set @part,9;
+		if (getequipisequiped(9)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "何を精錬しろと言うんだ？";
+			mes "他のアイテムの事かい？";
+			goto L_CLOSE;
+	L_MENU_10:
+		set @part,10;
+		if (getequipisequiped(10)) goto L_START_1;
+			mes "[ホルグレン]";
+			mes "何を精錬しろと言うんだ？";
+			mes "他のアイテムの事かい？";
+			goto L_CLOSE;
+L_START_1:
+	if (getequipisenableref(@part)) goto L_START_2;
+		mes "[ホルグレン]";
+		mes "このアイテムは精錬不可能だ。";
+		goto L_CLOSE;
+L_START_2:
+	if (getequipisidentify(@part)) goto L_START_3;
+		mes "[ホルグレン]";
+		mes "これは未鑑定だから精錬できない。";
+		goto L_CLOSE;
+L_START_3:
+	if (getequiprefinerycnt(@part) < 10) goto L_REFINE_0;
+		mes "[ホルグレン]";
+		mes "これ以上は精錬できないぞ。";
+		goto L_CLOSE;
+L_REFINE_0:
+	if (getequipweaponlv(@part) > 0) goto L_REFINE_1;
+		mes "[ホルグレン]";
+		mes "君が選んだ装備を精錬するには";
+		mes "^ff9999エルニウム^000000と ";
+		mes "手数料20000Zenyが必要だな。";
+		mes "続けるかい？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_0_SUB;
+				mes "[ホルグレン]";
+				mes "おおっと！この防具はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら防具が壊れるかも";
+				mes "しれないぞ。防具が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_0_SUB:
+		if ((countitem(985) < 1) || (Zeny < 20000)) goto L_CANCEL_2;
+			delitem 985,1;
+			set Zeny,Zeny-20000;
+			goto L_REFINE_5;
+L_REFINE_1:
+	if (getequipweaponlv(@part) > 1) goto L_REFINE_2;
+		mes "[ホルグレン]";
+		mes "レベル１の武器を精錬したいのかい？";
+		mes "精錬するため、 ^ff9999プラコン^000000と";
+		mes "手数料500Zenyが必要だな。";
+		mes "続けるのか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_1_SUB;
+				mes "[ホルグレン]";
+				mes "おおっと！この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれないぞ。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_1_SUB:
+		if ((countitem(1010) < 1) || (Zeny < 500)) goto L_CANCEL_2;
+			delitem 1010,1;
+			set Zeny,Zeny-500;
+			goto L_REFINE_5;
+L_REFINE_2:
+	if (getequipweaponlv(@part) > 2) goto L_REFINE_3;
+		mes "[ホルグレン]";
+		mes "レベル2の武器を精錬したいのかい？";
+		mes "精錬するため、 ^ff9999エンベルタコン^000000と";
+		mes "手数料2000Zenyが必要だな。";
+		mes "続けるのか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_2_SUB;
+				mes "[ホルグレン]";
+				mes "おおっと！この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれないぞ。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_2_SUB:
+		if ((countitem(1011) < 1) || (Zeny < 2000)) goto L_CANCEL_2;
+			delitem 1011,1;
+			set Zeny,Zeny-2000;
+			goto L_REFINE_5;
+L_REFINE_3:
+	if (getequipweaponlv(@part) > 3) goto L_REFINE_4;
+		mes "[ホルグレン]";
+		mes "レベル3の武器を精錬したいのかい？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料25000Zenyが必要だな。";
+		mes "続けるのか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_3_SUB;
+				mes "[ホルグレン]";
+				mes "おおっと！この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれないぞ。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_3_SUB:
+		if ((countitem(984) < 1) || (Zeny < 25000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-25000;
+			goto L_REFINE_5;
+L_REFINE_4:
+		mes "[ホルグレン]";
+		mes "レベル4の武器を精錬したいのかい？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料50000Zenyが必要だな。";
+		mes "続けるのか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_4_SUB;
+				mes "[ホルグレン]";
+				mes "おおっと！この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれないぞ。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのかい？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_4_SUB:
+		if ((countitem(984) < 1) || (Zeny < 50000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-50000;
+L_REFINE_5:
+	if (getequippercentrefinery(@part)<=rand(100)) goto L_REFINE_6;
+		mes "[ホルグレン]";
+		mes "カン！ カン！ カン!!";
+		successrefitem @part;
+		next;
+		emotion 21;
+		mes "[ホルグレン]";
+		mes "さあ、出来上ったよ！";
+		mes "久々に良い物ができた。";
+		mes "武具が強くなって君も嬉しいだろ？";
+		goto L_CLOSE;
+L_REFINE_6:
+	mes "[ホルグレン]";
+	mes "カン！ カン！ カン!!";
+	failedrefitem @part;
+	next;
+	emotion 23;
+	mes "[ホルグレン]";
+	mes "クホホホホ…";
+	next;
+	mes "[ホルグレン]";
+	mes "すまん！";
+	mes "精錬中に武具が壊れてしまったな…";
+	mes "ほ、ほら、俺がやめろって";
+	mes "最初に言っただろう？";
+	goto L_CLOSE;
+L_CANCEL_1:
+	mes "[ホルグレン]";
+	mes "良い選択だな。";
+	mes "俺も無理して他人の武器を壊したら";
+	mes "気分が悪くなるからさ…";
+	goto L_CLOSE;
+L_CANCEL_2:
+	mes "[ホルグレン]";
+	mes "それが君が持ってる全部かい？";
+	mes "残念だが、材料が足りないんじゃ";
+	mes "仕方がないな。";
+	mes "俺はただでやってやるほど";
+	mes "心が広くないからな。";
+	goto L_CLOSE;
+L_CANCEL_3:
+	mes "[ホルグレン]";
+	mes "君が嫌なら仕方がないだろう…";
+L_CLOSE:
+	close;
+}
+
+// ----- モロク -----
+morocc_in.gat,73,38,4	script	アラガム	99,{
+	mes "[アラガムサレー]";
+	mes "私は武器と防具を精錬する鍛冶屋。";
+	mes "汝が装備しているアイテムの中で";
+	mes "好きなものを精錬できる。";
+	mes "どの装備アイテムを";
+	mes "精錬したいのか？";
+	next;
+	menu getequipname(1),L_MENU_1,getequipname(2),L_MENU_2,getequipname(3),L_MENU_3,getequipname(4),L_MENU_4,getequipname(5),L_MENU_5,getequipname(6),L_MENU_6,getequipname(7),L_MENU_7,getequipname(8),L_MENU_8,getequipname(9),L_MENU_9,getequipname(10),L_MENU_10;
+	L_MENU_1:
+		set @part,1;
+		if (getequipisequiped(1)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "汝の足りない脳みそを";
+			mes "精錬してさしあげようか？";
+			goto L_CLOSE;
+	L_MENU_2:
+		set @part,2;
+		if (getequipisequiped(2)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "私の熱い体で汝の体を";
+			mes "精錬してあげるわ！";
+			goto L_CLOSE;
+	L_MENU_3:
+		set @part,3;
+		if (getequipisequiped(3)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "汝の左手を改造する技術は無い。";
+			goto L_CLOSE;
+	L_MENU_4:
+		set @part,4;
+		if (getequipisequiped(4)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "汝の右手をマシンガンに";
+			mes "するのは無理だ。";
+			goto L_CLOSE;
+	L_MENU_5:
+		set @part,5;
+		if (getequipisequiped(5)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "ローブを持っていないな。";
+			goto L_CLOSE;
+	L_MENU_6:
+		set @part,6;
+		if (getequipisequiped(6)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "臭い…";
+			goto L_CLOSE;
+	L_MENU_7:
+		set @part,7;
+		if (getequipisequiped(7)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "どのアクセサリーか？";
+			goto L_CLOSE;
+	L_MENU_8:
+		set @part,8;
+		if (getequipisequiped(8)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "どのアクセサリーか？";
+			goto L_CLOSE;
+	L_MENU_9:
+		set @part,9;
+		if (getequipisequiped(9)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "何を精錬せよと言う？";
+			mes "他のアイテムの事か？";
+			goto L_CLOSE;
+	L_MENU_10:
+		set @part,10;
+		if (getequipisequiped(10)) goto L_START_1;
+			mes "[アラガムサレー]";
+			mes "何を精錬せよと言う？";
+			mes "他のアイテムの事か？";
+			goto L_CLOSE;
+L_START_1:
+	if (getequipisenableref(@part)) goto L_START_2;
+		mes "[アラガムサレー]";
+		mes "このアイテムは精錬不可能。";
+		goto L_CLOSE;
+L_START_2:
+	if (getequipisidentify(@part)) goto L_START_3;
+		mes "[アラガムサレー]";
+		mes "これは未鑑定だから精錬できない。";
+		goto L_CLOSE;
+L_START_3:
+	if (getequiprefinerycnt(@part) < 10) goto L_REFINE_0;
+		mes "[アラガムサレー]";
+		mes "これ以上は精錬できない。";
+		goto L_CLOSE;
+L_REFINE_0:
+	if (getequipweaponlv(@part) > 0) goto L_REFINE_1;
+		mes "[フレドリックヘルマンソン]";
+		mes "汝が選んだ装備を精錬するには";
+		mes "^ff9999エルニウム^000000と ";
+		mes "手数料20000Zenyが必要だ。";
+		mes "続けるか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_0_SUB;
+				mes "[アラガムサレー]";
+				mes "ふむ…この防具はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら防具が壊れるかも";
+				mes "しれない。防具が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_0_SUB:
+		if ((countitem(985) < 1) || (Zeny < 20000)) goto L_CANCEL_2;
+			delitem 985,1;
+			set Zeny,Zeny-20000;
+			goto L_REFINE_5;
+L_REFINE_1:
+	if (getequipweaponlv(@part) > 1) goto L_REFINE_2;
+		mes "[アラガムサレー]";
+		mes "レベル１の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999プラコン^000000と";
+		mes "手数料500Zenyが必要だ。";
+		mes "続けるか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_1_SUB;
+				mes "[アラガムサレー]";
+				mes "ふむ…この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれない。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_1_SUB:
+		if ((countitem(1010) < 1) || (Zeny < 500)) goto L_CANCEL_2;
+			delitem 1010,1;
+			set Zeny,Zeny-500;
+			goto L_REFINE_5;
+L_REFINE_2:
+	if (getequipweaponlv(@part) > 2) goto L_REFINE_3;
+		mes "[アラガムサレー]";
+		mes "レベル2の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999エンベルタコン^000000と";
+		mes "手数料2000Zenyが必要だ。";
+		mes "続けるか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_2_SUB;
+				mes "[アラガムサレー]";
+				mes "ふむ…この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれない。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_2_SUB:
+		if ((countitem(1011) < 1) || (Zeny < 2000)) goto L_CANCEL_2;
+			delitem 1011,1;
+			set Zeny,Zeny-2000;
+			goto L_REFINE_5;
+L_REFINE_3:
+	if (getequipweaponlv(@part) > 3) goto L_REFINE_4;
+		mes "[アラガムサレー]";
+		mes "レベル3の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料25000Zenyが必要だ。";
+		mes "続けるか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_3_SUB;
+				mes "[アラガムサレー]";
+				mes "ふむ…この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれない。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_3_SUB:
+		if ((countitem(984) < 1) || (Zeny < 25000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-25000;
+			goto L_REFINE_5;
+L_REFINE_4:
+		mes "[アラガムサレー]";
+		mes "レベル4の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料50000Zenyが必要だ。";
+		mes "続けるか？";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_4_SUB;
+				mes "[アラガムサレー]";
+				mes "ふむ…この武器はもうたくさんの";
+				mes "精錬をしてきたみたいだな…これ以上";
+				mes "精錬したら武器が壊れるかも";
+				mes "しれない。武器が壊れたら";
+				mes "2度と使えなくなる…それでも";
+				mes "精錬をする気なのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_4_SUB:
+		if ((countitem(984) < 1) || (Zeny < 50000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-50000;
+L_REFINE_5:
+	if (getequippercentrefinery(@part)<=rand(100)) goto L_REFINE_6;
+		mes "[アラガムサレー]";
+		mes "カン！ カン！ カン!!";
+		successrefitem @part;
+		next;
+		emotion 30;
+		mes "[アラガムサレー]";
+		mes "さあ、出来た！";
+		mes "久々に良い物ができたな。";
+		mes "武具が強くなって汝も嬉しかろう？";
+		goto L_CLOSE;
+L_REFINE_6:
+	mes "[アラガムサレー]";
+	mes "カン！ カン！ カン!!";
+	failedrefitem @part;
+	next;
+	emotion 16;
+	mes "[アラガムサレー]";
+	mes "………";
+	next;
+	mes "[アラガムサレー]";
+	mes "すまない…";
+	mes "精錬中に武具が壊れてしまった…";
+	mes "しかし、最初に忠告はしたぞ？";
+	goto L_CLOSE;
+L_CANCEL_1:
+	mes "[アラガムサレー]";
+	mes "良い選択だ。";
+	mes "私も無理して他人の武器を壊したら";
+	mes "気分が悪くなるから…";
+	goto L_CLOSE;
+L_CANCEL_2:
+	mes "[アラガムサレー]";
+	mes "それが汝が持ってる全部か？";
+	mes "残念だが、材料が足りないならば";
+	mes "仕方がない。";
+	mes "私はただでやってさしあげるほど";
+	mes "心が広くない。";
+	goto L_CLOSE;
+L_CANCEL_3:
+	mes "[アラガムサレー]";
+	mes "汝がやめるなら仕方がない…";
+L_CLOSE:
+	close;
+}
+
+// ----- フェイヨン -----
+payon_in01.gat,90,31,4	script	アントニオ	88,{
+	mes "[アントニオ]";
+	mes "来たか。まあとにかく";
+	mes "精錬したい装備を出せ。";
+	next;
+	menu getequipname(1),L_MENU_1,getequipname(2),L_MENU_2,getequipname(3),L_MENU_3,getequipname(4),L_MENU_4,getequipname(5),L_MENU_5,getequipname(6),L_MENU_6,getequipname(7),L_MENU_7,getequipname(8),L_MENU_8,getequipname(9),L_MENU_9,getequipname(10),L_MENU_10;
+	L_MENU_1:
+		set @part,1;
+		if (getequipisequiped(1)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "俺は忙しい！お前の冗談に";
+			mes "付き合っている時間など無いんだ。";
+			mes "頭を突っ込んでどうするつもりだ？";
+			goto L_CLOSE;
+	L_MENU_2:
+		set @part,2;
+		if (getequipisequiped(2)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "俺は忙しいと言っているだろう！";
+			goto L_CLOSE;
+	L_MENU_3:
+		set @part,3;
+		if (getequipisequiped(3)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "くだらない冗談はやめてくれ！";
+			goto L_CLOSE;
+	L_MENU_4:
+		set @part,4;
+		if (getequipisequiped(4)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "お前、精錬する気あるのか？";
+			goto L_CLOSE;
+	L_MENU_5:
+		set @part,5;
+		if (getequipisequiped(5)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "かえれ！";
+			goto L_CLOSE;
+	L_MENU_6:
+		set @part,6;
+		if (getequipisequiped(6)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "くだらない悪戯に付き合う";
+			mes "暇は無いんだ！";
+			goto L_CLOSE;
+	L_MENU_7:
+		set @part,7;
+		if (getequipisequiped(7)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "精錬しないのなら用は無いだろ？";
+			goto L_CLOSE;
+	L_MENU_8:
+		set @part,8;
+		if (getequipisequiped(8)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "俺は忙しい！";
+			goto L_CLOSE;
+	L_MENU_9:
+		set @part,9;
+		if (getequipisequiped(9)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "どこを精錬するって？";
+			goto L_CLOSE;
+	L_MENU_10:
+		set @part,10;
+		if (getequipisequiped(10)) goto L_START_1;
+			mes "[アントニオ]";
+			mes "帰ってくれないか？";
+			goto L_CLOSE;
+L_START_1:
+	if (getequipisenableref(@part)) goto L_START_2;
+		mes "[アントニオ]";
+		mes "これは精錬できない。";
+		mes "他を当たってくれ。";
+		goto L_CLOSE;
+L_START_2:
+	if (getequipisidentify(@part)) goto L_START_3;
+		mes "[アントニオ]";
+		mes "わけのわからない物を";
+		mes "精錬する趣味は無い…";
+		goto L_CLOSE;
+L_START_3:
+	if (getequiprefinerycnt(@part) < 10) goto L_REFINE_0;
+		mes "[アントニオ]";
+		mes "これ以上手を加えるところが";
+		mes "無いぞ！";
+		goto L_CLOSE;
+L_REFINE_0:
+	if (getequipweaponlv(@part) > 0) goto L_REFINE_1;
+		mes "[アントニオ]";
+		mes "お前が選んだ装備を精錬するには";
+		mes "^ff9999エルニウム^000000と ";
+		mes "手数料20000Zenyが必要だな。";
+		mes "ビタ1Zeny負けられない。";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_0_SUB;
+				mes "[アントニオ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_0_SUB:
+		if ((countitem(985) < 1) || (Zeny < 20000)) goto L_CANCEL_2;
+			delitem 985,1;
+			set Zeny,Zeny-20000;
+			goto L_REFINE_5;
+L_REFINE_1:
+	if (getequipweaponlv(@part) > 1) goto L_REFINE_2;
+		mes "[アントニオ]";
+		mes "レベル１の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999プラコン^000000と";
+		mes "手数料500Zenyが必要だな。";
+		mes "ビタ1Zeny負けられない。";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_1_SUB;
+				mes "[アントニオ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_1_SUB:
+		if ((countitem(1010) < 1) || (Zeny < 500)) goto L_CANCEL_2;
+			delitem 1010,1;
+			set Zeny,Zeny-500;
+			goto L_REFINE_5;
+L_REFINE_2:
+	if (getequipweaponlv(@part) > 2) goto L_REFINE_3;
+		mes "[アントニオ]";
+		mes "レベル2の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999エンベルタコン^000000と";
+		mes "手数料2000Zenyが必要だな。";
+		mes "ビタ1Zeny負けられない。";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_2_SUB;
+				mes "[アントニオ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_2_SUB:
+		if ((countitem(1011) < 1) || (Zeny < 2000)) goto L_CANCEL_2;
+			delitem 1011,1;
+			set Zeny,Zeny-2000;
+			goto L_REFINE_5;
+L_REFINE_3:
+	if (getequipweaponlv(@part) > 3) goto L_REFINE_4;
+		mes "[アントニオ]";
+		mes "レベル3の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料25000Zenyが必要だな。";
+		mes "久しぶりに俺の実力を見せてやるか。";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_3_SUB;
+				mes "[アントニオ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_3_SUB:
+		if ((countitem(984) < 1) || (Zeny < 25000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-25000;
+			goto L_REFINE_5;
+L_REFINE_4:
+		mes "[アントニオ]";
+		mes "レベル4の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料50000Zenyが必要だな。";
+		mes "レベル4の武器か…興奮するぜ！";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_4_SUB;
+				mes "[アントニオ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_4_SUB:
+		if ((countitem(984) < 1) || (Zeny < 50000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-50000;
+L_REFINE_5:
+	if (getequippercentrefinery(@part)<=rand(100)) goto L_REFINE_6;
+		mes "[アントニオ]";
+		mes "カン！ カン！ カン!!";
+		successrefitem @part;
+		next;
+		emotion 0;
+		mes "[アントニオ]";
+		mes "バッチリだ！";
+		mes "また来てくれ。";
+		goto L_CLOSE;
+L_REFINE_6:
+	mes "[アントニオ]";
+	mes "カン！ カン！ カン!!";
+	failedrefitem @part;
+	next;
+	emotion 32;
+	mes "[アントニオ]";
+	mes "ふ…";
+	next;
+	mes "[アントニオ]";
+	mes "残念だ…";
+	mes "まあ人生こういうこともある。";
+	mes "落ち込むなよ…";
+	goto L_CLOSE;
+L_CANCEL_1:
+	mes "[アントニオ]";
+	mes "つまらん…";
+	mes "俺は忙しい、帰ってくれ。";
+	goto L_CLOSE;
+L_CANCEL_2:
+	mes "[アントニオ]";
+	mes "1Zenyも負けられないから";
+	mes "精錬したければお金を持ってきな。";
+	goto L_CLOSE;
+L_CANCEL_3:
+	mes "[アントニオ]";
+	mes "遊びじゃないんだよ！";
+L_CLOSE:
+	close;
+}
+
+// ----- ジュノー -----
+yuno_in01.gat,171,21,4	script	ティスターブ	85,{
+	mes "[ディスターブ]";
+	mes "来たか。まあとにかく";
+	mes "精錬したい装備を出せ。";
+	next;
+	menu getequipname(1),L_MENU_1,getequipname(2),L_MENU_2,getequipname(3),L_MENU_3,getequipname(4),L_MENU_4,getequipname(5),L_MENU_5,getequipname(6),L_MENU_6,getequipname(7),L_MENU_7,getequipname(8),L_MENU_8,getequipname(9),L_MENU_9,getequipname(10),L_MENU_10;
+	L_MENU_1:
+		set @part,1;
+		if (getequipisequiped(1)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "俺は忙しい！お前の冗談に";
+			mes "付き合っている時間など無いんだ。";
+			mes "頭を突っ込んでどうするつもりだ？";
+			goto L_CLOSE;
+	L_MENU_2:
+		set @part,2;
+		if (getequipisequiped(2)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "俺は忙しいと言っているだろう！";
+			goto L_CLOSE;
+	L_MENU_3:
+		set @part,3;
+		if (getequipisequiped(3)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "くだらない冗談はやめてくれ！";
+			goto L_CLOSE;
+	L_MENU_4:
+		set @part,4;
+		if (getequipisequiped(4)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "お前、精錬する気あるのか？";
+			goto L_CLOSE;
+	L_MENU_5:
+		set @part,5;
+		if (getequipisequiped(5)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "かえれ！";
+			goto L_CLOSE;
+	L_MENU_6:
+		set @part,6;
+		if (getequipisequiped(6)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "くだらない悪戯に付き合う";
+			mes "暇は無いんだ！";
+			goto L_CLOSE;
+	L_MENU_7:
+		set @part,7;
+		if (getequipisequiped(7)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "精錬しないのなら用は無いだろ？";
+			goto L_CLOSE;
+	L_MENU_8:
+		set @part,8;
+		if (getequipisequiped(8)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "俺は忙しい！";
+			goto L_CLOSE;
+	L_MENU_9:
+		set @part,9;
+		if (getequipisequiped(9)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "どこを精錬するって？";
+			goto L_CLOSE;
+	L_MENU_10:
+		set @part,10;
+		if (getequipisequiped(10)) goto L_START_1;
+			mes "[ディスターブ]";
+			mes "帰ってくれないか？";
+			goto L_CLOSE;
+L_START_1:
+	if (getequipisenableref(@part)) goto L_START_2;
+		mes "[ディスターブ]";
+		mes "これは精錬できない。";
+		mes "他を当たってくれ。";
+		goto L_CLOSE;
+L_START_2:
+	if (getequipisidentify(@part)) goto L_START_3;
+		mes "[ディスターブ]";
+		mes "わけのわからない物を";
+		mes "精錬する趣味は無い…";
+		goto L_CLOSE;
+L_START_3:
+	if (getequiprefinerycnt(@part) < 10) goto L_REFINE_0;
+		mes "[ディスターブ]";
+		mes "これ以上手を加えるところが";
+		mes "無いぞ！";
+		goto L_CLOSE;
+L_REFINE_0:
+	if (getequipweaponlv(@part) > 0) goto L_REFINE_1;
+		mes "[ディスターブ]";
+		mes "お前が選んだ装備を精錬するには";
+		mes "^ff9999エルニウム^000000と ";
+		mes "手数料20000Zenyが必要だな。";
+		mes "ビタ1Zeny負けられない。";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_0_SUB;
+				mes "[ディスターブ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_0_SUB:
+		if ((countitem(985) < 1) || (Zeny < 20000)) goto L_CANCEL_2;
+			delitem 985,1;
+			set Zeny,Zeny-20000;
+			goto L_REFINE_5;
+L_REFINE_1:
+	if (getequipweaponlv(@part) > 1) goto L_REFINE_2;
+		mes "[ディスターブ]";
+		mes "レベル１の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999プラコン^000000と";
+		mes "手数料500Zenyが必要だな。";
+		mes "ビタ1Zeny負けられない。";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_1_SUB;
+				mes "[ディスターブ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_1_SUB:
+		if ((countitem(1010) < 1) || (Zeny < 500)) goto L_CANCEL_2;
+			delitem 1010,1;
+			set Zeny,Zeny-500;
+			goto L_REFINE_5;
+L_REFINE_2:
+	if (getequipweaponlv(@part) > 2) goto L_REFINE_3;
+		mes "[ディスターブ]";
+		mes "レベル2の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999エンベルタコン^000000と";
+		mes "手数料2000Zenyが必要だな。";
+		mes "ビタ1Zeny負けられない。";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_2_SUB;
+				mes "[ディスターブ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_2_SUB:
+		if ((countitem(1011) < 1) || (Zeny < 2000)) goto L_CANCEL_2;
+			delitem 1011,1;
+			set Zeny,Zeny-2000;
+			goto L_REFINE_5;
+L_REFINE_3:
+	if (getequipweaponlv(@part) > 3) goto L_REFINE_4;
+		mes "[ディスターブ]";
+		mes "レベル3の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料25000Zenyが必要だな。";
+		mes "久しぶりに俺の実力を見せてやるか。";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_3_SUB;
+				mes "[ディスターブ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_3_SUB:
+		if ((countitem(984) < 1) || (Zeny < 25000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-25000;
+			goto L_REFINE_5;
+L_REFINE_4:
+		mes "[ディスターブ]";
+		mes "レベル4の武器を精錬したいのか？";
+		mes "精錬するため、 ^ff9999オリデオコン^000000と";
+		mes "手数料50000Zenyが必要だな。";
+		mes "レベル4の武器か…興奮するぜ！";
+		next;
+		menu "はい",-,"いいえ",L_CANCEL_3;
+			if (getequippercentrefinery(@part) == 100) goto L_4_SUB;
+				mes "[ディスターブ]";
+				mes "く…どこからこんな厄介な物を";
+				mes "持ってきたんだ…。";
+				mes "これ以上の精錬は危険だ。";
+				mes "それを承知でやるというのか？";
+				next;
+				menu "はい",-,"いいえ",L_CANCEL_1;
+	L_4_SUB:
+		if ((countitem(984) < 1) || (Zeny < 50000)) goto L_CANCEL_2;
+			delitem 984,1;
+			set Zeny,Zeny-50000;
+L_REFINE_5:
+	if (getequippercentrefinery(@part)<=rand(100)) goto L_REFINE_6;
+		mes "[ディスターブ]";
+		mes "カン！ カン！ カン!!";
+		successrefitem @part;
+		next;
+		emotion 9;
+		mes "バッチリだ！";
+		mes "また来てくれ。";
+		goto L_CLOSE;
+L_REFINE_6:
+	mes "[ディスターブ]";
+	mes "カン！ カン！ カン!!";
+	failedrefitem @part;
+	next;
+	emotion 0;
+	mes "[ディスタブ]";
+	mes "ふ…";
+	next;
+	mes "[ディスタブ]";
+	mes "残念だ…";
+	mes "まあ人生こういうこともある。";
+	mes "落ち込むなよ…";
+	goto L_CLOSE;
+L_CANCEL_1:
+	mes "[ディスターブ]";
+	mes "つまらん…";
+	mes "俺は忙しい、帰ってくれ。";
+	goto L_CLOSE;
+L_CANCEL_2:
+	mes "[ディスターブ]";
+	mes "1Zenyも負けられないから";
+	mes "精錬したければお金を持ってきな。";
+	goto L_CLOSE;
+L_CANCEL_3:
+	mes "[ディスターブ]";
+	mes "遊びじゃないんだよ！";
+L_CLOSE:
+	close;
+}
+//EP? - BuyStone NPC
+alberta_in.gat,13,71,4	script	カラマンリス	86,{
+	callfunc "buystone","カラマンリス";
+}
+prt_in.gat,56,68,4	script	ブルウェル	86,{
+	callfunc "buystone","ブルウェル";
+}
+morocc_in.gat,63,32,0	script	サド	99,{
+	callfunc "buystone","サド";
+}
+payon_in01.gat,83,29,4	script	ベグナド	88,{
+	callfunc "buystone","ベグナド";
+}
+yuno_in01.gat,171,27,4	script	ティルレマ	86,{
+	callfunc "buystone","ティルレマ";
+}
+
+//EP? - ChangeStone NPC
+alberta_in.gat,21,63,5	script	ゼノフォン	84,{
+	callfunc "chgstone","ゼノフォン ゾロタス";
+}
+prt_in.gat,63,69,4	script	ディートリヒ	84,{
+	callfunc "chgstone","ディートリヒ";
+}
+morocc_in.gat,72,32,0	script	アブドゥル	99,{
+	callfunc "chgstone","アブドゥル";
+}
+payon_in01.gat,81,31,4	script	ハキム	88,{
+	callfunc "chgstone","ハキム";
+}
+yuno_in01.gat,164,27,4	script	ティルレイ	84,{
+	callfunc "chgstone","ティルレイ";
+}
+
+//EP3.0 - Repairer NPC
+alberta_in.gat,31,65,4	script	修理工	84,{
+	callfunc "repairer";
+}
+prt_in.gat,63,54,2	script	修理工	86,{
+	callfunc "repairer";
+}
+morocc_in.gat,71,41,4	script	修理工	99,{
+	callfunc "repairer";
+}
+payon_in01.gat,88,29,4	script	修理工	88,{
+	callfunc "repairer";
+}

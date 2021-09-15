@@ -1,0 +1,91 @@
+//----------------------------------------------------------------------
+// スクリプト : Event_Ice v1.1
+//----------------------------------------------------------------------
+
+-	script	icenpc	85,{
+		mes "[アイスクリーム商人]";
+		mes "さぁ、夏と言えば冷たい";
+		mes "アイスクリーム！";
+		mes "^3355FF100 Zeny^000000で";
+		mes "身も心も爽やかに！";
+		next;
+		menu "アイスクリームをください！",-,"アイスクリームについて",L_START_1,"取引をやめる",Lcancel;
+			mes "[アイスクリーム商人]";
+			mes "冷たくて甘いアイスクリームは";
+			mes "この暑い砂漠の街にピッタリ！";
+			mes "一度に10個まで";
+			mes "お買い求めいただけます。";
+	L_ROOT_1:
+			next;
+			input @CHANGE_NUM;
+			if (@CHANGE_NUM <= 0) goto L_MENU_1;
+			if (@CHANGE_NUM >= 11) goto L_MENU_2;
+			set @CHANGE_ZENY,@CHANGE_NUM;
+			set @CHANGE_ZENY,@CHANGE_ZENY*100;
+			if (Zeny >= @CHANGE_ZENY) goto L_ROOT_2;
+				mes "[アイスクリーム商人]";
+				mes "お客さん、お金が足りないです…";
+				mes "一つ ^3355FF100 Zeny^000000ですよ！";
+				close;
+	L_ROOT_2:
+			if (checkweight(536,@CHANGE_NUM)) goto L_ROOT_3;
+				mes "[アイスクリーム商人]";
+				mes "お客さん、ちょっと荷物が";
+				mes "多すぎますね。";
+				mes "アイスクリームを落としてしまいます。";
+				mes "持ち物を減らしてから来て下さい～。";
+				close;
+	L_ROOT_3:
+			set Zeny,Zeny-@CHANGE_ZENY;
+			getitem 536,@CHANGE_NUM;
+			mes "[アイスクリーム商人]";
+			mes "はい、" + @CHANGE_NUM + "個ね。";
+			mes "ありがとうございましたー。";
+			close;
+	L_MENU_1:
+			mes "[アイスクリーム商人]";
+			mes "あら？";
+			mes "お腹の調子が良くないのですか？";
+			close;
+	L_MENU_2:
+			mes "[アイスクリーム商人]";
+			mes "え？";
+			mes "ちょっと多すぎです。";
+			mes "一度に販売できるのは";
+			mes "10個までです。";
+			mes "あまり食べ過ぎると";
+			mes "お腹を壊しますよ～。";
+			goto L_ROOT_1;
+	L_START_1:
+			mes "[アイスクリーム商人]";
+			mes "「アイスクリーム」はですね…";
+			mes "牛乳･乳製品の脂肪と";
+			mes "無脂乳固形分を主原料に、";
+			mes "砂糖･香料･安定剤･乳化剤";
+			mes "色素などを加えて混合し、";
+			next;
+			mes "[アイスクリーム商人]";
+			mes "泡立てて凍結させた食べ物です。";
+			mes "細かく言うと、";
+			mes "乳固形分15%以上";
+			mes "うち乳脂肪8%以上";
+			mes "のものですね。";
+			next;
+			mes "[アイスクリーム商人]";
+			mes "エネルギーと栄養も豊富で";
+			mes "とても美味しいんですが、";
+			mes "だからと言って食べ過ぎると";
+			mes "お腹を壊しますよ！";
+			close;
+	Lcancel:
+			mes "[アイスクリーム商人]";
+			mes "今この機会を逃すと";
+			mes "来年の夏まで味わうことが";
+			mes "できなくなるかもしれませんよ？";
+			mes "さぁ、さぁ、いかがですか～？";
+			close;
+}
+
+morocc.gat,160,143,4	duplicate(icenpc)	アイスクリーム商人	85
+alberta.gat,106,65,4	duplicate(icenpc)	アイスクリーム商人	85
+moc_fild16.gat,88,304,4	duplicate(icenpc)	アイスクリーム商人	85

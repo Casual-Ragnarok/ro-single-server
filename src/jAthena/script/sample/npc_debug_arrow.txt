@@ -1,0 +1,222 @@
+//
+// 矢製作スキルができるまでの間の、弓矢使い救済NPCに使ってやって下さい (^^;
+// ただ単に店NPCじゃ詰まらないので、簡単なイベントに。
+// 値段は、適当デス。	write by huge
+//
+
+payon.gat,98,57,6	script	ラウリィ	86,{
+	if (Class==3 || Class==6 || Class==11 || Class==12 || Class==17 || Class==19 || Class==20) goto event;
+
+	mes"[ラウリィ]";
+	mes"やぁ、初めまして。旅人さん。";
+	mes"今日も天気がいいですねっ。";
+	mes"川の流れも穏やかだ。";
+	close;
+
+event:
+	if (ARROW_NPC) goto again;
+	mes"[ラウリィ]";
+	mes"やぁ、初めまして。旅人さん。";
+	mes"おや、あなたは弓使いのようですね。";
+	mes"私も昔、ハンターだったんですよ。";
+	next;
+	mes"[ラウリィ]";
+	mes"でも、とある事情で退職しました。";
+	mes"あの頃は、毎日が楽しかったなぁ･･･。";
+	mes"あ、そうだ！。";
+	next;
+	mes"[ラウリィ]";
+	mes"私が昔使っていた矢の余りを";
+	mes"あなたにあげましょう。";
+	mes"ただ、私も退職した身なので少々お代は頂きますが";
+	next;
+	mes"[ラウリィ]";
+	mes"この街の中央広場に居るおじさんに";
+	mes"全部預けてるので、話しかけてみてください。";
+	mes"私からあなたの事を伝えておきますので。";
+	set ARROW_NPC,1;
+	close;
+again:
+	mes"[ラウリィ]";
+	mes"やぁ、また会いましたね。旅人さん。";
+	mes"バドラックおじさんには会えました？";
+	mes"この街の中央広場に居ますよ。";
+	close;
+}
+
+payon.gat,100,121,3	script	バドラック	85,{
+	if(ARROW_NPC) goto buy;
+	if(Sex) goto male;
+	mes"[バドラック]";
+	mes"よぉ、ねぇちゃん。";
+	mes"おじさんと一杯やらないかい？";
+	close;
+
+male:	mes"[バドラック]";
+	mes"誰だお前は！";
+	mes"気安く話しかけんじゃねぇ！";
+	mes"俺は、男には興味はねぇんだよ。";
+	mes"さっさと立ち去りな！";
+	close;
+
+buy:	mes"[バドラック]";
+	mes"あんたか、ラウリィの知り合いってのは";
+	mes"アイツは、あー見えても結構な腕でな";
+	mes"現役の頃は、弓使いでその名を知らないやつは居ないってくらいだったぜ。";
+	mes"だから、世界中の矢が揃ってやがるぜ！";
+	next;
+	mes"[バドラック]";
+	mes"じゃ、さっそく矢を選んでくれ。";
+	mes"ただし、軽いモンだからまとめ売りだぞ";
+	mes"";
+	mes"重量チェックも自分でやってくれよ。";
+	mes"持ちきれなかったら回収だぜ。";
+	next;
+	menu 	"(ﾟДﾟ)ﾊｧ?ｲﾗﾈ",hiyakasi,
+		"矢×1000 -> 1,000z",arrow00,
+		"岩石の矢×500 -> 1,500z",arrow01,
+		"錆びた矢×500 -> 1,500z",arrow02,
+		"鋭い矢×500 -> 1,500z",arrow03,
+		"鉄の矢×500 -> 1,500z",arrow04,
+		"鋼鉄の矢×500 -> 1,500z",arrow05,
+		"銀の矢×500 -> 1,500z",arrow06,
+		"炎の矢×500 -> 2,500z",arrow07,
+		"氷の矢×500 -> 2,500z",arrow08,
+		"風の矢×500 -> 2,500z",arrow09,
+		"水晶の矢×500 -> 2,500z",arrow10,
+		"無形の矢×500 -> 2,500z",arrow11,
+		"毒矢×500 -> 3,500z",arrow12,
+		"カースアロー×500 -> 3,500z",arrow13,
+		"スタンアロー×500 -> 3,500z",arrow14,
+		"スリープアロー×500 -> 3,500z",arrow15,
+		"フラッシュアロー×500 -> 3,500z",arrow16,
+		"サイレンスアロー×500 -> 3,500z",arrow17,
+		"影矢×500 -> 3,500z",arrow18,
+		"破魔矢×100 -> 40,000z",arrow19,
+		"オリデオコンの矢×100 -> 50,000z",arrow20;
+
+arrow00:
+	if (Zeny < 1000) goto s_binbo;
+	set Zeny,Zeny-1000;
+	getitem 1750,1000;
+	goto s_last;
+arrow01:
+	if (Zeny < 1500) goto s_binbo;
+	set Zeny,Zeny-1500;
+	getitem 1756,500;
+	goto s_last;
+arrow02:
+	if (Zeny < 1500) goto s_binbo;
+	set Zeny,Zeny-1500;
+	getitem 1762,500;
+	goto s_last;
+arrow03:
+	if (Zeny < 1500) goto s_binbo;
+	set Zeny,Zeny-1500;
+	getitem 1764,500;
+	goto s_last;
+arrow04:
+	if (Zeny < 1500) goto s_binbo;
+	set Zeny,Zeny-1500;
+	getitem 1770,500;
+	goto s_last;
+arrow05:
+	if (Zeny < 1500) goto s_binbo;
+	set Zeny,Zeny-1500;
+	getitem 1753,500;
+	goto s_last;
+arrow06:
+	if (Zeny < 1500) goto s_binbo;
+	set Zeny,Zeny-1500;
+	getitem 1751,500;
+	goto s_last;
+arrow07:
+	if (Zeny < 2500) goto s_binbo;
+	set Zeny,Zeny-2500;
+	getitem 1752,500;
+	goto s_last;
+arrow08:
+	if (Zeny < 2500) goto s_binbo;
+	set Zeny,Zeny-2500;
+	getitem 1759,500;
+	goto s_last;
+arrow09:
+	if (Zeny < 2500) goto s_binbo;
+	set Zeny,Zeny-2500;
+	getitem 1755,500;
+	goto s_last;
+arrow10:
+	if (Zeny < 2500) goto s_binbo;
+	set Zeny,Zeny-2500;
+	getitem 1754,500;
+	goto s_last;
+arrow11:
+	if (Zeny < 2500) goto s_binbo;
+	set Zeny,Zeny-2500;
+	getitem 1757,500;
+	goto s_last;
+arrow12:
+	if (Zeny < 3500) goto s_binbo;
+	set Zeny,Zeny-3500;
+	getitem 1763,500;
+	goto s_last;
+arrow13:
+	if (Zeny < 3500) goto s_binbo;
+	set Zeny,Zeny-3500;
+	getitem 1761,500;
+	goto s_last;
+arrow14:
+	if (Zeny < 3500) goto s_binbo;
+	set Zeny,Zeny-3500;
+	getitem 1758,500;
+	goto s_last;
+arrow15:
+	if (Zeny < 3500) goto s_binbo;
+	set Zeny,Zeny-3500;
+	getitem 1768,500;
+	goto s_last;
+arrow16:
+	if (Zeny < 3500) goto s_binbo;
+	set Zeny,Zeny-3500;
+	getitem 1760,500;
+	goto s_last;
+arrow17:
+	if (Zeny < 3500) goto s_binbo;
+	set Zeny,Zeny-3500;
+	getitem 1769,500;
+	goto s_last;
+arrow18:
+	if (Zeny < 3500) goto s_binbo;
+	set Zeny,Zeny-3500;
+	getitem 1766,500;
+	goto s_last;
+arrow19:
+	if (Zeny < 40000) goto s_binbo;
+	set Zeny,Zeny-40000;
+	getitem 1767,500;
+	goto s_last;
+arrow20:
+	if (Zeny < 50000) goto s_binbo;
+	set Zeny,Zeny-50000;
+	getitem 1765,100;
+	goto s_last;
+
+//何かを買い終わったあと
+s_last:
+	mes"[バドラック]";
+	mes"まいどありー。";
+	close;
+//何も買わなかったとき
+hiyakasi:
+	mes"[バドラック]";
+	mes"ｲﾗﾈんなら最初から話しかけんな！";
+	close;
+
+//金が足らんとき
+s_binbo:
+	mes"[バドラック]";
+	mes"持ち金が足らんようだな。。";
+	mes"出直してこいや。";
+	mes"俺はいつでもここに居るからな。";
+	close;
+}

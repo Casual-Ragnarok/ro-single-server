@@ -1,0 +1,180 @@
+//====================================================================
+//Ragnarok Online Archer jobchange script
+//====================================================================
+payon_in02.gat,64,71,4	script	ギルド関係者	85,{
+	mes "[アーチャーギルド関係者]";
+	mes "こんにちは、";
+	mes "何をお手伝いしましょうか？";
+	next;
+	menu "アーチャーに転職",L1,"アーチャーの転職条件は？",L2,"なんでもありません。",Lend;
+L1:
+	if (Class == 3) goto Ltwice;
+	if (Class != 0) goto LError;
+	if (change_archer == 1) goto Lcheck;
+	mes "[アーチャーギルド関係者]";
+	mes "アーチャーへの転職をお求めですか？";
+	mes "そうでしたら、ここでアーチャー転職の";
+	mes "申し込みをして下さい。";
+	next;
+	menu "アーチャー転職申し込みをする。",-,"やめる",Lend2;
+		set change_archer,1;
+		mes "[アーチャーギルド関係者]";
+		mes "申請書にサインをして…";
+		mes "はい。これでOKです。";
+		mes "これからアーチャーになるための条件を";
+		mes "全て満たせば、転職が可能です。";
+		mes "既に転職の条件を満たしているか、";
+		mes "今確認しますが…よろしいですか？";
+		next;
+		menu "はい。",L1_1,"いいえ。",L1_2;
+L1_1:
+			mes "[アーチャーギルド関係者]";
+			mes "確認します。";
+			next;
+			goto Lcheck;
+L1_2:
+			mes "[アーチャーギルド関係者]";
+			mes "わかりました。";
+			mes "アーチャー転職条件について";
+			mes "わからない部分があれば、";
+			mes "私に聞いてください。";
+			close;
+L2:
+	mes "[アーチャーギルド関係者]";
+	mes "それじゃ、アーチャーの転職条件に";
+	mes "ついて説明します。";
+	if (Class == 0) goto L2_1;
+		if (Class == 3) mes "でも、貴方は既にアーチャーですが…";
+		if (Class != 3)	mes "でも、貴方ってもう他の職業に";
+		if (Class != 3)	mes "なってますが…";
+		mes "…まあ、いいでしょう。";
+L2_1:
+	next;
+	mes "[アーチャーギルド関係者]";
+	mes "まず、初心者スキルレベルを";
+	mes "９以上にして下さい。";
+	mes "アーチャーは高度の集中力を";
+	mes "必要とする職業であるため、";
+	mes "マヌケな奴はアーチャーには";
+	mes "絶対なれません。";
+	next;
+	mes "[アーチャーギルド関係者]";
+	mes "アーチャー転職試験では、弓の製作に";
+	mes "必要な ^ff0000木屑^000000 を集めてきてください。";
+	mes "持ってきた木屑は４つのGRADEに";
+	mes "分類され、その数と合わせて";
+	mes "採点されます。";
+	next;
+	mes "[アーチャーギルド関係者]";
+	mes "40点満点中^0000ff25点以上^000000であれば、";
+	mes "アーチャー転職が可能です。";
+	mes "木屑アイテムは、モンスター";
+	mes "<ウィロー>から得られます。弱い";
+	mes "モンスターですが、油断は禁物です。";
+	close;
+Lcheck:
+	mes "[アーチャーギルド関係者]";
+	mes "お名前が… " + strcharinfo(0) + "。ですよね？";
+	next;
+//転生ノビ処理
+	callfunc "jobchanger","アーチャーギルド関係者",3;
+	if (getskilllv(1) < 9) goto Llowlv;
+		mes "[アーチャーギルド関係者]";
+		mes "初心者スキルは十分ですから…";
+		mes "弓製作に必要な木屑の鑑定を始めます。";
+		mes "…。え~~";
+		next;
+		set @gradeS,countitem(1066)*5;
+		set @gradeA,countitem(1067)*3;
+		set @gradeB,countitem(1068)*2;
+		set @gradeC,countitem(1019)*1;
+		set @total,@gradeS+@gradeA+@gradeB+@gradeC;
+		if (@total == 0) goto Lnoitem;
+			mes "[アーチャーギルド関係者]";
+			if (countitem(1066) > 0) mes "GRADE S : " + countitem(1066) + " 個 / 点数 : " + @gradeS + "。";
+			if (countitem(1067) > 0) mes "GRADE A : " + countitem(1067) + " 個 / 点数 : " + @gradeA + "。";
+			if (countitem(1068) > 0) mes "GRADE B : " + countitem(1068) + " 個 / 点数 : " + @gradeB + "。";
+			if (countitem(1019) > 0) mes "GRADE C : " + countitem(1019) + " 個 / 点数 : " + @gradeC + "。";
+			if (@total >= 25) mes "総点: ^0000ff" + @total + "^000000 / 40";
+			if (@total < 25) mes "総点: ^ff0000" + @total + "^000000 / 40";
+			next;
+				if (@total > 25) goto Lgoukaku;
+					mes "[アーチャーギルド関係者]";
+					mes "25点以下?";
+					mes "25点以上にならなければ、";
+					mes "合格になりません！";
+					mes "もっと頑張ってください！";
+					close;
+			Lgoukaku:
+					delitem 1066,countitem(1066);
+					delitem 1067,countitem(1067);
+					delitem 1068,countitem(1068);
+					delitem 1019,countitem(1019);
+					mes "[アーチャーギルド関係者]";
+					if ((@total >= 25) && (@total < 30)) mes "25点以上！う～ん";
+					if ((@total >= 25) && (@total < 30)) mes "ぎりぎりですが合格です。";
+					if ((@total >= 30) && (@total < 40)) mes "30点以上！合格です！";
+					if ((@total >= 30) && (@total < 40)) mes "お疲れ様でした！";
+					if (@total >= 40) mes "うわ！40点以上！";
+					if (@total >= 40) mes "凄いです！合格です！";
+					mes "木屑を製作係に渡します。";
+					mes "これでアーチャー転職条件が";
+					mes "揃いました。すぐ転職させて頂きます。";
+					next;
+					jobchange 3;
+					getitem 1702,1;
+					getitem 1750,rand(100);
+					set change_archer,0;
+					mes "[アーチャーギルド関係者]";
+					mes "アーチャーへの転職、";
+					mes "おめでとうございます！そして、";
+					mes "これからもアーチャーギルドの";
+					mes "復興のため、頑張ってください！";
+					mes "あ、製作係りからプレゼントが";
+					mes "届きました。お受け取りください。";
+					next;
+					mes "[アーチャーギルド関係者]";
+					mes "アーチャーはやっぱり";
+					mes "弓と矢を持たないと！";
+					mes "それじゃ、頑張ってください。";
+					mes "期待してます。";
+					close;
+		Lnoitem:
+			mes "[アーチャーギルド関係者]";
+			mes "……。";
+			mes "鑑定するアイテムがありません!!";
+			close;
+Llowlv:
+	mes "[アーチャーギルド関係者]";
+	mes "まだ初心者スキルレベルが足りません。";
+	mes "転職条件をもう一度確認した上で、";
+	mes "初心者スキルレベル９まで";
+	mes "マスターして下さい。";
+	close;
+Ltwice:
+	mes "[アーチャーギルド関係者]";
+	mes "貴方はもうアーチャーに";
+	mes "転職されています。";
+	close;
+LError:
+	mes "[アーチャーギルド関係者]";
+	mes "ふ…。";
+	mes "見かけは初心者ではありませんが…";
+	mes "他の職業を選択した以上、";
+	mes "アーチャーにはなれません。";
+Lend:
+	close;
+Lend2:
+	mes "[アーチャーギルド関係者]";
+	mes "あ…さよなら。";
+	close;
+}
+//==============================================================================
+payon_in02.gat,21,31,2	script	ハンター	59,{
+//!!!
+	mes "[ハンター]";
+	mes "どんな用事ですか？";
+	mes "私は出張に来ているので忙しいんです。";
+	mes "どうか構わないでください。";
+	close;
+}

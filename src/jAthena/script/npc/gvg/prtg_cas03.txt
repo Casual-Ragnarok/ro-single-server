@@ -1,0 +1,100 @@
+//===================================================================
+//Ragnarok Online EP2.5 GVG Script	prtg_cas03         by kalen
+//===================================================================
+-	script	gfproC	722,{
+callfunc "flagsc","prtg_cas03.gat",2,0,0,0;
+OnRecvCastleP03:
+	FlagEmblem getcastledata("prtg_cas03.gat",1);
+	end;
+}
+prt_gld.gat,147,140,4	duplicate(gfproC)	ギルドフラッグ#p3-1	722
+prt_gld.gat,147,136,4	duplicate(gfproC)	ギルドフラッグ#p3-2	722
+prt_gld.gat,158,140,4	duplicate(gfproC)	ギルドフラッグ#p3-3	722
+prt_gld.gat,158,136,4	duplicate(gfproC)	ギルドフラッグ#p3-4	722
+prtg_cas03.gat,168,28,4	duplicate(gfproC)	ギルドフラッグ#p3-5	722
+prtg_cas03.gat,182,28,4	duplicate(gfproC)	ギルドフラッグ#p3-6	722
+prtg_cas03.gat,43,50,4	duplicate(gfproC)	ギルドフラッグ#p3-7	722
+prtg_cas03.gat,48,50,4	duplicate(gfproC)	ギルドフラッグ#p3-8	722
+prtg_cas03.gat,43,58,4	duplicate(gfproC)	ギルドフラッグ#p3-9	722
+prtg_cas03.gat,48,58,4	duplicate(gfproC)	ギルドフラッグ#p3-10	722
+prtg_cas03.gat,158,210,4	duplicate(gfproC)	ギルドフラッグ#p3-11	722
+prtg_cas03.gat,169,210,4	duplicate(gfproC)	ギルドフラッグ#p3-12	722
+prtg_cas03.gat,162,201,4	duplicate(gfproC)	ギルドフラッグ#p3-13	722
+prtg_cas03.gat,165,201,4	duplicate(gfproC)	ギルドフラッグ#p3-14	722
+//------------------------------カプラ--------------------------------
+prtg_cas03.gat,181,215,4	script	カプラ職員::kapra_prtg03	117,{
+	callfunc "gkfmenu","prtg_cas03.gat";
+	menu "倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"終了",L7;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	callfunc "gkfwarp","プロンテラ","prontera.gat",278,211;
+L4:
+	callfunc "kfcart",800;
+L7:
+	callfunc "kfend";
+}
+//-------------------------------執事---------------------------------
+prtg_cas03.gat,51,100,4	script	ステッキ	55,{
+	callfunc "Steward_menu0","prtg_cas03.gat","ステッキ";
+	menu "砦の状態を表示",L1,"商業発展に投資",L2,"砦の防衛に投資",L3,"ガーディアン設置",L4,"カプラとの契約 / 解雇",L5,"マスターの部屋に入る",L6,"アジトを放棄する",L7;
+L1:
+	callfunc "Steward_menu1","prtg_cas03.gat","ステッキ";
+L2:
+	callfunc "Steward_menu2","prtg_cas03.gat","ステッキ";
+L3:
+	callfunc "Steward_menu3","prtg_cas03.gat","ステッキ";
+L4:
+	callfunc "Steward_menu4","prtg_cas03.gat","ステッキ";
+	if (@GDnum == 10) monster "prtg_cas03.gat",191,190,"--ja--",1286,1,"Agit_D03::On_GDp31";
+	if (@GDnum == 11) monster "prtg_cas03.gat",137,190,"--ja--",1286,1,"Agit_D03::On_GDp32";
+	if (@GDnum == 12) monster "prtg_cas03.gat",45,99,"--ja--",1286,1,"Agit_D03::On_GDp33";
+	if (@GDnum == 13) monster "prtg_cas03.gat",50,87,"--ja--",1287,1,"Agit_D03::On_GDp34";
+	if (@GDnum == 14) monster "prtg_cas03.gat",41,87,"--ja--",1287,1,"Agit_D03::On_GDp35";
+	if (@GDnum == 15) monster "prtg_cas03.gat",191,42,"--ja--",1285,1,"Agit_D03::On_GDp36";
+	if (@GDnum == 16) monster "prtg_cas03.gat",179,43,"--ja--",1285,1,"Agit_D03::On_GDp37";
+	if (@GDnum == 17) monster "prtg_cas03.gat",191,72,"--ja--",1285,1,"Agit_D03::On_GDp38";
+	mes "[執事ステッキ]";
+	mes "ガーディアンが設置されました。";
+	mes "ガーディアンは私達の城を";
+	mes "敵から守ってくれるでしょう。";
+	close;
+L5:
+	callfunc "Steward_menu5","prtg_cas03.gat","ステッキ","kapra_prtg03";
+L6:
+	callfunc "Steward_menu6","prtg_cas03.gat","ステッキ",185,129;
+L7:
+	callfunc "Steward_menu7","prtg_cas03.gat","ステッキ";
+	callfunc "resetcastledata","prtg_cas03.gat","::OnRecvCastleP03","kapra_prtg03",@GID;
+}
+//-----------------------------スイッチ-------------------------------
+prtg_cas03.gat,193,130,0	script	　	111,{
+	mes "小さなレバーがあります。";
+	mes "引きますか？";
+	next;
+	menu "引く",-,"引かない",L2;
+	warp "prtg_cas03",51,101;
+	end;
+L2:
+	close;
+}
+//-----------------------------スイッチ2------------------------------
+prtg_cas03.gat,5,70,0	script	　	111,{
+	mes "[声]";
+	mes "試練に挑むならば先へ進むがよい";
+	next;
+	mes " ";
+	mes "小さなレバーがあります。";
+	mes "引きますか？";
+	next;
+	menu "引く",-,"引かない",L2;
+	getcastledata "prtg_cas03.gat",1,@GIDp3;
+	if (getcharid(2) != @GIDp3) goto L1n;
+	warp "gld_dun03",164,179;
+	end;
+L1n:
+	mes " ";
+	mes "しかし何も起こらなかった。";
+L2:
+	close;
+}

@@ -1,0 +1,113 @@
+//===================================================================
+//Ragnarok Online EP2.5 GVG Script	prtg_cas01         by kalen
+//===================================================================
+-	script	gfproA	722,{
+callfunc "flagsc","prtg_cas01.gat",2,0,0,0;
+OnRecvCastleP01:
+	FlagEmblem getcastledata("prtg_cas01.gat",1);
+	end;
+}
+prt_gld.gat,131,60,6	duplicate(gfproA)	ギルドフラッグ#p1-1	722
+prt_gld.gat,138,68,6	duplicate(gfproA)	ギルドフラッグ#p1-2	722
+prt_gld.gat,138,60,6	duplicate(gfproA)	ギルドフラッグ#p1-3	722
+prt_gld.gat,135,60,6	duplicate(gfproA)	ギルドフラッグ#p1-4	722
+prtg_cas01.gat,58,56,4	duplicate(gfproA)	ギルドフラッグ#p1-5	722
+prtg_cas01.gat,64,56,4	duplicate(gfproA)	ギルドフラッグ#p1-6	722
+prtg_cas01.gat,76,32,4	duplicate(gfproA)	ギルドフラッグ#p1-7	722
+prtg_cas01.gat,84,32,4	duplicate(gfproA)	ギルドフラッグ#p1-8	722
+prtg_cas01.gat,94,39,4	duplicate(gfproA)	ギルドフラッグ#p1-9	722
+prtg_cas01.gat,94,24,4	duplicate(gfproA)	ギルドフラッグ#p1-10	722
+prtg_cas01.gat,73,14,4	duplicate(gfproA)	ギルドフラッグ#p1-11	722
+prtg_cas01.gat,73,6,4	duplicate(gfproA)	ギルドフラッグ#p1-12	722
+prtg_cas01.gat,55,46,4	duplicate(gfproA)	ギルドフラッグ#p1-13	722
+prtg_cas01.gat,45,46,4	duplicate(gfproA)	ギルドフラッグ#p1-14	722
+//------------------------------カプラ--------------------------------
+prtg_cas01.gat,96,173,0	script	カプラ職員::kapra_prtg01	117,{
+	callfunc "gkfmenu","prtg_cas01.gat";
+	menu "倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"終了",L7;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	callfunc "gkfwarp","プロンテラ","prontera.gat",278,211;
+L4:
+	callfunc "kfcart",800;
+L7:
+	callfunc "kfend";
+}
+//-------------------------------執事--------------------------------
+prtg_cas01.gat,112,181,0	script	アブライ	55,{
+if (getgmlevel(0)==0) goto LStart;
+	set @GID,getcastledata("prtg_cas01.gat",1);
+	mes "Debug :@GID="+@GID;
+	mes "       getcharid(2)="+getcharid(2);
+	mes "       strcharinfo(0)="+strcharinfo(0);
+	mes "       getcharid(0)="+getcharid(0);
+	mes "       getguildmasterid(@GID)="+getguildmasterid(@GID);
+	next;
+	mes "<---AgitDATA--->";
+	mes "<AgitDB>";
+	mes "1:"+getcastledata("prtg_cas01.gat",1);
+	mes "2:"+getcastledata("prtg_cas01.gat",2);
+	mes "3:"+getcastledata("prtg_cas01.gat",3);
+	mes "4:"+getcastledata("prtg_cas01.gat",4);
+	mes "5:"+getcastledata("prtg_cas01.gat",5);
+	mes "6:"+getcastledata("prtg_cas01.gat",6);
+	mes "7:"+getcastledata("prtg_cas01.gat",7);
+	mes "8:"+getcastledata("prtg_cas01.gat",8);
+	mes "9:"+getcastledata("prtg_cas01.gat",9);
+	mes "10:"+getcastledata("prtg_cas01.gat",10);
+	mes "11:"+getcastledata("prtg_cas01.gat",11);
+	mes "12:"+getcastledata("prtg_cas01.gat",12);
+	mes "13:"+getcastledata("prtg_cas01.gat",13);
+	mes "14:"+getcastledata("prtg_cas01.gat",14);
+	mes "15:"+getcastledata("prtg_cas01.gat",15);
+	mes "16:"+getcastledata("prtg_cas01.gat",16);
+	mes "17:"+getcastledata("prtg_cas01.gat",17);
+	next;
+	mes "<---AgitGuild'sSkill--->";
+	mes "APPROVAL:"+getgdskilllv(@GID,GD_APPROVAL);
+	mes "KAFRACONTACT : "+getgdskilllv(@GID,GD_KAFRACONTACT);
+	mes "GUARDIANRESEARCH : "+getgdskilllv(@GID,GD_GUARDIANRESEARCH);
+	mes "CHARISMA : " +getgdskilllv(@GID,GD_CHARISMA);
+	mes "EXTENSION : "+getgdskilllv(@GID,GD_EXTENSION);
+	next;
+LStart:
+	callfunc "Steward_menu0","prtg_cas01.gat","アブライ";
+	menu "砦の状態を表示",L1,"商業発展に投資",L2,"砦の防衛に投資",L3,"ガーディアン設置",L4,"カプラとの契約 / 解雇",L5,"マスターの部屋に入る",L6,"アジトを放棄する",L7;
+L1:
+	callfunc "Steward_menu1","prtg_cas01.gat","アブライ";
+L2:
+	callfunc "Steward_menu2","prtg_cas01.gat","アブライ";
+L3:
+	callfunc "Steward_menu3","prtg_cas01.gat","アブライ";
+L4:
+	callfunc "Steward_menu4","prtg_cas01.gat","アブライ";
+	if (@GDnum == 10) monster "prtg_cas01.gat",182,68,"--ja--",1287,1,"Agit_D01::On_GDp11";
+	if (@GDnum == 11) monster "prtg_cas01.gat",182,116,"--ja--",1287,1,"Agit_D01::On_GDp12";
+	if (@GDnum == 12) monster "prtg_cas01.gat",153,86,"--ja--",1287,1,"Agit_D01::On_GDp13";
+	if (@GDnum == 13) monster "prtg_cas01.gat",59,28,"--ja--",1285,1,"Agit_D01::On_GDp14";
+	if (@GDnum == 14) monster "prtg_cas01.gat",50,36,"--ja--",1285,1,"Agit_D01::On_GDp15";
+	if (@GDnum == 15) monster "prtg_cas01.gat",184,183,"--ja--",1286,1,"Agit_D01::On_GDp16";
+	if (@GDnum == 16) monster "prtg_cas01.gat",196,189,"--ja--",1286,1,"Agit_D01::On_GDp17";
+	if (@GDnum == 17) monster "prtg_cas01.gat",107,179,"--ja--",1286,1,"Agit_D01::On_GDp18";
+	mes "[執事アブライ]";
+	mes "ガーディアンが設置されました。";
+	mes "ガーディアンは私達の城を";
+	mes "敵から守ってくれるでしょう。";
+	close;
+L5:
+	callfunc "Steward_menu5","prtg_cas01.gat","アブライ","kapra_prtg01";
+L6:
+	callfunc "Steward_menu6","prtg_cas01.gat","アブライ",7,205;
+L7:
+	callfunc "Steward_menu7","prtg_cas01.gat","アブライ";
+	callfunc "resetcastledata","prtg_cas01.gat","::OnRecvCastleP01","kapra_prtg01",@GID;
+}
+//-----------------------------スイッチ-------------------------------
+prtg_cas01.gat,15,209,0	script	　	111,{
+callfunc "gdswitch","prtg_cas01.gat",111,181;
+}
+//-----------------------------スイッチ2------------------------------
+prtg_cas01.gat,94,200,0	script	　	111,{
+callfunc "gdswitch2","prtg_cas01.gat","gld_dun03.gat",28,251;
+}

@@ -1,0 +1,68 @@
+<!--{template common/header}-->
+<link rel="stylesheet" type="text/css" href="source/plugin/dzapp_haodai/images/switch_city.css">
+<style>
+    #wp .wp {
+        width: 960px !important;
+    }
+    .wp {
+        width: 960px !important;
+    }
+</style>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> <a href="{echo rewrite_index();}">{lang dzapp_haodai:apply_htm_1}</a> <em>&rsaquo;</em> {lang dzapp_haodai:switch_city}
+	</div>
+</div>
+<div id="ct" class="wp cl">
+    <div class="mn">
+<div class="itemtitle s_clear">
+<ul class="tb cl">
+<li id="cityswitcher_1" class="a"><a onmouseover="switchTab('cityswitcher', 1, 3)"><span>{lang dzapp_haodai:city_sort_1}</span></a>
+<li id="cityswitcher_2"><a onmouseover="switchTab('cityswitcher', 2, 3)"><span>{lang dzapp_haodai:city_sort_2}</span></a>
+<li id="cityswitcher_3"><a onmouseover="switchTab('cityswitcher', 3, 3)"><span>{lang dzapp_haodai:city_sort_3}</span></a>
+</ul>
+</div>
+<div id="cityswitcher_c_1" class="tab_content">
+	<!--{loop $zonesort[letter] $key $value}-->
+	<div class="content">
+		<span class="label">{$key}</span>
+		<div class="citys clearfix">
+			<!--{loop $value $key1 $value1}-->
+			<a href="plugin.php?id=dzapp_haodai:city&city={$key1}&formhash={FORMHASH}">{$value1}</a>
+			<!--{/loop}-->
+		</div>
+	</div>
+	<!--{/loop}-->
+</div>
+
+
+<div id="cityswitcher_c_2" style="display:none" class="tab_content">
+	<!--{loop $zonesort[provinces] $key $value}-->
+	<div class="content">
+		<span class="label2 city-list-hover">{$key}</span>
+		<div class="citys clearfix">
+			<!--{loop $value $key1 $value1}-->
+			<a href="plugin.php?id=dzapp_haodai:city&city={$key1}&formhash={FORMHASH}">{$value1}</a>
+			<!--{/loop}-->
+		</div>
+	</div>
+	<!--{/loop}-->
+</div>
+
+<div id="cityswitcher_c_3" style="display:none" class="tab_content">
+	<!--{loop $zonesort[area] $key $value}-->
+	<div class="content">
+		<span class="label2">{$key}</span>
+		<div class="citys fr" style="width: 805px">
+			<!--{loop $value $key1 $value1}-->
+			<a href="plugin.php?id=dzapp_haodai:city&city={$key1}&formhash={FORMHASH}">{$value1}</a>
+			<!--{/loop}-->
+		</div>
+		<div class="clear"></div>
+	</div>
+	<!--{/loop}-->
+</div>
+
+</div>
+</div>
+<!--{template common/footer}-->

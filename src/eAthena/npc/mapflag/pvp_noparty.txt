@@ -1,0 +1,13 @@
+//===== eAthena Script =======================================
+//= Map flags that disable parties in pvp maps 
+//===== By: ==================================================
+//= eAthena Dev Team
+//= v 1.2
+//===== Current Version: =====================================
+
+// GvG Arenas =================
+guild_vs1	mapflag	pvp_noparty
+guild_vs2	mapflag	pvp_noparty
+guild_vs3	mapflag	pvp_noparty
+guild_vs4	mapflag	pvp_noparty
+guild_vs5	mapflag	pvp_noparty

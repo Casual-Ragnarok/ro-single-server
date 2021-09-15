@@ -1,0 +1,113 @@
+map<->inter については inter_server_packet.txt を参照
+
+==========================================================================
+		login<->char
+--------------------------------------------------------------------------
+
+R login->char
+S char->login
+S 2710 <username>.24B <password>.24B <0>.l <char_ip>.l <char_port>.w <servername>.20B <maintenance>.w <new>.w
+	charサーバ情報をloginに通知
+R 2711 <err>.B
+	loginサーバーへ接続可否　　err=0で成功
+S 2712 <account_id>.l <login_id1>.l <login_id2>.l <sex>.B <ip>.l <search_id>.l
+	auth_fifoの認証要求
+R 2713 <search_id>.l <err>.B <account_id>.l <login_id1>.l
+	auth_fifoの認証可否　　err=0で成功
+S 2714 <users>.l
+	ワールドのユーザー数を送信
+S 2720 <len>.w <account_id>.l <gm_pass>.?B
+	GMになりたい
+R 2721 <old_aid>.l <new_aid>.l
+	GMになれたかどうか  new_aid=0で失敗
+S 2722 <len>.w <account_id>.l <sex>.B
+	性別変更要求 
+R 2723 <account_id>.l <sex>.B
+	性別変更可否
+S 2728 <len>.w <account_id>.l { <name>.32B <value>.l }.36B*
+	##アカウント変数の保存要求
+R 2729 <len>.w <account_id>.l { <name>.32B <value>.l }.36B*
+	##アカウント変数の変更通知
+R 272a <account_id>.l
+	アカウント削除通知
+S 272b <account_id>.l <maintenance>.B
+	charサーバメンテナンス状態変更要求
+R 272c <account_id>.l <maintenance>.B
+	charサーバメンテナンス状態変更応答
+
+
+==========================================================================
+		char<->map
+--------------------------------------------------------------------------
+
+R char->map
+S map->char
+
+S 2af8 <userid>.24B <passwd>.24B <0>.l <mapip>.l  <mapport>.w
+	接続要求
+R 2af9 <err>.B
+	接続可否 err=0で成功
+S 2afa <len>.w <mapname>.16B* 
+	担当マップの送信
+R 2afb <len>.w <err>.B
+	担当マップ受信確認通知  err=0固定
+S 2afc <account_id>.l <char_id>.l <login_id1>.l <login_id2>.l <ip>.l
+	auth_fifo認証要求
+R 2afd <len>.w <account_id>.l <char_id>.l <struct mmo_charstatus>.?B
+	auth_fifo認証成功＆キャラクターデータ通知
+R 2afe <account_id>.l <err>.B
+	auth_fifo認証失敗　err=0で固定
+S 2aff <users>.l
+	マップサーバー上の人数を送信
+S 2b01 <len>.w <account_id>.l <login_id2>.l <struct mmo_charstatus>.?B
+	キャラクターデータ保存要求
+S 2b02 <account_id>.l <login_id1>.l <login_id2>.l <ip>.l
+	キャラクターセレクトのためのauth_fifo準備要求
+R 2b03 <account_id>.l
+	キャラクターセレクトのauth_fifo準備完了通知
+R 2b04 <len>.w <ip>.l <port>.w <mapname>.16B*
+	他のマップサーバーの担当マップの通知
+S 2b05 <account_id>.l <login_id>.l <char_id>.l <mapname>.16B* <x>.w <y>.w <ip>.l <port>.w <sex>.B
+	マップサーバー間移動のためのauth_fifo準備要求
+R 2b06 <account_id>.l <error>.l <char_id>.l <mapname>.16B* <x>.w <y>.w <ip>.l <port>.w
+	マップサーバー間移動のauth_fifo準備可否　error=0 で成功
+S 2b08 <char_id>.l
+	キャラクター名解決要求
+R 2b09 <char_id>.l <name>.24B <account_id>.l <map-server ip>.l <map-server port>.w
+	キャラクター名解決結果　idが存在しなくても<名無し>など何かが返る
+S 2b0a <len>.w <account_id>.l <gm_pass>.?B
+	GMになりたい
+R 2b0b <old_acc>.l <new_acc.l>
+	GM変化終了  new_acc=0でエラー
+S 2b0c <len>.w <account_id>.l <sex>.B
+	性別変更要求
+R 2b0d <account_id>.l
+	性別変更結果
+S 2b10 <len>.w <account_id>.l { <name>.32B <value>.l }.36B*
+	##アカウント変数の保存要求
+R 2b11 <len>.w <account_id>.l { <name>.32B <value>.l }.36B*
+	##アカウント変数の変更通知
+R 2b12 <char_id>.l <partner_id>.l
+	キャラ削除による離婚情報同期要求
+S 2b13 <active>.B
+	mapサーバ 準備中:0 準備完了:1
+S 2b14 <account_id>.l <maintenance>.B
+	charサーバ状態変更要求 通常:0 メンテナンス中:1
+R 2b15 <account_id>.l <maintenance>.B
+	charサーバ状態変更応答 通常:0 メンテナンス中:1
+R 2b16 <len>.w <ip>.l <port>.w <mapname>.16B*
+	他のマップサーバーの担当マップの削除通知
+R 2b17 <char_id>.l
+	charid_dbから削除
+S 2b18 <account_id>.l <char_id>.l
+	キャラクター切断通知
+R 2b19 <account_id>.l
+	キャラクター切断要求
+R 2b1a <account_id>.l
+	２重ログインメッセージ表示後、キャラクター切断
+
+==========================================================================
+		char<->inter
+--------------------------------------------------------------------------
+
+同じ実行ファイルのため静的にリンクされている

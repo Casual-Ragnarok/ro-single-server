@@ -1,0 +1,74 @@
+//===================================================================
+//Ragnarok Online EP2.5 GVG Script	gefg_cas05         by kalen
+//===================================================================
+-	script	gfgefE	722,{
+callfunc "flagsc","gefg_cas05.gat",2,0,0,0;
+OnRecvCastleG05:
+	FlagEmblem getcastledata("gefg_cas05.gat",1);
+	end;
+}
+gef_fild13.gat,302,87,7	duplicate(gfgefE)	ギルドフラッグ#g5-1	722
+gef_fild13.gat,313,83,0	duplicate(gfgefE)	ギルドフラッグ#g5-2	722
+gef_fild13.gat,252,51,2	duplicate(gfgefE)	ギルドフラッグ#g5-3	722
+gef_fild13.gat,26,147,2	duplicate(gfgefE)	ギルドフラッグ#g5-4	722
+gefg_cas05.gat,77,185,7	duplicate(gfgefE)	ギルドフラッグ#g5-5	722
+gefg_cas05.gat,92,181,0	duplicate(gfgefE)	ギルドフラッグ#g5-6	722
+gefg_cas05.gat,83,158,1	duplicate(gfgefE)	ギルドフラッグ#g5-7	722
+gefg_cas05.gat,62,144,7	duplicate(gfgefE)	ギルドフラッグ#g5-8	722
+gefg_cas05.gat,62,66,4	duplicate(gfgefE)	ギルドフラッグ#g5-9	722
+gefg_cas05.gat,69,66,4	duplicate(gfgefE)	ギルドフラッグ#g5-10	722
+//------------------------------カプラ--------------------------------
+gefg_cas05.gat,61,52,5	script	カプラ職員::kapra_gefg05	117,{
+	callfunc "gkfmenu","gefg_cas05.gat";
+	menu "倉庫サービス",L2,"空間移動サービス",L3,"カートサービス",L4,"終了",L7;
+L2:
+	callfunc "kfstorage",40;
+L3:
+	callfunc "gkfwarp","ゲフェン","geffen.gat",120,39;
+L4:
+	callfunc "kfcart",800;
+L7:
+	callfunc "kfend";
+}
+//-------------------------------執事---------------------------------
+gefg_cas05.gat,70,52,3	script	ビオル	55,{
+	callfunc "Steward_menu0","gefg_cas05.gat","ビオル";
+	menu "砦の状態を表示",L1,"商業発展に投資",L2,"砦の防衛に投資",L3,"ガーディアン設置",L4,"カプラとの契約 / 解雇",L5,"マスターの部屋に入る",L6,"アジトを放棄する",L7;
+L1:
+	callfunc "Steward_menu1","gefg_cas05.gat","ビオル";
+L2:
+	callfunc "Steward_menu2","gefg_cas05.gat","ビオル";
+L3:
+	callfunc "Steward_menu3","gefg_cas05.gat","ビオル";
+L4:
+	callfunc "Steward_menu4","gefg_cas05.gat","ビオル";
+	if (@GDnum == 10) monster "gefg_cas05.gat",45,149,"--ja--",1285,1,"Agit_B05::On_GDg51";
+	if (@GDnum == 11) monster "gefg_cas05.gat",71,163,"--ja--",1285,1,"Agit_B05::On_GDg52";
+	if (@GDnum == 12) monster "gefg_cas05.gat",72,142,"--ja--",1287,1,"Agit_B05::On_GDg53";
+	if (@GDnum == 13) monster "gefg_cas05.gat",66,47,"--ja--",1287,1,"Agit_B05::On_GDg54";
+	if (@GDnum == 14) monster "gefg_cas05.gat",66,17,"--ja--",1286,1,"Agit_B05::On_GDg55";
+	if (@GDnum == 15) monster "gefg_cas05.gat",177,50,"--ja--",1287,1,"Agit_B05::On_GDg56";
+	if (@GDnum == 16) monster "gefg_cas05.gat",177,35,"--ja--",1286,1,"Agit_B05::On_GDg57";
+	if (@GDnum == 17) monster "gefg_cas05.gat",193,166,"--ja--",1286,1,"Agit_B05::On_GDg58";
+	mes "[執事ビオル]";
+	mes "ガーディアンが設置されました。";
+	mes "ガーディアンは私達の城を";
+	mes "敵から守ってくれるでしょう。";
+	close;
+L5:
+	callfunc "Steward_menu5","gefg_cas05.gat","ビオル","kapra_gefg05";
+L6:
+	callfunc "Steward_menu6","gefg_cas05.gat","ビオル",141,107;
+L7:
+	callfunc "Steward_menu7","gefg_cas05.gat","ビオル";
+	callfunc "resetcastledata","gefg_cas05.gat","::OnRecvCastleG05","kapra_gefg05",@GID;
+}
+
+//-----------------------------スイッチ-------------------------------
+gefg_cas05.gat,149,106,0	script	　	111,{
+callfunc "gdswitch","gefg_cas05.gat",70,53;
+}
+//-----------------------------スイッチ2------------------------------
+gefg_cas05.gat,65,22,0	script	　	111,{
+callfunc "gdswitch2","gefg_cas05.gat","gld_dun04.gat",230,35;
+}

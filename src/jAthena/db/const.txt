@@ -1,0 +1,209 @@
+//GVGê›íË
+//GvGÇÃójì˙ (0:ì˙ 1:åé 2:âŒ 3:êÖ 4:ñÿ 5:ã‡ 6:ìy 7:ñàì˙)
+GvGWeekDay	6
+
+//GvGéûä‘ (0éûÅ`23éû)
+GvGTimeST	20
+GvGTimeED	22
+
+
+Job_Novice	0
+Job_Swordman	1
+Job_Mage	2
+Job_Archer	3
+Job_Acolyte	4
+Job_Merchant	5
+Job_Thief	6
+Job_Knight	7
+Job_Priest	8
+Job_Wizard	9
+Job_Blacksmith	10
+Job_Hunter	11
+Job_Assassin	12
+Job_Knight2	13
+Job_Crusader	14
+Job_Monk	15
+Job_Sage	16
+Job_Rogue	17
+Job_Alchem	18
+Job_Bard	19
+Job_Dancer	20
+Job_Crusader2	21
+Job_SuperNovice	23
+
+mf_nomemo	0
+mf_noteleport	1
+mf_nosave	2
+mf_nobranch	3
+mf_nopenalty	4
+mf_pvp		5
+mf_pvp_noparty	6
+mf_pvp_noguild	7
+mf_gvg		8
+mf_gvg_noparty	9
+mf_nozenypenalty	10
+mf_notrade	11
+mf_noskill	12
+
+StatusPoint	9	1
+BaseLevel	11	1
+SkillPoint	12	1
+Class		19	1
+Upper		56	1
+Zeny		20	1
+Sex		21	1
+Weight		24	1
+MaxWeight	25	1
+JobLevel	55	1
+BaseExp		1	1
+JobExp		2	1
+NextBaseExp	22	1
+NextJobExp	23	1
+Hp		5	1
+MaxHp		6	1
+Sp		7	1
+MaxSp		8	1
+PartnerId	57	1
+Cart		58	1
+
+bMaxHP		6
+bMaxSP		8
+bStr		13
+bAgi		14
+bVit		15
+bInt		16
+bDex		17
+bLuk		18
+bAtk		41
+bAtk2		42
+bMatk1		43
+bMatk2		44
+bDef		45
+bMdef		47
+bMdef2		48
+bHit		49
+bFlee		50
+bFlee2		51
+bCritical	52
+bAspd		53
+bAtkRange	1000
+bAtkEle		1001
+bDefEle		1002
+bCastrate	1003
+bMaxHPrate	1004
+bMaxSPrate	1005
+bUseSPrate	1006
+bAddEle		1007
+bAddRace	1008
+bAddSize	1009
+bSubEle		1010
+bSubRace	1011
+bAddEff		1012
+bResEff		1013
+bBaseAtk	1014
+bAspdRate	1015
+bHPrecovRate	1016
+bSPrecovRate	1017
+bSpeedRate	1018
+bCriticalDef	1019
+bNearAtkDef	1020
+bLongAtkDef	1021
+bDoubleRate	1022
+bDoubleAddRate	1023
+bMatk		1024
+bMatkRate	1025
+bIgnoreDefEle	1026
+bIgnoreDefRace	1027
+bAtkRate	1028
+bSpeedAddRate	1029
+bAspdAddRate	1030
+bMagicAtkDef	1031
+bMiscAtkDef	1032
+bIgnoreMdefEle	1033
+bIgnoreMdefRace	1034
+bMagicAddEle	1035
+bMagicAddRace	1036
+bMagicSubRace	1037
+bPerfectHitRate	1038
+bPerfectHitAddRate	1039
+bCriticalRate	1040
+bGetZenyNum	1041
+bAddGetZenyNum	1042
+bAddDamageClass	1043
+bAddMagicDamageClass	1044
+bAddDefClass	1045
+bAddMdefClass	1046
+bAddMonsterDropItem	1047
+bDefRatioAtkEle	1048
+bDefRatioAtkRace	1049
+bAddSpeed	1050
+bHitRate	1051
+bFleeRate	1052
+bFlee2Rate	1053
+bDefRate	1054
+bDef2Rate	1055
+bMdefRate	1056
+bMdef2Rate	1057
+bSplashRange	1058
+bSplashAddRange	1059
+bAutoSpell	1060
+bHPDrainRate	1061
+bSPDrainRate	1062
+bShortWeaponDamageReturn	1063
+bLongWeaponDamageReturn	1064
+bWeaponComaEle	1065
+bWeaponComaRace	1066
+bAddEff2	1067
+bBreakWeaponRate	1068
+bBreakArmorRate	1069
+bAddStealRate	1070
+bHPDrainValue	1071
+bSPDrainValue	1072
+bWeaponAtk 1073
+bWeaponAtkRate 1074
+
+bRestartFullRecover	2000
+bNoCastCancel	2001
+bNoSizeFix	2002
+bNoMagicDamage	2003
+bNoWeaponDamage	2004
+bNoGemStone	2005
+bNoCastCancel2	2006
+bInfiniteEndure	2007
+bUnbreakableWeapon	2008
+bUnbreakableArmor	2009
+bUnbreakableHelm	2010
+bUnbreakableShield	2011
+
+Eff_Stone	0
+Eff_Freeze	1
+Eff_Stan	2
+Eff_Sleep	3
+Eff_Poison	4
+Eff_Curse	5
+Eff_Silence	6
+Eff_Confusion	7
+Eff_Blind	8
+
+SC_Stone	128
+SC_Freeze	129
+SC_Stan		130
+SC_Sleep	131
+SC_Poison	132
+SC_Curse	133
+SC_Silence	134
+SC_Confusion	135
+SC_Blind	136
+SC_DPoison	182
+SC_SpeedPot0	37
+SC_SpeedPot1	38
+SC_SpeedPot2	39
+SC_INCATK	185
+SC_INCMATK	186
+SC_WEDDING	187
+
+GD_APPROVAL	10000
+GD_KAFRACONTACT	10001
+GD_GUARDIANRESEARCH	10002
+GD_CHARISMA	10003
+GD_EXTENSION	10004

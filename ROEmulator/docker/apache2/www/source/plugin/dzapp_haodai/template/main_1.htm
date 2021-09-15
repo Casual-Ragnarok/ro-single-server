@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+	<!--{if $_G['config']['output']['iecompatible']}--><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE{$_G['config']['output']['iecompatible']}" /><!--{/if}-->
+	<title><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> Powered by Discuz!</title>
+	$_G['setting']['seohead']
+	<meta name="keywords" content="{if !empty($metakeywords)}{echo dhtmlspecialchars($metakeywords)}{/if}" />
+	<meta name="description" content="{if !empty($metadescription)}{echo dhtmlspecialchars($metadescription)} {/if}{if empty($nobbname)},$_G['setting']['bbname']{/if}" />
+	<meta name="generator" content="Discuz! $_G['setting']['version']" />
+	<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+	<meta name="copyright" content="2001-2013 Comsenz Inc." />
+	<meta name="MSSmartTagsPreventParsing" content="True" />
+	<meta http-equiv="MSThemeCompatible" content="Yes" />
+	<base href="{$_G['siteurl']}" />
+	<!--{csstemplate}-->
+	<script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]', JSPATH = '$_G[setting][jspath]', DYNAMICURL = '$_G[dynamicurl]';</script>
+	<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
+	<!--{if empty($_GET['diy'])}--><!--{eval $_GET['diy'] = '';}--><!--{/if}-->
+	<!--{if !isset($topic)}--><!--{eval $topic = array();}--><!--{/if}-->
+	<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_space.css?{VERHASH}" />
+	<link id="style_css" rel="stylesheet" type="text/css" href="{STATICURL}space/{if $space[theme]}$space[theme]{else}t1{/if}/style.css?{VERHASH}">
+	<style id="diy_style">$space[spacecss]</style>
+	<link type="text/css" rel="stylesheet" href="source/plugin/dzapp_haodai/images/index.css" />
+	<script type="text/javascript" src="source/plugin/dzapp_haodai/images/jquery-1.8.0.min.js" ></script> 
+	<script language="javascript" src="source/plugin/dzapp_haodai/images/xindai.js"></script>
+	<!-[if IE 6]>
+	<script src="source/plugin/dzapp_haodai/images/iepng.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	   EvPNG.fix('img,div,a,span');
+	</script>
+	<![endif]->
+	<style>
+		#toptb {
+			margin: 0 auto;
+		}
+		#wp .wp {
+			width: 960px !important;
+		}
+		.wp {
+			width: 960px !important;
+		}
+	</style>
+</head>
+<body>
+    <div class="header">
+		<div id="toptb">
+			<div class="wp cl">
+			<!--{if $_G['uid']}-->
+				<div class="y">
+					<a href="home.php?mod=space&uid=$_G[uid]" class="xw1" target="_blank" title="{lang visit_my_space}">{$_G[member][username]}</a>
+					<a href="javascript:;" id="myspace" class="showmenu cur1" onmouseover="showMenu(this.id);">{lang my_nav}</a>
+					<!--{hook/global_usernav_extra1}-->
+					<a href="home.php?mod=spacecp">{lang setup}</a>
+					<a href="home.php?mod=space&do=pm" id="pm_ntc" target="_blank"{if $_G[member][newpm]} class="new"{/if}>{lang pm_center}<!--{if $_G[member][newpm]}-->($_G[member][newpm])<!--{/if}--></a>
+					<a href="home.php?mod=space&do=notice" id="myprompt" target="_blank"{if $_G[member][newprompt]} class="new"{/if}>{lang remind}<!--{if $_G[member][newprompt]}-->($_G[member][newprompt])<!--{/if}--></a><span id="myprompt_check"></span>
+					<!--{if $_G['group']['allowmanagearticle'] || $_G['group']['allowdiy']|| getstatus($_G['member']['allowadmincp'], 4) || getstatus($_G['member']['allowadmincp'], 2) || getstatus($_G['member']['allowadmincp'], 3) || in_array($_G['uid'], $_G['setting']['ext_portalmanager'])}--><a href="portal.php?mod=portalcp">{lang portal_manage}</a><!--{/if}-->
+					<!--{if $_G['uid'] && $_G['group']['radminid'] > 1}--><a href="forum.php?mod=modcp&fid=$_G[fid]" target="_blank">{lang forum_manager}</a><!--{/if}-->
+					<!--{if $_G['uid'] && ($_G['group']['radminid'] == 1 || getstatus($_G['member']['allowadmincp'], 1))}--><a href="admin.php" target="_blank">{lang admincp}</a><!--{/if}-->
+					<!--{hook/global_usernav_extra2}-->
+					<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a>
+					<!--{if $space['self'] && $do == 'index'}--><a id="diy-tg" href="javascript:openDiy();" title="{lang dress_space}">DIY</a><!--{/if}-->
+				</div>
+			<!--{elseif !empty($_G['cookie']['loginuser'])}-->
+				<div class="y">
+					<a id="loginuser" class="xw1">$_G['cookie']['loginuser']</a>
+					<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang activation}</a>
+					<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a>
+				</div>
+			<!--{elseif $_G['connectguest']}-->
+				<div class="y">
+					{lang connect_fill_profile_to_view}
+				</div>
+			<!--{else}-->
+				<div class="y">
+					<a href="member.php?mod={$_G[setting][regname]}">$_G['setting']['reglinkname']</a>
+					<a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang login}</a>
+				</div>
+			<!--{/if}-->
+			<div class="z">
+				<a href="./" title="$_G['setting']['bbname']" class="xw1">$_G['setting']['bbname']</a>
+				<a href="home.php?mod=space&do=home" id="navs" class="showmenu" onmouseover="showMenu(this.id);">{lang dzapp_haodai:main_htm_3}</a>
+			</div>
+		</div>
+	</div>
+	<!--{eval $mnid = getcurrentnav();}-->
+	<ul id="navs_menu" class="p_pop topnav_pop" style="display:none;">
+	<!--{loop $_G['setting']['navs'] $nav}-->
+		<!--{eval $nav_showmenu = strpos($nav['nav'], 'onmouseover="showMenu(');}-->
+		<!--{eval $nav_navshow = strpos($nav['nav'], 'onmouseover="navShow(')}-->
+		<!--{if $nav_hidden !== false || $nav_navshow !== false}-->
+		<!--{eval $nav['nav'] = preg_replace("/onmouseover\=\"(.*?)\"/i", '',$nav['nav'])}-->
+		<!--{/if}-->
+		<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {$nav[nav]}></li><!--{/if}-->
+	<!--{/loop}-->
+	</ul>
+	<ul id="myspace_menu" class="p_pop" style="display:none;">
+		<li><a href="home.php?mod=space">{lang my_space}</a></li>
+		<!--{loop $_G['setting']['mynavs'] $nav}-->
+			<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->
+				<li>$nav[code]</li>
+			<!--{/if}-->
+		<!--{/loop}-->
+	</ul>
+            <div class="head">
+                    <h1>
+                        <a href="$_G[siteurl]" title="{$_G['setting']['bbname']}" target="_self">
+                            {$_G['style']['boardlogo']}
+                        </a>
+                    </h1>
+					<style>
+
+					</style>
+					<div class="city">
+						<p class="cp1">
+							<a rel="nofollow" id="changeCityBtn" href="plugin.php?id=dzapp_haodai:city">
+								<span>{$zones[$city]}</span>
+							</a>
+						</p>
+						<p class="cp2">
+							[<a href="plugin.php?id=dzapp_haodai:city" title="{lang dzapp_haodai:switch_city}">{lang dzapp_haodai:switch_city}</a>]
+						</p>
+					</div>
+                    <ul id="home_banner" class="nav">
+                        <li id="index" class="sel">
+                        <a class="png_img" href="{echo rewrite_index();}" target="_self">{lang dzapp_haodai:main_htm_2}</a>
+                        <em>|</em>
+                        </li>
+                        <li id="diya">
+                        <a href="plugin.php?id=dzapp_haodai&action=search&money=10&month=12&xd_type=xiaofei" target="_self">{lang dzapp_haodai:main_htm_12}</a>
+                        <em>|</em>
+                        </li>
+                        <li id="xinyong">
+                        <a href="plugin.php?id=dzapp_haodai&action=search&money=50&month=12&xd_type=qiye" target="_self">{lang dzapp_haodai:main_htm_14}</a>
+                        <em>|</em>
+                        </li>
+                        <li id="danbao">
+                        <a href="plugin.php?id=dzapp_haodai&action=search&money=15&month=24&first_pay=3&xd_type=gouche" target="_self">{lang dzapp_haodai:main_htm_15}</a>
+						<em>|</em>
+                        </li>
+                        <li id="gouche">
+                        <a href="plugin.php?id=dzapp_haodai&action=search&money=100&month=240&xd_type=goufang" target="_self">{lang dzapp_haodai:main_htm_16}</a>
+						<em>|</em>
+                        </li>
+                    </ul>
+            </div>
+   </div>
+	<div class="main_index">
+            <div class="banner">
+                    <div class="bacon">
+                    <div class="sousuo"{if $var[mode] == 3} style="left:30px;"{/if}></div>
+                    <div class="sscon"{if $var[mode] == 3} style="left:30px;"{/if}>
+                    <h2>{lang dzapp_haodai:main_htm_10}</h2>
+                    <table class="dk_search">
+                    <tbody>
+                    <tr>
+                    <td width="70">{lang dzapp_haodai:main_htm_11}</td>
+                    <td>
+                    <div class="se se1" k="type_id">
+                    <div id="type_sel" class="sele" k="type_id" s="0">
+                    <input id="type_id" class="sinp" type="text" name="type_id" value="{lang dzapp_haodai:main_htm_12}" reval="1" readonly="">
+                    <input class="selbtn" type="button">
+                    </div>
+                    <ul id="type_id_u" class="xiala" s="0" style="display:none;">
+                    <li>
+                    <a reval="1" k="type_id" href="javascript:void(0);">{lang dzapp_haodai:main_htm_12}</a>
+                    </li>
+                    <li>
+                    <a reval="2" k="type_id" href="javascript:void(0);">{lang dzapp_haodai:main_htm_14}</a>
+                    </li>
+                    <li>
+                    <a reval="3" k="type_id" href="javascript:void(0);">{lang dzapp_haodai:main_htm_15}</a>
+                    </li>
+                    <li>
+                    <a reval="4" k="type_id" href="javascript:void(0);">{lang dzapp_haodai:main_htm_16}</a>
+                    </li>
+                   
+                    </ul>
+                    </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+                    <p id="money_disc">{lang dzapp_haodai:calc_debj_htm_14}</p>
+                    </td>
+                    <td>
+                    <div class="se se2">
+                    <div id="moeny_sel" class="sele" k="money" s="0">
+                    <div onfocus="moneyFocus(this)" onkeyup="moneyKeyup(this);" onblur="moneyBlur(this)">
+                    <input id="money" class="sinp" type="text" name="limit_val" value="10 {lang dzapp_haodai:apply_htm_7}" reval="10" onfocus="moneyFocus(this)" onkeyup="moneyKeyup(this);" onblur="moneyBlur(this)" onclick="hideMoneyu()">
+                    <input class="selbtn" type="button">
+                    </div>
+                    <div style="display:none;position:absolute;left:220px;top:13px;z-index:1;color:#888;">{lang dzapp_haodai:apply_htm_7}</div>
+                    </div>
+                    <ul id="money_u" class="xiala" s="0" style="display:none;">
+                    <li>
+                    <a reval="5" onclick="moenySelect(this)" href="javascript:void(0);">5 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="10" onclick="moenySelect(this)" href="javascript:void(0);">10 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="20" onclick="moenySelect(this)" href="javascript:void(0);">20 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="30" onclick="moenySelect(this)" href="javascript:void(0);">30 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="50" onclick="moenySelect(this)" href="javascript:void(0);">50 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="100" onclick="moenySelect(this)" href="javascript:void(0);">100 {lang dzapp_haodai:apply_htm_7}</a>
+                    </li>
+                    <li>
+                    <a reval="{lang dzapp_haodai:main_htm_26}" onclick="moenySelect(this)" href="javascript:void(0);">{lang dzapp_haodai:main_htm_26}</a>
+                    </li>
+                    </ul>
+                    </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>{lang dzapp_haodai:calc_chedai_htm_14}</td>
+                    <td>
+                    <div class="se se3">
+                    <div id="month_sele" class="sele" k="month" s="0">
+                    <input id="month" class="sinp" type="text" name="month" value="1{lang dzapp_haodai:apply_htm_197}" reval="12" readonly="">
+                    <input class="selbtn" type="button">
+                    </div>
+                    <ul id="month_u" class="xiala" s="0" style="display:none;">
+                    <li>
+                    <a k="month" reval="3" href="javascript:void(0);">3{lang dzapp_haodai:apply_htm_9}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="6" href="javascript:void(0);">6{lang dzapp_haodai:apply_htm_9}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="12" href="javascript:void(0);">1{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="18" href="javascript:void(0);">18{lang dzapp_haodai:apply_htm_9}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="24" href="javascript:void(0);">2{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="36" href="javascript:void(0);">3{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="60" href="javascript:void(0);">5{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    <li>
+                    <a k="month" reval="120" href="javascript:void(0);">10{lang dzapp_haodai:apply_htm_197}</a>
+                    </li>
+                    </ul>
+                    </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td> </td>
+                    <td>
+                    <a class="ssinp" onclick="money_month_index('{$_G[siteurl]}plugin.php?id=dzapp_haodai&action=search')"></a>
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    </div>
+            </div>
+            <div class="w1000 mt20 ">
+                    <div class="xd_hot comm">
+                        <h2 class="title"><span id="tab_title">
+						<!--{loop $xindai_ad_type $key $value}-->
+						<a href="javascript:void(0);"{if $key == 0} class="cur"{/if}>$value</a>|
+						<!--{/loop}-->
+						</span>{lang dzapp_haodai:main_htm_38}</h2>
+                        <ul id="tab_ul">
+							<!--{loop $xindai_ad_detail $key $value}-->
+                             <li{if $key !== 0} class="none"{/if}>
+                                 <table width="631" border="0" align="center" cellpadding="0" cellspacing="0" class="tableone">
+                                        <tbody>
+											<!--{loop $xindai_ad_detail[$key] $value2}-->
+											<tr>
+												<td><img class="png_img" alt="{$value2[bank_name]}" src="{$value2[bank_img]}" width="90" height="60"></td>
+												<td class="co3">{$value2[bank_name]}-{$value2[name]}</td>
+												<td class="co9">{$value2[apply]}</td>
+												<td><a href="{echo rewrite_view_apply('view',$value2[id],$value2[xd_type],$value2[month],$value2[money]);}" class="chakan">{lang dzapp_haodai:main_htm_39}</a></td>
+											</tr>
+											<!--{/loop}-->
+                                        </tbody>
+                                    </table>
+                                </li>
+								<!--{/loop}-->
+                        </ul>
+                        
+                          
+                    </div>
+            <div class="dk_zs comm">
+                <h2 class="title">{lang dzapp_haodai:main_htm_40}</h2>
+                <ul class="zs_ul">
+                        <li>
+                        <img width="30" height="30" alt="" src="source/plugin/dzapp_haodai/images/jisuanqi2.jpg">
+                        <a target="_blank" href="{echo rewrite_calc('fd');}">{lang dzapp_haodai:calc_chedai_htm_3}</a>
+                        </li>
+                        <li>
+                        <img width="30" height="30" alt="" src="source/plugin/dzapp_haodai/images/jisuanqi3.jpg">
+                        <a target="_blank" href="{echo rewrite_calc('secondhand');}">{lang dzapp_haodai:calc_chedai_htm_9}</a>
+                        </li>
+                        <li>
+                        <img width="30" height="30" alt="" src="source/plugin/dzapp_haodai/images/jisuanqi1.jpg">
+                        <a target="_blank" href="{echo rewrite_calc('zhdk');}">{lang dzapp_haodai:calc_chedai_htm_8}</a>
+                        </li>
+                        <li>
+                        <img width="30" height="30" alt="" src="source/plugin/dzapp_haodai/images/jisuanqi4.jpg">
+                        <a target="_blank" href="{echo rewrite_calc('chedai');}">{lang dzapp_haodai:calc_chedai_htm_4}</a>
+                        </li>
+                </ul>
+            </div>
+            
+          </div>
+          <div class="space0"></div>
+            <div class="w1000 mt20">
+                    <div class="gl comm ">
+                                <dl>
+                                <dt>
+                                <h2 class="title">{lang dzapp_haodai:calc_chedai_htm_54}<a href="{echo rewrite_list('dkgl', 1);}" title="{lang dzapp_haodai:calc_chedai_htm_54}" class="fr more" target="_blank">{lang dzapp_haodai:more}&gt;&gt;</a></h2>
+                                </dt>
+								<!--{loop reset(array_chunk($dkgl_article[items],5)) $value}-->
+								<dd><a href="{echo rewrite_news($value[id]);}" target="_blank"><!--{echo cutstr($value[title], 38)}--></a></dd>
+								<!--{/loop}-->
+                                </dl>
+                                <dl>
+                                <dt>
+                                <h2 class="title">{lang dzapp_haodai:main_htm_46}<a href="{echo rewrite_list('dkzx', 1);}" title="{lang dzapp_haodai:main_htm_46}" class="fr more" target="_blank">{lang dzapp_haodai:more}&gt;&gt;</a></h2>
+                                </dt>
+								<!--{loop reset(array_chunk($dkzx_article[items],5)) $value}-->
+								<dd><a href="{echo rewrite_news($value[id]);}" target="_blank"><!--{echo cutstr($value[title], 38)}--></a></dd>
+								<!--{/loop}-->
+                                </dl>
+                                <dl class="dl_03">
+                                <dt>
+                                <h2 class="title">{lang dzapp_haodai:cjwt}<a href="{echo rewrite_list('cjwt', 1);}" title="{lang dzapp_haodai:cjwt}" class="fr more" target="_blank">{lang dzapp_haodai:more}&gt;&gt;</a></h2>
+                                </dt>
+									<!--{loop reset(array_chunk($cjwt_article[items],5)) $value}-->
+									<dd><a href="{echo rewrite_news($value[id]);}" target="_blank"><!--{echo cutstr($value[title], 38)}--></a></dd>
+									<!--{/loop}-->
+                                </dl>
+                    </div>
+        </div>
+            <div class="w1000 mt20">
+                    <div class="comm">
+                          <h2 class="title">{lang dzapp_haodai:main_htm_48}</h2>
+                          <table class="bank" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+							<tbody><tr>
+										<td class="bank2"><img alt="{lang dzapp_haodai:main_htm_49}" src="source/plugin/dzapp_haodai/images/bank/chinabank.png"></td>
+										<td class="bank1"><img alt="{lang dzapp_haodai:main_htm_50}" src="source/plugin/dzapp_haodai/images/bank/gongshangbank.png"></td>
+										<td class="bank1"><img alt="{lang dzapp_haodai:main_htm_51}" src="source/plugin/dzapp_haodai/images/bank/pufabank.png"></td>
+										<td class="bank3"><img alt="{lang dzapp_haodai:main_htm_52}" src="source/plugin/dzapp_haodai/images/bank/guangfabank.png"></td>
+										<td class="bank1"><img alt="{lang dzapp_haodai:main_htm_53}" src="source/plugin/dzapp_haodai/images/bank/zhaoshangbank.png"></td>
+										<td class="bank4"><img alt="{lang dzapp_haodai:main_htm_54}" src="source/plugin/dzapp_haodai/images/bank/nanjingbank.png"></td>
+										<td><img alt="{lang dzapp_haodai:main_htm_55}" src="source/plugin/dzapp_haodai/images/bank/ningbobank.png"></td> 
+									</tr>
+									<tr>
+										<td class="bank2"><img alt="{lang dzapp_haodai:main_htm_56}" src="source/plugin/dzapp_haodai/images/bank/huaxiabank.png"></td>
+										<td class="bank3"><img alt="{lang dzapp_haodai:main_htm_57}" src="source/plugin/dzapp_haodai/images/bank/emsbank.png"></td>
+										<td class="bank4"><img alt="{lang dzapp_haodai:main_htm_58}" src="source/plugin/dzapp_haodai/images/bank/citibank.png"></td>
+										<td class="bank2"><img alt="{lang dzapp_haodai:main_htm_59}" src="source/plugin/dzapp_haodai/images/bank/jianshebank.png"></td>
+										<td class="bank1"><img alt="{lang dzapp_haodai:main_htm_60}" src="source/plugin/dzapp_haodai/images/bank/nongyebank.png"></td>
+										<td class="bank2"><img alt="{lang dzapp_haodai:main_htm_61}" src="source/plugin/dzapp_haodai/images/bank/xingyebank.png"></td>
+										<td><img alt="{lang dzapp_haodai:main_htm_62}" src="source/plugin/dzapp_haodai/images/bank/sbank.png"></td> 
+									</tr>
+								</tbody>
+                            </table>
+                    </div>
+                    <div id="footer" style="border-top:0 none;">
+                                <div class="bottom cc tac">
+                                            <ul>
+				<!--{if $_G['setting']['site_qq']}--><li><a href="http://wpa.qq.com/msgrd?V=3&Uin=$_G['setting']['site_qq']&Site=$_G['setting']['bbname']&Menu=yes&from=discuz" target="_blank" title="QQ"><img src="{IMGDIR}/site_qq.jpg" alt="QQ" /></a>|</li><!--{/if}-->
+				<!--{loop $_G['setting']['footernavs'] $nav}--><!--{if $nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
+						!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver' || $nav['id'] == 'mobile' || $nav['id'] == 'darkroom'))}--><li>$nav[code]|</li><!--{/if}--><!--{/loop}-->
+						<li><strong><a href="$_G['setting']['siteurl']" target="_blank">$_G['setting']['sitename']</a></strong>
+				<!--{if $_G['setting']['icp']}-->( <a href="http://www.miitbeian.gov.cn/" target="_blank">$_G['setting']['icp']</a> )<!--{/if}--></li>
+				<!--{if $_G['setting']['statcode']}-->$_G['setting']['statcode']<!--{/if}-->
+                                            </ul>
+                                </div>
+										<span style="color:#666666;display:block;margin:6px 0;">
+										Powered by <strong><a href="http://www.discuz.net" target="_blank">Discuz!</a></strong> <em>$_G['setting']['version']</em><!--{if !empty($_G['setting']['boardlicensed'])}--> <a href="http://license.comsenz.com/?pid=1&host=$_SERVER[HTTP_HOST]" target="_blank">Licensed</a><!--{/if}--><br>
+										&copy; 2001-2013 <a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a><br><strong><a href="http://yun.haodai.com/">{lang dzapp_haodai:notice}</a></strong>
+										</span>
+                                </div>
+            </div>
+            
+</div>
+
+<script type="text/javascript">
+jq(function(){
+	jq('#type_sel').click(function(event) {
+		k = jq(this).attr('k');
+		setList('#' + k + '_u');
+		event.stopPropagation(); 
+	});
+	jq('#moeny_sel').click(function(event) {
+		k = jq(this).attr('k');
+		setList('#' + k + '_u');
+		event.stopPropagation(); 
+		});
+	jq('#month_sele').click(function(event) {
+		k = jq(this).attr('k');
+		setList('#' + k + '_u');
+		event.stopPropagation(); 
+		});
+	jq(document).click(function(event) { 
+		var eo = jq(event.target); 
+		if (jq("#type_sel").is(":visible") && eo.attr("class") != "xiala" && 
+		!eo.parent(".xiala").length) 
+{closeList();}
+		if (jq("#moeny_sel").is(":visible") && eo.attr("class") != "xiala" && 
+		!eo.parent(".xiala").length) 
+{closeList();}
+		if (jq("#month_sele").is(":visible") && eo.attr("class") != "xiala" && 
+		!eo.parent(".xiala").length) 
+{closeList();}
+	}); 
+	jq('.xiala a').click(function() {
+		k = jq(this).attr('k');
+		val = jq(this).text();
+		reval = jq(this).attr('reval');
+		jq('#' + k).val(val);
+		jq('#' + k).attr('reval', reval);
+		closeList();
+	});
+	
+	jq('#tab_title a').click(function(){
+	jq(this).addClass("cur").siblings().removeClass();
+	jq("#tab_ul li").hide().eq(jq('#tab_title a').index(this)).show();
+	});	
+
+})
+
+</script>
+</body>
+</html>

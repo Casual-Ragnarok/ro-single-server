@@ -1,0 +1,119 @@
+alberta.gat,188,64,4	script	お菓子商人	91,{
+	set @maplenum,0;
+	set @mapleItemID,0;
+	set @maplePrice,0;
+	set @maplePriceT,0;
+	mes "[メイプル=シュガー]";
+	mes "いらっしゃいませ！";
+	mes "美味しいお菓子はいかがですか？";
+	mes "お師匠様……じゃなくて……";
+	mes "アルベルタのお菓子職人が";
+	mes "一生懸命つくったお菓子です。";
+	next;
+	mes "[メイプル=シュガー]";
+	mes "愛しい人からもらった";
+	mes "プレゼントのお返しに……";
+	mes "心のこもった、あまぁ～い";
+	mes "お菓子はいかがですか～？";
+	next;
+	menu "ください！",-,"いりません。",Lend,"お師匠様？",L1;
+
+		mes "[メイプル=シュガー]";
+		mes "はい！";
+		mes "こちらがメニューになっております～";
+		mes "数に限りがあるため";
+		mes "まとめ買いは^ff00005つ^000000までと";
+		mes "させていただきますね。";
+		next;
+		menu "キャンディ",L0_1,"スティックキャンディ",L0_2,"よく焼いたクッキー",L0_3;
+L0_1:
+	set @maplePrice,3000;
+	set @mapleItemID,529;
+	mes "[メイプル=シュガー]";
+	mes "キャンディですね～";
+	mes "3000Zenyになります～";
+	mes "いくつお買い上げですか？";
+	next;
+	goto Linput;
+L0_2:
+	set @maplePrice,4000;
+	set @mapleItemID,530;
+	mes "[メイプル=シュガー]";
+	mes "スティックキャンディですね～";
+	mes "4000Zenyになります～";
+	mes "いくつお買い上げですか？";
+	next;
+	goto Linput;
+L0_3:
+	set @maplePrice,2000;
+	set @mapleItemID,538;
+	mes "[メイプル=シュガー]";
+	mes "よく焼いたクッキーですね～";
+	mes "2000Zenyになります～";
+	mes "いくつお買い上げですか？";
+	next;
+	goto Linput;
+Linput:
+	input @maplenum;
+	if (@maplenum > 5) goto LError;
+	if (@maplenum <= 0) goto Lend;
+	set @maplePriceT,@maplePrice*@maplenum;
+	if (Zeny < @maplePriceT) goto LError2;
+		set Zeny,Zeny-@maplePriceT;
+		getitem @mapleItemID,@maplenum;
+		mes "[メイプル=シュガー]";
+		mes "ありがとうございます～";
+		mes "このお菓子、本当に美味しいんですよ～";
+		mes "お師匠のお菓子は世界一なんですから！";
+		mes "ご自分で食べてもよろしいですけど";
+		mes "やみつきになって太らないように";
+		mes "気をつけてくださいねぇ。";
+		close;
+L1:
+		mes "[メイプル=シュガー]";
+		mes "あ、はい。";
+		mes "私のお師匠様は";
+		mes "お菓子職人のクーベル様と";
+		mes "キルシュ様です。";
+		mes "お二人の元でお菓子作りの";
+		mes "修行をさせていただいております～";
+		next;
+		mes "[メイプル=シュガー]";
+		mes "この時期はお師匠様達が直々に";
+		mes "移動販売をしているらしいのですが……";
+		mes "今どこに居られるのかは、";
+		mes "私にはわかりませんけど、";
+		mes "どこかで会えるかもしれませんね～";
+		close;
+LError:
+	mes "[メイプル=シュガー]";
+	mes "あら？あらら？";
+	mes "何個っておっしゃいました？";
+	mes "今、私聞き逃しちゃったみたいです。";
+	mes "もう一度おっしゃっていただけますか？";
+	mes "一度にお買い上げいただけるのは";
+	mes "^ff00005つ^000000までです～";
+	next;
+	goto Linput;
+LError2:
+	mes "[メイプル=シュガー]";
+	mes "あらら……？";
+	mes "お客様、お金が足りませんよ～";
+	mes "もう一度所持金をお確かめの上";
+	mes "ご注文をお願いいたします～";
+	close;
+Lend:
+	mes "[メイプル=シュガー]";
+	mes "そうですか……残念です。";
+	mes "しばらくはこちらで";
+	mes "販売させていただきますので、";
+	mes "もし欲しくなったら、";
+	mes "声をおかけください！";
+	if (@mapleItemID == 0) close;
+	next;
+	mes "[メイプル=シュガー]";
+	mes "ただし、数に限りがございますので";
+	mes "お早めに……";
+	mes "ありがとうございました。";
+	close;
+}

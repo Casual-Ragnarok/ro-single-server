@@ -1,0 +1,48 @@
+//ìπãÔ
+amatsu.gat,94,117,0	warp	ama0001	1,1,ama_in01.gat,30,24
+ama_in01.gat,33,24,0	warp	ama0002	1,1,amatsu.gat,97,117
+//ñhãÔ
+amatsu.gat,132,117,0	warp	ama0003	1,1,ama_in01.gat,89,23
+ama_in01.gat,86,23,0	warp	ama0004	1,1,amatsu.gat,129,117
+//ë†ç∂
+amatsu.gat,52,148,0	warp	ama0005	1,1,ama_in01.gat,88,97
+ama_in01.gat,88,94,0	warp	ama0006	1,1,amatsu.gat,52,145
+//ë†âE
+amatsu.gat,168,182,0	warp	ama0007	1,1,ama_in01.gat,34,99
+ama_in01.gat,34,96,0	warp	ama0008	1,1,amatsu.gat,168,179
+//ñØâ∆íÜâõ
+amatsu.gat,177,138,0	warp	ama0009	1,1,ama_in01.gat,28,176
+ama_in01.gat,31,176,0	warp	ama0010	1,1,amatsu.gat,180,138
+//éıéi
+amatsu.gat,217,116,0	warp	ama0011	1,1,ama_in01.gat,162,25
+ama_in01.gat,157,25,0	warp	ama0012	1,1,amatsu.gat,214,116
+ama_in01.gat,162,34,0	warp	ama0013	1,1,ama_in01.gat,166,77
+ama_in01.gat,166,73,0	warp	ama0014	1,1,ama_in01.gat,162,31
+//ñØâ∆ìå
+amatsu.gat,248,160,0	warp	ama0015	1,1,ama_in01.gat,79,178
+ama_in01.gat,76,178,0	warp	ama0016	1,1,amatsu.gat,245,160
+//èÈ
+amatsu.gat,85,235,0	warp	ama0017	1,1,ama_in02.gat,223,45
+ama_in02.gat,226,45,0	warp	ama0018	1,1,amatsu.gat,88,235
+ama_in02.gat,195,44,0	warp	ama0019	1,1,ama_in02.gat,65,40
+ama_in02.gat,65,38,0	warp	ama0020	1,1,ama_in02.gat,195,41
+ama_in02.gat,56,42,0	warp	ama0021	1,1,ama_in02.gat,59,144
+ama_in02.gat,59,141,0	warp	ama0022	1,1,ama_in02.gat,56,41
+ama_in02.gat,222,161,0	warp	ama0023	1,1,ama_in02.gat,130,163
+ama_in02.gat,127,163,0	warp	ama0024	1,1,ama_in02.gat,220,161
+//FILD01
+amatsu.gat,248,292,0	warp	ama0025	1,1,ama_fild01.gat,75,33
+ama_fild01.gat,75,30,0	warp	ama0026	1,1,amatsu.gat,248,289
+//FILDé–
+ama_fild01.gat,174,331,0	warp	ama0027	1,1,ama_in01.gat,175,174
+ama_in01.gat,175,171,0	warp	ama0028	1,1,ama_fild01.gat,174,328
+//FILDë†
+ama_fild01.gat,330,141,0	warp	ama0029	1,1,ama_in01.gat,174,124
+ama_in01.gat,174,121,0	warp	ama0030	1,1,ama_fild01.gat,330,139
+//É_ÉìÉWÉáÉì
+ama_dun01.gat,235,144,0	warp	ama0031	1,1,ama_dun02.gat,33,40
+ama_dun02.gat,30,40,0	warp	ama0032	1,1,ama_dun01.gat,232,144
+ama_dun02.gat,196,123,0	warp	ama0033	1,1,ama_dun03.gat,120,12
+ama_dun03.gat,120,9,0	warp	ama0034	1,1,ama_dun02.gat,196,120
+ama_in02.gat,59,160,0	warp	ama0035	1,1,ama_in02.gat,215,152
+ama_in02.gat,215,149,0	warp	ama0036	1,1,ama_in02.gat,59,156

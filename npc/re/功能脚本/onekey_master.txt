@@ -3,22 +3,22 @@
 // Transelated By Memory.
 
 
-prontera.gat,164,106,4	script	一键大师	709,{
+prontera,164,106,4	script	一键大师	709,{
 
 UPGRADEROOT:
 	mes "[一键大师]";
 	mes "你好啊~~年轻人. 我可以帮你一步登天, 但你需要付出点代价";
 	mes "确认即扣钱，没有回头路！";
 	next;
-	menu "一键满状态（-1W）",TO_ALL_STATUS,
-		 "一键超强状态（-10W）",TO_SUPER_STATUS,
+	menu "一键满状态（-50W）",TO_ALL_STATUS,
+		 "一键超强状态（-100W）",TO_SUPER_STATUS,
 		 "一键全身鉴定（-1W）",TO_IDENTITY,
 		 "一键全身修复（-10W）",TO_REPAIRE,
-		 "一键精炼+10（-1000W）",TO_REFINE_10,
-		 "一键精炼+15（-5000W）",TO_REFINE_15,
-		 "一键精炼+20（-1E）",TO_REFINE_20,
+		 "一键精炼+10（-1E）",TO_REFINE_10,
+		 "一键精炼+15（-8E）",TO_REFINE_15,
+		 "一键精炼+20（-16E）",TO_REFINE_20,
 		 "一键破产（0Z）",TO_BANKRUPTCY,
-		 "一键自杀（+444Z）",TO_KILL_SELF,
+		 "一键自杀（+4Z）",TO_KILL_SELF,
 		 "一键暗杀（-100W）",TO_KILL_OTHER,
 		 "一键卖垃圾（-1W）",TO_DO,
 		 "一键丢弃所有道具（-100Z）",TO_DO,
@@ -50,7 +50,7 @@ TO_REPAIRE:
 
 
 TO_ALL_STATUS:
-	set @money,10000;
+	set @money,500000;
 	if(zeny >= @money) {
 		set zeny,(zeny - @money);
 
@@ -78,7 +78,7 @@ TO_ALL_STATUS:
 
 
 TO_SUPER_STATUS:
-	set @money,100000;
+	set @money,1000000;
 	if(zeny >= @money) {
 		set zeny,(zeny - @money);
 
@@ -119,7 +119,7 @@ TO_SUPER_STATUS:
 
 
 TO_REFINE_10:
-	set @money,10000000;
+	set @money,100000000;
 	if(zeny >= @money) {
 		set @refine_num,10;
 		goto TO_SELECT;
@@ -130,7 +130,7 @@ TO_REFINE_10:
 
 
 TO_REFINE_15:
-	set @money,50000000;
+	set @money,800000000;
 	if(zeny >= @money) {
 		set @refine_num,15;
 		goto TO_SELECT;
@@ -141,7 +141,7 @@ TO_REFINE_15:
 
 
 TO_REFINE_20:
-	set @money,100000000;
+	set @money,1600000000;
 	if(zeny >= @money) {
 		set @refine_num,20;
 		goto TO_SELECT;
@@ -247,7 +247,7 @@ TO_KILL_SELF:
 	set @player_name$,strcharinfo(0);
 	atcommand("@nuke " + @player_name$);
 
-	set zeny,(zeny + 444);
+	set zeny,(zeny + 4);
 	mes "[一键大师]";
 	mes "你已经死了,冥币拿好";
 	end;
@@ -298,6 +298,12 @@ TO_KILL_OTHER:
 	} else {
 		goto NO_ZENY;
 	}
+
+
+TO_CLEAR_ITEMS:
+	clearitem;
+	next;
+	goto TO_CLOSE;
 
 
 TO_DO:

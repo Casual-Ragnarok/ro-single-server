@@ -1,0 +1,61 @@
+//==============================================================================
+//Ragnarok Online Jobchange Script	2004-07-31修正版
+//==============================================================================
+//----------------------------Knight--------------------------------
+prt_in.gat,89,101,4	script	プロンテラ騎士団長	56,{
+	callfunc "jobchanger3","Knight",7,1;
+}
+//----------------------------Priest--------------------------------
+prt_church.gat,16,41,4	script	神父	60,{
+	callfunc "jobchanger3","Priest",8,4;
+}
+//----------------------------Wizard--------------------------------
+gef_tower.gat,111,37,4	script	ギルド関係者	70,{
+	callfunc "jobchanger3","Wizard",9,2;
+}
+//----------------------------Blacksmith----------------------------
+geffen_in.gat,110,170,0	script	ギルド関係者	63,{
+	callfunc "jobchanger3","Blacksmith",10,5;
+}
+//----------------------------Hunter--------------------------------
+in_hunter.gat,100,99,4	script	ギルド関係者	98,{
+	callfunc "jobchanger3","Hunter",11,3;
+}
+//----------------------------Assassin------------------------------
+in_moc_16.gat,19,33,4	script	ギルド員	55,{
+	callfunc "jobchanger3","Assassin",12,6;
+}
+//----------------------------Crusader------------------------------
+prt_castle.gat,45,169,4	script	マスタークルセイダー	752,{
+	callfunc "jobchanger3","Crusader",14,1;
+}
+//----------------------------Monk----------------------------------
+monk_in.gat,99,58,3	script	長老	60,{
+	callfunc "jobchanger3","Monk",15,4;
+}
+//----------------------------Sage----------------------------------
+yuno_in02.gat,38,61,4	script	魔法アカデミー学長	743,{
+	callfunc "jobchanger3","Sage",16,2;
+}
+//----------------------------Rogue---------------------------------
+in_rogue.gat,363,122,4	script	ローグギルド員	747,{
+	callfunc "jobchanger3","Rogue",17,6;
+}
+//----------------------------Alchemist-----------------------------
+alde_alche.gat,27,185,4	script	錬金術師ギルド員	744,{
+	callfunc "jobchanger3","Alchemist",18,5;
+}
+//----------------------------Bard----------------------------------
+//comodo.gat,211,155,4 script さすらいの吟遊詩人 741,{
+	if ((Class == 3) && (Sex == 1)) goto Lbard;
+	close;
+Lbard:
+	callfunc "jobchanger3","Bard",19,3;
+}
+//----------------------------Dancer--------------------------------
+job_duncer.gat,43,93,4	script	エイル	724,{
+	if ((Class == 3) && (Sex == 0)) goto Lduncer;
+	close;
+Lduncer:
+	callfunc "jobchanger3","Dancer",20,3;
+}
