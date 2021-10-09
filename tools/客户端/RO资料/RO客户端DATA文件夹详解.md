@@ -40,7 +40,7 @@
 - `data\texture\蜡历牢磐其捞胶\illust`： 为游戏 NPC 图目录。可以用 Photoshop 修改自己个性图。
 - `data\texture\蜡历牢磐其捞胶\item`： 为物品外观图目录。可以按图的大小对应修改（修改工具推荐 Photoshop ）
 - `data\texture\蜡历牢磐其捞胶\map`： 为地图目录。如果不是自己做新的地图不推荐修改。
-- `data\exture\蜡历牢磐其捞胶`： 文件夹里从 `loading00.jpg` 开始的图为进出地图的 LOGO 图。可以代替自己喜欢的 LOGO 界面。
+- `data\texture\蜡历牢磐其捞胶`： 文件夹里从 `loading00.jpg` 开始的图为进出地图的 LOGO 图。可以代替自己喜欢的 LOGO 界面。
 
 
 ## 关于 data 内的 .txt 文件
@@ -54,7 +54,7 @@
 - `cardprefixnametable.txt`： 为卡片插到装备上的解释
 - `ndoorrswtable.txt`： 为室内平视角限制
 - `manner.txt`： 为禁语限制
-- `mapnametable.txt`： 为地图名称（也就是打/where所见的信息）
+- `mapnametable.txt`： 为地图名称（也就是打 `/where` 所见的信息）
 - `mp3nametable.txt`： 为地图背景音乐管理
 - `msgstringtable.txt`： 为游戏基本信息
 - `num2itemdesctable.txt`： 为未鉴定物品解释

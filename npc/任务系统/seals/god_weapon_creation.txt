@@ -53,22 +53,22 @@ gld_dun01,28,85,0	script	神之执行者#1::GodDwarf	826,{
 		close;
 
 	case 2:
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "你只是问我在这里做什么？ ";
 		mes "哇哈哈哈！ 等待任何愚蠢的人来到这里";
 		mes "然后我踢他们的屁股！";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "哦，不用担心。 ";
 		mes "我不会与像你这样的弱者战斗来羞辱自己";
 		mes "人类太脆弱了，但是他们依然固执地明争暗斗";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "作为种族，你们是绝望的。";
 		mes "我甚至不想和你们生活在同一片土地！ ";
 		mes "但是，我别无选择。";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人 格伦伯蒂]";
 		mes "因为一千年前的战争，我的家乡消失了";
 		mes "我再也找不到回家的路...";
 		close;
