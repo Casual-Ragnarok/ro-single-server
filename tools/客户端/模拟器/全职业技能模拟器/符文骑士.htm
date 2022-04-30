@@ -1,0 +1,1303 @@
+
+<!-- saved from url=(0037)http://fual.jakou.com/skills/rkn.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="robots" content="noindex,nofollow,noarchive">
+<link id="csslink" rel="stylesheet" href="img/skill3.css" type="text/css">
+<link href="http://fual.jakou.com/favicon.ico" rel="shortcut icon">
+<title>Swordman - Knight - Lord Knight - Rune Knight</title>
+<style>
+body{
+	background-image: url("img/back_rkn.png");
+}
+</style>
+<script type="text/javascript" async src="ga.js"></script><script language="JavaScript" src="img/skilllist2.js"></script>
+<script language="JavaScript" src="img/skill4.js"></script>
+<!--<script language="JavaScript" src="dat/skilllist2.js"></script>-->
+<script language="JavaScript">
+
+//	BASH	10	バッシュ
+//	ENDR	10	インデュア
+//	HPRC	10	HP回復力向上
+//	MGBR	10	マグナムブレイク
+//	PRVK	10	プロボック
+//	SWDM	10	劍修練
+//	TSDM	10	兩手劍修練
+//
+//	ACNT	5 	オートカウンター
+//	BBSH	10	ボウリングバッシュ
+//	BSPR	10	ブランディッシュスピア
+//	CAVA	5 	騎兵修練
+//	PIRC	10	ピアース
+//	RIDE	1 	ライディング
+//	SBML	5 	スピアブーメラン
+//	SPRM	10	槍修練
+//	SSTB	10	スピアスタブ
+//	THQK	10	ツーハンドクイッケン
+//
+//	ARBL	5 	オーラブレイド
+//	PRRY	10	パリイング
+//	CCTR	5 	コンセントレイション
+//	TRLX	1 	テンションリラックス
+//	BRSK	1 	バーサーク
+//	SPRP	5 	スパイラルピアース
+//	HDCR	5 	ヘッドクラッシュ
+//	JTBT	10	ジョイントビート
+//
+//	RNMS	10	ルーンマスタリー
+//	ENBL	5	エンチャントブレイド
+//	DTBD	10	デスバウンド
+//	SNWV	5	ソニックウェイブ
+//	WCUT	5	ウィンドカッター
+//	IGNB	5	イグニッションブレイク
+//	PHNT	5	ファントムスラスト
+//	HSPR	10	ハンドレッドスピア
+//	DRTR	5	ドラゴントレーニング
+//	DRBR	10	ドラゴンブレス
+//	DRHW	5	ドラゴンハウリング
+
+
+var BASH_P = ENDR_P = HPRC_P = MGBR_P
+	= PRVK_P = SWDM_P = TSDM_P
+	= ACNT_P = BBSH_P = BSPR_P = CAVA_P
+	= PIRC_P = RIDE_P = SBML_P = SPRM_P
+	= SSTB_P = THQK_P
+	= ARBL_P = PRRY_P = CCTR_P = TRLX_P
+	= BRSK_P = SPRP_P = HDCR_P = JTBT_P
+	= RNMS_P = ENBL_P = DTBD_P = SNWV_P
+	= WCUT_P = IGNB_P = PHNT_P = HSPR_P
+	= DRTR_P = DRBR_P = DRHW_P
+	= 0;
+
+var use1 = use2 = use3 = 0;
+var JCHF_P = 50;
+var JCHT_P = 70;
+var ver = "10";
+
+var BASH_M = 10;
+var ENDR_M = 10;
+var HPRC_M = 10;
+var MGBR_M = 10;
+var PRVK_M = 10;
+var SWDM_M = 10;
+var TSDM_M = 10;
+
+var ACNT_M = 5 ;
+var BBSH_M = 10;
+var BSPR_M = 10;
+var CAVA_M = 5 ;
+var PIRC_M = 10;
+var RIDE_M = 1 ;
+var SBML_M = 5 ;
+var SPRM_M = 10;
+var SSTB_M = 10;
+var THQK_M = 10;
+
+var ARBL_M = 5 ;
+var PRRY_M = 10;
+var CCTR_M = 5 ;
+var TRLX_M = 1 ;
+var BRSK_M = 1 ;
+var SPRP_M = 5 ;
+var HDCR_M = 5 ;
+var JTBT_M = 10;
+
+var RNMS_M = 10;
+var ENBL_M = 5 ;
+var DTBD_M = 10;
+var SNWV_M = 5 ;
+var WCUT_M = 5 ;
+var IGNB_M = 5 ;
+var PHNT_M = 5 ;
+var HSPR_M = 10;
+var DRTR_M = 5 ;
+var DRBR_M = 10;
+var DRHW_M = 5 ;
+
+// 各スキルのフラグ
+// 劍士
+function BASH_F(){
+	Point(BASH_P,10,"BASH");
+	if(BASH_P<5){
+		Disable("MGBR"); if(MGBR_P>0){ MGBR_P=0; MGBR_F();}
+	}if(BASH_P>=5){
+		Visible("MGBR");
+	}if(BASH_P<10){
+		Disable("BBSH"); if(BBSH_P>0){ BBSH_P=0; BBSH_F();}
+	}if(BASH_P>=10 && THQK_P>=10 && ACNT_P>=5 && TSDM_P>=5 && MGBR_P>=3){
+		Visible("BBSH");
+	}
+}
+function ENDR_F(){
+	Point(ENDR_P,10,"ENDR");
+	if(ENDR_P<1){
+		Disable("RIDE"); if(RIDE_P>0){ RIDE_P=0; RIDE_F();}
+	}if(ENDR_P>=1){
+		Visible("RIDE");
+	}if(ENDR_P<3){
+		Disable("TRLX"); if(TRLX_P>0){ TRLX_P=0; TRLX_F();}
+	}if(ENDR_P>=3 && HPRC_P>=10){
+		Visible("TRLX");
+	}if(PRVK_P<5 && ENDR_P>0){
+		PRVK_P=5; Visible("ENDR"); PRVK_F();
+	}
+}
+function HPRC_F(){
+	Point(HPRC_P,10,"HPRC");
+	if(HPRC_P<5){
+		Disable("CCTR"); if(CCTR_P>0){ CCTR_P=0; CCTR_F();}
+	}if(HPRC_P>=5 && SPRM_P>=5 && RIDE_P>=1){
+		Visible("CCTR");
+	}if(HPRC_P<10){
+		Disable("TRLX"); if(TRLX_P>0){ TRLX_P=0; TRLX_F();}
+	}if(HPRC_P>=10 && ENDR_P>=3){
+		Visible("TRLX");
+	}
+}
+function MGBR_F(){
+	Point(MGBR_P,10,"MGBR");
+	if(MGBR_P<3){
+		Disable("BBSH"); if(BBSH_P>0){ BBSH_P=0; BBSH_F();}
+	}if(MGBR_P>=3 && ACNT_P>=5 && TSDM_P>=5 && THQK_P>=10 && BASH_P>=10){
+		Visible("BBSH");
+	}if(MGBR_P<5){
+		Disable("ARBL"); if(ARBL_P>0){ ARBL_P=0; ARBL_F();}
+	}if(MGBR_P>=5 && TSDM_P>=5){
+		Visible("ARBL");
+	}if(BASH_P<5 && MGBR_P>0 ){
+		BASH_P=5; Visible("MGBR"); BASH_F();
+	}
+}
+function PRVK_F(){
+	Point(PRVK_P,10,"PRVK");
+	if(PRVK_P<5){
+		Disable("ENDR"); if(ENDR_P>0){ ENDR_P=0; ENDR_F();}
+		Disable("PRRY"); if(PRRY_P>0){ PRRY_P=0; PRRY_F();}
+	}if(PRVK_P>=5){
+		Visible("ENDR");
+	}if(PRVK_P>=5 && TSDM_P>=10 && THQK_P>=3){
+		Visible("PRRY");
+	}
+}
+function SWDM_F(){
+	Point(SWDM_P,10,"SWDM");
+	if(SWDM_P<1){
+		Disable("TSDM"); if(TSDM_P>0){ TSDM_P=0; TSDM_F();}
+	}if(SWDM_P>=1){
+		Visible("TSDM");
+	}
+}
+function TSDM_F(){
+	Point(TSDM_P,10,"TSDM");
+	if(TSDM_P<1){
+		Disable("ACNT"); if(ACNT_P>0){ ACNT_P=0; ACNT_F();}
+		Disable("THQK"); if(THQK_P>0){ THQK_P=0; THQK_F();}
+	}if(TSDM_P>=1){
+		Visible("ACNT"); Visible("THQK");
+	}if(TSDM_P<5){
+		Disable("BBSH"); if(BBSH_P>0){ BBSH_P=0; BBSH_F();}
+		Disable("ARBL"); if(ARBL_P>0){ ARBL_P=0; ARBL_F();}
+	}if(TSDM_P>=5 && ACNT_P>=5 && THQK_P>=10 && MGBR_P>=3 && BASH_P>=10){
+		Visible("BBSH");
+	}if(TSDM_P>=5 && MGBR_P>=5){
+		Visible("ARBL");
+	}if(TSDM_P<10){
+		Disable("PRRY"); if(PRRY_P>0){ PRRY_P=0; PRRY_F();}
+	}if(TSDM_P>=10 && PRVK_P>=5 && THQK_P>=3){
+		Visible("PRRY");
+	}if(SWDM_P<1 && TSDM_P>0 ){
+		SWDM_P=1; Visible("TSDM"); SWDM_F();
+	}
+}
+
+// ナイト
+function ACNT_F(){
+	Point(ACNT_P,5 ,"ACNT");
+	if(ACNT_P<1){
+		Disable("DTBD"); if(DTBD_P>0){ DTBD_P=0; DTBD_F();}
+	}if(ACNT_P>=1 && ENBL_P>=2){
+		Visible("DTBD");
+	}if(ACNT_P<5){
+		Disable("BBSH"); if(BBSH_P>0){ BBSH_P=0; BBSH_F();}
+	}if(ACNT_P>=5 && TSDM_P>=5 && THQK_P>=10 && MGBR_P>=3 && BASH_P>=10){
+		Visible("BBSH");
+	}if(TSDM_P<1 && ACNT_P>0 ){
+		TSDM_P=1; Visible("ACNT"); TSDM_F();
+	}
+}
+function BBSH_F(){
+	Point(BBSH_P,10,"BBSH");
+	if(TSDM_P<5 && BBSH_P>0 ){
+		TSDM_P=5; Visible("BBSH"); TSDM_F();
+	}if(THQK_P<10 && BBSH_P>0 ){
+		THQK_P=10; Visible("BBSH"); THQK_F();
+	}if(ACNT_P<5 && BBSH_P>0 ){
+		ACNT_P=5; Visible("BBSH"); ACNT_F();
+	}if(BASH_P<10 && BBSH_P>0 ){
+		BASH_P=10; Visible("BBSH"); BASH_F();
+	}if(MGBR_P<3 && BBSH_P>0 ){
+		MGBR_P=3; Visible("BBSH"); MGBR_F();
+	}
+}
+function BSPR_F(){
+	Point(BSPR_P,10,"BSPR");
+	if(BSPR_P<2){
+		Disable("PHNT"); if(PHNT_P>0){ PHNT_P=0; PHNT_F();}
+	}if(BSPR_P>=2){
+		Visible("PHNT");
+	}if(SSTB_P<3 && BSPR_P>0 ){
+		SSTB_P=3; Visible("BSPR"); SSTB_F();
+	}if(RIDE_P<1 && BSPR_P>0 ){
+		RIDE_P=1; Visible("BSPR"); RIDE_F();
+	}
+}
+function CAVA_F(){
+	Point(CAVA_P,5 ,"CAVA");
+	if(CAVA_P<1){
+		Disable("DRTR"); if(DRTR_P>0){ DRTR_P=0; DRTR_F();}
+	}if(CAVA_P>=1){
+		Visible("DRTR");
+	}if(CAVA_P<3){
+		Disable("JTBT"); if(JTBT_P>0){ JTBT_P=0; JTBT_F();}
+	}if(CAVA_P>=3 && HDCR_P>=3){
+		Visible("JTBT");
+	}if(RIDE_P<1 && CAVA_P>0 ){
+		RIDE_P=1; Visible("CAVA"); RIDE_F();
+	}
+}
+function PIRC_F(){
+	Point(PIRC_P,10,"PIRC");
+	if(PIRC_P<3){
+		Disable("SBML"); if(SBML_P>0){ SBML_P=0; SBML_F();}
+	}if(PIRC_P>=3){
+		Visible("SBML");
+	}if(PIRC_P<5){
+		Disable("SSTB"); if(SSTB_P>0){ SSTB_P=0; SSTB_F();}
+	}if(PIRC_P>=5){
+		Visible("SSTB");
+	}if(SPRM_P<1 && PIRC_P>0 ){
+		SPRM_P=1; Visible("PIRC"); SPRM_F();
+	}
+}
+function RIDE_F(){
+	Point(RIDE_P,1 ,"RIDE");
+	if(RIDE_P<1){
+		Disable("CAVA"); if(CAVA_P>0){ CAVA_P=0; CAVA_F();}
+		Disable("BSPR"); if(BSPR_P>0){ BSPR_P=0; BSPR_F();}
+		Disable("CCTR"); if(CCTR_P>0){ CCTR_P=0; CCTR_F();}
+		Disable("SPRP"); if(SPRP_P>0){ SPRP_P=0; SPRP_F();}
+		Disable("HDCR"); if(HDCR_P>0){ HDCR_P=0; HDCR_F();}
+	}if(RIDE_P>=1){
+		Visible("CAVA");
+	}if(RIDE_P>=1 && SSTB_P>=3){
+		Visible("BSPR");
+	}if(RIDE_P>=1 && SPRM_P>=5 && HPRC_P>=5){
+		Visible("CCTR");
+	}if(RIDE_P>=1 && SSTB_P>=5 && SPRM_P>=5){
+		Visible("SPRP");
+	}if(RIDE_P>=1 && SPRM_P>=9){
+		Visible("HDCR");
+	}if(ENDR_P<1 && RIDE_P>0 ){
+		ENDR_P=1; Visible("RIDE"); ENDR_F();
+	}
+}
+function SBML_F(){
+	Point(SBML_P,5 ,"SBML");
+	if(PIRC_P<3 && SBML_P>0 ){
+		PIRC_P=3; Visible("SBML"); PIRC_F();
+	}
+}
+function SPRM_F(){
+	Point(SPRM_P,10,"SPRM");
+	if(SPRM_P<1){
+		Disable("PIRC"); if(PIRC_P>0){ PIRC_P=0; PIRC_F();}
+	}if(SPRM_P>=1){
+		Visible("PIRC");
+	}if(SPRM_P<5){
+		Disable("CCTR"); if(CCTR_P>0){ CCTR_P=0; CCTR_F();}
+		Disable("SPRP"); if(SPRP_P>0){ SPRP_P=0; SPRP_F();}
+	}if(SPRM_P>=5 && HPRC_P>=5 && RIDE_P>=1){
+		Visible("CCTR");
+	}if(SPRM_P>=5 && SSTB_P>=5 && RIDE_P>=1){
+		Visible("SPRP");
+	}if(SPRM_P<9){
+		Disable("HDCR"); if(HDCR_P>0){ HDCR_P=0; HDCR_F();}
+	}if(SPRM_P>=9 && RIDE_P>=1){
+		Visible("HDCR");
+	}
+}
+function SSTB_F(){
+	Point(SSTB_P,10,"SSTB");
+	if(SSTB_P<3){
+		Disable("BSPR"); if(BSPR_P>0){ BSPR_P=0; BSPR_F();}
+	}if(SSTB_P>=3 && RIDE_P>=1){
+		Visible("BSPR");
+	}if(SSTB_P<5){
+		Disable("SPRP"); if(SPRP_P>0){ SPRP_P=0; SPRP_F();}
+	}if(SSTB_P>=5 && SPRM_P>=5 && RIDE_P>=1){
+		Visible("SPRP");
+	}if(PIRC_P<5 && SSTB_P>0 ){
+		PIRC_P=5; Visible("SSTB"); PIRC_F();
+	}
+}
+function THQK_F(){
+	Point(THQK_P,10,"THQK");
+	if(THQK_P<3){
+		Disable("PRRY"); if(PRRY_P>0){ PRRY_P=0; PRRY_F();}
+	}if(THQK_P>=3 && TSDM_P>=10 && PRVK_P>=5){
+		Visible("PRRY");
+	}if(THQK_P<10){
+		Disable("BBSH"); if(BBSH_P>0){ BBSH_P=0; BBSH_F();}
+	}if(THQK_P>=10 && ACNT_P>=5 && TSDM_P>=5 && MGBR_P>=3 && BASH_P>=10){
+		Visible("BBSH");
+	}if(TSDM_P<1 && THQK_P>0 ){
+		TSDM_P=1; Visible("THQK"); TSDM_F();
+	}
+}
+
+// ロードナイト
+function ARBL_F(){
+	Point(ARBL_P,5,"ARBL");
+	if(MGBR_P<5 && ARBL_P>0 ){
+		MGBR_P=5; Visible("ARBL"); MGBR_F();
+	}if(TSDM_P<5 && ARBL_P>0 ){
+		TSDM_P=5; Visible("ARBL"); TSDM_F();
+	}
+}
+function PRRY_F(){
+	Point(PRRY_P,10,"PRRY");
+	if(TSDM_P<10 && PRRY_P>0 ){
+		TSDM_P=10; Visible("PRRY"); TSDM_F();
+	}if(PRVK_P<5 && PRRY_P>0 ){
+		PRVK_P=5; Visible("PRRY"); PRVK_F();
+	}if(THQK_P<3 && PRRY_P>0 ){
+		THQK_P=3; Visible("PRRY"); THQK_F();
+	}
+}
+function CCTR_F(){
+	Point(CCTR_P,5,"CCTR");
+	if(SPRM_P<5 && CCTR_P>0 ){
+		SPRM_P=5; Visible("CCTR"); SPRM_F();
+	}if(RIDE_P<1 && CCTR_P>0 ){
+		RIDE_P=1; Visible("CCTR"); RIDE_F();
+	}if(HPRC_P<5 && CCTR_P>0 ){
+		HPRC_P=5; Visible("CCTR"); HPRC_F();
+	}
+}
+function TRLX_F(){
+	Point(TRLX_P,1,"TRLX");
+	if(ENDR_P<3 && TRLX_P>0 ){
+		ENDR_P=3; Visible("TRLX"); ENDR_F();
+	}if(HPRC_P<10 && TRLX_P>0 ){
+		HPRC_P=10; Visible("TRLX"); HPRC_F();
+	}
+}
+function BRSK_F(){
+	Point(BRSK_P,1,"BRSK");
+}
+function SPRP_F(){
+	Point(SPRP_P,5,"SPRP");
+	if(SPRM_P<5 && SPRP_P>0 ){
+		SPRM_P=5; Visible("SPRP"); SPRM_F();
+	}if(RIDE_P<1 && SPRP_P>0 ){
+		RIDE_P=1; Visible("SPRP"); RIDE_F();
+	}if(SSTB_P<5 && SPRP_P>0 ){
+		SSTB_P=5; Visible("SPRP"); SSTB_F();
+	}
+}
+function HDCR_F(){
+	Point(HDCR_P,5,"HDCR");
+	if(HDCR_P<3){
+		Disable("JTBT"); if(JTBT_P>0){ JTBT_P=0; JTBT_F();}
+	}if(HDCR_P>=3 && CAVA_P>=3){
+		Visible("JTBT");
+	}if(SPRM_P<9 && HDCR_P>0 ){
+		SPRM_P=9; Visible("HDCR"); SPRM_F();
+	}if(RIDE_P<1 && HDCR_P>0 ){
+		RIDE_P=1; Visible("HDCR"); RIDE_F();
+	}
+}
+function JTBT_F(){
+	Point(JTBT_P,10,"JTBT");
+	if(HDCR_P<3 && JTBT_P>0 ){
+		HDCR_P=3; Visible("JTBT"); HDCR_F();
+	}if(CAVA_P<3 && JTBT_P>0 ){
+		CAVA_P=3; Visible("JTBT"); CAVA_F();
+	}
+}
+
+// ルーンナイト
+function RNMS_F(){
+	Point(RNMS_P,10,"RNMS");
+	if(RNMS_P<2){
+		Disable("ENBL"); if(ENBL_P>0){ ENBL_P=0; ENBL_F();}
+	}if(RNMS_P>=2){
+		Visible("ENBL");
+	}
+}
+function ENBL_F(){
+	Point(ENBL_P,5 ,"ENBL");
+	if(ENBL_P<2){
+		Disable("DTBD"); if(DTBD_P>0){ DTBD_P=0; DTBD_F();}
+	}if(ENBL_P>=2 && ACNT_P>=1){
+		Visible("DTBD");
+	}if(ENBL_P<3){
+		Disable("SNWV"); if(SNWV_P>0){ SNWV_P=0; SNWV_F();}
+	}if(ENBL_P>=3){
+		Visible("SNWV");
+	}if(ENBL_P<5){
+		Disable("WCUT"); if(WCUT_P>0){ WCUT_P=0; WCUT_F();}
+	}if(ENBL_P>=5){
+		Visible("WCUT");
+	}if(RNMS_P<2 && ENBL_P>0 ){
+		RNMS_P=2; Visible("ENBL"); RNMS_F();
+	}
+}
+function DTBD_F(){
+	Point(DTBD_P,10,"DTBD");
+	if(DTBD_P<5){
+		Disable("IGNB"); if(IGNB_P>0){ IGNB_P=0; IGNB_F();}
+	}if(DTBD_P>=5 && SNWV_P>=2 && WCUT_P>=3){
+		Visible("IGNB");
+	}if(ACNT_P<1 && DTBD_P>0 ){
+		ACNT_P=1; Visible("DTBD"); ACNT_F();
+	}if(ENBL_P<2 && DTBD_P>0 ){
+		ENBL_P=2; Visible("DTBD"); ENBL_F();
+	}
+}
+function SNWV_F(){
+	Point(SNWV_P,5 ,"SNWV");
+	if(SNWV_P<2){
+		Disable("IGNB"); if(IGNB_P>0){ IGNB_P=0; IGNB_F();}
+	}if(SNWV_P>=2 && DTBD_P>=5 && WCUT_P>=3){
+		Visible("IGNB");
+	}if(ENBL_P<3 && SNWV_P>0 ){
+		ENBL_P=3; Visible("SNWV"); ENBL_F();
+	}
+}
+function WCUT_F(){
+	Point(WCUT_P,5 ,"WCUT");
+	if(WCUT_P<2){
+		Disable("IGNB"); if(IGNB_P>0){ IGNB_P=0; IGNB_F();}
+	}if(WCUT_P>=3 && SNWV_P>=2 && DTBD_P>=5){
+		Visible("IGNB");
+	}if(ENBL_P<5 && WCUT_P>0 ){
+		ENBL_P=5; Visible("WCUT"); ENBL_F();
+	}
+}
+function IGNB_F(){
+	Point(IGNB_P,5 ,"IGNB");
+	if(DTBD_P<5 && IGNB_P>0 ){
+		DTBD_P=5; Visible("IGNB"); DTBD_F();
+	}if(SNWV_P<2 && IGNB_P>0 ){
+		SNWV_P=2; Visible("IGNB"); SNWV_F();
+	}if(WCUT_P<3 && IGNB_P>0 ){
+		WCUT_P=3; Visible("IGNB"); WCUT_F();
+	}
+}
+function PHNT_F(){
+	Point(PHNT_P,5 ,"PHNT");
+	if(PHNT_P<3){
+		Disable("HSPR"); if(HSPR_P>0){ HSPR_P=0; HSPR_F();}
+	}if(PHNT_P>=3){
+		Visible("HSPR");
+	}if(BSPR_P<2 && PHNT_P>0 ){
+		BSPR_P=2; Visible("PHNT"); BSPR_F();
+	}
+}
+function HSPR_F(){
+	Point(HSPR_P,10,"HSPR");
+	if(PHNT_P<3 && HSPR_P>0 ){
+		PHNT_P=3; Visible("HSPR"); PHNT_F();
+	}
+}
+function DRTR_F(){
+	Point(DRTR_P,5 ,"DRTR");
+	if(DRTR_P<2){
+		Disable("DRBR"); if(DRBR_P>0){ DRBR_P=0; DRBR_F();}
+		Disable("DRHW"); if(DRHW_P>0){ DRHW_P=0; DRHW_F();}
+	}if(DRTR_P>=2){
+		Visible("DRBR");
+		Visible("DRHW");
+	}if(CAVA_P<1 && DRTR_P>0 ){
+		CAVA_P=1; Visible("DRTR"); CAVA_F();
+	}
+}
+function DRBR_F(){
+	Point(DRBR_P,10,"DRBR");
+	if(DRTR_P<2 && DRBR_P>0 ){
+		DRTR_P=2; Visible("DRBR"); DRTR_F();
+	}
+}
+function DRHW_F(){
+	Point(DRHW_P,5 ,"DRHW");
+	if(DRTR_P<2 && DRHW_P>0 ){
+		DRTR_P=2; Visible("DRHW"); DRTR_F();
+	}
+}
+
+// イベント
+function setPoint(parts,point){
+	if(parts == "BASH") { if(point>=0 && point<=10) BASH_P=point; BASH_F(); }
+	if(parts == "ENDR") { if(point>=0 && point<=10) ENDR_P=point; ENDR_F(); }
+	if(parts == "HPRC") { if(point>=0 && point<=10) HPRC_P=point; HPRC_F(); }
+	if(parts == "MGBR") { if(point>=0 && point<=10) MGBR_P=point; MGBR_F(); }
+	if(parts == "PRVK") { if(point>=0 && point<=10) PRVK_P=point; PRVK_F(); }
+	if(parts == "SWDM") { if(point>=0 && point<=10) SWDM_P=point; SWDM_F(); }
+	if(parts == "TSDM") { if(point>=0 && point<=10) TSDM_P=point; TSDM_F(); }
+
+	if(parts == "ACNT") { if(point>=0 && point<=5 ) ACNT_P=point; ACNT_F(); }
+	if(parts == "BBSH") { if(point>=0 && point<=10) BBSH_P=point; BBSH_F(); }
+	if(parts == "BSPR") { if(point>=0 && point<=10) BSPR_P=point; BSPR_F(); }
+	if(parts == "CAVA") { if(point>=0 && point<=5 ) CAVA_P=point; CAVA_F(); }
+	if(parts == "PIRC") { if(point>=0 && point<=10) PIRC_P=point; PIRC_F(); }
+	if(parts == "RIDE") { if(point>=0 && point<=1 ) RIDE_P=point; RIDE_F(); }
+	if(parts == "SBML") { if(point>=0 && point<=5 ) SBML_P=point; SBML_F(); }
+	if(parts == "SPRM") { if(point>=0 && point<=10) SPRM_P=point; SPRM_F(); }
+	if(parts == "SSTB") { if(point>=0 && point<=10) SSTB_P=point; SSTB_F(); }
+	if(parts == "THQK") { if(point>=0 && point<=10) THQK_P=point; THQK_F(); }
+
+	if(parts == "ARBL") { if(point>=0 && point<=5 ) ARBL_P=point; ARBL_F(); }
+	if(parts == "PRRY") { if(point>=0 && point<=10) PRRY_P=point; PRRY_F(); }
+	if(parts == "CCTR") { if(point>=0 && point<=5 ) CCTR_P=point; CCTR_F(); }
+	if(parts == "TRLX") { if(point>=0 && point<=1 ) TRLX_P=point; TRLX_F(); }
+	if(parts == "BRSK") { if(point>=0 && point<=1 )	BRSK_P=point; BRSK_F(); }
+	if(parts == "SPRP") { if(point>=0 && point<=5 ) SPRP_P=point; SPRP_F(); }
+	if(parts == "HDCR") { if(point>=0 && point<=5 ) HDCR_P=point; HDCR_F(); }
+	if(parts == "JTBT") { if(point>=0 && point<=10) JTBT_P=point; JTBT_F(); }
+
+	if(parts == "RNMS") { if(point>=0 && point<=10) RNMS_P=point; RNMS_F(); }
+	if(parts == "ENBL") { if(point>=0 && point<=5 ) ENBL_P=point; ENBL_F(); }
+	if(parts == "DTBD") { if(point>=0 && point<=10) DTBD_P=point; DTBD_F(); }
+	if(parts == "SNWV") { if(point>=0 && point<=5 ) SNWV_P=point; SNWV_F(); }
+	if(parts == "WCUT") { if(point>=0 && point<=5 )	WCUT_P=point; WCUT_F(); }
+	if(parts == "IGNB") { if(point>=0 && point<=5 ) IGNB_P=point; IGNB_F(); }
+	if(parts == "PHNT") { if(point>=0 && point<=5 ) PHNT_P=point; PHNT_F(); }
+	if(parts == "HSPR") { if(point>=0 && point<=10) HSPR_P=point; HSPR_F(); }
+	if(parts == "DRTR") { if(point>=0 && point<=5 ) DRTR_P=point; DRTR_F(); }
+	if(parts == "DRBR") { if(point>=0 && point<=10) DRBR_P=point; DRBR_F(); }
+	if(parts == "DRHW") { if(point>=0 && point<=5 ) DRHW_P=point; DRHW_F(); }
+
+	ShowPoint();
+}
+
+
+function ShowPoint(){
+	use1 = BASH_P + ENDR_P + HPRC_P + MGBR_P
+		+ PRVK_P + SWDM_P + TSDM_P;
+	use2 = ACNT_P + BBSH_P + BSPR_P + CAVA_P
+		+ PIRC_P + RIDE_P + SBML_P + SPRM_P
+		+ SSTB_P + THQK_P
+		+ ARBL_P + PRRY_P + CCTR_P + TRLX_P
+		+ BRSK_P + SPRP_P + HDCR_P + JTBT_P;
+	use3 = RNMS_P + ENBL_P + DTBD_P + SNWV_P
+		+ WCUT_P + IGNB_P + PHNT_P + HSPR_P
+		+ DRTR_P + DRBR_P + DRHW_P;
+
+	showMsg(2);
+}
+
+//コントロール關連
+function Clear(){
+	BASH_P = ENDR_P = HPRC_P = MGBR_P
+	= PRVK_P = SWDM_P = TSDM_P
+	= ACNT_P = BBSH_P = BSPR_P = CAVA_P
+	= PIRC_P = RIDE_P = SBML_P = SPRM_P
+	= SSTB_P = THQK_P
+	= ARBL_P = PRRY_P = CCTR_P = TRLX_P
+	= BRSK_P = SPRP_P = HDCR_P = JTBT_P
+	= RNMS_P = ENBL_P = DTBD_P = SNWV_P
+	= WCUT_P = IGNB_P = PHNT_P = HSPR_P
+	= DRTR_P = DRBR_P = DRHW_P
+	= 0;
+	use1 = use2 = use3 = 0;
+	BASH_F(); ENDR_F(); HPRC_F(); MGBR_F();
+	PRVK_F(); SWDM_F(); TSDM_F();
+	ACNT_F(); BBSH_F(); BSPR_F(); CAVA_F();
+	PIRC_F(); RIDE_F(); SBML_F(); SPRM_F();
+	SSTB_F(); THQK_F();
+	ARBL_F(); PRRY_F(); CCTR_F(); TRLX_F();
+	BRSK_F(); SPRP_F(); HDCR_F(); JTBT_F();
+	RNMS_F(); ENBL_F(); DTBD_F(); SNWV_F();
+	WCUT_F(); IGNB_F(); PHNT_F(); HSPR_F();
+	DRTR_F(); DRBR_F(); DRHW_F();
+	ShowPoint();
+	setAlertLayer("已清除所有配置的技能点",1);
+}
+
+function Save(mode){
+	var tdata = new Array(39);
+	tdata[0]  = BASH_P;
+	tdata[1]  = ENDR_P;
+	tdata[2]  = HPRC_P;
+	tdata[3]  = MGBR_P;
+	tdata[4]  = PRVK_P;
+	tdata[5]  = SWDM_P;
+	tdata[6]  = TSDM_P;
+	tdata[7]  = ACNT_P;
+	tdata[8]  = BBSH_P;
+	tdata[9]  = BSPR_P;
+	tdata[10] = CAVA_P;
+	tdata[11] = PIRC_P;
+	tdata[12] = RIDE_P;
+	tdata[13] = SBML_P;
+	tdata[14] = SPRM_P;
+	tdata[15] = SSTB_P;
+	tdata[16] = THQK_P;
+	tdata[17] = ARBL_P;
+	tdata[18] = PRRY_P;
+	tdata[19] = CCTR_P;
+	tdata[20] = TRLX_P;
+	tdata[21] = BRSK_P;
+	tdata[22] = SPRP_P;
+	tdata[23] = HDCR_P;
+	tdata[24] = JTBT_P;
+	tdata[25] = RNMS_P;
+	tdata[26] = ENBL_P;
+	tdata[27] = DTBD_P;
+	tdata[28] = SNWV_P;
+	tdata[29] = WCUT_P;
+	tdata[30] = IGNB_P;
+	tdata[31] = PHNT_P;
+	tdata[32] = HSPR_P;
+	tdata[33] = DRTR_P;
+	tdata[34] = DRBR_P;
+	tdata[35] = DRHW_P;
+	tdata[36] = JCHF_P - 40;
+	tdata[37] = Math.floor(JCHT_P/10);
+	tdata[38] = JCHT_P%10;
+
+	code = encode(tdata,ver);
+
+	if(mode == "scode"){
+		return code;
+	}if(mode == "cookie"){
+		Save2(code);
+	}
+}
+
+function Load(mode){
+	code = loadType(mode);
+	if(code){
+		tdata = decode(code,ver);
+
+		BASH_P = tdata[0] ;
+		ENDR_P = tdata[1] ;
+		HPRC_P = tdata[2] ;
+		MGBR_P = tdata[3] ;
+		PRVK_P = tdata[4] ;
+		SWDM_P = tdata[5] ;
+		TSDM_P = tdata[6] ;
+		ACNT_P = tdata[7] ;
+		BBSH_P = tdata[8] ;
+		BSPR_P = tdata[9] ;
+		CAVA_P = tdata[10];
+		PIRC_P = tdata[11];
+		RIDE_P = tdata[12];
+		SBML_P = tdata[13];
+		SPRM_P = tdata[14];
+		SSTB_P = tdata[15];
+		THQK_P = tdata[16];
+		ARBL_P = tdata[17];
+		PRRY_P = tdata[18];
+		CCTR_P = tdata[19];
+		TRLX_P = tdata[20];
+		BRSK_P = tdata[21];
+		SPRP_P = tdata[22];
+		HDCR_P = tdata[23];
+		JTBT_P = tdata[24];
+		RNMS_P = tdata[25];
+		ENBL_P = tdata[26];
+		DTBD_P = tdata[27];
+		SNWV_P = tdata[28];
+		WCUT_P = tdata[29];
+		IGNB_P = tdata[30];
+		PHNT_P = tdata[31];
+		HSPR_P = tdata[32];
+		DRTR_P = tdata[33];
+		DRBR_P = tdata[34];
+		DRHW_P = tdata[35];
+		JCHF_P = tdata[36] + 40;
+		JCHT_P = tdata[37]*10 + tdata[38];
+	}
+
+	document.Msg.jobchg1.value = JCHF_P;
+	document.Msg.jobchg2.value = JCHT_P;
+
+	BASH_F(); ENDR_F(); HPRC_F(); MGBR_F();
+	PRVK_F(); SWDM_F(); TSDM_F();
+	ACNT_F(); BBSH_F(); BSPR_F(); CAVA_F();
+	PIRC_F(); RIDE_F(); SBML_F(); SPRM_F();
+	SSTB_F(); THQK_F();
+	ARBL_F(); PRRY_F(); CCTR_F(); TRLX_F();
+	BRSK_F(); SPRP_F(); HDCR_F(); JTBT_F();
+	RNMS_F(); ENBL_F(); DTBD_F(); SNWV_F();
+	WCUT_F(); IGNB_F(); PHNT_F(); HSPR_F();
+	DRTR_F(); DRBR_F(); DRHW_F();
+
+	ShowPoint();
+}
+
+</script>
+
+<!--Google Analytics Start-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23570260-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!--Google Analytics End-->
+<link rel="stylesheet" type="text/css" href="commercial.css"></head>
+
+<body onLoad="Init()" onmousewheel="return false;" style="background-color: #E6FFCC">
+
+<div id="msgid" style="position: absolute; top: 8px; left: 10px; width: 340px; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; background-color: rgb(255, 255, 255); "> 1st : <span style="color:#aa0033;">1</span>/50 　2nd : <span style="color:#aa0033;">1</span>/70 　3rd : <span style="color:#aa0033;">1</span>/50 　rest : 167</div>
+
+<div style="position:absolute; top:8px; left:360px; width:500px; z-index:999999">
+<form name="Msg" onSubmit="return false;">
+<nobr>
+
+职业等级
+<select name="jobchg1" onChange="JCHF_P=this.value; showMsg(2)">
+<option value="50" selected="">Job50
+</option><option value="49">Job49
+</option><option value="48">Job48
+</option><option value="47">Job47
+</option><option value="46">Job46
+</option><option value="45">Job45
+</option><option value="44">Job44
+</option><option value="43">Job43
+</option><option value="42">Job42
+</option><option value="41">Job41
+</option><option value="40">Job40
+</option></select>
+<b>＞</b>
+<select name="jobchg2" onChange="JCHT_P=this.value; showMsg(2)">
+<option value="70" selected="">Job70
+</option><option value="69">Job69
+</option><option value="68">Job68
+</option><option value="67">Job67
+</option><option value="66">Job66
+</option><option value="65">Job65
+</option><option value="64">Job64
+</option><option value="63">Job63
+</option><option value="62">Job62
+</option><option value="61">Job61
+</option><option value="60">Job60
+</option><option value="59">Job59
+</option><option value="58">Job58
+</option><option value="57">Job57
+</option><option value="56">Job56
+</option><option value="55">Job55
+</option><option value="54">Job54
+</option><option value="53">Job53
+</option><option value="52">Job52
+</option><option value="51">Job51
+</option><option value="50">Job50
+</option></select>
+　　
+档名 <input type="text" name="chrName" size="20" maxlength="20" value="" title="可以输入储存名称">
+<u>
+<a class="con" href="JavaScript:Save('cookie');" title="储存资料">储存</a>　
+<a class="con" href="JavaScript:Load('cookie');" title="读取资料">读取</a>　
+<a class="con" href="javascript:Clear();" title="清除目前配点">重置</a>　
+<a class="con" href="JavaScript:DeleteSlot();" title="删除存档">删除</a></u>　
+<select name="Data" style="width:200px;">
+<option value="1" selected="">slot 1 : no save</option><option value="2">slot 2 : no save</option><option value="3">slot 3 : no save</option><option value="4">slot 4 : no save</option><option value="5">slot 5 : no save</option><option value="6">slot 6 : no save</option><option value="7">slot 7 : no save</option><option value="8">slot 8 : no save</option><option value="9">slot 9 : no save</option><option value="10">slot 10 : no save</option><option value="11">slot 11 : no save</option><option value="12">slot 12 : no save</option><option value="13">slot 13 : no save</option><option value="14">slot 14 : no save</option><option value="15">slot 15 : no save</option><option value="16">slot 16 : no save</option><option value="17">slot 17 : no save</option><option value="18">slot 18 : no save</option><option value="19">slot 19 : no save</option><option value="20">slot 20 : no save</option><option value="21">slot 21 : no save</option><option value="22">slot 22 : no save</option><option value="23">slot 23 : no save</option><option value="24">slot 24 : no save</option><option value="25">slot 25 : no save</option><option value="26">slot 26 : no save</option><option value="27">slot 27 : no save</option><option value="28">slot 28 : no save</option><option value="29">slot 29 : no save</option><option value="30">slot 30 : no save</option></select>
+</nobr>
+<input type="hidden" name="scode" size="32" value="Code" readonly>
+</form>
+</div>
+
+
+<!-- Swordman -->
+
+
+<table class="job" id="BASH" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 85px; left: 10px; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_swd.png&#39;); background-position:-0px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;BASH&#39;)" onMouseOut="msout()">
+狂击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="ENDR" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 290px; left: 60px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_swd.png&#39;); background-position:-30px;">
+
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;ENDR&#39;)" onMouseOut="msout()">
+霸体
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="HPRC" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 390px; left: 10px; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_swd.png&#39;); background-position:-60px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;HPRC&#39;)" onMouseOut="msout()">
+快速恢复
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="MGBR" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 40px; left: 60px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_swd.png&#39;); background-position:-90px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;MGBR&#39;)" onMouseOut="msout()">
+怒爆
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="PRVK" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 245px; left: 10px; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_swd.png&#39;); background-position:-120px;">
+</td>
+
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;PRVK&#39;)" onMouseOut="msout()">
+挑衅
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="SWDM" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 135px; left: 10px; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_swd.png&#39;); background-position:-150px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;SWDM&#39;)" onMouseOut="msout()">
+单手剑使用熟练度
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="TSDM" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 185px; left: 60px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_swd.png&#39;); background-position:-180px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;TSDM&#39;)" onMouseOut="msout()">
+双手剑使用熟练度
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+
+<!-- Knight -->
+
+
+<table class="job" id="ACNT" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 135px; left: 250px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:0px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;ACNT&#39;)" onMouseOut="msout()">
+反击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="BBSH" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 85px; left: 350px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-30px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;BBSH&#39;)" onMouseOut="msout()">
+怪物互击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="BSPR" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 660px; left: 400px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-60px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;BSPR&#39;)" onMouseOut="msout()">
+骑乘攻击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="CAVA" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 345px; left: 310px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-90px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;CAVA&#39;)" onMouseOut="msout()">
+骑兵修炼
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="PIRC" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 525px; left: 300px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-120px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;PIRC&#39;)" onMouseOut="msout()">
+连刺攻击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="RIDE" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 290px; left: 250px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: 0px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-150px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;RIDE&#39;)" onMouseOut="msout()">
+骑乘术
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="SBML" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 570px; left: 350px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-180px;">
+
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;SBML&#39;)" onMouseOut="msout()">
+投掷长矛攻击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="SPRM" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 480px; left: 250px; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-210px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;SPRM&#39;)" onMouseOut="msout()">
+长矛使用熟练度
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="SSTB" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 615px; left: 350px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-240px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;SSTB&#39;)" onMouseOut="msout()">
+长矛刺击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="THQK" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 185px; left: 310px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_knt.png&#39;); background-position:-270px;">
+</td>
+
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;THQK&#39;)" onMouseOut="msout()">
+双手剑速度增加
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+
+<!-- Lord Knight -->
+
+
+<table class="job" id="ARBL" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 40px; left: 600px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_lkn.png&#39;); background-position:0px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;ARBL&#39;)" onMouseOut="msout()">
+灵气剑
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="PRRY" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 185px; left: 600px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_lkn.png&#39;); background-position:-30px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;PRRY&#39;)" onMouseOut="msout()">
+双剑格挡
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="CCTR" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 435px; left: 600px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_lkn.png&#39;); background-position:-60px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;CCTR&#39;)" onMouseOut="msout()">
+集中攻击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="TRLX" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 390px; left: 600px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: 0px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_lkn.png&#39;); background-position:-90px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;TRLX&#39;)" onMouseOut="msout()">
+极速恢复
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="BRSK" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 85px; left: 600px; background-position: 0px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_lkn.png&#39;); background-position:-120px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;BRSK&#39;)" onMouseOut="msout()">
+狂怒之枪
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="SPRP" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 570px; left: 600px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_lkn.png&#39;); background-position:-150px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;SPRP&#39;)" onMouseOut="msout()">
+螺旋击刺
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="HDCR" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 480px; left: 600px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_lkn.png&#39;); background-position:-180px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;HDCR&#39;)" onMouseOut="msout()">
+伤害增压
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="JTBT" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 525px; left: 650px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_lkn.png&#39;); background-position:-210px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;JTBT&#39;)" onMouseOut="msout()">
+巧打
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+
+
+<!-- Rune Knight -->
+
+
+<table class="job" id="RNMS" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 40px; left: 830px; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:0px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;RNMS&#39;)" onMouseOut="msout()">
+符文掌握
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="ENBL" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 85px; left: 880px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-30px;">
+</td>
+
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;ENBL&#39;)" onMouseOut="msout()">
+附魔之刃
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="DTBD" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 130px; left: 930px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-60px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;DTBD&#39;)" onMouseOut="msout()">
+死亡捆绑
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="SNWV" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 175px; left: 930px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-90px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;SNWV&#39;)" onMouseOut="msout()">
+冲击之刃
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="WCUT" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 220px; left: 930px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-120px;">
+</td>
+<td width="114" height="16" align="center">
+
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;WCUT&#39;)" onMouseOut="msout()">
+烈风之刃
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="IGNB" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 275px; left: 1020px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-150px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;IGNB&#39;)" onMouseOut="msout()">
+爆裂之刃
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="PHNT" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 660px; left: 880px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-180px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;PHNT&#39;)" onMouseOut="msout()">
+幻影刺击
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="HSPR" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 705px; left: 980px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-210px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;HSPR&#39;)" onMouseOut="msout()">
+极速戳刺
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="DRTR" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 345px; left: 880px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-240px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;DRTR&#39;)" onMouseOut="msout()">
+驯龙术
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="DRBR" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 390px; left: 980px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -840px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-270px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;DRBR&#39;)" onMouseOut="msout()">
+龙之吐息
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="job" id="DRHW" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position: absolute; top: 435px; left: 980px; background-color: rgb(221, 221, 224); color: rgb(102, 102, 102); border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: initial; border-image: initial; background-position: -560px 0px; " onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_rkn.png&#39;); background-position:-300px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;DRHW&#39;)" onMouseOut="msout()">
+龙之咆哮
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="quest" id="MVRY" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position:absolute; top:435px; left:10px;" onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_mWarrior.png&#39;); background-position:-0px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;MVRY&#39;)" onMouseOut="msout()">
+移动时恢复HP
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="quest" id="FABW" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position:absolute; top:480px; left:10px; right: 644px;" onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_mWarrior.png&#39;); background-position:-30px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;FABW&#39;)" onMouseOut="msout()">
+攻击弱点
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="quest" id="ATBK" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position:absolute; top:525px; left:10px;" onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_mWarrior.png&#39;); background-position:-60px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;ATBK&#39;)" onMouseOut="msout()">
+狂暴状态
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="quest" id="CHGA" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position:absolute; top:750px; left:350px;" onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_mWarrior.png&#39;); background-position:-90px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;CHGA&#39;)" onMouseOut="msout()">
+冲锋
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+<table class="quest" id="OHQI" cellspacing="0" cellpadding="0" width="130" height="15" border="0" style="position:absolute; top:700px; left:250px;" onClick="msclk(this.id,event.clientX,this.style.left)" onmousewheel="mswhl(this.id)">
+<tbody><tr><td rowspan="2" width="26" style="background-image:url(&#39;img/icon_mWarrior.png&#39;); background-position:-120px;">
+</td>
+<td width="114" height="16" align="center">
+<span class="help" onMouseOver="msovr(event.clientX,event.clientY,&#39;OHQI&#39;)" onMouseOut="msout()">
+单手剑速度增加
+</span>
+</td></tr>
+<tr><td width="114" height="12"></td></tr>
+</tbody></table>
+
+
+<div id="skill" style="position: absolute; z-index: 1; left: 161px; top: 543px; width: 0px; height: 0px; background-color: transparent; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; border-image: initial; "></div>
+<div id="option1" style="position:absolute; top:0px; left:0px; width:0px; height:0px; background-image:url(img/alpha.png);" onClick="JavaScript:offOptionLayer();"></div>
+<div id="option2" style="position:absolute; top:0px; left:0px; width:0px; height:0px;"></div>
+<div id="dummy" style="position:absolute; top:0px; left:0px; width:1200px; height:800px; z-index:-1;"></div>
+
+
+</body></html>
