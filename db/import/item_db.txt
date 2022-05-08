@@ -1283,21 +1283,20 @@
 // 向导道具
 50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ if(countitem(50000) <= 1) getitem 50000,1; callfunc "F_MANUAL"; },{},{}
 
-// ID,Name,Name,Type,Price,Sell,Weight,ATK[:MATK],DEF,Range,Slot,Job,Class,Gender,Loc,wLV,eLV[:maxLevel],Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
-// slot 是以 2^n 代表 1 2 4 8 只是槽位，若是 6 则表示 2+4 即装备同时占两个槽位 
 
 // 世界隐藏任务 - 神赐体质的修炼装备
-62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,,0,0,57,{},{},{}
-61201,Ancient_Knife,古老的 破裂的剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{},{},{}
-61202,Ancient_Shuriken,古老的 破旧之手里剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{},{},{}
-61550,Ancient_Book,古老的 撕裂的魔法书,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,15,{},{},{}
-63104,Ancient_Garrison,古老的 残破的枪械残骸,5,1,,50,20,,7,0,0xFFFFFFFF,63,2,34,1,1,1,17,{},{},{}
-62501,Ancient_Hood,古老的 破旧的围巾,4,1,,50,,10,,0,0xFFFFFFFF,63,2,4,,0,1,0,{ callfunc "F_TRAIN_GOD_POWER_01"; },{},{}
-62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{},{},{}
-62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{},{},{}
-62101,Ancient_Guard,古老的 破裂的硬壳,4,1,,50,,10,,0,0xFFFFFFFF,63,2,32,,0,1,1,{},{},{}
-62401,Ancient_Sandals,古老的 被盗的凉鞋,4,1,,50,,10,,0,0xFFFFFFFF,63,2,64,,0,1,0,{},{},{}
-62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,0,0,0,{ callfunc "F_TRAIN_GOD_POWER_02"; },{},{}
-62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,1,0,0,{ autobonus2 "{ #aaaa++;  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}
-62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,50,,10,,0,0xFFFFFFFF,63,2,256,,0,1,6,{ autobonus2 "{ #bbbb++;  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}
-62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,,0,0,82,{},{},{}
+62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,,0,0,57,{ callfunc("F_ATTACKED_COUNT_HEAD_LOW"); },{},{}
+61201,Ancient_Knife,古老的 破裂的剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{ callfunc("F_ATTACKED_COUNT_HAND_R"); },{},{}
+61202,Ancient_Shuriken,古老的 破旧之手里剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{ callfunc("F_ATTACKED_COUNT_HAND_R"); },{},{}
+61550,Ancient_Book,古老的 撕裂的魔法书,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,15,{ callfunc("F_ATTACKED_COUNT_HAND_R"); },{},{}
+63104,Ancient_Garrison,古老的 残破的枪械残骸,5,1,,50,20,,7,0,0xFFFFFFFF,63,2,34,1,1,1,17,{ callfunc("F_ATTACKED_COUNT_HAND_R"); },{},{}
+62501,Ancient_Hood,古老的 破旧的围巾,4,1,,50,,10,,0,0xFFFFFFFF,63,2,4,,0,1,0,{ callfunc("F_ATTACKED_COUNT_ARMOR"); },{},{}
+62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{  callfunc("F_ATTACKED_COUNT_GARMENT");  },{},{}
+62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{ callfunc "F_ATTACKED_COUNT_GARMENT"; },{},{}
+62101,Ancient_Guard,古老的 破裂的硬壳,4,1,,50,,10,,0,0xFFFFFFFF,63,2,32,,0,1,1,{ callfunc("F_ATTACKED_COUNT_HAND_L"); },{},{}
+62401,Ancient_Sandals,古老的 被盗的凉鞋,4,1,,50,,10,,0,0xFFFFFFFF,63,2,64,,0,1,0,{ callfunc("F_ATTACKED_COUNT_SHOES"); },{},{}
+62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,0,0,0,{ callfunc("F_ATTACKED_COUNT_ACC_R"); },{},{}
+62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,1,0,0,{},{},{}
+62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,50,,10,,0,0xFFFFFFFF,63,2,256,,0,1,6,{ callfunc("F_ATTACKED_COUNT_HEAD_TOP"); },{},{}
+62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,,0,0,82,{ callfunc("F_ATTACKED_COUNT_HEAD_MID"); },{},{}
+
