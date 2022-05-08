@@ -126,26 +126,26 @@ function	script	F_TRAIN_GOD_POWER_02	{
 // - param: equipment_slot 正在装备的槽位
 // - return: 无参数
 function	script	F_CHECK_AND_UNEQUIP_GOD	{
-	.@equipment_slot$ = getarg(0);
+	@equipment_slot = getarg(0);
 	
 	// 头上
-	if (.@equipment_slot$ != EQI_HEAD_TOP && getequipid(EQI_HEAD_TOP) == 62211) {
+	if (@equipment_slot != EQI_HEAD_TOP && getequipid(EQI_HEAD_TOP) == 62211) {
 		unequip(EQI_HEAD_TOP);
 
 	// 头中
-	} else if (.@equipment_slot$ != EQI_HEAD_MID && getequipid(EQI_HEAD_MID) == 62211) {
+	} else if (@equipment_slot != EQI_HEAD_MID && getequipid(EQI_HEAD_MID) == 62211) {
 		unequip(EQI_HEAD_MID);
 
 	// 头下
-	} else if (.@equipment_slot$ != EQI_HEAD_LOW && getequipid(EQI_HEAD_LOW) == 62211) {
+	} else if (@equipment_slot != EQI_HEAD_LOW && getequipid(EQI_HEAD_LOW) == 62211) {
 		unequip(EQI_HEAD_LOW);
 	
 	// 披肩
-	} else if (.@equipment_slot$ != EQI_ARMOR && getequipid(EQI_ARMOR) == 62501) {
+	} else if (@equipment_slot != EQI_ARMOR && getequipid(EQI_ARMOR) == 62501) {
 		unequip(EQI_ARMOR);
 
 	// 装饰品
-	} else if (.@equipment_slot$ != EQI_ACC_L && getequipid(EQI_ACC_L) == 62612) {
+	} else if (@equipment_slot != EQI_ACC_L && getequipid(EQI_ACC_L) == 62612) {
 		unequip(EQI_ACC_L);
 
 	} else {

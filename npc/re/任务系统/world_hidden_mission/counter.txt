@@ -8,47 +8,44 @@ function	script	F_START_COUNTER_BY_EQI	{
 
 // 卸载修炼装备时计数器清零
 function	script	F_CLEAR_COUNTER_BY_UNEQI	{
-    .@equipment_slot$ = getarg(0);
-    .@tips$ = true;
-    dispbottom ".@equipment_slot$=" + .@equipment_slot$;
-    dispbottom "EQI_HEAD_TOP=" + EQI_HEAD_TOP;
-    dispbottom "1111";
-    if (.@equipment_slot$ == EQI_HEAD_TOP) {
-        dispbottom "3333";
-        set #AC_ACC_L, 0;
-        dispbottom "2222";
-    } else if (.@equipment_slot$ == EQI_HEAD_MID) {
+    @equipment_slot = getarg(0);
+    @tips = true;
+    
+    if (@equipment_slot == EQI_HEAD_TOP) {
+        set #AC_HEAD_TOP, 0;
+
+    } else if (@equipment_slot == EQI_HEAD_MID) {
         set #AC_HEAD_MID, 0;
 
-    } else if (.@equipment_slot$ == EQI_HEAD_LOW) {
+    } else if (@equipment_slot == EQI_HEAD_LOW) {
         set #AC_HEAD_LOW, 0;
 
-    } else if (.@equipment_slot$ == EQI_GARMENT) {
+    } else if (@equipment_slot == EQI_GARMENT) {
         set #AC_GARMENT, 0;
 
-    } else if (.@equipment_slot$ == EQI_HAND_R) {
+    } else if (@equipment_slot == EQI_HAND_R) {
         set #AC_HAND_R, 0;
 
-    } else if (.@equipment_slot$ == EQI_HAND_L) {
+    } else if (@equipment_slot == EQI_HAND_L) {
         set #AC_HAND_L, 0;
 
-    } else if (.@equipment_slot$ == EQI_ARMOR) {
+    } else if (@equipment_slot == EQI_ARMOR) {
         set #AC_ARMOR, 0;
 
-    } else if (.@equipment_slot$ == EQI_SHOES) {
+    } else if (@equipment_slot == EQI_SHOES) {
         set #AC_SHOES, 0;
 
-    } else if (.@equipment_slot$ == EQI_ACC_R) {
+    } else if (@equipment_slot == EQI_ACC_R) {
         set #AC_ACC_R, 0;
 
-    } else if (.@equipment_slot$ == EQI_ACC_L) {
+    } else if (@equipment_slot == EQI_ACC_L) {
         set #AC_ACC_L, 0;
 
     } else {
-        .@tips$ = false;
+        @tips = false;
     }
 
-    if (.@tips$ == true) {
+    if (@tips == true) {
         dispbottom "修炼中止!";
     }
 }
