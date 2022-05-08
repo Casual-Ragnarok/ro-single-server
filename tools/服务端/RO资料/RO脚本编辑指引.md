@@ -29,7 +29,7 @@ NPC 脚本基本格式：
 
 其中：
 
-- 面对方向、类型、名称、造型 之间为制表符`	`（`\t`）
+- 面对方向、类型、名称、造型 之间**必须**为制表符`	`（`\t`）
 - 地图名称： 可以在 [RO321](http://ro.ro321.com/index.php?page=areainfo&area=5999) 查询，也可以进入游戏输入命令 `/where` 可查当前地图英文名，
 - 类型：只有两个可选值，`shop` 表示商店，`script` 表示脚本。
 - 造型：造型编号可参考《[AzureFlame](http://www.usamimi.info/~blaze/npc/npc_all.html)》、或《[Eathena.net脚本指令大全.chm](./Eathena.net脚本指令大全.chm)》中【其他资料】的【NPC 代码一览表】，但注意不要选客户端没有的造型，否则会报错。另外，若造型编号为 `-1` 表示为事件，可以被其他命令调用；类型为 `shop` 的造型不可为 `-1`。
@@ -47,14 +47,14 @@ NPC 脚本基本格式：
 1. `shop` 商店脚本：此 NPC 被点击后出现一个卖红、黄药水的商店：
 
 ```
-prontera,167,204,6 shop 特惠店     96,501:20,502:30
+prontera,167,204,6 shop 特惠店  96,501:20,502:30
 ```
 
 
 2. `script` 常规脚本：此 NPC 被点击后出现一个内容为 “脚本例子” 的窗口：
 
 ```
-prontera,167,204,6 script 测试脚本     96,{
+prontera,167,204,6 script   测试脚本    96,{
     mes "脚本例子";
     close;
 }
@@ -64,7 +64,7 @@ prontera,167,204,6 script 测试脚本     96,{
 3. `script` 触发式脚本：在玩家进入其坐标上下左右各 10 （最大值为 20）的范围内将出现一个内容为 “脚本例子” 的窗口：
 
 ```
-prontera,167,204,6 script 测试脚本     96,10,10,{
+prontera,167,204,6 script   测试脚本  96,10,10,{
     mes "脚本例子";
     close;
 }
@@ -433,7 +433,7 @@ prontera.gat,146,192,4 script 重置辅助人员 763,{
 //   set Zeny,Zeny+200000; 表示增加200000块钱
 //   特别需要注意的是你的 goto 语句，如果出现错误可能会使服务器当机，特别要注意大小写
 
-prontera.gat,155,174,4 script 发钱的hack 706,{
+prontera.gat,155,174,4  script   发钱的hack 706,{
     mes "[发钱的hack]";
     mes "嘿嘿！哇呀呀！";
     mes "我是^5577FF发钱的hack^000000。";
