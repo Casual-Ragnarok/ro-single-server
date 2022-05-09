@@ -78,12 +78,12 @@ function	script	F_ATTACKED_COUNT_HEAD_LOW	{
     autobonus2 "{ #AC_HEAD_LOW++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
-// EQI_GARMENT 铠甲：被攻击时计数器+1
-function	script	F_ATTACKED_COUNT_GARMENT	{
+// EQI_ARMOR 铠甲：被攻击时计数器+1
+function	script	F_ATTACKED_COUNT_ARMOR	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_GARMENT++; }", @tri_rate, @tri_duration, @tri_event, "{}";
+    autobonus2 "{ #AC_ARMOR++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_HAND_R 右手（武器）：攻击时计数器+1
@@ -102,12 +102,12 @@ function	script	F_ATTACKED_COUNT_HAND_L	{
     autobonus2 "{ #AC_HAND_L++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
-// EQI_ARMOR 披肩：被攻击时计数器+1
-function	script	F_ATTACKED_COUNT_ARMOR	{
+// EQI_GARMENT 披肩：被攻击时计数器+1
+function	script	F_ATTACKED_COUNT_GARMENT	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_ARMOR++; }", @tri_rate, @tri_duration, @tri_event, "{}";
+    autobonus2 "{ #AC_GARMENT++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_SHOES 鞋子：被攻击时计数器+1

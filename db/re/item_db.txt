@@ -28,7 +28,6 @@
 //   - EQI_ARMOR (7)             - Armor (jackets, robes)
 //   - EQI_HAND_L (8)            - Left hand (weapons, shields)
 //   - EQI_HAND_R (9)            - Right hand (weapons)
-//   - EQI_AMMO (14)    		 - Arrow/Ammunition
 //
 // 关于Script字段的提示:
 // - 有三种类型脚本：

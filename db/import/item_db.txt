@@ -1288,8 +1288,8 @@
 62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,50,,10,,0,0xFFFFFFFF,63,2,256,,0,1,6,{ callfunc("F_ATTACKED_COUNT_HEAD_TOP"); },{ callfunc("f_start_count_by_oneqi",EQI_HEAD_TOP); },{ callfunc("f_clear_count_by_uneqi",EQI_HEAD_TOP); }
 62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,,0,0,82,{ callfunc("F_ATTACKED_COUNT_HEAD_MID"); },{ callfunc("f_start_count_by_oneqi",EQI_HEAD_MID); },{ callfunc("f_clear_count_by_uneqi",EQI_HEAD_MID); }
 62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,,0,0,57,{ callfunc("F_ATTACKED_COUNT_HEAD_LOW"); },{ callfunc("f_start_count_by_oneqi",EQI_HEAD_LOW); },{ callfunc("f_clear_count_by_uneqi",EQI_HEAD_LOW); }
-62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{ callfunc("F_ATTACKED_COUNT_GARMENT"); },{ callfunc("f_start_count_by_oneqi",EQI_GARMENT); },{ callfunc("f_clear_count_by_uneqi",EQI_GARMENT); }
-62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{ callfunc "F_ATTACKED_COUNT_GARMENT"; },{ callfunc("f_start_count_by_oneqi",EQI_GARMENT); },{ callfunc("f_clear_count_by_uneqi",EQI_GARMENT); }
+62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{ callfunc("F_ATTACKED_COUNT_ARMOR"); },{ callfunc("f_start_count_by_oneqi",EQI_ARMOR); },{ callfunc("f_clear_count_by_uneqi",EQI_ARMOR); }
+62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{ callfunc "F_ATTACKED_COUNT_ARMOR"; },{ callfunc("f_start_count_by_oneqi",EQI_ARMOR); },{ callfunc("f_clear_count_by_uneqi",EQI_ARMOR); }
 61201,Ancient_Knife,古老的 破裂的剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
 61202,Ancient_Shuriken,古老的 破旧之手里剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
 61550,Ancient_Book,古老的 撕裂的魔法书,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,15,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
@@ -1297,7 +1297,7 @@
 61545,Ancient_N_Mace,古老的 新手锤,5,0,,0,57,,1,3,0xFFFFFFFF,63,2,2,1,2,0,8,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
 61749,Ancient_Tourist_Bow,古老的 旅行者之弓,5,0,,50,40,,5,0,0xFFFFFFFF,63,2,34,1,1,0,11,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
 62101,Ancient_Guard,古老的 破裂的硬壳,4,1,,50,,10,,0,0xFFFFFFFF,63,2,32,,0,1,1,{ callfunc("F_ATTACKED_COUNT_HAND_L"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_L); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_L); }
-62501,Ancient_Hood,古老的 破旧的围巾,4,1,,50,,10,,0,0xFFFFFFFF,63,2,4,,0,1,0,{ callfunc("F_ATTACKED_COUNT_ARMOR"); },{ callfunc("f_start_count_by_oneqi",EQI_ARMOR); },{ callfunc("f_clear_count_by_uneqi",EQI_ARMOR); }
+62501,Ancient_Hood,古老的 破旧的围巾,4,1,,50,,10,,0,0xFFFFFFFF,63,2,4,,0,1,0,{ callfunc("F_ATTACKED_COUNT_GARMENT"); },{ callfunc("f_start_count_by_oneqi",EQI_GARMENT); },{ callfunc("f_clear_count_by_uneqi",EQI_GARMENT); }
 62401,Ancient_Sandals,古老的 被盗的凉鞋,4,1,,50,,10,,0,0xFFFFFFFF,63,2,64,,0,1,0,{ callfunc("F_ATTACKED_COUNT_SHOES"); },{ callfunc("f_start_count_by_oneqi",EQI_SHOES); },{ callfunc("f_clear_count_by_uneqi",EQI_SHOES); }
 62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,8,,0,0,0,{ callfunc("F_ATTACKED_COUNT_ACC_R"); },{ callfunc("f_start_count_by_oneqi",EQI_ACC_R); },{ callfunc("f_clear_count_by_uneqi",EQI_ACC_R); }
 62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,128,,1,0,0,{ callfunc("F_ATTACKED_COUNT_ACC_R"); },{ callfunc("f_start_count_by_oneqi",EQI_ACC_L); },{ callfunc("f_clear_count_by_uneqi",EQI_ACC_L); }
