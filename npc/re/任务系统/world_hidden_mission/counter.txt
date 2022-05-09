@@ -2,12 +2,14 @@
 
 
 // 装备修炼装备时开始计数
-function	script	F_START_COUNTER_BY_EQI	{
+function	script	f_start_count_by_oneqi	{
+    @equipment_slot = getarg(0);
+    callfunc("f_un_god_equipments", @equipment_slot);  // 卸载其他神装
     dispbottom "修炼开始!";
 }
 
 // 卸载修炼装备时计数器清零
-function	script	F_CLEAR_COUNTER_BY_UNEQI	{
+function	script	f_clear_count_by_uneqi	{
     @equipment_slot = getarg(0);
     @tips = true;
     
@@ -50,83 +52,86 @@ function	script	F_CLEAR_COUNTER_BY_UNEQI	{
     }
 }
 
+/* ==================== 通用计数器 ====================== */
 
 // EQI_HEAD_TOP 头上：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_HEAD_TOP	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_HEAD_TOP++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_HEAD_TOP++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_HEAD_MID 头中：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_HEAD_MID	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_HEAD_MID++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_HEAD_MID++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_HEAD_LOW 头下：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_HEAD_LOW	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_HEAD_LOW++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_HEAD_LOW++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_GARMENT 铠甲：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_GARMENT	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_GARMENT++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_GARMENT++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_HAND_R 右手（武器）：攻击时计数器+1
 function	script	F_ATTACK_COUNT_HAND_R	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（进行 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus "{ #AC_HAND_R++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    // BF_XXX: 触发时机（进行 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus "{ #AC_HAND_R++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_HAND_L 左手（盾牌）：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_HAND_L	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_HAND_L++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_HAND_L++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_ARMOR 披肩：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_ARMOR	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_ARMOR++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_ARMOR++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_SHOES 鞋子：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_SHOES	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_SHOES++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_SHOES++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_ACC_R 装饰品（右）：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_ACC_R	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_ACC_R++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_ACC_R++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
 
 // EQI_ACC_L 装饰品（左）：被攻击时计数器+1
 function	script	F_ATTACKED_COUNT_ACC_L	{
-    // 1000: 100.0% 触发
-    // 1: 触发时长为 1 ms，不能为 0，否则无法计数
-    // BF_xxx: 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
-    autobonus2 "{ #AC_ACC_L++; }", 1000, 1, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL, "{}";
+    @tri_rate = 1000;   // 100.0% 触发
+    @tri_duration = 1;  // 触发时长为 1 ms，不能为 0，否则无法计数
+    @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
+    autobonus2 "{ #AC_ACC_L++; }", @tri_rate, @tri_duration, @tri_event, "{}";
 }
+
+// ==========================================

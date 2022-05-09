@@ -1,0 +1,20 @@
+OnPCDieEvent:
+	if ( strcharinfo(3) != .eventmap$ || !getcharid(1) ) end;
+	if ( getcharid(1) != .party_id ) end;
+	getpartymember .party_id, 1;
+	getpartymember .party_id, 2;
+	for ( .@i = 0; .@i < $@partymembercount; .@i++ ) {
+		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
+			attachrid $@partymemberaid[.@i];
+			if ( strcharinfo(3) == .eventmap$ && hp > 0 )
+				.@alive++;
+		}
+	}
+	if ( .@less_one )
+		.@alive--;
+	if ( !.@alive ) {
+		mapannounce .eventmap$, "Party wiped!", bc_map;
+		sleep 10000;
+		awake strnpcinfo(0);
+	}
+	end;
