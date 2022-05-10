@@ -3,9 +3,9 @@
 
 // 装备修炼装备时开始计数
 function	script	f_start_count_by_oneqi	{
-    @equipment_slot = getarg(0);
-    callfunc("f_un_god_equipments", @equipment_slot);  // 卸载其他神装
-    dispbottom "修炼开始!";
+    @keep_equipment_slot = getarg(0);
+    callfunc("f_un_god_equipments", @keep_equipment_slot);  // 卸载其他神装
+    dispbottom "修炼开始! 请勿轻易脱下装备，否则修炼进度归零!";
 }
 
 // 卸载修炼装备时计数器清零
