@@ -59,16 +59,6 @@ function	script	F_TRAIN_GOD_POWER_02	{
 	return;
 }
 
-// EQI_ACC_L (0)             - Accessory 1
-// EQI_ACC_R (1)             - Accessory 2
-// EQI_SHOES (2)             - Footgear (shoes, boots)
-// EQI_GARMENT (3)           - Garment (mufflers, hoods, manteaux)
-// EQI_HEAD_LOW (4)          - Lower Headgear (beards, some masks)
-// EQI_HEAD_MID (5)          - Middle Headgear (masks, glasses)
-// EQI_HEAD_TOP (6)          - Upper Headgear
-// EQI_ARMOR (7)             - Armor (jackets, robes)
-// EQI_HAND_L (8)            - Left hand (weapons, shields)
-// EQI_HAND_R (9)            - Right hand (weapons)
 
 // 卸下身上已装备的其他神赐体质的修炼装备（非武器）:
 //   除武器外，所有神装互不兼容（主要是会导致重复触发计数）

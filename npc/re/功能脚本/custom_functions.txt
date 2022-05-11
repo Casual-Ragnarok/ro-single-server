@@ -15,7 +15,7 @@ function	script	F_PLAYER_ID	{
 // - param: 无参数
 // - return: 玩家名称
 function	script	F_PLAYER_NAME	{
-	set @player_name$,strcharinfo(0);
+	set @player_name$, strcharinfo(0);
 	return @player_name$;
 }
 
@@ -24,7 +24,7 @@ function	script	F_PLAYER_NAME	{
 // - param: 无参数
 // - return: 玩家权限值（group_id）
 function	script	F_PLAYER_GMLV	{
-	set @player_gmlv,getgmlevel();
+	set @player_gmlv, getgmlevel();
 	return @player_gmlv;
 }
 
