@@ -12,6 +12,51 @@
 
 // 过图，穿上任意装备，都会触发判断，若对应位置没有装备，则会报错，但不影响游戏
 
+
+// 卸下身上已装备的其他神赐体质的修炼装备（非武器）:
+//   除武器外，所有神装互不兼容（主要是会导致重复触发计数）
+//============================================================ 
+// - param: @keep_equipment_slot 正在装备的槽位
+// - return: 无参数
+function	script	f_un_god_equipments	{
+	@keep_equipment_slot = getarg(0);
+
+	if (@keep_equipment_slot != EQI_HAND_R) {
+		@keep_equip_id = getequipid(@keep_equipment_slot);
+		
+		if (@keep_equipment_slot != EQI_HEAD_TOP && getequipid(EQI_HEAD_TOP) == 62211) { unequip(EQI_HEAD_TOP); }
+		if (@keep_equipment_slot != EQI_HEAD_MID && getequipid(EQI_HEAD_MID) == 62295) { unequip(EQI_HEAD_MID); }
+		if (@keep_equipment_slot != EQI_HEAD_LOW && getequipid(EQI_HEAD_LOW) == 62270) { unequip(EQI_HEAD_LOW); }
+		if (@keep_equipment_slot != EQI_ARMOR && (getequipid(EQI_ARMOR) == 62301 || getequipid(EQI_ARMOR) == 62328)) { unequip(EQI_ARMOR); }
+		if (@keep_equipment_slot != EQI_HAND_L && getequipid(EQI_HAND_L) == 62101) { unequip(EQI_HAND_L); }
+		if (@keep_equipment_slot != EQI_GARMENT && getequipid(EQI_GARMENT) == 62501) { unequip(EQI_GARMENT); }
+		if (@keep_equipment_slot != EQI_SHOES && getequipid(EQI_SHOES) == 62401) { unequip(EQI_SHOES); }
+		if (@keep_equipment_slot != EQI_ACC_R && getequipid(EQI_ACC_R) == 62612) { unequip(EQI_ACC_R); }
+		if (@keep_equipment_slot != EQI_ACC_L && getequipid(EQI_ACC_L) == 62627) { unequip(EQI_ACC_L); }
+
+		equip(@keep_equip_id);	// 处理循环触发卸载的问题
+	}
+	return;
+}
+
+
+// 神赐体质修炼检查 - 无限攻击加速
+//============================================================ 
+// - param: 无参数
+// - return: （达成修炼条件后）是否破坏当前装备并获取新装备？
+function	script	f_check_aspd	{
+	bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",5,512,0,SC_INCFLEE2;
+	skilleffect "EF_LVUP",0;
+
+	@LIMIT_ASPD = 10000;
+	if (#AC_HAND_R >= @LIMIT_ASPD) {
+		dispbottom "【世界隐藏任务】达成修炼条件！获得神赐体质： ASPD 199";
+		@equip_id = getequipid(EQI_HAND_R);
+		delitem @equip_id, 1;
+	}
+	return;
+}
+
 // 修炼神赐体质01 - 完全回避
 //============================================================ 
 // - param: 无参数
@@ -58,60 +103,3 @@ function	script	F_TRAIN_GOD_POWER_02	{
 	// "■■ 火免疫 ■■ 毒无效 ■■";
 	return;
 }
-
-
-// 卸下身上已装备的其他神赐体质的修炼装备（非武器）:
-//   除武器外，所有神装互不兼容（主要是会导致重复触发计数）
-//============================================================ 
-// - param: @keep_equipment_slot 正在装备的槽位
-// - return: 无参数
-function	script	f_un_god_equipments	{
-	@keep_equipment_slot = getarg(0);
-
-	if (@keep_equipment_slot != EQI_HAND_R) {
-		@keep_equip_id = getequipid(@keep_equipment_slot);
-		
-		if (@keep_equipment_slot != EQI_HEAD_TOP && getequipid(EQI_HEAD_TOP) == 62211) { unequip(EQI_HEAD_TOP); }
-		if (@keep_equipment_slot != EQI_HEAD_MID && getequipid(EQI_HEAD_MID) == 62295) { unequip(EQI_HEAD_MID); }
-		if (@keep_equipment_slot != EQI_HEAD_LOW && getequipid(EQI_HEAD_LOW) == 62270) { unequip(EQI_HEAD_LOW); }
-		if (@keep_equipment_slot != EQI_ARMOR && (getequipid(EQI_ARMOR) == 62301 || getequipid(EQI_ARMOR) == 62328)) { unequip(EQI_ARMOR); }
-		if (@keep_equipment_slot != EQI_HAND_L && getequipid(EQI_HAND_L) == 62101) { unequip(EQI_HAND_L); }
-		if (@keep_equipment_slot != EQI_GARMENT && getequipid(EQI_GARMENT) == 62501) { unequip(EQI_GARMENT); }
-		if (@keep_equipment_slot != EQI_SHOES && getequipid(EQI_SHOES) == 62401) { unequip(EQI_SHOES); }
-		if (@keep_equipment_slot != EQI_ACC_R && getequipid(EQI_ACC_R) == 62612) { unequip(EQI_ACC_R); }
-		if (@keep_equipment_slot != EQI_ACC_L && getequipid(EQI_ACC_L) == 62627) { unequip(EQI_ACC_L); }
-
-		equip(@keep_equip_id);	// 处理循环触发卸载的问题
-	}
-	return;
-}
-
-/*
-62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,50,,10,,0,0xFFFFFFFF,63,2,256,,0,1,6,{ callfunc("F_ATTACKED_COUNT_HEAD_TOP"); },{ callfunc("f_start_count_by_oneqi",EQI_HEAD_TOP); },{ callfunc("f_clear_count_by_uneqi",EQI_HEAD_TOP); }
-62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,,0,0,82,{ callfunc("F_ATTACKED_COUNT_HEAD_MID"); },{ callfunc("f_start_count_by_oneqi",EQI_HEAD_MID); },{ callfunc("f_clear_count_by_uneqi",EQI_HEAD_MID); }
-62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,,0,0,57,{ callfunc("F_ATTACKED_COUNT_HEAD_LOW"); },{ callfunc("f_start_count_by_oneqi",EQI_HEAD_LOW); },{ callfunc("f_clear_count_by_uneqi",EQI_HEAD_LOW); }
-62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{ callfunc("F_ATTACKED_COUNT_ARMOR"); },{ callfunc("f_start_count_by_oneqi",EQI_ARMOR); },{ callfunc("f_clear_count_by_uneqi",EQI_ARMOR); }
-62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{ callfunc "F_ATTACKED_COUNT_ARMOR"; },{ callfunc("f_start_count_by_oneqi",EQI_ARMOR); },{ callfunc("f_clear_count_by_uneqi",EQI_ARMOR); }
-61201,Ancient_Knife,古老的 破裂的剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
-61202,Ancient_Shuriken,古老的 破旧之手里剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
-61550,Ancient_Book,古老的 撕裂的魔法书,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,15,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
-63104,Ancient_Garrison,古老的 残破的枪械残骸,5,1,,50,20,,7,0,0xFFFFFFFF,63,2,34,1,1,1,17,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
-61545,Ancient_N_Mace,古老的 新手锤,5,0,,0,57,,1,3,0xFFFFFFFF,63,2,2,1,2,0,8,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
-61749,Ancient_Tourist_Bow,古老的 旅行者之弓,5,0,,50,40,,5,0,0xFFFFFFFF,63,2,34,1,1,0,11,{ callfunc("F_ATTACK_COUNT_HAND_R"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_R); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_R); }
-62101,Ancient_Guard,古老的 破裂的硬壳,4,1,,50,,10,,0,0xFFFFFFFF,63,2,32,,0,1,1,{ callfunc("F_ATTACKED_COUNT_HAND_L"); },{ callfunc("f_start_count_by_oneqi",EQI_HAND_L); },{ callfunc("f_clear_count_by_uneqi",EQI_HAND_L); }
-62501,Ancient_Hood,古老的 破旧的围巾,4,1,,50,,10,,0,0xFFFFFFFF,63,2,4,,0,1,0,{ callfunc("F_ATTACKED_COUNT_GARMENT"); },{ callfunc("f_start_count_by_oneqi",EQI_GARMENT); },{ callfunc("f_clear_count_by_uneqi",EQI_GARMENT); }
-62401,Ancient_Sandals,古老的 被盗的凉鞋,4,1,,50,,10,,0,0xFFFFFFFF,63,2,64,,0,1,0,{ callfunc("F_ATTACKED_COUNT_SHOES"); },{ callfunc("f_start_count_by_oneqi",EQI_SHOES); },{ callfunc("f_clear_count_by_uneqi",EQI_SHOES); }
-62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,8,,0,0,0,{ callfunc("F_ATTACKED_COUNT_ACC_R"); },{ callfunc("f_start_count_by_oneqi",EQI_ACC_R); },{ callfunc("f_clear_count_by_uneqi",EQI_ACC_R); }
-62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,128,,1,0,0,{ callfunc("F_ATTACKED_COUNT_ACC_R"); },{ callfunc("f_start_count_by_oneqi",EQI_ACC_L); },{ callfunc("f_clear_count_by_uneqi",EQI_ACC_L); }
-*/
-
-//   - EQI_ACC_L (0)             - Accessory 1
-//   - EQI_ACC_R (1)             - Accessory 2
-//   - EQI_SHOES (2)             - Footgear (shoes, boots)
-//   - EQI_GARMENT (3)           - Garment (mufflers, hoods, manteaux)
-//   - EQI_HEAD_LOW (4)          - Lower Headgear (beards, some masks)
-//   - EQI_HEAD_MID (5)          - Middle Headgear (masks, glasses)
-//   - EQI_HEAD_TOP (6)          - Upper Headgear
-//   - EQI_ARMOR (7)             - Armor (jackets, robes)
-//   - EQI_HAND_L (8)            - Left hand (weapons, shields)
-//   - EQI_HAND_R (9)            - Right hand (weapons)
