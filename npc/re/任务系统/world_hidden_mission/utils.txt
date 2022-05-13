@@ -44,18 +44,55 @@ function	script	f_un_god_equipments	{
 //============================================================ 
 // - param: 无参数
 // - return: （达成修炼条件后）是否破坏当前装备并获取新装备？
-function	script	f_check_aspd	{
-	bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",5,512,0,SC_INCFLEE2;
-	skilleffect "EF_LVUP",0;
+function	script	F_CHECK_HAND_R	{
+	@equip_id = getequipid(EQI_HAND_R);
 
-	@LIMIT_ASPD = 10000;
-	if (#AC_HAND_R >= @LIMIT_ASPD) {
-		dispbottom "【世界隐藏任务】达成修炼条件！获得神赐体质： ASPD 199";
-		@equip_id = getequipid(EQI_HAND_R);
-		delitem @equip_id, 1;
+	// 古老的 破裂的剑
+	if (@equip_id == 61201) {
+		dispbottom "古老的 破裂的剑";
+
+	// 古老的 破旧之手里剑
+	} else if (@equip_id == 61202) {
+		dispbottom "古老的 破旧之手里剑";
+
+	// 古老的 撕裂的魔法书
+	} else if (@equip_id == 61550) {
+		dispbottom "古老的 撕裂的魔法书";
+
+	// 古老的 残破的枪械残骸
+	} else if (@equip_id == 63104) {
+		dispbottom "古老的 残破的枪械残骸";
+
+	// 古老的 新手锤
+	} else if (@equip_id == 61545) {
+		dispbottom "古老的 新手锤";
+
+	// 古老的 旅行者之弓
+	} else if (@equip_id == 61749) {
+		dispbottom "古老的 旅行者之弓";
+
+	// 古老的 连发弓
+	} else if (@equip_id == 61736) {
+		dispbottom "古老的 连发弓";
 	}
 	return;
 }
+
+function	script	f_check_aspd	{
+	// 检查 ASPD
+	@LIMIT_ASPD = 10000;
+	if (#AC_HAND_R >= @LIMIT_ASPD) {
+		dispbottom "【世界隐藏任务】达成修炼条件！获得神赐体质： ASPD 199";
+		delitem @equip_id, 1;
+
+		// 获得道具 getitem
+		// 获得效果	bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",5,512,0,SC_INCFLEE2;
+		// 获得效果展示	skilleffect "HP_ASSUMPTIO",0;
+	}
+	return;
+}
+
+
 
 // 修炼神赐体质01 - 完全回避
 //============================================================ 
