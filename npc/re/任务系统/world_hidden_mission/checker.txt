@@ -61,7 +61,7 @@ function	script	F_CHECK_HAND_R	{
 		callfunc("f_check_atk");
 
 	// 古老的 特别的剑
-	} else if (@equip_id == 67595) {
+	} else if (@equip_id == 62222) {
 		callfunc("f_check_aspd");
 
 	// 古老的 破旧之手里剑
@@ -96,7 +96,7 @@ function	script	F_CHECK_HAND_L	{
 		callfunc("f_check_def");
 
 	// 古老的 特别的盾牌
-	} else if (@equip_id == 67596) {
+	} else if (@equip_id == 63333) {
 		callfunc("f_check_mdef");
 	}
 	return;
@@ -165,18 +165,6 @@ function	script	f_check_atkrange	{
 
 function	script	f_check_cast	{
 	dispbottom "f_check_cast";
-	return;
-}
-
-
-function	script	f_check_def	{
-	dispbottom "f_check_def";
-	return;
-}
-
-
-function	script	f_check_mdef	{
-	dispbottom "f_check_mdef";
 	return;
 }
 
