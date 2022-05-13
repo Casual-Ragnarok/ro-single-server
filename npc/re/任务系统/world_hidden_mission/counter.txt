@@ -5,7 +5,7 @@
 function	script	f_start_count_by_oneqi	{
     @keep_equipment_slot = getarg(0);
     callfunc("f_un_god_equipments", @keep_equipment_slot);  // 卸载其他神装
-    dispbottom "【世界隐藏任务】修炼开始! 请勿轻易脱下装备，否则修炼进度归零!";
+    dispbottom "【世界隐藏任务】修炼开始! 请勿轻易脱下装备，否则修炼进度归零!（一次只能选修一个部位）";
 }
 
 // 卸下身上已装备的其他【神之力】的修炼装备（非武器）:
