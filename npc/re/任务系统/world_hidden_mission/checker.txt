@@ -1,0 +1,84 @@
+// ===== 【世界隐藏任务】【神之力】：修炼条件检查器 ================================ 
+
+
+
+// 【神之力】修炼检查: EQI_HAND_R 右手（武器）
+//============================================================ 
+// - param: 无参数
+// - return: 
+function	script	F_CHECK_HAND_R	{
+	@equip_id = getequipid(EQI_HAND_R);
+
+	// 古老的 破裂的剑
+	if (@equip_id == 61201) {
+		callfunc("f_check_atk");
+
+	// 古老的 破旧之手里剑
+	} else if (@equip_id == 61202) {
+		callfunc("f_check_cri");
+
+	// 古老的 撕裂的魔法书
+	} else if (@equip_id == 61550) {
+		callfunc("f_check_matk");
+
+	// 古老的 战争长矛
+	} else if (@equip_id == 61410) {
+		callfunc("f_check_aspd");
+
+	// 古老的 新手锤
+	} else if (@equip_id == 61545) {
+		callfunc("f_check_atk");
+
+	// 古老的 旅行者之弓
+	} else if (@equip_id == 61749) {
+		callfunc("f_check_hit");
+
+	// 古老的 连发弓
+	} else if (@equip_id == 61736) {
+		callfunc("f_check_aspd");
+	}
+	return;
+}
+
+
+function	script	f_check_aspd	{
+	dispbottom "f_check_aspd";
+
+	// 检查 ASPD
+	@LIMIT_ASPD = 10000;
+	if (#AC_HAND_R >= @LIMIT_ASPD) {
+		dispbottom "【世界隐藏任务】达成修炼条件！获得【神之力】： ASPD 199";
+		delitem @equip_id, 1;
+
+		// 获得道具 getitem
+		// 获得效果	bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",5,512,0,SC_INCFLEE2;
+		// 获得效果展示	skilleffect "HP_ASSUMPTIO",0;
+	}
+	return;
+}
+
+
+function	script	f_check_atk	{
+	dispbottom "f_check_atk";
+	return;
+}
+
+
+function	script	f_check_matk	{
+	dispbottom "f_check_atk";
+	return;
+}
+
+
+function	script	f_check_cri	{
+	dispbottom "f_check_cri";
+	return;
+}
+
+
+function	script	f_check_hit	{
+	dispbottom "f_check_hit";
+	return;
+}
+
+

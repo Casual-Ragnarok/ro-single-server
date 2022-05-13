@@ -93,7 +93,7 @@ function	script	F_MANUAL	{
 	mes "手册本身并无任何 BUFF 效果";
 	next;
 	mes "[RO 手册]";
-	menu "附加神赐体质",_TO_GOD_POWER,
+	menu "附加【神之力】",_TO_GOD_POWER,
 	     "查看权限指令",_TO_CHAR_COMMANDS,
 		 "查看常用命令",_TO_GAME_COMMANDS,
 		 "查看服务器信息",_TO_SERVER_RATES,
@@ -236,12 +236,12 @@ function	script	F_MANUAL	{
 		}
 
 		if (@god_power > 0) {
-			mes "^0000FF[" + @god_power + "] 项神赐体质？！难道是 ...^000000";
-			mes "神赐体质对人体伤害极大";
+			mes "^0000FF[" + @god_power + "] 项【神之力】？！难道是 ...^000000";
+			mes "【神之力】对人体伤害极大";
 			mes "^0000FF附加效果持续 1 hour，CD 24 hour^000000";
 
-			dispbottom "[" + @god_power + "] 项神赐体质？！难道是 ...",0xFFFF00;
-			dispbottom "神赐体质对人体伤害极大，附加效果仅持续 1 小时，之后冷却 24 小时才可以重新附加",0xFFFF00;
+			dispbottom "[" + @god_power + "] 项【神之力】？！难道是 ...",0xFFFF00;
+			dispbottom "【神之力】对人体伤害极大，附加效果仅持续 1 小时，之后冷却 24 小时才可以重新附加",0xFFFF00;
 
 		} else {
 			mes "你不是天选之子！没有附加资格！";

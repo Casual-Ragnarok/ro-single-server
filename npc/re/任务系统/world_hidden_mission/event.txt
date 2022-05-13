@@ -14,7 +14,7 @@
 		if (getequipid(EQI_HAND_R) == 61201 || 
 			getequipid(EQI_HAND_R) == 61202 || 
 			getequipid(EQI_HAND_R) == 61550 || 
-			getequipid(EQI_HAND_R) == 63104 || 
+			getequipid(EQI_HAND_R) == 61410 || 
 			getequipid(EQI_HAND_R) == 61545 || 
 			getequipid(EQI_HAND_R) == 61749) { 
 			unequip(EQI_HAND_R); 
