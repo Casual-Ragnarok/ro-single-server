@@ -8,32 +8,6 @@ function	script	F_START_COUNT_ON_EQI	{
     dispbottom "【世界隐藏任务】修炼开始! 请勿轻易脱下装备，否则修炼进度归零!（一次只能选修一个部位）";
 }
 
-// 卸下身上已装备的其他【神之力】的修炼装备（非武器）:
-//   除武器外，所有神装互不兼容（主要是会导致重复触发计数）
-//============================================================ 
-// - param: @keep_equipment_slot 正在装备的槽位
-// - return: 无参数
-function	script	f_un_god_equipments	{
-	@keep_equipment_slot = getarg(0);
-
-	if (@keep_equipment_slot != EQI_HAND_R) {
-		@keep_equip_id = getequipid(@keep_equipment_slot);
-		
-		if (@keep_equipment_slot != EQI_HEAD_TOP && getequipid(EQI_HEAD_TOP) == 62211) { unequip(EQI_HEAD_TOP); }
-		if (@keep_equipment_slot != EQI_HEAD_MID && getequipid(EQI_HEAD_MID) == 62295) { unequip(EQI_HEAD_MID); }
-		if (@keep_equipment_slot != EQI_HEAD_LOW && getequipid(EQI_HEAD_LOW) == 62270) { unequip(EQI_HEAD_LOW); }
-		if (@keep_equipment_slot != EQI_ARMOR && (getequipid(EQI_ARMOR) == 62301 || getequipid(EQI_ARMOR) == 62328)) { unequip(EQI_ARMOR); }
-		if (@keep_equipment_slot != EQI_HAND_L && getequipid(EQI_HAND_L) == 62101) { unequip(EQI_HAND_L); }
-		if (@keep_equipment_slot != EQI_GARMENT && getequipid(EQI_GARMENT) == 62501) { unequip(EQI_GARMENT); }
-		if (@keep_equipment_slot != EQI_SHOES && getequipid(EQI_SHOES) == 62401) { unequip(EQI_SHOES); }
-		if (@keep_equipment_slot != EQI_ACC_R && getequipid(EQI_ACC_R) == 62612) { unequip(EQI_ACC_R); }
-		if (@keep_equipment_slot != EQI_ACC_L && getequipid(EQI_ACC_L) == 62627) { unequip(EQI_ACC_L); }
-
-		equip(@keep_equip_id);	// 处理循环触发卸载的问题
-	}
-	return;
-}
-
 
 // 卸载修炼装备时计数器清零
 function	script	F_CLEAR_COUNT_UN_EQI	{
@@ -63,6 +37,7 @@ function	script	F_CLEAR_COUNT_UN_EQI	{
 
     } else if (@equipment_slot == EQI_SHOES) {
         set #AC_SHOES, 0;
+        callfunc("f_init_reset_checkpoints");
 
     } else if (@equipment_slot == EQI_ACC_R) {
         set #AC_ACC_R, 0;

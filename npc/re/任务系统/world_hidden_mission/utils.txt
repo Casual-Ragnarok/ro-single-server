@@ -6,62 +6,193 @@
 1. 找到石碑
 2. 石碑根据意向 给与不同类型的装备 （主要因为计数冲突）
 3. 最多装备 1 件装备修炼
-
+// 过图，穿上任意装备，都会触发判断，若对应位置没有装备，则会报错，但不影响游戏
 */
 
 
-// 过图，穿上任意装备，都会触发判断，若对应位置没有装备，则会报错，但不影响游戏
+
+// 卸下身上已装备的其他【神之力】的修炼装备（非武器）:
+//   除武器外，所有神装互不兼容（主要是会导致重复触发计数）
+//============================================================ 
+// - param: @keep_equipment_slot 正在装备的槽位
+// - return: 空
+function	script	f_un_god_equipments	{
+	@keep_equipment_slot = getarg(0);
+
+	if (@keep_equipment_slot != EQI_HAND_R) {
+		@keep_equip_id = getequipid(@keep_equipment_slot);
+		
+		if (@keep_equipment_slot != EQI_HEAD_TOP && getequipid(EQI_HEAD_TOP) == 62211) { unequip(EQI_HEAD_TOP); }
+		if (@keep_equipment_slot != EQI_HEAD_MID && getequipid(EQI_HEAD_MID) == 62295) { unequip(EQI_HEAD_MID); }
+		if (@keep_equipment_slot != EQI_HEAD_LOW && getequipid(EQI_HEAD_LOW) == 62270) { unequip(EQI_HEAD_LOW); }
+		if (@keep_equipment_slot != EQI_ARMOR && (getequipid(EQI_ARMOR) == 62301 || getequipid(EQI_ARMOR) == 62328)) { unequip(EQI_ARMOR); }
+		if (@keep_equipment_slot != EQI_HAND_L && (getequipid(EQI_HAND_L) == 62101 || getequipid(EQI_HAND_L) == 63333)) { unequip(EQI_HAND_L); }
+		if (@keep_equipment_slot != EQI_GARMENT && getequipid(EQI_GARMENT) == 62501) { unequip(EQI_GARMENT); }
+		if (@keep_equipment_slot != EQI_SHOES && getequipid(EQI_SHOES) == 62401) { unequip(EQI_SHOES); }
+		if (@keep_equipment_slot != EQI_ACC_R && getequipid(EQI_ACC_R) == 62612) { unequip(EQI_ACC_R); }
+		if (@keep_equipment_slot != EQI_ACC_L && getequipid(EQI_ACC_L) == 62627) { unequip(EQI_ACC_L); }
+
+		equip(@keep_equip_id);	// 处理循环触发卸载的问题
+	}
+	return;
+}
 
 
-
-
-
-
-// 修炼【神之力】01 - 完全回避
+// 卸下身上所有【神之力】的修炼装备
 //============================================================ 
 // - param: 无参数
-// - return: （达成修炼条件后）是否破坏当前装备
-function	script	F_TRAIN_GOD_POWER_01	{
-
-	// callfunc("F_CHECK_AND_UNEQUIP_GOD", EQI_HEAD_TOP);
-	// 被攻击时计数器 + 1
-	// TODO autobonus2 有 BUG, 当多个装备都设置了autobonus2脚本且 同时受到攻击时，计数器会脏读，第一件装备被攻击计数为1，后一件为2
-	// TODO 如何判断是什么魔物发起攻击？
-
-	// 一个函数内如果有多个 autobonus2，只会第一个计数生效
-
-
-	// Todo 关于体质高速移动，可以在迷宫入口设触发点计时，1小时内攻破迷宫深处 BOSS
+// - return: 空
+function	script	f_un_all_god_equipments	{
+	if (getequipid(EQI_HEAD_TOP) == 62211) { unequip(EQI_HEAD_TOP); }
+	if (getequipid(EQI_HEAD_MID) == 62295) { unequip(EQI_HEAD_MID); }
+	if (getequipid(EQI_HEAD_LOW) == 62270) { unequip(EQI_HEAD_LOW); }
+	if (getequipid(EQI_ARMOR) == 62301 || getequipid(EQI_ARMOR) == 62328) { unequip(EQI_ARMOR); }
+	if (getequipid(EQI_HAND_L) == 62101 || getequipid(EQI_HAND_L) == 63333) { unequip(EQI_HAND_L); }
+	if (getequipid(EQI_GARMENT) == 62501) { unequip(EQI_GARMENT); }
+	if (getequipid(EQI_SHOES) == 62401) { unequip(EQI_SHOES); }
+	if (getequipid(EQI_ACC_R) == 62612) { unequip(EQI_ACC_R); }
+	if (getequipid(EQI_ACC_L) == 62627) { unequip(EQI_ACC_L); }
+	if (getequipid(EQI_HAND_R) == 61201 || 
+		getequipid(EQI_HAND_R) == 62222 || 
+		getequipid(EQI_HAND_R) == 61202 || 
+		getequipid(EQI_HAND_R) == 61550 || 
+		getequipid(EQI_HAND_R) == 67595 || 
+		getequipid(EQI_HAND_R) == 61545 || 
+		getequipid(EQI_HAND_R) == 61749 || 
+		getequipid(EQI_HAND_R) == 61736) { 
+		unequip(EQI_HAND_R); 
+	}
 	return;
 }
 
 
-function	script	F_TRAIN_GOD_POWER_02	{
-
-	callfunc("F_CHECK_AND_UNEQUIP_GOD", EQI_HEAD_TOP);
-	autobonus2 "{ #www++;  }",1000,0,BF_NORMAL|BF_SKILL,"{}";
-
-	// 神之套装不能一起修炼，装备时若身上有套装的一部分，会卸下
-	// 卸下时 获取的计数 会清零
-
-	// Todo 关于体质高速移动，可以在迷宫入口设触发点计时，1小时内攻破迷宫深处 BOSS
-	
-
-	// 绝对防御： VIT*2，限 qs 职业。 持续一小时被攻击，且没有受到伤害，同时也没有赋予伤害。
-	// 冥想：每10秒恢复最大HP 1%. 持续不动被攻击3小时
-	// 完全回避： flee2 + 1000。 限 ck lr 职业。 持续一小时被攻击，且没有受到伤害，同时也没有赋予伤害。
-	// 绝对命中： Hit + 1000 。 装备 hit - 50 不间断地攻击并命中 10000 次
-
-	// "完全回避 ■■■ 绝对命中 ■■■";
-	// "■■■ 绝对暴 ■■■ 无限攻击加速";
-	// "■■■ 无视距 ■■■ 无咏唱 ■■■";
-	// "物理无效 ■■■ 魔法无效 ■■■";
-	// "■■■ 物理反射 ■■■ 魔法反射";
-	// "高速移动 ■■■ 极速回复 ■■■";
-	// "嗜血 ■■■ 吸魔 ■■■ 无偿触媒";
-	// "■■ 极限负重 ■  ■■ ■■ ■■";
-	// "■■ 火免疫 ■■ 毒无效 ■■";
+// 初始化所有城市的游历标记
+//============================================================ 
+// - param: 无参数
+// - return: 空
+function	script	f_init_reset_checkpoints	{
+	@CITY_NUM = 36;
+	for (@i = 0; @i <= @CITY_NUM; @i++) {
+		if (@i != 15 && @i != 16) {			// 这两个地点只有 GM 可以用命令传送过去
+			#CITY_CHECKPOINTS[@i] = false;		
+		}
+	}
 	return;
 }
 
+
+// 标记已游历的城市
+//============================================================ 
+// - param: 无参数
+// - return: 空
+function	script	f_mark_city_checkpoint	{
+	@map_name$ = callfunc("F_MAP_NAME");
+	dispbottom @map_name$;
+	if (@map_name$ == "prontera") {
+		#CITY_CHECKPOINTS[0] = true;
+
+	} else if (@map_name$ == "morocc") {
+		#CITY_CHECKPOINTS[1] = true;
+
+	} else if (@map_name$ == "geffen") {
+		#CITY_CHECKPOINTS[2] = true;
+
+	} else if (@map_name$ == "payon") {
+		#CITY_CHECKPOINTS[3] = true;
+
+	} else if (@map_name$ == "alberta") {
+		#CITY_CHECKPOINTS[4] = true;
+
+	} else if (@map_name$ == "izlude") {
+		#CITY_CHECKPOINTS[5] = true;
+
+	} else if (@map_name$ == "aldebaran") {
+		#CITY_CHECKPOINTS[6] = true;
+
+	} else if (@map_name$ == "xmas") {
+		#CITY_CHECKPOINTS[7] = true;
+
+	} else if (@map_name$ == "comodo") {
+		#CITY_CHECKPOINTS[8] = true;
+
+	} else if (@map_name$ == "yuno") {
+		#CITY_CHECKPOINTS[9] = true;
+
+	} else if (@map_name$ == "amatsu") {
+		#CITY_CHECKPOINTS[10] = true;
+
+	} else if (@map_name$ == "gonryun") {
+		#CITY_CHECKPOINTS[11] = true;
+
+	} else if (@map_name$ == "umbala") {
+		#CITY_CHECKPOINTS[12] = true;
+
+	} else if (@map_name$ == "niflheim") {
+		#CITY_CHECKPOINTS[13] = true;
+
+	} else if (@map_name$ == "louyang") {
+		#CITY_CHECKPOINTS[14] = true;
+
+	} else if (@map_name$ == "jawaii") {
+		#CITY_CHECKPOINTS[17] = true;
+
+	} else if (@map_name$ == "ayothaya") {
+		#CITY_CHECKPOINTS[18] = true;
+
+	} else if (@map_name$ == "einbroch") {
+		#CITY_CHECKPOINTS[19] = true;
+
+	} else if (@map_name$ == "lighthalzen") {
+		#CITY_CHECKPOINTS[20] = true;
+
+	} else if (@map_name$ == "einbech") {
+		#CITY_CHECKPOINTS[21] = true;
+
+	} else if (@map_name$ == "hugel") {
+		#CITY_CHECKPOINTS[22] = true;
+
+	} else if (@map_name$ == "rachel") {
+		#CITY_CHECKPOINTS[23] = true;
+
+	} else if (@map_name$ == "veins") {
+		#CITY_CHECKPOINTS[24] = true;
+
+	} else if (@map_name$ == "moscovia") {
+		#CITY_CHECKPOINTS[25] = true;
+
+	} else if (@map_name$ == "mid_camp") {
+		#CITY_CHECKPOINTS[26] = true;
+
+	} else if (@map_name$ == "manuk") {
+		#CITY_CHECKPOINTS[27] = true;
+
+	} else if (@map_name$ == "splendide") {
+		#CITY_CHECKPOINTS[28] = true;
+
+	} else if (@map_name$ == "brasilis") {
+		#CITY_CHECKPOINTS[29] = true;
+
+	} else if (@map_name$ == "dicastes01") {
+		#CITY_CHECKPOINTS[30] = true;
+
+	} else if (@map_name$ == "mora") {
+		#CITY_CHECKPOINTS[31] = true;
+
+	} else if (@map_name$ == "dewata") {
+		#CITY_CHECKPOINTS[32] = true;
+
+	} else if (@map_name$ == "malangdo") {
+		#CITY_CHECKPOINTS[33] = true;
+
+	} else if (@map_name$ == "malaya") {
+		#CITY_CHECKPOINTS[34] = true;
+
+	} else if (@map_name$ == "eclage") {
+		#CITY_CHECKPOINTS[35] = true;
+
+	} else if (@map_name$ == "lasagna") {
+		#CITY_CHECKPOINTS[36] = true;
+	}
+	return;
+}
 

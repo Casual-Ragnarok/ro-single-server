@@ -114,12 +114,22 @@ function	script	F_CHECK_GARMENT	{
 }
 
 
+// 【神之力】修炼检查: EQI_SHOES 鞋子
+//============================================================ 
+// - param: 无参数
+// - return: 
 function	script	F_CHECK_SHOES	{
 	@equip_id = getequipid(EQI_SHOES);
+	@is_over_weight = callfunc("f_is_over_weight");
 
 	// 古老的 被盗的凉鞋
-	if (@equip_id == 62401) {
-		callfunc("f_check_speed");
+	// 修炼达成条件： 在负重 90% 的状态下游历所有城市
+	if (@equip_id == 62401 && @is_over_weight) {
+		callfunc("f_mark_city_checkpoint");				// 标记城市检查点
+		@is_ok = callfunc("f_check_city_checkpoints");	// 检查是否已游历所有城市
+		if (@is_ok == true) {
+			// TODO
+		}
 	}
 	return;
 }
@@ -231,6 +241,7 @@ function	script	f_check_flee	{
 
 function	script	f_check_speed	{
 	dispbottom "f_check_speed";
+	callfunc("f_mark_city_checkpoint");
 	return;
 }
 
@@ -280,3 +291,17 @@ function	script	f_is_over_weight	{
 	dispbottom("@is_over=" + @is_over);
 	return @is_over;
 }
+
+
+function	script	f_check_city_checkpoints	{
+	@CITY_NUM = 36;
+	@is_all_ok = true;
+	for (@i = 0; @i <= @CITY_NUM; @i++) {
+		if (@i != 15 && @i != 16) {			// 这两个地点只有 GM 可以用命令传送过去
+			@is_all_ok &= #CITY_CHECKPOINTS[@i];
+		}
+	}
+	return @is_all_ok == true;
+}
+
+

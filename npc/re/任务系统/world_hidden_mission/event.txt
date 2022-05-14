@@ -1,26 +1,18 @@
-// 监听人物死亡事件：卸下所有修炼神装（以清零计数器）
--	script	#WORLD_HIDDEN_MISSION	-1,{
-	OnPCDieEvent:
-		if (getequipid(EQI_HEAD_TOP) == 62211) { unequip(EQI_HEAD_TOP); }
-		if (getequipid(EQI_HEAD_MID) == 62295) { unequip(EQI_HEAD_MID); }
-		if (getequipid(EQI_HEAD_LOW) == 62270) { unequip(EQI_HEAD_LOW); }
-		if (getequipid(EQI_ARMOR) == 62301 || getequipid(EQI_ARMOR) == 62328) { unequip(EQI_ARMOR); }
-		if (getequipid(EQI_HAND_L) == 62101 || getequipid(EQI_HAND_L) == 63333) { unequip(EQI_HAND_L); }
-		if (getequipid(EQI_GARMENT) == 62501) { unequip(EQI_GARMENT); }
-		if (getequipid(EQI_SHOES) == 62401) { unequip(EQI_SHOES); }
-		if (getequipid(EQI_ACC_R) == 62612) { unequip(EQI_ACC_R); }
-		if (getequipid(EQI_ACC_L) == 62627) { unequip(EQI_ACC_L); }
+// ===== 【世界隐藏任务】【神之力】：事件触发器 ================================ 
 
-		if (getequipid(EQI_HAND_R) == 61201 || 
-			getequipid(EQI_HAND_R) == 62222 || 
-			getequipid(EQI_HAND_R) == 61202 || 
-			getequipid(EQI_HAND_R) == 61550 || 
-			getequipid(EQI_HAND_R) == 67595 || 
-			getequipid(EQI_HAND_R) == 61545 || 
-			getequipid(EQI_HAND_R) == 61749 || 
-			getequipid(EQI_HAND_R) == 61736) { 
-			unequip(EQI_HAND_R); 
-		}
+
+// 监听世界隐藏任务事件
+-	script	#WORLD_HIDDEN_MISSION	-1,{
+
+	// 当玩家死亡时，重置所有任务进度：
+	OnPCDieEvent:
+		callfunc("f_un_all_god_equipments");	// 卸下所有修炼神装
+		callfunc("f_init_reset_checkpoints");	// 重置所有城市的游历标记
+		end;
+
+	// 当玩家状态统计数据变更时（如过图、换装备、升级等）：
+	OnPCStatCalcEvent:
+		callfunc("F_CHECK_SHOES");				// 触发并检查【神之力】鞋子的修炼进度
 		end;
 }
 
