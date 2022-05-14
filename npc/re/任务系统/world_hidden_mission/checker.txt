@@ -26,7 +26,7 @@ function	script	F_CHECK_HEAD_MID	{
 
 	// 古老的 支离破碎的布片
 	if (@equip_id == 62295) {
-		callfunc("f_check_atkrange");
+		callfunc("f_check_ignore_def");
 	}
 	return;
 }
@@ -114,11 +114,11 @@ function	script	F_CHECK_HAND_L	{
 
 	// 古老的 破裂的硬壳
 	if (@equip_id == 62101) {
-		callfunc("f_check_hp_recov");
+		callfunc("f_check_weapon_return");
 
 	// 古老的 特别的盾牌
 	} else if (@equip_id == 63333) {
-		callfunc("f_check_sp_recov");
+		callfunc("f_check_magic_return");
 	}
 	return;
 }
@@ -166,7 +166,7 @@ function	script	F_CHECK_ACC_R	{
 
 	// 古老的 破损的魔法石
 	if (@equip_id == 62612) {
-		callfunc("f_check_sp_limit");
+		callfunc("f_check_sp_recov");
 	}
 	return;
 }
@@ -181,7 +181,7 @@ function	script	F_CHECK_ACC_L	{
 
 	// 古老的 破坏的令牌
 	if (@equip_id == 62627) {
-		callfunc("f_check_hp_limit");
+		callfunc("f_check_hp_recov");
 	}
 	return;
 }
@@ -199,6 +199,8 @@ function	script	f_check_weight	{
 	@is_ok = false;
 	@weight_limit = 200;
 	@count_limit = 10000;
+	callfunc("f_show_mission_progress", EQI_HEAD_TOP, #AC_HEAD_TOP, @count_limit);
+
 	if (Weight <= @weight_limit && #AC_HEAD_TOP >= @count_limit) {
 		// TODO 负重*2
 	}
@@ -206,15 +208,37 @@ function	script	f_check_weight	{
 }
 
 
-function	script	f_check_atkrange	{
-	dispbottom "f_check_atkrange";
-	return;
+// 【无视防御（包括 BOSS）】修炼达成条件检查: 
+//    受到物理攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
+function	script	f_check_ignore_def	{
+	@is_ok = false;
+	@count_limit = 10000;
+	callfunc("f_show_mission_progress", EQI_HEAD_MID, #AC_HEAD_MID, @count_limit);
+
+	if (#AC_HEAD_MID >= @count_limit) {
+		// TODO bonus bIgnoreDefMob,n;
+	}
+	return @is_ok;
 }
 
 
+// 【无念咏唱】修炼达成条件检查: 
+//    受到魔法攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_cast	{
-	dispbottom "f_check_cast";
-	return;
+	@is_ok = false;
+	@count_limit = 10000;
+	callfunc("f_show_mission_progress", EQI_HEAD_LOW, #AC_HEAD_LOW, @count_limit);
+
+	if (#AC_HEAD_LOW >= @count_limit) {
+		// TODO bonus bCastrate,n;
+	}
+	return @is_ok;
 }
 
 
@@ -226,6 +250,8 @@ function	script	f_check_cast	{
 function	script	f_check_atk	{
 	@is_ok = false;
 	@count_limit = 100000;
+	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
+
 	if (#AC_HAND_R >= @count_limit) {
 		// TODO ATK *2
 	}
@@ -241,6 +267,8 @@ function	script	f_check_atk	{
 function	script	f_check_matk	{
 	@is_ok = false;
 	@count_limit = 100000;
+	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
+
 	if (#AC_HAND_R >= @count_limit) {
 		// TODO MATK *2
 	}
@@ -256,8 +284,10 @@ function	script	f_check_matk	{
 function	script	f_check_aspd	{
 	@is_ok = false;
 	@count_limit = 100000;
+	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
+
 	if (#AC_HAND_R >= @count_limit) {
-		dispbottom "【世界隐藏任务】达成修炼条件！获得【神之力】： ASPD 199";
+		dispbottom("【世界隐藏任务】达成修炼条件！获得【神之力】： ASPD 199");
 		// TODO ASPD=199
 		// 获得道具 getitem
 		// 获得效果	bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",5,512,0,SC_INCFLEE2;
@@ -275,6 +305,8 @@ function	script	f_check_aspd	{
 function	script	f_check_cri	{
 	@is_ok = false;
 	@count_limit = 100000;
+	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
+
 	if (#AC_HAND_R >= @count_limit) {
 		// TODO CRI *2
 	}
@@ -290,6 +322,8 @@ function	script	f_check_cri	{
 function	script	f_check_hit	{
 	@is_ok = false;
 	@count_limit = 100000;
+	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
+
 	if (#AC_HAND_R >= @count_limit) {
 		// TODO HIT *2
 	}
@@ -305,6 +339,8 @@ function	script	f_check_hit	{
 function	script	f_check_def	{
 	@is_ok = false;
 	@count_limit = 10000;
+	callfunc("f_show_mission_progress", EQI_ARMOR, #AC_ARMOR, @count_limit);
+
 	if (#AC_ARMOR >= @count_limit) {
 		// TODO DEF *2
 	}
@@ -320,6 +356,8 @@ function	script	f_check_def	{
 function	script	f_check_mdef	{
 	@is_ok = false;
 	@count_limit = 10000;
+	callfunc("f_show_mission_progress", EQI_ARMOR, #AC_ARMOR, @count_limit);
+
 	if (#AC_ARMOR >= @count_limit) {
 		// TODO MDEF *2
 	}
@@ -335,6 +373,8 @@ function	script	f_check_mdef	{
 function	script	f_check_flee	{
 	@is_ok = false;
 	@count_limit = 10000;
+	callfunc("f_show_mission_progress", EQI_GARMENT, #AC_GARMENT, @count_limit);
+
 	if (#AC_GARMENT >= @count_limit) {
 		// TODO FLEE *2
 		// TODO FLEE2 *2
@@ -359,20 +399,45 @@ function	script	f_check_speed	{
 }
 
 
-// 【HP 自然回复增益】修炼达成条件检查: 
+// 【物理反射】修炼达成条件检查: 
 //    不移动、被物理攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
 // - return: 是否达成条件
-function	script	f_check_hp_recov	{
+function	script	f_check_weapon_return	{
 	@is_ok = false;
 	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
 	if (@is_move == true) {
 		set #AC_HAND_L, 0;
 
-	} else if (#AC_HAND_L >= @count_limit) {
-		// TODO 每10秒恢复最大HP 1%
+	} else {
+		callfunc("f_show_mission_progress", EQI_HAND_L, #AC_HAND_L, @count_limit);
+		if (#AC_HAND_L >= @count_limit) {
+			// TODO bonus bShortWeaponDamageReturn,n;
+		}
+	}
+	return @is_ok;
+}
+
+
+// 【魔法反射】修炼达成条件检查: 
+//    不移动、被物理攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
+function	script	f_check_magic_return	{
+	@is_ok = false;
+	@count_limit = 10000;
+	@is_move = callfunc("f_is_move");
+	if (@is_move == true) {
+		set #AC_HAND_L, 0;
+
+	} else {
+		callfunc("f_show_mission_progress", EQI_HAND_L, #AC_HAND_L, @count_limit);
+		if (#AC_HAND_L >= @count_limit) {
+			// TODO 每10秒恢复最大HP 1%
+		}
 	}
 	return @is_ok;
 }
@@ -388,48 +453,35 @@ function	script	f_check_sp_recov	{
 	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
 	if (@is_move == true) {
-		set #AC_HAND_L, 0;
+		set #AC_ACC_R, 0;
 
-	} else if (#AC_HAND_L >= @count_limit) {
-		// TODO 每10秒恢复最大HP 1%
+	} else {
+		callfunc("f_show_mission_progress", EQI_ACC_R, #AC_ACC_R, @count_limit);
+		if (#AC_ACC_R >= @count_limit) {
+			// TODO 每10秒恢复最大HP 1%
+		}
 	}
 	return @is_ok;
 }
 
 
-// 【HP 上限增益】修炼达成条件检查: 
+// 【HP 自然回复增益】修炼达成条件检查: 
 //    不移动、被物理攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
 // - return: 是否达成条件
-function	script	f_check_hp_limit	{
+function	script	f_check_hp_recov	{
 	@is_ok = false;
 	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
 	if (@is_move == true) {
 		set #AC_ACC_L, 0;
 
-	} else if (#AC_ACC_L >= @count_limit) {
-		// TODO HP 上限 *2
-	}
-	return @is_ok;
-}
-
-
-// 【SP 上限增益】修炼达成条件检查: 
-//    不移动、被魔法攻击 1W 次（不死亡）
-//============================================================ 
-// - param: 无参数
-// - return: 是否达成条件
-function	script	f_check_sp_limit	{
-	@is_ok = false;
-	@count_limit = 10000;
-	@is_move = callfunc("f_is_move");
-	if (@is_move == true) {
-		set #AC_ACC_R, 0;
-
-	} else if (#AC_ACC_R >= @count_limit) {
-		// TODO SP 上限 *2
+	} else {
+		callfunc("f_show_mission_progress", EQI_ACC_L, #AC_ACC_L, @count_limit);
+		if (#AC_ACC_L >= @count_limit) {
+			// TODO 每10秒恢复最大HP 1%   bonus bHPrecovRate,n;
+		}
 	}
 	return @is_ok;
 }

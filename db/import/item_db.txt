@@ -1286,8 +1286,8 @@
 
 // 【世界隐藏任务】【神之力】的修炼装备
 62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,200,,10,,0,0xFFFFFFFF,63,2,256,4,1,0,45,{ callfunc("F_ATTACKED_COUNT_HEAD_TOP"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HEAD_TOP); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HEAD_TOP); }
-62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,4,1,0,82,{ callfunc("F_ATTACKED_COUNT_HEAD_MID"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HEAD_MID); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HEAD_MID); }
-62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,4,1,0,57,{ callfunc("F_ATTACKED_COUNT_HEAD_LOW"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HEAD_LOW); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HEAD_LOW); }
+62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,4,1,0,82,{ callfunc("F_WEAPON_ATTACKED_COUNT_HEAD_MID"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HEAD_MID); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HEAD_MID); }
+62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,4,1,0,57,{ callfunc("F_MAGIC_ATTACKED_COUNT_HEAD_LOW"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HEAD_LOW); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HEAD_LOW); }
 62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,4,1,0,0,{ callfunc("F_MAGIC_ATTACKED_COUNT_ARMOR"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_ARMOR); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_ARMOR); }
 62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,100,,10,,0,0xFFFFFFFF,63,2,16,4,1,0,0,{ callfunc "F_WEAPON_ATTACKED_COUNT_ARMOR"; },{ callfunc("F_START_COUNT_ON_EQI",EQI_ARMOR); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_ARMOR); }
 61201,Ancient_Knife,古老的 破裂的剑,5,1,,50,200,,1,0,0xFFFFFFFF,63,2,2,4,1,0,1,{ callfunc("F_WEAPON_ATTACK_COUNT_HAND_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_R); }

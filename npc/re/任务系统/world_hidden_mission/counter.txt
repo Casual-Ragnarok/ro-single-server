@@ -139,6 +139,15 @@ function	script	F_ATTACKED_COUNT_ACC_L	{
 
 /* ==================== 特殊场景计数器 ====================== */
 
+// EQI_HEAD_MID 头中：被物理攻击时计数器+1
+function	script	F_WEAPON_ATTACKED_COUNT_HEAD_MID	{
+    callfunc("F_ATTACKED_COUNT_HEAD_MID", BF_WEAPON|BF_MISC);
+}
+
+// EQI_HEAD_LOW 头下：被魔法攻击时计数器+1
+function	script	F_MAGIC_ATTACKED_COUNT_HEAD_LOW	{
+    callfunc("F_ATTACKED_COUNT_HEAD_LOW", BF_MAGIC);
+}
 
 // EQI_ARMOR 铠甲：被魔法攻击时计数器+1
 function	script	F_MAGIC_ATTACKED_COUNT_ARMOR	{
