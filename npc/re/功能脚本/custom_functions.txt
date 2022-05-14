@@ -64,11 +64,29 @@ function	script	F_MAP_NAME	{
 	return @map_name$;
 }
 
-// 查看当前玩家所在的地图的坐标
+// 获取当前玩家所在的地图的坐标
 //============================================================ 
 // - param: 无参数
 // - return: 位置坐标
 function	script	F_COORDINATE	{
+	getmapxy(@map_name$, @x, @y);
+	return @x + ", " + @y;
+}
+
+// 获取当前玩家所在的地图名称和坐标
+//============================================================ 
+// - param: 无参数
+// - return: 无
+function	script	F_POSTION	{
+	getmapxy(@map_name$, @x, @y);
+	return @map_name$ + " (" + @x + ", " + @y + ")";
+}
+
+// 把当前玩家所在的地图和坐标打印到控制台
+//============================================================ 
+// - param: 无参数
+// - return: 无
+function	script	F_POSTION_TO_CONSOLE	{
 	set @player_name$, callfunc("F_PLAYER_NAME");
 	atcommand("@where " + @player_name$);
 	return;
@@ -291,17 +309,16 @@ function	script	F_MANUAL	{
 		set @player_id$, callfunc("F_PLAYER_ID");
 		set @player_name$, callfunc("F_PLAYER_NAME");
 		set @player_lv$, callfunc("F_PLAYER_GMLV");
-		set @map_name$, callfunc("F_MAP_NAME");
 		mes "[角色ID] " + @player_id$;
 		mes "[角色名称] " + @player_name$;
 		mes "[权限等级] " + @player_lv$;
-		mes "[所在地图] " + @map_name$;
 		callsub(_TO_CLOSE);
 		return;
 
 	_TO_WHERE:
-		mes "已打印到资讯窗口...";
-		callfunc("F_COORDINATE");
+		getmapxy(@map_name$, @x, @y);
+		mes "[所在地图] " + @map_name$;
+		mes "[位置坐标] " + @x + "," + @y;
 		callsub(_TO_CLOSE);
 		return;
 

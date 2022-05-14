@@ -93,11 +93,11 @@ function	script	F_CHECK_HAND_L	{
 
 	// 古老的 破裂的硬壳
 	if (@equip_id == 62101) {
-		callfunc("f_check_def");
+		callfunc("f_check_hp_recov");
 
 	// 古老的 特别的盾牌
 	} else if (@equip_id == 63333) {
-		callfunc("f_check_mdef");
+		callfunc("f_check_sp_recov");
 	}
 	return;
 }
@@ -130,7 +130,7 @@ function	script	F_CHECK_ACC_R	{
 
 	// 古老的 破损的魔法石
 	if (@equip_id == 62612) {
-		callfunc("f_check_sp");
+		callfunc("f_check_sp_limit");
 	}
 	return;
 }
@@ -141,7 +141,7 @@ function	script	F_CHECK_ACC_L	{
 
 	// 古老的 破坏的令牌
 	if (@equip_id == 62627) {
-		callfunc("f_check_hp");
+		callfunc("f_check_hp_limit");
 	}
 	return;
 }
@@ -233,14 +233,39 @@ function	script	f_check_speed	{
 	return;
 }
 
-
-function	script	f_check_hp	{
-	dispbottom "f_check_hp";
+function	script	f_check_hp_recov	{
+	dispbottom "f_check_hp_recov";
 	return;
 }
 
 
-function	script	f_check_sp	{
-	dispbottom "f_check_sp";
+function	script	f_check_sp_recov	{
+	dispbottom "f_check_sp_recov";
 	return;
+}
+
+function	script	f_check_hp_limit	{
+	dispbottom "f_check_hp_limit";
+	@is_move = callfunc("f_is_move");
+	dispbottom "@is_move=" + @is_move;
+	return;
+}
+
+
+function	script	f_check_sp_limit	{
+	dispbottom "f_check_sp_limit";
+	@is_move = callfunc("f_is_move");
+	dispbottom "@is_move=" + @is_move;
+	return;
+}
+
+
+/*************************************************************************/
+
+
+function	script	f_is_move	{
+	@position$ = callfunc("F_POSTION");
+	@is_move = !(#LAST_POSITION$ == @position$);
+	#LAST_POSITION$ = @position$;
+	return @is_move;
 }
