@@ -2,7 +2,7 @@
 
 
 // 装备修炼装备时开始计数
-function	script	f_start_count_by_oneqi	{
+function	script	F_START_COUNT_ON_EQI	{
     @keep_equipment_slot = getarg(0);
     callfunc("f_un_god_equipments", @keep_equipment_slot);  // 卸载其他神装
     dispbottom "【世界隐藏任务】修炼开始! 请勿轻易脱下装备，否则修炼进度归零!（一次只能选修一个部位）";
@@ -36,7 +36,7 @@ function	script	f_un_god_equipments	{
 
 
 // 卸载修炼装备时计数器清零
-function	script	f_clear_count_by_uneqi	{
+function	script	F_CLEAR_COUNT_UN_EQI	{
     @equipment_slot = getarg(0);
     @tips = true;
     
@@ -159,4 +159,48 @@ function	script	F_ATTACKED_COUNT_ACC_L	{
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/武器/魔法/杂项/通常/技能 攻击时）
     autobonus2 "{ #AC_ACC_L++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ACC_L\"); }";
+}
+
+
+/* ==================== 特殊场景计数器 ====================== */
+
+
+// EQI_ARMOR 铠甲：被魔法攻击时计数器+1
+function	script	F_MAGIC_ATTACKED_COUNT_ARMOR	{
+    callfunc("F_ATTACKED_COUNT_ARMOR", BF_MAGIC);
+}
+
+// EQI_ARMOR 铠甲：被物理攻击时计数器+1
+function	script	F_WEAPON_ATTACKED_COUNT_ARMOR	{
+    callfunc("F_ATTACKED_COUNT_ARMOR", BF_WEAPON);
+}
+
+// EQI_HAND_R 右手（武器）：魔法攻击时计数器+1
+function	script	F_MAGIC_ATTACK_COUNT_HAND_R	{
+    callfunc("F_ATTACK_COUNT_HAND_R", BF_MAGIC);
+}
+
+// EQI_HAND_R 右手（武器）：物理攻击时计数器+1
+function	script	F_WEAPON_ATTACK_COUNT_HAND_R	{
+    callfunc("F_ATTACK_COUNT_HAND_R", BF_WEAPON);
+}
+
+// EQI_HAND_L 左手（盾牌）：被魔法攻击时计数器+1
+function	script	F_MAGIC_ATTACKED_COUNT_HAND_L	{
+    callfunc("F_ATTACKED_COUNT_HAND_L", BF_MAGIC);
+}
+
+// EQI_HAND_L 左手（盾牌）：被物理攻击时计数器+1
+function	script	F_WEAPON_ATTACKED_COUNT_HAND_L	{
+    callfunc("F_ATTACKED_COUNT_HAND_L", BF_WEAPON);
+}
+
+// EQI_ACC_R 装饰品（右）：被魔法攻击时计数器+1
+function	script	F_MAGIC_ATTACKED_COUNT_ACC_R	{
+    callfunc("F_ATTACKED_COUNT_ACC_R", BF_MAGIC);
+}
+
+// EQI_ACC_L 装饰品（左）：被物理攻击时计数器+1
+function	script	F_WEAPON_ATTACKED_COUNT_ACC_L	{
+    callfunc("F_ATTACKED_COUNT_ACC_L", BF_WEAPON);
 }
