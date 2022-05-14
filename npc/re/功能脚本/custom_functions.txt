@@ -28,6 +28,14 @@ function	script	F_PLAYER_GMLV	{
 	return @player_gmlv;
 }
 
+// 获取当前玩家的存款
+//============================================================ 
+// - param: 无参数
+// - return: zeny
+function	script	F_ZENY	{
+	return Zeny;
+}
+
 // 查看角色可用命令
 //============================================================ 
 // - param: 无参数

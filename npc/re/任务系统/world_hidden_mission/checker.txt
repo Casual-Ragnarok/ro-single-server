@@ -153,6 +153,7 @@ function	script	F_CHECK_ACC_L	{
 
 function	script	f_check_weight	{
 	dispbottom "f_check_weight";
+	callfunc("f_weight");
 	return;
 }
 
@@ -246,8 +247,8 @@ function	script	f_check_sp_recov	{
 
 function	script	f_check_hp_limit	{
 	dispbottom "f_check_hp_limit";
-	@is_move = callfunc("f_is_move");
-	dispbottom "@is_move=" + @is_move;
+	@is_over = callfunc("f_is_over_weight");
+	dispbottom "@is_over=" + @is_over;
 	return;
 }
 
@@ -268,4 +269,14 @@ function	script	f_is_move	{
 	@is_move = !(#LAST_POSITION$ == @position$);
 	#LAST_POSITION$ = @position$;
 	return @is_move;
+}
+
+
+function	script	f_is_over_weight	{
+	// 由于系统不支持浮点数除法，只能通过加减法判断是否超过 90%
+	@one_tenth = MaxWeight / 10;
+	@is_over = (Weight + @one_tenth) >= MaxWeight;
+	dispbottom("@one_tenth=" + @one_tenth);
+	dispbottom("@is_over=" + @is_over);
+	return @is_over;
 }
