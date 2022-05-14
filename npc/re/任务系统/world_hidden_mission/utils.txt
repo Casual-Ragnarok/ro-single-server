@@ -63,3 +63,5 @@ function	script	F_TRAIN_GOD_POWER_02	{
 	// "¡ö¡ö »ðÃâÒß ¡ö¡ö ¶¾ÎÞÐ§ ¡ö¡ö";
 	return;
 }
+
+
