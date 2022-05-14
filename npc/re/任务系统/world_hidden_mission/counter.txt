@@ -5,7 +5,7 @@
 function	script	F_START_COUNT_ON_EQI	{
     @keep_equipment_slot = getarg(0);
     callfunc("f_un_god_equipments", @keep_equipment_slot);  // 卸载其他神装
-    dispbottom "【世界隐藏任务】修炼开始! 请勿轻易脱下装备，否则修炼进度归零!（一次只能选修一个部位）";
+    dispbottom "【世界隐藏任务】修炼开始! 人物死亡或更替修炼装备均会导致修炼进度归零!";
 }
 
 

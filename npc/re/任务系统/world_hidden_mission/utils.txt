@@ -87,7 +87,7 @@ function	script	f_init_reset_checkpoints	{
 // - return: Пе
 function	script	f_mark_city_checkpoint	{
 	@map_name$ = callfunc("F_MAP_NAME");
-	dispbottom @map_name$;
+	
 	if (@map_name$ == "prontera") {
 		#CITY_CHECKPOINTS[0] = true;
 

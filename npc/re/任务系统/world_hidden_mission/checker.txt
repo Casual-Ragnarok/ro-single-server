@@ -1,8 +1,13 @@
 // ===== 【世界隐藏任务】【神之力】：修炼条件检查器 ================================ 
 
 
+// 【神之力】修炼达成条件检查: EQI_HEAD_TOP 头上
+//============================================================ 
+// - param: 无参数
+// - return: 无
 function	script	F_CHECK_HEAD_TOP	{
 	@equip_id = getequipid(EQI_HEAD_TOP);
+	dispbottom Weight;
 
 	// 古老的 破裂的王冠
 	if (@equip_id == 62211) {
@@ -12,6 +17,10 @@ function	script	F_CHECK_HEAD_TOP	{
 }
 
 
+// 【神之力】修炼达成条件检查: EQI_HEAD_MID 头中
+//============================================================ 
+// - param: 无参数
+// - return: 无
 function	script	F_CHECK_HEAD_MID	{
 	@equip_id = getequipid(EQI_HEAD_MID);
 
@@ -23,6 +32,10 @@ function	script	F_CHECK_HEAD_MID	{
 }
 
 
+// 【神之力】修炼达成条件检查: EQI_HEAD_LOW 头下
+//============================================================ 
+// - param: 无参数
+// - return: 无
 function	script	F_CHECK_HEAD_LOW	{
 	@equip_id = getequipid(EQI_HEAD_LOW);
 
@@ -34,6 +47,10 @@ function	script	F_CHECK_HEAD_LOW	{
 }
 
 
+// 【神之力】修炼达成条件检查: EQI_ARMOR 铠甲
+//============================================================ 
+// - param: 无参数
+// - return: 无
 function	script	F_CHECK_ARMOR	{
 	@equip_id = getequipid(EQI_ARMOR);
 
@@ -49,10 +66,10 @@ function	script	F_CHECK_ARMOR	{
 }
 
 
-// 【神之力】修炼检查: EQI_HAND_R 右手（武器）
+// 【神之力】修炼达成条件检查: EQI_HAND_R 右手（武器）
 //============================================================ 
 // - param: 无参数
-// - return: 
+// - return: 无
 function	script	F_CHECK_HAND_R	{
 	@equip_id = getequipid(EQI_HAND_R);
 
@@ -88,6 +105,10 @@ function	script	F_CHECK_HAND_R	{
 }
 
 
+// 【神之力】修炼达成条件检查: EQI_HAND_L 左手（盾牌）
+//============================================================ 
+// - param: 无参数
+// - return: 无
 function	script	F_CHECK_HAND_L	{
 	@equip_id = getequipid(EQI_HAND_L);
 
@@ -103,6 +124,10 @@ function	script	F_CHECK_HAND_L	{
 }
 
 
+// 【神之力】修炼达成条件检查: EQI_GARMENT 披肩
+//============================================================ 
+// - param: 无参数
+// - return: 无
 function	script	F_CHECK_GARMENT	{
 	@equip_id = getequipid(EQI_GARMENT);
 
@@ -114,27 +139,28 @@ function	script	F_CHECK_GARMENT	{
 }
 
 
-// 【神之力】修炼检查: EQI_SHOES 鞋子
+// 【神之力】修炼达成条件检查: EQI_SHOES 鞋子
 //============================================================ 
 // - param: 无参数
-// - return: 
+// - return: 无
 function	script	F_CHECK_SHOES	{
 	@equip_id = getequipid(EQI_SHOES);
-	@is_over_weight = callfunc("f_is_over_weight");
 
 	// 古老的 被盗的凉鞋
-	// 修炼达成条件： 在负重 90% 的状态下游历所有城市
-	if (@equip_id == 62401 && @is_over_weight) {
-		callfunc("f_mark_city_checkpoint");				// 标记城市检查点
-		@is_ok = callfunc("f_check_city_checkpoints");	// 检查是否已游历所有城市
+	if (@equip_id == 62401) {
+		@is_ok = callfunc("f_check_speed");
 		if (@is_ok == true) {
-			// TODO
+			// TODO 移动速度*2
 		}
 	}
 	return;
 }
 
 
+// 【神之力】修炼达成条件检查: EQI_ACC_R 装饰品（右）
+//============================================================ 
+// - param: 无参数
+// - return: 无
 function	script	F_CHECK_ACC_R	{
 	@equip_id = getequipid(EQI_ACC_R);
 
@@ -146,6 +172,10 @@ function	script	F_CHECK_ACC_R	{
 }
 
 
+// 【神之力】修炼达成条件检查: EQI_ACC_L 装饰品（左）
+//============================================================ 
+// - param: 无参数
+// - return: 无
 function	script	F_CHECK_ACC_L	{
 	@equip_id = getequipid(EQI_ACC_L);
 
@@ -157,14 +187,22 @@ function	script	F_CHECK_ACC_L	{
 }
 
 
-
 /*************************************************************************/
 
 
+// 【负重上限增益】修炼达成条件检查: 
+//    在负重 <= 200.0 的状态下受到任意攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_weight	{
-	dispbottom "f_check_weight";
-	callfunc("f_weight");
-	return;
+	@is_ok = false;
+	@weight_limit = 200;
+	@count_limit = 10000;
+	if (Weight <= @weight_limit && #AC_HEAD_TOP >= @count_limit) {
+		// TODO 负重*2
+	}
+	return @is_ok;
 }
 
 
@@ -180,101 +218,230 @@ function	script	f_check_cast	{
 }
 
 
+// 【ATK 增益】修炼达成条件检查: 
+//    使用物理攻击 10W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_atk	{
-	dispbottom "f_check_atk";
-	return;
+	@is_ok = false;
+	@count_limit = 100000;
+	if (#AC_HAND_R >= @count_limit) {
+		// TODO ATK *2
+	}
+	return @is_ok;
 }
 
 
+// 【MATK 增益】修炼达成条件检查: 
+//    使用魔法攻击 10W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_matk	{
-	dispbottom "f_check_atk";
-	return;
+	@is_ok = false;
+	@count_limit = 100000;
+	if (#AC_HAND_R >= @count_limit) {
+		// TODO MATK *2
+	}
+	return @is_ok;
 }
 
 
+// 【ASPD 增益】修炼达成条件检查: 
+//    使用物理攻击 10W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_aspd	{
-	dispbottom "f_check_aspd";
-
-	// 检查 ASPD
-	@LIMIT_ASPD = 10000;
-	if (#AC_HAND_R >= @LIMIT_ASPD) {
+	@is_ok = false;
+	@count_limit = 100000;
+	if (#AC_HAND_R >= @count_limit) {
 		dispbottom "【世界隐藏任务】达成修炼条件！获得【神之力】： ASPD 199";
-		delitem @equip_id, 1;
-
+		// TODO ASPD=199
 		// 获得道具 getitem
 		// 获得效果	bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",5,512,0,SC_INCFLEE2;
 		// 获得效果展示	skilleffect "HP_ASSUMPTIO",0;
 	}
-	return;
+	return @is_ok;
 }
 
 
+// 【CRI 增益】修炼达成条件检查: 
+//    使用物理攻击 10W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_cri	{
-	dispbottom "f_check_cri";
-	return;
+	@is_ok = false;
+	@count_limit = 100000;
+	if (#AC_HAND_R >= @count_limit) {
+		// TODO CRI *2
+	}
+	return @is_ok;
 }
 
 
+// 【HIT 增益】修炼达成条件检查: 
+//    使用物理攻击 10W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_hit	{
-	dispbottom "f_check_hit";
-	return;
+	@is_ok = false;
+	@count_limit = 100000;
+	if (#AC_HAND_R >= @count_limit) {
+		// TODO HIT *2
+	}
+	return @is_ok;
 }
 
 
+// 【DEF 增益】修炼达成条件检查: 
+//    受到物理攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_def	{
-	dispbottom "f_check_def";
-	return;
+	@is_ok = false;
+	@count_limit = 10000;
+	if (#AC_ARMOR >= @count_limit) {
+		// TODO DEF *2
+	}
+	return @is_ok;
 }
 
 
+// 【MDEF 增益】修炼达成条件检查: 
+//    受到魔法攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_mdef	{
-	dispbottom "f_check_mdef";
-	return;
+	@is_ok = false;
+	@count_limit = 10000;
+	if (#AC_ARMOR >= @count_limit) {
+		// TODO MDEF *2
+	}
+	return @is_ok;
 }
 
 
+// 【FLEE & FLEE2 增益】修炼达成条件检查: 
+//    受到任意攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_flee	{
-	dispbottom "f_check_flee";
-	return;
+	@is_ok = false;
+	@count_limit = 10000;
+	if (#AC_GARMENT >= @count_limit) {
+		// TODO FLEE *2
+		// TODO FLEE2 *2
+	}
+	return @is_ok;
 }
 
 
+// 【移动速度增益】修炼达成条件检查: 
+//    在负重 90% 的状态下游历所有城市（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_speed	{
-	dispbottom "f_check_speed";
-	callfunc("f_mark_city_checkpoint");
-	return;
+	@is_ok = false;
+	@is_over_weight = callfunc("f_is_over_weight");
+	if (@is_over_weight == true) {
+		callfunc("f_mark_city_checkpoint");				// 标记城市检查点
+		@is_ok = callfunc("f_check_city_checkpoints");	// 检查是否已游历所有城市
+	}
+	return @is_ok;
 }
 
+
+// 【HP 自然回复增益】修炼达成条件检查: 
+//    不移动、被物理攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
 function	script	f_check_hp_recov	{
-	dispbottom "f_check_hp_recov";
-	return;
-}
-
-
-function	script	f_check_sp_recov	{
-	dispbottom "f_check_sp_recov";
-	return;
-}
-
-function	script	f_check_hp_limit	{
-	dispbottom "f_check_hp_limit";
-	@is_over = callfunc("f_is_over_weight");
-	dispbottom "@is_over=" + @is_over;
-	return;
-}
-
-
-function	script	f_check_sp_limit	{
-	dispbottom "f_check_sp_limit";
+	@is_ok = false;
+	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
-	dispbottom "@is_move=" + @is_move;
-	return;
+	if (@is_move == true) {
+		set #AC_HAND_L, 0;
+
+	} else if (#AC_HAND_L >= @count_limit) {
+		// TODO 每10秒恢复最大HP 1%
+	}
+	return @is_ok;
+}
+
+
+// 【SP 自然回复增益】修炼达成条件检查: 
+//    不移动、被物理攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
+function	script	f_check_sp_recov	{
+	@is_ok = false;
+	@count_limit = 10000;
+	@is_move = callfunc("f_is_move");
+	if (@is_move == true) {
+		set #AC_HAND_L, 0;
+
+	} else if (#AC_HAND_L >= @count_limit) {
+		// TODO 每10秒恢复最大HP 1%
+	}
+	return @is_ok;
+}
+
+
+// 【HP 上限增益】修炼达成条件检查: 
+//    不移动、被物理攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
+function	script	f_check_hp_limit	{
+	@is_ok = false;
+	@count_limit = 10000;
+	@is_move = callfunc("f_is_move");
+	if (@is_move == true) {
+		set #AC_ACC_L, 0;
+
+	} else if (#AC_ACC_L >= @count_limit) {
+		// TODO HP 上限 *2
+	}
+	return @is_ok;
+}
+
+
+// 【SP 上限增益】修炼达成条件检查: 
+//    不移动、被魔法攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
+function	script	f_check_sp_limit	{
+	@is_ok = false;
+	@count_limit = 10000;
+	@is_move = callfunc("f_is_move");
+	if (@is_move == true) {
+		set #AC_ACC_R, 0;
+
+	} else if (#AC_ACC_R >= @count_limit) {
+		// TODO SP 上限 *2
+	}
+	return @is_ok;
 }
 
 
 /*************************************************************************/
 
 
+// 检查玩家是否移动过
+//============================================================ 
+// - param: 无参数
+// - return: 是否移动
 function	script	f_is_move	{
 	@position$ = callfunc("F_POSTION");
 	@is_move = !(#LAST_POSITION$ == @position$);
@@ -283,21 +450,27 @@ function	script	f_is_move	{
 }
 
 
+// 检查玩家负重是否超过 90%
+//============================================================ 
+// - param: 无参数
+// - return: 是否超过 90% 负重
 function	script	f_is_over_weight	{
 	// 由于系统不支持浮点数除法，只能通过加减法判断是否超过 90%
 	@one_tenth = MaxWeight / 10;
 	@is_over = (Weight + @one_tenth) >= MaxWeight;
-	dispbottom("@one_tenth=" + @one_tenth);
-	dispbottom("@is_over=" + @is_over);
 	return @is_over;
 }
 
 
+// 检查玩家是否游历了所有城市
+//============================================================ 
+// - param: 无参数
+// - return: 是否完成城市游历
 function	script	f_check_city_checkpoints	{
 	@CITY_NUM = 36;
 	@is_all_ok = true;
 	for (@i = 0; @i <= @CITY_NUM; @i++) {
-		if (@i != 15 && @i != 16) {			// 这两个地点只有 GM 可以用命令传送过去
+		if (@i != 15 && @i != 16) {			// 这两个地点只有 GM 可以用 @go 命令传送过去
 			@is_all_ok &= #CITY_CHECKPOINTS[@i];
 		}
 	}
