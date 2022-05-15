@@ -1272,30 +1272,34 @@
 
 
 // 进阶神器
-2462,Sleipnir_C,史雷普尼尔之靴 1S,4,20,,0,,40,,1,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,15; bonus bSpeedRate,100; bonus bInt,25; },{},{}
-51530,Mjolnir_C,雷神之锤 1S,5,20,,6000,350,,1,1,0x000444A2,63,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,50; bonus bStr,20; bonus bAspdRate,200; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000; },{},{}
-52383,Brynhild_C,布伦希尔德 1S,4,20,,400,,120,,1,0xFFFFFFFF,63,2,16,,94,0,0,{ bonus bMdef,10; bonus bMaxHP,20*BaseLevel; bonus bMaxSP,5*BaseLevel; bonus2 bAddClass,Class_All,10; bonus bMatkRate,10; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
-52541,Asprika_C,阿斯普利卡 1S,4,20,,400,,40,,1,0xFFFFFFFF,63,2,4,,94,0,0,{ bonus bMdef,5; bonus3 bSubEle,Ele_Neutral,30,BF_SHORT; bonus3 bSubEle,Ele_Water,30,BF_SHORT; bonus3 bSubEle,Ele_Earth,30,BF_SHORT; bonus3 bSubEle,Ele_Fire,30,BF_SHORT; bonus3 bSubEle,Ele_Wind,30,BF_SHORT; bonus3 bSubEle,Ele_Poison,30,BF_SHORT; bonus3 bSubEle,Ele_Holy,30,BF_SHORT; bonus3 bSubEle,Ele_Dark,30,BF_SHORT; bonus3 bSubEle,Ele_Ghost,30,BF_SHORT; bonus3 bSubEle,Ele_Undead,30,BF_SHORT; bonus bFlee,30; skill "AL_TELEPORT",1; bonus bUnbreakableGarment; },{},{}
-52629,Magingiorde_C,雷神腰带 1S,4,20,,8000,,2,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,40+BaseLevel/5; bonus bMdef,7; if(readparam(bStr)>=120) bonus2 bAddClass,Class_Boss,10; },{},{}
-52630,Brysinggamen_C,女神项链 1S,4,20,,1500,,1,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,6; bonus bAgi,6; bonus bVit,6; bonus bInt,10; bonus bLuk,10; bonus bMdef,5; bonus bHealPower,6; },{},{}
+2462,Sleipnir_S,史雷普尼尔之靴 1S,4,20,,0,,40,,1,0xFFFFFFFF,63,2,64,,94,0,0,{ bonus bMdef,10; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSPrecovRate,15; bonus bSpeedRate,100; bonus bInt,25; },{},{}
+51530,Mjolnir_S,雷神之锤 1S,5,20,,6000,350,,1,1,0x000444A2,63,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,50; bonus bStr,20; bonus bAspdRate,200; bonus3 bAutoSpell,"MG_THUNDERSTORM",10,100; autobonus "{ bonus bSplashRange,1; }",50,10000; },{},{}
+52383,Brynhild_S,布伦希尔德 1S,4,20,,400,,120,,1,0xFFFFFFFF,63,2,16,,94,0,0,{ bonus bMdef,10; bonus bMaxHP,20*BaseLevel; bonus bMaxSP,5*BaseLevel; bonus2 bAddClass,Class_All,10; bonus bMatkRate,10; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
+52541,Asprika_S,阿斯普利卡 1S,4,20,,400,,40,,1,0xFFFFFFFF,63,2,4,,94,0,0,{ bonus bMdef,5; bonus3 bSubEle,Ele_Neutral,30,BF_SHORT; bonus3 bSubEle,Ele_Water,30,BF_SHORT; bonus3 bSubEle,Ele_Earth,30,BF_SHORT; bonus3 bSubEle,Ele_Fire,30,BF_SHORT; bonus3 bSubEle,Ele_Wind,30,BF_SHORT; bonus3 bSubEle,Ele_Poison,30,BF_SHORT; bonus3 bSubEle,Ele_Holy,30,BF_SHORT; bonus3 bSubEle,Ele_Dark,30,BF_SHORT; bonus3 bSubEle,Ele_Ghost,30,BF_SHORT; bonus3 bSubEle,Ele_Undead,30,BF_SHORT; bonus bFlee,30; skill "AL_TELEPORT",1; bonus bUnbreakableGarment; },{},{}
+52629,Magingiorde_S,雷神腰带 1S,4,20,,8000,,2,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,40+BaseLevel/5; bonus bMdef,7; if(readparam(bStr)>=120) bonus2 bAddClass,Class_Boss,10; },{},{}
+52630,Brysinggamen_S,女神项链 1S,4,20,,1500,,1,,1,0xFFFFFFFF,63,2,136,,94,0,0,{ bonus bStr,6; bonus bAgi,6; bonus bVit,6; bonus bInt,10; bonus bLuk,10; bonus bMdef,5; bonus bHealPower,6; },{},{}
 
 
 // 向导道具
 50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ if(countitem(50000) <= 1) getitem 50000,1; callfunc "F_MANUAL"; },{},{}
 
 
-// 世界隐藏任务道具
-62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,,0,0,57,{},{},{}
-61201,Ancient_Knife,古老的 破裂的剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{},{},{}
-61202,Ancient_Shuriken,古老的 破旧之手里剑,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,1,{},{},{}
-61550,Ancient_Book,古老的 撕裂的魔法书,5,1,,50,20,,1,0,0xFFFFFFFF,63,2,2,1,1,1,15,{},{},{}
-63104,Ancient_Garrison,古老的 残破的枪械残骸,5,1,,50,20,,7,0,0xFFFFFFFF,63,2,34,1,1,1,17,{},{},{}
-62501,Ancient_Hood,古老的 破旧的围巾,4,1,,50,,10,,0,0xFFFFFFFF,63,2,4,,0,1,0,{ callfunc "F_TRAIN_GOD_POWER_01"; },{},{}
-62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{},{},{}
-62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,,0,1,0,{},{},{}
-62101,Ancient_Guard,古老的 破裂的硬壳,4,1,,50,,10,,0,0xFFFFFFFF,63,2,32,,0,1,1,{},{},{}
-62401,Ancient_Sandals,古老的 被盗的凉鞋,4,1,,50,,10,,0,0xFFFFFFFF,63,2,64,,0,1,0,{},{},{}
-62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,0,0,0,{ callfunc "F_TRAIN_GOD_POWER_02"; },{},{}
-62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,136,,1,0,0,{ autobonus2 "{ #aaaa++;  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}
-62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,50,,10,,0,0xFFFFFFFF,63,2,256,,0,1,6,{ autobonus2 "{ #bbbb++;  }",1000,BF_NORMAL|BF_SKILL,0; },{},{}
-62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,,0,0,82,{},{},{}
+// 【世界隐藏任务】【神之力】的修炼装备
+62211,Ancient_Bandana,古老的 破裂的王冠,4,1,,200,,10,,0,0xFFFFFFFF,63,2,256,4,1,0,45,{ callfunc("F_ATTACKED_COUNT_HEAD_TOP"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HEAD_TOP); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HEAD_TOP); }
+62295,Ancient_Blinker,古老的 支离破碎的布片,4,1,,50,,0,,0,0xFFFFFFFF,63,2,512,4,1,0,82,{ callfunc("F_WEAPON_ATTACKED_COUNT_HEAD_MID"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HEAD_MID); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HEAD_MID); }
+62270,Ancient_Leaf,古老的 断针,4,1,,50,,0,,0,0xFFFFFFFF,63,2,1,4,1,0,57,{ callfunc("F_MAGIC_ATTACKED_COUNT_HEAD_LOW"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HEAD_LOW); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HEAD_LOW); }
+62301,Ancient_Shirt,古老的 破烂烂的衣服,4,1,,50,,10,,0,0xFFFFFFFF,63,2,16,4,1,0,0,{ callfunc("F_MAGIC_ATTACKED_COUNT_ARMOR"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_ARMOR); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_ARMOR); }
+62328,Ancient_Mail,古老的 破裂的铠甲一角,4,1,,100,,10,,0,0xFFFFFFFF,63,2,16,4,1,0,0,{ callfunc "F_WEAPON_ATTACKED_COUNT_ARMOR"; },{ callfunc("F_START_COUNT_ON_EQI",EQI_ARMOR); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_ARMOR); }
+61201,Ancient_Knife,古老的 破裂的剑,5,1,,50,200,,1,0,0xFFFFFFFF,63,2,2,4,1,0,1,{ callfunc("F_WEAPON_ATTACK_COUNT_HAND_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_R); }
+62222,Ancient_Unique_Sword,古老的 特别的剑,5,1,,500,20,,1,0,0xFFFFFFFF,63,2,2,4,1,0,1,{ callfunc("F_WEAPON_ATTACK_COUNT_HAND_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_R); }
+61202,Ancient_Shuriken,古老的 破旧之手里剑,5,1,,50,100,,1,0,0xFFFFFFFF,63,2,2,4,1,0,1,{ callfunc("F_WEAPON_ATTACK_COUNT_HAND_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_R); }
+61550,Ancient_Book,古老的 撕裂的魔法书,5,1,,50,100,,1,0,0xFFFFFFFF,63,2,2,4,1,0,15,{ callfunc("F_MAGIC_ATTACK_COUNT_HAND_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_R); }
+61545,Ancient_N_Mace,古老的 新手锤,5,0,,200,57,,1,3,0xFFFFFFFF,63,2,2,4,1,0,8,{ callfunc("F_WEAPON_ATTACK_COUNT_HAND_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_R); }
+61749,Ancient_Tourist_Bow,古老的 旅行者之弓,5,0,,100,40,,5,0,0xFFFFFFFF,63,2,34,4,1,0,11,{ callfunc("F_WEAPON_ATTACK_COUNT_HAND_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_R); }
+61736,Ancient_Double_Bound,古老的 连发弓,5,20,,500,70,,5,3,0xFFFFFFFF,63,2,34,4,1,0,11,{ callfunc("F_WEAPON_ATTACK_COUNT_HAND_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_R); }
+62101,Ancient_Guard,古老的 破裂的硬壳,4,1,,50,,100,,0,0xFFFFFFFF,63,2,32,4,1,0,1,{ callfunc("F_WEAPON_ATTACKED_COUNT_HAND_L"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_L); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_L); }
+63333,Ancient_Unique_Shield,古老的 特别的盾牌,4,1,,100,,10,,0,0xFFFFFFFF,63,2,32,4,1,0,1,{ callfunc("F_MAGIC_ATTACKED_COUNT_HAND_L"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_HAND_L); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_HAND_L); }
+62501,Ancient_Hood,古老的 破旧的围巾,4,1,,50,,10,,0,0xFFFFFFFF,63,2,4,4,1,0,0,{ callfunc("F_ATTACKED_COUNT_GARMENT"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_GARMENT); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_GARMENT); }
+62401,Ancient_Sandals,古老的 被盗的凉鞋,4,1,,50,,10,,0,0xFFFFFFFF,63,2,64,4,1,0,0,{ callfunc("F_ATTACKED_COUNT_SHOES"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_SHOES); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_SHOES); }
+62612,Ancient_Flower_Ring,古老的 破损的魔法石,4,1,,50,,0,,0,0xFFFFFFFF,63,2,8,4,1,0,0,{ callfunc("F_MAGIC_ATTACKED_COUNT_ACC_R"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_ACC_R); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_ACC_R); }
+62627,Ancient_Belt,古老的 破坏的令牌,4,1,,50,,0,,0,0xFFFFFFFF,63,2,128,4,1,0,0,{ callfunc("F_WEAPON_ATTACKED_COUNT_ACC_L"); },{ callfunc("F_START_COUNT_ON_EQI",EQI_ACC_L); },{ callfunc("F_CLEAR_COUNT_UN_EQI",EQI_ACC_L); }

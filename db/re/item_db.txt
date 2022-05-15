@@ -9,6 +9,32 @@
 // - 在复兴后版本(RE)中，这个字段能够多存放一个可选数值，用来表示一个武器的matk是多少
 // - 比如你可以将某个物品的ATK字段填写为 10:25 (注意是英文分号)这样就表示此武器有10的atk和25的matk！
 //
+// 关于Slots字段的提示:
+// - Slots 是以 2^n 编号的装备槽位，若是 6 则表示 2+4 即装备同时占两个槽位。
+// - 装备槽位编号为：
+//   - 头上 256 头中 512
+//   - 头下 1   身体 16
+//   - 右手 2   左手 32
+//   - 披肩 4   鞋子 64
+//   - 右饰 8   左饰 128
+// - 但仅仅是 item_db 中是按位匹配，代码中的常量都是普通整数：
+//   - EQI_ACC_L (0)             - Accessory 1
+//   - EQI_ACC_R (1)             - Accessory 2
+//   - EQI_SHOES (2)             - Footgear (shoes, boots)
+//   - EQI_GARMENT (3)           - Garment (mufflers, hoods, manteaux)
+//   - EQI_HEAD_LOW (4)          - Lower Headgear (beards, some masks)
+//   - EQI_HEAD_MID (5)          - Middle Headgear (masks, glasses)
+//   - EQI_HEAD_TOP (6)          - Upper Headgear
+//   - EQI_ARMOR (7)             - Armor (jackets, robes)
+//   - EQI_HAND_L (8)            - Left hand (weapons, shields)
+//   - EQI_HAND_R (9)            - Right hand (weapons)
+//
+// 关于Script字段的提示:
+// - 有三种类型脚本：
+//   - Script: 任意脚本（过图，穿上任意装备都会触发）
+//   - OnEquip_Script: 装备时脚本（穿上这件装备时触发）
+//   - OnUnequip_Script: 卸载装备时脚本（卸载这件装备时触发）
+// 
 //=======================以下内容为正文========================
 
 // Healing Items

@@ -15,7 +15,7 @@ function	script	F_PLAYER_ID	{
 // - param: 无参数
 // - return: 玩家名称
 function	script	F_PLAYER_NAME	{
-	set @player_name$,strcharinfo(0);
+	set @player_name$, strcharinfo(0);
 	return @player_name$;
 }
 
@@ -24,8 +24,16 @@ function	script	F_PLAYER_NAME	{
 // - param: 无参数
 // - return: 玩家权限值（group_id）
 function	script	F_PLAYER_GMLV	{
-	set @player_gmlv,getgmlevel();
+	set @player_gmlv, getgmlevel();
 	return @player_gmlv;
+}
+
+// 获取当前玩家的存款
+//============================================================ 
+// - param: 无参数
+// - return: zeny
+function	script	F_ZENY	{
+	return Zeny;
 }
 
 // 查看角色可用命令
@@ -51,17 +59,44 @@ function	script	F_IDENTIFY_ALL	{
 // - param: 无参数
 // - return: 无参数
 function	script	F_ONLINE	{
-	atcommand "@who";
+	atcommand("@who");
 	return;
 }
 
-// 查看当前坐标
+// 获取当前玩家所在的地图名称
 //============================================================ 
 // - param: 无参数
-// - return: 无参数
-function	script	F_WHERE	{
-	set @rst$,callfunc("F_PLAYER_NAME");
-	atcommand("@where " + @rst$);
+// - return: 地图名称
+function	script	F_MAP_NAME	{
+	set @map_name$, strcharinfo(3);
+	return @map_name$;
+}
+
+// 获取当前玩家所在的地图的坐标
+//============================================================ 
+// - param: 无参数
+// - return: 位置坐标
+function	script	F_COORDINATE	{
+	getmapxy(@map_name$, @x, @y);
+	return @x + ", " + @y;
+}
+
+// 获取当前玩家所在的地图名称和坐标
+//============================================================ 
+// - param: 无参数
+// - return: 无
+function	script	F_POSTION	{
+	getmapxy(@map_name$, @x, @y);
+	return @map_name$ + " (" + @x + ", " + @y + ")";
+}
+
+// 把当前玩家所在的地图和坐标打印到控制台
+//============================================================ 
+// - param: 无参数
+// - return: 无
+function	script	F_POSTION_TO_CONSOLE	{
+	set @player_name$, callfunc("F_PLAYER_NAME");
+	atcommand("@where " + @player_name$);
 	return;
 }
 
@@ -93,7 +128,7 @@ function	script	F_MANUAL	{
 	mes "手册本身并无任何 BUFF 效果";
 	next;
 	mes "[RO 手册]";
-	menu "附加神赐体质",_TO_GOD_POWER,
+	menu "附加【神之力】",_TO_GOD_POWER,
 	     "查看权限指令",_TO_CHAR_COMMANDS,
 		 "查看常用命令",_TO_GAME_COMMANDS,
 		 "查看服务器信息",_TO_SERVER_RATES,
@@ -102,156 +137,11 @@ function	script	F_MANUAL	{
 		 "查看当前坐标",_TO_WHERE,
 		 "自动拾取[开/关]",_TO_AUTOLOOT,
 		 "全身鉴定",_TO_IDENTIFY_ALL,
+		 "自杀",_TO_KILL_SELF,
 		 "没事了.",_TO_CLOSE;
 
     _TO_GOD_POWER:
-		set @god_power,0;
-		set @buff_time,3600;
-		set @pid,callfunc("F_PLAYER_ID");
-
-		if (@pid == $GOD_POWER[1]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [完全回避] " + @buff_time + " 秒！";
-			dispbottom "附加 [完全回避] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",@buff_time,512,0,SC_INCFLEE2;
-		}	
-
-		if (@pid == $GOD_POWER[2]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [绝对命中] " + @buff_time + " 秒！";
-			dispbottom "附加 [绝对命中] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHit,999; bonus bPerfectHitRate,100; }",@buff_time,512,0,SC_INCHITRATE;
-		}
-
-		if (@pid == $GOD_POWER[3]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [绝对暴击] " + @buff_time + " 秒！";
-			dispbottom "附加 [绝对暴击] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bCritical,999; bonus bCriticalLong,999; }",@buff_time,512,0,SC_CRIFOOD;
-		}
-
-		if (@pid == $GOD_POWER[4]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [无限攻击加速] " + @buff_time + " 秒！";
-			dispbottom "附加 [无限攻击加速] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAspd,199; }",@buff_time,512,0,SC_FLASHCOMBO;
-		}
-
-		if (@pid == $GOD_POWER[5]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [无视距离] " + @buff_time + " 秒！";
-			dispbottom "附加 [无视距离] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAtkRange,20; }",@buff_time,512,0,SC_TRUESIGHT;
-		}
-
-		if (@pid == $GOD_POWER[6]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [无咏唱] " + @buff_time + " 秒！";
-			dispbottom "附加 [无咏唱] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bFixedCast,-10000; bonus bVariableCast,-10000; bonus bNoCastCancel; }",@buff_time,512,0,SC_ADORAMUS;
-		}
-
-		if (@pid == $GOD_POWER[7]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [物理无效] " + @buff_time + " 秒！";
-			dispbottom "附加 [物理无效] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoWeaponDamage,100; }",@buff_time,512,0,SC_SHIELDSPELL_DEF;
-		}
-
-		if (@pid == $GOD_POWER[8]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [魔法无效] " + @buff_time + " 秒！";
-			dispbottom "附加 [魔法无效] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoMagicDamage,100; bonus bNoMiscDamage,100; }",@buff_time,512,0,SC_SHIELDSPELL_MDEF;
-		}
-
-		if (@pid == $GOD_POWER[9]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [物理反射] " + @buff_time + " 秒！";
-			dispbottom "附加 [物理反射] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bShortWeaponDamageReturn,100; bonus bLongWeaponDamageReturn,100; }",@buff_time,512,0,SC_REFLECTDAMAGE;
-		}
-
-		if (@pid == $GOD_POWER[10]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [魔法反射] " + @buff_time + " 秒！";
-			dispbottom "附加 [魔法反射] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bMagicDamageReturn,100; }",@buff_time,512,0,SC_KAITE;
-		}
-
-		if (@pid == $GOD_POWER[11]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [高速移动] " + @buff_time + " 秒！";
-			dispbottom "附加 [高速移动] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bSpeedRate,200; }",@buff_time,512,0,SC_KAGEHUMI;
-		}
-
-		if (@pid == $GOD_POWER[12]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [极速回复] " + @buff_time + " 秒！";
-			dispbottom "附加 [极速回复] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHPrecovRate,1000; bonus bSPrecovRate,1000; }",@buff_time,512,0,SC_TENSIONRELAX;
-		}
-
-		if (@pid == $GOD_POWER[13]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [嗜血] " + @buff_time + " 秒！";
-			dispbottom "附加 [嗜血] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bHPGainValue,1000; bonus bMagicHPGainValue,1000; }",@buff_time,512,0,SC_BLOODYLUST;
-		}
-
-		if (@pid == $GOD_POWER[14]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [吸魔] " + @buff_time + " 秒！";
-			dispbottom "附加 [吸魔] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bSPGainValue,50; bonus bMagicSPGainValue,50; }",@buff_time,512,0,SC_SPIRIT;
-		}
-
-		if (@pid == $GOD_POWER[15]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [无偿触媒] " + @buff_time + " 秒！";
-			dispbottom "附加 [无偿触媒] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bNoGemStone; }",@buff_time,512,0,SC_INTOABYSS;
-		}
-
-		if (@pid == $GOD_POWER[16]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [极限负重] " + @buff_time + " 秒！";
-			dispbottom "附加 [极限负重] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bAddMaxWeight,100000; }",@buff_time,512,0,SC_KNOWLEDGE;
-		}
-
-		if (@pid == $GOD_POWER[17]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [火属性免疫] " + @buff_time + " 秒！";
-			dispbottom "附加 [火属性免疫] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bDefEle,Ele_Fire; }",@buff_time,512,0,SC_ARMOR_RESIST;
-		}
-
-		if (@pid == $GOD_POWER[18]) {
-			set @god_power,(@god_power + 1);
-			mes "附加 [毒属性免疫] " + @buff_time + " 秒！";
-			dispbottom "附加 [毒属性免疫] " + @buff_time + " 秒！",0xFF8000;
-			bonus_script "{ bonus bDefEle,Ele_Poison; }",@buff_time,512,0,SC_SLOWPOISON;
-		}
-
-		if (@god_power > 0) {
-			mes "^0000FF[" + @god_power + "] 项神赐体质？！难道是 ...^000000";
-			mes "神赐体质对人体伤害极大";
-			mes "^0000FF附加效果持续 1 hour，CD 24 hour^000000";
-
-			dispbottom "[" + @god_power + "] 项神赐体质？！难道是 ...",0xFFFF00;
-			dispbottom "神赐体质对人体伤害极大，附加效果仅持续 1 小时，之后冷却 24 小时才可以重新附加",0xFFFF00;
-
-		} else {
-			mes "你不是天选之子！没有附加资格！";
-			mes "-------------------------------";
-			mes "传言在^FF0000沙漠深处^000000出土了一块^FF0000古老石碑^000000，";
-			mes "上面记载了关于^FF0000世界隐藏任务^000000的线索，";
-			mes "有幸达成任务的天选之人 ...... ";
-			mes "或可获得被神授予特殊体质的资格 ......";
-		}
-		
+		callfunc("F_APPEND_GOD_POWERS");
 		callsub(_TO_CLOSE);
 		return;
 
@@ -279,18 +169,19 @@ function	script	F_MANUAL	{
 		return;
 
 	_TO_CHARINFO:
-		set @pid$,callfunc("F_PLAYER_ID");
-		set @pname$,callfunc("F_PLAYER_NAME");
-		set @plv$,callfunc("F_PLAYER_GMLV");
-		mes "[角色ID] " + @pid$;
-		mes "[角色名称] " + @pname$;
-		mes "[权限等级] " + @plv$;
+		set @player_id$, callfunc("F_PLAYER_ID");
+		set @player_name$, callfunc("F_PLAYER_NAME");
+		set @player_lv$, callfunc("F_PLAYER_GMLV");
+		mes "[角色ID] " + @player_id$;
+		mes "[角色名称] " + @player_name$;
+		mes "[权限等级] " + @player_lv$;
 		callsub(_TO_CLOSE);
 		return;
 
 	_TO_WHERE:
-		mes "已打印到资讯窗口...";
-		callfunc("F_WHERE");
+		getmapxy(@map_name$, @x, @y);
+		mes "[所在地图] " + @map_name$;
+		mes "[位置坐标] " + @x + "," + @y;
 		callsub(_TO_CLOSE);
 		return;
 
@@ -311,47 +202,16 @@ function	script	F_MANUAL	{
 		callsub(_TO_CLOSE);
 		return;
 
+	_TO_KILL_SELF:
+		//	atcommand "@kill";		// 没有特效
+		set @player_name$,strcharinfo(0);
+		atcommand("@nuke " + @player_name$);
+		mes "你已经死了";
+		callsub(_TO_CLOSE);
+		return;
+
 	_TO_CLOSE:
 		close;
 		return;
 }
 
-
-
-
-// 修炼神赐体质01 - 完全回避
-//============================================================ 
-// - param: 无参数
-// - return: （达成修炼条件后）是否破坏当前装备
-function	script	F_TRAIN_GOD_POWER_01	{
-
-	.@cnt = 0;
-
-	// 被攻击时计数器 + 1
-	// TODO autobonus2 有 BUG, 当多个装备都设置了autobonus2脚本且 同时受到攻击时，计数器会脏读，第一件装备被攻击计数为1，后一件为2
-	// TODO 如何判断是什么魔物发起攻击？
-	autobonus2 "{ #iiii++;  }",1000,BF_NORMAL|BF_SKILL,0;
-
-	set #xxxx,(.@cnt > 0 ? 1 : 0);
-
-
-	// Todo 关于体质高速移动，可以在迷宫入口设触发点计时，1小时内攻破迷宫深处 BOSS
-	return;
-}
-
-
-function	script	F_TRAIN_GOD_POWER_02	{
-
-	.@cnt = #jjjj;
-	#jjjj++;
-	if (#jjjj > .@cnt) {
-		#jjjj = .@cnt + 1;
-	}
-	autobonus2 "{ #iiii++;  }",1000,BF_NORMAL|BF_SKILL,0;
-
-	// Todo 关于体质高速移动，可以在迷宫入口设触发点计时，1小时内攻破迷宫深处 BOSS
-
-	// 绝对防御： VIT*2。 持续一小时被攻击，且没有受到伤害，同时也没有赋予伤害。
-	// 冥想：每10秒恢复最大HP 1%. 持续不动被攻击3小时
-	return;
-}
