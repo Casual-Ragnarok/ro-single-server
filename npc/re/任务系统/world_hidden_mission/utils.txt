@@ -66,11 +66,11 @@ function	script	f_un_all_god_equipments	{
 }
 
 
-// 初始化所有城市的游历标记
+// 重置所有城市的游历标记
 //============================================================ 
 // - param: 无参数
 // - return: 空
-function	script	f_init_reset_checkpoints	{
+function	script	f_reset_city_checkpoints	{
 	@CITY_NUM = 36;
 	for (@i = 0; @i <= @CITY_NUM; @i++) {
 		if (@i != 15 && @i != 16) {			// 这两个地点只有 GM 可以用命令传送过去
@@ -211,16 +211,35 @@ function	script	f_show_mission_progress	{
 	@equip_name$ = getequipname(@equipment_slot);
 	@one_tenth = @max_cnt / 10;
 	if (@cur_cnt == 1) {
-		dispbottom("【世界隐藏任务】[" + @equip_name$ + "] 完全没有光泽");
-
-	} else if(@cur_cnt == @one_tenth * 3) {
+		callfunc("F_VIEW_EFFECT_WHITE_LOW_LIGHT");
 		dispbottom("【世界隐藏任务】[" + @equip_name$ + "] 似乎闪烁微弱荧光");
 
+	} else if(@cur_cnt == @one_tenth * 3) {
+		callfunc("F_VIEW_EFFECT_BLUE_FLOURESCENT");
+		dispbottom("【世界隐藏任务】[" + @equip_name$ + "] 发出暗淡幽光");
+
 	} else if(@cur_cnt == @one_tenth * 6) {
-		dispbottom("【世界隐藏任务】[" + @equip_name$ + "] 正在发出暗淡幽光");
+		callfunc("F_VIEW_EFFECT_RED_GLARE");
+		dispbottom("【世界隐藏任务】[" + @equip_name$ + "] 爆发出强光");
 
 	} else if(@cur_cnt >= @max_cnt) {
+		callfunc("F_VIEW_EFFECT_SHOCK_WAVE");
 		dispbottom("【世界隐藏任务】[" + @equip_name$ + "] 已成功磨炼出耀眼黑光");
 	}
+	return;
+}
+
+
+
+// 打印【神之力】修炼完成的提示
+//============================================================ 
+// - param: @buff_desc 【神之力】增益效果描述
+// - return: 空
+function	script	f_mission_finish	{
+	@buff_desc$ = getarg(0);
+	@RO_Manual$ = getitemname(50000);
+
+	dispbottom("【世界隐藏任务】修炼成功! 获得神之力 [" + @buff_desc$ + "]");
+	dispbottom("【世界隐藏任务】神之力对身体负荷过大，请通过 [" + @RO_Manual$ + "] 按需附加");
 	return;
 }

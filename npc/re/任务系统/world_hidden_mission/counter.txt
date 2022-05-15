@@ -5,7 +5,7 @@
 function	script	F_START_COUNT_ON_EQI	{
     @keep_equipment_slot = getarg(0);
     callfunc("f_un_god_equipments", @keep_equipment_slot);  // 卸载其他神装
-    dispbottom "【世界隐藏任务】修炼开始! 人物死亡或更替修炼装备均会导致修炼进度归零!";
+    dispbottom("【世界隐藏任务】修炼开始! 人物死亡或更替修炼装备均会导致修炼进度归零!");
 }
 
 
@@ -37,7 +37,7 @@ function	script	F_CLEAR_COUNT_UN_EQI	{
 
     } else if (@equipment_slot == EQI_SHOES) {
         set #AC_SHOES, 0;
-        callfunc("f_init_reset_checkpoints");
+        callfunc("f_reset_city_checkpoints");
 
     } else if (@equipment_slot == EQI_ACC_R) {
         set #AC_ACC_R, 0;
@@ -50,7 +50,7 @@ function	script	F_CLEAR_COUNT_UN_EQI	{
     }
 
     if (@tips == true) {
-        dispbottom "修炼中止!";
+        dispbottom("【世界隐藏任务】修炼中止!");
     }
 }
 

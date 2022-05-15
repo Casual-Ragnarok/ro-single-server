@@ -1,0 +1,54 @@
+// ===== 【世界隐藏任务】【神之力】：效果 ================================ 
+
+
+// 通用视觉效果: @effect <id> 
+//============================================================ 
+// - param: @effect_id	（id 可从 'doc/effect_list.txt' 查看）
+// - return: 无
+function	script	F_VIEW_EFFECT	{
+	@effect_id = getarg(0);
+	atcommand("@effect " + @effect_id);
+	return;
+}
+
+
+// 视觉效果: 个人小范围白色弱光
+//============================================================ 
+// - param: 无参数
+// - return: 无
+function	script	F_VIEW_EFFECT_WHITE_LOW_LIGHT	{
+	callfunc("F_VIEW_EFFECT", 6);
+	return;
+}
+
+
+// 视觉效果: 个人小范围蓝色荧光
+//============================================================ 
+// - param: 无参数
+// - return: 无
+function	script	F_VIEW_EFFECT_BLUE_FLOURESCENT	{
+	callfunc("F_VIEW_EFFECT", 14);
+	return;
+}
+
+
+// 视觉效果: 个人中范围红色强光
+//============================================================ 
+// - param: 无参数
+// - return: 无
+function	script	F_VIEW_EFFECT_RED_GLARE	{
+	callfunc("F_VIEW_EFFECT", 12);
+	return;
+}
+
+
+// 视觉效果: 个人大范围震撼波纹
+//============================================================ 
+// - param: 无参数
+// - return: 无
+function	script	F_VIEW_EFFECT_SHOCK_WAVE	{
+	callfunc("F_VIEW_EFFECT", 8);
+	return;
+}
+
+

@@ -7,7 +7,7 @@
 	// 当玩家死亡时，重置所有任务进度：
 	OnPCDieEvent:
 		callfunc("f_un_all_god_equipments");	// 卸下所有修炼神装
-		callfunc("f_init_reset_checkpoints");	// 重置所有城市的游历标记
+		callfunc("f_reset_city_checkpoints");	// 重置所有城市的游历标记
 		end;
 
 	// 当玩家状态统计数据变更时（如过图、换装备、升级等）：

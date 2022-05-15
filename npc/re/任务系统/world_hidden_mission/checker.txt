@@ -7,11 +7,12 @@
 // - return: 无
 function	script	F_CHECK_HEAD_TOP	{
 	@equip_id = getequipid(EQI_HEAD_TOP);
-	dispbottom Weight;
+	@Ancient_Bandana = 62211;	// 古老的 破裂的王冠
 
-	// 古老的 破裂的王冠
-	if (@equip_id == 62211) {
-		callfunc("f_check_weight");
+	if (@equip_id == @Ancient_Bandana) {
+		if (callfunc("f_check_weight")) {
+			delitem(@Ancient_Bandana, 1);
+		}
 	}
 	return;
 }
@@ -23,10 +24,12 @@ function	script	F_CHECK_HEAD_TOP	{
 // - return: 无
 function	script	F_CHECK_HEAD_MID	{
 	@equip_id = getequipid(EQI_HEAD_MID);
+	@Ancient_Blinker = 62295;	// 古老的 支离破碎的布片
 
-	// 古老的 支离破碎的布片
-	if (@equip_id == 62295) {
-		callfunc("f_check_ignore_def");
+	if (@equip_id == @Ancient_Blinker) {
+		if (callfunc("f_check_ignore_def")) {
+			delitem(@Ancient_Blinker, 1);
+		}
 	}
 	return;
 }
@@ -38,10 +41,12 @@ function	script	F_CHECK_HEAD_MID	{
 // - return: 无
 function	script	F_CHECK_HEAD_LOW	{
 	@equip_id = getequipid(EQI_HEAD_LOW);
+	@Ancient_Leaf = 62270;	// 古老的 断针
 
-	// 古老的 断针
-	if (@equip_id == 62270) {
-		callfunc("f_check_cast");
+	if (@equip_id == @Ancient_Leaf) {
+		if (callfunc("f_check_cast")) {
+			delitem(@Ancient_Leaf, 1);
+		}
 	}
 	return;
 }
@@ -53,14 +58,18 @@ function	script	F_CHECK_HEAD_LOW	{
 // - return: 无
 function	script	F_CHECK_ARMOR	{
 	@equip_id = getequipid(EQI_ARMOR);
+	@Ancient_Shirt = 62301;		// 古老的 破烂烂的衣服
+	@Ancient_Mail = 62328;		// 古老的 破裂的铠甲一角
+	
+	if (@equip_id == @Ancient_Shirt) {
+		if (callfunc("f_check_mdef")) {
+			delitem(@Ancient_Shirt, 1);
+		}
 
-	// 古老的 破烂烂的衣服
-	if (@equip_id == 62301) {
-		callfunc("f_check_mdef");
-
-	// 古老的 破裂的铠甲一角
-	} else if (@equip_id == 62328) {
-		callfunc("f_check_def");
+	} else if (@equip_id == @Ancient_Mail) {
+		if (callfunc("f_check_def")) {
+			delitem(@Ancient_Mail, 1);
+		}
 	}
 	return;
 }
@@ -72,34 +81,48 @@ function	script	F_CHECK_ARMOR	{
 // - return: 无
 function	script	F_CHECK_HAND_R	{
 	@equip_id = getequipid(EQI_HAND_R);
+	@Ancient_Knife = 61201;			// 古老的 破裂的剑	
+	@Ancient_Unique_Sword = 62222;	// 古老的 特别的剑
+	@Ancient_Shuriken = 61202;		// 古老的 破旧之手里剑
+	@Ancient_Book = 61550;			// 古老的 撕裂的魔法书
+	@Ancient_N_Mace = 61545;		// 古老的 新手锤
+	@Ancient_Tourist_Bow = 61749;	// 古老的 旅行者之弓
+	@Ancient_Double_Bound = 61736;	// 古老的 连发弓
 
-	// 古老的 破裂的剑
-	if (@equip_id == 61201) {
-		callfunc("f_check_atk");
+	if (@equip_id == @Ancient_Knife) {
+		if (callfunc("f_check_atk")) {
+			delitem(@Ancient_Knife, 1);
+		}
 
-	// 古老的 特别的剑
-	} else if (@equip_id == 62222) {
-		callfunc("f_check_aspd");
+	} else if (@equip_id == @Ancient_Unique_Sword) {
+		if (callfunc("f_check_aspd")) {
+			delitem(@Ancient_Unique_Sword, 1);
+		}
 
-	// 古老的 破旧之手里剑
-	} else if (@equip_id == 61202) {
-		callfunc("f_check_cri");
+	} else if (@equip_id == @Ancient_Shuriken) {
+		if (callfunc("f_check_cri")) {
+			delitem(@Ancient_Shuriken, 1);
+		}
 
-	// 古老的 撕裂的魔法书
-	} else if (@equip_id == 61550) {
-		callfunc("f_check_matk");
+	} else if (@equip_id == @Ancient_Book) {
+		if (callfunc("f_check_matk")) {
+			delitem(@Ancient_Book, 1);
+		}
 
-	// 古老的 新手锤
-	} else if (@equip_id == 61545) {
-		callfunc("f_check_atk");
+	} else if (@equip_id == @Ancient_N_Mace) {
+		if (callfunc("f_check_atk")) {
+			delitem(@Ancient_N_Mace, 1);
+		}
 
-	// 古老的 旅行者之弓
-	} else if (@equip_id == 61749) {
-		callfunc("f_check_hit");
+	} else if (@equip_id == @Ancient_Tourist_Bow) {
+		if (callfunc("f_check_hit")) {
+			delitem(@Ancient_Tourist_Bow, 1);
+		}
 
-	// 古老的 连发弓
-	} else if (@equip_id == 61736) {
-		callfunc("f_check_aspd");
+	} else if (@equip_id == @Ancient_Double_Bound) {
+		if (callfunc("f_check_aspd")) {
+			delitem(@Ancient_Double_Bound, 1);
+		}
 	}
 	return;
 }
@@ -111,14 +134,18 @@ function	script	F_CHECK_HAND_R	{
 // - return: 无
 function	script	F_CHECK_HAND_L	{
 	@equip_id = getequipid(EQI_HAND_L);
+	@Ancient_Guard = 62101;				// 古老的 破裂的硬壳
+	@Ancient_Unique_Shield = 63333;		// 古老的 特别的盾牌
 
-	// 古老的 破裂的硬壳
-	if (@equip_id == 62101) {
-		callfunc("f_check_weapon_return");
+	if (@equip_id == @Ancient_Guard) {
+		if (callfunc("f_check_weapon_return")) {
+			delitem(@Ancient_Guard, 1);
+		}
 
-	// 古老的 特别的盾牌
-	} else if (@equip_id == 63333) {
-		callfunc("f_check_magic_return");
+	} else if (@equip_id == @Ancient_Unique_Shield) {
+		if (callfunc("f_check_magic_return")) {
+			delitem(@Ancient_Unique_Shield, 1);
+		}
 	}
 	return;
 }
@@ -130,10 +157,12 @@ function	script	F_CHECK_HAND_L	{
 // - return: 无
 function	script	F_CHECK_GARMENT	{
 	@equip_id = getequipid(EQI_GARMENT);
+	@Ancient_Hood = 62501;		// 古老的 破旧的围巾
 
-	// 古老的 破旧的围巾
-	if (@equip_id == 62501) {
-		callfunc("f_check_flee");
+	if (@equip_id == @Ancient_Hood) {
+		if (callfunc("f_check_flee")) {
+			delitem(@Ancient_Hood, 1);
+		}
 	}
 	return;
 }
@@ -145,12 +174,11 @@ function	script	F_CHECK_GARMENT	{
 // - return: 无
 function	script	F_CHECK_SHOES	{
 	@equip_id = getequipid(EQI_SHOES);
-
-	// 古老的 被盗的凉鞋
-	if (@equip_id == 62401) {
-		@is_ok = callfunc("f_check_speed");
-		if (@is_ok == true) {
-			// TODO 移动速度*2
+	@Ancient_Sandals = 62401;		// 古老的 被盗的凉鞋
+	
+	if (@equip_id == @Ancient_Sandals) {
+		if (callfunc("f_check_speed")) {
+			delitem(@Ancient_Sandals, 1);
 		}
 	}
 	return;
@@ -163,10 +191,12 @@ function	script	F_CHECK_SHOES	{
 // - return: 无
 function	script	F_CHECK_ACC_R	{
 	@equip_id = getequipid(EQI_ACC_R);
-
-	// 古老的 破损的魔法石
-	if (@equip_id == 62612) {
-		callfunc("f_check_sp_recov");
+	@Ancient_Flower_Ring = 62612;		// 古老的 破损的魔法石
+	
+	if (@equip_id == @Ancient_Flower_Ring) {
+		if (callfunc("f_check_sp_recov")) {
+			delitem(@Ancient_Flower_Ring, 1);
+		}
 	}
 	return;
 }
@@ -178,10 +208,12 @@ function	script	F_CHECK_ACC_R	{
 // - return: 无
 function	script	F_CHECK_ACC_L	{
 	@equip_id = getequipid(EQI_ACC_L);
-
-	// 古老的 破坏的令牌
-	if (@equip_id == 62627) {
-		callfunc("f_check_hp_recov");
+	@Ancient_Belt = 62627;		// 古老的 破坏的令牌
+	
+	if (@equip_id == @Ancient_Belt) {
+		if (callfunc("f_check_hp_recov")) {
+			delitem(@Ancient_Belt, 1);
+		}
 	}
 	return;
 }
@@ -198,11 +230,17 @@ function	script	F_CHECK_ACC_L	{
 function	script	f_check_weight	{
 	@is_ok = false;
 	@weight_limit = 200;
-	@count_limit = 10000;
-	callfunc("f_show_mission_progress", EQI_HEAD_TOP, #AC_HEAD_TOP, @count_limit);
+	if (Weight <= @weight_limit) {		// 负重超过限制
+		set #AC_HEAD_TOP, 0;			// 计数清零
 
-	if (Weight <= @weight_limit && #AC_HEAD_TOP >= @count_limit) {
-		// TODO 负重*2
+	} else {
+		@count_limit = 10000;
+		callfunc("f_show_mission_progress", EQI_HEAD_TOP, #AC_HEAD_TOP, @count_limit);
+		if (#AC_HEAD_TOP >= @count_limit) {
+			@is_ok = true;
+			set #GOD_POWER_WEIGHT, true;
+			callfunc("f_mission_finish", "负重上限增益");
+		}
 	}
 	return @is_ok;
 }
@@ -217,9 +255,10 @@ function	script	f_check_ignore_def	{
 	@is_ok = false;
 	@count_limit = 10000;
 	callfunc("f_show_mission_progress", EQI_HEAD_MID, #AC_HEAD_MID, @count_limit);
-
 	if (#AC_HEAD_MID >= @count_limit) {
-		// TODO bonus bIgnoreDefMob,n;
+		@is_ok = true;
+		set #GOD_POWER_IGNORE_DEF, true;
+		callfunc("f_mission_finish", "无视防御");
 	}
 	return @is_ok;
 }
@@ -234,15 +273,16 @@ function	script	f_check_cast	{
 	@is_ok = false;
 	@count_limit = 10000;
 	callfunc("f_show_mission_progress", EQI_HEAD_LOW, #AC_HEAD_LOW, @count_limit);
-
 	if (#AC_HEAD_LOW >= @count_limit) {
-		// TODO bonus bCastrate,n;
+		@is_ok = true;
+		set #GOD_POWER_CAST, true;
+		callfunc("f_mission_finish", "无念咏唱");
 	}
 	return @is_ok;
 }
 
 
-// 【ATK 增益】修炼达成条件检查: 
+// 【物理攻击增益】修炼达成条件检查: 
 //    使用物理攻击 10W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -251,15 +291,16 @@ function	script	f_check_atk	{
 	@is_ok = false;
 	@count_limit = 100000;
 	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-
 	if (#AC_HAND_R >= @count_limit) {
-		// TODO ATK *2
+		@is_ok = true;
+		set #GOD_POWER_ATK, true;
+		callfunc("f_mission_finish", "物理攻击增益");
 	}
 	return @is_ok;
 }
 
 
-// 【MATK 增益】修炼达成条件检查: 
+// 【魔法攻击增益】修炼达成条件检查: 
 //    使用魔法攻击 10W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -268,15 +309,16 @@ function	script	f_check_matk	{
 	@is_ok = false;
 	@count_limit = 100000;
 	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-
 	if (#AC_HAND_R >= @count_limit) {
-		// TODO MATK *2
+		@is_ok = true;
+		set #GOD_POWER_MATK, true;
+		callfunc("f_mission_finish", "魔法攻击增益");
 	}
 	return @is_ok;
 }
 
 
-// 【ASPD 增益】修炼达成条件检查: 
+// 【攻击速度增益】修炼达成条件检查: 
 //    使用物理攻击 10W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -285,19 +327,16 @@ function	script	f_check_aspd	{
 	@is_ok = false;
 	@count_limit = 100000;
 	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-
 	if (#AC_HAND_R >= @count_limit) {
-		dispbottom("【世界隐藏任务】达成修炼条件！获得【神之力】： ASPD 199");
-		// TODO ASPD=199
-		// 获得道具 getitem
-		// 获得效果	bonus_script "{ bonus bFlee,999; bonus bFlee2,999; }",5,512,0,SC_INCFLEE2;
-		// 获得效果展示	skilleffect "HP_ASSUMPTIO",0;
+		@is_ok = true;
+		set #GOD_POWER_ASPD, true;
+		callfunc("f_mission_finish", "攻击速度增益");
 	}
 	return @is_ok;
 }
 
 
-// 【CRI 增益】修炼达成条件检查: 
+// 【暴击率增益】修炼达成条件检查: 
 //    使用物理攻击 10W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -306,15 +345,16 @@ function	script	f_check_cri	{
 	@is_ok = false;
 	@count_limit = 100000;
 	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-
 	if (#AC_HAND_R >= @count_limit) {
-		// TODO CRI *2
+		@is_ok = true;
+		set #GOD_POWER_CRI, true;
+		callfunc("f_mission_finish", "暴击率增益");
 	}
 	return @is_ok;
 }
 
 
-// 【HIT 增益】修炼达成条件检查: 
+// 【命中率增益】修炼达成条件检查: 
 //    使用物理攻击 10W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -323,15 +363,16 @@ function	script	f_check_hit	{
 	@is_ok = false;
 	@count_limit = 100000;
 	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-
 	if (#AC_HAND_R >= @count_limit) {
-		// TODO HIT *2
+		@is_ok = true;
+		set #GOD_POWER_HIT, true;
+		callfunc("f_mission_finish", "命中率增益");
 	}
 	return @is_ok;
 }
 
 
-// 【DEF 增益】修炼达成条件检查: 
+// 【物理防御增益】修炼达成条件检查: 
 //    受到物理攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -340,15 +381,16 @@ function	script	f_check_def	{
 	@is_ok = false;
 	@count_limit = 10000;
 	callfunc("f_show_mission_progress", EQI_ARMOR, #AC_ARMOR, @count_limit);
-
 	if (#AC_ARMOR >= @count_limit) {
-		// TODO DEF *2
+		@is_ok = true;
+		set #GOD_POWER_DEF, true;
+		callfunc("f_mission_finish", "物理防御增益");
 	}
 	return @is_ok;
 }
 
 
-// 【MDEF 增益】修炼达成条件检查: 
+// 【魔法防御增益】修炼达成条件检查: 
 //    受到魔法攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -357,15 +399,16 @@ function	script	f_check_mdef	{
 	@is_ok = false;
 	@count_limit = 10000;
 	callfunc("f_show_mission_progress", EQI_ARMOR, #AC_ARMOR, @count_limit);
-
 	if (#AC_ARMOR >= @count_limit) {
-		// TODO MDEF *2
+		@is_ok = true;
+		set #GOD_POWER_MDEF, true;
+		callfunc("f_mission_finish", "魔法防御增益");
 	}
 	return @is_ok;
 }
 
 
-// 【FLEE & FLEE2 增益】修炼达成条件检查: 
+// 【回避增益】修炼达成条件检查: 
 //    受到任意攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -374,10 +417,10 @@ function	script	f_check_flee	{
 	@is_ok = false;
 	@count_limit = 10000;
 	callfunc("f_show_mission_progress", EQI_GARMENT, #AC_GARMENT, @count_limit);
-
 	if (#AC_GARMENT >= @count_limit) {
-		// TODO FLEE *2
-		// TODO FLEE2 *2
+		@is_ok = true;
+		set #GOD_POWER_FLEE, true;
+		callfunc("f_mission_finish", "回避增益");
 	}
 	return @is_ok;
 }
@@ -390,10 +433,17 @@ function	script	f_check_flee	{
 // - return: 是否达成条件
 function	script	f_check_speed	{
 	@is_ok = false;
-	@is_over_weight = callfunc("f_is_over_weight");
-	if (@is_over_weight == true) {
+	@is_over_weight = callfunc("f_is_over_weight");		// 检查是否处于负重 90% 状态
+	if (@is_over_weight == false) {
+		callfunc("f_reset_city_checkpoints");			// 重置所有城市的游历标记
+
+	} else {
 		callfunc("f_mark_city_checkpoint");				// 标记城市检查点
 		@is_ok = callfunc("f_check_city_checkpoints");	// 检查是否已游历所有城市
+		if (@is_ok == true) {
+			set #GOD_POWER_SPEED, true;
+			callfunc("f_mission_finish", "移动速度增益");
+		}
 	}
 	return @is_ok;
 }
@@ -409,12 +459,14 @@ function	script	f_check_weapon_return	{
 	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
 	if (@is_move == true) {
-		set #AC_HAND_L, 0;
+		set #AC_HAND_L, 0;		// 计数清零
 
 	} else {
 		callfunc("f_show_mission_progress", EQI_HAND_L, #AC_HAND_L, @count_limit);
 		if (#AC_HAND_L >= @count_limit) {
-			// TODO bonus bShortWeaponDamageReturn,n;
+			@is_ok = true;
+			set #GOD_POWER_WEAPON_RETURN, true;
+			callfunc("f_mission_finish", "物理反射");
 		}
 	}
 	return @is_ok;
@@ -436,14 +488,16 @@ function	script	f_check_magic_return	{
 	} else {
 		callfunc("f_show_mission_progress", EQI_HAND_L, #AC_HAND_L, @count_limit);
 		if (#AC_HAND_L >= @count_limit) {
-			// TODO 每10秒恢复最大HP 1%
+			@is_ok = true;
+			set #GOD_POWER_MAGIC_RETURN, true;
+			callfunc("f_mission_finish", "魔法反射");
 		}
 	}
 	return @is_ok;
 }
 
 
-// 【SP 自然回复增益】修炼达成条件检查: 
+// 【SP 回复增益】修炼达成条件检查: 
 //    不移动、被物理攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -458,14 +512,16 @@ function	script	f_check_sp_recov	{
 	} else {
 		callfunc("f_show_mission_progress", EQI_ACC_R, #AC_ACC_R, @count_limit);
 		if (#AC_ACC_R >= @count_limit) {
-			// TODO 每10秒恢复最大HP 1%
+			@is_ok = true;
+			set #GOD_POWER_SP_RECOV, true;
+			callfunc("f_mission_finish", "SP 回复增益");
 		}
 	}
 	return @is_ok;
 }
 
 
-// 【HP 自然回复增益】修炼达成条件检查: 
+// 【HP 回复增益】修炼达成条件检查: 
 //    不移动、被物理攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
@@ -480,7 +536,9 @@ function	script	f_check_hp_recov	{
 	} else {
 		callfunc("f_show_mission_progress", EQI_ACC_L, #AC_ACC_L, @count_limit);
 		if (#AC_ACC_L >= @count_limit) {
-			// TODO 每10秒恢复最大HP 1%   bonus bHPrecovRate,n;
+			@is_ok = true;
+			set #GOD_POWER_HP_RECOV, true;
+			callfunc("f_mission_finish", "HP 回复增益");
 		}
 	}
 	return @is_ok;
@@ -526,7 +584,7 @@ function	script	f_check_city_checkpoints	{
 			@is_all_ok &= #CITY_CHECKPOINTS[@i];
 		}
 	}
-	return @is_all_ok == true;
+	return @is_all_ok;
 }
 
 
