@@ -6,7 +6,7 @@
 // - param: @keep_equipment_slot 正在装备的槽位（需要保留）
 // - return: 空
 function	script	F_START_COUNT_ON_EQI	{
-    @equipment_slot = getarg(0);
+    @keep_equipment_slot = getarg(0);
     callfunc("f_un_god_equipments", @keep_equipment_slot);  // 卸载其他神装
     dispbottom("【世界隐藏任务】修炼开始! 人物死亡或更替修炼装备均会导致修炼进度归零!");
 }

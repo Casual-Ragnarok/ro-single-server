@@ -246,32 +246,32 @@ function	script	f_check_weight	{
 }
 
 
-// 【无视防御（包括 BOSS）】修炼达成条件检查: 
-//    受到物理攻击 1W 次（不死亡）
+// 【六维全能力增益】修炼达成条件检查: 
+//    受到物理攻击 10W 次（不死亡）
 //============================================================ 
 // - param: 无参数
 // - return: 是否达成条件
 function	script	f_check_ignore_def	{
 	@is_ok = false;
-	@count_limit = 10000;
+	@count_limit = 100000;
 	callfunc("f_show_mission_progress", EQI_HEAD_MID, #AC_HEAD_MID, @count_limit);
 	if (#AC_HEAD_MID >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_IGNORE_DEF, true;
-		callfunc("f_mission_finish", "无视防御");
+		set #GOD_POWER_ALL_STATS, true;
+		callfunc("f_mission_finish", "六维全能力增益");
 	}
 	return @is_ok;
 }
 
 
 // 【无念咏唱】修炼达成条件检查: 
-//    受到魔法攻击 1W 次（不死亡）
+//    受到魔法攻击 10W 次（不死亡）
 //============================================================ 
 // - param: 无参数
 // - return: 是否达成条件
 function	script	f_check_cast	{
 	@is_ok = false;
-	@count_limit = 10000;
+	@count_limit = 100000;
 	callfunc("f_show_mission_progress", EQI_HEAD_LOW, #AC_HEAD_LOW, @count_limit);
 	if (#AC_HEAD_LOW >= @count_limit) {
 		@is_ok = true;

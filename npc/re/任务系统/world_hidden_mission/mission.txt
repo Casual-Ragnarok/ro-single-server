@@ -101,18 +101,27 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 
 					// 暴力性格
 					case 1:
-						mes "里面的东西被砸得粉碎 ...";
-						mes "一阵风吹过 ...";
-						mes "尘归尘、土归土";
+						mes "[薛定谔的破箱]";
+						mes "------------------------";
+						mes "砸开箱子的一刹那，";
+						mes "似乎里面的东西性质发生的改变？";
+						mes "... ...";
+						mes "从箱子内发出耀眼强光 !!!";
 
-
-						
+						callfunc("f_assign_god_equipments", 0);
 						set #GOD_POWER_FLAG, 2;
 						break;
 
-					// 取巧性格
+					// 温柔性格
 					case 2:
-						// callfunc("");
+						mes "[薛定谔的破箱]";
+						mes "------------------------";
+						mes "撬开箱子的一刹那，";
+						mes "似乎里面的东西性质发生的改变？";
+						mes "... ...";
+						mes "从箱子内发出耀眼强光 !!!";
+
+						callfunc("f_assign_god_equipments", 1);
 						set #GOD_POWER_FLAG, 2;
 						break;
 

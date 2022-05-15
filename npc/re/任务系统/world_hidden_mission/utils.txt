@@ -7,24 +7,68 @@
 // - return: 空
 function	script	f_assign_god_equipments	{
 	@character = getarg(0);
-	@job = Class;
+	@base_job = BaseClass;
 
-	dispbottom jobname(Class);
+	/* ==== 任意职业可获取 ==== */
 
-	getitem 62270,1;	// 古老的 断针
-	getitem 61201,1;	// 古老的 破裂的剑
-	getitem 61202,1;	// 古老的 破旧之手里剑
-	getitem 61550,1;	// 古老的 撕裂的魔法书
-	getitem 67595,1;	// 古老的 特别的剑
-	getitem 62501,1;	// 古老的 破旧的围巾
-	getitem 62301,1;	// 古老的 破烂烂的衣服
-	getitem 62328,1;	// 古老的 破裂的铠甲一角
-	getitem 62101,1;	// 古老的 破裂的硬壳
-	getitem 62401,1;	// 古老的 被盗的凉鞋
-	getitem 62612,1;	// 古老的 破损的魔法石
-	getitem 62627,1;	// 古老的 破坏的令牌
-	getitem 62211,1;	// 古老的 破裂的王冠
-	getitem 62295,1;	// 古老的 支离破碎的布片
+	getitem 62211, 1;	// 古老的 破裂的王冠: [负重 x2]
+	getitem 62295, 1;	// 古老的 支离破碎的布片: []
+	getitem 62270, 1;	// 古老的 断针: [无念]
+	getitem 62401, 1;	// 古老的 被盗的凉鞋: [移动速度 x2]
+	getitem 62627, 1;	// 古老的 破坏的令牌: [每 1 秒回复 10 点 SP]
+	getitem 62612, 1;	// 古老的 破损的魔法石: [每 1 秒回复 100 点 HP]
+
+
+	/* ==== 三系职业可额外获取 ==== */
+	
+	// 力量系： 剑士 或 商人
+	if (@base_job == 1 || @base_job == 5) {
+
+		// 暴力性格
+		if (@character == 0) {
+			getitem 61201,1;	// 古老的 破裂的剑: [ATK x2]
+			getitem 62328,1;	// 古老的 破裂的铠甲一角: [DEF x2]
+			getitem 62101,1;	// 古老的 破裂的硬壳: [物理反射]
+
+		// 温柔性格
+		} else {
+			getitem 62222,1;	// 古老的 特别的剑: [ASPD +50]
+			getitem 62328,1;	// 古老的 破裂的铠甲一角: [DEF x2]
+			getitem 62101,1;	// 古老的 破裂的硬壳: [物理反射]
+		}
+
+	// 智力系： 魔法师 或 服侍
+	} else if (@base_job == 2 || @base_job == 4) {
+
+		// 暴力性格
+		if (@character == 0) {
+			getitem 61545, 1;	// 古老的 新手锤: [ATK x2]
+			getitem 62301, 1;	// 古老的 破烂烂的衣服: [MDEF x2]
+			getitem 63333, 1;	// 古老的 特别的盾牌: [魔法反射]
+
+		// 温柔性格
+		} else {
+			getitem 61550, 1;	// 古老的 撕裂的魔法书: [MATK x2]
+			getitem 62301, 1;	// 古老的 破烂烂的衣服: [MDEF x2]
+			getitem 63333, 1;	// 古老的 特别的盾牌: [魔法反射]
+		}
+
+	// 敏捷系： 弓箭手 或 盗贼
+	} else if (@base_job == 3 || @base_job == 6) {
+
+		// 暴力性格
+		if (@character == 0) {
+			getitem 61202, 1;	// 古老的 破旧之手里剑: [CRI x2]
+			getitem 61736, 1;	// 古老的 连发弓: [ASPD +50]
+			getitem 62501, 1;	// 古老的 破旧的围巾: [FLEE & FLEE2 x2]
+
+		// 温柔性格
+		} else {
+			getitem 61749, 1;	// 古老的 旅行者之弓: [HIT x2]
+			getitem 61736, 1;	// 古老的 连发弓: [ASPD +50]
+			getitem 62501, 1;	// 古老的 破旧的围巾: [FLEE & FLEE2 x2]
+		}
+	}
 	return;
 }
 
@@ -292,11 +336,11 @@ function	script	F_APPEND_GOD_POWERS	{
 		bonus_script("{ bonus bAddMaxWeight, MaxWeight; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_IGNORE_DEF == true) {
+	if (#GOD_POWER_ALL_STATS == true) {
 		@god_power_cnt++;
-		mes("附加 [^0000FF无视防御^000000] ^0000FF" + @buff_time + "^000000 秒!");
-		dispbottom("【世界隐藏任务】已进入 [无视防御] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bIgnoreDefMob, 1; }", @buff_time, @disable_when, 1, SI_BLANK);
+		mes("附加 [^0000FF六维全能力增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [六维全能力增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bAllStats, 20; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_CAST == true) {
@@ -324,7 +368,7 @@ function	script	F_APPEND_GOD_POWERS	{
 		@god_power_cnt++;
 		mes("附加 [^0000FF攻击速度增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [攻击速度增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bAspd, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
+		bonus_script("{ bonus bAspd, 50; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_CRI == true) {
