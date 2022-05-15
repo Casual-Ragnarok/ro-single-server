@@ -1,15 +1,21 @@
-// ===== 【世界隐藏任务】【神之力】：计数器 ================================ 
+// ===== 【世界隐藏任务】【神之力】：修炼计数器 ================================ 
 
 
-// 装备修炼装备时开始计数
+// 装备【神之力】装备时开始计数
+//============================================================ 
+// - param: @keep_equipment_slot 正在装备的槽位（需要保留）
+// - return: 空
 function	script	F_START_COUNT_ON_EQI	{
-    @keep_equipment_slot = getarg(0);
+    @equipment_slot = getarg(0);
     callfunc("f_un_god_equipments", @keep_equipment_slot);  // 卸载其他神装
     dispbottom("【世界隐藏任务】修炼开始! 人物死亡或更替修炼装备均会导致修炼进度归零!");
 }
 
 
-// 卸载修炼装备时计数器清零
+// 卸载某件【神之力】装备时，其他【神之力】计数器清零（非武器）
+//============================================================ 
+// - param: @equipment_slot 当前正在卸载的装备槽
+// - return: 空
 function	script	F_CLEAR_COUNT_UN_EQI	{
     @equipment_slot = getarg(0);
     @tips = true;
@@ -56,7 +62,11 @@ function	script	F_CLEAR_COUNT_UN_EQI	{
 
 /* ==================== 通用计数器 ====================== */
 
+
 // EQI_HEAD_TOP 头上：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_HEAD_TOP	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -64,7 +74,11 @@ function	script	F_ATTACKED_COUNT_HEAD_TOP	{
     autobonus2 "{ #AC_HEAD_TOP++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_TOP\"); }";
 }
 
+
 // EQI_HEAD_MID 头中：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_HEAD_MID	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -72,7 +86,11 @@ function	script	F_ATTACKED_COUNT_HEAD_MID	{
     autobonus2 "{ #AC_HEAD_MID++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_MID\"); }";
 }
 
+
 // EQI_HEAD_LOW 头下：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_HEAD_LOW	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -80,7 +98,11 @@ function	script	F_ATTACKED_COUNT_HEAD_LOW	{
     autobonus2 "{ #AC_HEAD_LOW++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_LOW\"); }";
 }
 
+
 // EQI_ARMOR 铠甲：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_ARMOR	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -88,7 +110,11 @@ function	script	F_ATTACKED_COUNT_ARMOR	{
     autobonus2 "{ #AC_ARMOR++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ARMOR\"); }";
 }
 
+
 // EQI_HAND_R 右手（武器）：攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACK_COUNT_HAND_R	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -96,7 +122,11 @@ function	script	F_ATTACK_COUNT_HAND_R	{
     autobonus "{ #AC_HAND_R++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HAND_R\"); }";
 }
 
+
 // EQI_HAND_L 左手（盾牌）：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_HAND_L	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -104,7 +134,11 @@ function	script	F_ATTACKED_COUNT_HAND_L	{
     autobonus2 "{ #AC_HAND_L++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HAND_L\"); }";
 }
 
+
 // EQI_GARMENT 披肩：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_GARMENT	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -112,7 +146,11 @@ function	script	F_ATTACKED_COUNT_GARMENT	{
     autobonus2 "{ #AC_GARMENT++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_GARMENT\"); }";
 }
 
+
 // EQI_SHOES 鞋子：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_SHOES	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -120,7 +158,11 @@ function	script	F_ATTACKED_COUNT_SHOES	{
     autobonus2 "{ #AC_SHOES++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_SHOES\"); }";
 }
 
+
 // EQI_ACC_R 装饰品（右）：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_ACC_R	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -128,7 +170,11 @@ function	script	F_ATTACKED_COUNT_ACC_R	{
     autobonus2 "{ #AC_ACC_R++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ACC_R\"); }";
 }
 
+
 // EQI_ACC_L 装饰品（左）：被攻击时计数器+1
+//============================================================ 
+// - param: @tri_event 触发时机
+// - return: 空
 function	script	F_ATTACKED_COUNT_ACC_L	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
@@ -139,52 +185,92 @@ function	script	F_ATTACKED_COUNT_ACC_L	{
 
 /* ==================== 特殊场景计数器 ====================== */
 
+
 // EQI_HEAD_MID 头中：被物理攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_WEAPON_ATTACKED_COUNT_HEAD_MID	{
     callfunc("F_ATTACKED_COUNT_HEAD_MID", BF_WEAPON|BF_MISC);
 }
 
+
 // EQI_HEAD_LOW 头下：被魔法攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_MAGIC_ATTACKED_COUNT_HEAD_LOW	{
     callfunc("F_ATTACKED_COUNT_HEAD_LOW", BF_MAGIC);
 }
 
+
 // EQI_ARMOR 铠甲：被魔法攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_MAGIC_ATTACKED_COUNT_ARMOR	{
     callfunc("F_ATTACKED_COUNT_ARMOR", BF_MAGIC);
 }
 
+
 // EQI_ARMOR 铠甲：被物理攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_WEAPON_ATTACKED_COUNT_ARMOR	{
     callfunc("F_ATTACKED_COUNT_ARMOR", BF_WEAPON|BF_MISC);
 }
 
+
 // EQI_HAND_R 右手（武器）：魔法攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_MAGIC_ATTACK_COUNT_HAND_R	{
     callfunc("F_ATTACK_COUNT_HAND_R", BF_MAGIC);
 }
 
+
 // EQI_HAND_R 右手（武器）：物理攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_WEAPON_ATTACK_COUNT_HAND_R	{
     callfunc("F_ATTACK_COUNT_HAND_R", BF_WEAPON|BF_MISC);
 }
 
+
 // EQI_HAND_L 左手（盾牌）：被魔法攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_MAGIC_ATTACKED_COUNT_HAND_L	{
     callfunc("F_ATTACKED_COUNT_HAND_L", BF_MAGIC);
 }
 
+
 // EQI_HAND_L 左手（盾牌）：被物理攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_WEAPON_ATTACKED_COUNT_HAND_L	{
     callfunc("F_ATTACKED_COUNT_HAND_L", BF_WEAPON|BF_MISC);
 }
 
+
 // EQI_ACC_R 装饰品（右）：被魔法攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_MAGIC_ATTACKED_COUNT_ACC_R	{
     callfunc("F_ATTACKED_COUNT_ACC_R", BF_MAGIC);
 }
 
+
 // EQI_ACC_L 装饰品（左）：被物理攻击时计数器+1
+//============================================================ 
+// - param: 无参数
+// - return: 空
 function	script	F_WEAPON_ATTACKED_COUNT_ACC_L	{
     callfunc("F_ATTACKED_COUNT_ACC_L", BF_WEAPON|BF_MISC);
 }

@@ -1,6 +1,34 @@
 // ===== 【世界隐藏任务】【神之力】：工具函数 ================================ 
 
 
+// 根据玩家性格、职业分配【神之力】的修炼装备
+//============================================================ 
+// - param: @character 玩家性格
+// - return: 空
+function	script	f_assign_god_equipments	{
+	@character = getarg(0);
+	@job = Class;
+
+	dispbottom jobname(Class);
+
+	getitem 62270,1;	// 古老的 断针
+	getitem 61201,1;	// 古老的 破裂的剑
+	getitem 61202,1;	// 古老的 破旧之手里剑
+	getitem 61550,1;	// 古老的 撕裂的魔法书
+	getitem 67595,1;	// 古老的 特别的剑
+	getitem 62501,1;	// 古老的 破旧的围巾
+	getitem 62301,1;	// 古老的 破烂烂的衣服
+	getitem 62328,1;	// 古老的 破裂的铠甲一角
+	getitem 62101,1;	// 古老的 破裂的硬壳
+	getitem 62401,1;	// 古老的 被盗的凉鞋
+	getitem 62612,1;	// 古老的 破损的魔法石
+	getitem 62627,1;	// 古老的 破坏的令牌
+	getitem 62211,1;	// 古老的 破裂的王冠
+	getitem 62295,1;	// 古老的 支离破碎的布片
+	return;
+}
+
+
 // 卸下身上已装备的其他【神之力】的修炼装备（非武器）:
 //   除武器外，所有神装互不兼容（主要是会导致重复触发计数）
 //============================================================ 
@@ -254,119 +282,119 @@ function	script	F_APPEND_GOD_POWERS	{
 
 	@god_power_cnt = 0;
 	@buff_time = 3600;
-	// @disable_when_dead = 1;
-	@disable_when_dead = 8;
+	@disable_when = 1;		// 死亡时失去效果
+	// @disable_when = 8;	// 重登时失去效果
 	
 	if (#GOD_POWER_WEIGHT == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF负重上限增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [负重上限增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bAddMaxWeight, MaxWeight; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bAddMaxWeight, MaxWeight; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_IGNORE_DEF == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF无视防御^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [无视防御] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bIgnoreDefMob, 1; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bIgnoreDefMob, 1; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_CAST == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF无念咏唱^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [无念咏唱] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bFixedCast, -10000; bonus bCastrate, -100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bFixedCast, -10000; bonus bCastrate, -100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_ATK == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF物理攻击增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [物理攻击增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bAtkRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bAtkRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_MATK == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF魔法攻击增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [魔法攻击增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bMatkRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bMatkRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_ASPD == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF攻击速度增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [攻击速度增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bAspd, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bAspd, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_CRI == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF暴击率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [暴击率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bCriticalRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bCriticalRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_HIT == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF命中率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [命中率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bHitRate, 100; bonus bPerfectHitAddRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bHitRate, 100; bonus bPerfectHitAddRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_DEF == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF物理防御增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [物理防御增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bDefRate, 100; bonus bDef2Rate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bDefRate, 100; bonus bDef2Rate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_MDEF == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF魔法防御增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [魔法防御增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bMdefRate, 100; bonus bMdef2Rate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bMdefRate, 100; bonus bMdef2Rate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_FLEE == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF回避率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [回避率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bFleeRate, 100; bonus bFlee2Rate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bFleeRate, 100; bonus bFlee2Rate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_SPEED == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF移动速度增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [移动速度增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bSpeedAddRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bSpeedAddRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_WEAPON_RETURN == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF物理反射^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [物理反射] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bShortWeaponDamageReturn, 100; bonus bLongWeaponDamageReturn, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bShortWeaponDamageReturn, 100; bonus bLongWeaponDamageReturn, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_MAGIC_RETURN == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF魔法反射^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [魔法反射] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus bMagicDamageReturn, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus bMagicDamageReturn, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_HP_RECOV == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FFHP 回复增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [HP 回复增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus2 bHPRegenRate, 100, 1000; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus2 bHPRegenRate, 100, 1000; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
 	if (#GOD_POWER_SP_RECOV == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FFSP 回复增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [SP 回复增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
-		bonus_script("{ bonus2 bSPRegenRate, 10, 1000; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+		bonus_script("{ bonus2 bSPRegenRate, 10, 1000; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 	
 	if (@god_power_cnt > 0) {
