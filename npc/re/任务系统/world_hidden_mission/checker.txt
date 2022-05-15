@@ -223,7 +223,7 @@ function	script	F_CHECK_ACC_L	{
 
 
 // 【负重上限增益】修炼达成条件检查: 
-//    在负重 <= 200.0 的状态下受到任意攻击 1W 次（不死亡）
+//    在负重 <= 200.0 的状态下受到任意攻击 10W 次（不死亡）
 //============================================================ 
 // - param: 无参数
 // - return: 是否达成条件
@@ -234,7 +234,7 @@ function	script	f_check_weight	{
 		set #AC_HEAD_TOP, 0;			// 计数清零
 
 	} else {
-		@count_limit = 10000;
+		@count_limit = 100000;
 		callfunc("f_show_mission_progress", EQI_HEAD_TOP, #AC_HEAD_TOP, @count_limit);
 		if (#AC_HEAD_TOP >= @count_limit) {
 			@is_ok = true;
@@ -497,30 +497,6 @@ function	script	f_check_magic_return	{
 }
 
 
-// 【SP 回复增益】修炼达成条件检查: 
-//    不移动、被物理攻击 1W 次（不死亡）
-//============================================================ 
-// - param: 无参数
-// - return: 是否达成条件
-function	script	f_check_sp_recov	{
-	@is_ok = false;
-	@count_limit = 10000;
-	@is_move = callfunc("f_is_move");
-	if (@is_move == true) {
-		set #AC_ACC_R, 0;
-
-	} else {
-		callfunc("f_show_mission_progress", EQI_ACC_R, #AC_ACC_R, @count_limit);
-		if (#AC_ACC_R >= @count_limit) {
-			@is_ok = true;
-			set #GOD_POWER_SP_RECOV, true;
-			callfunc("f_mission_finish", "SP 回复增益");
-		}
-	}
-	return @is_ok;
-}
-
-
 // 【HP 回复增益】修炼达成条件检查: 
 //    不移动、被物理攻击 1W 次（不死亡）
 //============================================================ 
@@ -539,6 +515,30 @@ function	script	f_check_hp_recov	{
 			@is_ok = true;
 			set #GOD_POWER_HP_RECOV, true;
 			callfunc("f_mission_finish", "HP 回复增益");
+		}
+	}
+	return @is_ok;
+}
+
+
+// 【SP 回复增益】修炼达成条件检查: 
+//    不移动、被物理攻击 1W 次（不死亡）
+//============================================================ 
+// - param: 无参数
+// - return: 是否达成条件
+function	script	f_check_sp_recov	{
+	@is_ok = false;
+	@count_limit = 10000;
+	@is_move = callfunc("f_is_move");
+	if (@is_move == true) {
+		set #AC_ACC_R, 0;
+
+	} else {
+		callfunc("f_show_mission_progress", EQI_ACC_R, #AC_ACC_R, @count_limit);
+		if (#AC_ACC_R >= @count_limit) {
+			@is_ok = true;
+			set #GOD_POWER_SP_RECOV, true;
+			callfunc("f_mission_finish", "SP 回复增益");
 		}
 	}
 	return @is_ok;

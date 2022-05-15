@@ -1,20 +1,10 @@
 // ===== 【世界隐藏任务】【神之力】：工具函数 ================================ 
 
 
-/*
-流程：
-1. 找到石碑
-2. 石碑根据意向 给与不同类型的装备 （主要因为计数冲突）
-3. 最多装备 1 件装备修炼
-// 过图，穿上任意装备，都会触发判断，若对应位置没有装备，则会报错，但不影响游戏
-*/
-
-
-
 // 卸下身上已装备的其他【神之力】的修炼装备（非武器）:
 //   除武器外，所有神装互不兼容（主要是会导致重复触发计数）
 //============================================================ 
-// - param: @keep_equipment_slot 正在装备的槽位
+// - param: @keep_equipment_slot 正在装备的槽位（需要保留）
 // - return: 空
 function	script	f_un_god_equipments	{
 	@keep_equipment_slot = getarg(0);
@@ -241,5 +231,158 @@ function	script	f_mission_finish	{
 
 	dispbottom("【世界隐藏任务】修炼成功! 获得神之力 [" + @buff_desc$ + "]");
 	dispbottom("【世界隐藏任务】神之力对身体负荷过大，请通过 [" + @RO_Manual$ + "] 按需附加");
+	return;
+}
+
+
+// 附加【神之力】
+//============================================================ 
+// - param: 无参数
+// - return: 空
+function	script	F_APPEND_GOD_POWERS	{
+	if (#GOD_POWER_FLAG != 2) {
+		return;
+	}
+
+	@NOW = gettimetick(2);
+	if (@NOW <= #GOD_POWER_CD_END_TIME) {
+		mes "[神之力] 长时间附加会损害经络";
+		mes "需冷却 [^0000FF3^000000] 小时才能再次附加";
+		dispbottom("【世界隐藏任务】[神之力] 长时间附加会损害经络，需冷却 [3] 小时才能再次附加", 0xFFFF00);
+		return;
+	}
+
+	@CD_TIME = 3600 * 4;	// CD 时间 3 小时（算上生效开始时间，往后推 4 小时）
+	#GOD_POWER_CD_END_TIME = gettimetick(2) + @CD_TIME;
+
+	@god_power_cnt = 0;
+	@buff_time = 3600;
+	// @disable_when_dead = 1;
+	@disable_when_dead = 8;
+	
+	if (#GOD_POWER_WEIGHT == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF负重上限增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [负重上限增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bAddMaxWeight, MaxWeight; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_IGNORE_DEF == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF无视防御^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [无视防御] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bIgnoreDefMob, 1; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_CAST == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF无念咏唱^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [无念咏唱] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bFixedCast, -10000; bonus bCastrate, -100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_ATK == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF物理攻击增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [物理攻击增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bAtkRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_MATK == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF魔法攻击增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [魔法攻击增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bMatkRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_ASPD == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF攻击速度增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [攻击速度增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bAspd, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_CRI == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF暴击率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [暴击率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bCriticalRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_HIT == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF命中率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [命中率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bHitRate, 100; bonus bPerfectHitAddRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_DEF == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF物理防御增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [物理防御增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bDefRate, 100; bonus bDef2Rate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_MDEF == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF魔法防御增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [魔法防御增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bMdefRate, 100; bonus bMdef2Rate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_FLEE == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF回避率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [回避率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bFleeRate, 100; bonus bFlee2Rate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_SPEED == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF移动速度增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [移动速度增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bSpeedAddRate, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_WEAPON_RETURN == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF物理反射^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [物理反射] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bShortWeaponDamageReturn, 100; bonus bLongWeaponDamageReturn, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_MAGIC_RETURN == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FF魔法反射^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [魔法反射] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus bMagicDamageReturn, 100; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_HP_RECOV == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FFHP 回复增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [HP 回复增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus2 bHPRegenRate, 100, 1000; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+
+	if (#GOD_POWER_SP_RECOV == true) {
+		@god_power_cnt++;
+		mes("附加 [^0000FFSP 回复增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
+		dispbottom("【世界隐藏任务】已进入 [SP 回复增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
+		bonus_script("{ bonus2 bSPRegenRate, 10, 1000; }", @buff_time, @disable_when_dead, 1, SI_BLANK);
+	}
+	
+	if (@god_power_cnt > 0) {
+		mes "共附加 [^0000FF" + @god_power_cnt + "^000000] 项 [神之力]";
+		dispbottom("【世界隐藏任务】已附加 [" + @god_power_cnt + "] 项 [神之力]", 0xFFFF00);
+
+	} else {
+		mes "你没有附加^FF0000神之力^000000的资格！";
+		mes "-------------------------------";
+		mes "传闻在^FF0000沙漠深处^000000出土了一块^FF0000古老石碑^000000，";
+		mes "上面记载了关于^FF0000世界隐藏任务^000000的线索，";
+		mes "有幸达成任务的天选之人 ...... ";
+		mes "或可获得被神授予^FF0000神之力^000000的资格 ......";
+	}
 	return;
 }
