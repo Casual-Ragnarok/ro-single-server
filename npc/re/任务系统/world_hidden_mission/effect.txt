@@ -1,10 +1,10 @@
-// ===== ã€ä¸–ç•Œéšè—ä»»åŠ¡ã€‘ã€ç¥ä¹‹åŠ›ã€‘ï¼šæ•ˆæœ ================================ 
+// ===== ¡¾ÊÀ½çÒş²ØÈÎÎñ¡¿¡¾ÉñÖ®Á¦¡¿£ºĞ§¹û ================================ 
 
 
-// é€šç”¨è§†è§‰æ•ˆæœ: @effect <id> 
+// Í¨ÓÃÊÓ¾õĞ§¹û: @effect <id> 
 //============================================================ 
-// - param: @effect_id	ï¼ˆid å¯ä» 'doc/effect_list.txt' æŸ¥çœ‹ï¼‰
-// - return: æ— 
+// - param: @effect_id	£¨id ¿É´Ó 'doc/effect_list.txt' ²é¿´£©
+// - return: ÎŞ
 function	script	F_VIEW_EFFECT	{
 	@effect_id = getarg(0);
 	atcommand("@effect " + @effect_id);
@@ -12,40 +12,40 @@ function	script	F_VIEW_EFFECT	{
 }
 
 
-// è§†è§‰æ•ˆæœ: ä¸ªäººå°èŒƒå›´ç™½è‰²å¼±å…‰
+// ÊÓ¾õĞ§¹û: ¸öÈËĞ¡·¶Î§°×É«Èõ¹â
 //============================================================ 
-// - param: æ— å‚æ•°
-// - return: æ— 
+// - param: ÎŞ²ÎÊı
+// - return: ÎŞ
 function	script	F_VIEW_EFFECT_WHITE_LOW_LIGHT	{
 	callfunc("F_VIEW_EFFECT", 6);
 	return;
 }
 
 
-// è§†è§‰æ•ˆæœ: ä¸ªäººå°èŒƒå›´è“è‰²è§å…‰
+// ÊÓ¾õĞ§¹û: ¸öÈËĞ¡·¶Î§À¶É«Ó«¹â
 //============================================================ 
-// - param: æ— å‚æ•°
-// - return: æ— 
+// - param: ÎŞ²ÎÊı
+// - return: ÎŞ
 function	script	F_VIEW_EFFECT_BLUE_FLOURESCENT	{
 	callfunc("F_VIEW_EFFECT", 14);
 	return;
 }
 
 
-// è§†è§‰æ•ˆæœ: ä¸ªäººä¸­èŒƒå›´çº¢è‰²å¼ºå…‰
+// ÊÓ¾õĞ§¹û: ¸öÈËÖĞ·¶Î§ºìÉ«Ç¿¹â
 //============================================================ 
-// - param: æ— å‚æ•°
-// - return: æ— 
+// - param: ÎŞ²ÎÊı
+// - return: ÎŞ
 function	script	F_VIEW_EFFECT_RED_GLARE	{
 	callfunc("F_VIEW_EFFECT", 12);
 	return;
 }
 
 
-// è§†è§‰æ•ˆæœ: ä¸ªäººå¤§èŒƒå›´éœ‡æ’¼æ³¢çº¹
+// ÊÓ¾õĞ§¹û: ¸öÈË´ó·¶Î§Õğº³²¨ÎÆ
 //============================================================ 
-// - param: æ— å‚æ•°
-// - return: æ— 
+// - param: ÎŞ²ÎÊı
+// - return: ÎŞ
 function	script	F_VIEW_EFFECT_SHOCK_WAVE	{
 	callfunc("F_VIEW_EFFECT", 8);
 	return;

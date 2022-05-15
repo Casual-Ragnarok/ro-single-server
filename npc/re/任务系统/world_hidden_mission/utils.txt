@@ -246,14 +246,11 @@ function	script	F_APPEND_GOD_POWERS	{
 
 	@NOW = gettimetick(2);
 	if (@NOW <= #GOD_POWER_CD_END_TIME) {
-		mes "[神之力] 长时间附加会损害经络";
+		mes "[^FF0000神之力^000000] 长时间附加会损害经络";
 		mes "需冷却 [^0000FF3^000000] 小时才能再次附加";
 		dispbottom("【世界隐藏任务】[神之力] 长时间附加会损害经络，需冷却 [3] 小时才能再次附加", 0xFFFF00);
 		return;
 	}
-
-	@CD_TIME = 3600 * 4;	// CD 时间 3 小时（算上生效开始时间，往后推 4 小时）
-	#GOD_POWER_CD_END_TIME = gettimetick(2) + @CD_TIME;
 
 	@god_power_cnt = 0;
 	@buff_time = 3600;
@@ -373,6 +370,9 @@ function	script	F_APPEND_GOD_POWERS	{
 	}
 	
 	if (@god_power_cnt > 0) {
+		@CD_TIME = 3600 * 4;	// CD 时间 3 小时（算上生效开始时间，往后推 4 小时）
+		#GOD_POWER_CD_END_TIME = gettimetick(2) + @CD_TIME;
+		
 		mes "共附加 [^0000FF" + @god_power_cnt + "^000000] 项 [神之力]";
 		dispbottom("【世界隐藏任务】已附加 [" + @god_power_cnt + "] 项 [神之力]", 0xFFFF00);
 
