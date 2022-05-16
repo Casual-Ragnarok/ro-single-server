@@ -1,6 +1,37 @@
 // ===== 【世界隐藏任务】【神之力】：工具函数 ================================ 
 
 
+// 《如来神掌》 任务引导手册
+//============================================================ 
+// - param: 无参数
+// - return: 无参数
+function	script	F_WORLD_HIDDEN_MISSION	{
+	mes "[如来神掌]";
+	mes "... ...";
+	mes "小册子背面写着：";
+	mes "零售价：0.5 元";
+	next;
+	mes "[如来神掌]";
+	menu "翻开",_TO_GOD_POWER,
+		 "扔掉",_TO_DROP,
+		 "算了",_TO_CLOSE;
+
+    _TO_GOD_POWER:
+		callfunc("F_APPEND_GOD_POWERS");
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_DROP:
+		delitem 60000, 1;
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_CLOSE:
+		close;
+		return;
+}
+
+
 // 根据玩家性格、职业分配【神之力】的修炼装备
 //============================================================ 
 // - param: @character 玩家性格
@@ -37,7 +68,7 @@ function	script	f_assign_god_equipments	{
 			getitem 62101,1;	// 古老的 破裂的硬壳: [物理反射]
 		}
 
-	// 智力系： 魔法师 或 服侍
+	// 魔法系： 魔法师 或 服侍
 	} else if (@base_job == 2 || @base_job == 4) {
 
 		// 暴力性格
@@ -69,6 +100,8 @@ function	script	f_assign_god_equipments	{
 			getitem 62501, 1;	// 古老的 破旧的围巾: [FLEE & FLEE2 x2]
 		}
 	}
+
+	dispbottom("【世界隐藏任务】你发现了一套破破烂烂的装备（似乎年代非常久远）", 0xFFFF00);
 	return;
 }
 
@@ -292,7 +325,6 @@ function	script	f_show_mission_progress	{
 }
 
 
-
 // 打印【神之力】修炼完成的提示
 //============================================================ 
 // - param: @buff_desc 【神之力】增益效果描述
@@ -312,7 +344,7 @@ function	script	f_mission_finish	{
 // - param: 无参数
 // - return: 空
 function	script	F_APPEND_GOD_POWERS	{
-	if (#GOD_POWER_FLAG != 2) {
+	if (#GOD_POWER_FLAG < 3) {
 		mes "你没有附加^FF0000神之力^000000的资格！";
 		mes "-------------------------------";
 		mes "传闻在^FF0000沙漠深处^000000出土了一块^FF0000古老石碑^000000，";
@@ -459,3 +491,4 @@ function	script	F_APPEND_GOD_POWERS	{
 	}
 	return;
 }
+

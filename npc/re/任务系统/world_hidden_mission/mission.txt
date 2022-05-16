@@ -1,6 +1,85 @@
 // ===== 【世界隐藏任务】【神之力】：任务流程 ================================ 
 
 
+
+prt_fild05,196,278,4	script	神秘的乞丐	900,{
+
+	mes "[神秘的乞丐]";
+	mes "... ...";
+
+	if (#GOD_POWER_FLAG > 0) {
+		goto _TO_CLOSE;
+	} else {
+		next;
+	}
+
+	mes "[神秘的乞丐]";
+	mes "靓仔，不得了！不得了啊！";
+	mes "你有道灵光从天灵盖喷出来！";
+	next;
+
+	mes "[神秘的乞丐]";
+	mes "你知唔知啊，你年纪轻轻，";
+	mes "就有一身横练的筋骨，";
+	mes "简直系百年一见的练武奇才！";
+	next;
+
+	mes "[神秘的乞丐]";
+	mes "如果有一天俾你打通任督二脉，";
+	mes "你仲唔晓飞啊？！";
+	next;
+
+	mes "[神秘的乞丐]";
+	mes "正所谓：";
+	mes "我不入地狱，谁入地狱。";
+	mes "警恶惩奸，维护世界和平呢个任务";
+	mes "就交俾你啦好唔好？！";
+
+	if (select("好:唔好") == 1) {
+		next;
+	} else {
+		goto _TO_CLOSE;
+	}
+
+	mes "[神秘的乞丐]";
+	mes "呢本如来神掌系无价之宝嚟噶，";
+	mes "我见同你有缘，";
+	mes "就收你 10 万传授俾你啦！";
+
+	if(select("好:唔好") == 1) {
+		next;
+	} else {
+		goto _TO_CLOSE;
+	}
+
+	set @money, 100000;
+	if(zeny >= @money) {
+		set zeny,(zeny - @money);
+		getitem 60000, 1;	// 得到如来神掌
+
+		if (#GOD_POWER_FLAG <= 0) {
+			set #GOD_POWER_FLAG, 1;
+		}
+		goto _TO_CLOSE;
+
+	} else {
+		goto _NO_ZENY;
+	}
+
+
+_NO_ZENY:
+	mes "[神秘的乞丐]";
+	mes "你身上唔够钱啊！";
+	close;
+	end;
+
+
+_TO_CLOSE:
+	close;
+	end;
+}
+
+
 moc_fild07,33,352,6	script	残破的远古石碑	406,{
 	
 	mes "[残破的远古石碑]";
@@ -8,7 +87,7 @@ moc_fild07,33,352,6	script	残破的远古石碑	406,{
 	mes "上面的字迹残破不堪，";
 	mes "要继续看吗？";
 
-	if(select("继续看:不看了") == 1) {
+	if (select("继续看:不看了") == 1) {
 		next;
 	} else {
 		goto _TO_CLOSE;
@@ -22,7 +101,7 @@ moc_fild07,33,352,6	script	残破的远古石碑	406,{
 	mes "数百个拥有不同寻常体质的人■■■";
 	mes "无迹可循的 ■■■ 或许更多 ■■■";
 
-	if(select("继续看:不看了") == 1) {
+	if (select("继续看:不看了") == 1) {
 		next;
 	} else {
 		goto _TO_CLOSE;
@@ -36,7 +115,7 @@ moc_fild07,33,352,6	script	残破的远古石碑	406,{
 	mes "都是后天 ■■■ 偶然获得 ■■■";
 	mes "甚至某些人拥有复数特殊体质 ■■■";
 
-	if(select("继续看:不看了") == 1) {
+	if (select("继续看:不看了") == 1) {
 		next;
 	} else {
 		goto _TO_CLOSE;
@@ -49,7 +128,7 @@ moc_fild07,33,352,6	script	残破的远古石碑	406,{
 	mes "我们一族将其称之为 ^FF0000天选之子^000000";
 	mes "这些特殊体质称之为 ^FF0000神之力^000000";
 	
-	if(select("继续看:不看了") == 1) {
+	if (select("继续看:不看了") == 1) {
 		next;
 	} else {
 		goto _TO_CLOSE;
@@ -71,8 +150,8 @@ moc_fild07,33,352,6	script	残破的远古石碑	406,{
 	mes "^FF0000是为了把信息隐藏起来？^000000";
 
 	// 此账号获得修炼【神之力】的资格
-	if (#GOD_POWER_FLAG <= 0) {
-		set #GOD_POWER_FLAG, 1;
+	if (#GOD_POWER_FLAG >= 1 || #GOD_POWER_FLAG <= 2) {
+		set #GOD_POWER_FLAG, 2;
 	}
 	goto _TO_CLOSE;
 
@@ -91,10 +170,10 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 			break;
 
 		case 2:
-			if (#GOD_POWER_FLAG <= 0) {
+			if (#GOD_POWER_FLAG <= 1) {
 				mes "没有东西";
 
-			} else if (#GOD_POWER_FLAG == 1) {
+			} else if (#GOD_POWER_FLAG == 2) {
 				mes "发现一个残破的木箱，要怎么办？";
 				switch(select("用力砸开:轻轻撬开:重新埋起来")) {
 
@@ -109,7 +188,7 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 						mes "从箱子内发出耀眼强光 !!!";
 
 						callfunc("f_assign_god_equipments", 0);
-						set #GOD_POWER_FLAG, 2;
+						set #GOD_POWER_FLAG, 3;
 						break;
 
 					// 温柔性格
@@ -123,7 +202,7 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 						mes "从箱子内发出耀眼强光 !!!";
 
 						callfunc("f_assign_god_equipments", 1);
-						set #GOD_POWER_FLAG, 2;
+						set #GOD_POWER_FLAG, 3;
 						break;
 
 					// 胆小性格
@@ -131,10 +210,10 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 						mes "看上去有点可怕 ...";
 						mes "可能有毒虫在里面 ...";
 						mes "不义之财不可得，埋起来吧。";
-						set #GOD_POWER_FLAG, 2;
+						set #GOD_POWER_FLAG, 3;
 						break;
 				}
-			} else if (#GOD_POWER_FLAG >= 2) {
+			} else if (#GOD_POWER_FLAG >= 3) {
 				mes "已经什么都找不到了";
 			}
 			break;

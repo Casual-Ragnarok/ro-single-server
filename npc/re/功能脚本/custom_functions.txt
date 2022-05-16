@@ -128,8 +128,7 @@ function	script	F_MANUAL	{
 	mes "手册本身并无任何 BUFF 效果";
 	next;
 	mes "[RO 手册]";
-	menu "附加【神之力】",_TO_GOD_POWER,
-	     "查看权限指令",_TO_CHAR_COMMANDS,
+	menu "查看权限指令",_TO_CHAR_COMMANDS,
 		 "查看常用命令",_TO_GAME_COMMANDS,
 		 "查看服务器信息",_TO_SERVER_RATES,
 		 "查看在线人数",_TO_ONLINE,
@@ -139,11 +138,6 @@ function	script	F_MANUAL	{
 		 "全身鉴定",_TO_IDENTIFY_ALL,
 		 "自杀",_TO_KILL_SELF,
 		 "没事了.",_TO_CLOSE;
-
-    _TO_GOD_POWER:
-		callfunc("F_APPEND_GOD_POWERS");
-		callsub(_TO_CLOSE);
-		return;
 
 	_TO_CHAR_COMMANDS:
 		callfunc("F_COMMANDS");

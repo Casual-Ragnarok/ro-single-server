@@ -1281,7 +1281,8 @@
 
 
 // 向导道具
-50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ if(countitem(50000) <= 1) getitem 50000,1; callfunc "F_MANUAL"; },{},{}
+50000,RO_Manual,RO手册,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ if(countitem(50000) <= 1) getitem 50000,1; callfunc("F_MANUAL"); },{},{}
+60000,Ancient_Tathagata_Palm,如来神掌,2,1,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ if(countitem(60000) <= 1) getitem 60000,1; callfunc("F_WORLD_HIDDEN_MISSION"); },{},{}
 
 
 // 【世界隐藏任务】【神之力】的修炼装备
