@@ -223,7 +223,7 @@ function	script	F_CHECK_ACC_L	{
 
 
 // 【负重上限增益】修炼达成条件检查: 
-//    在负重 <= 200.0 的状态下受到任意攻击 10W 次（不死亡）
+//    在负重 <= 200.0 的状态下受到任意攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
 // - return: 是否达成条件
@@ -234,7 +234,7 @@ function	script	f_check_weight	{
 		set #AC_HEAD_TOP, 0;			// 计数清零
 
 	} else {
-		@count_limit = 100000;
+		@count_limit = 10000;
 		callfunc("f_show_mission_progress", EQI_HEAD_TOP, #AC_HEAD_TOP, @count_limit);
 		if (#AC_HEAD_TOP >= @count_limit) {
 			@is_ok = true;
@@ -247,36 +247,48 @@ function	script	f_check_weight	{
 
 
 // 【六维全能力增益】修炼达成条件检查: 
-//    受到物理攻击 10W 次（不死亡）
+//    在负重 <= 200.0 的状态下受到物理攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
 // - return: 是否达成条件
 function	script	f_check_ignore_def	{
 	@is_ok = false;
-	@count_limit = 100000;
-	callfunc("f_show_mission_progress", EQI_HEAD_MID, #AC_HEAD_MID, @count_limit);
-	if (#AC_HEAD_MID >= @count_limit) {
-		@is_ok = true;
-		set #GOD_POWER_ALL_STATS, true;
-		callfunc("f_mission_finish", "六维全能力增益");
+	@weight_limit = 200;
+	if (Weight <= @weight_limit) {		// 负重超过限制
+		set #AC_HEAD_MID, 0;			// 计数清零
+
+	} else {
+		@count_limit = 10000;
+		callfunc("f_show_mission_progress", EQI_HEAD_MID, #AC_HEAD_MID, @count_limit);
+		if (#AC_HEAD_MID >= @count_limit) {
+			@is_ok = true;
+			set #GOD_POWER_ALL_STATS, true;
+			callfunc("f_mission_finish", "六维全能力增益");
+		}
 	}
 	return @is_ok;
 }
 
 
 // 【无念咏唱】修炼达成条件检查: 
-//    受到魔法攻击 10W 次（不死亡）
+//    在负重 <= 200.0 的状态下受到魔法攻击 1W 次（不死亡）
 //============================================================ 
 // - param: 无参数
 // - return: 是否达成条件
 function	script	f_check_cast	{
 	@is_ok = false;
-	@count_limit = 100000;
-	callfunc("f_show_mission_progress", EQI_HEAD_LOW, #AC_HEAD_LOW, @count_limit);
-	if (#AC_HEAD_LOW >= @count_limit) {
-		@is_ok = true;
-		set #GOD_POWER_CAST, true;
-		callfunc("f_mission_finish", "无念咏唱");
+	@weight_limit = 200;
+	if (Weight <= @weight_limit) {		// 负重超过限制
+		set #AC_HEAD_LOW, 0;			// 计数清零
+
+	} else {
+		@count_limit = 10000;
+		callfunc("f_show_mission_progress", EQI_HEAD_LOW, #AC_HEAD_LOW, @count_limit);
+		if (#AC_HEAD_LOW >= @count_limit) {
+			@is_ok = true;
+			set #GOD_POWER_CAST, true;
+			callfunc("f_mission_finish", "无念咏唱");
+		}
 	}
 	return @is_ok;
 }
