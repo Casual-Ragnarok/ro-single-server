@@ -52,8 +52,8 @@ function	script	f_assign_god_equipments	{
 
 	/* ==== 三系职业可额外获取 ==== */
 	
-	// 力量系： 剑士 或 商人
-	if (@base_job == 1 || @base_job == 5) {
+	// 力量系： 剑士 或 商人 或 忍者
+	if (@base_job == 1 || @base_job == 5 || @base_job == 25) {
 
 		// 暴力性格
 		if (@character == 0) {
@@ -68,8 +68,8 @@ function	script	f_assign_god_equipments	{
 			getitem 62101,1;	// 古老的 破裂的硬壳: [物理反射]
 		}
 
-	// 魔法系： 魔法师 或 服侍
-	} else if (@base_job == 2 || @base_job == 4) {
+	// 魔法系： 魔法师 或 服侍 或 跆拳道 或 召唤师
+	} else if (@base_job == 2 || @base_job == 4 || @base_job == 4046 || @base_job == 4218) {
 
 		// 暴力性格
 		if (@character == 0) {
@@ -84,8 +84,8 @@ function	script	f_assign_god_equipments	{
 			getitem 63333, 1;	// 古老的 特别的盾牌: [魔法反射]
 		}
 
-	// 敏捷系： 弓箭手 或 盗贼
-	} else if (@base_job == 3 || @base_job == 6) {
+	// 敏捷系： 弓箭手 或 盗贼 或 枪手
+	} else if (@base_job == 3 || @base_job == 6 || @base_job == 26) {
 
 		// 暴力性格
 		if (@character == 0) {
