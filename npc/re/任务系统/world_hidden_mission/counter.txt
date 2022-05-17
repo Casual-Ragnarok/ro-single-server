@@ -21,35 +21,35 @@ function	script	F_CLEAR_COUNT_UN_EQI	{
     @tips = true;
     
     if (@equipment_slot == EQI_HEAD_TOP) {
-        set #AC_HEAD_TOP, 0;
+        set AC_HEAD_TOP, 0;
 
     } else if (@equipment_slot == EQI_HEAD_MID) {
-        set #AC_HEAD_MID, 0;
+        set AC_HEAD_MID, 0;
 
     } else if (@equipment_slot == EQI_HEAD_LOW) {
-        set #AC_HEAD_LOW, 0;
+        set AC_HEAD_LOW, 0;
 
     } else if (@equipment_slot == EQI_GARMENT) {
-        set #AC_GARMENT, 0;
+        set AC_GARMENT, 0;
 
     } else if (@equipment_slot == EQI_HAND_R) {
-        set #AC_HAND_R, 0;
+        set AC_HAND_R, 0;
 
     } else if (@equipment_slot == EQI_HAND_L) {
-        set #AC_HAND_L, 0;
+        set AC_HAND_L, 0;
 
     } else if (@equipment_slot == EQI_ARMOR) {
-        set #AC_ARMOR, 0;
+        set AC_ARMOR, 0;
 
     } else if (@equipment_slot == EQI_SHOES) {
-        set #AC_SHOES, 0;
+        set AC_SHOES, 0;
         callfunc("f_reset_city_checkpoints");
 
     } else if (@equipment_slot == EQI_ACC_R) {
-        set #AC_ACC_R, 0;
+        set AC_ACC_R, 0;
 
     } else if (@equipment_slot == EQI_ACC_L) {
-        set #AC_ACC_L, 0;
+        set AC_ACC_L, 0;
 
     } else {
         @tips = false;
@@ -71,7 +71,7 @@ function	script	F_ATTACKED_COUNT_HEAD_TOP	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_HEAD_TOP++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_TOP\"); }";
+    autobonus2 "{ AC_HEAD_TOP++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_TOP\"); }";
 }
 
 
@@ -83,7 +83,7 @@ function	script	F_ATTACKED_COUNT_HEAD_MID	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_HEAD_MID++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_MID\"); }";
+    autobonus2 "{ AC_HEAD_MID++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_MID\"); }";
 }
 
 
@@ -95,7 +95,7 @@ function	script	F_ATTACKED_COUNT_HEAD_LOW	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_HEAD_LOW++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_LOW\"); }";
+    autobonus2 "{ AC_HEAD_LOW++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HEAD_LOW\"); }";
 }
 
 
@@ -107,7 +107,7 @@ function	script	F_ATTACKED_COUNT_ARMOR	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_ARMOR++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ARMOR\"); }";
+    autobonus2 "{ AC_ARMOR++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ARMOR\"); }";
 }
 
 
@@ -119,7 +119,7 @@ function	script	F_ATTACK_COUNT_HAND_R	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（进行 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus "{ #AC_HAND_R++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HAND_R\"); }";
+    autobonus "{ AC_HAND_R++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HAND_R\"); }";
 }
 
 
@@ -131,7 +131,7 @@ function	script	F_ATTACKED_COUNT_HAND_L	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_HAND_L++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HAND_L\"); }";
+    autobonus2 "{ AC_HAND_L++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_HAND_L\"); }";
 }
 
 
@@ -143,7 +143,7 @@ function	script	F_ATTACKED_COUNT_GARMENT	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_GARMENT++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_GARMENT\"); }";
+    autobonus2 "{ AC_GARMENT++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_GARMENT\"); }";
 }
 
 
@@ -155,7 +155,7 @@ function	script	F_ATTACKED_COUNT_SHOES	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_SHOES++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_SHOES\"); }";
+    autobonus2 "{ AC_SHOES++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_SHOES\"); }";
 }
 
 
@@ -167,7 +167,7 @@ function	script	F_ATTACKED_COUNT_ACC_R	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_ACC_R++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ACC_R\"); }";
+    autobonus2 "{ AC_ACC_R++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ACC_R\"); }";
 }
 
 
@@ -179,7 +179,7 @@ function	script	F_ATTACKED_COUNT_ACC_L	{
     @tri_rate = 1000;   // 100.0% 触发
     @tri_duration = 1;  // 触发时长为 1 ms（不能为 0，否则无法计数）
     @tri_event = getarg(0, BF_SHORT|BF_LONG|BF_WEAPON|BF_MAGIC|BF_MISC|BF_NORMAL|BF_SKILL);    // 触发时机（受到 近程/远程/物理/魔法/其他/通常/技能 攻击时）
-    autobonus2 "{ #AC_ACC_L++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ACC_L\"); }";
+    autobonus2 "{ AC_ACC_L++; }", @tri_rate, @tri_duration, @tri_event, "{ callfunc(\"F_CHECK_ACC_L\"); }";
 }
 
 
