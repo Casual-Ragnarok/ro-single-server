@@ -56,6 +56,7 @@ prt_fild05,196,278,4	script	神秘的乞丐	900,{
 	if(zeny >= @money) {
 		set zeny,(zeny - @money);
 		getitem 60000, 1;	// 得到如来神掌
+		dispbottom("【世界隐藏任务】你得到了武功秘籍《如来神掌》", 0xFFFF00);
 
 		if (GOD_POWER_FLAG <= 0) {
 			set GOD_POWER_FLAG, 1;

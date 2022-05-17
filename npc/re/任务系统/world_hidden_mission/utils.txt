@@ -113,7 +113,7 @@ function	script	f_assign_god_equipments	{
 // - return: Пе
 function	script	f_un_god_equipments	{
 	@keep_equipment_slot = getarg(0);
-	dispbottom "" + BaseClass;
+	
 	if (@keep_equipment_slot != EQI_HAND_R) {
 		@keep_equip_id = getequipid(@keep_equipment_slot);
 		
