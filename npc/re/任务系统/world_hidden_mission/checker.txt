@@ -231,14 +231,14 @@ function	script	f_check_weight	{
 	@is_ok = false;
 	@weight_limit = 200;
 	if (Weight <= @weight_limit) {		// 负重超过限制
-		set #AC_HEAD_TOP, 0;			// 计数清零
+		set AC_HEAD_TOP, 0;			// 计数清零
 
 	} else {
 		@count_limit = 10000;
-		callfunc("f_show_mission_progress", EQI_HEAD_TOP, #AC_HEAD_TOP, @count_limit);
-		if (#AC_HEAD_TOP >= @count_limit) {
+		callfunc("f_show_mission_progress", EQI_HEAD_TOP, AC_HEAD_TOP, @count_limit);
+		if (AC_HEAD_TOP >= @count_limit) {
 			@is_ok = true;
-			set #GOD_POWER_WEIGHT, true;
+			set GOD_POWER_WEIGHT, true;
 			callfunc("f_mission_finish", "负重上限增益");
 		}
 	}
@@ -255,14 +255,14 @@ function	script	f_check_ignore_def	{
 	@is_ok = false;
 	@weight_limit = 200;
 	if (Weight <= @weight_limit) {		// 负重超过限制
-		set #AC_HEAD_MID, 0;			// 计数清零
+		set AC_HEAD_MID, 0;			// 计数清零
 
 	} else {
 		@count_limit = 10000;
-		callfunc("f_show_mission_progress", EQI_HEAD_MID, #AC_HEAD_MID, @count_limit);
-		if (#AC_HEAD_MID >= @count_limit) {
+		callfunc("f_show_mission_progress", EQI_HEAD_MID, AC_HEAD_MID, @count_limit);
+		if (AC_HEAD_MID >= @count_limit) {
 			@is_ok = true;
-			set #GOD_POWER_ALL_STATS, true;
+			set GOD_POWER_ALL_STATS, true;
 			callfunc("f_mission_finish", "六维全能力增益");
 		}
 	}
@@ -279,14 +279,14 @@ function	script	f_check_cast	{
 	@is_ok = false;
 	@weight_limit = 200;
 	if (Weight <= @weight_limit) {		// 负重超过限制
-		set #AC_HEAD_LOW, 0;			// 计数清零
+		set AC_HEAD_LOW, 0;			// 计数清零
 
 	} else {
 		@count_limit = 10000;
-		callfunc("f_show_mission_progress", EQI_HEAD_LOW, #AC_HEAD_LOW, @count_limit);
-		if (#AC_HEAD_LOW >= @count_limit) {
+		callfunc("f_show_mission_progress", EQI_HEAD_LOW, AC_HEAD_LOW, @count_limit);
+		if (AC_HEAD_LOW >= @count_limit) {
 			@is_ok = true;
-			set #GOD_POWER_CAST, true;
+			set GOD_POWER_CAST, true;
 			callfunc("f_mission_finish", "无念咏唱");
 		}
 	}
@@ -302,10 +302,10 @@ function	script	f_check_cast	{
 function	script	f_check_atk	{
 	@is_ok = false;
 	@count_limit = 100000;
-	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-	if (#AC_HAND_R >= @count_limit) {
+	callfunc("f_show_mission_progress", EQI_HAND_R, AC_HAND_R, @count_limit);
+	if (AC_HAND_R >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_ATK, true;
+		set GOD_POWER_ATK, true;
 		callfunc("f_mission_finish", "物理攻击增益");
 	}
 	return @is_ok;
@@ -320,10 +320,10 @@ function	script	f_check_atk	{
 function	script	f_check_matk	{
 	@is_ok = false;
 	@count_limit = 100000;
-	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-	if (#AC_HAND_R >= @count_limit) {
+	callfunc("f_show_mission_progress", EQI_HAND_R, AC_HAND_R, @count_limit);
+	if (AC_HAND_R >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_MATK, true;
+		set GOD_POWER_MATK, true;
 		callfunc("f_mission_finish", "魔法攻击增益");
 	}
 	return @is_ok;
@@ -338,10 +338,10 @@ function	script	f_check_matk	{
 function	script	f_check_aspd	{
 	@is_ok = false;
 	@count_limit = 100000;
-	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-	if (#AC_HAND_R >= @count_limit) {
+	callfunc("f_show_mission_progress", EQI_HAND_R, AC_HAND_R, @count_limit);
+	if (AC_HAND_R >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_ASPD, true;
+		set GOD_POWER_ASPD, true;
 		callfunc("f_mission_finish", "攻击速度增益");
 	}
 	return @is_ok;
@@ -356,10 +356,10 @@ function	script	f_check_aspd	{
 function	script	f_check_cri	{
 	@is_ok = false;
 	@count_limit = 100000;
-	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-	if (#AC_HAND_R >= @count_limit) {
+	callfunc("f_show_mission_progress", EQI_HAND_R, AC_HAND_R, @count_limit);
+	if (AC_HAND_R >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_CRI, true;
+		set GOD_POWER_CRI, true;
 		callfunc("f_mission_finish", "暴击率增益");
 	}
 	return @is_ok;
@@ -374,10 +374,10 @@ function	script	f_check_cri	{
 function	script	f_check_hit	{
 	@is_ok = false;
 	@count_limit = 100000;
-	callfunc("f_show_mission_progress", EQI_HAND_R, #AC_HAND_R, @count_limit);
-	if (#AC_HAND_R >= @count_limit) {
+	callfunc("f_show_mission_progress", EQI_HAND_R, AC_HAND_R, @count_limit);
+	if (AC_HAND_R >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_HIT, true;
+		set GOD_POWER_HIT, true;
 		callfunc("f_mission_finish", "命中率增益");
 	}
 	return @is_ok;
@@ -392,10 +392,10 @@ function	script	f_check_hit	{
 function	script	f_check_def	{
 	@is_ok = false;
 	@count_limit = 10000;
-	callfunc("f_show_mission_progress", EQI_ARMOR, #AC_ARMOR, @count_limit);
-	if (#AC_ARMOR >= @count_limit) {
+	callfunc("f_show_mission_progress", EQI_ARMOR, AC_ARMOR, @count_limit);
+	if (AC_ARMOR >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_DEF, true;
+		set GOD_POWER_DEF, true;
 		callfunc("f_mission_finish", "物理防御增益");
 	}
 	return @is_ok;
@@ -410,10 +410,10 @@ function	script	f_check_def	{
 function	script	f_check_mdef	{
 	@is_ok = false;
 	@count_limit = 10000;
-	callfunc("f_show_mission_progress", EQI_ARMOR, #AC_ARMOR, @count_limit);
-	if (#AC_ARMOR >= @count_limit) {
+	callfunc("f_show_mission_progress", EQI_ARMOR, AC_ARMOR, @count_limit);
+	if (AC_ARMOR >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_MDEF, true;
+		set GOD_POWER_MDEF, true;
 		callfunc("f_mission_finish", "魔法防御增益");
 	}
 	return @is_ok;
@@ -428,10 +428,10 @@ function	script	f_check_mdef	{
 function	script	f_check_flee	{
 	@is_ok = false;
 	@count_limit = 10000;
-	callfunc("f_show_mission_progress", EQI_GARMENT, #AC_GARMENT, @count_limit);
-	if (#AC_GARMENT >= @count_limit) {
+	callfunc("f_show_mission_progress", EQI_GARMENT, AC_GARMENT, @count_limit);
+	if (AC_GARMENT >= @count_limit) {
 		@is_ok = true;
-		set #GOD_POWER_FLEE, true;
+		set GOD_POWER_FLEE, true;
 		callfunc("f_mission_finish", "回避增益");
 	}
 	return @is_ok;
@@ -453,7 +453,7 @@ function	script	f_check_speed	{
 		callfunc("f_mark_city_checkpoint");				// 标记城市检查点
 		@is_ok = callfunc("f_check_city_checkpoints");	// 检查是否已游历所有城市
 		if (@is_ok == true) {
-			set #GOD_POWER_SPEED, true;
+			set GOD_POWER_SPEED, true;
 			callfunc("f_mission_finish", "移动速度增益");
 		}
 	}
@@ -471,13 +471,13 @@ function	script	f_check_weapon_return	{
 	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
 	if (@is_move == true) {
-		set #AC_HAND_L, 0;		// 计数清零
+		set AC_HAND_L, 0;		// 计数清零
 
 	} else {
-		callfunc("f_show_mission_progress", EQI_HAND_L, #AC_HAND_L, @count_limit);
-		if (#AC_HAND_L >= @count_limit) {
+		callfunc("f_show_mission_progress", EQI_HAND_L, AC_HAND_L, @count_limit);
+		if (AC_HAND_L >= @count_limit) {
 			@is_ok = true;
-			set #GOD_POWER_WEAPON_RETURN, true;
+			set GOD_POWER_WEAPON_RETURN, true;
 			callfunc("f_mission_finish", "物理反射");
 		}
 	}
@@ -495,13 +495,13 @@ function	script	f_check_magic_return	{
 	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
 	if (@is_move == true) {
-		set #AC_HAND_L, 0;
+		set AC_HAND_L, 0;
 
 	} else {
-		callfunc("f_show_mission_progress", EQI_HAND_L, #AC_HAND_L, @count_limit);
-		if (#AC_HAND_L >= @count_limit) {
+		callfunc("f_show_mission_progress", EQI_HAND_L, AC_HAND_L, @count_limit);
+		if (AC_HAND_L >= @count_limit) {
 			@is_ok = true;
-			set #GOD_POWER_MAGIC_RETURN, true;
+			set GOD_POWER_MAGIC_RETURN, true;
 			callfunc("f_mission_finish", "魔法反射");
 		}
 	}
@@ -519,13 +519,13 @@ function	script	f_check_hp_recov	{
 	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
 	if (@is_move == true) {
-		set #AC_ACC_L, 0;
+		set AC_ACC_L, 0;
 
 	} else {
-		callfunc("f_show_mission_progress", EQI_ACC_L, #AC_ACC_L, @count_limit);
-		if (#AC_ACC_L >= @count_limit) {
+		callfunc("f_show_mission_progress", EQI_ACC_L, AC_ACC_L, @count_limit);
+		if (AC_ACC_L >= @count_limit) {
 			@is_ok = true;
-			set #GOD_POWER_HP_RECOV, true;
+			set GOD_POWER_HP_RECOV, true;
 			callfunc("f_mission_finish", "HP 回复增益");
 		}
 	}
@@ -543,13 +543,13 @@ function	script	f_check_sp_recov	{
 	@count_limit = 10000;
 	@is_move = callfunc("f_is_move");
 	if (@is_move == true) {
-		set #AC_ACC_R, 0;
+		set AC_ACC_R, 0;
 
 	} else {
-		callfunc("f_show_mission_progress", EQI_ACC_R, #AC_ACC_R, @count_limit);
-		if (#AC_ACC_R >= @count_limit) {
+		callfunc("f_show_mission_progress", EQI_ACC_R, AC_ACC_R, @count_limit);
+		if (AC_ACC_R >= @count_limit) {
 			@is_ok = true;
-			set #GOD_POWER_SP_RECOV, true;
+			set GOD_POWER_SP_RECOV, true;
 			callfunc("f_mission_finish", "SP 回复增益");
 		}
 	}
@@ -566,8 +566,8 @@ function	script	f_check_sp_recov	{
 // - return: 是否移动
 function	script	f_is_move	{
 	@position$ = callfunc("F_POSTION");
-	@is_move = !(#LAST_POSITION$ == @position$);
-	#LAST_POSITION$ = @position$;
+	@is_move = !(LAST_POSITION$ == @position$);
+	LAST_POSITION$ = @position$;
 	return @is_move;
 }
 
@@ -593,7 +593,7 @@ function	script	f_check_city_checkpoints	{
 	@is_all_ok = true;
 	for (@i = 0; @i <= @CITY_NUM; @i++) {
 		if (@i != 15 && @i != 16) {			// 这两个地点只有 GM 可以用 @go 命令传送过去
-			@is_all_ok &= #CITY_CHECKPOINTS[@i];
+			@is_all_ok &= CITY_CHECKPOINTS[@i];
 		}
 	}
 	return @is_all_ok;

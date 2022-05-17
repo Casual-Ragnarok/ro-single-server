@@ -113,7 +113,7 @@ function	script	f_assign_god_equipments	{
 // - return: 空
 function	script	f_un_god_equipments	{
 	@keep_equipment_slot = getarg(0);
-
+	dispbottom "" + BaseClass;
 	if (@keep_equipment_slot != EQI_HAND_R) {
 		@keep_equip_id = getequipid(@keep_equipment_slot);
 		
@@ -169,7 +169,7 @@ function	script	f_reset_city_checkpoints	{
 	@CITY_NUM = 36;
 	for (@i = 0; @i <= @CITY_NUM; @i++) {
 		if (@i != 15 && @i != 16) {			// 这两个地点只有 GM 可以用命令传送过去
-			#CITY_CHECKPOINTS[@i] = false;		
+			CITY_CHECKPOINTS[@i] = false;		
 		}
 	}
 	return;
@@ -184,109 +184,109 @@ function	script	f_mark_city_checkpoint	{
 	@map_name$ = callfunc("F_MAP_NAME");
 
 	if (@map_name$ == "prontera") {
-		#CITY_CHECKPOINTS[0] = true;
+		CITY_CHECKPOINTS[0] = true;
 
 	} else if (@map_name$ == "morocc") {
-		#CITY_CHECKPOINTS[1] = true;
+		CITY_CHECKPOINTS[1] = true;
 
 	} else if (@map_name$ == "geffen") {
-		#CITY_CHECKPOINTS[2] = true;
+		CITY_CHECKPOINTS[2] = true;
 
 	} else if (@map_name$ == "payon") {
-		#CITY_CHECKPOINTS[3] = true;
+		CITY_CHECKPOINTS[3] = true;
 
 	} else if (@map_name$ == "alberta") {
-		#CITY_CHECKPOINTS[4] = true;
+		CITY_CHECKPOINTS[4] = true;
 
 	} else if (@map_name$ == "izlude") {
-		#CITY_CHECKPOINTS[5] = true;
+		CITY_CHECKPOINTS[5] = true;
 
 	} else if (@map_name$ == "aldebaran") {
-		#CITY_CHECKPOINTS[6] = true;
+		CITY_CHECKPOINTS[6] = true;
 
 	} else if (@map_name$ == "xmas") {
-		#CITY_CHECKPOINTS[7] = true;
+		CITY_CHECKPOINTS[7] = true;
 
 	} else if (@map_name$ == "comodo") {
-		#CITY_CHECKPOINTS[8] = true;
+		CITY_CHECKPOINTS[8] = true;
 
 	} else if (@map_name$ == "yuno") {
-		#CITY_CHECKPOINTS[9] = true;
+		CITY_CHECKPOINTS[9] = true;
 
 	} else if (@map_name$ == "amatsu") {
-		#CITY_CHECKPOINTS[10] = true;
+		CITY_CHECKPOINTS[10] = true;
 
 	} else if (@map_name$ == "gonryun") {
-		#CITY_CHECKPOINTS[11] = true;
+		CITY_CHECKPOINTS[11] = true;
 
 	} else if (@map_name$ == "umbala") {
-		#CITY_CHECKPOINTS[12] = true;
+		CITY_CHECKPOINTS[12] = true;
 
 	} else if (@map_name$ == "niflheim") {
-		#CITY_CHECKPOINTS[13] = true;
+		CITY_CHECKPOINTS[13] = true;
 
 	} else if (@map_name$ == "louyang") {
-		#CITY_CHECKPOINTS[14] = true;
+		CITY_CHECKPOINTS[14] = true;
 
 	} else if (@map_name$ == "jawaii") {
-		#CITY_CHECKPOINTS[17] = true;
+		CITY_CHECKPOINTS[17] = true;
 
 	} else if (@map_name$ == "ayothaya") {
-		#CITY_CHECKPOINTS[18] = true;
+		CITY_CHECKPOINTS[18] = true;
 
 	} else if (@map_name$ == "einbroch") {
-		#CITY_CHECKPOINTS[19] = true;
+		CITY_CHECKPOINTS[19] = true;
 
 	} else if (@map_name$ == "lighthalzen") {
-		#CITY_CHECKPOINTS[20] = true;
+		CITY_CHECKPOINTS[20] = true;
 
 	} else if (@map_name$ == "einbech") {
-		#CITY_CHECKPOINTS[21] = true;
+		CITY_CHECKPOINTS[21] = true;
 
 	} else if (@map_name$ == "hugel") {
-		#CITY_CHECKPOINTS[22] = true;
+		CITY_CHECKPOINTS[22] = true;
 
 	} else if (@map_name$ == "rachel") {
-		#CITY_CHECKPOINTS[23] = true;
+		CITY_CHECKPOINTS[23] = true;
 
 	} else if (@map_name$ == "veins") {
-		#CITY_CHECKPOINTS[24] = true;
+		CITY_CHECKPOINTS[24] = true;
 
 	} else if (@map_name$ == "moscovia") {
-		#CITY_CHECKPOINTS[25] = true;
+		CITY_CHECKPOINTS[25] = true;
 
 	} else if (@map_name$ == "mid_camp") {
-		#CITY_CHECKPOINTS[26] = true;
+		CITY_CHECKPOINTS[26] = true;
 
 	} else if (@map_name$ == "manuk") {
-		#CITY_CHECKPOINTS[27] = true;
+		CITY_CHECKPOINTS[27] = true;
 
 	} else if (@map_name$ == "splendide") {
-		#CITY_CHECKPOINTS[28] = true;
+		CITY_CHECKPOINTS[28] = true;
 
 	} else if (@map_name$ == "brasilis") {
-		#CITY_CHECKPOINTS[29] = true;
+		CITY_CHECKPOINTS[29] = true;
 
 	} else if (@map_name$ == "dicastes01") {
-		#CITY_CHECKPOINTS[30] = true;
+		CITY_CHECKPOINTS[30] = true;
 
 	} else if (@map_name$ == "mora") {
-		#CITY_CHECKPOINTS[31] = true;
+		CITY_CHECKPOINTS[31] = true;
 
 	} else if (@map_name$ == "dewata") {
-		#CITY_CHECKPOINTS[32] = true;
+		CITY_CHECKPOINTS[32] = true;
 
 	} else if (@map_name$ == "malangdo") {
-		#CITY_CHECKPOINTS[33] = true;
+		CITY_CHECKPOINTS[33] = true;
 
 	} else if (@map_name$ == "malaya") {
-		#CITY_CHECKPOINTS[34] = true;
+		CITY_CHECKPOINTS[34] = true;
 
 	} else if (@map_name$ == "eclage") {
-		#CITY_CHECKPOINTS[35] = true;
+		CITY_CHECKPOINTS[35] = true;
 
 	} else if (@map_name$ == "lasagna") {
-		#CITY_CHECKPOINTS[36] = true;
+		CITY_CHECKPOINTS[36] = true;
 	}
 	return;
 }
@@ -344,7 +344,7 @@ function	script	f_mission_finish	{
 // - param: 无参数
 // - return: 空
 function	script	F_APPEND_GOD_POWERS	{
-	if (#GOD_POWER_FLAG < 3) {
+	if (GOD_POWER_FLAG < 3) {
 		mes "你没有附加^FF0000神之力^000000的资格！";
 		mes "-------------------------------";
 		mes "传闻在^FF0000沙漠深处^000000出土了一块^FF0000古老石碑^000000，";
@@ -355,7 +355,7 @@ function	script	F_APPEND_GOD_POWERS	{
 	}
 
 	@NOW = gettimetick(2);
-	if (@NOW <= #GOD_POWER_CD_END_TIME) {
+	if (@NOW <= GOD_POWER_CD_END_TIME) {
 		mes "[^FF0000神之力^000000] 长时间附加会损害经络";
 		mes "需冷却 [^0000FF3^000000] 小时才能再次附加";
 		dispbottom("【世界隐藏任务】[神之力] 长时间附加会损害经络，需冷却 [3] 小时才能再次附加", 0xFFFF00);
@@ -367,112 +367,112 @@ function	script	F_APPEND_GOD_POWERS	{
 	@disable_when = 1;		// 死亡时失去效果
 	// @disable_when = 8;	// 重登时失去效果
 	
-	if (#GOD_POWER_WEIGHT == true) {
+	if (GOD_POWER_WEIGHT == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF负重上限增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [负重上限增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bAddMaxWeight, MaxWeight; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_ALL_STATS == true) {
+	if (GOD_POWER_ALL_STATS == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF六维全能力增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [六维全能力增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bAllStats, 20; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_CAST == true) {
+	if (GOD_POWER_CAST == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF无念咏唱^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [无念咏唱] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bFixedCast, -10000; bonus bCastrate, -100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_ATK == true) {
+	if (GOD_POWER_ATK == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF物理攻击增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [物理攻击增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bAtkRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_MATK == true) {
+	if (GOD_POWER_MATK == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF魔法攻击增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [魔法攻击增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bMatkRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_ASPD == true) {
+	if (GOD_POWER_ASPD == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF攻击速度增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [攻击速度增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bAspd, 50; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_CRI == true) {
+	if (GOD_POWER_CRI == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF暴击率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [暴击率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bCriticalRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_HIT == true) {
+	if (GOD_POWER_HIT == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF命中率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [命中率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bHitRate, 100; bonus bPerfectHitAddRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_DEF == true) {
+	if (GOD_POWER_DEF == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF物理防御增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [物理防御增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bDefRate, 100; bonus bDef2Rate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_MDEF == true) {
+	if (GOD_POWER_MDEF == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF魔法防御增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [魔法防御增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bMdefRate, 100; bonus bMdef2Rate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_FLEE == true) {
+	if (GOD_POWER_FLEE == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF回避率增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [回避率增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bFleeRate, 100; bonus bFlee2Rate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_SPEED == true) {
+	if (GOD_POWER_SPEED == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF移动速度增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [移动速度增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bSpeedAddRate, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_WEAPON_RETURN == true) {
+	if (GOD_POWER_WEAPON_RETURN == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF物理反射^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [物理反射] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bShortWeaponDamageReturn, 100; bonus bLongWeaponDamageReturn, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_MAGIC_RETURN == true) {
+	if (GOD_POWER_MAGIC_RETURN == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FF魔法反射^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [魔法反射] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus bMagicDamageReturn, 100; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_HP_RECOV == true) {
+	if (GOD_POWER_HP_RECOV == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FFHP 回复增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [HP 回复增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
 		bonus_script("{ bonus2 bHPRegenRate, 100, 1000; }", @buff_time, @disable_when, 1, SI_BLANK);
 	}
 
-	if (#GOD_POWER_SP_RECOV == true) {
+	if (GOD_POWER_SP_RECOV == true) {
 		@god_power_cnt++;
 		mes("附加 [^0000FFSP 回复增益^000000] ^0000FF" + @buff_time + "^000000 秒!");
 		dispbottom("【世界隐藏任务】已进入 [SP 回复增益] 状态，持续时间 " + @buff_time + " 秒!", 0xFF8000);
@@ -481,7 +481,7 @@ function	script	F_APPEND_GOD_POWERS	{
 	
 	if (@god_power_cnt > 0) {
 		@CD_TIME = 3600 * 4;	// CD 时间 3 小时（算上生效开始时间，往后推 4 小时）
-		#GOD_POWER_CD_END_TIME = gettimetick(2) + @CD_TIME;
+		GOD_POWER_CD_END_TIME = gettimetick(2) + @CD_TIME;
 		
 		mes "共附加 [^0000FF" + @god_power_cnt + "^000000] 项 [神之力]";
 		dispbottom("【世界隐藏任务】已附加 [" + @god_power_cnt + "] 项 [神之力]", 0xFFFF00);

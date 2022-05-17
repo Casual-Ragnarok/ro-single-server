@@ -7,7 +7,7 @@ prt_fild05,196,278,4	script	神秘的乞丐	900,{
 	mes "[神秘的乞丐]";
 	mes "... ...";
 
-	if (#GOD_POWER_FLAG > 0) {
+	if (GOD_POWER_FLAG > 0) {
 		goto _TO_CLOSE;
 	} else {
 		next;
@@ -57,8 +57,8 @@ prt_fild05,196,278,4	script	神秘的乞丐	900,{
 		set zeny,(zeny - @money);
 		getitem 60000, 1;	// 得到如来神掌
 
-		if (#GOD_POWER_FLAG <= 0) {
-			set #GOD_POWER_FLAG, 1;
+		if (GOD_POWER_FLAG <= 0) {
+			set GOD_POWER_FLAG, 1;
 		}
 		goto _TO_CLOSE;
 
@@ -150,8 +150,8 @@ moc_fild07,33,352,6	script	残破的远古石碑	406,{
 	mes "^FF0000是为了把信息隐藏起来？^000000";
 
 	// 此账号获得修炼【神之力】的资格
-	if (#GOD_POWER_FLAG >= 1 || #GOD_POWER_FLAG <= 2) {
-		set #GOD_POWER_FLAG, 2;
+	if (GOD_POWER_FLAG >= 1 || GOD_POWER_FLAG <= 2) {
+		set GOD_POWER_FLAG, 2;
 	}
 	goto _TO_CLOSE;
 
@@ -170,10 +170,10 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 			break;
 
 		case 2:
-			if (#GOD_POWER_FLAG <= 1) {
+			if (GOD_POWER_FLAG <= 1) {
 				mes "没有东西";
 
-			} else if (#GOD_POWER_FLAG == 2) {
+			} else if (GOD_POWER_FLAG == 2) {
 				mes "发现一个残破的木箱，要怎么办？";
 				switch(select("用力砸开:轻轻撬开:重新埋起来")) {
 
@@ -188,7 +188,7 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 						mes "从箱子内发出耀眼强光 !!!";
 
 						callfunc("f_assign_god_equipments", 0);
-						set #GOD_POWER_FLAG, 3;
+						set GOD_POWER_FLAG, 3;
 						break;
 
 					// 温柔性格
@@ -202,7 +202,7 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 						mes "从箱子内发出耀眼强光 !!!";
 
 						callfunc("f_assign_god_equipments", 1);
-						set #GOD_POWER_FLAG, 3;
+						set GOD_POWER_FLAG, 3;
 						break;
 
 					// 胆小性格
@@ -210,10 +210,10 @@ moc_fild07,92,59,6	script	微微凸起的小沙堆	557,1,1,{
 						mes "看上去有点可怕 ...";
 						mes "可能有毒虫在里面 ...";
 						mes "不义之财不可得，埋起来吧。";
-						set #GOD_POWER_FLAG, 3;
+						set GOD_POWER_FLAG, 3;
 						break;
 				}
-			} else if (#GOD_POWER_FLAG >= 3) {
+			} else if (GOD_POWER_FLAG >= 3) {
 				mes "已经什么都找不到了";
 			}
 			break;

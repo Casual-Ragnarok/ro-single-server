@@ -9,7 +9,7 @@
 		callfunc("f_un_all_god_equipments");	// 卸下所有修炼神装
 		callfunc("f_reset_city_checkpoints");	// 重置所有城市的游历标记
 
-		if (#GOD_POWER_CD_END_TIME > 0) {
+		if (GOD_POWER_CD_END_TIME > 0) {
 			dispbottom("【世界隐藏任务】死亡后已附加的 [神之力] 会消失", 0xFFFF00);
 		}
 		end;
