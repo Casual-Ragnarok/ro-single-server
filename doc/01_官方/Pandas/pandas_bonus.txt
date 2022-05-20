@@ -1,0 +1,361 @@
+﻿//===== Pandas Documentation =================================
+//= 效果调整器说明文档
+//===== By: ==================================================
+//= 熊猫模拟器开发团队
+//===== Current Version: =====================================
+//= 1.0
+//===== Description: =========================================
+//= 此文档对熊猫模拟器添加的效果调整器进行说明.
+//============================================================
+
+bonus bNoFieldGemStone;
+
+使火, 水, 风, 地四大元素领域技能无需消耗魔力矿石
+
+使用范围:
+	该调整器不能在箭矢类道具中使用.
+
+--------------------------------------------------------------
+
+bonus3 bRebirthWithHeal,r,h,s;
+
+当玩家死亡时有 r/100% 的机率复活并恢复 h% 的 HP 和 s% 的 SP [聽風]
+
+参数说明:
+	r/100%		复活机率, 填写 10000 则表示 100% 复活
+				最终触发机率若小于 0 则永不触发, 最大值为 10000
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+	h%			复活时恢复的 HP 百分比
+				最终生效值的有效区间 0 ~ 100
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+	s%			复活时恢复的 SP 百分比
+				最终生效值的有效区间 0 ~ 100
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+使用限制:
+	该调整器受 notoken 地图标记影响,
+	若玩家在拥有 notoken 标记的地图死亡则无法复活.
+
+注意事项:
+	该调整器尊重 bonus bRestartFullRecover; 若玩家应用了该调整器,
+	则复活时 HP 与 SP 将全满.
+
+--------------------------------------------------------------
+
+bonus2 bAddSkillRange,sk,n;
+
+增加 sk 技能 n 格攻击距离 [聽風]
+
+参数说明:
+	sk			技能编号或者使用双引号括起来的技能常量名
+
+				增加"狂击"技能 1 格攻击距离, 可以有以下两种写法:
+				bonus2 bAddSkillRange,5,1;
+				bonus2 bAddSkillRange,"SM_BASH",1;
+
+	n			增加的攻击距离
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+注意事项:
+	技能的最大攻击距离是 14 格, 最小是 0 格.
+
+--------------------------------------------------------------
+
+bonus2 bSkillNoRequire,sk,n;
+
+解除 sk 技能中由 n 指定的前置施法条件限制 [聽風]
+
+参数说明:
+	sk			技能编号或者使用双引号括起来的技能常量名
+
+				使"狂击"不再需要消耗 SP, 可以有以下两种写法:
+				bonus2 bSkillNoRequire,5,SKILL_REQ_SPCOST;
+				bonus2 bSkillNoRequire,"SM_BASH",SKILL_REQ_SPCOST;
+
+	n			需要移除的施法条件
+
+				支持的常量:					十六进制值:
+				SKILL_REQ_HPCOST			0x1
+				移除施法时需要的 HP 条件
+
+				SKILL_REQ_SPCOST			0x2
+				移除施法时需要的 SP 条件
+
+				SKILL_REQ_HPRATECOST		0x4
+				移除施法时需要的 HP 百分比条件
+
+				SKILL_REQ_SPRATECOST		0x8
+				移除施法时需要的 SP 百分比条件
+
+				SKILL_REQ_MAXHPTRIGGER		0x10
+				移除施法时需要的最大 HP 条件
+
+				SKILL_REQ_ZENYCOST			0x20
+				移除施法时需要的 Zeny 条件
+
+				SKILL_REQ_WEAPON			0x40
+				移除施法时需要的武器条件
+
+				SKILL_REQ_AMMO				0x80
+				移除施法时需要的子弹条件 (如: 箭矢、子弹、短刀、加农炮弹等)
+
+				SKILL_REQ_STATE				0x100
+				移除施法时需要的特殊状态条件 (如: 骑鸟、骑龙、猎鹰、手推车等)
+
+				SKILL_REQ_STATUS			0x200
+				移除施法时需要的 SC 状态条件 (如: 手推车加速、隐匿等)
+
+				SKILL_REQ_SPIRITSPHERECOST	0x400
+				移除施法时需要的灵气弹条件
+
+				SKILL_REQ_ITEMCOST			0x800
+				移除施法时需要的道具条件 (如: 各种魔力矿石等, 具体定义在 skill_db)
+
+				SKILL_REQ_EQUIPMENT			0x1000
+				移除施法时需要的装备条件
+
+				SKILL_REQ_AMMO_COUNT		0x10000
+				移除施法时需要的子弹数量条件 (但至少需要持有 1 颗要求的子弹, 不会消耗)
+
+				SKILL_REQ_PRODUCTMAT_COUNT	0x20000
+				移除 produce_db 数据库中材料道具的数量条件 (但至少每种材料需要持有 1 个, 不会消耗)
+
+使用例子:
+	// 使金币攻击不再需要消耗金币
+	bonus2 bSkillNoRequire,"MC_MAMMONITE",SKILL_REQ_ZENYCOST;
+
+	// 使复活术不再需要消耗蓝色魔力矿石和 SP (写法一: 直接位运算)
+	bonus2 bSkillNoRequire,"ALL_RESURRECTION",SKILL_REQ_ITEMCOST|SKILL_REQ_SPCOST;
+
+	// 使复活术不再需要消耗蓝色魔力矿石和 SP (写法二: 拆成两条规则)
+	bonus2 bSkillNoRequire,"ALL_RESURRECTION",SKILL_REQ_ITEMCOST;	// 移除道具条件
+	bonus2 bSkillNoRequire,"ALL_RESURRECTION",SKILL_REQ_SPCOST;	// 移除 SP 条件
+
+注意事项:
+	部分技能比如 AB_ANCILLA (辅助者 / 安希拉) ,
+	它在 skill_db 中配置的 ItemCost 并没有指出需要的蓝色魔力矿石数量,
+	若解除 SKILL_REQ_ITEMCOST 会发现依然会消耗蓝色魔力矿石.
+
+	这是因为该技能最终使用的 produce_db 数据库的材料要求作为扣减依据而并非 ItemCost,
+	你可以选择使用 SKILL_REQ_PRODUCTMAT_COUNT 选项解除材料的数量限制, 魔力矿石就不会被消耗了.
+
+	出于策划合理性考虑, 我们暂时并没有提供解除材料要求的选项, 否则玩家使用被解除材料限制的技能,
+	将可以无中生有的、无限的制造道具. 若你有需要可以在社区反馈.
+
+	类似的技能于 2021年12月6日 检查有以下几个: (列表未来不定期更新, 不一定可靠)
+
+	- AL_HOLYWATER / 天使之泪 / 天使之淚
+	- ASC_CDP / 毒液制作 / 毒液製作
+	- AM_TWILIGHT1 / 宽广配药 1 / 寬廣配藥 1
+	- AM_TWILIGHT2 / 宽广配药 2 / 寬廣配藥 2
+	- AM_TWILIGHT3 / 宽广配药 3 / 寬廣配藥 3
+	- AB_ANCILLA / 辅助者 / 安希拉
+
+--------------------------------------------------------------
+
+bonus4 bStatusAddDamage,sc,n,r,bf;
+
+攻击拥有 sc 状态的目标时, 使用 bf 攻击有 r/100% 的概率使伤害增加 n [聽風]
+
+参数说明:
+	sc			SC 状态编号, 支持常量
+
+				例如: 加速术状态的常量是 SC_INCREASEAGI
+	
+	n			增加的伤害值
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+	r/100%		触发机率,填写 10000 则表示 100% 触发
+				最终触发机率若小于 0 则永不触发, 最大值为 10000
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+	bf			能触发加成的攻击类型
+				此项定义与 doc/item_bonus.txt 的 Trigger criteria (bf) 一致
+
+规则合并:
+
+	若多条规则中 sc + bf 完全一致, 则不会消耗规则数量, 例如:
+
+		// 对方拥有加速术状态时使用普通攻击有 2% 概率增加 1000 点伤害
+		bonus4 bStatusAddDamage,SC_INCREASEAGI,1000,200,BF_NORMAL;
+
+		// 对方拥有加速术状态时使用普通攻击有 5% 概率增加 10000 点伤害
+		bonus4 bStatusAddDamage,SC_INCREASEAGI,10000,500,BF_NORMAL;
+	
+	这两条规则的 sc 都是 SC_INCREASEAGI, bf 都是 BF_NORMAL, 因此会被合并.
+	最终效果与下面这一条等价:
+
+		// 对方拥有加速术状态时使用普通攻击有 7% 概率增加 11000 点伤害
+		bonus4 bStatusAddDamage,SC_INCREASEAGI,11000,700,BF_NORMAL;
+
+注意事项:
+	此效果调整器每个角色最多只能定义 50 条 (源码中可通过 MAX_PC_BONUS 修改).
+	若希望普通攻击和技能攻击都有效, 应该使用 BF_NORMAL| BF_SKILL
+	多条规则之间的触发概率各自判定.
+
+--------------------------------------------------------------
+
+bonus4 bStatusAddDamageRate,sc,n,r,bf;
+
+攻击拥有 sc 状态的目标时, 使用 bf 攻击有 r/100% 的概率使伤害增加 n% [聽風]
+
+参数说明:
+	sc			SC 状态编号, 支持常量
+
+				例如: 加速术状态的常量是 SC_INCREASEAGI
+	
+	n%			增加的伤害百分比
+				最终生效的百分比最小值为 -100, 最大值为 2 的 31 次方
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+	r/100%		触发机率,填写 10000 则表示 100% 触发
+				最终触发机率若小于 0 则永不触发, 最大值为 10000
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+	bf			能触发加成的攻击类型
+				此项定义与 doc/item_bonus.txt 的 Trigger criteria (bf) 一致
+
+规则合并:
+
+	若多条规则中 sc + bf 完全一致, 则不会消耗规则数量, 例如:
+
+		// 对方拥有加速术状态时使用普通攻击有 2% 概率增加 10% 的伤害
+		bonus4 bStatusAddDamageRate,SC_INCREASEAGI,10,200,BF_NORMAL;
+
+		// 对方拥有加速术状态时使用普通攻击有 5% 概率增加 20% 的伤害
+		bonus4 bStatusAddDamageRate,SC_INCREASEAGI,20,500,BF_NORMAL;
+	
+	这两条规则的 sc 都是 SC_INCREASEAGI, bf 都是 BF_NORMAL, 因此会被合并.
+	最终效果与下面这一条等价:
+
+		// 对方拥有加速术状态时使用普通攻击有 7% 概率增加 30% 的伤害
+		bonus4 bStatusAddDamageRate,SC_INCREASEAGI,30,700,BF_NORMAL;
+
+注意事项:
+	此效果调整器每个角色最多只能定义 50 条 (源码中可通过 MAX_PC_BONUS 修改).
+	若希望普通攻击和技能攻击都有效, 应该使用 BF_NORMAL| BF_SKILL
+	多条规则之间的触发概率各自判定.
+
+--------------------------------------------------------------
+
+*bonus3 bFinalAddRace,r,x,bf;
+
+使用 bf 攻击 r 种族的目标时增加 x% 的伤害 (在最终伤害上全段修正) [聽風]
+
+参数说明:
+	r			目标种族类型
+				此项定义与 doc/item_bonus.txt 的 Race (r) 一致
+
+	x%			增加的伤害百分比
+				最终生效的百分比最小值为 -100, 最大值为 2 的 31 次方
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+	bf			能触发加成的攻击类型
+				此项定义与 doc/item_bonus.txt 的 Trigger criteria (bf) 一致
+
+规则合并:
+
+	若多条规则中 r + bf 完全一致, 则不会消耗规则数量, 例如:
+
+		// 使用普通攻击打"鱼贝类"种族的目标增加 200% 的伤害
+		bonus3 bFinalAddRace,RC_Fish,200,BF_NORMAL;
+
+		// 使用普通攻击打"鱼贝类"种族的目标增加 150% 的伤害
+		bonus3 bFinalAddRace,RC_Fish,150,BF_NORMAL;
+	
+	这两条规则的 r 都是 RC_Fish, bf 都是 BF_NORMAL, 因此会被合并.
+	最终效果与下面这一条等价:
+
+		// 使用普通攻击打"鱼贝类"种族的目标增加 350% 的伤害
+		bonus3 bFinalAddRace,RC_Fish,350,BF_NORMAL;
+
+注意事项:
+	全段修正就是在所有计算完毕后, 再单独计算本指令增加的伤害.
+	此效果调整器每个 Race 最多只能定义 50 条 (源码中可通过 MAX_PC_BONUS 修改).
+
+--------------------------------------------------------------
+
+*bonus3 bFinalAddClass,c,x,bf;
+
+使用 bf 攻击时 c 类型目标时增加 x% 的伤害 (在最终伤害上全段修正) [聽風]
+
+参数说明:
+	c			目标类型
+				此项定义与 doc/item_bonus.txt 的 Class (c) 一致
+
+	x%			增加的伤害百分比
+				最终生效的百分比最小值为 -100, 最大值为 2 的 31 次方
+				可被叠加, 支持负数, 若传递负数则表示扣减.
+
+	bf			能触发加成的攻击类型
+				此项定义与 doc/item_bonus.txt 的 Trigger criteria (bf) 一致
+
+规则合并:
+
+	若多条规则中 c + bf 完全一致, 则不会消耗规则数量, 例如:
+
+		// 使用普通攻击打 BOSS 类型的魔物增加 200% 的伤害
+		bonus3 bFinalAddClass,Class_Boss,200,BF_NORMAL;
+
+		// 使用普通攻击打 BOSS 类型的魔物增加 150% 的伤害
+		bonus3 bFinalAddClass,Class_Boss,150,BF_NORMAL;
+	
+	这两条规则的 c 都是 Class_Boss, bf 都是 BF_NORMAL, 因此会被合并.
+	最终效果与下面这一条等价:
+
+		// 使用普通攻击打 BOSS 类型的魔物增加 350% 的伤害
+		bonus3 bFinalAddClass,Class_Boss,350,BF_NORMAL;
+
+注意事项:
+	全段修正就是在所有计算完毕后, 再单独计算本指令增加的伤害.
+	此效果调整器每个 Class 最多只能定义 50 条 (源码中可通过 MAX_PC_BONUS 修改).
+	
+--------------------------------------------------------------
+
+*bonus bAbsorbDmgMaxHP2,n;
+
+受到超过自己总血量 n% 的伤害时只会受到总血量 n% 的伤害
+
+参数说明:
+	n%			单次承伤不超过总血量的百分比
+				最终生效值的有效区间 0 ~ 100
+				不可叠加, 只会保留 n 最大的那次设定.
+
+提示信息:
+	总血量是指承伤单位的 MaxHP
+
+注意事项:
+	结算优先级如下, 越靠前优先级越高.
+	高优先级的调整器将会覆盖低优先级调整器的伤害修正结果.
+	- bonus2 bAbsorbDmgMaxHP,n,x;
+	- bonus bAbsorbDmgMaxHP2,n;
+	- bonus bAbsorbDmgMaxHP,n;
+
+--------------------------------------------------------------
+
+*bonus2 bAbsorbDmgMaxHP,n,x;
+
+受到超过自己总血量 n% 的伤害时只会受到总血量 x% 的伤害
+
+参数说明:
+	n%			单次承伤超过总血量的百分比将会激活保护
+				最终生效值的有效区间 0 ~ 100
+				不可叠加, 只会保留 n 最大的那次设定.
+
+	x%			该次伤害结算最多扣减总血量指定百分比的伤害
+				最终生效值的有效区间 0 ~ 100
+				不可叠加, 只会保留 x 最大的那次设定.
+
+提示信息:
+	总血量是指承伤单位的 MaxHP
+
+注意事项:
+	结算优先级如下, 越靠前优先级越高.
+	高优先级的调整器将会覆盖低优先级调整器的伤害修正结果.
+	- bonus2 bAbsorbDmgMaxHP,n,x;
+	- bonus bAbsorbDmgMaxHP2,n;
+	- bonus bAbsorbDmgMaxHP,n;
+
+--------------------------------------------------------------
