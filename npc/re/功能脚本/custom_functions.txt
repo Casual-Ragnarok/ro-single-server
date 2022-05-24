@@ -95,8 +95,8 @@ function	script	F_POSTION	{
 // - param: 无参数
 // - return: 无
 function	script	F_POSTION_TO_CONSOLE	{
-	set @player_name$, callfunc("F_PLAYER_NAME");
-	atcommand("@where " + @player_name$);
+	set .@player_name$, callfunc("F_PLAYER_NAME");
+	atcommand("@where " + .@player_name$);
 	return;
 }
 
@@ -114,7 +114,8 @@ function	script	F_SERVER_RATES	{
 // - param: 无参数
 // - return: 无参数
 function	script	F_AUTOLOOT	{
-	atcommand("@autoloot");
+	.@percent = getarg(0, 100);
+	atcommand("@autoloot " + .@percent);
 	return;
 }
 
@@ -128,16 +129,56 @@ function	script	F_MANUAL	{
 	mes "手册本身并无任何 BUFF 效果";
 	next;
 	mes "[RO 手册]";
-	menu "查看权限指令",_TO_CHAR_COMMANDS,
+	menu "自动拾取[开/关]",_TO_AUTOLOOT,
+		 "全身鉴定",_TO_IDENTIFY_ALL,
+	     "查看权限指令",_TO_CHAR_COMMANDS,
 		 "查看常用命令",_TO_GAME_COMMANDS,
 		 "查看服务器信息",_TO_SERVER_RATES,
 		 "查看在线人数",_TO_ONLINE,
 		 "查看角色信息",_TO_CHARINFO,
 		 "查看当前坐标",_TO_WHERE,
-		 "自动拾取[开/关]",_TO_AUTOLOOT,
-		 "全身鉴定",_TO_IDENTIFY_ALL,
 		 "自杀",_TO_KILL_SELF,
 		 "没事了.",_TO_CLOSE;
+
+	_TO_AUTOLOOT:
+		menu "[开]自动拾取（100% 以下掉率）",_TO_AUTOLOOT_100,
+			 "[开]自动拾取（50% 以下掉率）",_TO_AUTOLOOT_50,
+			 "[开]自动拾取（10% 以下掉率）",_TO_AUTOLOOT_10,
+			 "[开]自动拾取（1% 以下掉率）",_TO_AUTOLOOT_1,
+			 "[关]自动拾取",_TO_AUTOLOOT_0;
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_AUTOLOOT_100:
+		callfunc("F_AUTOLOOT", 100);
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_AUTOLOOT_50:
+		callfunc("F_AUTOLOOT", 50);
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_AUTOLOOT_10:
+		callfunc("F_AUTOLOOT", 10);
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_AUTOLOOT_1:
+		callfunc("F_AUTOLOOT", 1);
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_AUTOLOOT_0:
+		callfunc("F_AUTOLOOT", 0);
+		callsub(_TO_CLOSE);
+		return;
+
+	_TO_IDENTIFY_ALL:
+		mes "已全部鉴定";
+		callfunc("F_IDENTIFY_ALL");
+		callsub(_TO_CLOSE);
+		return;
 
 	_TO_CHAR_COMMANDS:
 		callfunc("F_COMMANDS");
@@ -182,17 +223,6 @@ function	script	F_MANUAL	{
 	_TO_ONLINE:
 		mes "已打印到资讯窗口...";
 		callfunc("F_ONLINE");
-		callsub(_TO_CLOSE);
-		return;
-
-	_TO_AUTOLOOT:
-		callfunc("F_AUTOLOOT");
-		callsub(_TO_CLOSE);
-		return;
-
-	_TO_IDENTIFY_ALL:
-		mes "已全部鉴定";
-		callfunc("F_IDENTIFY_ALL");
 		callsub(_TO_CLOSE);
 		return;
 
