@@ -9,3 +9,7 @@ ROEmulator/usr/local/mysql/data/mysql_mini.*
 
 # ST3 编辑器转换 GBK 文件时生成的临时文件
 *.dump
+
+
+# 其他
+.vscode
