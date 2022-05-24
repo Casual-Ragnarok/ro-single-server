@@ -1,0 +1,41 @@
+//==========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -------------------------------------------
+// - 牛奶商人 脚本 -
+// ------------------------------------------
+// 版本1.3 ；中文化：蝴蝶君
+//=========================
+
+prontera,73,140,0	script	牛奶商人	86,{
+
+	mes "[牛奶商人]";
+	mes "只要你有一个空瓶子和15个金币，就可以到我这里来换取一瓶牛奶，怎么样，想换吗？";
+	next;
+	if (select("帮我把所有空瓶都换成牛奶:不了，谢谢") == 1) {
+		if (countitem(713) <= 0) {
+			mes "[牛奶商人]";
+			mes "对不起，你没有足够的空瓶子。";
+			close;
+		}
+		set .@bottles,countitem(713);
+		set .@total_weight,.@bottles * 50;
+		set .@total_cost,.@bottles * 15;
+		set .@now_weight,maxweight-weight;
+		if (zeny < .@Total_cost) {
+			mes "[牛奶商人]";
+			mes "换取一瓶牛奶需要20个金币，你至少要有" + .@total_cost + "金币！";
+			close;
+		}
+		if (.@now_weight < .@total_weight) {
+			mes "[牛奶商人]";
+			mes "你必须先拿掉一些东西，因为你会负重";
+			close;
+		}
+		set zeny,zeny-.@total_cost;
+		delitem 713,.@bottles; //Empty Bottles
+		getitem 519,.@bottles; //Milk
+		close;
+	}
+	close;
+}

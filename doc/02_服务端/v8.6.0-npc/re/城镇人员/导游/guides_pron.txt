@@ -1,0 +1,193 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ------------------------------------------
+// - 普隆德拉 导游 脚本 -
+// ------------------------------------------
+// 版本 1.1
+//===========================================
+
+
+prontera,154,189,4	script	导游#1::Prt_Guide	105,{
+	cutin "prt_soldier",2;
+	mes "[普隆德拉导游]";
+	mes "欢迎光临 非常欢迎您们来到卢恩 米德加尔特王国美丽的首都普隆德拉.";
+	mes "我们为了来到普隆德拉的旅客 安排了导游为您们介绍这个城市 当您们有问题的时候 随时可以询问他们.";
+	next;
+	mes "[普隆德拉导游]";
+	mes "第一次来到这里的旅客 先按主选单 选择注意事项 了解必须注意的事情.";
+	while(1) {
+		next;
+		switch (select("开始由导游说明城市:删掉微型地图上全部的记号:听取注意事项:取消")) {
+		case 1:
+			if(@compass&0x01 == 0) {
+				mes "[普隆德拉导游]";
+				mes "请您选择想知道的选单";
+				mes "要在微型地图上留下记号吗?";
+				next;
+				if(select("要:不要")==1)
+					set @compass,@compass|0x01;
+			}
+			mes "[普隆德拉导游]";
+			mes "请选择地点";
+			while(1) {
+				next;
+				switch (select("剑士公会:^0000FF教堂^000000","骑士团:武器商店:道具商店:旅馆",
+							"精练所:酒店:图书馆:研究所:普隆德拉城:办公室:取消")) {
+				case 1:
+					mes "[普隆德拉导游]";
+					mes "专门办理剑士转职业务的剑士公会已经搬到新城市伊兹鲁达普隆德拉现在已经是空屋.";
+					if(@compass&0x01)
+						viewpoint 1,237,41,1,0x00FF00;
+					continue;
+				case 2:
+					mes "[普隆德拉导游]";
+					mes "专门办理服事转职业务的教堂位置在普隆德拉东北方的郊区..";
+					if(@compass&0x01)
+						viewpoint 1,236,316,2,0xFF0000;
+					continue;
+				case 3:
+					mes "[普隆德拉导游]";
+					mes "保护卢恩米德加尔特王国美丽的首都普隆德拉行政机关的骑士团位在普隆德拉西北方的郊区.";
+					if(@compass&0x01)
+						viewpoint 1,46,345,3,0x00FF00;
+					continue;
+				case 4:
+					mes "[普隆德拉导游]";
+					mes "武器商店位在以喷水池中心的东北方.";
+					if(@compass&0x01)
+						viewpoint 1,175,220,4,0xFF00FF;
+					continue;
+				case 5:
+					mes "[普隆德拉导游]";
+					mes "道具商店位在以喷水池中心的西北方";
+					if(@compass&0x01)
+						viewpoint 1,134,221,5,0xFF00FF;
+					continue;
+				case 6:
+					mes "[普隆德拉导游]";
+					mes "旅馆位在以喷水池中心的西方和东方各有一间.";
+					if(@compass&0x01) {
+						viewpoint 1,204,214,6,0xFF00FF;
+						viewpoint 1,107,192,7,0xFF00FF;
+					}
+					continue;
+				case 7:
+					mes "[普隆德拉导游]";
+					mes "精练所位在以喷水池中心的东南方.";
+					if(@compass&0x01)
+						viewpoint 1,179,184,8,0x00FF00;
+					continue;
+				case 8:
+					mes "[普隆德拉导游]";
+					mes "酒店位在以喷水池中心的东南方就在交易所对面";
+					if(@compass&0x01)
+						viewpoint 1,208,154,9,0x00FF00;
+					continue;
+				case 9:
+					mes "[普隆德拉导游]";
+					mes "图书馆位在从喷水池开始往北方走看见一块空地,在空地前的左边和右边各有一间.";
+					if(@compass&0x01) {
+						viewpoint 1,120,267,10,0x00FF00;
+						viewpoint 1,192,267,11,0x00FF00;
+					}
+					continue;
+				case 10:
+					mes "[普隆德拉导游]";
+					mes "研究所位在以喷水池中心的西南方";
+					if(@compass&0x01)
+						viewpoint 1,133,183,12,0x00FF00;
+					continue;
+				case 11:
+					mes "[普隆德拉导游]";
+					mes "普隆德拉城堡是位在普隆德拉北方的郊区的12点方向.";
+					mes "有一点要注意城堡的后门是和北普隆德拉相邻在一起的";
+					if(@compass&0x01)
+						viewpoint 1,156,360,13,0x00FF00;
+					continue;
+				case 12:
+					mes "[普隆德拉导游]";
+					mes "办公室位在普隆德拉东南方的郊区的7点钟方向.";
+					if(@compass&0x01)
+						viewpoint 1,75,91,14,0x00FF00;
+					continue;
+				case 13:
+					mes "[普隆德拉导游]";
+					mes "选择删除编辑，即可删除小地图上的记号";
+				}
+				break;
+			}
+			continue;
+		case 2:
+			viewpoint 2,237,41,1,0x00FF00;
+			viewpoint 2,236,316,2,0xFF0000;
+			viewpoint 2,46,345,3,0x00FF00;
+			viewpoint 2,175,220,4,0xFF00FF;
+			viewpoint 2,8,134,5,0xFF00FF;
+			viewpoint 2,204,214,6,0xFF00FF;
+			viewpoint 2,107,192,7,0xFF00FF;
+			viewpoint 2,179,184,8,0x00FF00;
+			viewpoint 2,208,154,9,0x00FF00;
+			viewpoint 2,120,267,10,0x00FF00;
+			viewpoint 2,192,267,11,0x00FF00;
+			viewpoint 2,133,183,12,0x00FF00;
+			viewpoint 2,156,360,13,0x00FF00;
+			viewpoint 2,75,91,14,0x00FF00;
+			set @compass,@compass&~0x01;
+			continue;
+		case 3:
+			mes "[普隆德拉导游]";
+			mes "我们废除了原来较差的指引方式采用最现代化的无论您在那里都可以借由微型地图知道您的位置.";
+			mes "您们可以直接确认卢恩米德加尔特王国魔法和科学技术组合后的广域测位系统的功能.";
+			next;
+			mes "[普隆德拉导游]";
+			mes "在流览之前必须先参考右上方的微型地图.";
+			mes "如果看不见微型地图的话 请按'ctrl+tab'或者选取基本情报视窗内的地图";
+			mes "微型地图出现之后 在地图上按几下可以看见所有城市.";
+			continue;
+		case 4:
+			mes "[普隆德拉导游]";
+			mes "那么祝你有个愉快的旅行";
+			close2;
+			cutin "prt_soldier",255;
+			end;
+		}
+	}
+}
+
+// East ----------------------------------------------------
+prontera,282,208,2	duplicate(Prt_Guide)	导游#prt2	105
+//West --------------------------------------------------
+prontera,29,200,6	duplicate(Prt_Guide)	导游#prt3	105
+// South -----------------------------------------------------
+prontera,160,29,0	duplicate(Prt_Guide)	导游#prt4	105
+// North -----------------------------------------------
+prontera,151,330,4	duplicate(Prt_Guide)	导游#prt5	105
+
+
+// Guard -----------------------------------------------------
+prontera,160,330,4	script	守卫#1::Prt_Guard	105,{
+	mes "欢迎来到普隆德拉.";
+	close;
+}
+
+prontera,223,99,1	duplicate(Prt_Guard)	守卫#prt2	105
+prontera,229,104,1	duplicate(Prt_Guard)	守卫#prt3	105
+prontera,47,339,5	duplicate(Prt_Guard)	守卫#prt4	105
+prontera,52,344,5	duplicate(Prt_Guard)	守卫#prt5	105
+
+
+//---------------------------------------------------------------------------------------- Prontera Maze ----------------------------------------------------------------------------------\\
+prt_maze02,100,69,4	script	士兵#maz01	105,{
+	mes "[士兵]";
+	mes "虽然不知道是什么原因，但是进去这森林最好有所自制，听说在这森林理会出现恶魔耶！";
+	mes "当然是因为进去这地方再出来的人一个也没有，所以无法了解。";
+	mes "什么？...当然要进去是你的自由";
+	close;
+}
+prt_maze02,110,69,4	script	士兵#maz02	105,{
+	mes "[士兵]";
+	mes "咳！... 最后进去这地方的家伙，或许没办法再回来了吧！即使为了取得某种药草，只好无可奈何地进去...";
+	mes "如果是我的话，才不要做出为了那种药草而丢掉性命像白痴的事!";
+	close;
+}

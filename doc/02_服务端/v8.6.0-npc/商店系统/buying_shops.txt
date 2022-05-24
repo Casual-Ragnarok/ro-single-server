@@ -1,0 +1,241 @@
+//===== rAthena Script =======================================
+//= Buying Shop Scripts
+//===== By: ==================================================
+//= Kisuka
+//===== Current Version: =====================================
+//= 1.1a
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= Buying Shop licenses.
+//===== Additional Comments: =================================
+//= 1.0 First version. [Kisuka]
+//= 1.1 Added Catalog Magician. [Euphy]
+//= 1.1a Moved Catalog Magician to Renewal path. [Euphy]
+//============================================================ 
+
+// Black Marketeer (Buy Licenses - Non-Merchant Classes)
+//============================================================ 
+que_job01,68,84,1	script	黑市商人#Buying	881,{
+	if (getskilllv("ALL_BUYING_STORE") == 1) {
+		mes "[贾斯先生]";
+		mes "嗯? 是和修先生有关系的人阿!";
+		mes "我跟你没什么好说的.";
+		close;
+	}
+	mes "[贾斯先生]";
+	mes "居然被你找到这里了.";
+	mes "你想要什么呢?";
+	next;
+	switch(select("采购商店执照:你是谁?:不需要!")) {
+	case 1:
+		mes "[贾斯先生]";
+		mes "好的, 好的!";
+		mes "我来帮你做.";
+		mes "保证做得跟真的一模一样!";
+		next;
+		mes "[贾斯先生]";
+		mes "我的执照较好, 因为你不需要去学习任何使用技能.";
+		mes "你想要多少?";
+		next;
+		mes "[贾斯先生]";
+		mes "一次不能制作很多, 每次最多10张.";
+		mes "手续费是每张 500 金币.";
+		next;
+		while(1) {
+			input .@input;
+			mes "[贾斯先生]";
+			if (.@input == 0) {
+				mes "不需要吗?";
+				close;
+			} else if (.@input > 10) {
+				mes "你知道我每次最多只能制作10张.";
+				next;
+			} else {
+				mes "手续费一共是 "+(.@input*500)+" zeny.";
+				if (Zeny < (.@input*500)) {
+					mes "你的钱好像不够阿.";
+					next;
+						mes "[贾斯先生]";
+						mes "虽然我没资格讲商业道德, 但世界上应该遵循等价交换原则.";
+						mes "如果你想把东西拿走就必须支付相等的代价.";
+				} else {
+						mes "呵呵呵... 呵呵呵!";
+						mes "修先生, 怎么样?我要成为地下世界的黑手!";
+						mes "*呵呵呵*";
+					getitem 12548,.@input; //Shabby_Purchase_Street
+					set Zeny,Zeny-(.@input*500);
+				}
+				close;
+			}
+		}
+	case 2:
+		mes "[贾斯先生]";
+		mes "我离开故乡已经很久了,";
+		mes "那种问题对我来说没有任何意义, 对我而言, 剩下的只有憎恨....";
+		next;
+		mes "[贾斯先生]";
+		mes "...";
+		mes "正确的商道是什么呢...对于已经堕落的我来说, 剩下的还有什么呢?";
+		mes "要是能让修先生那各家伙吃点苦头...";
+		next;
+		mes "[贾斯先生]";
+		mes "哎呀, 我喝醉了... (*嗝*)";
+		mes "把我说的忘了吧!";
+		mes "请一定要记住我说的话.";
+		close;
+	case 3:
+		mes "[贾斯先生]";
+		mes "不要就不要, 干嘛那么大声?";
+		mes "现在的年轻人.....";
+		close;
+	}
+}
+
+// Purchasing Team (Learn Skill - Merchant Classes)
+//============================================================ 
+alberta_in,58,52,4	script	采购部修先生#Buying	59,{
+	mes "[修先生]";
+	if (BaseClass == Job_Merchant && getskilllv("MC_VENDING") >= 1) {
+		if (getskilllv("ALL_BUYING_STORE") == 1) {
+			mes "我是采购部的修先生.";
+			mes "你需要什么东西呢?";
+			next;
+			if(select("购买采购商店执照:不需要") == 2) {
+				mes "[修先生]";
+				mes "如果需要开设采购商店所需的执照的话.";
+				mes "请随时来这里申请, 欢迎下次光临~";
+				close;
+			}
+			mes "[修先生]";
+			mes "采购商店执照每张售价 200 金币, 一次最多可以购买50张.";
+			mes "你想购买多少张1?";
+			next;
+			while(1) {
+				input .@input;
+				mes "[修先生]";
+				if (.@input == 0) {
+					mes "您已取消交易.";
+					mes "祝您有美好的一天.";
+					close;
+				} else if (.@input > 50) {
+					mes "请输入购买张数. 至少50张起.";
+					next;
+				} else {
+					mes "花费 "+(.@input*200)+" zeny "+.@input+" 执照.";
+					if (Zeny < (.@input*200)) {
+						mes "你没有足够的钱阿.";
+					} else {
+						mes "谢谢您的惠顾.";
+						getitem 6377,.@input; //Buy_Stall_Permit
+						set Zeny,Zeny-(.@input*200);
+					}
+					close;
+				}
+			}
+		} else {
+			mes "我是艾尔贝塔商人公会采购部的修先生.";
+			mes "你....";
+			next;
+			mes "[修先生]";
+			mes "你知道吗? 这次商人公会也允许一般人购买.";
+			next;
+			select("没有那个也能买东西啊...");
+			mes "[修先生]";
+			mes "是的,";
+			mes "但是你想要购买大量商品的时候,";
+			mes "是不是觉得很辛苦呢?";
+			mes "还要去找把东西带在身上或有意出售的人才行.";
+			next;
+			mes "[修先生]";
+			mes "物品的大量流通, 对于商人来说是非常重要的事情,";
+			mes "因此在采购部工作了十年的我, 这次提出了划时代的提案.";
+			next;
+			mes "[修先生]";
+			mes "就是个人";
+			mes "也可以开设采购商店!";
+			mes "你只要";
+			mes "看了这份提案就知道了...";
+			next;
+			mes "[修先生]";
+			mes "...";
+			mes "...(修先生自顾自地说着.)";
+			next;
+			select("够了, 说说结论?");
+			mes "[修先生]";
+			mes "嗯, 好吧. 简单地概括一下就是,";
+			mes "允许部份商品透过商店大量出售.";
+			next;
+			mes "[修先生]";
+			mes "想要开设采购商店, 须要有商人公会的执照.";
+			next;
+			mes "[修先生]";
+			mes "每开设一次, 都需使用执照. 出售执照带来的收入, 可以未商人公会打下坚固的基础.";
+			next;
+			mes "[修先生]";
+			mes "这部分是我的提案核心!";
+			mes "会长非常高兴, 很快就通过了我的提案!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "只说结论就行!";
+			next;
+			mes "[修先生]";
+			mes "啊, 你的性子可真急.";
+			mes "所以我们允许拥有开设销售商店授权的人, 开采购商店.";
+			next;
+			mes "[修先生]";
+			mes "当然, 需要 10,000 金币的注册费.";
+			mes "每次开设商店还需要 ^4A4AFF采购商店执照^000000 .";
+			next;
+			mes "[修先生]";
+			mes "怎样? 你想注册吗?";
+			mes "注册之后, 我就会告诉你开设采购商店的方法.";
+			next;
+			if(select("学习开设采购商店:不学习") == 2) {
+				mes "[修先生]";
+				mes "唉, 真让人遗憾!";
+				mes "这可以让你方便很多的, 如果感兴趣的话,";
+				mes "可以再来找我, 我永远都欢迎你过来!";
+				close;
+			}
+			mes "[修先生]";
+			if (Zeny < 10000) {
+				mes "登记费为 10,000 金币.";
+				mes "费用请准备好.";
+				close;
+			} else {
+				mes "明智的决定.";
+				mes "好的,请先到这边来注册, 在这里签名....";
+				next;
+				input .@name$;
+				mes "[修先生]";
+				mes .@name$+"....";
+				mes "字写得很不错嘛!";
+				mes "现在你可以开设采购商店了.";
+				set Zeny,Zeny-10000;
+				getitem 6377,5; //Buy_Stall_Permit
+				skill "ALL_BUYING_STORE",1,4;
+				next;
+				mes "[修先生]";
+				mes "可以大量购买的物品是除装备和部分药水/个人制作的物品^8C2121以外^000000的普通物品, 但根据应用方法的不同, 我想应该会对个人很有帮助.";
+				next;
+				mes "[修先生]";
+				mes "你至少需要库存一个收购物品, 因为要透过商店展让大家知道要收购的是什么物品.";
+				next;
+				mes "[修先生]";
+				mes "购买商店技能应该登录在您的技能视窗了. 如果没看见您可能需切换技能视窗显示模式在检查确认一下.";
+				next;
+				mes "[修先生]";
+				mes "我已经给你5张试用的采购商店执照.";
+				mes "体验采购乐趣!";
+				close;
+			}
+		}
+	}
+		mes "我是艾尔贝塔商人公会采购部的修先生.";
+		mes "我喜欢聊天但是我现在很忙碌.";
+		next;
+		mes "[修先生]";
+		mes "我的时间完全奉献给广大的商业顾客.";
+	close;
+}

@@ -1,0 +1,164 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 药剂师爷爷 - 改写自JA
+//===========================================
+alberta_in.gat,16,28,4	script	药剂师爷爷	61,{
+	mes "[药剂师爷爷]";
+	mes "是....客人吗...?";
+	next;
+	switch (select("组合药水:对话:听取组合药水的告示:取消")) {
+	case 1:
+		mes "[药剂师爷爷]";
+		mes "物品都齐全了吗?您要组合哪一种药水?";
+		next;
+		switch (select("红色药水:赤色药水:黄色药水:白色药水:蓝色药水:绿色药水:放弃")) {
+		case 1:
+			setarray .@need,507,713;
+			setarray .@amount,2,1;
+			set .@price,3;
+			set .@gain,501;
+			break;
+		case 2:
+			setarray .@need,507,508,713;
+			setarray .@amount,1,1,1;
+			set .@price,5;
+			set .@gain,502;
+			break;
+		case 3:
+			setarray .@need,508,713;
+			setarray .@amount,2,1;
+			set .@price,10;
+			set .@gain,503;
+			break;
+		case 4:
+			setarray .@need,509,713;
+			setarray .@amount,2,1;
+			set .@price,20;
+			set .@gain,504;
+			break;
+		case 5:
+			setarray .@need,510,713;
+			setarray .@amount,2,1;
+			set .@price,30;
+			set .@gain,505;
+			break;
+		case 6:
+			setarray .@need,511,713;
+			setarray .@amount,2,1;
+			set .@price,3;
+			set .@gain,506;
+			break;
+		case 7:
+			close;
+		}
+		if(Zeny<.@price) {
+			mes "[药剂师爷爷]";
+			mes "做药水还要带来一些钱!您空手来要 干吗! 真是傻瓜!";
+			mes "滚出去!";
+			close;
+		}
+		set .@size,getarraysize(.@need);
+		for(set .@i,0; .@i<.@size; set .@i,.@i+1) {
+			set .@max[.@i],countitem(getelementofarray(.@need,.@i)) / getelementofarray(.@amount,.@i);
+		}
+		if(.@price)
+			set .@max[.@i],Zeny / .@price;
+		else
+			set .@size,.@size-1;
+		for(set .@i,0; .@i<.@size; set .@i,.@i+1) {
+			if(.@max[0] > .@max[1])
+				deletearray .@max[0],1;
+			else
+				deletearray .@max[1],1;
+		}
+		if(.@max==0) {
+			mes "[药剂师爷爷]";
+			mes "做药水连材料都没带!您空手来要 干吗! 真是傻瓜!";
+			mes "滚出去!";
+			close;
+		}
+		mes "[药剂师爷爷]";
+		mes "要多少?";
+		next;
+		switch (select("全部组合:限定数量:放弃")) {
+		case 1:
+			set .@num,.@max;
+			break;
+		case 2:
+			mes "[药剂师爷爷]";
+			mes "那请您填写 100 以下.若不愿意就填写 0 .";
+			mes "看您收集的材料可能组合" +.@max+" 瓶.";
+			while(1) {
+				next;
+				input .@num;
+				if(.@num>100 || .@num<0) {
+					mes "[药剂师爷爷]";
+					mes "只能100个以下!";
+					continue;
+				}
+				break;
+			}
+			if(.@num==0) {
+				mes "[药剂师爷爷]";
+				mes "滚出去!";
+				close;
+			}
+			if(.@num > .@max) {
+				mes "[药剂师爷爷]";
+				mes "材料呢?";
+				close;
+			}
+			break;
+		case 3:
+			mes "[药剂师爷爷]";
+			mes "快滚吧!";
+			close;
+		}
+		if(@menu==2) {
+			delitem 507,.@num;
+			delitem 508,.@num;
+		}
+		else {
+			delitem .@need[0],.@num*2;
+		}
+		delitem 713,.@num;
+		set Zeny,Zeny-.@price*.@num;
+		getitem .@gain,.@num;
+		mes "[药剂师爷爷]";
+		mes "做好了.拿回去吧.";
+		mes "记住! 光靠药物不是办法!";
+		close;
+	case 2:
+		mes "[药剂师爷爷]";
+		mes "药水可以提高人类的恢复力.不过只是帮助而已...";
+		mes "哎呦...年纪大了会回忆以前的事情.";
+		mes "药水只是药的一种...只是这样而已.";
+		close;
+	case 3:
+		mes "[药剂师爷爷]";
+		mes "嗯...您们这些小家伙真是烦人... 好,我会仔细告诉您们.";
+		next;
+		mes "[药剂师爷爷]";
+		mes "药草是可以直接使用的,不过我个人的秘方是做成药水,效果会更好.";
+		next;
+		mes "[药剂师爷爷]";
+		mes "如果您们求我,我就会做药水给您们,不过不是免费的,我要收一点费用,当作我的零用钱,数目不会很多.";
+		next;
+		mes "[药剂师爷爷]";
+		mes "红色药水 - ^0098E5 红色药草 x2, 空瓶 x1, 3 金币.^000000";
+		mes "赤色药水 - ^0098E5 红色药草 x1, 黄色药草 x1, 空瓶 x1, 5 金币.^000000";
+		mes "黄色药水 - ^0098E5 黄色药草 x2, 空瓶 x1, 10 金币.^000000";
+		next;
+		mes "[药剂师爷爷]";
+		mes "白色药水 - ^0098E5 白色药草 x2, 空瓶 x1, 20 金币.^000000";
+		mes "蓝色药水 - ^0098E5 蓝色药草 x2, 空瓶 x1, 30 金币.^000000";
+		mes "绿色药水 - ^0098E5 绿色药草 x2, 空瓶 x1, 3 金币.^000000";
+		close;
+	case 4:
+		mes "[药剂师爷爷]";
+		mes "真是奇怪的人,有话要说出来,干嘛什么也没说就走过去了!";
+		close;
+	}
+}

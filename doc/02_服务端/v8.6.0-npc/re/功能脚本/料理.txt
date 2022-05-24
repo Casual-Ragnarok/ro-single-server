@@ -1,0 +1,1563 @@
+
+prt_in.gat,285,137,4	shop	烹调系列用品	829,7452:2000,7453:2000,7454:2000,7455:2000,7456:2000,7457:2000,7472:2000,7473:2000,7474:2000,7475:2000,7476:2000,7477:2000,7478:2000,7479:2000,7480:2000,7481:2000,7482:1000,12018:100	
+prontera.gat,141,125,5	script	夏日尔奥日里昂	886,{
+	callfunc "Cuisine";
+OnInit:
+	setarray $@cuisinebook[0],0,7472,7473,7474,7475,7476,7477,7478,7479,7480,7481;
+	set $CuisineName$,"^0000FF夏日尔奥日里昂老师:";
+	set $CuisineQuest_1$,"请问你想做什么?";
+	set $CuisineQuest_2$,"你想制作哪种料理？";
+	set $CuisineQuest_3$,"制作材料:";
+	set $zz$,"^0000FF制作";
+	set $tc$,"^FF0000退出";
+}
+function	script	Cuisine	{
+	function MesJob;
+	function MesCuisine;
+	mes""+$CuisineName$;
+	mes""+$CuisineQuest_1$;
+	next;
+	switch(select(MesJob(char_job),MesCuisine(char_job),$tc$)){
+		case 1:
+			if(char_job == 99) callfunc "CuisineMake";
+			if(char_job == 0 && getequipisequiped(1) && getequipid(1) == 5026) callfunc "JobChanges";
+			if(char_job == 9 && getequipisequiped(1) && getequipid(1) == 5026){
+				if(char_makeexp < 1000) callfunc "MesExpLvl",1,1000,0,100;
+				if(char_makeexp >= 1000 && char_makeexp < 2000) callfunc "MesExpLvl",2,2000,1000,100;
+				if(char_makeexp >= 2000 && char_makeexp < 3000) callfunc "MesExpLvl",3,3000,2000,100;
+				if(char_makeexp >= 3000 && char_makeexp < 5000) callfunc "MesExpLvl",4,5000,3000,200;
+				if(char_makeexp >= 5000 && char_makeexp < 8000) callfunc "MesExpLvl",5,8000,5000,300;
+				if(char_makeexp >= 8000 && char_makeexp < 13000) callfunc "MesExpLvl",6,13000,8000,500;
+				if(char_makeexp >= 13000 && char_makeexp < 21000) callfunc "MesExpLvl",7,21000,13000,800;
+				if(char_makeexp >= 21000 && char_makeexp < 34000) callfunc "MesExpLvl",8,34000,21000,1300;
+				if(char_makeexp >= 34000 && char_makeexp < 55000) callfunc "MesExpLvl",9,55000,34000,2100;
+				if(char_makeexp >= 55000) callfunc "MesExpLvl",10,99999999,55000,3400;
+			}
+			callfunc "ByCuisine";
+			close;
+			end;			
+		case 2:
+			if(char_job == 9 && getequipisequiped(1) && getequipid(1) == 5026){
+				mes""+$CuisineName$;
+				mes""+$CuisineQuest_2$;
+				next;
+				switch(select("一级料理","二级料理","三级料理","四级料理","五级料理","六级料理","七级料理","八级料理","九级料理","十级料理")){
+					case 1:
+						set @makesuccesslvl,1;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("蚱蜢热炒-STR","青蛙蛋墨水汤-AGI","蒸蟹之螯-VIT","葡萄果汁药草茶-INT","蜂蜜葡萄汁-DEX","猴子尾巴热炒-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蝗虫后腿*5";
+								mes "破旧平底锅*1";
+								mes "食用油*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(940)<5) || (countitem(7031)<1) || (countitem(7457)<1) || countitem($@cuisinebook[1]) < 1) callfunc "NotHave";
+											delitem 940,5;
+											delitem 7031,1;
+											delitem 7457,1;
+											set @makefood,12041;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000谷食*1";
+								mes "青蛙蛋*10";
+								mes "墨汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(577)<1) || (countitem(908)<10) || (countitem(1024)<1) || countitem($@cuisinebook[1]) < 1) callfunc "NotHave";
+											delitem 577,1;
+											delitem 908,10;
+											delitem 1024,1;
+											set @makefood,12056;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000钳子*10";
+								mes "绿色药草*10";
+								mes "黄色药水*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(960)<10) || (countitem(511)<10) || (countitem(503)<1) || countitem($@cuisinebook[1]) < 1) callfunc "NotHave";
+											delitem 960,10;
+											delitem 511,10;
+											delitem 503,1;
+											set @makefood,12051;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000葡萄*3";
+								mes "红色药水*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(514)<3) || (countitem(501)<2) || countitem($@cuisinebook[1]) < 1) callfunc "NotHave";
+											delitem 514,3;
+											delitem 501,2;
+											set @makefood,12046;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蜂蜜*1";
+								mes "葡萄*2";
+								mes "红色药水*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(518)<1) || (countitem(514)<2) || (countitem(501)<1) || countitem($@cuisinebook[1]) < 1) callfunc "NotHave";
+											delitem 518,1;
+											delitem 514,2;
+											delitem 501,1;
+											set @makefood,12061;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000猴子尾巴*5";
+								mes "破旧平底锅*1";
+								mes "食用油*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(942)<5) || (countitem(7031)<1) || (countitem(7457)<1) || countitem($@cuisinebook[1]) < 1) callfunc "NotHave";
+											delitem 942,5;
+											delitem 7031,1;
+											delitem 7457,1;
+											set @makefood,12066;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 2:
+						if(char_makeexp < 1000) callfunc "NoMake";
+						set @makesuccesslvl,2;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("凉拌水蹼-STR","滑润润的面条-AGI","海产物料理-VIT","满叶的红茶-INT","巧克力姆斯蛋糕-DEX","混合果汁-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000粘糊的蹼*20";
+								mes "绿色药草*10";
+								mes "黄色药草*10";
+								mes "淡味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(918)<20) || (countitem(511)<10) || (countitem(508)<10) || (countitem(7454)<1) || countitem($@cuisinebook[2]) < 1) callfunc "NotHave";
+											delitem 918,20;
+											delitem 511,10;
+											delitem 508,10;
+											delitem 7454,1;
+											set @makefood,12042;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000谷食*1";
+								mes "淡味的调味汁*1";
+								mes "南瓜*5";
+								mes "红萝卜*3";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(577)<1) || (countitem(7454)<1) || (countitem(535)<5) || (countitem(515)<3) || countitem($@cuisinebook[2]) < 1) callfunc "NotHave";
+											delitem 577,1;
+											delitem 7454,1;
+											delitem 535,5;
+											delitem 515,3;
+											set @makefood,12057;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蛤蜊肉*10";
+								mes "鳃刺*5";
+								mes "背鳍*5";
+								mes "好吃的鱼*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(966)<10) || (countitem(956)<5) || (countitem(951)<5) || (countitem(579)<1) || countitem($@cuisinebook[2]) < 1) callfunc "NotHave";
+											delitem 966,10;
+											delitem 956,5;
+											delitem 951,5;
+											delitem 579,1;
+											set @makefood,12052;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蓝色药草*5";
+								mes "红色药草*10";
+								mes "黄色药草*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(510)<5) || (countitem(507)<10) || (countitem(508)<10) || countitem($@cuisinebook[2]) < 1) callfunc "NotHave";
+											delitem 510,5;
+											delitem 507,10;
+											delitem 508,10;
+											set @makefood,12047;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000可可*10";
+								mes "小蛋糕*1";
+								mes "牛奶*1";
+								mes "白色盘子*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(7182)<10) || (countitem(539)<1) || (countitem(519)<1) || (countitem(736)<1) || countitem($@cuisinebook[2]) < 1) callfunc "NotHave";
+											delitem 7182,10;
+											delitem 539,1;
+											delitem 519,1;
+											delitem 736,1;
+											set @makefood,12062;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000苹果汁*3";
+								mes "红萝卜汁*2";
+								mes "葡萄汁*1";
+								mes "浓缩柳橙汁*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(531)<3) || (countitem(534)<2) || (countitem(533)<1) || (countitem(620)<2) || countitem($@cuisinebook[2]) < 1) callfunc "NotHave";
+											delitem 531,3;
+											delitem 534,2;
+											delitem 533,1;
+											delitem 620,2;
+											set @makefood,12067;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 3:
+						if(char_makeexp < 2000) callfunc "NoMake";
+						set @makesuccesslvl,3;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;	
+						switch(select("爆炸牛排-STR","触须起士汤-AGI","蛤蜊汤-VIT","药草蜂蜜茶-INT","水果刨冰-DEX","麻糖-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000肉*4";
+								mes "破旧平底锅*1";
+								mes "绿色药草*10";
+								mes "红辣椒*5";
+								mes "辣味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(517)<4) || (countitem(7031)<1) || (countitem(511)<10) || (countitem(7286)<5) || (countitem(7455)<1) || countitem($@cuisinebook[3]) < 1) callfunc "NotHave";
+											delitem 517,4;
+											delitem 7031,1;
+											delitem 511,10;
+											delitem 7286,5;
+											delitem 7455,1;
+											set @makefood,12043;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000触须*10";
+								mes "吉士*10";
+								mes "美味蕃薯*5";
+								mes "甜味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(962)<10) || (countitem(548)<10) || (countitem(549)<5) || (countitem(7453)<1) || countitem($@cuisinebook[3]) < 1) callfunc "NotHave";
+											delitem 962,10;
+											delitem 548,10;
+											delitem 549,5;
+											delitem 7453,1;
+											set @makefood,12058;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蛤蜊肉*20";
+								mes "海螺*10";
+								mes "蜂蜜*1";
+								mes "甜味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(966)<20) || (countitem(961)<10) || (countitem(518)<1) || (countitem(7453)<1) || countitem($@cuisinebook[3]) < 1) callfunc "NotHave";
+											delitem 966,20;
+											delitem 961,10;
+											delitem 518,1;
+											delitem 7453,1;
+											set @makefood,12053;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蜂蜜*2";
+								mes "白色药草*10";
+								mes "黄色的香辣调味料*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(518)<2) || (countitem(509)<10) || (countitem(7452)<1) || countitem($@cuisinebook[3]) < 1) callfunc "NotHave";
+											delitem 518,2;
+											delitem 509,10;
+											delitem 7452,1;
+											set @makefood,12048;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000苹果*5";
+								mes "香蕉*5";
+								mes "桔子*5";
+								mes "草莓*5";
+								mes "黄色的香辣调味料*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(512)<5) || (countitem(513)<5) || (countitem(582)<5) || (countitem(578)<5) || (countitem(7452)<1) || countitem($@cuisinebook[3]) < 1) callfunc "NotHave";
+											delitem 512,5;
+											delitem 513,5;
+											delitem 582,5;
+											delitem 578,5;
+											delitem 7452,1;
+											set @makefood,12063;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蕃薯*10";
+								mes "美味蕃薯*10";
+								mes "魔物番薯*1";
+								mes "甜味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(516)<10) || (countitem(549)<10) || (countitem(633)<1) || (countitem(7453)<1) || countitem($@cuisinebook[3]) < 1) callfunc "NotHave";
+											delitem 516,10;
+											delitem 549,10;
+											delitem 633,1;
+											delitem 7453,1;
+											set @makefood,12068;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 4:
+						if(char_makeexp < 3000) callfunc "NoMake";
+						set @makesuccesslvl,4;
+						mes""+$CuisineName$;		
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("药草淹制排骨-STR","姜饼城辣凉面-AGI","凉拌海螫皮-VIT","梦罗克水果酒-INT","奶油三明治-DEX","人鱼料理-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000肉*5";
+								mes "红色药草*3";
+								mes "黄色药草*2";
+								mes "绿色药草*3";
+								mes "甜味的调味汁*1";
+								mes "柠檬*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(517)<5) || (countitem(507)<3) || (countitem(508)<2) || (countitem(511)<3) || (countitem(7453)<1) || (countitem(568)<1) || countitem($@cuisinebook[4]) < 1) callfunc "NotHave";
+											delitem 517,5;
+											delitem 507,3;
+											delitem 508,2;
+											delitem 511,3;
+											delitem 7453,1;
+											set @makefood,12044;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000谷食*3";
+								mes "辣味的调味汁*1";
+								mes "冰块一角*10";
+								mes "红萝卜*10";
+								mes "南瓜头*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(577)<3) || (countitem(7455)<1) || (countitem(7066)<10) || (countitem(515)<10) || (countitem(1062)<10) || countitem($@cuisinebook[4]) < 1) callfunc "NotHave";
+											delitem 577,3;
+											delitem 7455,1;
+											delitem 7066,10;
+											delitem 515,10;
+											delitem 1062,10;
+											set @makefood,12059;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000触须*30";
+								mes "白色药草*10";
+								mes "柔软的草叶*10";
+								mes "破旧平底锅*1";
+								mes "墨汁*20";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(962)<30) || (countitem(509)<10) || (countitem(7194)<10) || (countitem(7031)<1) || (countitem(1024)<20) || countitem($@cuisinebook[4]) < 1) callfunc "NotHave";
+											delitem 962,30;
+											delitem 509,10;
+											delitem 7194,10;
+											delitem 7031,1;
+											delitem 1024,20;
+											set @makefood,12054;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000草莓*10";
+								mes "柠檬*4";
+								mes "桔子*10";
+								mes "酒精*2";
+								mes "葡萄*5";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(578)<10) || (countitem(568)<4) || (countitem(582)<10) || (countitem(970)<2) || (countitem(514)<5) || countitem($@cuisinebook[4])<1) callfunc "NotHave";
+											delitem 578,10;
+											delitem 568,4;
+											delitem 582,10;
+											delitem 970,2;
+											delitem 514,5;
+											set @makefood,12049;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000面包*5";
+								mes "牛奶*15";
+								mes "吉士*10";
+								mes "黄色药草*10";
+								mes "肉*1";
+								mes "甜味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(580)<5) || (countitem(519)<15) || (countitem(548)<10) || (countitem(508)<10) || (countitem(517)<1) || (countitem(7453)<1) || countitem($@cuisinebook[4]) < 1) callfunc "NotHave";
+											delitem 580,5;
+											delitem 519,15;
+											delitem 548,10;
+											delitem 508,10;
+											delitem 517,1;
+											delitem 7453,1;
+											set @makefood,12064;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000人鱼嘴巴*10";
+								mes "变身叶子*10";
+								mes "白色药草*10";
+								mes "好吃的鱼*5";
+								mes "甜味的调味汁*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(1054)<10) || (countitem(945)<10) || (countitem(509)<10) || (countitem(579)<5) || (countitem(7453)<2) || countitem($@cuisinebook[4]) < 1) callfunc "NotHave";
+											delitem 1054,10;
+											delitem 945,10;
+											delitem 509,10;
+											delitem 579,5;
+											delitem 7453,2;
+											set @makefood,12069;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 5:
+						if(char_makeexp < 5000) callfunc "NoMake";
+						set @makesuccesslvl,5;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("姜饼城太太的煎饼-STR","蝙蝠翅膀南瓜蒸-AGI","拷煎包-VIT","玛丝黛拉酒-INT","绿色沙拉-DEX","蝎子热炒-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蕃薯*10";
+								mes "蜂蜜*2";
+								mes "食用油*1";
+								mes "红萝卜*3";
+								mes "谷食*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(516)<10) || (countitem(518)<2) || (countitem(7457)<1) || (countitem(515)<3) || (countitem(577)<1) || countitem($@cuisinebook[5]) < 1) callfunc "NotHave";
+											delitem 516,10;
+											delitem 518,2;
+											delitem 7457,1;
+											delitem 515,3;
+											delitem 577,1;
+											set @makefood,12045;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000红色蝙蝠翅膀*20";
+								mes "南瓜头*20";
+								mes "锅*1";
+								mes "西纳雷叶子*10";
+								mes "红色药草*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(7006)<20) || (countitem(1062)<20) || (countitem(7482)<1) || (countitem(520)<10) || (countitem(507)<10) || countitem($@cuisinebook[5]) < 1) callfunc "NotHave";
+											delitem 7006,20;
+											delitem 1062,20;
+											delitem 7482,1;
+											delitem 520,10;
+											delitem 507,10;
+											set @makefood,12060;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000包子*20";
+								mes "黄色药草*10";
+								mes "辣味的调味汁*1";
+								mes "红色的香辣调味料*1";
+								mes "绿色药草*20";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(553)<20) || (countitem(508)<10) || (countitem(7455)<1) || (countitem(7456)<1) || (countitem(511)<20) || countitem($@cuisinebook[5]) < 1) callfunc "NotHave";
+											delitem 553,20;
+											delitem 508,10;
+											delitem 7455,1;
+											delitem 7456,1;
+											delitem 511,20;
+											set @makefood,12055;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000玛丝黛拉果实*4";
+								mes "蓝色药水*1";
+								mes "酒精*2";
+								mes "柠檬*2";
+								mes "黄色的香辣调味料*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(522)<4) || (countitem(505)<1) || (countitem(970)<2) || (countitem(568)<2) || (countitem(7452)<1) || countitem($@cuisinebook[5]) < 1) callfunc "NotHave";
+											delitem 522,4;
+											delitem 505,1;
+											delitem 970,2;
+											delitem 568,2;
+											delitem 7452,1;
+											set @makefood,12050;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000西纳雷叶子*2";
+								mes "芦荟叶子*3";
+								mes "尖锐的叶子*10";
+								mes "巨大叶子*6";
+								mes "甜味的调味汁*1";
+								mes "黄色的香辣调味料*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(520)<2) || (countitem(521)<3) || (countitem(7100)<10) || (countitem(7198)<6) || (countitem(7453)<1) || (countitem(7452)<1) || countitem($@cuisinebook[5]) < 1) callfunc "NotHave";
+											delitem 520,2;
+											delitem 521,3;
+											delitem 7100,10;
+											delitem 7198,6;
+											delitem 7453,1;
+											delitem 7452,1;
+											set @makefood,12065;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蝎子尾巴*20";
+								mes "昆虫后脚*10";
+								mes "巨大叶子*10";
+								mes "破旧平底锅*2";
+								mes "食用油*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(904)<20) || (countitem(1042)<10) || (countitem(7198)<10) || (countitem(7031)<2) || (countitem(7457)<1) || countitem($@cuisinebook[5]) < 1) callfunc "NotHave";
+											delitem 904,20;
+											delitem 1042,10;
+											delitem 7198,10;
+											delitem 7031,2;
+											delitem 7457,1;
+											set @makefood,12070;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 6:
+						if(char_makeexp < 8000) callfunc "NoMake";
+						set @makesuccesslvl,6;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("闪亮的刷刷肉-STR","红辣椒虾汤-AGI","非常苦的补药-VIT","红色香菇水果酒-INT","蜜桃蛋糕-DEX","巨运汤-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000肉*10";
+								mes "蜂蜜*2";
+								mes "黄色药草*1";
+								mes "玛丝黛拉果实*1";
+								mes "发亮鳞片*20";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(517)<10) || (countitem(518)<2) || (countitem(508)<1) || (countitem(522)<1) || (countitem(954)<20) || countitem($@cuisinebook[6]) < 1) callfunc "NotHave";
+											delitem 517,10;
+											delitem 518,2;
+											delitem 508,1;
+											delitem 522,1;
+											delitem 954,20;
+											set @makefood,12071;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000红辣椒*20";
+								mes "虾子*20";
+								mes "甜味的调味汁*1";
+								mes "柠檬*20";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(7286)<20) || (countitem(567)<20) || (countitem(7453)<1) || (countitem(568)<20) || countitem($@cuisinebook[6]) < 1) callfunc "NotHave";
+											delitem 7286,20;
+											delitem 567,20;
+											delitem 7453,1;
+											delitem 568,20;
+											set @makefood,12086;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000褐色树根*20";
+								mes "噬人树根*10";
+								mes "香菇芽孢*20";
+								mes "食用蘑菇*1";
+								mes "蜂蜜*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(7188)<20) || (countitem(1033)<10) || (countitem(921)<20) || (countitem(581)<1) || (countitem(518)<2) || countitem($@cuisinebook[6]) < 1) callfunc "NotHave";
+											delitem 7188,20;
+											delitem 1033,10;
+											delitem 921,20;
+											delitem 581,1;
+											delitem 518,2;
+											set @makefood,12081;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000食用蘑菇*3";
+								mes "葡萄汁*3";
+								mes "香菇芽孢*20";
+								mes "酒精*1";
+								mes "红色的香辣调味料*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(581)<3) || (countitem(533)<3) || (countitem(921)<20) || (countitem(970)<1) || (countitem(7456)<1) || countitem($@cuisinebook[6]) < 1) callfunc "NotHave";
+											delitem 581,3;
+											delitem 533,3;
+											delitem 921,20;
+											delitem 970,1;
+											delitem 7456,1;
+											set @makefood,12076;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000石榴桃*20";
+								mes "小蛋糕*10";
+								mes "吉士*10";
+								mes "牛奶*10";
+								mes "浓缩柳橙汁*5";
+								mes "甜味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(7164)<20) || (countitem(539)<10) || (countitem(548)<10) || (countitem(519)<10) || (countitem(620)<5) || (countitem(7453)<1) || countitem($@cuisinebook[6]) < 1) callfunc "NotHave";
+											delitem 7164,20;
+											delitem 539,10;
+											delitem 548,10;
+											delitem 519,10;
+											delitem 620,5;
+											delitem 7453,1;
+											set @makefood,12091;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000爬虫类舌头*5";
+								mes "细长舌头*5";
+								mes "三叶幸运草*10";
+								mes "魔女之星沙*10";
+								mes "芦荟*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(903)<5) || (countitem(1015)<5) || (countitem(705)<10) || (countitem(1061)<10) || (countitem(704)<1) || countitem($@cuisinebook[6]) < 1) callfunc "NotHave";
+											delitem 903,5;
+											delitem 1015,5;
+											delitem 705,10;
+											delitem 1061,10;
+											delitem 704,1;
+											set @makefood,12096;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 7:
+						if(char_makeexp < 13000) callfunc "NoMake";
+						set @makesuccesslvl,7;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("整只BBQ-STR","鳄鱼烤肉蔬菜蒸-AGI","特制山珍海味-VIT","特制蜂胶药草茶-INT","灵魂出窍面包-DEX","烧烤肉串-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000肉*10";
+								mes "火种*1";
+								mes "煤矿*2";
+								mes "辣味的调味汁*1";
+								mes "玛哪树枝*15";
+								mes "白色药草*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(517)<10) || (countitem(7098)<1) || (countitem(1003)<2) || (countitem(7455)<1) || (countitem(1019)<15) || (countitem(509)<10) || countitem($@cuisinebook[7]) < 1) callfunc "NotHave";
+											delitem 517,10;
+											delitem 7098,1;
+											delitem 1003,2;
+											delitem 7455,1;
+											delitem 1019,15;
+											delitem 509,10;
+											set @makefood,12072;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000虎蜥皮*10";
+								mes "南瓜头*10";
+								mes "红萝卜*10";
+								mes "芦荟叶子*10";
+								mes "黄色药草*10";
+								mes "黄色的香辣调味料*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(7003)<10) || (countitem(1062)<10) || (countitem(515)<10) || (countitem(521)<10) || (countitem(508)<10) || countitem($@cuisinebook[7]) < 1) callfunc "NotHave";
+											delitem 7003,10;
+											delitem 1062,10;
+											delitem 515,10;
+											delitem 521,10;
+											delitem 508,10;
+											set @makefood,12087;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000鱼尾*10";
+								mes "芦荟叶子*5";
+								mes "野猪毛*10";
+								mes "好吃的鱼*2";
+								mes "宠物饲料*10";
+								mes "甜味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(1023)<10) || (countitem(521)<5) || (countitem(1028)<10) || (countitem(579)<2) || (countitem(537)<10) || (countitem(7453)<1) || countitem($@cuisinebook[7]) < 1) callfunc "NotHave";
+											delitem 1023,10;
+											delitem 521,5;
+											delitem 1028,10;
+											delitem 579,2;
+											delitem 537,10;
+											delitem 7453,1;
+											set @makefood,12082;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蜂胶*4";
+								mes "蜂蜜*2";
+								mes "白色药草*5";
+								mes "西纳雷叶子*10";
+								mes "黄色的香辣调味料*1";
+								switch(select($zz$,$tc$)){
+									case 1:								
+										if ((countitem(526)<4) || (countitem(518)<2) || (countitem(509)<5) || (countitem(520)<10) || (countitem(7452)<1) || countitem($@cuisinebook[7]) < 1) callfunc "NotHave";
+											delitem 526,4;
+											delitem 518,2;
+											delitem 509,5;
+											delitem 520,10;
+											delitem 7452,1;
+											set @makefood,12077;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000面包*10";
+								mes "玛丝黛拉果实*5";
+								mes "甜味的调味汁*1";
+								mes "曼特花*5";
+								mes "返魂符*5";
+								mes "青苹果*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(580)<10) || (countitem(522)<5) || (countitem(7453)<1) || (countitem(708)<5) || (countitem(609)<5) || (countitem(619)<2) || countitem($@cuisinebook[7]) < 1) callfunc "NotHave";
+											delitem 580,10;
+											delitem 522,5;
+											delitem 7453,1;
+											delitem 708,5;
+											delitem 609,5;
+											delitem 619,2;
+											set @makefood,12092;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000鳞片皮肤*10";
+								mes "鳃刺*5";
+								mes "柔软的草叶*10";
+								mes "肉*5";
+								mes "食用蘑菇*10";
+								mes "蛤蜊肉*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(936)<10) || (countitem(956)<5) || (countitem(7194)<10) || (countitem(517)<5) || (countitem(581)<10) || (countitem(966)<10) || countitem($@cuisinebook[7]) < 1) callfunc "NotHave";
+											delitem 936,10;
+											delitem 956,5;
+											delitem 7194,10;
+											delitem 517,5;
+											delitem 581,10;
+											delitem 966,10;
+											set @makefood,12097;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 8:
+						if(char_makeexp < 21000) callfunc "NoMake";
+						set @makesuccesslvl,8;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("特制熊掌料理-STR","超辣咖哩-AGI","巨大包叶料理-VIT","王室专用高级茶-INT","特别的土司-DEX","草莓味饭团-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000熊掌*20";
+								mes "红萝卜*10";
+								mes "南瓜头*10";
+								mes "芦荟叶子*2";
+								mes "西纳雷叶子*1";
+								mes "淡味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(948)<20) || (countitem(515)<10) || (countitem(1062)<10) || (countitem(521)<2) || (countitem(520)<1) || (countitem(7454)<1) || countitem($@cuisinebook[8]) < 1) callfunc "NotHave";
+											delitem 948,20;
+											delitem 515,10;
+											delitem 1062,10;
+											delitem 521,2;
+											delitem 520,1;
+											delitem 7454,1;
+											set @makefood,12073;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000芦荟汁液*1";
+								mes "辣味的调味汁*1";
+								mes "肉*10";
+								mes "西纳雷叶子*10";
+								mes "南瓜头*10";
+								mes "红萝卜*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(606)<1) || (countitem(7455)<1) || (countitem(517)<10) || (countitem(520)<10) || (countitem(1062)<10) || (countitem(515)<10) || countitem($@cuisinebook[8]) < 1) callfunc "NotHave";
+											delitem 606,1;
+											delitem 7455,1;
+											delitem 517,10;
+											delitem 520,10;
+											delitem 1062,10;
+											delitem 515,10;
+											set @makefood,12088;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000树叶衣*20";
+								mes "肉*20";
+								mes "彩色红萝卜*5";
+								mes "南瓜头*10";
+								mes "淡味的调味汁*1";
+								mes "谷食*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(7298)<20) || (countitem(517)<20) || (countitem(622)<5) || (countitem(1062)<10) || (countitem(7454)<1) || (countitem(577)<2) || countitem($@cuisinebook[8]) < 1) callfunc "NotHave";
+											delitem 7298,20;
+											delitem 517,20;
+											delitem 622,5;
+											delitem 1062,10;
+											delitem 7454,1;
+											delitem 577,2;
+											set @makefood,12083;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000榴梿*4";
+								mes "西纳雷叶子*10";
+								mes "天地树叶子*3";
+								mes "芦荟叶子*10";
+								mes "蜂胶*6";
+								mes "黄色的香辣调味料*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(576)<4) || (countitem(520)<10) || (countitem(610)<3) || (countitem(521)<10) || (countitem(526)<6) || (countitem(7453)<1) || countitem($@cuisinebook[8]) < 1) callfunc "NotHave";
+											delitem 576,4;
+											delitem 520,10;
+											delitem 610,3;
+											delitem 521,10;
+											delitem 526,6;
+											delitem 7453,1;
+											set @makefood,12078;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000面包*10";
+								mes "蜂胶*2";
+								mes "肉*5";
+								mes "草莓*10";
+								mes "辣味的调味汁*1";
+								mes "吉士*10";
+								mes "甜味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(580)<10) || (countitem(526)<2) || (countitem(517)<5) || (countitem(578)<10) || (countitem(7455)<1) || (countitem(548)<10) || (countitem(7453)<1) || countitem($@cuisinebook[8]) < 1) callfunc "NotHave";
+											delitem 580,10;
+											delitem 526,2;
+											delitem 517,5;
+											delitem 578,10;
+											delitem 7455,1;
+											delitem 548,10;
+											delitem 7453,1;
+											set @makefood,12093;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000草莓*10";
+								mes "谷食*5";
+								mes "树叶衣*10";
+								mes "黄色的香辣调味料*1";
+								mes "红色的香辣调味料*2";
+								mes "淡味的调味汁*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(578)<10) || (countitem(577)<5) || (countitem(7298)<10) || (countitem(7452)<1) || (countitem(7456)<2) || (countitem(7454)<1) || countitem($@cuisinebook[8]) < 1) callfunc "NotHave";
+											delitem 578,10;
+											delitem 577,5;
+											delitem 7298,10;
+											delitem 7452,1;
+											delitem 7456,2;
+											delitem 7454,1;
+											set @makefood,12098;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 9:
+						if(char_makeexp < 34000) callfunc "NoMake";
+						set @makesuccesslvl,9;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("血筋莎廊-STR","特制火道肠-AGI","升龙汤-VIT","特力斯坦12年产-INT","天上的水果汁-DEX","血味的碳酸苏打-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000血管*40";
+								mes "锅*1";
+								mes "吉士*10";
+								mes "辣味的调味汁*1";
+								mes "煤矿*2";
+								mes "绿色药草*30";
+								mes "墨汁*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(1050)<40) || (countitem(7482)<1) || (countitem(548)<10) || (countitem(7455)<1) || (countitem(1003)<2) || (countitem(511)<30) || (countitem(1024)<10) || countitem($@cuisinebook[9]) < 1) callfunc "NotHave";
+											delitem 1050,40;
+											delitem 7482,1;
+											delitem 548,10;
+											delitem 7455,1;
+											delitem 1003,2;
+											delitem 511,30;
+											delitem 1024,10;
+											set @makefood,12074;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000肉*10";
+								mes "蜂胶*5";
+								mes "芽苗*20";
+								mes "淡味的调味汁*4";
+								mes "黄色药草*5";
+								mes "白色药草*10";
+								mes "红色药草*5";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(517)<10) || (countitem(526)<5) || (countitem(711)<20) || (countitem(7454)<4) || (countitem(508)<5) || (countitem(509)<10) || (countitem(507)<5) || countitem($@cuisinebook[9]) < 1) callfunc "NotHave";
+											delitem 517,10;
+											delitem 526,5;
+											delitem 711,20;
+											delitem 7454,4;
+											delitem 508,5;
+											delitem 509,10;
+											delitem 507,5;
+											set @makefood,12089;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000龙皮*10";
+								mes "龙尾*20";
+								mes "天地树叶子*3";
+								mes "蜂胶*6";
+								mes "辣味的调味汁*1";
+								mes "红色的香辣调味料*1";
+								mes "营养蚯蚓*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(7123)<10) || (countitem(1037)<20) || (countitem(610)<3) || (countitem(526)<6) || (countitem(7455)<1) || (countitem(7456)<1) || (countitem(632)<1) || countitem($@cuisinebook[9]) < 1) callfunc "NotHave";
+											delitem 7123,10;
+											delitem 1037,20;
+											delitem 610,3;
+											delitem 526,6;
+											delitem 7455,1;
+											delitem 7456,1;
+											delitem 632,1;
+											set @makefood,12084;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000天地树叶子*10";
+								mes "桔子*10";
+								mes "酒精*5";
+								mes "蜂胶*4";
+								mes "蓝色药水*2";
+								mes "黄色的香辣调味料*1";
+								mes "芦荟叶子*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(610)<10) || (countitem(582)<10) || (countitem(970)<5) || (countitem(526)<4) || (countitem(505)<2) || (countitem(7452)<1) || (countitem(521)<10) || countitem($@cuisinebook[9]) < 1) callfunc "NotHave";
+											delitem 610,10;
+											delitem 582,10;
+											delitem 970,5;
+											delitem 526,4;
+											delitem 505,2;
+											delitem 7452,1;
+											delitem 521,10;
+											set @makefood,12079;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000青苹果*5";
+								mes "桔子*10";
+								mes "草莓*10";
+								mes "红色的香辣调味料*1";
+								mes "魔物香蕉*1";
+								mes "葡萄汁*5";
+								mes "酒精*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(619)<5) || (countitem(582)<10) || (countitem(578)<10) || (countitem(7456)<1) || (countitem(634)<1) || (countitem(533)<5) || (countitem(970)<2) || countitem($@cuisinebook[9]) < 1) callfunc "NotHave";
+											delitem 619,5;
+											delitem 582,10;
+											delitem 578,10;
+											delitem 7456,1;
+											delitem 634,1;
+											delitem 533,5;
+											delitem 970,2;
+											set @makefood,12094;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000家畜血*1";
+								mes "曼特疗伤药*2";
+								mes "芦荟汁液*2";
+								mes "酒精*2";
+								mes "蜂胶*6";
+								mes "红色的香辣调味料*1";
+								mes "苹果汁*10";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(702)<1) || (countitem(605)<2) || (countitem(606)<2) || (countitem(970)<2) || (countitem(526)<6) || (countitem(7456)<1) || (countitem(531)<10) || countitem($@cuisinebook[9]) < 1) callfunc "NotHave";
+											delitem 702,1;
+											delitem 605,2;
+											delitem 606,2;
+											delitem 970,2;
+											delitem 526,6;
+											delitem 7456,1;
+											delitem 531,10;
+											set @makefood,12099;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+					case 10:
+						if(char_makeexp < 55000) callfunc "NoMake";
+						set @makesuccesslvl,10;
+						mes""+$CuisineName$;
+						mes""+$CuisineQuest_2$;
+						next;
+						switch(select("舌头料理-STR","蒸沙漠蝎子-AGI","不死之汤-VIT","鸡尾酒龙的呼吸-INT","禾贝勒开米勒之酒-DEX","九尾狐尾巴料理-LUK")){
+							case 1:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000细长舌头*20";
+								mes "锅*1";
+								mes "酒精*1";
+								mes "芦荟汁液*2";
+								mes "辣味的调味汁*1";
+								mes "蜂胶*5";
+								mes "天地树叶子*10";
+								mes "蓝色药水*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(1015)<20) || (countitem(7482)<1) || (countitem(970)<1) || (countitem(606)<2) || (countitem(7455)<1) || (countitem(526)<5) || (countitem(610)<10) || (countitem(505)<2) || countitem($@cuisinebook[10]) < 1) callfunc "NotHave";
+											delitem 1015,20;
+											delitem 7482,1;
+											delitem 970,1;
+											delitem 606,2;
+											delitem 7455,1;
+											delitem 526,5;
+											delitem 610,10;
+											delitem 505,2;
+											set @makefood,12075;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 2:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000蝎子尾巴*20";
+								mes "蝎子之螯*20";
+								mes "芦荟汁液*2";
+								mes "天地树叶子*3";
+								mes "苦味草*3";
+								mes "蜂胶*10";
+								mes "辣味的调味汁*1";
+								mes "锅*1";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(904)<20) || (countitem(7125)<20) || (countitem(606)<2) || (countitem(610)<3) || (countitem(621)<3) || (countitem(526)<10) || (countitem(7455)<1) || (countitem(7482)<1) || countitem($@cuisinebook[10]) < 1) callfunc "NotHave";
+											delitem 904,20;
+											delitem 7125,20;
+											delitem 606,2;
+											delitem 610,3;
+											delitem 621,3;
+											delitem 526,10;
+											delitem 7455,1;
+											delitem 7482,1;
+											set @makefood,12090;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 3:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000不死心脏*20";
+								mes "亡者遗物*10";
+								mes "天地树芽*1";
+								mes "曼特疗伤药*2";
+								mes "人鱼之心*10";
+								mes "辣味的调味汁*2";
+								mes "返魂符*10";
+								mes "苦味草*2";
+								switch(select($zz$,$tc$)){
+									case 1:								
+										if ((countitem(929)<20) || (countitem(934)<10) || (countitem(608)<1) || (countitem(605)<2) || (countitem(950)<10) || (countitem(7455)<2) || (countitem(609)<10) || (countitem(621)<2) || countitem($@cuisinebook[10]) < 1) callfunc "NotHave";
+											delitem 929,20;
+											delitem 934,10;
+											delitem 608,1;
+											delitem 605,2;
+											delitem 950,10;
+											delitem 7455,2;
+											delitem 609,10;
+											delitem 621,2;
+											set @makefood,12085;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}										
+							case 4:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000噬人树根*10";
+								mes "哀唱草*1";
+								mes "芦荟叶子*5";
+								mes "蜂胶*5";
+								mes "柠檬*5";
+								mes "榴梿*5";
+								mes "天地树果实*1";
+								mes "蓝色药草*10";
+								switch(select($zz$,$tc$)){
+									case 1:								
+										if ((countitem(1033)<10) || (countitem(707)<1) || (countitem(521)<5) || (countitem(526)<5) || (countitem(568)<5) || (countitem(576)<5) || (countitem(607)<1) || (countitem(510)<10) || countitem($@cuisinebook[10]) < 1) callfunc "NotHave";
+											delitem 1033,10;
+											delitem 707,1;
+											delitem 521,5;
+											delitem 526,5;
+											delitem 568,5;
+											delitem 576,5;
+											delitem 607,1;
+											delitem 510,10;
+											set @makefood,12080;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+							case 5:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000天地树果实*1";
+								mes "冰块一角*10";
+								mes "菌丝*10";
+								mes "蜂胶*4";
+								mes "集中药水*3";
+								mes "酒精*5";
+								mes "榴梿*2";
+								mes "幻想花*1";
+								switch(select($zz$,$tc$)){
+									case 1:								
+										if ((countitem(607)<1) || (countitem(7066)<10) || (countitem(7119)<10) || (countitem(526)<4) || (countitem(645)<3) || (countitem(970)<5) || (countitem(576)<2) || (countitem(710)<1) || countitem($@cuisinebook[10]) < 1) callfunc "NotHave";
+											delitem 607,1;
+											delitem 7066,10;
+											delitem 7119,10;
+											delitem 526,4;
+											delitem 645,3;
+											delitem 970,5;
+											delitem 576,2;
+											delitem 710,1;
+											set @makefood,12095;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}										
+							case 6:
+								mes""+$CuisineName$;
+								mes""+$CuisineQuest_3$;
+								mes "^FF0000狐狸尾巴*10";
+								mes "四叶幸运草*2";
+								mes "噬人树根*10";
+								mes "尖锐的叶子*10";
+								mes "天地树叶子*4";
+								mes "淡味的调味汁*1";
+								mes "黄色的香辣调味料*1";
+								mes "迷幻药*2";
+								switch(select($zz$,$tc$)){
+									case 1:
+										if ((countitem(1022)<10) || (countitem(706)<2) || (countitem(1033)<10) || (countitem(7100)<10) || (countitem(610)<4) || (countitem(7454)<1) || (countitem(7452)<1) || (countitem(709)<2) || countitem($@cuisinebook[10]) < 1) callfunc "NotHave";
+											delitem 1022,10;
+											delitem 706,2;
+											delitem 1033,10;
+											delitem 7100,10;
+											delitem 610,4;
+											delitem 7454,1;
+											delitem 7452,1;
+											delitem 709,2;
+											set @makefood,12100;
+										callfunc "MakeFood";
+									case 2:
+										close;
+								}
+						}
+				}
+			}else{
+				if(char_job == 0 || char_job == 99 || char_job == 9){
+				callfunc "BeCuisine";
+				}else{ callfunc "BeCuisine";}
+				mes""+$CuisineName$;
+				mes "对不起,你不是厨师或者没有装备厨师帽!";
+				close;
+			}
+		case 3:
+			close;
+			end;
+	}
+	function MesJob{
+		if(getarg(0) == 99)return "^FF0000递交材料";
+		if(getarg(0) == 0 && getequipisequiped(1) && getequipid(1) == 5026)return "^0000FF成为厨师";
+		if(getarg(0) == 9 && getequipisequiped(1) && getequipid(1) == 5026)return "^0000FF查看资料";
+		return "^8000FF关于脚本";
+	}
+	function MesCuisine{
+		if(getarg(0) == 0)return "^0000FF关于厨师";
+		if(getarg(0) == 9 && getequipisequiped(1) && getequipid(1) == 5026)return "^0000FF制作料理";
+		if(getarg(0) == 99)return "^0000FF关于厨师";
+		return "^0000FF关于厨师";
+		close;
+	}
+}
+function	script	MakeFood	{
+	function MakeFoodLvl;
+		if(char_makeexp < 1000) MakeFoodLvl(1);
+		if(char_makeexp >= 1000 && char_makeexp < 2000) MakeFoodLvl(2);
+		if(char_makeexp >= 2000 && char_makeexp < 3000) MakeFoodLvl(3);
+		if(char_makeexp >= 3000 && char_makeexp < 5000) MakeFoodLvl(4);
+		if(char_makeexp >= 5000 && char_makeexp < 8000) MakeFoodLvl(5);
+		if(char_makeexp >= 8000 && char_makeexp < 13000) MakeFoodLvl(6);
+		if(char_makeexp >= 13000 && char_makeexp < 21000) MakeFoodLvl(7);
+		if(char_makeexp >= 21000 && char_makeexp < 34000) MakeFoodLvl(8);
+		if(char_makeexp >= 34000 && char_makeexp < 55000) MakeFoodLvl(9);
+		if(char_makeexp >= 55000) MakeFoodLvl(10);
+		close;
+		end;
+	function MakeFoodLvl {
+			set @makelvl,10-@makesuccesslvl;
+			set @makesuccess,rand(0,11+@makelvl);
+			if(@makesuccess > getarg(0)){
+				misceffect 305;
+				getitem @makefood,1;
+				set char_makeexp,char_makeexp + getarg(0);
+				close;
+			}else{
+				misceffect 306;
+				set char_makeexp,char_makeexp + getarg(0);
+				close;
+			}
+	}
+}
+function	script	NotHave	{
+	next;
+	mes""+$CuisineName$;
+	mes "^FF0000对不起,你没有足够的材料或者没有带食谱!";
+	close;
+}
+function	script	NotHaveToo	{
+	next;
+	mes""+$CuisineName$;
+	mes "^FF0000对不起,你没有足够的材料无法转职为厨师,转职为厨师需要葡萄2个,红色药草3个,锅1个,四叶幸运草3个!";
+	close;
+}
+function	script	NoMake	{
+	next;
+	mes""+$CuisineName$;
+	mes "^FF0000对不起,你的等级不够!";
+	close;
+}
+function	script	MesExpLvl	{
+		set @setexp$,"";
+		set @nextexp$,"";
+		set @n,(char_makeexp - getarg(2))/getarg(3);
+		setarray @mylevel$[0],"","①","②","③","④","⑤","⑥","⑦","⑧","⑨","⑩";
+		for (set @i,0;@i < 10;set @i,@i+1){
+			if(@n > @i){
+				set @setexp$,@setexp$ + "━";		
+			}
+			if(@n < @i){
+				set @nextlvl,@nextlvl + 1;
+			}		
+		}
+		for (set @j,0;@j < 10;set @j,@j+1){
+			if(@nextlvl > @j) set @nextexp$,@nextexp$ + "^C0C0C0┉";
+		}
+		mes""+$CuisineName$;
+		mes "^FF0000Level" + @mylevel$[getarg(0)] + "^0000FF" + @setexp$ + @nextexp$ + "^0000FFNextLvl";	
+		mes "EXP:^FF0000" + char_makeexp;
+		mes "^0000FFNEXTEXP:^FF0000" + getarg(1);
+		close;
+}
+function	script	JobChanges	{
+	mes""+$CuisineName$;
+	mes "料理是用魔物身上掉下来的物品来制作的。制作时需要各种道具和材料及最重要的料理书。使用料理后会使基本属性 (STR, INT, DEX, VIT, AGI, LUK)暂时上升，也会稍微恢复HP, SP。在攻城战和打怪时，对提升能力值以及恢复上有很大帮助。";
+	next;
+	switch(select("^0000FF成为厨师",$tc$)){
+		case 1:
+			if(getequipisequiped(1) && getequipid(1) == 5026){
+				mes""+$CuisineName$;
+				mes "帮我收集几样物品,如果能办到,我就教你如何做料理!";
+				mes "我需要葡萄2个,红色药草3个,锅1个,四叶幸运草3个!";
+				set char_job,99;
+				close;
+			}else{
+				mes""+$CuisineName$;
+				mes "想成为厨师的话,要有厨师帽哦!";
+				close;
+			}
+		case 2:
+			close;
+	}
+}
+function	script	ByCuisine	{
+	mes "欢迎使用..";
+	close;
+}
+function	script	CuisineMake	{
+	if(countitem(514) < 2 || countitem(507) < 3 || countitem(7482) < 1 || countitem(706) < 3) callfunc "NotHaveToo";
+	mes""+$CuisineName$;
+	mes "恩,看来你很有诚意!";
+	next;
+	delitem 514,2;
+	delitem 507,3;
+	delitem 7482,1;
+	delitem 706,3;
+	set char_job,9;
+	mes""+$CuisineName$;
+	mes "恭喜你,你已经成为一个厨师了,在制作料理的时候记得要带着厨师帽才可以制作的!";
+	close;
+}
+function	script	BeCuisine	{	
+	mes "^0000FF*********^FF0000[M/F]Jathena脚本^0000FF*********";
+	mes "脚本说明:";
+	mes "装备厨师帽和该NPC对话,会看见成为厨师选项,选择成为厨师,会让你收集材料,按照要求收集相应的材料便可这时在和NPC对话,将会看见查看资料和制作料理选项,按照制作料理的说明收集材料同时要准备该等级的料理食谱就进行就可以了!";
+	mes "注意:^FF0000如果不装备厨师帽子的话,将看不见查看资料和制作料理选项,这是正常的,并非脚本BUG,只有装备相应的装备才可以看见!";
+	close;
+}	

@@ -1,0 +1,215 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 商城物品 函式 -
+//========================
+//= 版本：1.0
+//========================
+
+// 随地仓库使用券
+//============================================================ 
+// - 随时随地打开仓库
+// - 没有参数
+function	script	F_CashStore	{
+	cutin "kafra_01",2;
+	mes "[卡普拉 职员]";
+	mes "您好, 我是卡普拉呼叫服务,";
+	mes "按照你的邀请开启仓库了";
+	close2;
+	openstorage;
+	cutin "",255;
+	return;
+}
+
+
+// 巨大苍蝇翅膀
+//============================================================ 
+// - 随着地图上的队长一起瞬间移动
+// - 没有参数
+function	script	F_CashPartyCall	{
+	warp "Random",0,0;
+	if(getpartyleader(getcharid(1),2) == getcharid(0)) {
+		getmapxy .@mapl$, .@xl, .@yl, 0;
+		getpartymember getcharid(1);
+		set .@partymembercount, $@partymembercount;
+		copyarray .@partymembername$[0], $@partymembername$[0], .@partymembercount;
+		for(set .@i, 0; .@i < .@partymembercount; set .@i, .@i + 1)
+		if(!(getmapxy(.@mapm$, .@xm, .@ym, 0, .@partymembername$[.@i])) && (.@mapm$ == .@mapl$))
+		warpchar .@mapl$, .@xl, .@yl, getcharid(0, .@partymembername$[.@i]);
+	}
+	return;
+}
+
+// 重置技能棒
+//============================================================ 
+// - 负重为0，且老鹰、手推车须放弃
+// - 没有参数
+function	script	F_CashReset	{
+	if (Class != Job_Novice) {
+		if (Weight < 1) { 
+			if (checkriding() || checkfalcon() || checkcart()) return;
+			else {
+				resetskill;
+				sc_end SC_ALL;
+			}
+		}
+	}
+	return;
+}
+
+// Dungeon Teleport Scroll
+//============================================================ 
+// - Warp player to random location of selected dungeon
+//   due to lack of information.
+// - 没有参数
+function	script	F_CashDungeon	{
+	switch(select("诺可罗德:妙勒尼 山脉:树木里的 木工所:矿山洞穴:斐扬 地下:玩具工厂仓库:克雷斯特汉姆 地下监狱:王陵:神仙的围棋台:海底 洞窟:乌龟岛 密穴:艾尔帕兰 钟塔地下楼层 3楼:艾尔帕兰 钟塔地上楼层 1楼:克雷斯特汉姆 地下水道 2楼:史芬克斯 密穴 4楼:金字塔迷宫 4楼:普隆德拉 地下水道 3楼:天津町 洞穴 1楼:生体试验 洞穴 1楼:哎哟泰雅 古代神殿 2楼"))
+	{
+	case 1: warp "mag_dun01",125,71; end;	// Nogg Road
+	case 2: warp "mjo_dun02",80,297; end;	// Mjolnir Dead Pit
+	case 3: warp "um_dun02",125,122; end;	// Umbala Dungeon
+	case 4: warp "ein_dun01",261,262; end;	// Einbroch Dungeon
+	case 5: warp "pay_dun03",155,150; end;	// Payon Caves
+	case 6: warp "xmas_dun01",133,130; end;	// Toy Factory
+	case 7: warp "gl_prison",140,15;end;	// Glast Heim Prison
+	case 8: warp "lou_dun03",165,38; end;	// Louyang Dungeon
+	case 9: warp "gon_dun02",251,263; end;	// Kunlun Dungeon
+	case 10: warp "iz_dun02",350,335; end;	// Izlude Undersea Tunnel
+	case 11: warp "tur_dun02",165,30; end;	// Turtle Island
+	case 12: warp "alde_dun03",275,180; end;	// Clocktower 3F
+	case 13: warp "c_tower3",34,42; end;	// Clocktower B3F
+	case 14: warp "gl_sew02",292,295; end;	// Glast Heim Sewers 2F
+	case 15: warp "in_sphinx4",120,120; end;	// Sphinx Dungeon 4F
+	case 16: warp "moc_pryd04",195,4; end;	// Pyramid Dungeon 4F
+	case 17: warp "prt_sewb3",20,175; end;	// Prontera Culverts 3F
+	case 18: warp "ama_dun01",222,144; end;	// Amatsu Dungeon 1F
+	case 19: warp "lhz_dun01",19,153; end;	// Somatology Laboratory 1F
+	case 20: warp "ayo_dun02",70,240; end;	// Ayotaya Dungeon 2F
+	}
+	return;
+}
+
+// Coloured Butterly Wings
+//============================================================ 
+// - Warp player to differents Citys acording to the Scroll
+// - Arg(0) = type of scroll.
+function	script	F_CashCity	{
+	switch(getarg(0))
+	{
+		// 黄
+		case 1: switch(select("普隆德拉:吉芬:斐扬:梦罗克:艾尔帕兰:艾尔贝塔")) {
+			case 1: warp "prontera",0,0; end;
+			case 2: warp "geffen",0,0; end;
+			case 3: warp "payon",0,0; end;
+			case 4: warp "morocc",0,0; end;
+			case 5: warp "aldebaran",0,0; end;
+			case 6: warp "alberta",0,0; end;
+			}
+		break;
+		// 绿
+		case 2: switch(select("朱诺:里希塔乐镇:艾音布罗克:毁葛")) {
+			case 1: warp "yuno",0,0; end;
+			case 2: warp "lighthalzen",0,0; end;
+			case 3: warp "einbroch",0,0; end;
+			case 4: warp "hugel",0,0; end;
+			}
+		break;
+		// 红
+		case 3: switch(select("拉赫:菲音斯")) {
+			case 1: warp "rachel",0,0; end;
+			case 2: warp "veins",0,0; end;
+			}
+		break;
+		// 蓝
+		case 4: switch(select("哎哟泰雅:天津町:龙之城:昆仑")) {
+			case 1: warp "ayothaya",0,0; end;
+			case 2: warp "amatsu",0,0; end;
+			case 3: warp "louyang",0,0; end;
+			case 4: warp "gonryun",0,0; end;
+			}
+		break;
+	}
+	return;
+}
+
+// Teleport Scrolls
+//============================================================ 
+// - Warp player to save point or City acording to the Scroll
+// - Arg(0) = type of scroll.
+function	script	F_CashTele	{
+	switch(getarg(0)) {
+	case 1:
+		switch(select("储存点:普隆德拉:吉芬:艾尔帕兰:依斯鲁得岛")) {
+		case 1: warp "SavePoint",0,0; end;
+		case 2: warp "prontera",167,68; end;
+		case 3: warp "geffen",121,147; end;
+		case 4: warp "aldebaran",168,112; end;
+		case 5: warp "izlude",128,105; end;
+		}
+	case 2:
+		switch(select("储存点:斐扬:爱尔贝塔:梦罗克:克魔岛")) {
+		case 1: warp "SavePoint",0,0; end;
+		case 2: warp "payon",172,101; end;
+		case 3: warp "alberta",117,56; end;
+		case 4: warp "morocc",165,255; end;
+		case 5: warp "comodo",193,148; end;
+		}
+	case 3:
+		switch(select("储存点:龙之城:天津町:昆仑:哎哟泰雅")) {
+		case 1: warp "SavePoint",0,0; end;
+		case 2: warp "louyang",216,40; end;
+		case 3: warp "amatsu",197,83; end;
+		case 4: warp "gon_fild01",258,82; end;
+		case 5:warp "ayothaya",149,71; end;
+		}
+	case 4:
+		switch(select("储存点:姜饼城:汶巴拉:尼芙菲姆")) {
+		case 1: warp "SavePoint",0,0; end;
+		case 2: warp "xmas_fild01",78,68; end;
+		case 3: warp "umbala",100,154; end;
+		case 4: warp "niflheim",49,146; end;
+		}
+	case 5:
+		switch(select("储存点:朱诺:艾音布罗克:里希塔乐镇:毁葛")) {
+		case 1: warp "SavePoint",0,0; end;
+		case 2: warp "yuno",158,39; end;
+		case 3: warp "einbroch",240,200; end;
+		case 4: warp "lighthalzen",214,311; end;
+		case 5: warp "hugel",95,43; end;
+		}
+	case 6:
+		switch(select("储存点:拉赫:菲音斯")) {
+		case 1: warp "SavePoint",0,0; end;
+		case 2: warp "rachel",115,125; end;
+		case 3: warp "veins",205,102; end;
+		}
+	}
+	return;
+}
+
+function	script	F_CashSeigeTele	{
+	switch(select("Neuschwanstein (aldeg_cas01):Hohenschwangau (aldeg_cas02):Nuernberg (aldeg_cas03):Wuerzburg (aldeg_cas04):Rothenburg (aldeg_cas05):Repherion (gefg_cas01):Eeyorbriggar (gefg_cas02):Yesnelph (gefg_cas03):Bergel (gefg_cas04):Mersetzdeitz (gefg_cas05):Bright Arbor (payg_cas01):Sacred Altar (payg_cas02):Holy Shadow (payg_cas03):Scarlet Palace (payg_cas04):Bamboo Grove Hill (payg_cas05):Kriemhild (prtg_cas01):Swanhild (prtg_cas02):Fadhgridh (prtg_cas03):Skoegul (prtg_cas04):Gondul (prtg_cas05)")) {
+	case 1: warp "alde_gld",48,91; end;
+	case 2: warp "alde_gld",103,245; end;
+	case 3: warp "alde_gld",142,87; end;
+	case 4: warp "alde_gld",236,243; end;
+	case 5: warp "alde_gld",269,90; end;
+	case 6: warp "gef_fild13",217,75; end;
+	case 7: warp "gef_fild13",307,237; end;
+	case 8: warp "gef_fild13",77,297; end;
+	case 9: warp "gef_fild13",190,276; end;
+	case 10: warp "gef_fild13",312,91; end;
+	case 11: warp "pay_gld",121,232; end;
+	case 12: warp "pay_gld",297,116; end;
+	case 13: warp "pay_gld",318,293; end;
+	case 14: warp "pay_gld",140,164; end;
+	case 15: warp "pay_gld",202,264; end;
+	case 16: warp "prt_gld",141,64; end;
+	case 17: warp "prt_gld",240,131; end;
+	case 18: warp "prt_gld",153,133; end;
+	case 19: warp "prt_gld",126,240; end;
+	case 20: warp "prt_gld",195,240; end;
+	}
+	return;
+}

@@ -1,0 +1,210 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 浓缩神金、铝用精炼脚本 -
+//========================
+//= 版本：1.1
+//========================
+
+morocc,183,94,3	script	龙仙儒#cash	85,{
+	mes "[龙仙儒]";
+	mes "我是专门锻治武器与防具的铁匠，";
+	mes "我可以为你锻治装置专案中的物品。";
+	mes "你想要锻治装置专案中的哪一项物品呢？";
+	next;
+	set .@strRetPart1$,getequipname(1);
+	set .@strRetPart2$,getequipname(2);
+	set .@strRetPart3$,getequipname(3);
+	set .@strRetPart4$,getequipname(4);
+	set .@strRetPart5$,getequipname(5);
+	set .@strRetPart6$,getequipname(6);
+	set .@strRetPart7$,getequipname(7);
+	set .@strRetPart8$,getequipname(8);
+	set .@strRetPart9$,getequipname(9);
+	set .@strRetPart10$,getequipname(10);
+
+	set .@menu$,.@strRetPart1$+":"+.@strRetPart2$+":"+.@strRetPart3$+":"+.@strRetPart4$+":"+.@strRetPart5$+":"+.@strRetPart6$+":"+.@strRetPart7$+":"+.@strRetPart8$+":"+.@strRetPart9$+":"+.@strRetPart10$;
+
+	switch(select(.@menu$)) {
+	case 1:
+		set .@part,1;
+		if (getequipisequiped(1) == 0) {
+			mes "[龙仙儒]";
+			mes "要不要我把你的头脑锻治的聪明一点啊?";
+			close;
+		}
+		break;
+	case 2:
+		set .@part,2;
+		if (getequipisequiped(2) == 0) {
+			mes "[龙仙儒]";
+			mes "来吧！我会用我热情的身体来锻治你的全身。";
+			close;
+		}
+		break;
+	case 3:
+		set .@part,3;
+		if (getequipisequiped(3) == 0) {
+			mes "[龙仙儒]";
+			mes "很抱歉现在还没有哪种技术能在你的左手装上火箭拳耶..";
+			close;
+		}
+		break;
+	case 4:
+		set .@part,4;
+		if (getequipisequiped(4) == 0) {
+			mes "[龙仙儒]";
+			mes "很抱歉现在还没有哪种技术能在你的右手装上火箭拳耶！";
+			close;
+		}
+		break;
+	case 5:
+		set .@part,5;
+		if (getequipisequiped(5) == 0) {
+			mes "[龙仙儒]";
+			mes "你拥有的装置项目中没有外衣不是吗?";
+			close;
+		}
+		break;
+	case 6:
+		set .@part,6;
+		if (getequipisequiped(6) == 0) {
+			mes "[龙仙儒]";
+			mes "你的脚真不是普通的臭耶！";
+			close;
+		}
+		break;
+	case 7:
+		set .@part,7;
+		if (getequipisequiped(7) == 0) {
+			mes "[龙仙儒]";
+			mes "你说的是哪种装饰品?";
+			close;
+		}
+		break;
+	case 8:
+		set .@part,8;
+		if (getequipisequiped(8) == 0) {
+			mes "[龙仙儒]";
+			mes "你说的是哪种装饰品?";
+			close;
+		}
+		break;
+	case 9:
+		set .@part,9;
+		if (getequipisequiped(9) == 0) {
+			mes "[龙仙儒]";
+			mes "你说的是哪种装饰品? 你指的该不会是头部的其他部位吧?";
+			close;
+		}
+		break;
+	case 10:
+		set .@part,10;
+		if (getequipisequiped(10) == 0) {
+			mes "[龙仙儒]";
+			mes "你说的是哪种装饰品? 你指的该不会是头部的其他部位吧?";
+			close;
+		}
+		break;
+	}
+
+	if (getequipisenableref(.@part) == 0) {
+		mes "[龙仙儒]";
+		mes "你说的这个项目是无法锻治的项目喔!...";
+		close;
+	}
+	if (getequipisidentify(.@part) == 0) {
+		mes "[龙仙儒]";
+		mes "这项武器还没通过鉴定，无法锻治..";
+		close;
+	}
+	if (getequiprefinerycnt(.@part) >= 10) {
+		mes "[龙仙儒]";
+		mes "这项武器已经锻治到最高等级，无法再锻治了..";
+		close;
+	}
+	// Make sure you have the neccessary items and Zeny to refine your items
+	// Determines chance of failure and verifies that you want to continue.
+	switch(getequipweaponlv(.@part)) {
+	case 1: callsub S_RefineValidate,1,7620,50,.@part; break;
+	case 2: callsub S_RefineValidate,2,7620,200,.@part; break;
+	case 3: callsub S_RefineValidate,3,7620,5000,.@part; break;
+	case 4: callsub S_RefineValidate,4,7620,20000,.@part; break;
+	default: callsub S_RefineValidate,0,7619,2000,.@part; break;
+	}
+
+	if (getequippercentrefinery(.@part) > rand(100) || getequippercentrefinery(.@part) > rand(100)) {
+		mes "[龙仙儒]";
+		mes "锵！锵！锵！";
+		SuccessRefItem .@part;
+		next;
+		Emotion e_no1;
+		mes "[龙仙儒]";
+		mes "拿去吧！已经做好了。好久没锻治出那么优质的武器了，武器变强了你一定也很高兴吧！";
+		close;
+	}
+	else {
+		mes "[龙仙儒]";
+		mes "锵！锵！锵！";
+		FailedRefItem .@part;
+		next;
+		if (rand(5) == 1)
+			Emotion e_cash;
+		else 
+			Emotion e_omg;
+		mes "[龙仙儒]";
+		mes "咳咳咳咳咳咳咳！！！";
+		next;
+		mes "[龙仙儒]";
+		mes "真...丢脸。";
+		mes "武器在锻治的程序中损坏了。";
+		next;
+		mes "[龙仙儒]";
+		mes "我...我...早就告诉过你会这样的嘛！";
+		close;
+	}
+
+S_RefineValidate:
+	mes "[龙仙儒]";
+	if (getarg(0))
+	mes "要锻治你所选择的这项装备需要 ^ff9999"+getitemname(getarg(1))+"^000000 以及费用 "+getarg(2)+" Zeny.";
+	mes "你要继续吗?";
+	next;
+	if (select("继续:取消") == 1) {
+		if (getequippercentrefinery(getarg(3)) < 100) {
+			mes "[龙仙儒]";
+			mes "看来这武器已经锻治很多次了的样子...";
+			mes "要是再继续锻治的话，可能会造成损坏喔！";
+			next;
+			mes "要是损坏的话可就不能继续使用了!!";
+			mes "插在里面的卡片和特征";
+			mes "^ff0000全部都会消失了!!^000000";
+			mes " 再说，防具被会消失掉了";
+			mes "你确定还要继续锻治吗?";
+			next;
+			if (select("继续:取消") == 2) {
+				mes "[龙仙儒]";
+				mes "很好。";
+				mes "如果太过无理的锻治武器，而造成损坏，我心情也会跟着变坏的。";
+				close;
+			}
+		}
+		if (countitem(getarg(1)) > 0 && Zeny > getarg(2)) {
+			delitem getarg(1),1;
+			set zeny,zeny-getarg(2);
+			return;
+		}
+		else {
+			mes "[龙仙儒]";
+			mes "这些就是你所拥有的所有物品吗？";
+			mes "虽然很可惜，但是你的材料不足，我也实在爱莫能助，再说，我付出也应该得要有所收获嘛!";
+			close;
+		}
+	}
+	else {
+		mes "[龙仙儒]";
+		mes "即使你不要我也没办法...";
+		close;
+	}
+}

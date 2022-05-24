@@ -1,8 +1,0 @@
-//此数据可让佣兵登出之后消失 可依照个人私服设定 决定是否使用
-//感谢 神之实习 小冰~* 大大 分享修改的脚本^^"
--	script	OnPCLogoutEvent	-1,{ 
-OnPCLoginEvent: 
-set SummonName,0;
-set SummonING,1;
-end;	
-} 

@@ -1,0 +1,46 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 艾尔贝塔 卡普拉脚本 - 
+//===================================
+// 版本：2.4c
+//===================================
+
+
+// NorthWest -----------------------------------------------------------------
+alberta,28,229,0	script	卡普拉服务人员::kaf_alberta	116,{
+	cutin "kafra_02",2;
+	callfunc "F_KafSetAlb";
+	callfunc "F_Kafra",0,0,0,50,850;
+
+	M_Save:
+		savepoint "alberta",31,231;
+		callfunc "F_KafEnd",0,1,"in the city of Alberta";
+}
+
+// South ---------------------------------------------------------------------
+alberta,113,60,6	script	卡普拉服务人员::kaf_alberta2	112,{
+	cutin "kafra_06",2;
+	callfunc "F_KafSetAlb";
+	callfunc "F_Kafra",0,0,0,50,850;
+
+	M_Save:
+		savepoint "alberta",117,57;
+		callfunc "F_KafEnd",0,1,"in the city of Alberta";
+}
+
+
+// Function: Sets variables for Ablerta Kafras -------------------------------
+function	script	F_KafSetAlb	{
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpP[0], 1200, 1800, 1800;
+	setarray @wrpD$[0], "斐扬", "梦罗克", "普隆德拉";
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], "取消";
+	setarray @viewpX[0], 28, 113, 0, 0;
+	setarray @viewpY[0], 229, 60, 0, 0;
+	return;
+}

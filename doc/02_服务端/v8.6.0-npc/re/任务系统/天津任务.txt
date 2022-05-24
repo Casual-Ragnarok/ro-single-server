@@ -1,0 +1,1427 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 天津地区 任务脚本 - 
+//===================================
+// 版本：1.4 ( 寿司店任务待更新 )
+//===================================
+// * 摩摩塔乐体验馆 ( 桃太郎 )
+// * 寿司店打工任务
+// * 领主的通行证
+//===================================
+
+amatsu,223,236,3	script	出版社职员#ama	763,{
+	if (checkweight(1201,1) == 0) {
+		mes "负重量不足";
+		close;
+	}
+	if (event_momo < 2) {
+		mes "[出版社职员]";
+		mes "您好~!!";
+		mes "在村落里代代相传下来的故事";
+		mes "我们，专!门!地!";
+		mes "把它收集下来做为  ^009CFF长袍出版社^000000里";
+		next;
+		mes "[出版社职员]";
+		mes "不分男女老少的热门故事";
+		mes "^009CFF<摩摩塔乐 故事>^000000";
+		mes "为了出版，百 万 本!纪念而设立了";
+		mes "^3163FF摩摩塔乐 体验馆^000000";
+		next;
+		mes "[出版社职员]";
+		mes "亲自成为故事里的摩摩塔乐";
+		mes "打倒土人，";
+		mes "并领取礼物吧~~";
+		next;
+		switch (select("什么是摩摩塔乐 故事?:我想试试看!:我很忙所以..")) {
+		case 1:
+			mes "[出版社职员]";
+			mes "!? 竟然不知道摩摩塔乐 故事";
+			mes "真是一位对流行很迟钝的人啊~";
+			mes "那么由我来讲给你听吧";
+			next;
+			mes "[出版社职员]";
+			mes "从前从前有一对老夫妇，";
+			mes "这对夫妇虽然感情很好，";
+			mes "不过膝下没有子女";
+			next;
+			mes "[出版社职员]";
+			mes "不过有一天，";
+			mes "老太太在洗衣服时，";
+			mes "在江上发现了一个大大的桃子，";
+			mes "立刻打捞桃子并且带回家";
+			mes "老伯伯把它剥成一半...";
+			mes "结果有个小婴儿从里面，蹦!";
+			mes "的一声出现了";
+			next;
+			mes "[出版社职员]";
+			mes "老伯伯跟老太太虽然吓了一跳，";
+			mes "不过马上把婴儿当作自己的孩子，";
+			mes "并感到非常高兴";
+			next;
+			mes "[出版社职员]";
+			mes "那小孩跟杰克与魔豆的故事一样，";
+			mes "成长的非常快，";
+			mes "不久之后成为了，";
+			mes "力气很大的壮士";
+			next;
+			mes "[出版社职员]";
+			mes "那个小孩的名字就叫，";
+			mes "<摩摩塔乐 >!!!";
+			mes "摩摩塔乐，他当时为了击毁，";
+			mes "欺负村民的土人";
+			mes "而开始旅行了";
+			next;
+			mes "[出版社职员]";
+			mes "途中所遇到的^3163FF溜溜猴，小鸡，沙漠之狼^000000";
+			mes "当作伙伴，结果";
+			mes "击毁了土人，";
+			mes "与老伯伯和老太太";
+			mes "过着幸福的生活~";
+			next;
+			mes "[出版社职员]";
+			mes "怎么样? 值得卖出百万本吧?";
+			close;
+		case 2:
+			if (BaseLevel > 29) {
+				mes "[出版社职员]";
+				mes "咿呀-! 是位活力充沛的人啊!";
+				mes "连我的体力，也变的活力充沛啊!!";
+				mes "那么请填写这张申请书吧";
+				next;
+				mes "[出版社职员]";
+				mes "...............";
+				mes ".....嗯....让我看看....";
+				mes "..........很好!";
+				mes "好! 那么";
+				mes "<摩摩塔乐 体验馆>!!";
+				mes "出发啊啊啊啊啊~~~!!!!!!!!!";
+				close2;
+				warp "ama_test",52,35;
+				end;
+			}
+			mes "[出版社职员]";
+			mes "恩~";
+			mes "先锻炼自己之后再过来吧?";
+			close;
+		case 3:
+			mes "[出版社职员]";
+			mes "......还会送小礼物喔..";
+			close;
+		}
+	}
+	else if (event_momo == 4) {
+		mes "[出版社职员]";
+		mes "天气很好吧?...";
+		mes "这种天气就想要洗被子";
+		close;
+	}
+	else if (event_momo > 1) {
+		mes "[出版社职员]";
+		mes "怎么样? 还愉快吗?";
+		mes "简简单单准备的体验馆，";
+		mes "祝你有个愉快的时间";
+		next;
+		mes "[出版社职员]";
+		mes "怎么样?还愉快吗?";
+		mes "那么请收下我们所准备的礼物~";
+		mes "请以后多多喜欢";
+		mes "我们的古典史话...";
+		if (event_momo == 3) {
+			set event_momo,4;
+			switch (rand(1,10)) {
+			case 1: getitem 659,1; close;
+			case 2: getitem 633,1; close;
+			case 3: getitem 634,1; close;
+			case 4: getitem 639,1; close;
+			case 5: getitem 636,1; close;
+			case 6: getitem 628,1; close;
+			case 7: getitem 637,1; close;
+			case 8: getitem 635,1; close;
+			case 9: getitem 626,1; close;
+			case 10: getitem 641,1;
+			}
+		}
+		else {
+			set event_momo,4;
+			switch (rand(1,10)) {
+			case 1: getitem 622,1; close;
+			case 2: getitem 627,1; close;
+			case 3: getitem 629,1; close;
+			case 4: getitem 632,1; close;
+			case 5: getitem 623,1; close;
+			case 6: getitem 619,1; close;
+			case 7: getitem 621,1; close;
+			case 8: getitem 620,1; close;
+			case 9: getitem 625,1; close;
+			case 10: getitem 624,1;
+			}
+		}
+		close;
+	}
+}
+
+ama_test,52,44,3	script	等待室负责人#ama	109,{
+	mes "[撒陀悉]";
+	mes "欢迎来到";
+	mes "<摩摩塔乐 体验馆>";
+	next;
+	mes "[撒陀悉]";
+	mes "我是<摩摩塔乐 体验馆>的";
+	mes "等待室负责人，我叫撒陀悉";
+	next;
+	mes "[撒陀悉]";
+	mes "本来应该要在出版社工作，";
+	mes "不过因为人手不足，";
+	mes "所以就这么急着派遣到这...";
+	mes "不过也好啦!";
+	mes "这样闲闲的边玩，";
+	mes "边看着人们在挑战..呵呵.";
+	next;
+	mes "[撒陀悉]";
+	mes "............";
+	mes "知道是开玩笑的吧?";
+	mes "(擦汗)";
+	next;
+	mes "[撒陀悉]";
+	mes "好，那么";
+	mes "我来说明有关体验馆";
+	mes "的使用说明";
+	next;
+	mes "[撒陀悉]";
+	mes "首先.. 有关摩摩塔乐 的故事";
+	mes "在之前已经听说过了吧?";
+	next;
+	if (select("是:不是") == 1) {
+		mes "[撒陀悉]";
+		mes "呼呜.. 很好";
+		mes "摩摩塔乐 的故事是，是我们";
+		mes "出版社的光荣，";
+		mes "最佳作品!!!";
+		mes "哈哈哈!!!";
+		next;
+		mes "[撒陀悉]";
+		mes "...嗯嗯";
+		next;
+		mes "[撒陀悉]";
+		mes "体验馆很简单，";
+		mes "进入之后就像摩摩塔乐一样";
+		mes "要勇敢点!!! 只要打倒";
+		mes "土人就行了";
+		mes "懂吗? 要勇敢一点喔!!!!!";
+		next;
+		mes "[撒陀悉]";
+		mes "还有三点要，";
+		mes "值得注意的事项";
+		next;
+		mes "[撒陀悉]";
+		mes "第一点是，";
+		mes "这体验馆只要点过一次，";
+		mes "下次就不能再使用了";
+		mes "请注意这一点";
+		next;
+		mes "[撒陀悉]";
+		mes "第二点是，";
+		mes "体验馆内";
+		mes "禁止带宠物进入，";
+		mes "如果您有携带宠物";
+		mes "请先转换成蛋";
+		next;
+		mes "[撒陀悉]";
+		mes "最后要注意的事情是，";
+		mes "体验馆每一个人";
+		mes "可以使用6分钟";
+		next;
+		mes "[撒陀悉]";
+		mes "好，那么";
+		mes "进入等待室窗口";
+		mes "等待您的顺序吧，";
+		mes "祝您有好运，加油!!";
+		close;
+	}
+	mes "[等待室负责人]";
+	mes "啊啊? 在体验馆里";
+	mes "不能不知道";
+	mes "故事啊!!";
+	mes "以摩摩塔乐迷的立场";
+	mes "无法原谅你!!!";
+	next;
+	mes "[等待室负责人]";
+	mes "请你去找第一个见过的那位职员，";
+	mes "重新听完故事，";
+	mes "再来找我吧";
+	mes "再见~~";
+	close2;
+	warp "amatsu",223,230;
+	end;
+
+OnInit:
+	waitingroom "体验馆 等待室",10,"等待室负责人#ama::OnStartArena",1;
+	enablewaitingroomevent "等待室负责人#ama";
+	end;
+
+OnStartArena:
+	disablenpc "总监督#ama";
+	disablenpc "狂暴小土人::Onreset";
+	donpcevent "土人#ez::Onreset";
+	donpcevent "土人#hd::Onreset";
+	enablenpc "老太太#ama1";
+	enablenpc "老伯伯#ama";
+	warpwaitingpc "ama_test",50,83;
+	donpcevent "Timer#ama::OnEnable";
+	disablewaitingroomevent "等待室负责人#ama";
+	end;
+
+Onreset:
+	enablewaitingroomevent "等待室负责人#ama";
+	end;
+}
+
+ama_test,49,93,4	script	老伯伯#ama	766,{
+	end;
+
+OnInit:
+	disablenpc "老伯伯#ama";
+	end;
+}
+
+ama_test,50,93,4	script	老太太#ama1	761,10,10,{
+	end;
+
+OnInit:
+	disablenpc "老太太#ama1";
+	end;
+
+OnTouch:
+	mes "[老太太]";
+	mes "啊啊啊!!!";
+	next;
+	mes "[老太太]";
+	mes "老公!!";
+	mes "谁盗用我的帐号，只把装备通通抢走了!!";
+	next;
+	mes "[老伯伯]";
+	mes "喔恩，听村长说最近土人盗用人的帐号，";
+	mes "所赚的钱有20亿耶..";
+	next;
+	mes "[老太太]";
+	mes "喀呵呵呵呵呵!!!!";
+	next;
+	mes "[老伯伯]";
+	mes "...好像在哪里常听到的声音啊..";
+	mes "....";
+	next;
+	mes "[老伯伯]";
+	mes "..不管什么，摩摩塔乐 啊";
+	next;
+	mes "[老伯伯]";
+	mes "你也知道我们村民，都只会坐在一起聊天，";
+	mes "因为都没有练功，所以没有余力去抓土人..";
+	mes "我要出来帮忙啰";
+	next;
+	mes "[老太太]";
+	mes "摩摩塔乐 啊..";
+	mes "我很想把我亲自做的";
+	mes "^3355ff世上最好喝的红色药水^000000";
+	mes "交给你..";
+	mes "....不过全部制作失败了...";
+	next;
+	mes "[老太太]";
+	mes "...对不起.. 早知道就练功了..";
+	mes "呜呼..";
+	next;
+	mes "[老太太 ˙ 老伯伯]";
+	mes "那么就交给你了  孩子啊..";
+	close2;
+	set event_momo,1;
+	if (countitem(9010) > 0 || countitem(9005) > 0 || countitem(9016) > 0) {
+		disablenpc "老伯伯#ama";
+		disablenpc "老太太#ama1";
+		donpcevent "土人#ez::OnEnable";
+	}
+	else {
+		disablenpc "老伯伯#ama";
+		disablenpc "老太太#ama1";
+		donpcevent "土人#hd::OnEnable";
+	}
+	end;
+}
+
+ama_test,34,15,0	script	土人#ez	-1,{
+OnInit:
+	disablenpc "土人#ez";
+	end;
+
+OnEnable:
+	enablenpc "土人#ez";
+	set .MyMobs,9;
+	monster "ama_test",45,95,"土人",1110,1,"土人#ez::OnMyMobDead";
+	monster "ama_test",45,99,"土人",1110,1,"土人#ez::OnMyMobDead";
+	monster "ama_test",47,101,"土人",1110,1,"土人#ez::OnMyMobDead";
+	monster "ama_test",51,101,"土人",1110,1,"土人#ez::OnMyMobDead";
+	monster "ama_test",55,101,"土人",1110,1,"土人#ez::OnMyMobDead";
+	monster "ama_test",55,97,"土人",1110,1,"土人#ez::OnMyMobDead";
+	monster "ama_test",55,93,"土人",1110,1,"土人#ez::OnMyMobDead";
+	monster "ama_test",53,91,"土人",1110,1,"土人#ez::OnMyMobDead";
+	monster "ama_test",49,91,"土人",1110,1,"土人#ez::OnMyMobDead";
+	end;
+
+Onreset:
+	killmonster "ama_test","土人#ez::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .MyMobs,.MyMobs-1;
+	if (.MyMobs < 1) {
+		mapannounce "ama_test","土人: 等着瞧啊啊啊啊~~~!!!",bc_map;
+		enablenpc "总监督#ama";
+		set event_momo,2;
+	}
+	else {
+		switch(rand(4)) {
+		case 0: announce "土人: 我什么事也没做啊!! 呜呜",9; 	break;
+		case 1: announce "土人: 我错了~~ 呜呜呜~~",9; 	break;
+		case 2: announce "土人: 啊呀!!!",9; 			break;
+		case 3: announce "土人: !! 是偷袭!!! 快逃!!",9; 		break;
+		}
+	}
+	end;
+}
+	
+ama_test,34,16,0	script	土人#hd	-1,{
+OnInit:
+	disablenpc "土人#hd";
+	end;
+
+OnEnable:
+	enablenpc "土人#hd";
+	set .MyMobs,9;
+	monster "ama_test",45,95,"土人",1110,1,"土人#hd::OnMyMobDead";
+	monster "ama_test",45,99,"土人",1110,1,"土人#hd::OnMyMobDead";
+	monster "ama_test",47,101,"土人",1110,1,"土人#hd::OnMyMobDead";
+	monster "ama_test",51,101,"土人",1110,1,"土人#hd::OnMyMobDead";
+	monster "ama_test",55,101,"土人",1110,1,"土人#hd::OnMyMobDead";
+	monster "ama_test",55,97,"土人",1110,1,"土人#hd::OnMyMobDead";
+	monster "ama_test",55,93,"土人",1110,1,"土人#hd::OnMyMobDead";
+	monster "ama_test",53,91,"土人",1110,1,"土人#hd::OnMyMobDead";
+	monster "ama_test",49,91,"土人",1110,1,"土人#hd::OnMyMobDead";
+	end;
+
+Onreset:
+	killmonster "ama_test","土人#hd::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .MyMobs,.MyMobs-1;
+	if (.MyMobs < 1) {
+		mapannounce "ama_test","土人: 等着瞧啊啊啊啊~~~!!!",bc_map;
+		enablenpc "总监督#ama";
+		set event_momo,2;
+	}
+	else {
+		switch(rand(4)) {
+		case 0: announce "土人: 我什么事也没做啊!! 呜呜",9; 	break;
+		case 1: announce "土人: 我错了~~ 呜呜呜~~",9; 	break;
+		case 2: announce "土人: 啊呀!!!",9; 			break;
+		case 3: announce "土人: !! 是偷袭!!! 快逃!!",9; 		break;
+		}
+	}
+	end;
+}
+	
+ama_test,50,100,3	script	总监督#ama	762,15,15,{
+	mes "[总监督]";
+	mes "呵乎.. 真厉害";
+	mes "我一直在管理座位上观察，";
+	mes "你不是普通的实力";
+	mes "真让人感叹";
+	next;
+	mes "[总监督]";
+	mes "我还以为故事里的摩摩塔乐，";
+	mes "活生生的出现在现实呢?";
+	mes "呵呵呵呵...";
+	next;
+	switch(select("小意思而已~:真无聊")) {
+	case 1:
+		mes "[总监督]";
+		mes "...呵呵呵..";
+		mes "不要太骄傲，";
+		mes "我在你这个年龄时";
+		mes "我把土人这种东西用小指";
+		mes "捏在手里呢，呵呵呵..";
+		next;
+		mes "[总监督]";
+		mes ".............";
+		mes "...不要用奇怪的眼神看我";
+		mes "开个玩笑而已，呵呵";
+		next;
+		mes "[总监督]";
+		mes "好，摩摩塔乐 的故事已经结束了，";
+		close2;
+		donpcevent "Timer#ama::OnDisable";
+		warp "amatsu",223,230;
+		disablenpc "总监督#ama";
+		donpcevent "等待室负责人#ama::Onreset";
+		end;
+	case 2:
+		mes "[总监督]";
+		mes "!!!!!";
+		mes "...呵..呵呵呵...";
+		mes "很有趣的人啊...";
+		mes "好吧...";
+		mes "要不要听我一个提案呢!";
+		next;
+		mes "[总监督]";
+		mes "..照理来说现在应该";
+		mes "要让你回去...";
+		mes "不过我想看";
+		mes "你真正的实力..呵呵呵..";
+		mes "似乎看到了我年轻的时候";
+		mes "呵呵呵呵呵...";
+		next;
+		mes "[总监督]";
+		mes "怎么样..?我再给你一次的机会";
+		mes "与土人们再挑战一次";
+		mes "这次失败了";
+		mes "^3355ff就无法再挑战^000000…..";
+		mes "还有这次就算是你，也会很困难吧!";
+		next;
+		if (select("已经足够了:挑战看看") == 1) {
+			mes "[总监督]";
+			mes "呵呵...";
+			mes "你也因刚刚的战斗而疲倦了吗?";
+			mes "嗯，最后...享受到摩摩塔乐体验馆乐趣了吗?";
+			close2;
+			warp "amatsu",223,230;
+			disablenpc "总监督#ama";
+			donpcevent "Timer#ama::OnDisable";
+			donpcevent "等待室负责人#ama::Onreset";
+			end;
+		}
+		mes "[总监督]";
+		mes "呵呵呵..你这年轻人越来越讨人喜欢啊!";
+		mes "好!这是最后的一次决战";
+		mes "尽情发挥你的实力吧!";
+		mes "我会期待的!";
+		percentheal 70,0;
+		disablenpc "总监督#ama";
+		donpcevent "狂暴小土人#ama::OnEnable";
+		close;
+	}
+
+OnInit:
+	disablenpc "总监督#ama";
+	end;
+
+OnTouch:
+	mes "[总监督]";
+	mes "Boom bam Boooom!!!";
+	mes "Tada~~~ !";
+	close;
+}
+	
+ama_test,34,17,0	script	狂暴小土人#ama	-1,{
+OnInit:
+	disablenpc "狂暴小土人#ama";
+	end;
+
+OnEnable:
+	enablenpc "狂暴小土人#ama";
+	set .MyMobs,3;
+	monster "ama_test",35,102,"狂暴小土人",1301,1,"狂暴小土人#ama::OnMyMobDead";
+	monster "ama_test",40,91,"狂暴小土人",1301,1,"狂暴小土人#ama::OnMyMobDead";
+	monster "ama_test",56,108,"狂暴小土人",1301,1,"狂暴小土人#ama::OnMyMobDead";
+	end;
+
+Onreset:
+	killmonster "ama_test","狂暴小土人#ama::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .MyMobs,.MyMobs-1;
+	if (.MyMobs < 1) {
+		enablenpc "总监督#after";
+	}
+	else {
+		set .@am_mut_tel,rand(1,3);
+		if (.@am_mut_tel == 1) {
+			mapannounce "ama_test"," Augh!! I, I made mistake...!",bc_map;
+		}
+		if (.@am_mut_tel == 2) {
+			mapannounce "ama_test"," Ugh...How could I lose?!... ",bc_map;
+		}
+		if (.@am_mut_tel == 3) {
+			mapannounce "ama_test"," Mommmmy~~!!!",bc_map;
+		}
+	}
+	end;
+}
+	
+ama_test,50,100,3	script	总监督#after	762,5,5,{
+	end;
+
+OnInit:
+	disablenpc "总监督#after";
+	end;
+
+OnTouch:
+	mes "[总监督]";
+	mes "( Clap- Clap- Clap- )";
+	next;
+	mes "[总监督]";
+	mes "Hohoho~ You are really something.";
+	mes "You've got the moves, kiddo.";
+	mes "I'll give you that.";
+	next;
+	mes "[总监督]";
+	mes "Well, time's up so...";
+	mes "Let me show you the exit.";
+	mes "I had a great time...";
+	mes "Don't forget to get your reward~";
+	close2;
+	set event_momo,3;
+	warp "amatsu",223,230;
+	disablenpc "总监督#after";
+	donpcevent "等待室负责人#ama::Onreset";
+	donpcevent "Timer#ama::OnDisable";
+	end;
+}
+	
+ama_test,34,18,0	script	Timer#ama	-1,{
+OnInit:
+	disablenpc "Timer#ama";
+	end;
+
+OnEnable:
+	enablenpc "Timer#ama";
+	initnpctimer;
+	end;
+OnDisable:
+	stopnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "ama_test","timer: 从现在开始启动6分钟，请注意不要超过指定的时间",bc_map;
+	end;
+
+OnTimer181000:
+	mapannounce "ama_test","timer: 剩下3分钟",bc_map;
+	end;
+
+OnTimer301000:
+	mapannounce "ama_test","timer: 剩下1分钟",bc_map;
+	end;
+OnTimer361000:
+	mapannounce "ama_test","timer: 哔-哔-哔  已超过指定的时间了",bc_map;
+	end;
+
+OnTimer361500:
+	enablenpc "backwarp#ama";
+	end;
+
+OnTimer362000:
+	disablenpc "backwarp#ama";
+	end;
+
+OnTimer362500:
+	donpcevent "等待室负责人#ama::Onreset";
+	donpcevent "Timer#ama::OnDisable";
+	end;
+}
+
+ama_test,50,100,0	script	backwarp#ama	-1,25,25,{
+OnInit:
+	disablenpc "backwarp#ama";
+	end;
+
+OnTouch:
+	warp "amatsu",115,95;
+	end;
+}
+
+//=====================================================================
+ama_in01,162,17,0	script	寿司名人	765,{
+	if (ama_sushi == 1) {
+		if (countitem(1023)>=10) {
+			mes "[麻估麻估]";
+			mes "嗯嗯！真是太感谢您了";
+			next;
+			delitem 1023,10;
+			getitem 551,20;
+			mes "[麻估麻估]";
+			mes "这个是我的一点心意，您就收下吧！";
+			set ama_sushi,0;
+			close;
+		}
+		mes "[麻估麻估]";
+		mes "真是，还有把我要求的准备好";
+		mes "你不会是忘了吧！";
+		next;
+		mes "[麻估麻估]";
+		mes "^0000FF鱼尾 10 个^000000";
+		mes "不要再忘记了";
+		mes "一定要帮我带来！";
+		close;
+	}
+	mes "[麻估麻估]";
+	mes "唉呀～真是糟糕……";
+	mes "每天都有不断的客人聚集，";
+	mes "却完全没有办法搜集";
+	mes "不够的材料…今天也";
+	mes "一定会有吃不的的客人吧？";
+	next;
+	mes "[麻估麻估]";
+	mes "唉呀，是客人吗？欢迎光临，";
+	mes "和以往一样，我家的生鱼片";
+	mes "最潢重新鲜感，来这里有什么事吗…？";
+	next;
+	menu "我要买明虾寿司",L1,"我要买生鱼片",L2,"要我帮忙吗？",L3,"辛苦了",-;
+		mes "[麻估麻估]";
+		mes "随你高兴啰，我生鱼片口味";
+		mes "是天下一品的！它的味道在于新鲜感，是谁也学不来的";
+		mes "下次有机会的话，来享受一下生鱼片吧！";
+		close;
+	L1:
+		mes "[麻估麻估]";
+		mes "好啊…要买多少？";
+		mes "定食是 700Zeny，不过只想要尝一块";
+		mes "的话 74Zeny就好了，";
+		mes "尝了之后觉得不错的话再找我吧";
+		next;
+		menu "我要700Zeny 的定食！",L1_1,"我要74Zeny 的一小块！",L1_2,"下次再吃好了",-;
+			mes "[麻估麻估]";
+			mes "随你高兴啰，我明虾寿司口味";
+			mes "是天下一品的！它的味道在于新鲜感，是谁也学不来的";
+			mes "下次有机会的话，来享受一下明虾寿司吧！";
+			close;
+		L1_1:
+			if (Zeny < 700) goto Lzeny;
+			set Zeny,Zeny-700;
+			getitem 551,10;
+			mes "[麻估麻估]";
+			mes "谢谢您的惠顾";
+			close;
+		L1_2:
+			if (Zeny < 74) goto Lzeny;
+			set Zeny,Zeny-74;
+			getitem 551,1;
+			mes "[麻估麻估]";
+			mes "谢谢您的惠顾";
+			close;
+	L2:
+		mes "[麻估麻估]";
+		mes "好啊…要买多少？";
+		mes "定食是 350Zeny，不过只想尝一小块";
+		mes "的话 37Zeny 就好了，";
+		mes "尝了之后觉得不错的话再找我吧";
+		next;
+		menu "我要350Zeny 的定食！",L2_1,"我要37Zeny 的一小块",L2_2,"下次再吃好了",-;
+			mes "[麻估麻估]";
+			mes "随你高兴啰，我生鱼片口味";
+			mes "是天下一品的！它的味道在于新鲜感，是谁也学不来的";
+			mes "下次有机会的话，来享受一下生鱼片吧！";
+			close;
+		L2_1:
+			if (Zeny < 350) goto Lzeny;
+			set Zeny,Zeny-350;
+			getitem 544,10;
+			mes "[麻估麻估]";
+			mes "谢谢您的惠顾";
+			close;
+		L2_2:
+			if (Zeny < 37) goto Lzeny;
+			set Zeny,Zeny-37;
+			getitem 544,1;
+			mes "[麻估麻估]";
+			mes "谢谢您的惠顾";
+			close;
+		Lzeny:
+			mes "[麻估麻估]";
+			mes "客人您身上的现金不足喔";
+			close;
+L3:
+		mes "[麻估麻估]";
+		mes "唉呦，要帮助当然好啊！！";
+		mes "正好在担心每天的材料不足啊…";
+		mes "你要听听看我的要求吗？";
+		mes "当然不会免费要求你帮忙";
+		next;
+		set ama_sushi,1;
+		mes "[麻估麻估]";
+		mes "装饰用的鱼尾";
+		mes "全部没了…现在急着需要";
+		mes "就魔烦你^0000FF鱼尾 10个啰^000000";
+		mes "每当然要时就找不到，真为难…";
+		mes "就拜托你了";
+		next;
+		mes "[麻估麻估]";
+		mes "那么，就辛苦你了…我在这";
+		mes "等你回来，不要忘记我拜托你的喔！";
+		close;
+}
+
+//============
+// *领主的通行证 任务
+//============
+
+amatsu,189,166,4	script	克武基#ama	764,{
+	mes "[克武基]";
+	mes "啦啦啦 啦啦啦 啦啦啦啦啦啦..";
+	mes "啦啦啦 啦啦啦 啦啦啦啦啦啦..";
+	next;
+	switch (event_amatsu) {
+	case 2:
+		mes "[克武基]";
+		mes "和尚，和尚，狐狸在跟着我来";
+		mes "原来是拿着狐狸喜欢的东西";
+		mes "豆皮拉面是我的最爱";
+		mes "一天可以吃上三次啊";
+		set event_amatsu,3;
+		break;
+	case 3:
+	case 4:
+		mes "[克武基]";
+		mes "和尚，和尚，狐狸在跟着我来";
+		mes "大声喊叫把它赶走吧!";
+		mes "声音太小所以它没有逃跑";
+		mes "一直跟到北方的神社来了!";
+		set event_amatsu,4;
+		break;
+	case 5:
+		mes "[克武基]";
+		mes "和尚，和尚，狐狸在跟着我来";
+		mes "豆皮拉面是我最爱";
+		mes "可是现在我也不害怕了?";
+		mes "大声喊叫把它赶走了!";
+		break;
+	case 6:
+		mes "[克武基]";
+		mes "村落港口里有一条被遗弃的船!";
+		mes "人民都遗忘的那条船里";
+		mes "所以有着满满的宝物";
+		mes "所有人都会怕的一条船";
+		break;
+	default:
+		mes "[克武基]";
+		mes "挂在蓝天的蓝色屋顶";
+		mes "照耀在蓝色湖面的蓝色城墙";
+		mes "蓝色心理装着蓝色愿望";
+		mes "蓝色 蓝色 全部都是蓝色";
+		break;
+	}
+	next;
+	mes "[克武基]";
+	mes "啦啦啦 啦啦啦 啦啦啦啦啦啦..";
+	mes "啦啦啦 啦啦啦 啦啦啦啦啦啦..";
+	close;
+}
+
+amatsu,171,174,4	script	守门 士兵#ama01	767,{
+	switch (event_amatsu) {
+	case 0:
+	case 1:
+		mes "[守门 士兵]";
+		mes "这里有城主的母亲在";
+		mes "请保持肃静,我们也是";
+		mes "每天看的觉得很焦急";
+		next;
+		mes "[守门 士兵]";
+		mes "为什么会发生在";
+		mes "人品这么好的我们城主身上呢...";
+		mes "真是搞不懂啊,呼呜...";
+		close;
+	case 6:
+		mes "[守门 士兵]";
+		mes "喔啦? 好像有什么东西往天上";
+		mes "飞过去了... 您没有看到吗? 喔喔";
+		mes "还听到很大声... 吓我一跳";
+		close;
+	case 7:
+		mes "[守门 士兵]";
+		mes "现在城主应该没事了吧,";
+		mes "我们也了却了一桩心事";
+		mes "不知道有多担心... 呼呼";
+		close;
+	default:
+		mes "[守门 士兵]";
+		mes "禁止进入这里";
+		mes "这里是城主的母亲正在";
+		mes "疗养的地方";
+		next;
+		mes "[守门 士兵]";
+		mes "虽然不是什么好张扬的...";
+		mes "不过已经生病好几个月了";
+		mes "并在这里起居";
+		close;
+	}
+}
+
+amatsu,164,174,4	script	守门 士兵#ama02	767,{
+	switch (event_amatsu) {
+	case 0:
+		mes "[守门 士兵]";
+		mes "禁止进入这里";
+		mes "这里是城主的母亲正在";
+		mes "疗养的地方";
+		next;
+		mes "[守门 士兵]";
+		mes "虽然不是什么好张扬的...";
+		mes "不过已经生病好几个月了";
+		mes "并在这里起居";
+		set event_amatsu,1;
+		close;
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+		mes "[守门 士兵]";
+		mes "从城主派去如果 ";
+		mes "请请进入…… ";
+		mes "直到今天也请很多的人来诊察了然而 ";
+		mes "全部徒劳结束了呀… ";
+		close;
+	case 6:
+		mes "[守门 士兵]";
+		mes" 喂！";
+		mes" 现在的声音是什么 !?";
+		mes" 从哪发出来的!?";
+		close;
+	case 7:
+		mes "[守门 士兵]";
+		mes "城主的母亲还是";
+		mes "没完全恢复…… ";
+		mes "尽管如此，稍微好转了";
+		mes "然而好像…… ";
+		close;
+	default:
+		mes "[守门 士兵]";
+		mes "希望能够赶快恢复健康...";
+		mes "城主已为他";
+		mes "费了很多心";
+		close;
+	}
+}
+
+ama_in01,22,111,0	script	老太太#ama	761,{
+	switch (event_amatsu) {
+	case 5:
+		mes "[...]";
+		mes "^FF0066镪镪,镪镪,又来了一个";
+		mes "愚蠢的人啊! 这次想要怎么样";
+		mes "把我赶走啊!?^000000";
+		next;
+		mes "[...]";
+		mes "^FF0066看来在哪里不知道学了些什么东西,";
+		mes "只拿这样子";
+		mes "是不能把我怎样的!! 镪镪!^000000";
+		next;
+		menu "哈啊啊啊啊!!",-;
+		if (rand(2) == 1) {
+			mes "[...]";
+			mes "^FF0066镪镪! 哈哈! 镪镪! 哈哈哈!";
+			mes "既然敢,想要把我赶出去!";
+			mes "马上给我出去!! 镪镪!^000000";
+			close2;
+			warp "amatsu",167,197;
+			end;
+		}
+		mes "[...]";
+		mes "^FF0066镪镪! 镪镪! 镪镪! 这个家伙!";
+		mes "既然用这种方式赶我走!";
+		mes "令人厌恶! 不服气!!^000000";
+		next;
+		mes "[...]";
+		mes "^FF0066让我变成这个样子的宜希答家族";
+		mes "我要一辈子诅咒他! 诅咒!";
+		mes "人类啊,您也要小心点!^000000";
+		next;
+		monster "ama_in01",22,111,"狐狸",1180,1;
+		killmonsterall "ama_in01";
+		getitem 1022,1;
+		mes "[...]";
+		mes "^FF0066佑罗西那戈所做的所有事情";
+		mes "迟早会带给我";
+		mes "很大的不幸...^000000";
+		mes "^CC3300镪啊啊啊啊啊啊啊啊啊!!^000000";
+		set event_amatsu,6;
+		close;
+	case 6:
+		mes "[宜希答 撒伍克]";
+		mes "...唉呀哪里的年轻人啊...?";
+		mes "是您把狐狸赶走的吗?";
+		mes "糊里糊涂的没精神,唉呀...";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "谢谢您,从别的地方过来";
+		mes "还要受这种苦,";
+		mes "真是不好意思... 辛苦您了...";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "我要联络我的儿子";
+		mes "告诉他说已经把狐狸赶走了...";
+		mes "谢谢您,谢谢...";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "现在我的精神有点恍惚";
+		mes "我要休息了,年轻人.....";
+		mes "赶快去找我儿子吧...";
+		close;
+	case 7:
+		mes "[宜希答 撒伍克]";
+		mes "唉呀,您是帮忙赶走狐狸的";
+		mes "那位年轻人啊... 欢迎欢迎";
+		mes "方便的话先坐一下吧...";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "想想被狐狸上身";
+		mes "也都是我自己的错...";
+		mes "是我没有教好儿子... 哎呀";
+		mes "小时后是个乖乖的家伙";
+		mes "都是我没有教的很严格...";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "本来这个村落没有这么大";
+		mes "也没有像东湖城这样大的城,";
+		mes "不过我儿子不知从那里";
+		mes "一直拿些财物来给我呢";
+		mes "不知道做些什么事赚来的钱";
+		mes "连我都要隐瞒着...";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "然后又建城堡又增阔村落的,";
+		mes "对村里的人民";
+		mes "心地宽厚... 如果就只是这样";
+		mes "就不会有事发生了,";
+		mes "问题就是生在这家伙";
+		mes "做了奇怪的事之后...";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "没错,就是做了让神发怒的事情,";
+		mes "不知道从哪学些奇怪的咒术";
+		mes "在城里做实验,";
+		mes "抓些魔物来";
+		mes "做些坏事...";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "就这样变成魔物们";
+		mes "在东湖城里定居了...";
+		mes "结果神发怒到";
+		mes "连神社的和尚也不知所措了.....";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "结果也对老人家下惩罚...";
+		mes "派送狐狸来";
+		mes "想要给予警告,";
+		mes "可是儿子并没有停止啊";
+		next;
+		mes "[宜希答 撒伍克]";
+		mes "可以的话帮忙阻止我儿子吧,";
+		mes "活不久的我";
+		mes "也不知道该怎么办才好...";
+		mes "请把这和平的村落守好吧,";
+		mes "拜托您了... 不知道儿子";
+		mes "有着什么想法而做出那种事情...";
+		close;
+	default:
+		mes "[...]";
+		mes "^FF6060镪镪，镪镪，愚蠢的人类又";
+		mes "镪镪，镪镪，是谁! 是人类吗!?";
+		mes "进来有什么事吗! 还不敢快";
+		mes "出去... 镪镪! 镪镪!^000000";
+		next;
+		mes "[...]";
+		mes "^FF6060我本人打算在宜希答家族";
+		mes "到结束为止要住在这里!";
+		mes "不要妨碍我快出去吧! 镪镪!^000000";
+		close2;
+		warp "amatsu",167,197;
+		end;
+	}
+}
+
+ama_in02,170,62,4	script	士兵#ama02	767,{
+	mes "[积罗]";
+	mes "我叫积罗,我在这城里";
+	mes "负责各种行政业务,";
+	mes "请问需要什么服务";
+	next;
+	switch (select("请发通行证给我:我想要住在这里:没什么事")) {
+	case 1:
+		if (event_amatsu == 7) {
+			if (countitem(7160)) {
+				mes "[积罗]";
+				mes "通行证已经发给您了";
+				close;
+			}
+			if (Zeny < 10000) {
+				mes "[积罗]";
+				mes "您所持的 Zeny 不足喔！";
+				close;
+			}
+			set Zeny,Zeny-10000;
+			getitem 7160,1;
+			mes "[积罗]";
+			mes "来，就是这个啰";
+			mes "请小心保管不要再遗失了";
+			close;
+		}
+		mes "[积罗]";
+		mes "城主说大陆来的客人们";
+		mes "可以自由自在的行动,";
+		mes "不需要办理";
+		mes "通行证了";
+		close;
+	case 2:
+		mes "[积罗]";
+		mes "这有点困难,您可以";
+		mes "自由自在的往来,不过城主";
+		mes "还没有考虑到移民问题";
+		mes "不过,您要待多久之后再离开";
+		mes "都可以的"; 
+		close;
+	case 3:
+		mes "[积罗]";
+		mes "那么先这样...";
+		mes "有什么事情就说吧";
+		close;
+	}
+}
+
+ama_in02,115,177,7	script	兵士#ama	767,{
+	mes "[朱罗]";
+	mes "来这里有什么事情吗?";
+	mes "这里没有什么好看的";
+	next;
+	if (select("真的没错耶:请帮我打开门")==1) {
+		mes "[朱罗]";
+		mes "村落里有更多好看的";
+		mes "祝您有个愉快的时间...";
+		close;
+	}
+	if (event_amatsu != 7) {
+		mes "[朱罗]";
+		mes "您在说什么门,";
+		mes "像这种夹层不会有";
+		mes "什么门的呀，我看";
+		mes "您可能是搞错了吧";
+		next;
+		mes "[朱罗]";
+		mes "村落里有更多好看的";
+		mes "祝您有个愉快的时间...";
+		close;
+	}
+	if (countitem(7160) < 1) {
+		mes "[朱罗]";
+		mes "您手中并没有通行证";
+		mes "所以我没办法帮您开门";
+		mes "还请见谅。";
+		close;
+	}
+	mes "[朱罗]";
+	mes "您已经得到准许了...";
+	mes "您要直接进去吗? 还是";
+	mes "要我帮您解说一下...?";
+	next;
+	if (select("直接进去:听解说")==1) {
+		mes "[朱罗]";
+		mes "那么,我就帮您开门了";
+		mes "千万好好保重啰...";
+		close2;
+		warp "ama_dun01",229,10;
+		end;
+	}
+	mes "[朱罗]";
+	mes "那内部空间好像由特别的";
+	mes "咒术来保护的,";
+	mes "不清楚进去之后会迷路,";
+	mes "而且可能会被不知的人";
+	mes "遭袭击而死亡";
+	next;
+	mes "[朱罗]";
+	mes "我可以告诉您的内容";
+	mes "并不多,";
+	mes "我也并没有去过内部";
+	mes "很远的地方,都是幸幸苦苦回来的";
+	mes "生存者的证言而已";
+	next;
+	mes "[朱罗]";
+	mes "第一个.....";
+	mes "'不要相信眼前所看到的东西,'";
+	mes "我也不知道这是什么意义,";
+	mes "不过好像是说";
+	mes "不能认为看到的就是存在的意思吧";
+	next;
+	mes "[朱罗]";
+	mes "第二个.....";
+	mes "有关咒术有它一定的法则";
+	mes "所有事物都都有它所存在的目的,";
+	mes "咒术也不例外,";
+	mes "会不会找出一些";
+	mes "解答呢?";
+	mes "[朱罗]";
+	mes "那么,我就帮您打开门了";
+	mes "千万好好保啰...";
+	close2;
+	warp "ama_dun01",229,10;
+	end;
+}
+
+ama_dun01,229,7,0	script	士兵#18	767,{
+	mes "[朱罗]";
+	mes "要离开了吗";
+	next;
+	if (select("离开:再多停留一会")==1) {
+		mes "[朱罗]";
+		mes "走了走了！！";
+		close2;
+		warp "ama_in02",119,181;
+		end;
+	}
+	mes "[朱罗]";
+	mes "自己小心一点啰！";
+	close;
+}
+
+ama_in02,200,176,4	script	城主#ama	768,{
+	switch (event_amatsu) {
+	case 1:
+		mes "[宜希答 佑西那戈]";
+		mes "什么! 是外地人吗...? 呼,抱歉";
+		mes "不过今天没有什么心情";
+		mes "见外地人!";
+		next;
+		switch (select("听说您母亲生病了...:好漂亮的城喔:您是谁?")) {
+		case 1:
+			mes "[宜希答 佑西那戈]";
+			mes "呵喔... 您对疾病有很了解吗?";
+			mes "对喔,如果是以外地人的知识";
+			mes "还值得让我相信...";
+			mes "应该是吧...";
+			next;
+			mes "[宜希答 佑西那戈]";
+			mes "欢迎光临,您也知道";
+			mes "我是东湖城的城主";
+			mes "我叫宜希答 佑西那戈,";
+			mes "很开心见到您";
+			next;
+			mes "[宜希答 佑西那戈]";
+			mes "直接了当地说,我母亲";
+			mes "她身体很不好,";
+			mes "当然是为这个而来的吧";
+			mes "您可以帮我治好我母亲的病吗?";
+			next;
+			mes "[宜希答 佑西那戈]";
+			mes "到现在为止有很多出名";
+			mes "的名医来拜访过,";
+			mes "不过全部不只是没有把她治好";
+			mes "反而变得更恶化了... 所以";
+			mes "我一直感到很失望";
+			next;
+			mes "[宜希答 佑西那戈]";
+			mes "外地来的您也许";
+			mes "可以治好我母亲的病,";
+			mes "我会包厚厚的谢礼金给您的...";
+			next;
+			mes "[宜希答 佑西那戈]";
+			mes "那就拜托您了,我母亲";
+			mes "她住在城外的宅邸,";
+			mes "等治疗成功后";
+			mes "再来找我吧";
+			set event_amatsu,2;
+			close;
+		case 2:
+			mes "[宜希答 佑西那戈]";
+			mes "对! 很漂亮啊! 所以想要";
+			mes "怎么样呢! 您就看到腻了之后";
+			mes "再回去吧! 真是的!";
+			next;
+			mes "[宜希答 佑西那戈]";
+			mes "在这种急迫的时候... 呼呜...";
+			mes "随便您玩得愉不愉快";
+			mes "再回去吧!";
+			close;
+		case 3:
+			mes "[宜希答 佑西那戈]";
+			mes "...说我吗? 您不晓得吗? 哈?";
+			mes "我就是这城的主人";
+			mes "不清楚的话就去问问";
+			mes "外面的士兵吧!";
+			next;
+			mes "[宜希答 佑西那戈]";
+			mes "在这种急迫的时候... 呼呜...";
+			mes "随便您玩得愉不愉快";
+			mes "再回去吧!";
+			close;
+		}
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+		mes "[宜希答 佑西那戈]";
+		mes "我母亲的治疗进度是怎样啊?";
+		mes "如果知道病名是什么";
+		mes "请您马上告诉我";
+		mes "喀喔... 担心的";
+		mes "每晚都睡不好";
+		next;
+		mes "[宜希答 佑西那戈]";
+		mes "您是其他大陆来的,";
+		mes "所以一定会知道的... 现在";
+		mes "可以相信的也只有您了";
+		close;
+	case 6:
+		mes "[宜希答 佑西那戈]";
+		mes "哇,真厉害,我已经得知";
+		mes "母亲开始好起来了,";
+		mes "到底是什么病啊?";
+		next;
+		mes "[宜希答 佑西那戈]";
+		mes "狐狸? 是狐狸的原因吗? 呵喔...";
+		mes "原来不是疾病啊...!!";
+		mes "我为什么没有早点想到呢...";
+		next;
+		mes "[宜希答 佑西那戈]";
+		mes "该死的狐狸,逃跑之后";
+		mes "既然用这种方式报仇...";
+		mes "不过现在已经没有别的";
+		mes "方法了... 哈哈哈! 哈哈哈哈!";
+		next;
+		mes "[宜希答 佑西那戈]";
+		mes "嗯,呵嗯,嗯...";
+		next;
+		mes "[宜希答 佑西那戈]";
+		mes "反正,谢谢您的帮忙,";
+		mes "我的母亲现在也应该没事了吧...";
+		mes "想要给您个报答...";
+		mes "什么好呢...";
+		next;
+		mes "[宜希答 佑西那戈]";
+		mes "好吧,我给您一张通行证吧";
+		mes "只要有这张通行证";
+		mes "不管在这村落的哪一个地方";
+		mes "都可以随地通行";
+		next;
+		set event_amatsu,7;
+		getitem 7160,1;
+		mes "[宜希答 佑西那戈]";
+		mes "虽然不是什么大礼,不过";
+		mes "我相信会有用的用到...详细的";
+		mes "去问我的部下 '朱罗'吧";
+		close;
+	case 7:
+		mes "[宜希答 佑西那戈]";
+		mes "呼呼... 祝您在天津町";
+		mes "有着愉快的时间.....";
+		mes "我们随时欢迎外地人";
+		close;
+	default:
+		mes "[宜希答 佑西那戈]";
+		mes "什么! 是外地人吗? 找我";
+		mes "有什么事呢,如果不是什么急事";
+		mes "下次再来找我吧...!";
+		next;
+		mes "[宜希答 佑西那戈]";
+		mes "请出去! 不管您是什么人,";
+		mes "现在本人我";
+		mes "我的心情相当的差!";
+		close;
+	}
+}
+
+ama_in01,180,173,2	script	狐狸面具#ama	762,{
+	switch (event_amatsu) {
+	case 4:
+		mes "[塔慨虎威]";
+		mes "喔呦,是外地人啊,到这里来找我";
+		mes "是因为狐狸而遭受苦难";
+		mes "的原因吗? 看您的表情";
+		mes "好像吃了不少苦头啊";
+		next;
+		mes "[塔慨虎威]";
+		mes "照理来说主管和尚";
+		mes "要亲自帮忙,这神社里";
+		mes "从很久以前就空空的了";
+		next;
+		mes "[塔慨虎威]";
+		mes "很难赶走在人身体";
+		mes "里的狐狸,假如有狐狸喜欢的";
+		mes "酒跟豆皮拉面的话可能容易点,";
+		mes "不过很难搜集";
+		next;
+		mes "[塔慨虎威]";
+		mes "还好我对狐狸";
+		mes "有一点了解,讲一些";
+		mes "对您有帮助的好了,狐狸这种动物";
+		mes "很顽皮,虽然喜欢";
+		mes "作弄人类... 不过很少有";
+		mes "怨恨这种事情发生";
+		next;
+		mes "[塔慨虎威]";
+		mes "假如有怨恨发生,换句话说";
+		mes "人类也有做错的地方,";
+		mes "自己本身也会受到伤害,";
+		mes "有时对身边的家人或朋友";
+		mes "也会有痛苦的事情发生";
+		next;
+		mes "[塔慨虎威]";
+		mes "方正,听说看到有着比狐狸";
+		mes "还要强力的动物时,";
+		mes "有时会被气势压迫";
+		mes "而从人身上离走,所以呢";
+		mes "试着用大力,运气看看吧";
+		next;
+		menu "哈啊啊啊啊!!",-;
+		mes "[塔慨虎威]";
+		mes "很好,就这样反覆的";
+		mes "表现出强力的气势给狐狸看,";
+		mes "一定会有好结果的,当然最好是";
+		mes "找出狐狸会进入人类身体里的";
+		mes "原因,不过就算这样做";
+		mes "多多少少还是会有效果的";
+		set event_amatsu,5;
+		close;
+	case 5:
+		mes "[塔慨虎威]";
+		mes "不要忘了,运气的时候";
+		mes "一定要联想到";
+		mes "比狐狸还要强的动物精力";
+		mes "不然是完全没有用的";
+		close;
+	default:
+		mes "[塔概虎威]";
+		mes "喔呦，是外地人啊，这里的神社";
+		mes "很久之前就没有和尚在了";
+		mes "这里是我跟我朋友托卡科";
+		mes "偶而会来玩的地方";
+		next;
+		mes "[塔概虎威]";
+		mes "是为了躲避魔物们而来的话";
+		mes "请安心吧，任何魔物";
+		mes "都无法进入这里的";
+		mes "休息一下也无妨啊";
+		close;
+	}
+}
+
+ama_in01,169,173,0	script	巫女#ama	720,{
+	mes "[托卡科]";
+	mes "我本来不是巫女";
+	mes "是我的朋友，塔概虎威叫我穿看看";
+	mes "这种服装... 然后他就带我到";
+	mes "这样的神社来了";
+	next;
+	mes "[托卡科]";
+	mes "虽然会要求些奇奇怪怪的东西";
+	mes "不过是个有趣的朋友";
+	mes "有时都不知道他在想什么";
+	mes "仍是很好的朋友";
+	next;
+	mes "[托卡科]";
+	mes "假如有什么想问的事情";
+	mes "就去问塔概虎威新生吧";
+	mes "连别人不知道的";
+	mes "很多神奇的事情";
+	mes "他都知道";
+	close;
+}

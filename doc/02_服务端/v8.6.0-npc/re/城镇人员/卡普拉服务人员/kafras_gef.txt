@@ -1,0 +1,47 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 吉芬 卡普拉脚本 - 
+//===================================
+// 版本：2.5
+//===================================
+
+
+// South =====================================
+geffen,120,62,0	script	卡普拉服务人员::kaf_geffen	115,{
+	cutin "kafra_03",2;
+	callfunc "F_KafSetGef";
+	callfunc "F_Kafra",0,0,0,30,750;
+
+	M_Save:
+		savepoint "geffen",119,40;
+		callfunc "F_KafEnd",0,1,"in the city of Geffen";
+}
+
+// East ==============================================
+geffen,203,123,2	script	卡普拉服务人员::geffen2	114,{
+	cutin "kafra_04",2;
+	callfunc "F_KafSetGef";
+	callfunc "F_Kafra",0,0,0,30,750;
+
+	M_Save:
+		savepoint "geffen",200,124;
+		callfunc "F_KafEnd",0,1,"in the city of Geffen";
+}
+
+
+// Function: Sets variables for Geffen Kafras -------------------
+function	script	F_KafSetGef	{
+	cleararray @wrpC$[0],"",getarraysize(@wrpC$);
+	setarray @wrpD$[0], "普隆德拉", "艾尔帕兰", "兽人地下洞窟", "妙勒尼 废弃矿场";
+	setarray @wrpP[0], 1200, 1200, 1200, 1700;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], "取消";
+	setarray @viewpX[0], 120, 203;
+	setarray @viewpY[0], 62, 123;
+	return;
+}

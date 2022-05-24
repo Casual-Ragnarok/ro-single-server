@@ -1,0 +1,523 @@
+/*----------------------------------------------------------*\
+                     Ragnarok Scripts
+-------------------------------------------------------------
+
+ 名称：道场脚本
+ 类型：游戏娱乐
+ 版本：V1.5 正式版
+ 原创：未知
+ 设计：缩水
+ 编制：缩水
+ 版权：缩水
+ 测试：缩水 湛蓝海风
+ 环境：Eathena Jathena++
+ OQ：199480984
+ E-mail：haohaolover0129@yahoo.com.cn
+
+-----------------------更新及简要说明------------------------
+
+ 脚本定制，请QQ联系
+
+\*----------------------------------------------------------*/
+
+
+/**************
+  [道场入场]
+**************/
+baoming2.gat,49,51,5	script	中级道场挑战	734,{
+	mes "=========道场挑战========";
+	mes "- ^984AAC欢迎您参加道场的挑战^000000";
+	mes "=========================";
+	next;
+	switch(select(	"队伍报名",
+			getgmlevel()?"GM在线设置":""
+	)){
+	case 1:
+		if (!getcharid(1)) {
+			mes "=========道场挑战========";
+			mes "- ^C63131您没有队伍,无法参赛^000000";
+			mes "=========================";
+			close;
+		}
+		mes "=========道场挑战========";
+		mes "- 报名费 : "+$@Dc_In_Zeny1+"z";
+		mes "=========================";
+		next;
+		menu "想参加",-;
+		if ( Zeny<$@Dc_In_Zeny1 ){
+			mes "=========道场挑战========";
+			mes "- ^C63131金钱不足^000000,快去银行取钱";
+			mes "=========================";
+			close;
+		}
+		if ( getmapusers("guild_vs21.gat")==0 ){
+			killmonster "guild_vs21.gat","Dc_Main_6::OnKillMob";
+			warpparty "guild_vs21.gat",49,47,getcharid(1);
+			set Zeny,Zeny-$@Dc_In_Zeny1;
+			set $@Dc_Truns_1a,1;
+			set $@Dc_Party_1a,getcharid(1);
+			enablenpc "裁判#6";
+		}else if ( getmapusers("guild_vs22.gat")==0 ){
+			killmonster "guild_vs22.gat","Dc_Main_7::OnKillMob";
+			warpparty "guild_vs22.gat",49,47,getcharid(1);
+			set Zeny,Zeny-$@Dc_In_Zeny1;
+			set $@Dc_Truns_2a,1;
+			set $@Dc_Party_2a,getcharid(1);
+			enablenpc "裁判#7";
+		}else if ( getmapusers("guild_vs23.gat")==0 ){
+			killmonster "guild_vs23.gat","Dc_Main_8::OnKillMob";
+			warpparty "guild_vs23.gat",49,47,getcharid(1);
+			set Zeny,Zeny-$@Dc_In_Zeny1;
+			set $@Dc_Truns_3a,1;
+			set $@Dc_Party_3a,getcharid(1);
+			enablenpc "裁判#8";
+		}else if ( getmapusers("guild_vs24.gat")==0 ){
+			killmonster "guild_vs24.gat","Dc_Main_9::OnKillMob";
+			warpparty "guild_vs24.gat",49,47,getcharid(1);
+			set Zeny,Zeny-$@Dc_In_Zeny1;
+			set $@Dc_Truns_5a,1;
+			set $@Dc_Party_5a,getcharid(1);
+			enablenpc "裁判#9";
+		}else{
+			mes "=========道场挑战========";
+			mes "[场地一]队伍: ["+getpartyname($@Dc_Party_1a)+"]";
+			mes "[场地二]队伍: ["+getpartyname($@Dc_Party_2a)+"]";
+			mes "[场地三]队伍: ["+getpartyname($@Dc_Party_3a)+"]";
+			mes "[场地四]队伍: ["+getpartyname($@Dc_Party_5a)+"]";
+			mes "全部场地都有人在挑战了,请稍后再试";
+			mes "=========================";
+			close;
+		}
+		end;
+	case 2:
+		mes "=========^CA2CCB基本信息^000000========";
+		mes "- ^467BB0报名费^000000 : "+$@Dc_In_Zeny1+"z";
+		mes "- ^639485关  数^000000 : "+$@Dc_Conf_Turns1+"关(轮)";
+		mes "- ^A5527B刷怪数^000000 : "+$@Dc_Conf_Nums1+"只";
+		mes "=========^82985F奖励信息^000000========";
+		mes "- ^A36B54金钱奖^000000 : "+$@Dc_Win_Zeny1+"z";
+		mes "- ^676394物品奖^000000 :";
+		for (set @i,0;@i<getarraysize($@Dc_Item_Id1);set @i,@i+1)
+			mes "-     ["+getitemname($@Dc_Item_Id1[@i])+"] x "+$@Dc_Item_Nums1;
+		mes "- 在以上物品中随即给任意一件";
+		mes "=========================";
+		next;
+		do {
+			switch(select(	"设置报名费",
+					"设置关数",
+					"设置刷怪数",
+					"设置金钱奖励",
+					"设置物品奖励"
+			)){
+			case 1:
+				mes "========设置报名费========";
+				mes "- 请输入报名费 (单位:z)";
+				mes "==========================";
+				next;
+				input @Dc_temp1;
+				set $@Dc_In_Zeny1,@Dc_temp1;
+				mes "========设置报名费========";
+				mes "- ^46B046设置成功^000000";
+				mes "==========================";
+				next;
+				break;
+			case 2:
+				mes "=========设置关数=========";
+				mes "- 请输入关数 (最少2关)";
+				mes "==========================";
+				next;
+				input @Dc_temp1;
+				if (@Dc_temp1<2){
+					mes "=========设置关数=========";
+					mes "- ^C63131设置有误^000000";
+					mes "==========================";
+				}else{
+					set $@Dc_Conf_Turns1,@Dc_temp1;
+					mes "=========设置关数=========";
+					mes "- ^46B046设置成功^000000";
+					mes "==========================";
+				}
+				next;
+				break;
+			case 3:
+				mes "========设置刷怪数========";
+				mes "- 请输入刷怪数 (最少1只)";
+				mes "==========================";
+				next;
+				input @Dc_temp1;
+				if (@Dc_temp1<1){
+					mes "========设置刷怪数========";
+					mes "- ^C63131设置有误^000000";
+					mes "==========================";
+				}else{
+					set $@Dc_Conf_Nums1,@Dc_temp1;
+					mes "========设置刷怪数========";
+					mes "- ^46B046设置成功^000000";
+					mes "==========================";
+				}
+				next;
+				break;
+			case 4:
+				mes "=======设置金钱奖励=======";
+				mes "- 请输入金钱奖励 (单位:z)";
+				mes "==========================";
+				next;
+				input @Dc_temp1;
+				set $@Dc_Win_Zeny1,@Dc_temp1;
+				mes "=======设置金钱奖励=======";
+				mes "- ^46B046设置成功^000000";
+				mes "==========================";
+				next;
+				break;
+			case 5:
+				mes "=======设置物品奖励=======";
+				mes "- 奖励在以下物品中随即获得";
+				mes "==========================";
+				next;
+				set @n,0;
+				set @o,(getarraysize($@Dc_Item_Id1)%5)+5;
+				set @m,getarraysize($@Dc_Item_Id1)/5;
+				if (@o>5) { set @m,@m+1; set @o,@o-5; }
+				do {
+					set @z,@n*5;
+					set @n,@n+1;
+					set @tmp,select((@n==1||getarraysize($@Dc_Item_Id1)<6)?"":"↑上一页↑",
+							$@Dc_Item_Id1[0+@z]?getitemname($@Dc_Item_Id1[0+@z]):"",
+							$@Dc_Item_Id1[1+@z]?getitemname($@Dc_Item_Id1[1+@z]):"",
+							$@Dc_Item_Id1[2+@z]?getitemname($@Dc_Item_Id1[2+@z]):"",
+							$@Dc_Item_Id1[3+@z]?getitemname($@Dc_Item_Id1[3+@z]):"",
+							$@Dc_Item_Id1[4+@z]?getitemname($@Dc_Item_Id1[4+@z]):"",
+							(@n<@m)?"↓下一页↓":"");
+					set @y,(@tmp-2)+@z;
+					if(((@n<@m&&@tmp!=7)||(@n==@m&&@tmp!=(@o+2))) && @tmp !=1) break;
+					if(@tmp==1) set @n,@n-2;
+				} while(@n<@m);
+				mes "=======设置物品奖励=======";
+				mes "- 您选择的物品";
+				mes "-     ["+getitemname($@Dc_Item_Id1[@y])+"] x "+$@Dc_Item_Nums1;
+				mes "- 您要做什么操作?";
+				mes "==========================";
+				next;
+				switch(select("添加新物品","修改此物品","奖品数量修改")){
+				case 1:
+					mes "=======设置物品奖励=======";
+					mes "- 请输入需要添加物品item_id";
+					mes "==========================";
+					next;
+					input @Dc_temp1;
+					mes "=======设置物品奖励=======";
+					mes "- 您添加的物品为";
+					mes "-     ["+getitemname(@Dc_temp1)+"]";
+					mes "- 您确定么?";
+					mes "==========================";
+					next;
+					menu "我确定",-;
+					set $@Dc_Item_Id1[getarraysize($@Dc_Item_Id1)],@Dc_temp1;
+					mes "=======设置物品奖励=======";
+					mes "- ^46B046设置成功^000000";
+					mes "==========================";
+					next;
+					break;
+				case 2:
+					mes "=======设置物品奖励=======";
+					mes "- 请输入需要修改物品item_id";
+					mes "==========================";
+					next;
+					input @Dc_temp1;
+					mes "=======设置物品奖励=======";
+					mes "- 您修改的物品为";
+					mes "-     ["+getitemname(@Dc_temp1)+"]";
+					mes "- 您确定么?";
+					mes "==========================";
+					next;
+					menu "我确定",-;
+					set $@Dc_Item_Id1[@y],@Dc_temp1;
+					mes "=======设置物品奖励=======";
+					mes "- ^46B046设置成功^000000";
+					mes "==========================";
+					next;
+					break;
+				case 3:
+					mes "=======设置物品奖励=======";
+					mes "- 请输入物品数量 (最少1件)";
+					mes "==========================";
+					next;
+					input @Dc_temp1;
+					if (@Dc_temp1<1){
+						mes "=======设置物品奖励=======";
+						mes "- ^C63131设置有误^000000";
+						mes "==========================";
+					}else{
+						set $@Dc_Item_Nums1,@Dc_temp1;
+						mes "=======设置物品奖励=======";
+						mes "- ^46B046设置成功^000000";
+						mes "==========================";
+					}
+					next;
+					break;
+				}
+			}
+		} while(1);
+	}
+
+OnInit:
+	//设置入场金钱
+	set $@Dc_In_Zeny1,6000000;
+
+	//设置关数
+	set $@Dc_Conf_Turns1,15;
+
+	//设置每关刷怪数
+	set $@Dc_Conf_Nums1,5;
+
+	//设置怪物ID
+	setarray $@Dc_Mob1[0],1272,1039,1147,1785,1389,1885,1630,1623,1511,1768,1688,1734,1719,1157,1373,1312,1685,1779;
+
+	//设置物品奖励
+	//[物品 ID ]
+	setarray $@Dc_Item_Id1[0],31024,31025,31026,31027,31028,31029,31030,31031,31032,31050,31051,31052,31053,31054,31055,31056,31057,31058,31093,31094;
+	//[物品数量]
+	set $@Dc_Item_Nums1,3;
+	//[金钱奖励]
+	set $@Dc_Win_Zeny1,8000000;
+	waitingroom "中级道场",0;
+	end;
+}
+
+/**************
+   [场地一]
+**************/
+
+guild_vs21.gat,0,0,0	script	Dc_Main_6	-1,{
+OnMain:
+	killmonsterall "guild_vs21.gat";
+	set $@Dc_Mob1_1a,0;
+	for(set $@Dc1a,1;$@Dc1a<=$@Dc_Conf_Nums1;set $@Dc1a,$@Dc1a+1) {
+		monster "guild_vs21.gat",50,49,"--ja--",$@Dc_Mob1[rand(getarraysize($@Dc_Mob1))],1,"Dc_Main_6::OnKillMob";
+		set $@Dc_Mob1_1a,$@Dc_Mob1_1a+1;
+	}
+
+	if ($@Dc_Truns_1a != $@Dc_Conf_Turns1)
+		mapannounce "guild_vs21.gat","[ 道场 ] 魔物放出！挑战开始！",15,0xBD3989;
+	else
+		mapannounce "guild_vs21.gat","[ 道场 ] 最后一关挑战开始,请好好加油！",15,0xBD3989;
+	end;
+
+OnKillMob:
+	set $@Dc_Mob1_1a, $@Dc_Mob1_1a - 1;
+	if( $@Dc_Mob1_1a > 0 ) end;
+	mapannounce "guild_vs21.gat","[ 道场 ] 恭喜你,挑战成功！",15,0x569AA0;
+	mapannounce "guild_vs21.gat","[ 道场 ] "+getpartyname($@Dc_Party_1a)+" 队伍, 第"+$@Dc_Truns_1a+"关挑战成功！",15,0xCB3A2C;
+        if($@Dc_Truns_1a == $@Dc_Conf_Turns1) {
+		addtimer 5000,"Dc_Main_6::OnEnd";
+		end;
+	}
+	set $@Dc_Truns_1a,$@Dc_Truns_1a + 1;
+	addtimer 5000,"Dc_Main_6::OnMain";
+	end;
+OnEnd:
+       areawarp "guild_vs21.gat",0,0,300,300,"lingjiang2.gat",42,285;
+       end;
+}
+
+/**************
+   [场地二]
+**************/
+
+guild_vs22.gat,0,0,0	script	Dc_Main_7	-1,{
+OnMain:
+	killmonsterall "guild_vs22.gat";
+	set $@Dc_Mob1_2a,0;
+	for(set $@Dc2a,1;$@Dc2a<=$@Dc_Conf_Nums1;set $@Dc2a,$@Dc2a+1) {
+		monster "guild_vs22.gat",50,49,"--ja--",$@Dc_Mob1[rand(getarraysize($@Dc_Mob1))],1,"Dc_Main_7::OnKillMob";
+		set $@Dc_Mob1_2a,$@Dc_Mob1_2a+1;
+	}
+	if ($@Dc_Truns_2a != $@Dc_Conf_Turns1)
+		mapannounce "guild_vs22.gat","[ 道场 ] 魔物放出！挑战开始！",15,0xBD3989;
+	else
+		mapannounce "guild_vs22.gat","[ 道场 ] 最后一关挑战开始,请好好加油！",15,0xBD3989;
+
+	end;
+
+OnKillMob:
+	set $@Dc_Mob1_2a, $@Dc_Mob1_2a - 1;
+	if( $@Dc_Mob1_2a > 0 ) end;
+	mapannounce "guild_vs22.gat","[ 道场 ] 恭喜你,挑战成功！",15,0x569AA0;
+	mapannounce "guild_vs22.gat","[ 道场 ] "+getpartyname($@Dc_Party_2a)+" 队伍, 第"+$@Dc_Truns_2a+"关挑战成功！",15,0xCB3A2C;
+	if($@Dc_Truns_2a == $@Dc_Conf_Turns1) {
+		addtimer 5000,"Dc_Main_7::OnEnd";
+		end;
+	}
+	set $@Dc_Truns_2a,$@Dc_Truns_2a + 1;
+	addtimer 5000,"Dc_Main_7::OnMain";
+	end;
+OnEnd:
+	areawarp "guild_vs22.gat",0,0,300,300,"lingjiang2.gat",42,285;
+	end;
+}
+
+/**************
+   [场地三]
+**************/
+
+guild_vs23.gat,0,0,0	script	Dc_Main_8	-1,{
+OnMain:
+	killmonsterall "guild_vs23.gat";
+	set $@Dc_Mob1_3a,0;
+	for(set $@Dc3a,1;$@Dc3a<=$@Dc_Conf_Nums1;set $@Dc3a,$@Dc3a+1) {
+		monster "guild_vs23.gat",50,49,"--ja--",$@Dc_Mob1[rand(getarraysize($@Dc_Mob1))],1,"Dc_Main_8::OnKillMob";
+		set $@Dc_Mob1_3a,$@Dc_Mob1_3a+1;
+	}
+	if ($@Dc_Truns_3a != $@Dc_Conf_Turns1)
+		mapannounce "guild_vs23.gat","[ 道场 ] 魔物放出！挑战开始！",15,0xBD3989;
+	else
+		mapannounce "guild_vs23.gat","[ 道场 ] 最后一关挑战开始,请好好加油！",15,0xBD3989;
+
+	end;
+
+OnKillMob:
+	set $@Dc_Mob1_3a, $@Dc_Mob1_3a - 1;
+	if( $@Dc_Mob1_3a > 0 ) end;
+	mapannounce "guild_vs23.gat","[ 道场 ] 恭喜你,挑战成功！",15,0x569AA0;
+	mapannounce "guild_vs23.gat","[ 道场 ] "+getpartyname($@Dc_Party_3a) +" 队伍, 第"+$@Dc_Truns_3+"关挑战成功！",15,0xCB3A2C;
+	if($@Dc_Truns_3a == $@Dc_Conf_Turns1) {
+		addtimer 5000,"Dc_Main_8::OnEnd";
+		end;
+	}
+	set $@Dc_Truns_3a,$@Dc_Truns_3a + 1;
+	addtimer 5000,"Dc_Main_8::OnMain";
+	end;
+OnEnd:
+	areawarp "guild_vs23.gat",0,0,300,300,"lingjiang2.gat",42,285;
+	end;
+}
+
+/**************
+   [场地四]
+**************/
+
+guild_vs24.gat,0,0,0	script	Dc_Main_9	-1,{
+OnMain:
+	killmonsterall "guild_vs24.gat";
+	set $@Dc_Mob1_5a,0;
+	for(set $@Dc5a,1;$@Dc5a<=$@Dc_Conf_Nums1;set $@Dc5a,$@Dc5a+1) {
+		monster "guild_vs24.gat",50,49,"--ja--",$@Dc_Mob1[rand(getarraysize($@Dc_Mob1))],1,"Dc_Main_9::OnKillMob";
+		set $@Dc_Mob1_5a,$@Dc_Mob1_5a+1;
+	}
+	if ($@Dc_Truns_5a != $@Dc_Conf_Turns1)
+		mapannounce "guild_vs23.gat","[ 道场 ] 魔物放出！挑战开始！",15,0xBD3989;
+	else
+		mapannounce "guild_vs23.gat","[ 道场 ] 最后一关挑战开始,请好好加油！",15,0xBD3989;
+	end;
+
+OnKillMob:
+	set $@Dc_Mob1_5a, $@Dc_Mob1_5a - 1;
+	if( $@Dc_Mob1_5a > 0 ) end;
+	mapannounce "guild_vs24.gat","[ 道场 ] 恭喜你,挑战成功！",15,0x569AA0;
+	mapannounce "guild_vs24.gat","[ 道场 ] "+getpartyname($@Dc_Party_5a) +" 队伍, 第"+$@Dc_Truns_5a+"关挑战成功！",15,0xCB3A2C;
+	if($@Dc_Truns_5a == $@Dc_Conf_Turns1) {
+		addtimer 5000,"Dc_Main_9::OnEnd";
+		end;
+	}
+	set $@Dc_Truns_5a,$@Dc_Truns_5a + 1;
+	addtimer 5000,"Dc_Main_9::OnMain";
+	end;
+
+OnEnd:
+	areawarp "guild_vs24.gat",0,0,300,300,"lingjiang2.gat",42,285;
+	end;
+}
+
+/**************
+    [裁判]
+**************/
+guild_vs21.gat,50,49,4	script	裁判#6	758,{
+	mes "[裁判]";
+	mes "您准备要开始挑战了吗？";
+	next;
+	menu "是的",-;
+	mes "[裁判]";
+	mes "挑战开始！";
+	close2;
+	doevent "Dc_Main_6::OnMain";
+	disablenpc "裁判#6";
+	end;
+
+}
+
+guild_vs22.gat,50,49,4	script	裁判#7	758,{
+	mes "[裁判]";
+	mes "您准备要开始挑战了吗？";
+	next;
+	menu "是的",-;
+	mes "[裁判]";
+	mes "挑战开始！";
+	close2;
+	doevent "Dc_Main_7::OnMain";
+	disablenpc "裁判#7";
+	end;
+}
+
+guild_vs23.gat,50,49,4	script	裁判#8	758,{
+	mes "[裁判]";
+	mes "您准备要开始挑战了吗？";
+	next;
+	menu "是的",-;
+	mes "[裁判]";
+	mes "挑战开始！";
+	close2;
+	doevent "Dc_Main_8::OnMain";
+	disablenpc "裁判#8";
+	end;
+}
+
+
+
+guild_vs24.gat,50,49,4	script	裁判#9	758,{
+	mes "[裁判]";
+	mes "您准备要开始挑战了吗？";
+	next;
+	menu "是的",-;
+	mes "[裁判]";
+	mes "挑战开始！";
+	close2;
+	doevent "Dc_Main_9::OnMain";
+	disablenpc "裁判#9";
+	end;
+}
+
+
+/**************
+    [奖励]
+**************/
+lingjiang2.gat,30,285,4	script	中级奖金发放员	736,{
+
+	mes "[中级奖金发放员]";
+	mes "我是负责发放奖金的";
+	mes "你将会获得"+$@Dc_Win_Zeny1+"z";
+	mes "你确定你要选择奖金吗？";
+	next;
+	menu "我要领金钱",-;
+	mes "[中级奖金发放员]";
+	mes "奖金还不错吧？";
+	close2;
+	set zeny,zeny+$@Dc_Win_Zeny1;
+	warp "prontera.gat",156,108;
+	end;
+
+}
+
+lingjiang2.gat,53,285,4	script	中级奖品发放员	737,{
+
+	mes "[中级奖品发放员]";
+	mes "我是负责发放奖品的";
+	mes "你确定你要选择奖品吗？";
+	next;
+	menu "我要领奖品",-;
+	mes "[中级奖品发放员]";
+	mes "奖品还不错吧？";
+	close2;
+	getitem $@Dc_Item_Id1[rand(getarraysize($@Dc_Item_Id1))],$@Dc_Item_Nums1;
+	warp "prontera.gat",156,108;
+	end;
+}

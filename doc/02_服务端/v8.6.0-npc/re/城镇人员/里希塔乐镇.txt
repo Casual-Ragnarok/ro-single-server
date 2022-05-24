@@ -1,0 +1,2594 @@
+//========================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------
+// - 里希塔乐镇 城镇脚本 -
+//========================
+//= 版本：1.5
+//============================================================
+//= [Lucius][Merpi][Blackboard#l][Delna][Victor Perfecto]
+//= 以上对话内容未知 
+//= 自JA加入[维吉尔][莉咪][科学家1/2/3][修理工#lhz][炼金术师#lhz]
+//= 重新排列一下NPC,分类整理
+//============================================================
+
+//==============================
+// 城镇NPC-少女
+//==============================
+//Jiwon
+lighthalzen,198,285,5	script	少女#lhz	862,{
+	mes "[少女]";
+	mes "响遏行云的钢琴声，舒畅的";
+	mes "庭园，路过的行人及";
+	mes "好天气... 体认到了和平，";
+	mes "没什么好再奢求的";
+	next;
+	mes "[少女]";
+	mes "我认为这和平，都是";
+	mes "生活在富裕的里希塔乐镇";
+	mes "的人才能感受到吧，";
+	mes "真是个很棒的地方呢，";
+	mes "叫做里希塔乐镇的这个村落";
+	close;
+}
+//Ruth
+lighthalzen,261,112,3	script	少女#2lhz	862,{
+	mes "[少女]";
+	mes "你说，我们在这么好的";
+	mes "天气，在这么有气氛";
+	mes "又清爽的地方约会，";
+	mes "不觉得很棒吗?";
+	mes "嗯?嗯?";
+	next;
+	mes "[少女]";
+	mes "在这种气氛下，能和你";
+	mes "在一起，高兴的整个人";
+	mes "快要溶化掉~ 溶化的我";
+	mes "会像旁边的水一样清彻~";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "... 我快要抓狂了!";
+	mes "最好看都别看一眼，";
+	mes "直接穿过她们吧，恶恶";
+	close;
+}
+//Kariya
+lighthalzen,233,121,4	script	女孩#lhz	72,{
+	mes "[女孩]";
+	mes "'里希塔乐镇'，有光的极致的意义";
+	next;
+	mes "[女孩]";
+	mes "就像村落的名字一样，在秀发兹发德最富有最华丽亮丽的村落，";
+	mes "旅行者先生/小姐，你也很喜欢吧?";
+	close;
+}
+//Maivi
+lighthalzen,78,120,3	script	少女#3lhz	862,{
+	mes "[少女]";
+	mes "....................";
+	next;
+	mes "[少女]";
+	mes "....................";
+	next;
+	mes "[少女]";
+	mes "....................";
+	mes "啊，哎哟，不小心睡着了，";
+	mes "天气实在太舒服的关系..";
+	mes "与~ 那遥远地方空气差的";
+	mes "村落是大相迳庭呢";
+	next;
+	mes "[少女]";
+	mes "这都受惠于位在";
+	mes "那中间的企业";
+	mes "不是吗?";
+	close;
+}
+//Joyce
+lighthalzen,190,134,5	script	少女#4lhz	862,{
+	mes "[少女]";
+	mes "你那强烈的眼神，";
+	mes "无情又深深地刺痛了";
+	mes "我的心，让少女的心脏";
+	mes "小鹿乱撞剧跳不已，哎哟...";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "...一定有这种令人起鸡皮疙瘩";
+	mes "的人... 装不知道直接经过吧";
+	close;
+}
+//Jade
+lighthalzen,239,64,5	script	少女#5lhz	862,{
+	mes "[少女]";
+	mes "根据消息，听说有个";
+	mes "充斥着剑和魔法的";
+	mes "奇异国度，在那种地方";
+	mes "怎么生活啊... 真是个";
+	mes "幻想的世界";
+	next;
+	mes "[少女]";
+	mes "幸好这国度是真实的，";
+	mes "机械!金钱!普通人!";
+	mes "啊啊... 没有比这个";
+	mes "更好的吧?";
+	next;
+	mes "[少女]";
+	mes "不过，真有那充斥着";
+	mes "剑和魔法的国度的话， ";
+	mes "我倒想去见识一下";
+	close;
+}
+//Kimmy
+lighthalzen,176,65,5	script	少女#7lhz	862,{
+	mes "[少女]";
+	mes "与别村不同的是，这里";
+	mes "贩售着许多漂亮衣服，和";
+	mes "可爱装饰品，所以很喜欢，";
+	mes "像我这样爱美的少女而言，";
+	mes "简直就是天堂了";
+	next;
+	mes "[少女]";
+	mes "你好像是冒险家，与其";
+	mes "每天都穿着不帅气又相同的";
+	mes "衣服，倒不如在这里治装";
+	mes "好好打扮一下如何呢?";
+	close;
+}
+//==============================
+// 城镇NPC-青年
+//==============================
+//Oyoung
+lighthalzen,259,108,7	script	青年#Oyoung	869,{
+	mes "[青年]";
+	mes "喔耶，宝贝，你没有向我那";
+	mes "开阔的胸怀里跳水游泳的";
+	mes "欲望吗，嗯，宝贝?";
+	mes "总比在隔壁的水池里游泳，";
+	mes "更~加快乐吧";
+	next;
+	mes "[青年]";
+	mes "若你跳进我怀里的话，";
+	mes "我会让你尝到海浪般的";
+	mes "大大拥抱，";
+	mes "带给你浪漫的情境，";
+	mes "呜呼哼";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "... 耳朵快烂掉了，我要闭上";
+	mes "眼睛、捂住耳朵，快步通过，";
+	mes "真是受不了...";
+	close;
+}
+//Sameer
+lighthalzen,89,73,4	script	青年#2lhz	854,{
+	mes "[青年]";
+	mes "我们村落情侣档太多了!";
+	mes "真是的，吃饱饭撑着";
+	mes "没事干是不是!哼哼哼!";
+	next;
+	mes "[青年]";
+	mes "搞不清楚状况，把一般市民";
+	mes "使用的公共场所看成什么了，";
+	mes "大胆的做出伤风败俗的";
+	mes "行为来!而且做那种事的";
+	mes "情侣不只是一俩对而已!";
+	next;
+	mes "[青年]";
+	mes "那些伤风败俗有如恶魔般的情侣们，";
+	mes "警察应该以妨害风化罪";
+	mes "统统把他们抓起来，呜呜，";
+	mes "眼鼻都快烂掉啦";
+	close;
+}
+//Sigmund
+lighthalzen,232,156,4	script	青年#3lhz	866,{
+	mes "[青年]";
+	mes "看守在通往贫民区";
+	mes "路口的警卫，时常在";
+	mes "混水摸鱼呢";
+	next;
+	mes "[青年]";
+	mes "其实我也是趁他混水摸鱼时，";
+	mes "偷溜到对面去呢，";
+	mes "只是去了也没什么好看的，";
+	mes "所以马上就感到后悔了";
+	next;
+	mes "[青年]";
+	mes "反正也没有人会想";
+	mes "过去那里，干嘛要";
+	mes "看守呢?";
+	close;
+}
+//Dan Song
+lighthalzen,191,134,5	script	青年#4lhz	869,{
+	mes "[青年]";
+	mes "由于你的眼睛太明亮了，";
+	mes "像镜子般映照我的模样，";
+	mes "你的心肠也一样明澈";
+	mes "又美丽，嘻";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "...一定有这种令人起鸡皮疙瘩";
+	mes "的人... 装不知道直接经过吧";
+	close;
+}
+//Kemp
+lighthalzen,125,68,5	script	青年#5lhz	97,{
+	mes "[青年]";
+	mes "喂喂，你知道吗?位于上方的";
+	mes "那间巨大企业啊?听说那里";
+	mes "有许多的怪癖职员呢!";
+	next;
+	mes "[青年]";
+	mes "我是一次也没去过啦，";
+	mes "但我确定那里是充斥着";
+	mes "黑暗气息又遍布怪人们的巢穴，";
+	mes "我是不太想去...";
+	mes "只是超好奇的!";
+	next;
+	mes "[青年]";
+	mes "他们是怎样怪癖呢?";
+	mes "...我自己这样想像";
+	mes "还蛮有趣的，啊哈哈";
+	close;
+}
+//Sefith
+lighthalzen,132,103,5	script	村落 青年#lhz	734,{
+	mes "[世琵司]";
+	mes "受女性喜爱的男性是，就是要靠知性和外貌还有礼貌，所有条件都具备的我，就是主要代表之一";
+	next;
+	mes "[世琵司]";
+	mes "看起来粗犷的下巴线条，不被任何诱惑所动摇的信任般的强烈的眼光，";
+	mes "还有没有任何空隙的强烈气息，让周围喘不过气的";
+	next;
+	mes "[世琵司]";
+	mes "只注视着我，连生命都可以牺牲似的热情，像火燃烧般的爱.. ";
+	mes "这是所有女性们梦寐以求的爱，我可以让女性们知道'可以被保护的感觉'是什么样的感觉，我是有强硬的被信任感有能力的男子";
+	next;
+	mes "[世琵司]";
+	mes "对面的轻如红毛的小台客们，根本就没有信任感，";
+	mes "呼呼，里希塔乐镇所有女性们的视线，我要全部搜刮呢..!";
+	close;
+}
+//Laqumet
+lighthalzen,147,105,3	script	村落 青年#2lhz	869,{
+	mes "[马喀弥特]";
+	mes "女性们比较喜欢听取她所有要求的男人，并且能聊的来喜欢具备幽默的男性，不是吗?";
+	next;
+	mes "[马喀弥特]";
+	mes "可爱的外貌和不能直视的白析光芒，天然灿烂的微笑，以及正面的个性";
+	next;
+	mes "[马喀弥特]";
+	mes "对面的世琵司家伙，只会摆一些姿势，没有什么内涵?";
+	mes "女人们总是喜欢听一些诚实的感情表白!";
+	next;
+	mes "[马喀弥特]";
+	mes "总比哪些每天装模作样有礼貌没精神的家伙，还不如每次明朗的都在你身边，鼓舞你士气像天使般的我，是不是最好的男性呢?";
+	mes "您是怎么认为啊?";
+	close;
+}
+//Kosit
+lighthalzen,107,107,3	script	青年#12lhz	869,{
+	mes "[青年]";
+	mes "真搞不懂这里的治安";
+	mes "到底是好还是坏，";
+	mes "警卫也多，好像又有";
+	mes "许多为了维持治安的";
+	mes "各项政策...";
+	next;
+	mes "[青年]";
+	mes "也许是对过度压制方面的";
+	mes "反抗，像流氓一样的坏人";
+	mes "算蛮多的... 或许是因光芒";
+	mes "太毕露，所以黑暗也随之";
+	mes "强大..了吧?";
+	next;
+	mes "[青年]";
+	mes "管制的太严苛";
+	mes "并非全是好事";
+	close;
+}
+//==============================
+// 城镇NPC-小孩
+//==============================
+//Sung
+lighthalzen,233,82,4	script	小孩#lhz	716,{
+	mes "[小孩]";
+	mes "我呢，长大以后一定要成为";
+	mes "伟人，然后把我做成";
+	mes "铜像，没错，就像";
+	mes "我眼前的铜像一样";
+	next;
+	mes "[小孩]";
+	mes "你不觉得很赞吗?凡是";
+	mes "路过的人看到我的铜像，";
+	mes "都会敬佩不已吧，";
+	mes "光想像就好开心";
+	next;
+	mes "[小孩]";
+	mes "很想快快长大... 既然这样";
+	mes "干脆长得又高又帅的话，";
+	mes "铜像也就可以造的";
+	mes "很帅气了，嘻嘻";
+	close;
+}
+
+//==============================
+// 城镇NPC-奶奶
+//==============================
+//Samnang
+lighthalzen,220,244,3	script	奶奶#lhz	863,{
+	mes "[奶奶]";
+	mes "咻呜... 到我这把年纪时，";
+	mes "就懒得动了，真是";
+	mes "糟糕，上次在路上也是身着";
+	mes "奇特黑色西装的人士经过时，";
+	mes "叫我让开，我却没能未能";
+	mes "及时让路";
+	next;
+	mes "[奶奶]";
+	mes "结果他们就把我这";
+	mes "老骨头给推开...到底";
+	mes "那些家伙懂不懂";
+	mes "什么是礼貌啊";
+	next;
+	mes "[奶奶]";
+	mes "我已活到这把年纪了，";
+	mes "干脆叫我死是不是... 嗳哟哟";
+	mes "这社会究竟怎么有这种人啊?";
+	close;
+}
+//Janice
+lighthalzen,45,59,8	script	奶奶#2lhz	863,{
+	mes "[奶奶]";
+	mes "唉哟... 我住在这个地区住了多久了啦，";
+	mes "既然我又把路给忘了，";
+	mes "因为路太宽了可以看到天空，";
+	mes "看着天空便走着，";
+	mes "既然走到不知道的地方去了...";
+	close;
+}
+//==============================
+// 城镇NPC-爷爷
+//==============================
+//Collins
+lighthalzen,115,159,5	script	爷爷#lhz	866,{
+	mes "[爷爷]"; 
+	mes "雷根贝勒企业... 若是我儿子"; 
+	mes "能进入那里工作的话，该有"; 
+	mes "多好呢... 呵呵，"; 
+	mes "以稳定的职业而言，"; 
+	mes "大企业当然是首屈一指啰!"; 
+	next;
+	mes "[爷爷]"; 
+	mes "只是想要进入大企业"; 
+	mes "很困难... 进入大企业的人，"; 
+	mes "难道都是超人吗?";
+	close;
+}
+//Mauro
+lighthalzen,138,50,8	script	爷爷#2lhz	847,{
+	mes "[爷爷]";
+	mes "你年迈时!会像我一样";
+	mes "满脸邹纹而且体虚呢!";
+	mes "想当年我也不可一世呢!";
+	next;
+	mes "[爷爷]";
+	mes "什么?你是问我为何如此";
+	mes "苍老啊?那是因为我年轻时，";
+	mes "过度劳碌的缘故!";
+	next;
+	mes "[爷爷]";
+	mes "这村落生活能过的这么好，";
+	mes "这都归功于像我这样的老人，";
+	mes "年轻时非常努力工作的缘故，";
+	mes "现在才能富裕啊...嗳!";
+	next;
+	mes "[爷爷]";
+	mes "现在的年轻人";
+	mes "太不懂得感恩!";
+	close;	
+}
+//Wallace
+lighthalzen,202,94,5	script	爷爷#3lhz	847,{
+	mes "[爷爷]";
+	mes "你年迈时!会像我一样";
+	mes "满脸邹纹而且体虚呢!";
+	mes "想当年我也不可一世呢!";
+	next;
+	mes "[爷爷]";
+	mes "什么?你是问我为何如此";
+	mes "苍老啊?那是因为我年轻时，";
+	mes "过度劳碌的缘故!";
+	next;
+	mes "[爷爷]";
+	mes "这村落生活能过的这么好，";
+	mes "这都归功于像我这样的老人，";
+	mes "年轻时非常努力工作的缘故，";
+	mes "现在才能富裕啊...嗳!";
+	next;
+	mes "[爷爷]";
+	mes "现在的年轻人";
+	mes "太不懂得感恩!";
+	close;
+}
+//Srinivas
+lighthalzen,258,223,3	script	爷爷#4lhz	866,{
+	mes "[爷爷]";
+	mes "咻呜... 总觉得旁边";
+	mes "那些快崩塌的房子，";
+	mes "降低本村落的格调，";
+	mes "确实帮了大忙";
+	next;
+	mes "[爷爷]";
+	mes "村落的格调要高一点，";
+	mes "生活才会有乐趣，又能";
+	mes "向其它村落的人好好";
+	mes "炫燿一番... 嗳嗳";
+	close;
+}
+//==============================
+// 城镇NPC-老人
+//==============================
+//Elmer Keays
+lighthalzen,66,94,5	script	老人#lhz	866,{
+	mes "[老人]";
+	mes "这样走着，回想到以前的事情啊，";
+	mes "那时候老婆你真是人气好旺啊，我为了要独占你真的很辛苦啊，呼呼呼";
+	next;
+	mes "[老人]";
+	mes "不过现在的老婆还是很漂亮啊，";
+	mes "和老婆走过的这一生，我真是一位幸福的男人啊!呼呼呼";
+	close;
+}
+//Margie Keays
+lighthalzen,65,94,4	script	老人#2lhz	863,{
+	mes "[老人]";
+	mes "老头，今天天气真好啊，";
+	mes "有时候一起这样散步也不错啊?";
+	close;
+}
+//Villagomez
+lighthalzen,77,157,5	script	老人#3lhz	866,{
+	mes "[老人]";
+	mes "唉哟我只是出来想理个头发而已啊，这到底是哪里呀..";
+	mes "上一次我们家媳妇为了找我吃了不少苦头，这一次她又要对我发飙了，唉哟喂呀";
+	close;
+}
+//==============================
+// 城镇NPC-村民
+//==============================
+//Nannan
+lighthalzen,226,210,3	script	村民#lhz	86,{
+	mes "[村民]";
+	mes "我本来以为所有的炼金术师，";
+	mes "个个都只会读书，";
+	mes "但好像并不全然如此";
+	next;
+	mes "[村民]";
+	mes "也有一天到晚不读书、";
+	mes "光会喝酒玩乐的奇异之";
+	mes "炼金术师，大名";
+	mes "好像是... 布陵澈的样子?";
+	next;
+	mes "[村民]";
+	mes "炼金术师们都是勤奋、";
+	mes "全神贯注于自我锻炼的";
+	mes "这种我的想法，彻底被";
+	mes "颠覆了，唉咻...";
+	close;
+}
+//Klaubis
+lighthalzen,230,182,4	script	村民#2lhz	866,{
+	mes "[柯莱威斯]";
+	mes "嗯...?你是旅行者啊，";
+	mes "怎么样呢?对本村的观感呢?";
+	mes "其实生活还过得去啦， ";
+	mes "只是有点无聊";
+	next;
+	switch (select("你在这里住很久了吗?:就如你说的是个无聊的地方:请问...这村落发生的事件")) {
+	case 1:
+		mes "[柯莱威斯]";
+		mes "可以说是住很久了吧，";
+		mes "从先祖爷爷到现在，";
+		mes "把我算进去的话，";
+		mes "共居住了4代200年吧";
+		next;
+		mes "[柯莱威斯]";
+		mes "以我父亲而言，";
+		mes "嫌村落太无聊， ";
+		mes "就四处周游列国，";
+		mes "结果还是在故乡逝世";
+		next;
+		mes "[柯莱威斯]";
+		mes "所以我仍觉得";
+		mes "最好是生长在自己";
+		mes "出生的地方";
+		next;
+		mes "-语毕，老人似乎在";
+		mes "回想什么，远眺着";
+		mes "天空-";
+		close;
+	case 2:
+		mes "[柯莱威斯]";
+		mes "确实像我说的是个";
+		mes "蛮无聊的村落，";
+		mes "不过你也没必要";
+		mes "说的那么露骨吧";
+		next;
+		mes "[柯莱威斯]";
+		mes "既然你远来乍到，建议你";
+		mes "慢慢欣赏，应该会发现";
+		mes "本村许多优异的地方吧?";
+		next;
+		mes "[柯莱威斯]";
+		mes "(反正现在的小孩..";
+		mes "实在没礼貌...嗳嗳)";
+		next;
+		mes "-老人似乎感到不快，";
+		mes "瞪了你一下-";
+		close;
+	case 3:
+		mes "[柯莱威斯]";
+		mes "嗯?你是说哪一事件呢?";
+		mes "如果是关于杀人魔的传闻的话，";
+		mes "由于时间过久，";
+		mes "我也记不太清楚";
+		next;
+		mes "[柯莱威斯]";
+		mes "听说在武器店旁边的";
+		mes "小姐，对这传闻";
+		mes "很清楚... 那小姐";
+		mes "好像自称是超自然的";
+		mes "狂热份子吧";
+		next;
+		mes "[柯莱威斯]";
+		mes "她光讲些我这种老人家";
+		mes "完全听不懂的话，";
+		mes "你去找她看看吧，";
+		mes "要远行路上小心";
+		next;
+		mes "-老人似乎在想其它事，";
+		mes "陷入了沉思之中-";
+		close;
+	}
+}
+//Greedy Looking Man
+lighthalzen,205,208,3	script	看起来 富有的男人#lhz	853,{
+	mes "[克郎特]";
+	mes "喀，这里就是!";
+	mes "在这个地方，地价是最贵的地方呀!";
+	next;
+	mes "[克郎特]";
+	mes "喀，这种地方才是对克郎特先生来说，是最适合的村落啦!";
+	next;
+	mes "[克郎特]";
+	mes "喀..看好一个不错的用地后，搭建一座光线亮丽的城堡吧!";
+	next;
+	mes "[克郎特]";
+	mes "喀，现在刚好没有钱，等有钱了再说吧!";
+	mes "喀喀喀";
+	close;
+}
+//Maggie
+lhz_in02,34,213,4	script	小姐#lhz	91,{
+	mes "[小姐]";
+	mes "老实说呢... 我是来这边";
+	mes "卖花的，";
+	mes "可是... 听他们说一定要";
+	mes "投资商家繁荣协会的?";
+	next;
+	mes "[小姐]";
+	mes "听说摊位税金也不便宜啊...";
+	mes "虽然物品贩卖价格，";
+	mes "和其它地区是一样的，";
+	mes "当然这里卖出去的量是比较多一点的，";
+	mes "不过要有资本啊";
+	next;
+	mes "[小姐]";
+	mes "所以说在这里，";
+	mes "只卖便宜货是不可能的，";
+	mes "唉哟... 这么大的都市，";
+	mes "既然不知道花的美丽呀";
+	close;
+}
+//Lucius
+lighthalzen,182,102,3	script	爷爷	866,{
+	if (Zeny < 90000) {
+		mes "[Lucius]";
+		mes "Hello youngster~";
+		mes "Would you like to";
+		mes "make a donation";
+		mes "to help the hungry?";
+		next;
+		if (select("Sure.:No, thanks.") == 1) {
+			mes "[Lucius]";
+			mes "Now, you can donate 1 to";
+			mes "30,000 zeny that will be used";
+			mes "to support the poor and feed";
+			mes "starving children. If you wish";
+			mes "to cancel, please enter ''0.''";
+			next;
+			input .@input;
+			if (.@input > 30000 || .@input < 0) {
+				mes "[Lucius]";
+				mes "Please enter a value";
+				mes "from 1 to 30,000 in";
+				mes "order to make a donation";
+				mes "to the needy, youngster.";
+				close;
+			}
+			else if (.@input == 0) {
+				mes "[Lucius]";
+				mes "How disappointing,";
+				mes "but I'm sure you have";
+				mes "your reasons. Well, when";
+				mes "you can afford to give to";
+				mes "the needy, you're welcome";
+				mes "to come back at any time.";
+				close;
+			}
+			mes "[Lucius]";
+			mes "Thank you so much";
+			mes "for your " + .@input + " zeny donation.";
+			mes "I promise that your money";
+			mes "will be put to good use in";
+			mes "benefiting the poor and needy.";
+			next;
+			if (Zeny < .@input) {
+				mes "[Lucius]";
+				mes "Still, I'm just a little";
+				mes "disappointed. An adventurer";
+				mes "like you should be donating";
+				mes "as much as you possibly can...";
+				close;
+			}
+			set zeny,zeny-.@input;
+			set $donatedzeny,$donatedzeny + .@input;
+			mes "[Lucius]";
+			mes "So far, I've received";
+			mes "a total of " + $donatedzeny + " zeny in";
+			mes "donations. I'm glad to see";
+			mes "that there are still kind and";
+			mes "generous people in the world.";
+			if ($donatedzeny > 260000) {
+				next;
+				mes "[Lucius]";
+				mes "This should be enough";
+				mes "to send to the Poor Relief";
+				mes "Organization. Please accept";
+				mes "this small gift as a token of";
+				mes "my gratitude, adventurer. Bless";
+				mes "you, youngster and take care.";
+				set $donatedzeny,0;
+				getitem 603,1; //Old_Blue_Box
+				getitem 12016,1; //Speed_Up_Potion
+			}
+			close;
+		}
+		mes "[Lucius]";
+		mes "I understand. Still,";
+		mes "keep in mind that when";
+		mes "you give from your heart,";
+		mes "you will be rewarded tenfold.";
+		mes "Though I admit, the benefits";
+		mes "aren't always readily apparent.";
+		close;
+	}
+	mes "[Lucius]";
+	mes "Hello youngster~";
+	mes "You seem to be fairly";
+	mes "well-off. Money is good";
+	mes "to have, but be careful not";
+	mes "to become obssessed with it.";
+	next;
+	mes "[Lucius]";
+	mes "When you have the chance,";
+	mes "please show your generosity";
+	mes "towards others who may be";
+	mes "much less fortunate than you.";
+	close;
+}
+
+//Merpi
+lighthalzen,123,212,4	script	村民	700,{
+
+	mes "[麦莉碧]";
+	mes "啊啊，你好~";
+	mes "天气真好，像今天";
+	mes "这种天气洗衣服最好了，";
+	mes "不仅很快就会晒干，";
+	mes "又会柔软舒适，阳光和风的";
+	mes "香气都会渗透至衣物中";
+	next;
+	mes "[麦莉碧]";
+	mes "不过你是从哪儿来的呢?";
+	mes "好像是走远路的旅行者啊，";
+	mes "别老是匆匆忙忙的，偶尔";
+	mes "也享受一下这地方的景致";
+	mes "如何呢?这里的风很凉爽，";
+	mes "会让你神情气爽喔";
+	next;
+	mes "[麦莉碧]";
+	mes "啊，还有想要询问";
+	mes "这村落的有关事项时，";
+	mes "就问我吧，在允许的范围内";
+	mes "我会尽量告诉你的";
+	next;
+	switch (select("没有想问的事情:有什么有趣的事情吗?:我也喜欢洗衣服")) {
+	case 1:
+		mes "[麦莉碧]";
+		mes "什么?其实，像你这种人";
+		mes "应该周游列国过了，";
+		mes "对这里也没什么";
+		mes "感到好奇的吧，";
+		mes "我很忙，所以请你";
+		mes "让开吧，谢谢";
+		next;
+		mes "-他似乎有些不高兴，";
+		mes "又开始进行刚才的";
+		mes "工作，好像有点惹她";
+		mes "心情不好似的-";
+		close;
+	case 2:
+		mes "[麦莉碧]";
+		mes "其实这村落也一样，";
+		mes "这几年没发生特别";
+		mes "重大的事件呢，";
+		mes "不过蛮久米前";
+		mes "这里曾发生极恐怖";
+		mes "又凶残的事件";
+		next;
+		mes "[麦莉碧]";
+		mes "细节我是不太清楚，";
+		mes "可是这村落的某人";
+		mes "或许知道那件事情";
+		next;
+		mes "[麦莉碧]";
+		mes "据说是关于杀人魔和斧头的";
+		mes "故事...细节我不知道啦，";
+		mes "你要不要去讯问一下";
+		mes "这里的村民呢?";
+		close;
+	case 3:
+		mes "[麦莉碧]";
+		mes "洗衣服的方式还是以";
+		mes "手洗最好，当然";
+		mes "还有捶打方式及";
+		mes "在流水的溪边，";
+		mes "洗涤污垢的方法";
+		next;
+		mes "[麦莉碧]";
+		mes "还是用双手揉搓和拧干的";
+		mes "那种感觉，无法用";
+		mes "言语形容!还有晒衣服时";
+		mes "从衣物中散发的水味，";
+		mes "也好极了!";
+		next;
+		mes "[麦莉碧]";
+		mes "有朝一日我一定要成为";
+		mes "世上最厉害的手洗衣服名人!";
+		mes "你也懂得洗衣服的乐趣，";
+		mes "感觉找到志趣相投的人，";
+		mes "我很高兴呢~!";
+		next;
+		mes "-她似乎高兴的样子，嘴里";
+		mes "哼着歌，又开始进行刚才的";
+		mes "工作，望着她这么喜爱";
+		mes "自己的工作，";
+		mes "你的心情也好起来-";
+		close;
+	}
+}
+
+//Delna
+lighthalzen,70,227,4	script	Delna	102,{
+
+mes "[Delna]";
+mes "Sometimes the simple";
+mes "pleasures can give you";
+mes "the most happiness. For me";
+mes "going outside and basking in";
+mes "the sun os the greatest thing~";
+next;
+mes "[Delna]";
+mes "Yes, sunbathing in a quiet";
+mes "and relaxing place can be";
+mes "so refreshing. And if you're";
+mes "careful about not getting a";
+mes "sunborn or a tan, a little sun";
+mes "can be really good for you.";
+close;
+}
+//Victor Perfecto
+lighthalzen,77,203,3	script	Victor Perfecto	869,{
+
+mes "[Victor Perfecto]";
+mes "I've heard that the";
+mes "Rekenber Corporation";
+mes "actually created the";
+mes "environment in Lighthalzen";
+mes "through artificial means.";
+next;
+mes "[Victor Perfecto]";
+mes "It seems like it'd take";
+mes "a lot of investment, but";
+mes "artificially creating an";
+mes "environment isn't impossible";
+mes "with the means avalaible to";
+mes "the Rekenber Corporation.";
+next;
+mes "[Victor Perfecto]";
+mes "*Sigh...*";
+mes "Still, it's pretty";
+mes "depressing to think";
+mes "that the beauty of nature";
+mes "can be manmade and";
+mes "equated to zeny, you know?";
+close;
+}
+//====================
+// 自JA加入的NPC--村民
+//====================
+lighthalzen.,40,107,4	script	村民#7lhz	869,{
+	mes "[维吉尔]";
+	mes "咻呜...像今天这种天气，";
+	mes "好想把一切抛在脑后，";
+	mes "去某个地方";
+	mes "游玩";
+	next;
+	switch (select("你想去哪里玩呢?:事情要做完啊!:询问关于村落发生的那事件")) {
+	case 1:
+		mes "[维吉尔]";
+		mes "唉，即使我想出去玩，";
+		mes "说实在的这附近有太多";
+		mes "危险的魔物到处出没， ";
+		mes "若是我独自出去，";
+		mes "一定会被修理的很惨";
+		next;
+		mes "[维吉尔]";
+		mes "其实我是很想翘班之后，";
+		mes "跑到艾尔帕兰竞速场地";
+		mes "观赏比赛就好了";
+		next;
+		mes "[维吉尔]";
+		mes "之前我有一位朋友，";
+		mes "也没什么实力，就到";
+		mes "竞速场地拼了老命参与比赛，";
+		mes "结果还拿到参加奖，";
+		mes "得了一瓶奇异的药水?";
+		next;
+		mes "[维吉尔]";
+		mes "由于好奇心使然，就把它";
+		mes "喝掉了，结果真是的";
+		mes "一点效果也没有!天啊";
+		mes "说是什么走路变慢的药水，";
+		mes "可是根本就是唬人的嘛，";
+		mes "干嘛做这种东西呢...";
+		next;
+		mes "[维吉尔]";
+		mes "真不知道是哪个家伙";
+		mes "制造的，好想见他";
+		mes "一面，说什么竞速比赛";
+		mes "参加奖，好像也都是";
+		mes "骗人的吧";
+		next;
+		mes "[维吉尔]";
+		mes "肯定是被某个骗子";
+		mes "欺骗，才会买到了";
+		mes "来路不明的药水吧";
+	next;
+		mes "-男子似乎轻快的";
+		mes "记忆，哼哼的发出鼻息声后";
+		mes "转了身-";
+		close;
+	case 2:
+		mes "[维吉尔]";
+		mes "...忽然出现后说什么风凉话吗?";
+		mes "你以为我是好吃懒做";
+		mes "只顾贪玩的人吗?我只是";
+		mes "因为觉得天气不错，";
+		mes "所以才说想去玩而已啊";
+		next;
+		mes "[维吉尔]";
+		mes "(..嘟嘟囔囔)";
+		mes "(今晚之前一定要完成...)";
+		next;
+		mes "- 男子似乎想起有急事，";
+		mes "在便笺上开始";
+		mes "猛记东西 -";
+		close;
+	case 3:
+		mes "[维吉尔]";
+		mes "啊，你是说那件事吗?我当然";
+		mes "记得很清楚，大家都误以为";
+		mes "他是凶惨的斧头杀人魔，";
+		mes "但事实不然";
+		next;
+		mes "[维吉尔]";
+		mes "其实在很久以前，本村落";
+		mes "有位出名的帽子匠人，";
+		mes "他的专长之一就是用";
+		mes "魔物的头颅来制作帽子...";
+		mes "换句话说，他是类似以";
+		mes "死尸来制作帽子的男子";
+		next;
+		mes "[维吉尔]";
+		mes "或许你有看过，";
+		mes "就像是狸猫帽，";
+		mes "那种东西啦";
+		next;
+		mes "[维吉尔]";
+		mes "可是某一天那位帽子匠人，";
+		mes "非要将飞空挺船长的亲戚";
+		mes "制成了帽了，也就是说";
+		mes "是个杀人事件";
+		next;
+		mes "[维吉尔]";
+		mes "他辩称自己杀的是魔物，";
+		mes "后来才明白原来他搞错了，";
+		mes "因此他受到相当大的震惊，";
+		mes "结果他受不了痛苦，";
+		mes "听说后来他在家里";
+		mes "自杀了";
+		next;
+		mes "[维吉尔]";
+		mes "后来听说那个不幸的帽子，";
+		mes "在飞空挺的船舱内";
+		mes "妥善保管着";
+		next;
+		mes "[维吉尔]";
+		mes "很多人目睹了当时的惨况后，";
+		mes "为了避免历史重演，";
+		mes "他们都有了要随时";
+		mes "提高注意和警觉心的";
+		mes "那种共识吧?";
+		next;
+		mes "[维吉尔]";
+		mes "在我眼里只不过是个";
+		mes "驯鹿头颅的标本而已啊，";
+		mes "可是我讲的话，万一被";
+		mes "飞空挺的人听到话，";
+		mes "他们也许会气的直跳脚";
+		next;
+		mes "[维吉尔]";
+		mes "在他们面前最好是";
+		mes "别乱讲话";
+		mes "-讲完话的男子似乎觉得";
+		mes "很有趣，自己在一旁";
+		mes "嗤嗤的笑起来-";
+		close;
+	}
+}
+//=======================
+// 住家
+//=======================
+//Sopheap
+lhz_in03,32,99,3	script	奶奶#4lhz	863,{
+	mes "[奶奶]";
+	mes "呼呼... 过的很舒适，";
+	mes "人老了日子只求舒适";
+	mes "和平安就好了...";
+	next;
+	mes "[奶奶]";
+	mes "没必要逞强乱去挑战，";
+	mes "余生什么事都不用做，";
+	mes "只要悠悠哉哉地";
+	mes "过日子就好了... 嘿嘿";
+	close;
+}
+//Gopal
+lhz_in03,25,105,5	script	青年#13lhz	869,{
+	mes "[青年]";
+	mes "哎哟!或许奶奶满足于";
+	mes "现状，不过";
+	mes "我可不同!虽然安定和";
+	mes "舒适是不错啦，但是要我满足于";
+	mes "现状，就太浪费我的青春了!";
+	next;
+	mes "[青年]";
+	mes "走着瞧!我一定要创立";
+	mes "优于雷根贝勒的企业!";
+	close;
+}
+//Avetis
+lhz_in03,239,38,3	script	青年#15lhz	849,{
+	mes "[青年]";
+	mes "呜呜呜... 药...给我药...";
+	mes "咳嗽... 咳嗽... 好痛...";
+	mes "咳嗽...咳嗽咳嗽咳嗽!";
+	next;
+	mes "[青年]";
+	mes "想要买药...钱...钱";
+	mes "需要钱...钱...才可以...";
+	mes "咳嗽...痛得我无法...";
+	mes "工作，所以没钱...";
+	mes "咳嗽..";
+	close;
+}
+//Rocky#house
+lhz_in03,100,18,3	script	狗#house	81,{
+	mes "[狗]";
+	mes "汪汪!!";
+	close;
+}
+//Jay#house
+lhz_in03,130,41,5	script	小男孩#house	706,{
+	mes "[小男孩]";
+	mes "...父母亲每次都是很晚才回家";
+	mes "所以说我总是一个人用餐，我现在已经不知道饭是什么味道了";
+	next;
+	mes "[小男孩]";
+	mes "以前大家一起吃饭的时候，好像不是这样子的味道..";
+	close;
+}
+//Housemaid Jane#house
+lhz_in03,129,22,7	script	家庭打扫妇#house	850,{
+	mes "[家庭打扫妇]";
+	mes "这个家住的人很少，只是家太大了，一旦打扫起来至到下午时再能打扫完毕";
+	next;
+	mes "[家庭打扫妇]";
+	mes "唉哟~ 真的好累呀!";
+	close;
+}
+//Housemaid Brenda#house
+lhz_in03,124,117,2	script	家庭打扫妇#2house	74,{
+	mes "[家庭打扫妇]";
+	mes "听说这花瓶一个是千万金币的高价品啊? 打扫时不小心碰到的话!!!";
+	mes "噢咻咻... 就用看的心脏就已经在跳了...";
+	close;
+}
+//=========================
+//里希塔乐镇 武器店
+//=========================
+//Diana
+lhz_in02,267,25,4	script	黛安娜#lhz	747,{
+	mes "[黛安娜]";
+	mes "呜哇~";
+	mes "这些东西看起来好贵啊...";
+	mes "到底值多少钱呢...";
+	next;
+	mes "[店员]";
+	mes "你是只这个双刃短剑嘛?";
+	mes "客人你的眼光很高啊，";
+	mes "请问你是哪里出身呢?";
+	next;
+	mes "[黛安娜]";
+	mes "梦罗克出身，耶嘿嘿";
+	next;
+	mes "[店员]";
+	mes "唉哟... 梦罗克不错嘛，";
+	mes "那个地方的人";
+	mes "实在是有眼光啊~";
+	mes "反正... 这双刃短剑是卖";
+	mes "39800金币的，客人";
+	next;
+	emotion 23;
+	mes "[黛安娜]";
+	mes "什么?!";
+	mes "为什么卖这么贵啊?";
+	next;
+	mes "[店员]";
+	mes "唉呀 唉呀，";
+	mes "我还以为你有眼光，";
+	mes "连价钱都会看上眼的...";
+	mes "请你看这边好吗，";
+	mes "在剑身上镶嵌了许多钻石吧?";
+	next;
+	mes "[店员]";
+	mes "还有这里把手底端，";
+	mes "粗犷的镶嵌了蓝宝石，";
+	mes "这边还有...";
+	mes "那边还有...";
+	mes "...";
+	next;
+	mes "[黛安娜]";
+	mes "好了，好了! 够了! 可以啦!";
+	mes "那边那个长柄短剑值多少?";
+	next;
+	mes "[店员]";
+	mes "那个卖39800金币";
+	next;
+	mes "[黛安娜]";
+	mes "呜哇 好便宜啊! 我要买这个!";
+	next;
+	mes "[店员]";
+	mes "这算模型中还算是制作的不错啦?";
+	mes "虽然刀刃还不算是很锋利，";
+	mes "应该可以撕开信封这类的东西吧，";
+	mes "这边这个武士刀模型也满不错的啦...";
+	next;
+	emotion 4;
+	mes "[黛安娜]";
+	mes "...";
+	close;
+}
+//Shop Assistant
+lhz_in02,267,22,1	script	店员#lhz	91,{
+	mes "[店员]";
+	mes "欢迎光临，客人，";
+	mes "在我们卖场里可以看到，";
+	mes "在其它地方所买不到的东西";
+	next;
+	mes "[店员]";
+	mes "物品是可以贩卖给会员的，";
+	mes "首先呢，把别人介绍给卖场";
+	mes "变成会员后，那位会员们所购买的";
+	mes "金额一部份，";
+	mes "可转让给客人 您的";
+	next;
+	mes "[店员]";
+	mes "第二，要缴交年费，";
+	mes "反正这个是你所介绍的会员们，";
+	mes "从他们购买的物品价格中";
+	mes "可以冲掉的...";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "好了，够了，谢谢你!";
+	close;
+}
+//Sergei
+lighthalzen,192,63,4	script	村民#6lhz	92,{
+mes "[赛乐薇]";
+	mes "请问，你知道吗?对于武器店";
+	mes "里大斧头的由来，你不会";
+	mes "好奇吗?我告诉你吧?";
+	next;
+	if(select("恩，我想知道:不太想知道...")==1) {
+		mes "[赛乐薇]";
+		mes "听说以前这里的武器店老板是";
+		mes "凶神恶煞的连续杀人犯呢，";
+		mes "每晚提着斧头出去后，";
+		mes "就针对像我这种柔弱又美丽的";
+		mes "女孩，惨遭下毒手呢";
+		next;
+		mes "[赛乐薇]";
+		mes "不过最后被村民们";
+		mes "抓到后，就用那巨大的";
+		mes "斧头将他斩首示众，";
+		mes "想到就让我起鸡皮疙瘩..";
+		next;
+		mes "[赛乐薇]";
+		mes "所以每当夜晚时，";
+		mes "有不少人目击到";
+		mes "在这附近磨斧头";
+		mes "男子的幽灵";
+		next;
+		mes "[赛乐薇]";
+		mes "那幽灵为了确认斧头";
+		mes "是不是磨利了，";
+		mes "就砍下自己的头颅后，";
+		mes "继续追赶着目睹";
+		mes "这情况的人，啊啊...";
+		mes "我实在不敢想像..";
+		next;
+		mes "-她吓得身体颤抖-";
+		close;
+	}
+	mes "[赛乐薇]";
+	mes "好可惜喔.. 在炎热的夏天";
+	mes "听的话刚好...实在是";
+	mes "非常有趣的故事呢...";
+	next;
+	mes "-她脸上一副";
+	mes "很可惜的表情-";
+	close;
+}
+//=========================
+//里希塔乐镇 银行
+//=========================
+//Arthur
+lhz_in02,34,41,7	script	青年#bank	849,{
+	mes "[青年]";
+	mes "呜呜..虽然椅子有点硬，";
+	mes "但是很凉快我喜欢!还是";
+	mes "银行最好了!万岁万岁";
+	close;
+}
+//Helen
+lhz_in02,28,39,3	script	少女#bank	703,{
+	mes "[少女]";
+	mes "我长大以后也到";
+	mes "银行上班吧，";
+	mes "你不觉得这工作";
+	mes "很棒吗?嘻嘻...";
+	close;
+}
+//Tadem
+lhz_in02,31,34,3	script	爷爷#bank	847,{
+	mes "[爷爷]";
+	mes "大楼干干净静的，看起来";
+	mes "就很舒服... 呵呵，把我家";
+	mes "也像它一样装修吧?";
+	mes "这样住起来才有意思...";
+	close;
+}
+//Gracie
+lhz_in02,31,33,3	script	奶奶#bank	863,{
+	mes "[奶奶]";
+	mes "这里好舒适，还有";
+	mes "芳香的气味，真是";
+	mes "不错吧?我常常在想";
+	mes "这里若是我家的话，";
+	mes "那该多好啊";
+	close;
+}
+//Bank Clerk::1_st
+lhz_in02,34,22,8	script	银行 职员::1_st	755,{
+	mes "[银行 职员]";
+	mes "这里是为了服务大众";
+	mes "而设立的银行，虽然";
+	mes "目前业务是停摆状态，";
+	mes "但是业务只要?";
+	mes "正常后，一定会提供";
+	mes "舒适又便捷的服务";
+	close;
+}
+lhz_in02,21,25,9	duplicate(1_st)	银行 职员::2_nd	86
+lhz_in02,21,38,9	duplicate(1_st)	银行 职员::3_th	86
+//=============================
+// 里希塔乐镇 警局
+//=============================
+//Togii::d1
+lhz_in02,145,179,7	script	酒醉的 叔叔::d1	849,{
+	mes "[叔叔]";
+	mes "唉哟唉哟...";
+	mes "我又醉了... 嘻呵";
+	mes "意嘻嘻嘻...";
+	mes "酒还是梦罗克酿造的";
+	mes "最好喝啊...";
+	close;
+}
+//Healthy Looking Guy
+lhz_in02,157,198,8	script	看起来 很魁梧的男人	85,{
+	mes "[看起来 很魁梧的男人]";
+	mes "嗯呵呵呵呵呵呵呵呵呵!!!";
+	mes "你们到底是怎样啊~";
+	mes "我没有把精炼的物品偷走啊?";
+	mes "我是清白的!!!";
+	close;
+}
+//Hinkley::d2
+lhz_in02,155,201,7	script	酒醉的 叔叔::d2	870,{
+	mes "[叔叔]";
+	mes ".......";
+	mes ".....嘻隔";
+	mes ".......意嘻嘻";
+	mes "嘻隔 嘻隔";
+	next;
+	mes " == 完全喝醉了 ==";
+ 	mes "== 跟本就不能对话 ==";
+	close;
+}
+//Milette::d3
+lhz_in02,153,206,6	script	酒醉的 叔叔::d3	853,{
+	mes "[叔叔]";
+	mes "我是清白的~!!!!!!";
+	mes "咳嗽咳嗽咳嗽咳嗽咳嗽咳嗽，";
+	mes "咳嗽咳嗽咳嗽咳嗽咳嗽咳嗽，";
+	mes "哼哼哼哼，";
+	mes "我是清白的!!!!";
+	mes "打隔 打隔";
+	next;
+	mes "[叔叔]";
+	mes "喝了酒唱了一首歌，";
+	mes "这会有什么罪吗~!";
+	mes "我既然要大声的吵闹，";
+	mes "那又怎么样呢!";
+	mes "咳嗽咳嗽咳嗽咳嗽咳嗽咳嗽，";
+	mes "打隔 打隔";
+	close;
+}
+//Officer Guo::off_guo
+lhz_in02,147,222,4	script	刑警::off_guo	85,{
+	mes "[刑警]";
+	mes "快说啊! 快说!";
+	mes "为什么不说呢!";
+	mes "快说呀!";
+	next;
+	mes "[嫌疑犯]";
+	mes "唉哟 真是的!";
+	mes "不是我呀!";
+	next;
+	mes "[刑警]";
+	mes "...呼";
+	next;
+	mes "[嫌疑犯]";
+	mes "请你不要白费力气了，";
+	mes "让我回去了，";
+	next;
+	mes "[刑警]";
+	mes "...你母亲... 还好吗?";
+	next;
+	mes "[嫌疑犯]";
+	mes "母亲还好啊!  哼!";
+	next;
+	mes "[刑警]";
+	mes "最后一次见过母亲的面，";
+	mes "是多久之前的事情啦?";
+	next;
+	mes "[嫌疑犯]";
+	mes "管你什么事啊!";
+	next;
+	mes "[刑警]";
+	mes "不过你母亲还是在，";
+	mes "担心你啊";
+	mes "...";
+	next;
+	mes "[嫌疑犯]";
+	mes "...";
+	next;
+	mes "[刑警]";
+	mes "请问你要吃... 波利热炒吗?";
+	next;
+	mes "[嫌疑犯]";
+	mes "算了吧!";
+	close;
+}
+
+lhz_in02,142,221,8	duplicate(off_guo)	嫌疑犯::susp_guo	870
+
+//==================================
+// 贫民区
+//=================================
+//黑狐改写自JA
+//Pilia
+lighthalzen,297,239,3	script	少女#6lhz	818,{
+	doevent "少年#8lhz::OnTouch";
+	end;
+OnEmo_1:
+	emotion 1;
+	end;
+OnEmo_9:
+	emotion 9;
+	end;
+OnEmo_19:
+	emotion 9;
+	end;
+}
+//Berru
+lighthalzen,296,239,3	script	少年#8lhz	706,{
+	OnTouch:
+	switch(rand(3)) {
+	case 0:
+		donpcevent "少女#6lhz::OnEmo_9";
+		mes "[少女]";
+		mes "到底爸爸去做什么工作呀，";
+		mes "这么久都还不回来，";
+		mes "希望能赶快回来啊..";
+		next;
+		mes "[少年]";
+		mes "爸爸什么时候?";
+		mes "贝鲁.. 好饿喔..";
+		next;
+		mes "[少女]";
+		mes "隔壁的 '涛企' 叔叔，";
+		mes "也一起去了到现在也没有?";
+		close;
+	case 1:
+		emotion 28;
+		mes "[少年]";
+		mes "呜哇! 呜哇!";
+		mes "爸! 爸爸你什么时候回来啊.. 呜哇";
+		next;
+		mes "[少女]";
+		mes "贝鲁...";
+		mes "看样子今天爸爸是不会回来的";
+		mes "你先回屋里面吧...";
+		next;
+		emotion 7;
+		mes "[少年]";
+		mes "不要! 不要!";
+		mes "我不想先进去!";
+		mes "爸爸明明有说过，";
+		mes "会买好吃的东西带回来给我们吃的!";
+		next;
+		mes "[少年]";
+		mes "我要在这边一直等到";
+		mes "爸爸回来为止!";
+		mes "毕丽亚姐姐你先进去呀";
+		next;
+		donpcevent "少女#6lhz::OnEmo_9";
+		mes "[少年]";
+		mes "唉哟...";
+		mes "到底爸爸去哪里了呢..";
+		mes "说是找到了一家";
+		mes "可以赚很多钱的工作之后，";
+		mes "就这样没有消息了...";
+		mes "呜呼...";
+		close;
+	case 2:
+		donpcevent "少女#6lhz::OnEmo_1";
+		mes "[少女]";
+		mes "请问你是谁啊?";
+		mes "为什么这样...";
+		mes "一直看着我们呢...";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "啊..没有啊..";
+		mes "好像有小孩在哭的关系，";
+		mes "所以就看你们啦..";
+		mes "好像你们发生什么事情似的?";
+		next;
+		mes "[少女]";
+		mes "啊..听爸爸说";
+		mes "找到了一个好的工作...";
+		mes "以后就可以赚很多钱了..";
+		mes "就这样子出去工作好几天了，";
+		mes "一直都没有消息..";
+		mes "他只说在很遥远的地方工作呀..";
+		next;
+		donpcevent "少女#6lhz::OnEmo_19";
+		mes "[少女]";
+		mes "我弟弟贝鲁一直这样，";
+		mes "哭着等待着我爸爸..";
+		mes "我真不知道拿他怎么办..";
+		mes ". . . . . . . . .";
+		mes "啊..你就随便听听吧... 不要理我";
+		mes "很抱歉";
+		close;
+	}
+}
+//Reuben
+lighthalzen,311,194,3	script	青年#9lhz	870,{
+	if(rand(2)) {
+		mes "[青年]";
+		mes "什..什么嘛!";
+		mes "很讨厌，没事站在我后面干嘛，";
+		mes "要跟我打一场吗?";
+		mes "我是不分男女的!";
+		mes "唉哟! 给我走开啦!";
+		mes "不要在这烦我啦!";
+		close;
+	}
+	mes "[青年]";
+	mes "我一定要变成机关士后";
+	mes "要开那一台火车的!";
+	mes "布的的的(咬牙切齿声)，";
+	mes "这令人讨厌的地方...";
+	mes "真的.. 够了! 唉呀!";
+	next;
+	mes "[青年]";
+	mes "嗯? 你是什么人，";
+	mes "是外地人啊!";
+	mes "给我走开啦!";
+	mes "不要在我的周围";
+	mes "团团转啊!";
+	emotion e_an;
+	close;
+}
+//Shengwen
+lighthalzen,306,324,3	script	青年#10lhz	870,{
+	mes "[青年]";
+	mes "最近感觉周围的人，";
+	mes "很奇妙地渐渐在";
+	mes "消失中，其实";
+	mes "我身边亲近的人都";
+	mes "平安无事，难道";
+	mes "是我想太多了吗...";
+	next;
+	mes "[青年]";
+	mes "我是说，一些点头之交的人，";
+	mes "平常应该在老地方，却突然";
+	mes "消失不见的事件，";
+	mes "最近常常发生?";
+	mes "或许是我想太多了...";
+	close;
+}
+//Grinnel
+lighthalzen,326,249,5	script	青年#11lhz	870,{
+	mes "[青年]";
+	mes "不久之前，来了一些";
+	mes "黑衣人士，他们询问";
+	mes "我一些问题，问我";
+	mes "是否和企业方面的人";
+	mes "见过面，有没有去过";
+	mes "对面... 等等";
+	next;
+	mes "[青年]";
+	mes "瞧不起人也要有个";
+	mes "限度啊，唉哼... 我";
+	mes "实在不喜欢这个村落!";
+	close;
+}
+//Bodger
+lighthalzen,364,282,3	script	青年#14lhz	870,{
+	mes "[青年]";
+	mes "唉咻... 今天又";
+	mes "挨肚子了，虽想";
+	mes "饱啖一顿，但既没钱，";
+	mes "又没卖吃的地方，真是的，";
+	mes "我的人生就像";
+	mes "行尸走肉般";
+	next;
+	mes "[青年]";
+	mes "那边的富裕村落和我们";
+	mes "过着截然不同的";
+	mes "生活...唉咻，说这些";
+	mes "又有什么用呢...";
+	close;
+}
+//Shayna
+lhz_in03,26,167,4	script	村落 女性#lhz	850,{
+	mes "[村落 女性]";
+	mes "唉哟，可怜的家伙..";
+	close;
+}
+//Beggar
+lighthalzen,312,234,2	script	乞丐	777,{
+	mes "[乞丐]";
+	mes "拜托... 小孩在饿肚子呢..";
+	mes "施舍一点钱吧...";
+	mes "一点点也好...";
+	next;
+	if(select("给他少量的金币:忽视他")==2){
+		mes "[" + strcharinfo(0) + "]";
+		mes "哼..";
+		close;
+	}
+	if(Zeny < 50){
+		mes "[乞丐]";
+		mes "........";
+		close;
+	}
+	set Zeny,Zeny-50;
+	mes "[" + strcharinfo(0) + "]";
+	mes "来..金币请收下吧，";
+	mes "不多啦，希望对你";
+	mes "有帮助..";
+	next;
+	mes "[乞丐]";
+	mes "哎哟哟.. 哎哟哟..";
+	mes "谢谢你喔..旅行者..";
+	mes "当作谢意，我来告诉你";
+	mes "关于这都市的事情吧，";
+	mes "希望对你有帮助...";
+	emotion e_thx;
+	next;
+	mes "[乞丐]";
+	mes "这都市分为富裕阶层和极贫阶层两部份...";
+	next;
+	mes "[乞丐]";
+	mes "不知道对你是否有帮助..";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes ". . . . . . . . . . . .";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes ". . . . . . . . . . . .";
+	mes ". . . . . . . . . . . .";
+	mes ". . . 啊哟. . . . . . .";
+	next;
+	mes "[乞丐]";
+	mes "?????";
+	close;
+}
+//Nun
+lighthalzen,330,276,3	script	修女#lhz	79,{
+	mes "[安洁菈]";
+	mes "你好，我是为了教团的救济活动，";
+	mes "被派遣来到这里的 安洁菈";
+	next;
+	mes "[安洁菈]";
+	mes "我做救济活动所感受到的是，";
+	mes "这里的人很奇怪的是健康条件好差啊，";
+	mes "好像不单纯";
+	mes "只是环境上的问题而已吧";
+	next;
+	mes "[安洁菈]";
+	mes "我已经通报给教团了.. ";
+	mes "可是教团方面好像没有什么反应似的";
+	close;
+}
+//Employee
+lighthalzen,337,296,3	script	雷根贝勒 职员#lhz	867,{
+	mes "[雷根贝勒 职员]";
+	mes "您好!";
+	mes "我们雷根贝勒，对生活上比较困苦的人提供救援活动，也就是说提供工作机会的，";
+	next;
+	mes "[雷根贝勒 职员]";
+	mes "可以待在家里从事简单的手工艺品开始，还有稍微有点知识的话也可以从事一些专业的工作!";
+	mes "也可以赚钱，也可以感觉到工作上的收获!";
+	emotion e_no1;
+	close;
+}
+//=======================
+// 贫民窟--仙术酒店 
+//=======================
+//Haggar
+lhz_in03,192,19,2	script	酒鬼#lhz	855,{
+	mes "[酒鬼]";
+	mes "威士忌~ 威士忌 给我...";
+	next;
+	mes "[酒鬼]";
+	mes "为什么给我小米酒呢!!";
+	mes "哼~";
+	close;
+}
+//Bartender#01
+lhz_in03,193,25,2	script	仙术酒店 酒保#lhz	61,{
+	mes "[汤尼]";
+	mes "喂~呵~ 年轻人~";
+	mes "我家的兰姆酒是最赞的，";
+	mes "虽说是贫民村内的仙术酒店，";
+	mes "但我家的兰姆酒味道，可是";
+	mes "独门密传、独一无二呢~";
+	next;
+	mes "[汤尼]";
+	mes "喝下我家的兰姆酒后，";
+	mes "就有如兽人的力量!!!";
+	mes "也会暂时忘记烦恼~";
+	mes "任~何事情~都能~完成~!!";
+	close;
+}
+//Bad Drunk#Bad_Drunk
+lhz_in03,185,20,6	script	仙术酒店 酒鬼#Bad_Drunk	869,{
+	mes "[葛瑞]";
+	mes "喂喂~就是你~";
+	mes "想要进来这里就要";
+	mes "付过路费~ 打嗝~";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "多少钱呢";
+	next;
+	mes "[葛瑞]";
+	mes "1亿金币...打嗝~";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "白痴...";
+	close;
+}
+//Bad Drunk#Bad_Drunk2
+lhz_in03,186,29,6	script	仙术酒店 酒鬼#Bad_Drunk2	869,{
+	mes "[柏恩斯]";
+	mes "呜喔~ 真的这里的兰姆酒";
+	mes "任何时候喝都很好好喝喔 ~";
+	mes "我有一次我感冒了，";
+	mes "打嗝~ 喝下这里的兰姆酒后，";
+	mes "马上把流鼻涕和咳嗽治好了~";
+	next;
+	mes "[柏恩斯]";
+	mes "一级棒~ 真赞~";
+	mes "你也有机会时，";
+	mes "喝喝看吧 ~!";
+	close;
+}
+//City Girl#City_Girl
+lhz_in03,192,93,2	script	村落 小姐#2lhz	862,{
+	mes "[兰寇]";
+	mes "我是为了父亲";
+	mes "才来这里帮忙，";
+	mes "手臂好酸喔~";
+	next;
+	mes "[兰寇]";
+	mes "不过我看到他们";
+	mes "喝酒高兴的样子，";
+	mes "又能解除一天";
+	mes "工作上的疲惫，";
+	mes "我也会很高兴呢~";
+	next;
+	mes "[兰寇]";
+	mes "我希望找一天";
+	mes "休假时到里希塔乐镇";
+	mes "逛街就好了";
+	close;
+}
+//Drunken Man#04
+lhz_in03,189,87,4	script	酒鬼#2lhz	869,{
+	mes "[熊酷]";
+	mes "呜哼~ 与交往5年的";
+	mes "女朋友，";
+	mes "终于分手了~";
+	mes "呃呜哼~~";
+	next;
+	mes "[熊酷]";
+	mes "我本来不太会";
+	mes "喝酒... 但今天";
+	mes "喝起来很顺口...";
+	mes "呃呜哼~~~";
+	mes "我都不需要~!!";
+	mes "统统都离开吧吧吧吧!";
+	close;
+}
+//Drunken Man#05
+lhz_in03,183,82,6	script	酒鬼#3lhz	870,{
+	mes "[莱伊诺斯]";
+	mes "我太太得了重病，";
+	mes "正面临生死关头，";
+	mes "我却在这里";
+	mes "喝酒...哭泣...";
+	next;
+	mes "[莱伊诺斯]";
+	mes "如此痛苦的事实，";
+	mes "统统从我脑海里";
+	mes "消失就好了... 咳嗽咳嗽";
+	close;
+}
+//Citizen#02
+lhz_in03,180,83,6	script	村民#4lhz	86,{
+	mes "[米契尔]";
+	mes "在这里的居民";
+	mes "展现出的生命特质，";
+	mes "都有很多共同点...";
+	next;
+	mes "[米契尔]";
+	mes "因为要靠互相安慰";
+	mes "才能生存的关系，";
+	mes "所以大家才会这样";
+	mes "居在一起生活吧...";
+	close;
+}
+//Citizen#Citizen2
+lhz_in03,176,85,4	script	村民#5lhz	869,{
+	mes "[达意克]";
+	mes "下班后晚上时来这里";
+	mes "再小酌一杯，";
+	mes "是我唯一的乐趣~";
+	mes "有时候看到被普通的";
+	mes "事情而自得其乐的我，";
+	mes "感到很气但又能奈何~";
+	next;
+	mes "[达意克]";
+	mes "不管我的家人，";
+	mes "我自己觉得满足就好了~";
+	mes "你也来喝一杯吧~";
+	mes "当然要各自付帐~";
+	close;
+}
+//Loudmouth
+lhz_in03,184,38,2	script	吹牛大王#lhz	55,{
+	mes "[吹牛大王]";
+	mes "你知道我是谁吗? ";
+	mes "看到我这个腿，";
+	mes "难到你没有想到什么吗?";
+	next;
+	mes "[吹牛大王]";
+	mes "那么你知道克魔岛的战争吗?";
+	next;
+	mes "[吹牛大王]";
+	mes "我就是那个很有名的，";
+	mes "克魔岛滑雪部队的出身";
+	next;
+	mes "[吹牛大王]";
+	mes "什么嘛 那眼神...";
+	mes "你是不相信我的话啰?";
+	close;
+}
+//==================================
+// 皇龙大饭店--饭店职员
+//==================================
+//Hotel Employee#01-->发现她是 旅馆服务生 赛娜 
+//在 merchants / inn.txt 所以移除
+//Hotel Employee#02
+lhz_in02,241,172,8	script	饭店 职员#2lhz	868,{
+	mes "[饭店 职员]";
+	mes "对了，请问住宿上有";
+	mes "不便的地方吗?欢迎随时";
+	mes "向我们反应不满或";
+	mes "建议的地方";
+	next;
+	mes "[饭店 职员]";
+	mes "柜台在楼下，";
+	mes "利用上方的楼梯，";
+	mes "就能到达了";
+	close;
+}
+//Hotel Employee#03
+lhz_in02,251,212,2	script	饭店 职员#3lhz	868,{
+	mes "[饭店 职员]";
+	mes "这里是夫妻专用房间，";
+	mes "虽然非夫妻的客人";
+	mes "也能使用，但是我们";
+	mes "希望尽量优惠给夫妻";
+	mes "使用这间";
+	mes "房间";
+	close;
+}
+//Hotel Employee#04
+lhz_in02,238,275,4	script	饭店 职员#4lhz	869,{
+	mes "[饭店 职员]";
+	mes "微笑，亲切，服务!就是我们";
+	mes "'皇龙'饭店的经营理念，";
+	mes "若要住宿的话，请洽询";
+	mes "前面柜台的职员吧，";
+	mes "祝你玩的愉快";
+	close;
+}
+//Hotel Employee#05
+lhz_in02,247,275,4	script	饭店 职员#5lhz	868,{
+	mes "[饭店 职员]";
+	mes "这里是我们'皇龙'饭店";
+	mes "所共同经营的酒店，";
+	mes "睡觉之前，在气炊?";
+	mes "喝一杯如何呢";
+	next;
+	mes "[饭店 职员]";
+	mes "若想要在这里找个伴的话，";
+	mes "在本酒店里一定能寻觅";
+	mes "理想的因缘";
+	close;
+}
+//==================================
+// 皇龙大饭店--饭店客人
+//==================================
+//Christopher Michael
+lhz_in02,210,189,2	script	青年#6lhz	849,{
+	mes "[青年]";
+	mes "喔喔喔... 太舒服了!";
+	next;
+	mes "[青年]";
+	mes "实在太赞了";
+	next;
+	mes "[青年]";
+	mes "简直舒服的要命";
+	close;
+}
+//Safwat Fahmy
+lhz_in02,201,181,6	script	中年人#lhz	853,{
+	mes "[中年人]";
+	mes "哼，虽然这里很舒适，";
+	mes "但是酒太难喝了，对我";
+	mes "这种美酒专家没有吸引力";
+	next;
+	mes "[中年人]";
+	mes "自称最高级的饭店，";
+	mes "当然客房服务所提供的酒";
+	mes "也要好喝啊!嗳嗳... 难道";
+	mes "想要品尝好酒，非得要去";
+	mes "酒店吗...";
+	next;
+	mes "[中年人]";
+	mes "本来边想在舒适";
+	mes "又安静的空间中，";
+	mes "边细细的品尝酒味... 唉唉";
+	close;
+}
+
+//Tanoue
+lhz_in02,229,217,2	script	奶奶#3lhz	863,{
+	mes "[奶奶]";
+	mes "唉哟...";
+	mes "石材椅子虽然看起来有品味，";
+	mes "不过对我这老太婆来说，";
+	mes "屁股会着凉的!";
+	next;
+	mes "[奶奶]";
+	mes "不要一天到晚说福利政策怎样怎样的，";
+	mes "希望也考虑一下老人福利好吗!";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "奶... 奶奶...";
+	mes "这里是私有财产制，";
+	mes "没有刚才你讲的那些东西";
+	next;
+	mes "[奶奶]";
+	mes "反正我们在里希塔乐镇里面!";
+	mes "管那么多!";
+	mes "最近这些年青人真不懂礼貌啊，";
+	mes "我老人家在讲话，";
+	mes "一直在顶嘴真没礼貌!";
+	next;
+	mes "[奶奶]";
+	mes "你到底今年多大啊?";
+	mes "你到底今年几岁啊?";
+	mes "唉哟怎么又不讲话了?";
+	mes "呜?";
+	next;
+	mes " == 有一点烦 ==";
+	mes " == 赶快落跑吧... ==";
+	close;
+}
+//Ben Allen
+lhz_in02,209,277,4	script	青年#7lhz	84,{
+	mes "[青年]";
+	mes "啊~ 超舒服的，很棒的香味，";
+	mes "加上舒适的~沙发，这地方";
+	mes "真不错，如果我有钱的话，";
+	mes "好想把这里当作自己的家..";
+	next;
+	mes "[青年]";
+	mes "我在别处也住过，";
+	mes "还是觉得这里最棒，";
+	mes "一觉醒来感觉身体";
+	mes "更健康的样子!";
+	close;
+}
+//Harp
+lhz_in02,221,276,4	script	青年#8lhz	869,{
+	mes "[青年]";
+	mes "请问一下，上面那位卡普拉职员";
+	mes "不觉得很漂亮吗?哇啊~ 那";
+	mes "曼妙的身材和典雅的";
+	mes "眼镜!我对她一见钟情!";
+	next;
+	mes "[青年]";
+	mes "我要不要跟他约会呢..";
+	mes "不然写情书给她吧， ";
+	mes "哈啊哈啊...";
+	next;
+	mes "[青年]";
+	mes "啊啊... 望着她";
+	mes "就觉得很幸福!";
+	mes "卡普拉服务万岁!";
+	close;
+}
+//==================================
+// 皇龙大饭店--酒吧
+//==================================
+//Citizen#01
+lhz_in02,271,281,2	script	村民#3lhz	47,{
+	mes "[哈齐]";
+	mes "能与众美女们在这间酒吧";
+	mes "约会，真是快乐的不得了，";
+	mes "我只要一搭讪女孩，";
+	mes "没有人能抗拒诱惑";
+	next;
+	mes "[哈齐]";
+	mes "有女人的地方会有我，";
+	mes "有我的地方就有女人!";
+	mes "我们一起喝一杯吧~";
+	close;
+}
+//Bartender
+lhz_in02,277,285,4	script	酒保#lhz	61,{
+	mes "[多夫]";
+	mes "客人你不是本地人啊，";
+	mes "来这里饭店投宿的人，";
+	mes "大部份都一样，我看你";
+	mes "确定是旅客啊";
+	next;
+	mes "[多夫]";
+	mes "在你停留期间";
+	mes "欢迎多加利用";
+	close;
+}
+//Customer#01
+lhz_in02,281,280,6	script	客人#lhz	816,{
+	mes "[罗娜]";
+	mes "现在这里的气?";
+	mes "我不想再来了，";
+	mes "被那些死缠烂打的";
+	mes "小子们烦死了";
+	next;
+	mes "[罗娜]";
+	mes "真是讨厌~";
+	close;
+}
+//Customer#02
+lhz_in02,287,282,4	script	客人#2lhz	853,{
+	mes "[格林菲德]";
+	mes "呵嗯...我今天又把";
+	mes "苹果给全输光了~ 打嗝~~";
+	mes "我的手气太差了~";
+	next;
+	mes "[格林菲德]";
+	mes "如果我以后又在飞空挺";
+	mes "玩游戏的话，我就是波利，";
+	mes "波利~!!! 打嗝~";
+	close;
+}
+//Martial Artist#l
+lhz_in02,289,277,3	script	武术家#lhz	753,{
+	mes "[武术家]";
+	mes "我想与更强者";
+	mes "战斗，这里聚集的人";
+	mes "都只想靠金钱来";
+	mes "保护自己!";
+	next;
+	mes "[武术家]";
+	mes "透过肉体来分享权力的";
+	mes "同时，所萌芽的友谊和";
+	mes "成就感他们为何不懂呢!";
+	mes "所以我随时寻觅着";
+	mes "能和我战斗的斗士";
+	next;
+	mes "[武术家]";
+	mes "我再停留一阵子后，"; 
+	mes "实在找不到对手的话，";
+	mes "我只好到别处找找看了";
+	close;
+}
+//由JA加进来的
+lhz_in02,265,273,6	script	研究所职员#lhz	865,{
+	mes "[阿森]";
+	mes "这里气氛佳又寂静，";
+	mes "每次我工作烦恼时，";
+	mes "都会来这里，";
+	mes "酒保也很有品味";
+	next;
+	mes "[阿森]";
+	mes "尤其重点是只有在这里";
+	mes "才能喝得到的威士忌";
+	mes "非常好喝，";
+	mes "他门只免费送给";
+	mes "老顾客品尝";
+	close;
+}
+
+lhz_in02,283,276,4	script	客人#3lhz	815,{
+	mes "[赛依]";
+	mes "我每次想来这里小酌一杯时，";
+	mes "被那些心怀不轨的小子";
+	mes "纠缠的很烦很烦，";
+	mes "跑到我身边只会讲一些";
+	mes "无聊的冷笑话";
+	next;
+	mes "[赛依]";
+	mes "你也不会是想过来";
+	mes "参一脚吧?";
+	close;
+}
+lhz_in02,287,273,2	script	客人#4lhz	50,{
+	mes "[泰利]";
+	mes "虽然我不喜欢喝酒，";
+	mes "但是被这里的好气牧?";
+	mes "音乐所吸引，所以常光顾，";
+	mes "来这里心情会变得很轻松";
+	next;
+	mes "[泰利]";
+	mes "而且也很温馨，";
+	mes "我看你像是旅行者啊，";
+	mes "假如只是在这里短暂";
+	mes "停留的话，要注意安全";
+	next;
+	mes "[泰利]";
+	mes "习惯这间酒吧之后，";
+	mes "你可能就不愿意";
+	mes "去别家了~ 呵呵~";
+	close;
+}
+//============================
+// 雷根贝勒 企业
+//============================
+//Cenku Dekdam#Cenku
+lhz_in01,134,45,2	script	升玖 达克丹#Cenku	869,{
+	mes "[升玖 达克丹]";
+	mes "里希塔乐镇大概值多少金币呢?";
+	next;
+	mes "- 讲一句冷笑话纯朴笑的升玖 达克丹的模样，和他眼底下的黑眼圈成强烈的对比似的-";
+	close;
+}
+//Bankri Kun#Bankri_Kun
+lhz_in01,134,38,2	script	邦革力君#Bankri_Kun	86,{
+	mes "[邦革力君]";
+	mes "啊.. 要工作啦...";
+	next;
+	mes "[邦革力君]";
+	mes "工作又不顺...又不想做...";
+	next;
+	mes "[邦革力君]";
+	mes "..............";
+	next;
+	mes "[邦革力君]";
+	mes "讲一句建言不过是没有根据的话，若不常常保持牙齿干净的话，搞不好牙齿里面要用铝去涂抹也不一定噢";
+	next;
+	mes "[邦革力君]";
+	mes "那种事也要得去做啊..那就...";
+	mes "嘻嘻哈哈";
+	close;
+}
+//Enoz
+lhz_in01,139,40,2	script	爱奴兹#lhz	53,{
+	mes "[爱奴兹]";
+	mes "呀呼-! 刚刚对 卢恩--米德加兹王国订购的物品已经到达了!!";
+	next;
+	mes "[爱奴兹]";
+	mes "你知道这些是什么吗? 这些是在几年前写 卢恩--米德加兹'罗达蛙奇行记'作品的作家新刊作品，这作家的性向是这样然后又那样，当时人们对他的评价是这样然后又那样，这套书籍总共有10集，以前的书又再版过了，想要再订购的话碎碎念..";
+	next;
+	mes "[爱奴兹]";
+	mes "- 到底他在讲什么呀，真的听不懂 -";
+	close;
+}
+//Ellette
+lhz_in01,124,28,2	script	依恋德#lhz	66,{
+	mes "[依恋德]";
+	mes "..........";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "请问~";
+	next;
+	mes "[依恋德]";
+	mes "..........";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "请问~?";
+	next;
+	mes "[依恋德]";
+	mes "..........!!";
+	mes "各位! 我，又完成了!!!";
+	next;
+	mes "[其它 职员们]";
+	mes "什么! 又啊!?";
+	next;
+	mes "[依恋德]";
+	mes "嗯哈哈哈哈哈哈哈- ";
+	next;
+	mes "[李刀]";
+	mes "反正，依恋德先生真的不是人啊";
+	next;
+	mes "[依恋德]";
+	mes "你这句话是什么意思.. 我怎么做也是赢不过升玖先生啊";
+	next;
+	mes "- 虽然不知道详细的事情，不过在我眼前的这位黑眼圈小姐，经常把一些很困难的事情完成似的 -";
+	close;
+}
+//Dowbow Ryuei#Dowbow
+lhz_in01,125,40,2	script	特乌宝晤 刘#Dowbow	843,{
+	mes "[特乌宝晤 刘]";
+	mes "不需要其它的废话!";
+	mes "请问你 '超级'和 '真实' 你比较喜欢哪一个单字-!!";
+	next;
+	if(select("超级:真实")==1) {
+		emotion e_no1;
+		mes "[特乌宝晤 刘]";
+		mes "噢噢噢噢噢!!! 看样子你是懂点事情的人!!";
+		mes "我很欣赏你啊!";
+		next;
+		mes "- 和他握手之后摇摇手后，脸上显示满足的表情后又继续工作的 特乌宝晤 刘-";
+		close;
+	}
+	mes "[特乌宝晤 刘]";
+	mes "什么!!!!";
+	mes "我不想在跟你继续说法，走开啦";
+	close;
+}
+//Leekal
+lhz_in01,125,46,2	script	李刀#Leekal	849,{
+	mes "[李刀]";
+	mes "咳啊啊啊啊!!";
+	mes "上个礼拜有出版'歌剧魅影!'限定版的丛书，这个礼拜又出版了'重新出现的大人' 限定版! 唉哟! 不行啊! 我手上已经没有零用钱啦!!! 尼豪士先生! 可以帮我吗!";
+	next;
+	mes "[尼豪士]";
+	mes "所以说嘛，平时你都没有好好的管理钱! 来! '任谁都可以容易变成致富之路'李刀先生你也阅读看看吧!";
+	close;
+}
+//Ninjose
+lhz_in01,116,53,6	script	尼豪士#Ninjose	841,{
+	mes "[尼豪士]";
+	mes "我在前几天买下房子了!";
+	mes "真正的理财是靠转投资才能达成的呀!";
+	mes "你也读一下这本书吧!";
+	next;
+	mes "- 他把一本书递给你上面写着 '任谁都可以容易变成致富之路' ";
+	close;
+}
+//Kejulle Rekenber#Kejulle
+lhz_in01,116,39,6	script	吉茱莉 雷根贝勒#Kejulle	822,{
+	mes "[吉茱莉 雷根贝勒]";
+	mes "我们董事长和我刚好是同名异人啊，";
+	mes "虽然这样子，但并不表示我的薪水与他同高之类的...";
+	close;
+}
+//Jorjerro
+lhz_in01,110,40,2	script	忽海录#Jorjerro	89,{
+	mes "- 眼前有一位男士，禁止不动着睡眠中 -";
+	close;
+}
+//Joshua
+lhz_in01,116,45,6	script	游守阿#Joshua	704,{
+	mes "[游守阿]";
+	mes "我的理想型是高个子金发的白析皮肤，还有就是很快会挥拳的女性，";
+	mes "啊啊 我的姐姐呀..?";
+	close;
+}
+//Mereth
+lhz_in01,129,54,1	script	梅勒思#party	869,{
+	mes "[梅勒思]";
+	mes "(嘘嘘-)";
+	mes "(嘘嘘-)";
+	next;
+	mes "[梅勒思]";
+	mes "呼........哈.......";
+	next;
+	mes "- 对着你转向头部的一位职员，头上戴着奇怪的黑色假面 -";
+	next;
+	mes "- 他什么话也没有说只直视你的面孔，只摇动着上半身跳了一会舞，好像很高兴似的 -";
+	close;
+}
+//#horri
+lhz_in01,108,53,0	script	#horri	111,{
+	mes "- 书桌上面有很多的文件和书，还有放着一幅幸福家庭的照片相框-";
+	close;
+}
+//#never
+lhz_in01,108,47,0	script	#never	111,{
+	mes "- 非常干净整顿好的书桌，比起其它书桌来相比，真的显得非常干净 -";
+	close;
+}
+//#crazy4u
+lhz_in01,166,56,1	script	#crazy4u	111,{
+	mes "- 书桌上面书柜上插满了书本-";
+	next;
+	misceffect 196;
+	mes "- 你很好奇书本的内容就拿起了一本书，因为书本所散发出来的强烈的黑暗气息，你只好又把书本放回去 - ";
+	close;
+}
+//Noama
+lhz_in01,148,45,2	script	娜阿玛	97,{
+	mes "[娜阿玛]";
+	mes "我讲一个笑话给你听吧?";
+	mes "所以说~ 是这样又那样~ 嘻嘻哈哈";
+	next;
+	mes "[马丝婉]";
+	mes "娜阿玛，你这家伙!";
+	next;
+	mes "[娜阿玛]";
+	mes "又怎样了~!";
+	mes "真是的! 为什么只整我呀!";
+	close;
+}
+//Mazwon
+lhz_in01,147,40,0	script	马丝婉	828,{
+	mes "- 书桌上面有两个不知名的机械，非常让我费精神的位子 -";
+	next;
+	mes "[马丝婉]";
+	mes "娜阿玛，你这家伙!";
+	mes "快点给我出来!";
+	next;
+	mes "[娜阿玛]";
+	mes "又怎样了~!";
+	mes "真是的!";
+	next;
+	mes "- 好像是为了工作的事情，起了一点争吵似的";
+	close;
+}
+//Mareth
+lhz_in01,157,47,1	script	马勒斯	797,{
+	mes "- 感觉不到是男性或是女性只感觉到中性的这个人，一直把看起来很甜的巧克力放在嘴巴里，显现出幸福的笑容 -";
+	next;
+	mes "[马勒斯]";
+	mes "好好啊，嗯呵~";
+	close;
+}
+//Eiya
+lhz_in01,164,45,2	script	埃依阿	91,{
+	mes "[埃依阿]";
+	mes "胡乐杰先生最近个性变的很暴躁让我有点担心，之前是一位和蔼可亲的人..";
+	mes "唉，不管那么多了，专心做我的事情吧..";
+	next;
+	mes "[埃依阿]";
+	mes "不过你可以看一下这小公仔吗? 会不会觉得又小又可爱呢?";
+	mes "这都是用木头和黏土做成的，我是搜集这些小公仔为主要的兴趣，看着这些小的小公仔的话，不知不觉中感到幸福啊";
+	close;
+}
+//Blackboard#l
+lhz_in01,135,57,3	script	Blackboard#l	111,{
+
+mes "^3131ffYou found a blackboard filled with scribbling.";
+mes "You can only read some of the messages that have been quickly scrawled on it.^000000";
+next;
+mes "''Make sure everything is complete by XX 00.''";
+mes "- Jorje";
+next;
+mes "Late Fee: 59,990 zeny";
+next;
+mes "''I want to have %%%.''";
+mes "- Ellete";
+mes "''I want $$$ too!''";
+mes "- Enoz";
+mes "''How about @@@?''";
+mes "- Ellette";
+next;
+mes "''I wanna buy [#@$].''";
+mes "- Ninjose";
+mes "''Go buy it!''";
+mes "- Senyu";
+mes "''Working hard and buying hard is the best employee attitude.''";
+mes "- Mazwon";
+close;
+}
+//Guard#01::LhzRekGuard
+lhz_in01,173,28,4	script	警卫兵#01::LhzRekGuard	868,{
+	mes "[警卫兵]";
+	mes "这里是禁区，";
+	mes "请你离开";
+	mes ".....";
+	close;
+}
+
+lhz_in01,180,28,4	duplicate(LhzRekGuard)	警卫兵#03	868
+//Guide#01
+lhz_in01,72,209,4	script	服务员#lhz	862,{
+	mes "[那司伊]";
+	mes "唉呜..真无聊...";
+	mes "每天都是一样的客人...";
+	next;
+	mes "[那司伊]";
+	mes "唉哟...";
+	mes "欢迎光临..";
+	mes "呵呵呵..";
+	close;
+}
+//Guide#02
+lhz_in01,72,195,8	script	服务员#2lhz	90,{
+	mes "[基阿努益]";
+	mes "欢迎光临，";
+	mes "这里是通往图书馆与研究室的通道，";
+	mes "这里除了相关人员之外是禁止进入的";
+	close;
+}
+//Guide#03
+lhz_in01,73,188,4	script	服务员#3lhz	862,{
+	mes "[宝尼]";
+	mes "唉哟...";
+	mes "到底在哪里呢...";
+	mes "唉唉...";
+	close;
+}
+//Rekenber Guard#01
+lhz_in01,34,226,4	script	雷根贝勒 卫兵#01	867,{
+	if(isequipped(2241) && isequipped(2243)){
+		mes "[雷根贝勒 卫兵]";
+		mes "呵，呵呵，呵，呵，只能让!";
+		mes "相关人员才能进去!!";
+		mes "勤，勤务中没有任何问题!";
+		close2;
+		warp "lhz_in01",37,225;
+		end;
+	}
+	mes "[雷根贝勒 卫兵]";
+	mes "这，这，这里，";
+	mes "除，除了相关人员之外，";
+	mes "是，是不能进去的!!";
+	mes "假如你是相关人员的话，请显示证，证，证明!!";
+	next;
+	if(select("证明?:结束对话")==1) {
+		mes "[雷根贝勒 卫兵]";
+		mes "那，那，那，那，";
+		mes "那个不是有嘛，那个 !";
+		mes "不知道的话，就，就给我滚开 !!";
+		close;
+	}
+	mes "[雷根贝勒 卫兵]";
+	mes "楼，楼下是研，研究室啦不，不，不是任何人都可以进去的";
+	close;
+}
+//LhzHiddenTrg1::LhzTrig
+lhz_in01,19,129,0	script	LhzHiddenTrg1::LhzTrig	-1,1,1,{
+OnTouch:
+	mes "[雷根贝勒 卫兵]";
+	if(isequipped(2241) && isequipped(2243)){
+		mes "[雷根贝勒 卫兵]";
+		mes "这里是我们公司中枢般的地方，不要打瞌睡确实做好勤务啊";
+		close;
+	}
+	mes "[雷根贝勒 卫兵]";
+	mes "...!!!";
+	mes "这里只有特殊的几个人才能进去的地方，";
+	mes "你是谁! 是怎么进来的?";
+	mes "喂-! 这里有一般人啊 !!";
+	close2;
+	warp "lhz_in01",34,224;
+	end;
+
+}
+
+lhz_in01,23,137,0	duplicate(LhzTrig)	LhzHiddenTrg2	139,1,1
+lhz_in01,24,131,2	duplicate(LhzTrig)	雷根贝勒 卫兵#3lhz	867
+
+//Regenschirm Guard
+lhz_in01,25,141,4	script	雷根贝勒 守卫#lhz	868,{
+	mes "[雷根贝勒 守卫]";
+	if(isequipped(2241) && isequipped(2243)){
+		mes "我是负责前往地下";
+		mes "研究所出入系统的";
+		mes "守卫工作，";
+		mes "请问你要到地下吗?";
+		next;
+		if(select("是的:不要")==1){
+			if(isequipped(2657)){
+				mes "[雷根贝勒 守卫]";
+				mes "我知道了，";
+				mes "我现在马上送你去，";
+				mes "执勤中一切正常!!";
+				close2;
+				warp "lhz_dun01",150,288;
+				end;
+				}
+			mes "[雷根贝勒 守卫]";
+			mes "请务必再次确认进出证后，";
+			mes "再来找我吧";
+			close;
+			}
+		mes "[雷根贝勒 守卫]";
+		mes "我知道了";
+		close;
+		}
+	mes "请问有事吗，";
+	mes "从这里开始唯有持有";
+	mes "出入许可证之人士才能进出，";
+	mes "请务必再次确认进出证后，";
+	mes "再来找我吧";
+	close2;
+	warp "lhz_in01",34,224;
+	end;
+}
+//Rekenber Employee
+lighthalzen,159,222,1	script	雷根贝勒 职员#3lhz	109,{
+	mes "[贝娜托斯]";
+	mes "下面有董事长使用的飞空艇，";
+	mes "刚刚修理工做好检修的工作，请不要触碰谢谢";
+	close;
+}
+//Rekenber Guard Drew
+lighthalzen,162,304,7	script	雷根贝勒 卫兵#4lhz	868,{
+	mes "[雷根贝勒 卫兵]";
+	mes "来，终于搜集到了! 所有卡普拉小姐脱丝袜的照片!!!";
+	mes "呼呼呼，怎么样! 想拥有吧?";
+	next;
+	emotion 23;
+	next;
+	mes "[其它 雷根贝勒 卫兵]";
+	mes "噢噢!!! 就是这个呀!";
+	mes "喀- 连角度也拍的很好呀!";
+	mes "喀呵呵呵~~ 多少钱啊!?";
+	next;
+	mes "[雷根贝勒 卫兵]";
+	mes "30万金币";
+	next;
+	next;
+	emotion 23;
+	mes "[其它 雷根贝勒 卫兵]";
+	mes "什么?! 太贵了吧!!!";
+	mes "这个骗徒!!";
+	next;
+	emotion 2;
+	mes "[雷根贝勒 卫兵]";
+	mes "不需要的话就算了~";
+	close;
+}
+//Rekenber Guard Tan
+lighthalzen,163,306,3	script	雷根贝勒 卫兵#5lhz	867,{
+	emotion 19;
+	mes "[雷根贝勒 卫兵]";
+	mes "呜呜呜呜!! 我好想要啊卡普拉姐姐的照片!!!!";
+	mes "可不可以卖我便宜一点啦? 嗯?";
+	close;
+}
+//========================
+// 宴会场
+//========================
+//Banquet Staff
+lhz_in01,14,28,3	script	宴会场人员#party	109,{
+	mes "[宴会场人员]";
+	mes "宴会场主要是事业相关人员和买家之间用晚餐的地方，或着是于顾客之间的活动及记者会时等使用，目前是没有任何计划行程的关系，稍微有点闲";
+	next;
+	mes "[宴会场人员]";
+	mes "虽然是安静有点闲比较好啦，不过还是稍微忙一点，比较不会那么无聊的";
+	close;
+}
+//Luccet#party
+lhz_in01,43,52,3	script	卢世#party	703,{
+	mes "[卢世]";
+	mes "虚~!!";
+	mes "现在刚好哥哥是扒手，";
+	mes "我是躲猫猫，";
+	mes "我要躲藏在哪里呢? 书桌? 椅子? 餐桌?";
+	mes "在哥哥还没有出现时，我要躲藏好吧~~";
+	close;
+}
+//Hanccet#party
+lhz_in01,28,33,7	script	韩世#party	706,{
+	mes "[韩世]";
+	mes "卢世~ 我要开始要抓了~~";
+	mes "恩嗯... 到底躲到哪里去了呢?";
+	mes "我妹妹会躲在哪里呢?";
+	next;
+	menu "书桌",-,"椅子",-,"餐桌",-;
+	mes "[韩世]";
+	mes "好-啊~!";
+	mes "我要开始找了! 卢世~ 哥哥 开始了~";
+	close;
+}
+//Annette#party
+lhz_in01,21,50,6	script	阿内特#party	91,{
+	mes "[阿内特]";
+	mes "雷根贝勒 宴会场有时候当做一般的结婚礼堂使用，";
+	mes "看起来应该满贵的.. 我的结婚典礼一定要在这里举办的!";
+	mes "一辈子只有一次的结婚典礼啊，想在记忆里清晰的场所，受到大家的祝福这应该都是女人的心吧?";
+	close;
+}
+//====================
+// 自JA加入的NPC
+//====================
+lhz_in01,139,48,2	script	莉咪	73,3,1,{
+	mes "- 有一位姓名叫做莉咪的职员，想要跟她说话，她确实埋头苦干的工作，害我不知所措-";
+	next;
+	mes "[莉咪]";
+	mes "............";
+	next;
+	emotion 23;
+	mes "[莉咪]";
+	mes "(突然间)";
+	next;
+	mes "[莉咪]";
+	mes "请问...有什么事吗?";
+	if(Class != 12) close;
+	next;
+	mes "[莉咪]";
+	mes "啊... 是一位刺客呀，";
+	mes "刺客很帅吧，腰部曲线也很美吧..";
+	mes "是我羡慕的对象呀，嘿嘿";
+	close;
+OnTouch:
+	if(Class != 12) end;
+	mes "(扎卡)";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "噢? 突然间听到有人按快门的声音..";
+	close;
+}
+
+lhz_in01,144,53,2	script	胡乐杰	98,1,1,{
+	switch(rand(3)) {
+	case 0:
+		mes "[胡乐杰]";
+		mes "唉哟! 你现在还不能来到我这个位子呀-";
+		mes "现在我正在处理重要的事情当中";
+		close;
+	case 1:
+		mes "[胡乐杰]";
+		mes "只要是靠近我位子的人，都是嫌疑犯啊，嫌疑犯!!";
+		mes "为什么是嫌疑犯我也不知道啦，反正不要靠过来!";
+		close;
+	case 2:
+		mes "[胡乐杰]";
+		mes "呵嗯.. 这期间我是太努力的工作了，";
+		mes "试着不购买某种东西的话...";
+		next;
+		mes "[胡乐杰]";
+		mes "呜呜，不行!对我来说未来要娶一位像兔子般的可爱的太太!! 钱! 我要存钱啊!";
+		mes "呜.. 看样子这个东西我也使用了很久的样子，啊，不是! 工作吧! 工作!";
+		close;
+	}
+}
+
+lhz_in01,199,137,2	script	科学家#lhz	865,{
+	mes "[科学家]";
+	mes "唉哟! 不能触碰啊";
+	close;
+}
+
+lhz_in01,221,131,6	script	科学家#2lhz	865,{
+	mes "[科学家]";
+	mes "等到机械操作停止等待研究结果是，又期待又是一个很无聊的工作啊";
+	close;
+}
+
+lhz_in01,203,123,2	script	科学家#3lhz	750,{
+	mes "[科学家]";
+	mes "这实验管是刚刚拿出来的，那实验管是要等着交换的实验管，哪个 实验管是刚做完实验的.. 嗯.. 让我再背一次";
+	next;
+	mes "[科学家]";
+	mes "这实验管是刚刚拿出来的，那实验管是... 做完实验的..? 唉? 呵啊? 是什么啦?";
+	close;
+}
+
+lhz_in01,217,121,2	script	修理工#lhz	851,{
+	mes "[修理工]";
+	mes "就因为不会花费自己的钱，把机械随便操成这样，难怪机械过不到一天就会坏掉一次!";
+	next;
+	mes "[修理工]";
+	mes "因为实验器具都很精致，所以要请小心使用~";
+	close;
+}
+
+lhz_in01,218,141,6	script	炼金术师#lhz	98,{
+	mes "[炼金术师]";
+	mes "我认为炼金术师柯拉休斯先生";
+	mes "是在现有的人物中，最接近";
+	mes "真理的人物吧，";
+	mes "他的经验谈和丰富的知识";
+	mes "愈听愈觉得惊奇不已";
+	next;
+	mes "[炼金术师]";
+	mes "这样的柯拉休斯先生在家人面前，";
+	mes "也只是个单纯的父亲兼先生，";
+	mes "这也相当神奇吧? 伟大的";
+	mes "炼金术师在家里也只是单纯";
+	mes "又普遍的平凡家长呢!";
+	next;
+	mes "[炼金术师]";
+	mes "这又是炼金术";
+	mes "所神乎其神的地方不是吗";
+	close;
+}

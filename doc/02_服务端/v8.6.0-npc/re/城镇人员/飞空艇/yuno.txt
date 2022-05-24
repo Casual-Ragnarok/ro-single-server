@@ -1,0 +1,61 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ------------------------------------------
+// - 朱诺 机场 脚本 -
+// ------------------------------------------
+// 版本 1.2
+// ------------------------------------------
+
+y_airport,126,43,4	script	机场 职员#001::AirportY	90,{
+	mes "[机场 职员]";
+	mes "您好，我们公司随时提供给顾客便捷又舒适的旅行服务，会尽其所能的，请问您需要帮忙吗？";
+	next;
+	if(select("进入机场内部","取消")==1) {
+		mes "[机场 职员]";
+		mes "利用飞空艇的费用为1200金币，如果您持有飞空艇免费搭乘券的话，就能免费进入，请问您要进入机场内部吗？";
+		next;
+		if(select("是","否")==1) {
+			if(countitem(7311) > 0) {
+				delitem 7311,1;
+				warp "y_airport",148,51;
+				close;
+			}
+			if(zeny < 1200) {
+				mes "[机场 职员]";
+				mes "你没有足够的金钱.";
+				close;
+			}
+			set Zeny,zeny-1200;
+			warp "y_airport",148,51;
+			close;
+		}
+	}
+	mes "[机场 职员]";
+	mes "请你下次再利用吧，谢谢光临";
+	close;
+}
+
+y_airport,143,43,4	duplicate(AirportY)	机场 职员#002	90
+y_airport,156,43,4	duplicate(AirportY)	机场 职员#003	90
+
+y_airport,126,51,4	script	机场 职员#004::AirportY2	90,{
+	mes "[机场 职员]";
+	mes "你好吗，我们航空随时提供给顾客便捷又舒适的旅行服务，会尽其所能，请问你需要帮忙吗?";
+	next;
+	if(select("离开机场","取消")==1) {
+		mes "[机场 职员]";
+		mes "如果你要从机场内部离开又想进来的话，要在花一次费用喔，请问您要离开吗?";
+		next;
+		if(select("是的","不要")==1) {
+			warp "y_airport",142,40;
+			close;
+		}
+	}
+	mes "[机场 职员]";
+	mes "请你下次再利用吧，谢谢光临";
+	close;
+}
+
+y_airport,143,51,4	duplicate(AirportY2)	机场 职员#005	90
+y_airport,156,51,4	duplicate(AirportY2)	机场 职员#006	90

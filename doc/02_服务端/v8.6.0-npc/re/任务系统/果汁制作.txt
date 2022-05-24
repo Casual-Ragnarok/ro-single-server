@@ -1,0 +1,256 @@
+//==================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// ---------------------------------
+// - 果汁制作 任务脚本 - 
+//===================================
+// 版本：1.8
+//===================================
+
+prt_in,47,173,2	script	莫利孙#juice	97,{
+	mes "[小孩子 莫利孙]";
+	if(MISC_QUEST&1 || @MORRISON > 10) {
+		mes "哼... 滚开! 别管我!";
+		mes "我会因为这些愚蠢的蔬菜水果而死, 你快滚一边去吧!";
+		emotion e_pif;
+		close;
+	}
+	if(@MORRISON == 10) {
+		mes "呃..我已经吃饱了.";
+		mes "你不用再给我了. 在继续吃下去的话我非撑死不可.";
+		next;
+		mes "[小孩子 莫利孙]";
+		mes "那么... 嗯... 这给你吧.";
+		next;
+		getitem 529,3;
+		getitem 530,1;
+		set @MORRISON,0;
+		mes "[小孩子 莫利孙]";
+		mes "这是我背着妈妈偷偷藏起来的糖果.";
+		mes "如果再给我一些肉的话, 我愿意拿糖果和你换." ;
+		close;
+	}
+	mes "啊.. 啊啊啊啊!!! 不.. 不吃";
+	mes "哼..不吃水果!!";
+	emotion e_sob;
+	next;
+	if(select("对话:关闭")==2) {
+		mes "[小孩子 莫利孙]";
+		mes "啊啊啊啊!!受够了!!已经不能在吃水果了!";
+		mes "讲实话,水果呢~先要拨皮还有很多的水份.吃的时候感觉不舒服";
+		mes "而且会酸酸黏黏的..还吃不饱.啊啊啊啊!给我肉吧~";
+		emotion e_sob;
+		close;
+	}
+	if(countitem(517)) {
+		mes "[小孩子 莫利孙]";
+		mes "啊啊! 肉.肉.噢";
+		mes "啊 肚 肚子饿了 真香  这  给我1块肉行不行?";
+		emotion e_ic;
+		next;
+		next;
+		if(select("给他肉:不给他肉")==1) {
+			if(countitem(517) == 0) {
+				mes "哼... 滚开! 别管我!";
+				mes "我会因为这些愚蠢的蔬菜水果而死, 你快滚一边去吧!";
+				emotion e_pif;
+				close;
+			}
+			delitem 517,1;
+			set @MORRISON,@MORRISON+1;
+			mes "[小孩子 莫利孙]";
+			mes "哇~!!! 真的是肉耶! 肉!";
+			mes "咕噜! 我口水都流下来了.";
+			mes "真是太感谢你了. 我现在觉得快乐多了. 哈哈...";
+			emotion e_awsm;
+			close;
+		}
+		set @MORRISON,11;
+		mes "[小孩子 莫利孙]";
+		mes "哼...";
+		mes "哼... 好... 很好, 非常好~!!! 自私的家伙!";
+		emotion e_bzz;
+		close;
+	}
+	mes "[小孩子 莫利孙]";
+	mes "啊啊啊啊!!受够了!!已经不能在吃水果了!";
+	mes "讲实话,水果呢~先要拨皮还有很多的水份.吃的时候感觉不舒服";
+	mes "而且会酸酸黏黏的..还吃不饱.啊啊啊啊!给我肉吧~";
+	emotion e_wah;
+	close;
+}
+
+prt_in,49,172,2	script	玛丽亚棱#juice	53,{
+	mes "[家庭主妇 玛丽亚棱]";
+	if(MISC_QUEST&1 || @MORRISON > 10) {
+		mes "啊呦 没有肉就不吃饭...要怎么样他才吃水果...";
+		mes "举个例子...抹成泥状...";
+		next;
+		mes "[家庭主妇 玛丽亚棱]";
+		mes "啊!好像有一个城市会把水果抹成泥状.";
+		mes "那是斐扬? 梦罗克";
+		emotion e_hmm;
+		set @MORRISON,0;
+		set MISC_QUEST,MISC_QUEST | 1;
+		close;
+	}
+	if(@MORRISON) {
+		set @MORRISON,0;
+		mes "不!! 这..这到底";
+		mes "世界上怎么会发生这种事情!!你不要把奇怪的食物给我儿子吃!";
+		mes "哎呀~~真烦!! 快滚出去!";
+		emotion e_pif;
+		close;
+	}
+	mes "莫利孙!!求你吃一点水果~!啊呦~!!活不下去了!";
+	mes "这个坏习惯真像你爸...";
+	emotion e_sob;
+	next;
+	if(select("交谈:取消")==2) {
+		mes "[家庭主妇 玛丽亚棱]";
+		mes "莫利孙!! 你再这样我要发火了!";
+		emotion e_bzz;
+		close;
+	}
+	mes "[家庭主妇 玛丽亚棱]";
+	mes "嗯..这个小孩叫莫利孙是我的儿子";
+	mes "这个家伙最近不太敢吃水果.已经很久没吃了 脸色都变不好一直想吃肉...";
+	mes "哎..无论如何想个办法让他吃青菜和水果...";
+	close;
+}
+
+payon_in03,188,146,5	script	马雷克汉森#juice	86,{
+	mes "[商人马雷克汉森]";
+	if(MISC_QUEST&1) {
+		mes "欢迎光临 您需要加工水果吗?";
+		next;
+		switch (select("加工水果:对话:取消")) {
+		case 1:
+			mes "[商人马雷克汉森]";
+			mes "您需要什么果汁?";
+			next;
+			switch (select("苹果汁:香蕉汁:红萝卜汁:葡萄汁:取消")) {
+			case 1:
+				set .@fruit,512;
+				set .@juice,531;
+				break;
+			case 2:
+				set .@fruit,513;
+				set .@juice,532;
+				break;
+			case 3:
+				set .@fruit,515;
+				set .@juice,534;
+				break;
+			case 4:
+				set .@fruit,514;
+				set .@juice,533;
+				break;
+			case 5:
+				mes "[商人马雷克汉森]";
+				mes "那么...下次再来...";
+				close;
+			}
+			if (countitem(.@fruit) == 0 || countitem(713) == 0 || Zeny < 3) {
+				mes "[商人马雷克汉森]";
+				mes "噢噢!";
+				mes "材料不足喔! 制作果汁至少要该水果一个、空瓶一个、还有3金币喔!";
+				next;
+				mes "[商人马雷克汉森]";
+				mes "如果你把材料都带齐的话，";
+				mes "我会帮你制作果汁的!";
+				close;
+			}
+			mes "[商人马雷克汉森]";
+			mes "需要多少?";
+			next;
+			switch (select("定购:把所有的全部给我组合:取消")) {
+			case 1:
+				while(1) {
+					input .@input;
+					if (.@input == 0) {
+						mes "[商人马雷克汉森]"																									;
+						mes "停止交易了";
+						close;
+					}
+					else if (.@input > 100) {
+						mes "[商人马雷克汉森]"																									;
+						mes "一次最多只帮你制作100瓶果汁喔!";
+						next;
+					}
+					else {
+						break;
+					}
+					break;
+				}
+				set .@make,.@input;
+				if(countitem(.@fruit) < .@make || countitem(713) <  .@make || Zeny < .@make * 3) {
+					mes "[商人马雷克汉森]";
+					mes "这个,这个...材料不够啊";
+					emotion e_gasp;
+					close;
+				}
+				break;
+			case 2:
+				set .@make,1000;
+				if(Zeny/3 < .@make) set .@make, Zeny/3;
+				if(countitem(.@fruit) < .@make) set .@make, countitem(.@fruit);
+				if(countitem(713) < .@make) set .@make, countitem(713);
+				if(.@make > 0) break;
+				mes "[商人马雷克汉森]";
+				mes "噢...您的材料不够呢!";
+				emotion e_gasp;
+				close;
+			case 3:
+				mes "[商人马雷克汉森]";
+				mes "噢! 那么... 下次再见了.";
+				close;
+			}
+			delitem .@fruit, .@make;
+			delitem 713, .@make;
+			set Zeny, Zeny - .@make * 3;
+			getitem .@juice, .@make;
+			mes "[商人马雷克汉森]";
+			mes "这是您要的果汁,味道一定很不错.";
+			mes "那么...下次再来吧.";
+			close;
+
+		case 2:
+			mes "[商人马雷克汉森]";
+			mes "# 果汁介绍 #";
+			mes "苹果果汁 -";
+			mes "-苹果 x1, 空瓶 x1, 3 金币.";
+			mes "";
+			mes "香蕉果汁 -";
+			mes "香蕉 x1, 空瓶 x1, 3 金币.";
+			mes "";
+			mes "萝卜果汁 -";
+			mes "萝卜 x1, 空瓶 x1, 3 金币.";
+			mes "";
+			mes "葡萄果汁 -";
+			mes "葡萄 x1, 空瓶 x1, 3 金币.";
+			close;
+		case 3:
+			mes "[商人马雷克汉森]";
+			mes "既然来找人,是不是应该说点什么呢.";
+			close;
+		}
+	}
+	mes "请进，找我有什么事情吗?";
+	next;
+	if(select("对话.:取消.")==1) {
+		mes "[商人马雷克汉森]";
+		mes "人类在还没有具备丰富知识前，每个人都是吃水果过生活.";
+		mes "水果是让人类活着的原动力之一，有着大自然的祝福.";
+		next;
+		mes "[商人马雷克汉森]";
+		mes "现在生活条件好了.";
+		mes "最近的年轻人反而不喜欢吃水果.";
+		mes "所以想个办法让他们愿意吃水果.";
+		mes "结果是将水果打成果汁，让他们方便食用而且味道更好";
+		close;
+	}
+	mes "[商人马雷克汉森]";
+	mes "既然来找人，是不是应该说点什么呢?";
+	close;
+}

@@ -1,0 +1,99 @@
+//===========================================
+// [冥] The PlutoEA Project [王]
+// http://opensvn.csie.org/PlutoEA
+// -----------------------------------------------------------------------------
+// - 梦罗克 导游 脚本 -
+// -----------------------------------------------------------------------------
+// 版本 1.3
+//===========================================
+
+morocc,153,286,6	script	导游#1::Mor_Guide	707,{
+	cutin "moc_soldier",2;
+	mes "[梦罗克导游]";
+	mes "欢迎光临  边境之成都  梦罗克.";
+	mes "我们为了来到梦罗克的旅客";
+	mes "安排了导游为您们介绍这个城市.";
+	mes "当您们有问题的时候，";
+	mes "随时可以询问他们.";
+	mes "第一次来到这里的旅客";
+	mes "先按选单 '选择注意事项' 了解必须注意的事情.";
+	while(1) {
+		next;
+		switch (select("开始由导游说明城市.:删掉微型地图上全部的记号.:听取注意事项.: 取消.")) {
+		case 1:
+			if(@compass&0x40 == 0) {
+				mes "[梦罗克导游]";
+				mes "要在微型地图上留下记号吗?";
+				next;
+				if(select("要:不要")==1)
+					set @compass,@compass|0x40;
+			}
+			while(1) {
+				next;
+				switch (select("^FF0000盗贼公会^000000:武器商店:旅馆:酒店:佣兵公会:取消")) {
+				case 1:
+					mes "[梦罗克导游]";
+					mes "专门办理盗贼转职业务的盗贼协会在金字塔内...";
+					if(@compass&0x40)
+						viewpoint 1,24,297,1,0xFF0000;
+					continue;
+				case 2:
+					mes "[梦罗克导游]";
+					mes "武器商店位在以微型地图为中心的东南方.";
+					if(@compass&0x40)
+						viewpoint 1,253,56,2,0xFF00FF;
+					continue;
+				case 3:
+					mes "[梦罗克导游]";
+					mes "旅馆位在以微型地图为中心的东北方和南方各有一间.";
+					if(@compass&0x40)
+						viewpoint 1,197,66,3,0xFF00FF;
+					continue;
+				case 4:
+					mes "[梦罗克导游]";
+					mes "酒店位在以微型地图为中心的西北方.";
+					if(@compass&0x40)
+						viewpoint 1,52,259,4,0xFF00FF;
+					continue;
+				case 5:
+					mes "[梦罗克导游]";
+					mes "佣兵公会位在以微型地图为中心的东方.";
+					if(@compass&0x40)
+						viewpoint 1,284,171,5,0x00FF00;
+					continue;
+				case 6:
+					mes "[梦罗克导游]";
+					mes "需要删掉记号请选取 '删掉微型地图上全部的记号' .";
+				}
+				break;
+			}
+			continue;
+		case 2:
+			viewpoint 2,24,297,1,0xFF0000;
+			viewpoint 2,253,56,2,0xFF00FF;
+			viewpoint 2,197,66,3,0xFF00FF;
+			viewpoint 2,52,259,4,0xFF00FF;
+			viewpoint 2,284,171,5,0x00FF00;
+			set @compass,@compass&~0x40;
+			continue;
+		case 3:
+			mes "[梦罗克导游]";
+			mes "我们废除了原来较差的指引方式采用最现代化的。无论您在那里都可以借由微型地图知道您的位置.";
+			mes "您们可以直接确认卢恩米德加尔特王国魔法和科学技术组合后的广域测位系统的功能.";
+			next;
+			mes "[梦罗克导游]";
+			mes "在流览之前必须先参考右上方的微型地图.";
+			mes "如果看不见微型地图的话 请按'ctrl+tab'或者选取基本情报视窗 内的'map'.";
+			mes "微型地图出现之后, 在地图上按  '-' 几下可以看见所有城市.";
+			continue;
+		case 4:
+			mes "[梦罗克导游]";
+			mes "祝您旅游快乐.";
+			close2;
+			cutin "moc_soldier",255;
+			end;
+		}
+	}
+}
+
+morocc,54,97,6	duplicate(Mor_Guide)	导游#mor2	707

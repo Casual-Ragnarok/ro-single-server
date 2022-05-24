@@ -1,0 +1,205 @@
+
+
+//更新--------------------------------
+//07-06-14 修改选单呈现的判断方式、是否留言的记录方式 by 重灌郎(infixman)
+//06-28-08 增加显示留言时间
+//06-27-08 增加留言者是否在线判断
+//06-26-08 主体完成
+
+//变数说明
+//	$used[]		--	使用者charid	--全域变数
+//	$message_name$[]--	留言者姓名	--全域字串变数
+//	$message$[]	--	留言		--全域字串变数
+//	$aa$[]		--	留言类型	--全域字串变数
+//	$m_year[]	--	留言 年		--全域变数
+//	$m_month[]	--	     月		--全域变数
+//	$m_day[]	--	     日		--全域变数
+//	$m_hour[]	--	     时		--全域变数
+//	$m_min[]	--	     分		--全域变数
+//	$m_num[]	--	第几留言	--全域变数
+//	@w		--	第几留言	--暂存脚色变数(回圈用
+//	@line[]		--	留言者在线	--暂存脚色变数
+//	$boardmax(1~127)--	最大留言次数	--全域变数
+//	$boardmoney	--	收费		--暂存全域变数
+//	$gm_charid	--	GM帐号ID	--全域变数
+
+prontera.gat,156,185,4	script	留言板	857,{
+
+//----------------
+set $boardmax,30;	//此修改最大留言数1~127
+set $boardmoney,1000;	//此处修改收费价钱
+set $gm_charid,2000001;	//此处修改GM帐号ID
+//----------------
+
+mes "===欢迎使用留言板===";
+mes "一、本板是公开的";
+mes "二、如果恶意使用将遭受处分";
+mes "三、一个帐号只能保存一笔留言";
+mes "四、每次留言酌收 " + $boardmoney + " Zeny";
+for ( set @w,1; @w<=$boardmax; set @w,@w+1 ){
+	if (getcharid(3)==$gm_charid) {
+		menu "观看留言",look,"留言",MMM,"删除我的留言",del,"删除指定留言",delnum,"删除全部留言",Alldel;
+	} else if ($used[@w]==getcharid(3)) {
+		menu "观看留言",look,"删除我的留言",del;
+	} else {
+		menu "观看留言",look,"留言",MMM;
+	}
+}
+
+//留言
+MMM:
+	next;
+	if( zeny < $boardmoney ){
+		mes "你身上不够钱噢";
+		goto ok;
+	}
+	set zeny,zeny-$boardmoney;
+	set @ty,select("买卖","随意");
+	set @t,1;
+	for ( set @w,1; @w<=$boardmax; set @w,@w+1 ){
+
+		if( $message_name$[@w] == ""){ 
+  			mes "请输入留言";
+			input $message$[@w];
+  			next;
+  			setarray $m_year[@w],gettime(7);
+  			setarray $m_month[@w],gettime(6);
+  			setarray $m_day[@w],gettime(5);
+  			setarray $m_hour[@w],gettime(3);
+  			setarray $m_min[@w],gettime(2);
+  			setarray $message_name$[@w],strcharinfo(0);
+  			setarray $m_num[@w],@w;
+
+  			if (@ty == 1) setarray $aa$[@w],"^339933买卖^000000]";
+  			if (@ty == 2) setarray $aa$[@w],"随意]";
+
+  			mes "[留言" + $m_num[@w] + "]^3355FF[" + $message_name$[@w] + "]^000000";
+  			mes "[" + $aa$[@w] + $message$[@w];
+  			announce $message_name$[@w] + "新增了一笔留言",15; 
+  			setarray $used[@w],getcharid(3);
+  			goto ok;
+  		}else{
+  			set @t,@t+1;
+  		}
+	}
+
+	if (@t >= $boardmax) mes "目前留言板已满"; close;
+
+ok:
+	close;
+
+//观看留言
+
+look:
+	next;
+	set @t,0;
+	for ( set @w,1; @w<=$boardmax; set @w,@w+1 ){
+
+  		if( $message_name$[@w] != ""){
+
+			if (getcharid(3,$message_name$[@w]) <= 0){	//判断在线?
+	  			setarray @line$[@w],"^FF0000Offline^000000";
+			}else{
+	  			setarray @line$[@w],"^0000FFOnline^000000";
+			}
+  			mes "[留言" + $m_num[@w] + "]^3355FF[" + $message_name$[@w] + "]^000000　　" + @line$[@w] ;
+  			mes "[" + $aa$[@w] +$message$[@w];
+  			mes "^FF0000--" + $m_year[@w] + "/" + $m_month[@w] + "/" + $m_day[@w] + " " + $m_hour[@w] + ":" + $m_min[@w] + "--^000000";
+ 		}else{
+  			set @t,@t+1;
+		}
+	}
+
+	if ( @t >= $boardmax ) mes "目前无人留言"; close;
+
+close;
+
+//删除自己留言
+
+del:
+	next;
+	for ( set @w,1; @w<=$boardmax; set @w,@w+1 ){
+
+		if( $used[@w] == getcharid(3) ){
+			mes "是否删除?";
+			mes "[留言" + $m_num[@w] + "]^3355FF[" + $message_name$[@w] + "]^000000　　";
+			mes "[" + $aa$[@w] +$message$[@w];
+			mes "^FF0000--" + $m_year[@w] + "/" + $m_month[@w] + "/" + $m_day[@w] + " " + $m_hour[@w] + ":" + $m_min[@w] + "--^000000";
+
+			menu "否",nono,"是",-;
+
+			setarray $m_year[@w],"";
+			setarray $m_month[@w],"";
+			setarray $m_day[@w],"";
+			setarray $m_hour[@w],"";
+			setarray $m_min[@w],"";
+			setarray $message_name$[@w],"";
+			setarray $message$[@w],"";
+			setarray $aa$[@w],"";
+			setarray $m_num[@w],0;
+			setarray $used[@w],0;
+			mes "删除完毕";
+			break;
+  		}
+	}
+nono:
+close;
+
+//删除指定留言
+
+delnum:
+
+	mes "输入删除编号";
+	mes "输入0离开";
+	next;
+	input @delnumber;
+	next;
+  
+	if ( @delnumber==0 ) goto en;
+
+	mes "是否删除?";
+	mes "[留言" + $m_num[@delnumber] + "]^3355FF[" + $message_name$[@delnumber] + "]^000000　　";
+	mes "[" + $aa$[@delnumber] +$message$[@delnumber];
+	mes "^FF0000--" + $m_year[@delnumber] + "/" + $m_month[@delnumber] + "/" + $m_day[@delnumber] + " " + $m_hour[@delnumber] + ":" + $m_min[@delnumber] + "--^000000";
+
+	menu "否",-,"是",ddel;
+en:
+	close;
+ddel:
+	setarray $m_year[@delnumber],"";
+	setarray $m_month[@delnumber],"";
+	setarray $m_day[@delnumber],"";
+	setarray $m_hour[@delnumber],"";
+	setarray $m_min[@delnumber],"";
+	setarray $message_name$[@delnumber],"";
+	setarray $message$[@delnumber],"";
+	setarray $aa$[@delnumber],"";
+	setarray $m_num[@delnumber],0;
+	setarray $used[@delnumber],0;
+	mes "删除完毕";
+	close;
+
+
+
+
+
+//清除全部
+
+Alldel:
+for ( set @w,1; @w<=$boardmax; set @w,@w+1 ){
+	setarray $m_year[@w],"";
+	setarray $m_month[@w],"";
+	setarray $m_day[@w],"";
+	setarray $m_hour[@w],"";
+	setarray $m_min[@w],"";
+	setarray $message_name$[@w],"";
+	setarray $message$[@w],"";
+	setarray $aa$[@w],"";
+	setarray $m_num[@w],0;
+	setarray $used[@w],0;
+}
+announce "留言板已清空",15; 
+close;
+end;
+
+}

@@ -1,0 +1,92 @@
+//===== rAthena Script =======================================
+//= Ice Cream Maker
+//===== By: ==================================================
+//= KOOK SWU, Kisuka
+//===== Current Version: =====================================
+//= 1.5
+//===== Compatible With: =====================================
+//= rAthena SVN
+//===== Description: =========================================
+//= A man makes you ice-cream
+//===== Additional Comments: =================================
+//= 1.1 Optimized, changed overlapping coords in Alberta [Lupus]
+//= 1.2 According to the patch, IceCream seller has been removed from Morocc [Lupus]
+//= 1.3 No more label menu and updated to match AEGIS script. [Kisuka]
+//= 1.4 Duplicates now spawn from floating NPCs. [L0ne_W0lf]
+//= 1.5 Fixed small checkweight issue. [Kisuka]
+//============================================================
+
+-	script	冰淇淋贩卖员::IceCreamer	-1,{
+	mes "[冰淇淋贩卖员]";
+	mes "由纯净的雪制作而成的新鲜冰淇淋啊！";
+	mes "现在享受它吧，限时销售哦！";
+	mes "每个冰淇淋仅需^3355FF100 金币^000000！";
+	next;
+	if(select("我要买冰淇淋:结束交易") == 2) {
+		mes "[冰淇淋贩卖员]";
+		mes "你确定你不想要么？";
+		mes "我不会卖很久的，";
+		mes "一旦我离开了，就再也没有了！！！";
+		close;
+	}
+	mes "[冰淇淋贩卖员]";
+	mes "由纯净的雪制作而成的新鲜冰淇淋啊！";
+	mes "每个人都想要我们那美味的冰淇淋，";
+	mes "但是总量有限，";
+	mes "所以你只能一次性最多买50个！！";
+	next;
+	//while(1) {
+		input .@input;
+		if(.@input < 1) {
+			mes "[冰淇淋贩卖员]";
+			mes "如果你一个都不想买，";
+			mes "你能让位给下一个顾客买么？谢谢。";
+			close;
+		}
+		if(.@input > 50) {
+			mes "[冰淇淋贩卖员]";
+			mes "哎哟，你期望过高了。";
+			mes "尊敬的客人，";
+			mes "如果你吃了超过50个冰淇淋，";
+			mes "你今晚会做个漫长的梦。";
+			close;
+		}
+	//}
+	if(Zeny<.@input*100) {
+		mes "[冰淇淋贩卖员]";
+		mes "尊敬的顾客, 你的钱似乎不够啊。";
+		mes "每个冰淇淋卖^3355FF100 金币^000000。";
+		close;
+	}
+	if(checkweight(536,.@input) == 0) {
+		mes "[冰淇淋贩卖员]";
+		mes "尊敬的顾客，你似乎已经拿了很多东西在身上。";
+		mes "冰淇淋很好吃，";
+		mes "但是你必须在购买前考虑到你的负重。";
+		close;
+	}
+	mes "[冰淇淋贩卖员]";
+	mes "好勒，这是你的冰淇淋，请拿好。";
+	mes "请尽快食用，避免融化哟~";
+	set Zeny,Zeny-100*.@input;
+	getitem 536,.@input;	// Ice_Cream
+	close;
+}
+
+// Geffen
+geffen,103,56,5	duplicate(IceCreamer)	冰淇淋贩卖员#1	85
+
+// Izlude
+izlude,127,168,5	duplicate(IceCreamer)	冰淇淋贩卖员#2	85
+
+// Prontera
+prontera,110,97,5	duplicate(IceCreamer)	冰淇淋贩卖员#3	85
+
+// Alberta
+alberta,120,45,2	duplicate(IceCreamer)	冰淇淋贩卖员#4	85
+
+// Morroc Field
+moc_fild16,88,304,4	duplicate(IceCreamer)	冰淇淋贩卖员#5	85
+
+// Morroc
+//morocc,160,144,4	duplicate(IceCreamer)	冰淇淋贩卖员#6	85

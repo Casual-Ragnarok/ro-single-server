@@ -1,0 +1,399 @@
+/************************************************************\
+                        Eathena Script
+**************************************************************
+【名    称】全能孙燕姿(Omnipotent Sun Yanzi)
+【类    型】服务组件
+【版    本】1.0.6
+【版权所有】相识工作组
+【授权费用】免费
+【服 务 端】Eathena 12019 及以上
+【制作人员】
+    策划：七七
+    编程：♂似曾相识♀
+    文饰：♂似曾相识♀
+    制作：♂似曾相识♀
+    测试：湛蓝海风、♂似曾相识♀
+【简要说明】
+        本脚本为 Eathena 服务端专用便利脚本，功能十分全面，包
+    括 城市传送、全洞穴分层传送、常用地图传送、区域范围恢复、
+    染发、换发型、染衣服等功能。
+【更新日志】
+    2008-01-14    1.0.0    脚本完成
+    2008-01-16    1.0.1    修改换发型部分代码，更加人性化
+    2008-02-26    1.0.2    增加了无名的海岛的昼夜传送
+    2008-05-17    1.0.3    修正了修道院地图名字的错误
+    2008-08-28    1.0.4    增加了Boss区传送，异常状态恢复，修理，鉴定装备。(flamen)
+    2009-02-27    1.0.5    修正修理装备无效 by 99MaxEa 【程序组♂最后防线】
+    2012-08-18	  1.0.6	   完善城市及洞穴传送信息 by 99MaxEa 【脚本组♂宝宝】
+\************************************************************/
+
+prontera.gat,146,91,6	script	孙燕姿#a	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+morocc.gat,160,97,4	script	孙燕姿#b	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+geffen.gat,126,62,8	script	孙燕姿#c	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+payon.gat,192,104,4	script	孙燕姿#d	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+alberta.gat,27,238,4	script	孙燕姿#e	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+izlude.gat,134,92,4	script	孙燕姿#f	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+aldebaran.gat,145,116,6	script	孙燕姿#g	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+xmas.gat,159,111,6	script	孙燕姿#h	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+comodo.gat,192,150,6	script	孙燕姿#i	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+yuno.gat,150,187,6	script	孙燕姿#j	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+amatsu.gat,193,91,6	script	孙燕姿#k	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+gonryun.gat,157,122,6	script	孙燕姿#l	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+umbala.gat,126,136,4	script	孙燕姿#m	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+niflheim.gat,23,159,6	script	孙燕姿#n	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+louyang.gat,226,60,6	script	孙燕姿#o	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+jawaii.gat,225,204,6	script	孙燕姿#p	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+ayothaya.gat,214,192,6	script	孙燕姿#q	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+einbroch.gat,57,203,6	script	孙燕姿#r	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+lighthalzen.gat,163,102,4	script	孙燕姿#s	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+einbech.gat,181,129,4	script	孙燕姿#t	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+hugel.gat,102,150,4	script	孙燕姿#u	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+rachel.gat,132,116,4	script	孙燕姿#v	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+veins.gat,221,128,4	script	孙燕姿#y	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+malangdo.gat,175,135,4	script	孙燕姿#a1	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+malaya.gat,232,202,4	script	孙燕姿#a2	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+manuk.gat,279,198,4	script	孙燕姿#a3	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+mora.gat,107,115,4	script	孙燕姿#a4	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+moscovia.gat,221,189,4	script	孙燕姿#a5	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+splendide.gat,190,187,4	script	孙燕姿#a6	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+brasilis.gat,195,221,4	script	孙燕姿#a7	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+dewata.gat,197,184,4	script	孙燕姿#a8	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+dicastes01.gat,137,117,4	script	孙燕姿#a9	756,5,5,{ callfunc "sunmm"; OnTouch: callfunc "sunmmhpsp"; }
+
+
+function	script	sunmmhpsp	{  sc_end SC_STONE; sc_end SC_FREEZE; sc_end SC_STUN; sc_end SC_SLEEP; sc_end SC_POISON; sc_end SC_CURSE; sc_end SC_SILENCE; sc_end SC_CONFUSION; sc_end SC_BLIND; sc_end SC_BLEEDING; percentheal 100,100; emotion 3; end; }
+
+function	script	sunmm	{
+	set @w,0;
+	deletearray @mapname$[0],128;
+	cutin "son",2;
+	mes "[孙燕姿]";
+	mes "现在是:^FF0000"+ gettimestr("%Y年%m月%d日 %H:%M:%S",50) +"^000000";
+	mes "我是音乐精灵 ^3355FF孙燕姿^000000";
+	mes "能在仙境传说里见到你真的很高兴唷!";
+	mes "请问你需要什么样的服务呢？";
+	next;
+	switch(select("城市传送","洞穴传送","练级区传送","BOSS区","鉴定装备","修理装备","快速恢复","染头发","换发型","染衣服")){
+		case 1: //城市
+			mes "[孙燕姿]";
+			mes "请选择你要传送的城市。";
+			next;
+			set @w,select("卢恩米德加兹王国 首都 普隆德拉","沙漠之都 梦罗克","魔法之都 吉芬","山岳之都 斐扬","港口之都 艾尔贝塔","卫星都市 依斯鲁得岛","运河之都 艾尔帕兰","白雪村落 姜饼城","海边之都 克魔岛","修发兹 共和国 首都 朱诺","天水之国 樱花城","神仙之岛 昆仑","雨檀族村落 汶巴拉","死者国家 尼芙菲姆","古都 洛阳 龙之城","","","蜜月岛 爪哇咿","哎哟泰雅","钢铁之都 艾音布罗克","企业之都 里希塔乐镇","采矿村落 艾音贝赫","田园都市毁葛","阿鲁娜配滋教国 首都 拉赫","峡谷村子伯仁斯","绵绵岛","马来亚","魔努克","草精族穆拉村","莫斯科比亚","辉煌领域中心","巴西","德瓦他岛村","沙帕首都埃迪斯特斯")-1;
+			atcommand "@go "+@w;
+			break;
+		case 2: //洞穴
+			mes "[孙燕姿]";
+			mes "请选择你要传送的密穴。";
+			next;
+			switch(select("迷藏森林","普隆德拉地下水道","海底洞窟","史芬克斯密穴","金字塔迷宫","蚂蚁地狱密穴","吉芬塔地下密穴","妙勒尼废弃矿场","克雷斯特汉姆古城","兽人地下洞窟","裴扬迷宫","沉没之船","艾尔帕兰钟塔","龟岛","玩具工厂","诺可罗德溶洞","樱花城迷宫","昆仑洞穴","古神木树洞","洛阳古都王陵","葛帔尼亚","优配擂斯废墟","机械娃娃工厂","达纳托斯之塔","矿山洞穴","奥丁神殿","生体试验研究所","深渊湖水地下洞穴","冰洞穴","古代神殿迷宫","神殿圣域洞穴","图尔火山洞窟","无名的海岛","地下公会","巴西洞穴","德瓦他火山洞穴","绵绵岛洞穴","甲虫洞")){
+				case 1:
+					set @w,select("迷藏森林1层","迷藏森林2层","迷藏森林3层")-1;
+					setarray @mapname$[0],"prt_maze01","prt_maze02","prt_maze03";
+					break;
+				case 2:
+					set @w,select("普隆德拉地下水道1层","普隆德拉地下水道2层","普隆德拉地下水道3层","普隆德拉地下水道4层")-1;
+					setarray @mapname$[0],"prt_sewb1","prt_sewb2","prt_sewb3","prt_sewb4";
+					break;
+				case 3:
+					set @w,select("海底洞窟1层","海底洞窟2层","海底洞窟3层","海底洞窟4层","海底洞窟5层")-1;
+					setarray @mapname$[0],"iz_dun00","iz_dun01","iz_dun02","iz_dun03","iz_dun04";
+					break;
+				case 4:
+					set @w,select("史芬克斯密穴1层","史芬克斯密穴2层","史芬克斯密穴3层","史芬克斯密穴4层","史芬克斯密穴5层")-1;
+					setarray @mapname$[0],"in_sphinx1","in_sphinx2","in_sphinx3","in_sphinx4","in_sphinx5";
+					break;
+				case 5:
+					set @w,select("金字塔迷宫地上1层","金字塔迷宫地上2层","金字塔迷宫地上3层","金字塔迷宫地上4层","金字塔迷宫地下1层","金字塔迷宫地下2层")-1;
+					setarray @mapname$[0],"moc_pryd01","moc_pryd02","moc_pryd03","moc_pryd04","moc_pryd05","moc_pryd06";
+					break;
+				case 6:
+					set @w,select("蚂蚁地狱密穴1层","蚂蚁地狱密穴2层")-1;
+					setarray @mapname$[0],"anthell01","anthell02";
+					break;
+				case 7:
+					set @w,select("吉芬塔地下密穴1层","吉芬塔地下密穴2层","吉芬塔地下密穴3层","吉芬塔地下密穴4层")-1;
+					setarray @mapname$[0],"gef_dun00","gef_dun01","gef_dun02","gef_dun03";
+					break;
+				case 8:
+					set @w,select("妙勒尼废弃矿场1层","妙勒尼废弃矿场2层","妙勒尼废弃矿场3层")-1;
+					setarray @mapname$[0],"mjo_dun01","mjo_dun02","mjo_dun03";
+					break;
+				case 9:
+					set @w,select("克雷斯特汉姆古城","修道院","地下公墓","地上1层","地上2层","监狱1层","监狱2层","骑士团1层","骑士团2层","室内","楼梯密穴","下水道1层","下水道2层","下水道3层","下水道4层","地下洞窟1层","地下洞窟2层")-1;
+					setarray @mapname$[0],"glast_01","gl_church","gl_chyard","gl_cas01","gl_cas02","gl_prison","gl_prison1","gl_knt01","gl_knt02","gl_in01","gl_step","gl_sew01","gl_sew02","gl_sew03","gl_sew04","gl_dun01","gl_dun02";
+					break;
+				case 10:
+					set @w,select("兽人地下洞窟1层","兽人地下洞窟2层")-1;
+					setarray @mapname$[0],"orcsdun01","orcsdun02";
+					break;
+				case 11:
+					set @w,select("裴扬迷宫1层","裴扬迷宫2层","裴扬迷宫3层","裴扬迷宫4层","裴扬迷宫5层")-1;
+					setarray @mapname$[0],"pay_dun00","pay_dun01","pay_dun02","pay_dun03","pay_dun04";
+					break;
+				case 12:
+					set @w,select("沉没之船1层","沉没之船2层")-1;
+					setarray @mapname$[0],"treasure01","treasure02";
+					break;
+				case 13:
+					set @w,select("艾尔帕兰钟塔地上1层","艾尔帕兰钟塔地上2层","艾尔帕兰钟塔地上3层","艾尔帕兰钟塔地上4层","艾尔帕兰钟塔地下1层","艾尔帕兰钟塔地下2层","艾尔帕兰钟塔地下3层","艾尔帕兰钟塔地下4层")-1;
+					setarray @mapname$[0],"c_tower1","c_tower2","c_tower3","c_tower4","alde_dun01","alde_dun02","alde_dun03","alde_dun04";
+					break;
+				case 14:
+					set @w,select("龟岛表层","密穴1层","密穴2层","密穴3层")-1;
+					setarray @mapname$[0],"tur_dun01","tur_dun02","tur_dun03","tur_dun04";
+					break;
+				case 15:
+					set @w,select("玩具工厂1层","玩具工厂2层")-1;
+					setarray @mapname$[0],"xmas_dun01","xmas_dun02";
+					break;
+				case 16:
+					set @w,select("诺可罗德溶洞1层","诺可罗德溶洞2层")-1;
+					setarray @mapname$[0],"mag_dun01","mag_dun02";
+					break;
+				case 17:
+					set @w,select("樱花城迷宫1层","樱花城迷宫2层","樱花城迷宫3层")-1;
+					setarray @mapname$[0],"ama_dun01","ama_dun02","ama_dun03";
+					break;
+				case 18:
+					set @w,select("昆仑洞穴1层","昆仑洞穴2层","昆仑洞穴3层")-1;
+					setarray @mapname$[0],"gon_dun01","gon_dun02","gon_dun03";
+					break;
+				case 19:
+					set @w,select("古神木树洞1层","古神木树洞2层")-1;
+					setarray @mapname$[0],"um_dun01","um_dun02";
+					break;
+				case 20:
+					set @w,select("洛阳古都王陵1层","洛阳古都王陵2层","洛阳古都王陵3层")-1;
+					setarray @mapname$[0],"lou_dun01","lou_dun02","lou_dun03";
+					break;
+				case 21:
+					set @w,select("葛帔尼亚1层","葛帔尼亚2层","葛帔尼亚3层","葛帔尼亚4层")-1;
+					setarray @mapname$[0],"gefenia01","gefenia02","gefenia03","gefenia04";
+					break;
+				case 22:
+					set @w,select("优配擂斯废墟1层","优配擂斯废墟2层","优配擂斯中心部")-1;
+					setarray @mapname$[0],"juperos_01","juperos_02","jupe_core";
+					break;
+				case 23:
+					set @w,select("机械娃娃工厂1层","机械娃娃工厂2层")-1;
+					setarray @mapname$[0],"kh_dun01","kh_dun02";
+					break;
+				case 24:
+					set @w,select("达纳托斯之塔1层","达纳托斯之塔2层","达纳托斯之塔3层","达纳托斯之塔4层","达纳托斯之塔5层","达纳托斯之塔6层","达纳托斯之塔7层","达纳托斯之塔8层","达纳托斯之塔9层","达纳托斯之塔10层","达纳托斯之塔11层","达纳托斯之塔12层","达纳托斯之塔13层")-1;
+					setarray @mapname$[0],"tha_t01","tha_t02","tha_t03","tha_t04","tha_t05","tha_t06","tha_t07","tha_t08","tha_t09","tha_t10","tha_t11","tha_t12","thana_boss";
+					break;
+				case 25:
+					set @w,select("矿山洞穴1层","矿山洞穴2层")-1;
+					setarray @mapname$[0],"ein_dun01","ein_dun02";
+					break;
+				case 26:
+					set @w,select("奥丁神殿1层","奥丁神殿2层","奥丁神殿3层")-1;
+					setarray @mapname$[0],"odin_tem01","odin_tem02","odin_tem03";
+					break;
+				case 27:
+					set @w,select("生体试验研究所1层","生体试验研究所2层","生体试验研究所3层")-1;
+					setarray @mapname$[0],"lhz_dun01","lhz_dun02","lhz_dun03";
+					break;
+				case 28:
+					set @w,select("深渊湖水地下洞穴1层","深渊湖水地下洞穴2层","深渊湖水地下洞穴3层")-1;
+					setarray @mapname$[0],"abyss_01","abyss_02","abyss_03";
+					break;
+				case 29:
+					set @w,select("冰洞穴1层","冰洞穴2层","冰洞穴3层")-1;
+					setarray @mapname$[0],"ice_dun01","ice_dun02","ice_dun03";
+					break;
+				case 30:
+					set @w,select("古代神殿迷宫1层","古代神殿迷宫2层")-1;
+					setarray @mapname$[0],"ayo_dun01","ayo_dun02";
+					break;
+				case 31:
+					set @w,select("神殿圣域洞穴1层","神殿圣域洞穴2层","神殿圣域洞穴3层","神殿圣域洞穴4层","神殿圣域洞穴5层")-1;
+					setarray @mapname$[0],"ra_san01","ra_san02","ra_san03","ra_san04","ra_san05";
+					break;
+				case 32:
+					set @w,select("图尔火山洞窟1层","图尔火山洞窟2层","图尔火山洞窟3层")-1;
+					setarray @mapname$[0],"thor_v01","thor_v02","thor_v03";
+					break;                          
+				case 33:
+					set @w,select("无名的海岛(昼)","无名的海岛(夜)","修道院1层","修道院2层","修道院3层")-1;
+					setarray @mapname$[0],"nameless_i","nameless_n","abbey01","abbey02","abbey03";
+					break; 
+                                case 34:
+					set @w,select("地下公会1层","地下公会2层","地下公会3层","地下公会4层")-1;
+					setarray @mapname$[0],"gld_dun01","gld_dun02","gld_dun03","gld_dun04";
+					break;
+				case 35:
+					set @w,select("巴西洞穴1层","巴西洞穴2层")-1;
+					setarray @mapname$[0],"bra_dun01","bra_dun02";
+					break;
+				case 36:
+					set @w,select("德瓦他洞穴1层","德瓦他洞穴2层")-1;
+					setarray @mapname$[0],"dew_dun01","dew_dun02";
+					break; 
+				case 37:
+					set @w,select("绵绵岛洞穴1层","绵绵岛洞穴2层")-1;
+					setarray @mapname$[0],"mal_dun01","mal_dun01";
+					break;
+				case 38:
+					set @w,select("甲虫洞1层","甲虫洞2层","甲虫洞3层")-1;
+					setarray @mapname$[0],"dic_dun01","dic_dun02","dic_dun03";
+					break;					 					        
+				}
+			warp @mapname$[@w],0,0;
+			break;
+		case 3: //练级
+			mes "[孙燕姿]";
+			mes "请选择你要传送的区域。";
+			next;
+			set @w,select("蝗虫区","波利岛","狂暴野猫区","犬妖森林","蜈蚣区","噬人花区","曼陀罗魔花区","兽人部落西","哥不灵森林","野猪区","长老树精区","将军魔碑区","九尾区","虎蜥人区","海豹区","草区","邪恶向日葵区","红蛙岛")-1;
+			setarray @mapname$[0],"prt_fild07","pay_fild04","gef_fild05","gef_fild12","mjolnir_05","mjolnir_11","prt_fild02","gef_fild14","gef_fild11","prt_fild10","pay_fild07","pay_fild10","pay_fild11","cmd_fild03","cmd_fild02","yggdrasil01","ein_fild04","beach_dun3";
+			warp @mapname$[@w],0,0;
+			break;
+		case 4: //Boss
+			mes "[孙燕姿]";
+			mes "请选择你要传送的Boss区域。";
+			next;
+			set @w,select("蜂后","虎王","皮里恩","兽人英雄","兽人酋长","圣天使波利","死灵骑士","卡仑","阿特罗斯")-1;
+			setarray @mapname$[0],"mjolnir_04","pay_fild11","moc_fild17","gef_fild14","gef_fild10","yuno_fild05","niflheim","xmas_fild01","ra_fild04";
+			warp @mapname$[@w],0,0;
+			break;
+		case 5: //鉴定
+			mes "[孙燕姿]";
+			mes "让我们用音乐的魔力唤醒装备真正的力量吧。";
+			getinventorylist;
+			for( set .@i,0; .@i < @inventorylist_count; set .@i, .@i + 1 ) {
+				if ( @inventorylist_identify[.@i] == 1 ) continue;
+				delitem2 @inventorylist_id[.@i],1,0,0,0,0,0,0,0;
+				getitem2 @inventorylist_id[.@i],1,1,0,0,0,0,0,0;
+			}
+			emotion 3;
+			break;
+		case 6: //修理
+			mes "[孙燕姿]";
+			mes "让我们用音乐的灵气修复装备吧。";
+                        next;
+                        switch(select("恩...我有东西修:我目前没有修")) {
+	case 1:
+		set .@checkitem,1;
+		while (1) {
+			if (getbrokenid(.@checkitem) == 0) {
+				break;
+			}
+			set .@checkitem,.@checkitem+1;
+		}
+		set .@checkitem,.@checkitem-1;
+		if (!.@checkitem) {
+			mes "[孙燕姿]";
+			mes "噢!这真是难以置信";
+			mes "你肯定非常关心你的物品!没有一件损坏了哦";
+			next;
+			mes "[孙燕姿]";
+			mes "如果每个人都像你这样，我就会要失业了!";
+			break;
+		}
+		mes "[孙燕姿]";
+		mes "呃...";
+		mes "让我看看...";
+		mes "你的物品中,";
+		mes "" + .@checkitem + " 样 需要修理";
+		mes "你想修理他们吗?";
+		next;
+		switch(select("好的:不要")) {
+		case 1:
+			set .@checkitem2,1;
+			while (1) {
+				if (getbrokenid(.@checkitem2) == 0) {
+					break;
+				}
+				set .@checkitem2,.@checkitem2+1;
+			}
+			set .@checkitem2,.@checkitem2-1;
+			if (.@checkitem == .@checkitem2) {
+				while (.@checkitem) {
+					repair(.@checkitem);
+					set .@checkitem,.@checkitem-1;
+				}
+				mes "[孙燕姿]";
+				mes "Ok! 修好了。";
+				break;
+			}
+			else {
+				mes "[孙燕姿]";
+				mes "看来你并没有任何坏掉的东西需要修理呐...";
+				break;
+			}
+		case 2:
+			mes "[孙燕姿]";
+			mes "以后装备及武器坏掉了,再来找我吧~";
+			break;
+		}
+			emotion 3;
+			
+			break;
+        case 2:
+		mes "[孙燕姿]";
+		mes "哦...";
+		mes "你没有";
+		mes "工作需要我来做";
+		mes "如果你没有任何东西";
+		mes "需要修理.";
+		break;
+	}
+			emotion 3;
+			
+			break;                       
+		case 7: //恢复
+			mes "[孙燕姿]";
+			mes "为了让各位的旅途更加顺利，我会用音乐与存在于世上的水之精灵们沟通，试着借用他们的力量为你恢复HP与SP。";
+			mes "最后，愿精灵的力量永远与你同在。";
+			percentheal 100,100;
+			emotion 3;
+			
+			break;
+		case 8: //染发
+			mes "[孙燕姿]";
+			mes "漂亮的你难道不想染个新发色吗？";
+			mes "换个颜色可以换个心情哦。";
+			next;
+			set @w,select("帮我换回原色","温柔俏皮的黄色","雅致大方的蓝色","聪慧健康的绿色","体贴细腻的赤色","高贵典雅的紫色","纯洁朦胧的白色","严谨庄重的黑色","热情奔放的红色")-1;
+			setlook 6,@w;
+			mes "[孙燕姿]";
+			mes "这个发色真的很适合伱呢~.";
+			mes "祝你有个愉快的心情~ ";
+			break;
+		case 9: //发型
+			mes "[孙燕姿]";
+			mes "发型也是一种极具个性化的艺术.";
+			mes "想要个完美的发型吗?";
+			next;
+			mes "[孙燕姿]";
+			mes "你看这个发型怎么样?";
+			next;
+			for (set @x,1;@x!=0;) {
+				if(@x!=getbattleflag("max_hair_style")+1) cutin "hair_"+(Sex?"m":"f")+"_"+((@x<10)?"0":"")+@x+".bmp",2;
+				switch(select((@x!=1)?"看看上一个":"",(@x!=getbattleflag("max_hair_style")?"看看下一个":""),"决定用这个")){
+					case 1: set @x,@x-1; break;
+					case 2: set @x,@x+1; break;
+					case 3: setlook 1,@x; set @x,0; break;
+					}
+				}
+			cutin "son",2;
+			mes "[孙燕姿]";
+			mes "这式样配合您的身材真是绝对棒。";
+			mes "祝你好心情，头发别弄乱了。";
+			break;
+		case 10: //染衣
+			mes "[孙燕姿]";
+			mes "你不觉得衣服太旧了吗？";
+			mes "换一件新的吧！";
+			next;
+			set @w,select("还原色彩","第一种色","第二种色","第三种色","第四种色")-1;
+			setlook 7,@w;
+			mes "[孙燕姿]";
+			mes "您的衣服已经烫洗好了。";
+			mes "欢迎下次再来光临小店。";
+			break;
+		}
+cutin "son",255;
+close;
+}
