@@ -14,7 +14,7 @@
 - staging: 测试环境分支，用于本地调试服务器修改的内容，其他人可以删掉
 - produce: 生产环境分支，含我的服务器的远程存档，其他人可以删掉
 
-> 配套客户端仓库：[https://github.com/lyy289065406/ro-single-client](https://github.com/lyy289065406/ro-single-client)
+> 配套客户端仓库：[https://github.com/Casual-Ragnarok/ro-single-client](https://github.com/Casual-Ragnarok/ro-single-client)
 
 
 </details>
@@ -137,10 +137,10 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 ## 版本说明 & 下载
 
-- EA 服务端模拟器：v8.19.0 【[Github:免费已破解](https://github.com/lyy289065406/ro-single-server)】【[百度网盘(zx39):VMWare永久激活](https://pan.baidu.com/s/1M-W-bra6h16Bq7vqPI_Rng)】~【[99Max:收费](http://www.99max.me/thread-12926-1-1.html)】~
+- EA 服务端模拟器：v8.19.0 【[Github:免费已破解](https://github.com/Casual-Ragnarok/ro-single-server)】【[百度网盘(zx39):VMWare永久激活](https://pan.baidu.com/s/1M-W-bra6h16Bq7vqPI_Rng)】~【[99Max:收费](http://www.99max.me/thread-12926-1-1.html)】~
 - 服务端环境修复包： DirectXRepair-v3.9 【[百度网盘(vs1m)](https://pan.baidu.com/s/1zoBXTi5rp7Yj1bhzMzo-oQ)】 (如果可以直接运行就不用装了)
 - 韩服客户端（三转复兴后）：Ragnarok_KRO_20190306_Lite 【[百度网盘(dgui)](https://pan.baidu.com/s/1vrh-9wE29tfZvDiS10wkxw)】【[韩国官网](http://ro.gnjoy.com/pds/down/)】~【[99Max:收费](http://www.99max.me/thread-485-1-1.html)】~
-- 客户端补丁（登陆器）：v4.3 【[Github](https://github.com/lyy289065406/ro-single-client)】【[百度网盘(iav5)](https://pan.baidu.com/s/1F3XLwqDDwebvUNIYIKPlXQ&shfl=sharepset)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
+- 客户端补丁（登陆器）：v4.3 【[Github](https://github.com/Casual-Ragnarok/ro-single-client)】【[百度网盘(iav5)](https://pan.baidu.com/s/1F3XLwqDDwebvUNIYIKPlXQ&shfl=sharepset)】~【[99Max:收费](http://www.99max.me/thread-3674-1-1.html)】~
  
 > 备注：
 <br/>　服务端脚本更新记录（游戏内公示）: [view](./npc/re/%E5%8A%9F%E8%83%BD%E8%84%9A%E6%9C%AC/update.txt)
@@ -177,8 +177,8 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 ### 安装 & 启动服务端
 
 - 服务端只能运行于 Windows 系统
-- 安装 git，执行命令 `git clone https://github.com/lyy289065406/ro-single-server` 下载 EA 服务端
-- 不懂 git 的同学可以直接点击本 [Github](https://github.com/lyy289065406/ro-single-server) 仓库的 【Clone and download】 ，解压后也是一样的
+- 安装 git，执行命令 `git clone https://github.com/Casual-Ragnarok/ro-single-server` 下载 EA 服务端
+- 不懂 git 的同学可以直接点击本 [Github](https://github.com/Casual-Ragnarok/ro-single-server) 仓库的 【Clone and download】 ，解压后也是一样的
 - 服务端可放到任意位置（<b>路径不要有中文</b>）
 - 双击运行 `01-启动架设环境.bat` 并等待窗口关闭，会启动 mysql（用于存档） 与 Apache（用于注册、论坛等）。【若熟悉 Docker 可以使用 `01-Run_Env_Docker.ps1` 代替】
 - 双击运行 `02-启动RO服务端.bat`，会依次自动启动：
@@ -300,7 +300,7 @@ Athena 也有很多系列分支，如曾经国人开发的 cAthena、 日本的 
 
 ### GM 常用配置
 
-- GM 指令辅助工具： [`tools/GM命令菜单/GM命令快捷菜单.exe`](https://github.com/lyy289065406/ro-single-server/blob/staging/tools/GM%E5%91%BD%E4%BB%A4%E8%8F%9C%E5%8D%95/GM%E5%91%BD%E4%BB%A4%E5%BF%AB%E6%8D%B7%E8%8F%9C%E5%8D%95.exe)
+- GM 指令辅助工具： [`tools/GM命令菜单/GM命令快捷菜单.exe`](https://github.com/Casual-Ragnarok/ro-single-server/blob/staging/tools/GM%E5%91%BD%E4%BB%A4%E8%8F%9C%E5%8D%95/GM%E5%91%BD%E4%BB%A4%E5%BF%AB%E6%8D%B7%E8%8F%9C%E5%8D%95.exe)
 - GM 指令大全： [`conf/help.txt`](./conf/help.txt)
 - 角色指令大全：  [`conf/charhelp.txt`](./conf/charhelp.txt)
 - 修改服务器参数：  [`conf/char_athena.conf`](./conf/char_athena.conf)
