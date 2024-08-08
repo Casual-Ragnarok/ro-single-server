@@ -23,7 +23,7 @@ IF ERRORLEVEL 0 goto :RUNNING
 :NOTRUNNING
 rem ## Not shutdown using server_stop.bat hence delete file
 del ROEmulator\usr\local\apache2\logs\httpd.pid
-del ROEmulator\usr\local\mysql\data\mysql_mini.pid 
+del ROEmulator\usr\local\mysql\data\%computername%.pid 
 
 :NOTSTARTED
 set pass1=found
@@ -88,7 +88,7 @@ rem ### Wait for MySQL to start
 echo  MySQL  服务器正在启动中 ...
 :next2
 home\admin\program\unidelay.exe
-if NOT exist usr\local\mysql\data\mysql_mini.pid goto :next2
+if NOT exist usr\local\mysql\data\%computername%.pid goto :next2
 
 echo.
 echo  Apache 服务器已经运行在磁盘 %Disk%:\  [端口 8096] [http://127.0.0.1:8096]

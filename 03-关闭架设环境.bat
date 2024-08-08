@@ -15,7 +15,7 @@ IF ERRORLEVEL 0 goto :RUNNING
 :NOTRUNNING
 rem ## Not shutdown using server_stop.bat hence delete files
 del ROEmulator\usr\local\apache2\logs\httpd.pid
-del ROEmulator\usr\local\mysql\data\mysql_mini.pid 
+del ROEmulator\usr\local\mysql\data\%computername%.pid 
         
 goto :ALREADYKILLED
 
@@ -25,7 +25,7 @@ rem ## Get drive letter
 SET /P Disk=<ROEmulator\usr\local\apache2\logs\drive.txt
 
 rem ## Remove pid file server was closed
-del ROEmulator\usr\local\mysql\data\mysql_mini.pid
+del ROEmulator\usr\local\mysql\data\%computername%.pid
 
 rem ## Kill MySQL server
 ROEmulator\usr\local\mysql\bin\mysqladmin.exe --port=3306 --user=root --password=root shutdown
