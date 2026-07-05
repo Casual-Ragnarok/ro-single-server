@@ -76,7 +76,7 @@ rem ## Start Apache server
 start %Disk%:\home\admin\program\uniserv.exe "%apacheit%" 
 
 rem ## Start MySQL server
-start /MIN \usr\local\mysql\bin\mysqld-opt.exe --defaults-file=/usr/local/mysql/my.cnf
+start /MIN \usr\local\mysql\bin\mysqld-opt.exe --defaults-file=/usr/local/mysql/my.cnf --pid-file=mysql_mini.pid --log-error=mysqld_error.log
 
 rem ### Wait for Apache to start
 echo  Apache 服务器正在启动中 ...
@@ -84,10 +84,14 @@ echo  Apache 服务器正在启动中 ...
 home\admin\program\unidelay.exe
 if NOT exist usr\local\apache2\logs\httpd.pid goto :next
 
-rem ### Wait for MySQL to start
+rem ### Wait for MySQL to start (timeout 30s)
 echo  MySQL  服务器正在启动中 ...
+set mysql_try=0
 :next2
 home\admin\program\unidelay.exe
+set /a mysql_try=mysql_try+1
+if %mysql_try%==30 echo  MySQL 启动超时！请查看错误日志: Z:\usr\local\mysql\data\mysqld_error.log
+if %mysql_try%==30 goto :END
 if NOT exist usr\local\mysql\data\mysql_mini.pid goto :next2
 
 echo.

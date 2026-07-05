@@ -72,7 +72,7 @@
 533,Grape_Juice,ÆÏÌÑÖ­,0,250,,40,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 0,rand(15,25); },{},{}
 534,Carrot_Juice,ºìÂÜ²·Ö­,0,20,,40,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(27,33),0; },{},{}
 535,Pumpkin,ÄÏ¹Ï,0,15,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal 19,0; },{},{}
-536,Ice_Cream,±ùä¿ÁÜ,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 10,10; sc_start SC_FREEZE,10000,0,2500,0; },{},{}
+536,Ice_Cream,±ùä¿ÁÜ,0,100,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 10,10; },{},{}
 537,Pet_Food,³èÎïËÇÁÏ,0,500,,1,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,20; },{},{}
 538,Well_Baked_Cookie,½ª±ý,0,1000,,30,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(160,200),0; },{},{}
 539,Piece_Of_Cake,Ð¡µ°¸â,0,3000,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(270,330),0; },{},{}
