@@ -13,3 +13,7 @@ ROEmulator/usr/local/mysql/data/mysql_mini.*
 
 # 其他
 .vscode
+
+# Local reverse-engineering memory captures and test artifacts
+.local/time-check/
+tools/__pycache__/
